@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+<!-- ===================================================================================================
+
+        Instituto Municipal de Planeación y Competitividad (IMPLAN) de Torreón.
+
+        3er. generación de la Plataforma del Conocimiento
+        Desarrollado por Ing. Guillermo Valdés Lozano <guivaloz en movimientolibre.com>
+
+        El software que lo construye está bajo la licencia GPL versión 3. © 2014, 2015, 2016, 2017.
+        Una copia está contenida en el archivo LICENCE al bajar desde GitHub.
+
+        Al usar, estudiar y copiar está aceptando los términos de uso de la información y del sitio web:
+          http://www.trcimplan.gob.mx/terminos/terminos-informacion.html
+          http://www.trcimplan.gob.mx/terminos/terminos-sitio.html
+
+        Descargue, estudie y colabore bajando todo este sitio web:
+          IMPLAN Torreón     https://github.com/TRCIMPLAN/trcimplan.github.io
+
+        Agradecemos y compartimos las tecnologías abiertas y gratuitas sobre las que se basa:
+          PHP                http://php.net
+          Twitter Bootstrap  http://getbootstrap.com
+          StartBootStrap     http://startbootstrap.com
+          Morris.js          https://morrisjs.github.io/morris.js/
+          Font Awesome       http://fontawesome.io
+          DataTables         https://www.datatables.net
+          Carto              https://carto.com
+          GitHub             https://github.com
+
+     =================================================================================================== -->
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="El 17 de marzo de 2020, la Junta General Ejecutiva (JGE) del Instituto Nacional Electoral aprobó mediante Acuerdo INE/JGE34/2020, las medidas preventivas y de actuación, con motivo de la pandemia derivada del COVID-19.">
+  <meta name="author" content="Lic. Maira Ivonne Flores Reyes">
+  <meta name="keywords" content="IMPLAN, Torreon, pandemia, covid-19, ine">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Elecciones Coahuila 2020: Votos y Contingencia - IMPLAN Torreón">
+  <meta name="twitter:description" content="El 17 de marzo de 2020, la Junta General Ejecutiva (JGE) del Instituto Nacional Electoral aprobó mediante Acuerdo INE/JGE34/2020, las medidas preventivas y de actuación, con motivo de la pandemia derivada del COVID-19.">
+  <meta name="twitter:image" content="http://www.trcimplan.gob.mx/blog/elecciones-coahuila-2020-votos-y-contingencia-oct-2020/imagen-previa.jpg">
+  <meta name="twitter:url" content="http://www.trcimplan.gob.mx/blog/elecciones-coahuila-2020-votos-y-contingencia-oct-2020.html">
+  <meta name="og:title" content="Elecciones Coahuila 2020: Votos y Contingencia - IMPLAN Torreón">
+  <meta name="og:description" content="El 17 de marzo de 2020, la Junta General Ejecutiva (JGE) del Instituto Nacional Electoral aprobó mediante Acuerdo INE/JGE34/2020, las medidas preventivas y de actuación, con motivo de la pandemia derivada del COVID-19.">
+  <meta name="og:image" content="http://www.trcimplan.gob.mx/blog/elecciones-coahuila-2020-votos-y-contingencia-oct-2020/imagen-previa.jpg">
+  <meta name="og:url" content="http://www.trcimplan.gob.mx/blog/elecciones-coahuila-2020-votos-y-contingencia-oct-2020.html">
+  <title>Elecciones Coahuila 2020: Votos y Contingencia - IMPLAN Torreón</title>
+  <link rel="shortcut icon" type="image/x-icon" href="../imagenes/apple-touch-icon.png">
+  <link rel="apple-touch-icon" href="../imagenes/apple-touch-icon.png">
+  <link rel="apple-touch-icon" href="../imagenes/apple-touch-icon-76x76.png" sizes="76x76">
+  <link rel="apple-touch-icon" href="../imagenes/apple-touch-icon-120x120.png" sizes="120x120">
+  <link rel="apple-touch-icon" href="../imagenes/apple-touch-icon-152x152.png" sizes="152x152">
+  <link rel="apple-touch-icon" href="../imagenes/apple-touch-icon-180x180.png" sizes="180x180">
+  <link rel="icon" href="../imagenes/icon-hires.png" sizes="192x192">
+  <link rel="icon" href="../imagenes/icon-normal.png" sizes="128x128">
+  <link rel="alternate" type="application/rss+xml" href="../rss.xml" title="IMPLAN Torreón">
+  <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+  <link rel="stylesheet" type="text/css" href="../vendor/metisMenu/metisMenu.min.css">
+  <link rel="stylesheet" type="text/css" href="../vendor/datatables-plugins/dataTables.bootstrap.css">
+  <link rel="stylesheet" type="text/css" href="../vendor/morrisjs/morris.css">
+  <link rel="stylesheet" type="text/css" href="../vendor/font-awesome/css/font-awesome.min.css">
+  <link rel="stylesheet" type="text/css" href="../dist/css/sb-admin-2.min.css">
+  <link rel="stylesheet" type="text/css" href="../dist/css/plataforma-de-conocimiento.css">
+  <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Noto+Sans|Roboto+Condensed:400,700">
+  <link rel="stylesheet" type="text/css" href="http://libs.cartocdn.com/cartodb.js/v3/3.15/themes/css/cartodb.css">
+  <link rel="stylesheet" type="text/css" href="../dist/css/estilosvm.css">
+  <link rel="stylesheet" type="text/css" href="../dist/css/trcimplan.css">
+  <!-- SOPORTE PARA IE -->
+  <!--[if lt IE 9]>
+  <script type="text/javascript" src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+  <script type="text/javascript" src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+  <![endif]-->
+</head>
+<body>
+<div id="wrapper">
+  <nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="../index.html"><img class="navbar-brand-img" src="../imagenes/implan-barra-logo-chico-gris.png" alt="IMPLAN Torreón"></a>
+    </div>
+  <div class="navbar-default sidebar" role="navigation">
+    <div class="sidebar-nav navbar-collapse">
+      <ul class="nav" id="side-menu">
+        <li class="sidebar-search">
+          <form method="get" action="http://www.trcimplan.gob.mx/buscador-resultados.html">
+            <div class="input-group custom-search-form">
+              <input type="text" class="form-control" placeholder="Google buscar..." value="" name="q">
+              <span class="input-group-btn">
+                <button class="btn btn-default" type="submit"><i class="fa fa-search"></i></button>
+              </span>
+            </div>
+          </form>
+        </li>
+        <li class="active">
+          <a href="#"><span class="navegacion-icono"><i class="fa fa-lightbulb-o"></i></span> Análisis Publicados<span class="fa arrow"></span></a>
+          <ul class="nav nav-second-level">
+            <li><a href="../blog/index.html"><span class="navegacion-icono"><i class="fa fa-file-text-o"></i></span> Últimos Análisis</a></li>
+            <li><a href="../excolaboradores/index.html"><span class="navegacion-icono"><i class="fa fa-file-text-o"></i></span> Análisis por Autor</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="#"><span class="navegacion-icono"><i class="fa fa-area-chart"></i></span> Indicadores<span class="fa arrow"></span></a>
+          <ul class="nav nav-second-level">
+            <li><a href="../smi/introduccion.html"><span class="navegacion-icono"><i class="fa fa-file-text-o"></i></span> Introducción al SMI</a></li>
+            <li><a href="../indicadores-categorias/index.html"><span class="navegacion-icono"><i class="fa fa-th-list"></i></span> Indicadores por Categoría</a></li>
+            <li><a href="../smi/por-region.html"><span class="navegacion-icono"><i class="fa fa-table"></i></span> Indicadores por Región</a></li>
+            <li><a href="../smi/datos-abiertos.html"><span class="navegacion-icono"><i class="fa fa-download"></i></span> Datos Abiertos</a></li>
+            <li><a href="../smi/niveles-socioeconomicos.html"><span class="navegacion-icono"><i class="fa fa-bar-chart"></i></span> Niveles Socioeconómicos</a></li>
+            <li><a href="../monitores/index.html"><span class="navegacion-icono"><i class="fa fa-file-text-o"></i></span> Monitores</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="#"><span class="navegacion-icono"><i class="fa fa-puzzle-piece"></i></span> Indicadores Básicos de Colonias<span class="fa arrow"></span></a>
+          <ul class="nav nav-second-level">
+            <li><a href="../ibc/introduccion.html"><span class="navegacion-icono"><i class="fa fa-file-text-o"></i></span> Introducción al IBC</a></li>
+            <li><a href="../ibc-colonias-torreon/index.html"><span class="navegacion-icono"><i class="fa fa-font"></i></span> Colonias de Torreón</a></li>
+            <li><a href="https://implantorreon.carto.com/u/sigimplan/builder/907a6bc0-2c7e-451e-9668-b78d952e52ff/embed" target="_blank"><span class="navegacion-icono"><i class="fa fa-external-link"></i></span> Mapa Completo</a></li>
+            <li><a href="../ibc/torreon-urbano.html"><span class="navegacion-icono"><i class="fa fa-table"></i></span> Torreón Urbano</a></li>
+            <li><a href="../ibc/datos-abiertos.html"><span class="navegacion-icono"><i class="fa fa-download"></i></span> Datos Abiertos</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="#"><span class="navegacion-icono"><i class="fa fa-map-marker"></i></span> Información Geográfica<span class="fa arrow"></span></a>
+          <ul class="nav nav-second-level">
+            <li><a href="../sig/introduccion.html"><span class="navegacion-icono"><i class="fa fa-file-text-o"></i></span> Introducción al SIG</a></li>
+            <li><a href="../sig-mapas-torreon/temas-sig.html"><span class="navegacion-icono"><i class="fa fa-map-o"></i></span> Mapas por Tema</a></li>
+            <li><a href="../sig-mapas-torreon/plan-director-desarrollo-urbano.html"><span class="navegacion-icono"><i class="fa fa-map-marker"></i></span> Usos de Suelo</a></li>
+            <li><a href="../sig/datos-abiertos.html"><span class="navegacion-icono"><i class="fa fa-download"></i></span> Datos Abiertos</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="#"><span class="navegacion-icono"><i class="fa fa-book"></i></span> Plan Estratégico Torreón 2040<span class="fa arrow"></span></a>
+          <ul class="nav nav-second-level">
+            <li><a href="../pet/indice.html"><span class="navegacion-icono"><i class="fa fa-list-ul"></i></span> Índice General</a></li>
+            <li><a href="../plan-estrategico-torreon-enfoque-metropolitano-2040/index.html"><span class="navegacion-icono"><i class="fa fa-download"></i></span> Descargar</a></li>
+            <li><a href="../plan-estrategico-metropolitano/descripcion-del-proceso.html"><span class="navegacion-icono"><i class="fa fa-calendar"></i></span> Descripción del proceso</a></li>
+            <li><a href="../proyectos/index.html"><span class="navegacion-icono"><i class="fa fa-check-square"></i></span> Proyectos</a></li>
+            <li><a href="../vision-de-ciudad/vision-de-ciudad.html"><span class="navegacion-icono"><i class="fa fa-file-text-o"></i></span> Visión de Ciudad desde IMPLAN</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="#"><span class="navegacion-icono"><i class="fa fa-briefcase"></i></span> Documentos<span class="fa arrow"></span></a>
+          <ul class="nav nav-second-level">
+            <li><a href="../sig-planes/index.html"><span class="navegacion-icono"><i class="fa fa-book"></i></span> Planes y Programas</a></li>
+            <li><a href="../investigaciones/index.html"><span class="navegacion-icono"><i class="fa fa-file-text-o"></i></span> Investigaciones</a></li>
+            <li><a href="../estudios/index.html"><span class="navegacion-icono"><i class="fa fa-file-text-o"></i></span> Estudios</a></li>
+          </ul>
+        </li>
+        <li><a href="../consejo-directivo/integrantes.html"><span class="navegacion-icono"><i class="fa fa-users"></i></span> Consejo Directivo</a></li>
+        <li><a href="../sala-prensa/index.html"><span class="navegacion-icono"><i class="fa fa-newspaper-o"></i></span> Sala de Prensa</a></li>
+        <li><a href="../programas-radio/index.html"><span class="navegacion-icono"><i class="fa fa-microphone"></i></span> Programas de Radio</a></li>
+        <li>
+          <a href="#"><span class="navegacion-icono"><i class="fa fa-file-text-o"></i></span> Consejo Visión Metrópoli<span class="fa arrow"></span></a>
+          <ul class="nav nav-second-level">
+            <li><a href="../convocatorias/vision-metropoli.html"><span class="navegacion-icono"><i class="fa fa-file-text-o"></i></span> Consejo Juvenil</a></li>
+            <li><a href="../vision-metropoli/integrantes.html"><span class="navegacion-icono"><i class="fa fa-file-text-o"></i></span> Integrantes del Consejo</a></li>
+            <li><a href="../vision-metropoli/index.html"><span class="navegacion-icono"><i class="fa fa-newspaper-o"></i></span> Sala de Prensa</a></li>
+            <li><a href="../vision-metropoli/reglamento-vision-metropoli-2020.pdf"><span class="navegacion-icono"><i class="fa fa-file-text-o"></i></span> Reglamento</a></li>
+            <li><a href="https://issuu.com/consejovisionmetropoli/docs/informe_visi_n_metr_poli_2019_-_2021" target="_blank"><span class="navegacion-icono"><i class="fa fa-file-text-o"></i></span> Informe 2019 - 2021</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="#"><span class="navegacion-icono"><i class="fa fa-building-o"></i></span> Institucional<span class="fa arrow"></span></a>
+          <ul class="nav nav-second-level">
+            <li><a href="../institucional/vision-mision.html"><span class="navegacion-icono"><i class="fa fa-trophy"></i></span> Misión / Visión</a></li>
+            <li><a href="../institucional/NuestrosProyectos.html"><span class="navegacion-icono"><i class="fa fa-pencil-square-o"></i></span> Nuestros Proyectos</a></li>
+            <li><a href="../institucional/mensaje-director.html"><span class="navegacion-icono"><i class="fa fa-comment"></i></span> Mensaje del Director</a></li>
+            <li><a href="../autores/index.html"><span class="navegacion-icono"><i class="fa fa-user"></i></span> Quienes Somos</a></li>
+            <li><a href="../institucional/estructura-organica.html"><span class="navegacion-icono"><i class="fa fa-sitemap"></i></span> Estructura Orgánica</a></li>
+            <li><a href="../institucional/modelo-operativo-universal.html"><span class="navegacion-icono"><i class="fa fa-slideshare"></i></span> Modelo Operativo Univ.</a></li>
+            <li><a href="../institucional/reglamentos.html"><span class="navegacion-icono"><i class="fa fa-gavel"></i></span> Reglamentos</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="#"><span class="navegacion-icono"><i class="fa fa-external-link"></i></span> Transparencia<span class="fa arrow"></span></a>
+          <ul class="nav nav-second-level">
+            <li><a href="http://www2.icai.org.mx/ipo/dependencia.php?dep=178#pageload" target="_blank"><span class="navegacion-icono"><i class="fa fa-file-text-o"></i></span> Transparencia Estatal (ICAI)</a></li>
+            <li><a href="https://consultapublicamx.inai.org.mx/vut-web/faces/view/consultaPublica.xhtml#inicio" target="_blank"><span class="navegacion-icono"><i class="fa fa-file-text-o"></i></span> Plataforma Nacional de Transparencia</a></li>
+            <li><a href="../transparencia/index.html"><span class="navegacion-icono"><i class="fa fa-briefcase"></i></span> Documentos</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="#"><span class="navegacion-icono"><i class="fa fa-share-alt"></i></span> Términos de Uso<span class="fa arrow"></span></a>
+          <ul class="nav nav-second-level">
+            <li><a href="../terminos/terminos-informacion.html"><span class="navegacion-icono"><i class="fa fa-cubes"></i></span> De la información</a></li>
+            <li><a href="../terminos/terminos-sitio.html"><span class="navegacion-icono"><i class="fa fa-globe"></i></span> Del sitio web</a></li>
+            <li><a href="../terminos/privacidad.html"><span class="navegacion-icono"><i class="fa fa-lock"></i></span> Aviso de Privacidad</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="#"><span class="navegacion-icono"><i class="fa fa-phone"></i></span> Contacto<span class="fa arrow"></span></a>
+          <ul class="nav nav-second-level">
+            <li><a href="../contacto/contacto.html"><span class="navegacion-icono"><i class="fa fa-phone"></i></span> Medios de contacto</a></li>
+            <li><a href="../preguntas-frecuentes/preguntas-frecuentes.html"><span class="navegacion-icono"><i class="fa fa-question"></i></span> Preguntas Frecuentes</a></li>
+            <li><a href="http://goo.gl/forms/1rdX4X128PpMOif73" target="_blank"><span class="navegacion-icono"><i class="fa fa-external-link"></i></span> Comentarios y Sugerencias</a></li>
+          </ul>
+        </li>
+        <li><a href="../convocatorias/index.html"><span class="navegacion-icono"><i class="fa fa-file-text-o"></i></span> Convocatorias</a></li>
+        <li><a href="http://177.244.42.17/ovie-torreon/#!" target="_blank"><span class="navegacion-icono"><i class="fa fa-map-marker"></i></span> Oficina Virtual de Información Económica (OVIE)</a></li>
+        <li><a href="https://arcg.is/0vySSr" target="_blank"><span class="navegacion-icono"><i class="fa fa-globe"></i></span> Atlas Municipal de Riesgos de Torreón</a></li>
+      </ul>
+    </div>
+  </div>
+  </nav>
+  <div id="page-wrapper">
+    <div class="cuerpo">
+      <article><div itemscope itemtype="http://schema.org/BlogPosting">
+        <div class="encabezado">
+          <h1 itemprop="headline">Elecciones Coahuila 2020: Votos y Contingencia</h1>
+          <div class="encabezado-descripcion" itemprop="description">El 17 de marzo de 2020, la Junta General Ejecutiva (JGE) del Instituto Nacional Electoral aprobó mediante Acuerdo INE/JGE34/2020, las medidas preventivas y de actuación, con motivo de la pandemia derivada del COVID-19.</div>
+          <div class="encabezado-autor-fecha">
+            Por <span itemprop="author">Lic. Maira Ivonne Flores Reyes</span> -
+            <meta itemprop="datePublished" content="2020-10-05T00:00">05/10/2020
+          </div>
+        </div>
+        <span class="contenido-imagen-previa"><img class="img-responsive" itemprop="image" alt="Elecciones Coahuila 2020: Votos y Contingencia" src="elecciones-coahuila-2020-votos-y-contingencia-oct-2020/imagen.jpg"></span>
+        <div itemprop="articleBody">
+<!-- Contenido: Inicia  -->
+<p>
+   <a title="ir a Otras Publicaciones" href="http://www.trcimplan.gob.mx/autores/maira-ivonne-flores-reyes.html"><img class="img-responsive contenido-imagen" src="../imagenes/128/lic-maira-ivonne-flores-reyes-top5.png" align="right" alt="Foto Maira" width="500" height="200"></a>
+
+</p>
+
+<p></br></br></br></br></br></br></br></br></p>
+
+<hr />
+
+<p>El 17 de marzo de 2020, la Junta General Ejecutiva (JGE) del Instituto Nacional Electoral aprobó mediante Acuerdo INE/JGE34/2020, las medidas preventivas y de actuación, con motivo de la pandemia derivada del COVID-19.</p>
+
+<p>Por su parte, el Consejo General del INE determinó suspender temporalmente el desarrollo de los procesos electorales locales en Coahuila e Hidalgo, con motivo de la pandemia del Covid-19, generada por el virus SARS-CoV-2, lo cual incluye las tareas de integración de mesas directivas de casilla, capacitación y asistencia electoral. También acordaron que, una vez restablecidas las condiciones de seguridad sanitaria, se reanudarían las actividades de los procesos electorales locales y se determinaría la fecha de la Jornada Electoral.
+La Dirección Ejecutiva de Capacitación y Educación Cívica (DECEyEC) y la Dirección Ejecutiva de Organización Electoral (DEOE) plantearon una serie de medidas y recomendaciones que parten de las consideraciones que han establecido las autoridades de salud federales y estatales, pero que se enfocan al desarrollo de las tareas de asistencia electoral, integración de mesas directivas de casilla y capacitación electoral en las diferentes etapas que falta desarrollar durante el Proceso Electoral Local 2019-2020.</p>
+
+<p>A partir del 24 de junio se implementó el Protocolo para el regreso a las actividades presenciales en el Instituto Nacional Electoral y la Estrategia de operación de Módulos de Atención Ciudadana durante la emergencia sanitaria por COVID-19, ambos instrumentos aprobados por la Junta General Ejecutiva de este Instituto en esa misma fecha y los cuales contienen diversas medidas tales como: el regreso paulatino y progresivo a las actividades presenciales en las oficinas, la protección de aquellas personas en situación de riesgo permitiendo que continúen con el trabajo desde sus casas; en actividades presenciales el respeto a la sana distancia, instalación y operación del filtro sanitario con toma de temperatura y nivel de oxígeno, uso obligatorio de cubrebocas para toda persona que ingrese o permanezca en las instalaciones del Instituto, la sanitización de espacios, etc.</p>
+
+<p>Es por eso, que el INE emitió una serie de recomendaciones para que de esa forma, los ciudadanos y ciudadanas de todo el Estado, acudan a emitir su voto confiando en que se tomarán las medidas sanitarias correspondientes:</p>
+
+<p><strong>a).</strong> Acudir a la casilla con cubrebocas y, preferentemente, con careta. En el caso de que se presente la o el elector sin cubrebocas, se le proporcionará uno al ingresar a la casilla.</p>
+
+<p><strong>b).</strong> Al toser o estornudar, deberán hacerlo cubriendo nariz y boca con el ángulo interno del brazo, o cubriéndose con un pañuelo.</p>
+
+<p><strong>c).</strong> Cada elector/a podrá llevar su propio bolígrafo para marcar sus boletas (no usar marcadores de alto grosor ni plumones a base de aceite); con esta medida se trata de reducir que los marcadores de boletas de la casilla sean compartidos por un gran número de personas. No obstante, en cada casilla se dotará de un número adicional de marcadores de boletas.</p>
+
+<p><strong>d).</strong> En el caso de las y los ciudadanos que requieran apoyo de un familiar para ejercer su derecho al voto, también deberán portar cubrebocas, así como respetar las indicaciones de sanidad. Por otra parte, se recomienda que no acudan con menores de edad; en caso contrario, no se le prohibirá el ejercicio del sufragio; sin embargo, los menores de edad también deberán portar cubrebocas.</p>
+
+<p><strong>e).</strong> Consultar los resultados a través de los difusores del Programa de Resultados Electorales Preliminares (PREP), para reducir la afluencia de la ciudadanía interesada en conocer los resultados, en el sitio donde se instaló la casilla.</p>
+
+<p><strong>f).</strong> Al regresar a su domicilio, que apliquen las medidas sanitarias como lavado de manos y otras zonas expuestas, y en su caso desinfección de objetos que hayan llevado con ellos.</p>
+
+<p>Por su parte, el Lic. José Carlos Nava, Maestro de la Facultad de Ciencias Políticas y Sociales perteneciente a la Universidad Autónoma de Coahuila, da su punto de vista sobre las próximas elecciones:</p>
+
+<p>“El proceso electoral de Coahuila 2020 para renovar el Congreso enfrenta un reto histórico en el contexto de la pandemia originada por la propagación global del coronavirus SARS-CoV2, causante de la enfermedad respiratoria COVID-19. Esta nueva realidad configura el curso de un periodo de campañas atípico e inédito en la entidad para una elección intermedia (o huérfana), debido a la emergencia sanitaria.</p>
+
+<p>Sin duda, dicho reto se encuentra directamente ligado a superar el bajo nivel de participación ciudadana frente a procesos que implican elegir legisladores. Ha predominado el abstencionismo. Ahora, el reto se vuelve superlativo por las restricciones de movilidad en la ocupación del espacio público.</p>
+
+<p>De esta manera, la jornada electoral fijada para el próximo 18 de octubre donde estarán en juego 25 diputaciones locales, 16 de mayoría relativa y 9 de representación proporcional, se sitúa en un escenario caracterizado por la complejidad.</p>
+
+<p>En consecuencia, surge una pregunta obvia: ¿cómo es que la pandemia influirá en el comportamiento de los electores? Y desde este punto de partida, sería inconveniente prefigurar una debacle en términos de participación. Por el contrario, el presente planteamiento apuesta por una ponderación de contraste: incentivo o desaliento.</p>
+
+<p><strong>1)</strong> La pandemia como incentivo. En concreto tiene que ver con la evaluación favorable, neutra o desfavorable, de las intervenciones de gobierno instrumentadas para mitigar las cadenas masivas de contagio; tomando en cuenta la fuente político-partidista de dichas políticas públicas a nivel federal, estatal o municipal. En este aspecto, es altamente probable que los electores agreguen a la orientación del sufragio el factor de aprobación o desaprobación de la autoridad en turno, colocando en su mira la identidad partidista en cuestión.</p>
+
+<p><strong>2)</strong> La pandemia como factor de desaliento. Partiendo de este punto de vista, el factor pandemia aparece como variable que podría jugar en contra de la participación. Ello, considerando la existencia de un entorno de seguridad adverso, donde la percepción predominante acentuaría la noción de condiciones de riesgo para la salud al momento de acudir a las urnas.</p>
+
+<p>En México, a la problemática sanitaria de coronavirus en curso hay agregar la concurrencia del dengue y el periodo de influenza estacional. Para el caso de Coahuila y su jornada electoral del próximo 18 de octubre habrá que tomar en cuenta esta condición inédita de entorno. De tal manera que a ese punto futuro de llegada resulta necesario incorporar la variable del semáforo de riesgo, toda vez que al menos hasta agosto la entidad se mantuvo por encima de la tasa nacional de incidencia de COVID-19. Por lo pronto, tal como puede observarse, este escenario nos presenta una realidad sumamente compleja e impredecible.</p>
+
+<p><img class="img-responsive" src="elecciones-coahuila-2020-votos-y-contingencia-oct-2020/ima01.jpg" alt="Imagen 1"></p>
+
+<p><img class="img-responsive" src="elecciones-coahuila-2020-votos-y-contingencia-oct-2020/ima02.jpg" alt="Imagen 2"></p>
+
+<p><img class="img-responsive" src="elecciones-coahuila-2020-votos-y-contingencia-oct-2020/ima03.jpg" alt="Imagen 3"></p>
+
+<p><img class="img-responsive" src="elecciones-coahuila-2020-votos-y-contingencia-oct-2020/ima04.jpg" alt="Imagen 4"></p>
+
+<h2>Datos:</h2>
+
+<p>El próximo 18 de octubre, las y los coahuilenses podrán votar a través de la Urna Electrónica en 54 de las 3,828 casillas totales que instalará el INE en Coahuila.
+Dos millones 227 mil 413 ciudadanos podrán votar.</p>
+
+<h2>Fuentes:</h2>
+
+<ul>
+<li><p>Modelo Integral de Atención Sanitaria para los Procesos Electorales Locales de Coahuila e Hidalgo, INE 2020.</p></li>
+<li><p>Protocolo de atención sanitaria y protección a la salud, para la operación de las casillas el día de la Jornada Electoral Proceso Electoral 2019-2020 Coahuila e Hidalgo.</p></li>
+<li><p>Protocolo específico para las y los Supervisores Electorales y Capacitadores Asistentes Electorales en las actividades de integración de mesas directivas de casilla y capacitación electoral durante el PEL 2019-2020, en el marco de la contingencia sanitaria provocada por el COVID-19 (Coronavirus).</p></li>
+</ul>
+
+<!-- Contenido: Termina -->
+        </div>
+              <div class="publicador" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+          <span class="contenido-imagen-previa"><img class="img-responsive" itemprop="image" alt="Instituto Municipal de Planeación y Competitividad de Torreón" src="../imagenes/implan-logo.png"></span>
+          <h3 class="titulo" itemprop="name">Instituto Municipal de Planeación y Competitividad de Torreón</h3>
+          <div class="descripcion" itemprop="description">Órgano técnico responsable de la planeación del desarrollo del municipio de Torreón, Coahuila, México.</div>
+          <div class="contenido-imagen-previa-final"></div>
+        </div>
+      </div></article>
+<div class="contenido-social">
+  <h5>Compartir en Redes Sociales</h5>
+  <a href="https://twitter.com/share" class="twitter-share-button" data-via="trcimplan" data-lang="es">Twittear</a>
+  <iframe src="//www.facebook.com/plugins/like.php?href=http%3A%2F%2Fwww.trcimplan.gob.mx%2Fblog%2Felecciones-coahuila-2020-votos-y-contingencia-oct-2020.html&amp;width=300&amp;layout=button_count&amp;action=like&amp;show_faces=true&amp;share=false&amp;height=21" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:300px; height:21px;" allowTransparency="true"></iframe>
+</div>
+    </div>
+    <div class="mapa-inferior">
+          <div class="pull-right redes-sociales">
+            <a class="fa fa-twitter-square" href="http://www.twitter.com/trcimplan" target="_blank"></a>
+            <a class="fa fa-facebook-square" href="https://facebook.com/trcimplan" target="_blank"></a>
+            <a class="fa fa-facebook-square" href="http://www.instagram.com/implantorreon" target="_blank"></a>
+            <a class="fa fa-rss-square" href="../rss.xml"></a>
+          </div>
+    </div>
+  </div>
+</div>
+<!-- Javascript global inicia -->
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
+<script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="../vendor/metisMenu/metisMenu.min.js"></script>
+<script type="text/javascript" src="../vendor/datatables/js/jquery.dataTables.min.js"></script>
+<script type="text/javascript" src="../vendor/datatables-plugins/dataTables.bootstrap.min.js"></script>
+<script type="text/javascript" src="../vendor/datatables-responsive/dataTables.responsive.js"></script>
+<script type="text/javascript" src="../vendor/raphael/raphael.min.js"></script>
+<script type="text/javascript" src="../vendor/morrisjs/morris.min.js"></script>
+<script type="text/javascript" src="../dist/js/sb-admin-2.min.js"></script>
+<script type="text/javascript" src="http://libs.cartocdn.com/cartodb.js/v3/3.15/cartodb.js"></script>
+<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+<!-- Javascript global termina -->
+<!-- Javascript inicia -->
+<script>
+  // Twitter
+  !function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="https://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");
+</script>
+
+<!-- Javascript termina -->
+<!-- Javascript Google Analytics -->
+<script>
+  // Google Analytics
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)})(window,document,'script','//www.google-analytics.com/analytics.js','ga');ga('create', 'UA-58290501-1', 'auto');ga('send', 'pageview');
+</script>
+</body>
+</html>

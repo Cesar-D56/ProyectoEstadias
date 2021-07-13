@@ -1,0 +1,622 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+<!-- ===================================================================================================
+
+        Instituto Municipal de Planeación y Competitividad (IMPLAN) de Torreón.
+
+        3er. generación de la Plataforma del Conocimiento
+        Desarrollado por Ing. Guillermo Valdés Lozano <guivaloz en movimientolibre.com>
+
+        El software que lo construye está bajo la licencia GPL versión 3. © 2014, 2015, 2016, 2017.
+        Una copia está contenida en el archivo LICENCE al bajar desde GitHub.
+
+        Al usar, estudiar y copiar está aceptando los términos de uso de la información y del sitio web:
+          http://www.trcimplan.gob.mx/terminos/terminos-informacion.html
+          http://www.trcimplan.gob.mx/terminos/terminos-sitio.html
+
+        Descargue, estudie y colabore bajando todo este sitio web:
+          IMPLAN Torreón     https://github.com/TRCIMPLAN/trcimplan.github.io
+
+        Agradecemos y compartimos las tecnologías abiertas y gratuitas sobre las que se basa:
+          PHP                http://php.net
+          Twitter Bootstrap  http://getbootstrap.com
+          StartBootStrap     http://startbootstrap.com
+          Morris.js          https://morrisjs.github.io/morris.js/
+          Font Awesome       http://fontawesome.io
+          DataTables         https://www.datatables.net
+          Carto              https://carto.com
+          GitHub             https://github.com
+
+     =================================================================================================== -->
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Plan Estratégico para Torreón con enfoque Metropolitano 2040 - Diagnóstico Estratégico: Movilidad y Transporte.">
+  <meta name="author" content="Dirección de Proyectos Estratégicos">
+  <meta name="keywords" content="Plan, Estrategico, Torreón, 2040, Metropolitano, Movilidad, Transporte">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Diagnóstico Estratégico: Movilidad y Transporte - IMPLAN Torreón">
+  <meta name="twitter:description" content="Plan Estratégico para Torreón con enfoque Metropolitano 2040 - Diagnóstico Estratégico: Movilidad y Transporte.">
+  <meta name="twitter:image" content="http://www.trcimplan.gob.mx/pet/../imagenes/imagen-previa.jpg">
+  <meta name="twitter:url" content="http://www.trcimplan.gob.mx/pet/diagnostico-estrategico-movilidad-transporte.html">
+  <meta name="og:title" content="Diagnóstico Estratégico: Movilidad y Transporte - IMPLAN Torreón">
+  <meta name="og:description" content="Plan Estratégico para Torreón con enfoque Metropolitano 2040 - Diagnóstico Estratégico: Movilidad y Transporte.">
+  <meta name="og:image" content="http://www.trcimplan.gob.mx/pet/../imagenes/imagen-previa.jpg">
+  <meta name="og:url" content="http://www.trcimplan.gob.mx/pet/diagnostico-estrategico-movilidad-transporte.html">
+  <title>Diagnóstico Estratégico: Movilidad y Transporte - IMPLAN Torreón</title>
+  <link rel="shortcut icon" type="image/x-icon" href="../imagenes/apple-touch-icon.png">
+  <link rel="apple-touch-icon" href="../imagenes/apple-touch-icon.png">
+  <link rel="apple-touch-icon" href="../imagenes/apple-touch-icon-76x76.png" sizes="76x76">
+  <link rel="apple-touch-icon" href="../imagenes/apple-touch-icon-120x120.png" sizes="120x120">
+  <link rel="apple-touch-icon" href="../imagenes/apple-touch-icon-152x152.png" sizes="152x152">
+  <link rel="apple-touch-icon" href="../imagenes/apple-touch-icon-180x180.png" sizes="180x180">
+  <link rel="icon" href="../imagenes/icon-hires.png" sizes="192x192">
+  <link rel="icon" href="../imagenes/icon-normal.png" sizes="128x128">
+  <link rel="alternate" type="application/rss+xml" href="../rss.xml" title="IMPLAN Torreón">
+  <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+  <link rel="stylesheet" type="text/css" href="../vendor/metisMenu/metisMenu.min.css">
+  <link rel="stylesheet" type="text/css" href="../vendor/datatables-plugins/dataTables.bootstrap.css">
+  <link rel="stylesheet" type="text/css" href="../vendor/morrisjs/morris.css">
+  <link rel="stylesheet" type="text/css" href="../vendor/font-awesome/css/font-awesome.min.css">
+  <link rel="stylesheet" type="text/css" href="../dist/css/sb-admin-2.min.css">
+  <link rel="stylesheet" type="text/css" href="../dist/css/plataforma-de-conocimiento.css">
+  <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Noto+Sans|Roboto+Condensed:400,700">
+  <link rel="stylesheet" type="text/css" href="http://libs.cartocdn.com/cartodb.js/v3/3.15/themes/css/cartodb.css">
+  <link rel="stylesheet" type="text/css" href="../dist/css/estilosvm.css">
+  <link rel="stylesheet" type="text/css" href="../dist/css/trcimplan.css">
+  <!-- SOPORTE PARA IE -->
+  <!--[if lt IE 9]>
+  <script type="text/javascript" src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+  <script type="text/javascript" src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+  <![endif]-->
+</head>
+<body>
+<div id="wrapper">
+  <nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="../index.html"><img class="navbar-brand-img" src="../imagenes/implan-barra-logo-chico-gris.png" alt="IMPLAN Torreón"></a>
+    </div>
+  <div class="navbar-default sidebar" role="navigation">
+    <div class="sidebar-nav navbar-collapse">
+      <ul class="nav" id="side-menu">
+        <li class="sidebar-search">
+          <form method="get" action="http://www.trcimplan.gob.mx/buscador-resultados.html">
+            <div class="input-group custom-search-form">
+              <input type="text" class="form-control" placeholder="Google buscar..." value="" name="q">
+              <span class="input-group-btn">
+                <button class="btn btn-default" type="submit"><i class="fa fa-search"></i></button>
+              </span>
+            </div>
+          </form>
+        </li>
+        <li>
+          <a href="#"><span class="navegacion-icono"><i class="fa fa-lightbulb-o"></i></span> Análisis Publicados<span class="fa arrow"></span></a>
+          <ul class="nav nav-second-level">
+            <li><a href="../blog/index.html"><span class="navegacion-icono"><i class="fa fa-file-text-o"></i></span> Últimos Análisis</a></li>
+            <li><a href="../excolaboradores/index.html"><span class="navegacion-icono"><i class="fa fa-file-text-o"></i></span> Análisis por Autor</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="#"><span class="navegacion-icono"><i class="fa fa-area-chart"></i></span> Indicadores<span class="fa arrow"></span></a>
+          <ul class="nav nav-second-level">
+            <li><a href="../smi/introduccion.html"><span class="navegacion-icono"><i class="fa fa-file-text-o"></i></span> Introducción al SMI</a></li>
+            <li><a href="../indicadores-categorias/index.html"><span class="navegacion-icono"><i class="fa fa-th-list"></i></span> Indicadores por Categoría</a></li>
+            <li><a href="../smi/por-region.html"><span class="navegacion-icono"><i class="fa fa-table"></i></span> Indicadores por Región</a></li>
+            <li><a href="../smi/datos-abiertos.html"><span class="navegacion-icono"><i class="fa fa-download"></i></span> Datos Abiertos</a></li>
+            <li><a href="../smi/niveles-socioeconomicos.html"><span class="navegacion-icono"><i class="fa fa-bar-chart"></i></span> Niveles Socioeconómicos</a></li>
+            <li><a href="../monitores/index.html"><span class="navegacion-icono"><i class="fa fa-file-text-o"></i></span> Monitores</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="#"><span class="navegacion-icono"><i class="fa fa-puzzle-piece"></i></span> Indicadores Básicos de Colonias<span class="fa arrow"></span></a>
+          <ul class="nav nav-second-level">
+            <li><a href="../ibc/introduccion.html"><span class="navegacion-icono"><i class="fa fa-file-text-o"></i></span> Introducción al IBC</a></li>
+            <li><a href="../ibc-colonias-torreon/index.html"><span class="navegacion-icono"><i class="fa fa-font"></i></span> Colonias de Torreón</a></li>
+            <li><a href="https://implantorreon.carto.com/u/sigimplan/builder/907a6bc0-2c7e-451e-9668-b78d952e52ff/embed" target="_blank"><span class="navegacion-icono"><i class="fa fa-external-link"></i></span> Mapa Completo</a></li>
+            <li><a href="../ibc/torreon-urbano.html"><span class="navegacion-icono"><i class="fa fa-table"></i></span> Torreón Urbano</a></li>
+            <li><a href="../ibc/datos-abiertos.html"><span class="navegacion-icono"><i class="fa fa-download"></i></span> Datos Abiertos</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="#"><span class="navegacion-icono"><i class="fa fa-map-marker"></i></span> Información Geográfica<span class="fa arrow"></span></a>
+          <ul class="nav nav-second-level">
+            <li><a href="../sig/introduccion.html"><span class="navegacion-icono"><i class="fa fa-file-text-o"></i></span> Introducción al SIG</a></li>
+            <li><a href="../sig-mapas-torreon/temas-sig.html"><span class="navegacion-icono"><i class="fa fa-map-o"></i></span> Mapas por Tema</a></li>
+            <li><a href="../sig-mapas-torreon/plan-director-desarrollo-urbano.html"><span class="navegacion-icono"><i class="fa fa-map-marker"></i></span> Usos de Suelo</a></li>
+            <li><a href="../sig/datos-abiertos.html"><span class="navegacion-icono"><i class="fa fa-download"></i></span> Datos Abiertos</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="#"><span class="navegacion-icono"><i class="fa fa-book"></i></span> Plan Estratégico Torreón 2040<span class="fa arrow"></span></a>
+          <ul class="nav nav-second-level">
+            <li><a href="../pet/indice.html"><span class="navegacion-icono"><i class="fa fa-list-ul"></i></span> Índice General</a></li>
+            <li><a href="../plan-estrategico-torreon-enfoque-metropolitano-2040/index.html"><span class="navegacion-icono"><i class="fa fa-download"></i></span> Descargar</a></li>
+            <li><a href="../plan-estrategico-metropolitano/descripcion-del-proceso.html"><span class="navegacion-icono"><i class="fa fa-calendar"></i></span> Descripción del proceso</a></li>
+            <li><a href="../proyectos/index.html"><span class="navegacion-icono"><i class="fa fa-check-square"></i></span> Proyectos</a></li>
+            <li><a href="../vision-de-ciudad/vision-de-ciudad.html"><span class="navegacion-icono"><i class="fa fa-file-text-o"></i></span> Visión de Ciudad desde IMPLAN</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="#"><span class="navegacion-icono"><i class="fa fa-briefcase"></i></span> Documentos<span class="fa arrow"></span></a>
+          <ul class="nav nav-second-level">
+            <li><a href="../sig-planes/index.html"><span class="navegacion-icono"><i class="fa fa-book"></i></span> Planes y Programas</a></li>
+            <li><a href="../investigaciones/index.html"><span class="navegacion-icono"><i class="fa fa-file-text-o"></i></span> Investigaciones</a></li>
+            <li><a href="../estudios/index.html"><span class="navegacion-icono"><i class="fa fa-file-text-o"></i></span> Estudios</a></li>
+          </ul>
+        </li>
+        <li><a href="../consejo-directivo/integrantes.html"><span class="navegacion-icono"><i class="fa fa-users"></i></span> Consejo Directivo</a></li>
+        <li><a href="../sala-prensa/index.html"><span class="navegacion-icono"><i class="fa fa-newspaper-o"></i></span> Sala de Prensa</a></li>
+        <li><a href="../programas-radio/index.html"><span class="navegacion-icono"><i class="fa fa-microphone"></i></span> Programas de Radio</a></li>
+        <li>
+          <a href="#"><span class="navegacion-icono"><i class="fa fa-file-text-o"></i></span> Consejo Visión Metrópoli<span class="fa arrow"></span></a>
+          <ul class="nav nav-second-level">
+            <li><a href="../convocatorias/vision-metropoli.html"><span class="navegacion-icono"><i class="fa fa-file-text-o"></i></span> Consejo Juvenil</a></li>
+            <li><a href="../vision-metropoli/integrantes.html"><span class="navegacion-icono"><i class="fa fa-file-text-o"></i></span> Integrantes del Consejo</a></li>
+            <li><a href="../vision-metropoli/index.html"><span class="navegacion-icono"><i class="fa fa-newspaper-o"></i></span> Sala de Prensa</a></li>
+            <li><a href="../vision-metropoli/reglamento-vision-metropoli-2020.pdf"><span class="navegacion-icono"><i class="fa fa-file-text-o"></i></span> Reglamento</a></li>
+            <li><a href="https://issuu.com/consejovisionmetropoli/docs/informe_visi_n_metr_poli_2019_-_2021" target="_blank"><span class="navegacion-icono"><i class="fa fa-file-text-o"></i></span> Informe 2019 - 2021</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="#"><span class="navegacion-icono"><i class="fa fa-building-o"></i></span> Institucional<span class="fa arrow"></span></a>
+          <ul class="nav nav-second-level">
+            <li><a href="../institucional/vision-mision.html"><span class="navegacion-icono"><i class="fa fa-trophy"></i></span> Misión / Visión</a></li>
+            <li><a href="../institucional/NuestrosProyectos.html"><span class="navegacion-icono"><i class="fa fa-pencil-square-o"></i></span> Nuestros Proyectos</a></li>
+            <li><a href="../institucional/mensaje-director.html"><span class="navegacion-icono"><i class="fa fa-comment"></i></span> Mensaje del Director</a></li>
+            <li><a href="../autores/index.html"><span class="navegacion-icono"><i class="fa fa-user"></i></span> Quienes Somos</a></li>
+            <li><a href="../institucional/estructura-organica.html"><span class="navegacion-icono"><i class="fa fa-sitemap"></i></span> Estructura Orgánica</a></li>
+            <li><a href="../institucional/modelo-operativo-universal.html"><span class="navegacion-icono"><i class="fa fa-slideshare"></i></span> Modelo Operativo Univ.</a></li>
+            <li><a href="../institucional/reglamentos.html"><span class="navegacion-icono"><i class="fa fa-gavel"></i></span> Reglamentos</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="#"><span class="navegacion-icono"><i class="fa fa-external-link"></i></span> Transparencia<span class="fa arrow"></span></a>
+          <ul class="nav nav-second-level">
+            <li><a href="http://www2.icai.org.mx/ipo/dependencia.php?dep=178#pageload" target="_blank"><span class="navegacion-icono"><i class="fa fa-file-text-o"></i></span> Transparencia Estatal (ICAI)</a></li>
+            <li><a href="https://consultapublicamx.inai.org.mx/vut-web/faces/view/consultaPublica.xhtml#inicio" target="_blank"><span class="navegacion-icono"><i class="fa fa-file-text-o"></i></span> Plataforma Nacional de Transparencia</a></li>
+            <li><a href="../transparencia/index.html"><span class="navegacion-icono"><i class="fa fa-briefcase"></i></span> Documentos</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="#"><span class="navegacion-icono"><i class="fa fa-share-alt"></i></span> Términos de Uso<span class="fa arrow"></span></a>
+          <ul class="nav nav-second-level">
+            <li><a href="../terminos/terminos-informacion.html"><span class="navegacion-icono"><i class="fa fa-cubes"></i></span> De la información</a></li>
+            <li><a href="../terminos/terminos-sitio.html"><span class="navegacion-icono"><i class="fa fa-globe"></i></span> Del sitio web</a></li>
+            <li><a href="../terminos/privacidad.html"><span class="navegacion-icono"><i class="fa fa-lock"></i></span> Aviso de Privacidad</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="#"><span class="navegacion-icono"><i class="fa fa-phone"></i></span> Contacto<span class="fa arrow"></span></a>
+          <ul class="nav nav-second-level">
+            <li><a href="../contacto/contacto.html"><span class="navegacion-icono"><i class="fa fa-phone"></i></span> Medios de contacto</a></li>
+            <li><a href="../preguntas-frecuentes/preguntas-frecuentes.html"><span class="navegacion-icono"><i class="fa fa-question"></i></span> Preguntas Frecuentes</a></li>
+            <li><a href="http://goo.gl/forms/1rdX4X128PpMOif73" target="_blank"><span class="navegacion-icono"><i class="fa fa-external-link"></i></span> Comentarios y Sugerencias</a></li>
+          </ul>
+        </li>
+        <li><a href="../convocatorias/index.html"><span class="navegacion-icono"><i class="fa fa-file-text-o"></i></span> Convocatorias</a></li>
+        <li><a href="http://177.244.42.17/ovie-torreon/#!" target="_blank"><span class="navegacion-icono"><i class="fa fa-map-marker"></i></span> Oficina Virtual de Información Económica (OVIE)</a></li>
+        <li><a href="https://arcg.is/0vySSr" target="_blank"><span class="navegacion-icono"><i class="fa fa-globe"></i></span> Atlas Municipal de Riesgos de Torreón</a></li>
+      </ul>
+    </div>
+  </div>
+  </nav>
+  <div id="page-wrapper">
+    <div class="cuerpo">
+      <article><div itemscope itemtype="http://schema.org/Article">
+        <div class="encabezado">
+          <h1 itemprop="headline">Diagnóstico Estratégico: Movilidad y Transporte</h1>
+          <div class="encabezado-descripcion" itemprop="description">Plan Estratégico para Torreón con enfoque Metropolitano 2040 - Diagnóstico Estratégico: Movilidad y Transporte.</div>
+          <div class="encabezado-autor-fecha">
+            Por <span itemprop="author">Dirección de Proyectos Estratégicos</span> -
+            <meta itemprop="datePublished" content="2016-10-10T02:51">10/10/2016 02:51
+          </div>
+        </div>
+        <div itemprop="articleBody">
+<!-- Contenido: Inicia  -->
+<p>La situación de Movilidad y Transporte se analizó por medio de la planeación metropolitana participativa y se encontró que los problemas principales son:</p>
+
+<ol>
+<li>La infraestructura de movilidad no es incluyente ni equitativa</li>
+<li>La cultura vial  no es suficiente</li>
+<li>Falta de un sistema de transporte multimodal</li>
+<li>Falta de coordinación intermunicipal significativa</li>
+<li>Crecimiento desordenado de la Zona Metropolitana de la Laguna.</li>
+</ol>
+
+<h2>Infraestructura de movilidad no es incluyente ni equitativa</h2>
+
+<p>Las estadísticas accesibles por ahora para revisar esta problemática, que de hecho se enfocan preponderantemente a la movilidad motorizada, muestran una tendencia preocupante, como puede verse más adelante.</p>
+
+<h3>Motorización</h3>
+
+<p>Torreón cuenta con un índice de motorización de 217 vehículos registrados por cada mil habitantes, es decir, existe un automóvil para cada 4.6 torreonenses. Mientras que en la Zona Metropolitana de la Laguna se cuentan 260 vehículos registrados por cada mil habitantes, existe un automóvil para cada 3.8 laguneros, sumando un total de 341,421 vehículos registrados para la ZML. (INEGI, 2014)</p>
+
+<h3>Gráfica 1. Comparativo regional de nivel de motorización</h3>
+
+<p><img class="img-responsive" src="diagnostico-estrategico-movilidad-transporte/motorizacion.png" alt="Motorizacion"></p>
+
+<p><strong>Fuente:</strong> INEGI, 2014</p>
+
+<p>De 2000 a 2014 los vehículos motorizados registrados en circulación crecieron más del 100% (gráfica 2)</p>
+
+<h3>Gráfica 2. Proyección de vehículos registrados, en circulación en la Laguna, 2000 - 2030</h3>
+
+<p><img class="img-responsive" src="diagnostico-estrategico-movilidad-transporte/proyeccion-vehiculos-registrados.png" alt="Proyeccion de vehiculos registrados en la ZML"></p>
+
+<p><strong>Fuente:</strong> Elaboración propia, 2015</p>
+
+<p>La proyección de habitantes para Torreón se calcula para el año 2030 en aproximadamente 798,014, con una tasa de crecimiento anual de 1.25%, teniendo dentro de 16 años (2030) un acumulado de 24% más de habitantes que los actuales. (CONAPO, 2015)</p>
+
+<p>En cambio, los vehículos motorizados para el 2030 se estarían duplicando, en Torreón pasaría de 217 vehículos por cada mil habitantes a 501 vehículos por cada mil, es decir, 1 de cada 2 torreonenses usaría un coche, trayendo como consecuencia incremento del consumo energético, aumento de contaminación atmosférica, disminución de seguridad vial, aumento de los costos de congestión, exclusión social y ocupación creciente del espacio.</p>
+
+<h2>La cultura vial no es suficiente</h2>
+
+<p>Esta problemática de cultura vial urbana afecta a todos y en todo. Por ejemplo, se presentan las siguientes situaciones.</p>
+
+<h3>Difícil accesibilidad para personas con discapacidad</h3>
+
+<p>En cuanto a disponibilidad de rampas para sillas de rueda en las banquetas, la situación es contrastante. El municipio de Torreón tiene la mayor cobertura de los municipios que integran la Zona Metropolitana de la Laguna (14.3%). Por su parte, Gómez Palacio cuenta con la menor cobertura (8.9%). A su vez la población con limitación para caminar es del 2.2% siendo en total 28, 555 en la Zona Metropolitana de la Laguna.</p>
+
+<p>El centro de la ciudad de Torreón es una zona atractora de viajes de la Comarca Lagunera, por lo que comparamos la infraestructura existente para personas con discapacidad contemplando la disponibilidad de rampas en las banquetas con la que cuenta una colonia fuera del centro, es este el caso de Las Carolinas y mientras en el centro el 82.5 % de las banquetas cuentan con rampas en la colonia sólo el 1.8%.</p>
+
+<h3>Accidentes provocados por vehículos motorizados</h3>
+
+<p>A pesar de que la tasa motorización nos muestra que en Gómez Palacio y Lerdo existen más vehículos registrados por cada mil habitantes que en Torreón, la tasa de accidentes es mayor en Torreón. De cada mil vehículos, 12 sufren algún accidente de tránsito en Torreón contra 10 en Gómez Palacio, 9 en Matamoros y solo 6 en Lerdo. Esto nos pudiera sugerir que los automóviles circulan más tiempo en Torreón que en donde han sido inscritos en el parque vehicular. Ahora, por cada 100 accidentes de tránsito en la Zona Metropolitana de la Laguna, cinco tienen consecuencias mortales.</p>
+
+<h3>Gráfica 3. Defunciones de peatones lesionados por incidente vial, 2003 - 2013</h3>
+
+<p><img class="img-responsive" src="diagnostico-estrategico-movilidad-transporte/defunciones-peatones-lesionados-incidente-vial.png" alt="Defunciones de peatonales lesionados por incidente vial"></p>
+
+<p><strong>Fuente:</strong> Sistema Nacional de Información en Salud (SINAIS). Registros administrativos INEGI, 2013.</p>
+
+<p>La tasa de defunciones de peatones involucrados en accidentes viales en Torreón pasó de 4.1 en 2010 a 5.9 en 2013, mayor que en el Distrito Federal que fue de 4.3.</p>
+
+<h3>Educación vial</h3>
+
+<p>La tasa de defunciones de peatones involucrados en accidentes viales (atropellamiento) por cada 100,000 habitantes en Torreón pasó de 4.8 decesos de peatones en 2010 a 5.4 en 2012, en la ciudad de México pasó de 5.3 a 4.6. En el caso específico de los viajes a pie, lo que podemos deducir de la tabla comparativa es lo expuesto que puede estar un peatón a sufrir accidentes, por no formar parte explícita del sistema y uso de la estructura vial y su reglamentación.</p>
+
+<h3>Accesibilidad</h3>
+
+<p>Al observar la correlación entre la existencia de pavimento y banquetas, se detecta un patrón que se repite en las cuatro ciudades: la accesibilidad a las banquetas es más limitada que el acceso a vialidades pavimentadas.</p>
+
+<p>La ciudad de Torreón cuenta con 281 km longitudinales de vialidades principales, secundarias y periféricas y 0.50 km de vialidades peatonales (únicamente dos calles).</p>
+
+<h3>Gráfica 4. Disponibilidad de pavimento y banquetas en manzana en Torreón.</h3>
+
+<p><img class="img-responsive" src="diagnostico-estrategico-movilidad-transporte/accesibilidad.jpg" alt="Disponibilidad de pavimento y banquetas en manzanas en Torreon"></p>
+
+<p>Fuente: Elaboración propia, 2015</p>
+
+<p>En el caso de Torreón la mitad de las manzanas cuenta con una infraestructura completa (pavimento y banquetas), ya que los vehículos y los peatones pueden circular aparentemente sin contratiempos (se considera la existencia o no de la infraestructura, no el estado físico actual). Es decir 5,249 manzanas cuentan con todas sus vialidades pavimentadas y con banquetas y sólo 577 manzanas no cuentan con pavimento ni banqueta en sus vialidades.</p>
+
+<h3>Accesibilidad para personas con discapacidad</h3>
+
+<p>En cuanto a disponibilidad de rampas para sillas de rueda en las banquetas, el municipio de Torreón tiene una mayor cobertura que el resto de los municipios que integran la Zona Metropolitana de la Laguna (14.3%). Por su parte, Gómez Palacio cuenta con la menor cobertura (8.9%). A su vez la población con limitación para caminar es del 2.2% siendo en total 28, 555 en la Zona Metropolitana de la Laguna.</p>
+
+<p>El centro de la ciudad de Torreón es una zona atractora de viajes de la Comarca Lagunera, por lo que comparamos la infraestructura existente para personas con discapacidad contemplando la disponibilidad de rampas en las banquetas con la que cuenta una colonia fuera del centro, es este caso Las Carolinas, y mientras en el centro el 82.5 % de las banquetas cuentan con rampas en la colonia sólo el 1.8%.</p>
+
+<table class="table table-hover table-bordered">
+<thead>
+<tr>
+  <th>Colonia</th>
+  <th align="right">Porcentaje de población con discapacidad</th>
+  <th align="right">Porcentaje de manzanas con rampas</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td>Centro</td>
+  <td align="right">5.4%</td>
+  <td align="right">82.5%</td>
+</tr>
+<tr>
+  <td>Colonia muestra</td>
+  <td align="right">2.4%</td>
+  <td align="right">1.8%</td>
+</tr>
+</tbody>
+</table>
+
+<p><strong>Fuente:</strong> Elaboración propia, 2015</p>
+
+<p>En la zona centro de Torreón existe infraestructura que permite un desplazamiento aceptable dentro del sector. En la colonia Las Carolinas existe sólo una banqueta con rampa.</p>
+
+<h2>Falta un sistema de transporte multimodal</h2>
+
+<p>Para sensibilizar sobre la urgencia de este sistema intermunicipal multimodal se presenta la siguiente información sobre la movilidad en, y entre, las cuatro ciudades.</p>
+
+<h3>Movilidad intermunicipal</h3>
+
+<p>La población ocupada de la Zona Metropolitana Laguna se distribuye fuera de su municipio de residencia de la siguiente forma: 4 % de los trabajadores de Torreón trabajan en otro municipio de la ZML, 20 % de los matamorenses, 12 % de los gomezpalatinos y 28 % de los lerdenses. Esto nos señala una dinámica intermunicipal en vivienda y trabajo.</p>
+
+<p>De la población ocupada que labora en otro municipio que no es donde vive la distribución es la siguiente:</p>
+
+<h3>Tabla 6. Distribución de la población ocupada que trabaja en otro municipio diferente del que vive</h3>
+
+<table class="table table-hover table-bordered">
+<thead>
+<tr>
+  <th>Personas \ Municipio donde trabajan</th>
+  <th align="right">Torreón</th>
+  <th align="right">Gómez Palacio</th>
+  <th align="right">Matamoros</th>
+  <th align="right">Lerdo</th>
+  <th align="right">Fuera de ZML</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td>Torreonenses</td>
+  <td align="right"></td>
+  <td align="right">48.1%</td>
+  <td align="right">5.7%</td>
+  <td align="right">6.7%</td>
+  <td align="right">39.5%</td>
+</tr>
+<tr>
+  <td>Gomezpalatinos</td>
+  <td align="right">45.3%</td>
+  <td align="right"></td>
+  <td align="right">0.2%</td>
+  <td align="right">14.7%</td>
+  <td align="right">40.0%</td>
+</tr>
+<tr>
+  <td>Matamorenses</td>
+  <td align="right">95.5%</td>
+  <td align="right">4.2%</td>
+  <td align="right"></td>
+  <td align="right">0.3%</td>
+  <td align="right">10.9%</td>
+</tr>
+<tr>
+  <td>Lerdenses</td>
+  <td align="right">28.1%</td>
+  <td align="right">50.6%</td>
+  <td align="right">0.4%</td>
+  <td align="right"></td>
+  <td align="right">20.9%</td>
+</tr>
+</tbody>
+</table>
+
+<p><strong>Fuente:</strong> Elaboración propia con datos de INEGI 2010</p>
+
+<h3>Infraestructura y transporte público</h3>
+
+<p>Entre los municipios de Torreón y Matamoros, se realizan diariamente 1’818,954 viajes (calculando 2.5 viajes por habitante), donde 887,595 de los viajes utilizaron automóvil particular, 555,982 en transporte público, 341,181 a pie y 34,196 en bicicleta.</p>
+
+<h3>Tabla 7. Número de viajes por tipo de transporte</h3>
+
+<table class="table table-hover table-bordered">
+<thead>
+<tr>
+  <th>Modalidad</th>
+  <th align="right">Viajes Diarios</th>
+  <th align="right">Porcentual</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td>Automóvil Particular</td>
+  <td align="right">887,595</td>
+  <td align="right">49%</td>
+</tr>
+<tr>
+  <td>A Pie</td>
+  <td align="right">341,181</td>
+  <td align="right">19%</td>
+</tr>
+<tr>
+  <td>Transporte Público</td>
+  <td align="right">555,982</td>
+  <td align="right">30%</td>
+</tr>
+<tr>
+  <td>Bicicleta</td>
+  <td align="right">34,196</td>
+  <td align="right">2%</td>
+</tr>
+<tr>
+  <td>Total General</td>
+  <td align="right">1,818,954</td>
+  <td align="right">100%</td>
+</tr>
+</tbody>
+</table>
+
+<p><strong>Fuente:</strong> 2011. Logit.</p>
+
+<h3>Gráfica 5. Reparto modal por tipo de transporte</h3>
+
+<p><img class="img-responsive" src="diagnostico-estrategico-movilidad-transporte/reparto-modal.png" alt="Reparto modal por tipo de transporte"></p>
+
+<p><strong>Fuente:</strong> 2011. Logit.</p>
+
+<p>El tiempo que el pasajero pasa dentro de la unidad es de 45 minutos en promedio, más 10 minutos de espera para el abordaje de la unidad (Transconsult, 2014). Para ilustrar la situación en términos de eficiencia y productividad de los 111,196 usuarios diarios de transporte público y para tener una comparativa, al invertir una hora de tiempo de todos los trabajadores de la región, se dejaría de generar 37 millones de pesos diarios. Si se invierten solamente 25 minutos la cifra disminuye a 15 millones de pesos diarios.</p>
+
+<p>El tiempo promedio que un peatón camina ya sea de origen-destino o entre otros modos de movilidad es de 15 minutos, mientras que una persona pasa en promedio 23 minutos en motocicleta, 22 minutos en bicicleta, 24 minutos en vehículo particular, 45 minutos en transporte público, 20 minutos en taxi y 44 minutos en transporte de persona.</p>
+
+<h3>Tabla 8. Duración promedio por modo de transporte</h3>
+
+<table class="table table-hover table-bordered">
+<thead>
+<tr>
+  <th>Modo</th>
+  <th align="right">Duración promedio (min)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td>Peatonal</td>
+  <td align="right">15</td>
+</tr>
+<tr>
+  <td>Motocicleta</td>
+  <td align="right">23</td>
+</tr>
+<tr>
+  <td>Bicicleta</td>
+  <td align="right">22</td>
+</tr>
+<tr>
+  <td>Vehículo particular</td>
+  <td align="right">24</td>
+</tr>
+<tr>
+  <td>Transporte Público</td>
+  <td align="right">45</td>
+</tr>
+<tr>
+  <td>Taxi</td>
+  <td align="right">20</td>
+</tr>
+<tr>
+  <td>T. de Personal</td>
+  <td align="right">44</td>
+</tr>
+</tbody>
+</table>
+
+<p><strong>Fuente:</strong> Elaboración propia, 2015</p>
+
+<h2>Falta de coordinación intermunicipal significativa</h2>
+
+<p>Históricamente ha sido muy difícil una coordinación intermunicipal entre las ciudades que conforman la Zona Metropolitana de la Laguna. No se ha dado una visión de planeación común, ni tampoco un enfoque realmente metropolitano. No hay, y es imprescindible, un marco jurídico fundamental que funcione conjuntamente entre las cuatro ciudades. Ello ha provocado la ausencia de instituciones y planes estratégicos comunes, y ahora se hacen evidentes estas carencias.</p>
+
+<h2>Crecimiento desordenado de la Zona Metropolitana de la Laguna</h2>
+
+<p>Las estadísticas y descripciones incluidas en las páginas anteriores muestran un desequilibrio significativo en el crecimiento de las ciudades de la Zona Metropolitana de la Laguna, y muestran el desorden con que ha ocurrido el crecimiento y desarrollo de las mismas. Evidentemente ha ocurrido por falta de planeación, articulación de normatividad y reglamentaciones, y fundamentalmente por visiones y voluntades políticas aisladas en sí mismas, que ocurrieron en el pasado.</p>
+
+<h3>Ilustración 7 Crecimiento Histórico de la Zona Metropolitana de la Laguna</h3>
+
+<iframe width='100%' height='520' frameborder='0' src='https://implantorreon.cartodb.com/u/sigimplan/viz/180ab8da-643c-11e4-971a-0e018d66dc29/embed_map' allowfullscreen webkitallowfullscreen mozallowfullscreen oallowfullscreen msallowfullscreen></iframe>
+
+<p><strong>Fuente:</strong> Elaboración propia, 2015</p>
+
+<p><a href="indice.html">Índice</a> | Siguiente: <a href="diagnostico-estrategico-medio-ambiente-sustentabilidad.html">Medio Ambiente y Sustentabilidad</a></p>
+
+<!-- Contenido: Termina -->
+        </div>
+              <div class="publicador" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+          <span class="contenido-imagen-previa"><img class="img-responsive" itemprop="image" alt="Instituto Municipal de Planeación y Competitividad de Torreón" src="../imagenes/implan-logo.png"></span>
+          <h3 class="titulo" itemprop="name">Instituto Municipal de Planeación y Competitividad de Torreón</h3>
+          <div class="descripcion" itemprop="description">Órgano técnico responsable de la planeación del desarrollo del municipio de Torreón, Coahuila, México.</div>
+          <div class="contenido-imagen-previa-final"></div>
+        </div>
+      </div></article>
+      <aside>
+  <!-- Extra: Inicia  -->
+  <h3>Publicaciones relacionadas</h3>
+<p><b>Análisis Publicados</b></p>
+<ul>
+  <li><a href="http://www.trcimplan.gob.mx/blog/calles-mejor-conectadas-julio2019.html">Calles Mejor Conectadas, Mejor Calidad de Vida Urbana</a></li>
+  <li><a href="http://www.trcimplan.gob.mx/blog/urbanismo-tactico-pequenas-apuestas-para-solucionar-problemas-urbanos-ene2019.html">Urbanismo t&aacute;ctico, peque&ntilde;as apuestas para solucionar problemas urbanos</a></li>
+  <li><a href="http://www.trcimplan.gob.mx/blog/menos-tiempo-en-transporte-mayor-calidad-de-vida.html">Menos tiempo en transporte, mayor calidad de vida</a></li>
+  <li><a href="http://www.trcimplan.gob.mx/blog/en-busca-de-una-movilidad-sustentable.html">En busca de una Movilidad Sustentable</a></li>
+  <li><a href="http://www.trcimplan.gob.mx/blog/con-metrobus-laguna-21-mil-toneladas-menos-de-co2.html">Con Metrob&uacute;s Laguna, 21 mil toneladas menos de CO2</a></li>
+  <li><a href="http://www.trcimplan.gob.mx/blog/problematicas-de-las-mujeres-en-el-transporte-publico.html">Problem&aacute;ticas de las mujeres en el transporte p&uacute;blico</a></li>
+  <li><a href="http://www.trcimplan.gob.mx/blog/infraestructura.html">Infraestructura (Sectores precursores de clase mundial)</a></li>
+  <li><a href="http://www.trcimplan.gob.mx/blog/la-movilidad-urbana-y-laboral-en-la-laguna.html">La movilidad urbana y laboral en La Laguna</a></li>
+  <li><a href="http://www.trcimplan.gob.mx/blog/el-buen-futuro-se-planea.html">El buen futuro se planea</a></li>
+  <li><a href="http://www.trcimplan.gob.mx/blog/crecimiento-historico-de-la-vivienda-en-torreon.html">Crecimiento hist&oacute;rico de la vivienda en Torre&oacute;n</a></li>
+</ul>
+<p><b>Sistema Metropolitano de Indicadores</b></p>
+<ul>
+  <li><a href="http://www.trcimplan.gob.mx/indicadores-la-laguna/sustentabilidad-disponibilidad-de-banqueta.html">Disponibilidad de Banqueta en La Laguna</a></li>
+  <li><a href="http://www.trcimplan.gob.mx/indicadores-torreon/sustentabilidad-motorizacion.html">Motorizaci&oacute;n en Torre&oacute;n</a></li>
+  <li><a href="http://www.trcimplan.gob.mx/indicadores-torreon/seguridad-choques-contra-motocicletas.html">Choques contra motocicletas en Torre&oacute;n</a></li>
+  <li><a href="http://www.trcimplan.gob.mx/indicadores-la-laguna/seguridad-choques-contra-motocicletas.html">Choques contra motocicletas en La Laguna</a></li>
+  <li><a href="http://www.trcimplan.gob.mx/indicadores-torreon/seguridad-choques-contra-ciclistas.html">Choques contra ciclistas en Torre&oacute;n</a></li>
+  <li><a href="http://www.trcimplan.gob.mx/indicadores-la-laguna/seguridad-choques-contra-vehiculos-automotores.html">Choques contra veh&iacute;culos automotores en La Laguna</a></li>
+  <li><a href="http://www.trcimplan.gob.mx/indicadores-la-laguna/seguridad-choques-contra-ciclistas.html">Choques contra ciclistas en La Laguna</a></li>
+  <li><a href="http://www.trcimplan.gob.mx/indicadores-torreon/seguridad-choques-contra-vehiculos-automotores.html">Choques contra veh&iacute;culos automotores en Torre&oacute;n</a></li>
+  <li><a href="http://www.trcimplan.gob.mx/indicadores-la-laguna/seguridad-accidentes-de-transito.html">Accidentes de Tr&aacute;nsito en La Laguna</a></li>
+  <li><a href="http://www.trcimplan.gob.mx/indicadores-la-laguna/seguridad-accidentes-de-transito-fatales.html">Accidentes de Tr&aacute;nsito Fatales en La Laguna</a></li>
+</ul>
+<p><b>Sistema de Información Geográfica</b></p>
+<ul>
+  <li><a href="http://www.trcimplan.gob.mx/sig-mapas-torreon/incidentes-viales.html">Incidentes Viales</a></li>
+  <li><a href="http://www.trcimplan.gob.mx/sig-mapas-torreon/rutas-transporte-publico-urbano.html">Rutas de Transporte P&uacute;blico Urbano</a></li>
+  <li><a href="http://www.trcimplan.gob.mx/sig-mapas-torreon/red-infraestructura-ciclista.html">Red Infraestructura Ciclista</a></li>
+  <li><a href="http://www.trcimplan.gob.mx/sig-mapas-torreon/centros-atencion-adultos-mayores.html">Centros de Atenci&oacute;n a Adultos Mayores</a></li>
+  <li><a href="http://www.trcimplan.gob.mx/sig-mapas-torreon/ambito-regional-zona-metropolitana-laguna.html">&Aacute;mbito Regional de la Zona Metropolitana de La Laguna</a></li>
+</ul>
+<p><b>Plan Estratégico Torreón</b></p>
+<ul>
+  <li><a href="http://www.trcimplan.gob.mx/pet/cartera-proyectos-movilidad-transporte.html">Cartera de Proyectos: Movilidad y Transporte</a></li>
+  <li><a href="http://www.trcimplan.gob.mx/pet/vision-movilidad-transporte.html">Visi&oacute;n de Movilidad y Transporte 2040</a></li>
+  <li><a href="http://www.trcimplan.gob.mx/proyectos/calle-completa.html">Calle Completa</a></li>
+  <li><a href="http://www.trcimplan.gob.mx/pet/cartera-proyectos-desarrollo-social.html">Cartera de Proyectos: Desarrollo Social</a></li>
+  <li><a href="http://www.trcimplan.gob.mx/pet/vision-desarrollo-social.html">Visi&oacute;n de Desarrollo Social 2040</a></li>
+  <li><a href="http://www.trcimplan.gob.mx/pet/diagnostico-estrategico-desarrollo-social.html">Diagn&oacute;stico Estrat&eacute;gico: Desarrollo Social</a></li>
+  <li><a href="http://www.trcimplan.gob.mx/proyectos/plan-centro-laguna.html">Plan Centro Laguna</a></li>
+  <li><a href="http://www.trcimplan.gob.mx/proyectos/zona-30.html">Zona 30</a></li>
+  <li><a href="http://www.trcimplan.gob.mx/pet/cartera-proyectos-medio-ambiente-sustentabilidad.html">Cartera de Proyectos: Medio Ambiente y Sustentabilidad</a></li>
+  <li><a href="http://www.trcimplan.gob.mx/proyectos/salud-laguna.html">Salud Laguna</a></li>
+</ul>
+<p><b>Sala de Prensa</b></p>
+<ul>
+  <li><a href="http://www.trcimplan.gob.mx/sala-prensa/2016-07-19-sesion-ordinaria.html">IMPLAN Torre&oacute;n y Obras P&uacute;blicas presentan propuestas para mejorar el Centro Hist&oacute;rico de Torre&oacute;n</a></li>
+  <li><a href="http://www.trcimplan.gob.mx/sala-prensa/2015-09-25-avances-del-proyecto-calle-completa.html">IMPLAN presenta avances del proyecto &ldquo;Calle Completa&rdquo;</a></li>
+  <li><a href="http://www.trcimplan.gob.mx/sala-prensa/2017-03-07-taller-anticipacion-estrategica-para-la-planeacion-urbana.html">IMPLAN asiste al taller Anticipaci&oacute;n Estrat&eacute;gica para la Planeaci&oacute;n Urbana</a></li>
+  <li><a href="http://www.trcimplan.gob.mx/sala-prensa/2018-04-26-sesion-ordinaria.html">Plan de Movilidad Activa busca un Torre&oacute;n m&aacute;s humano y sustentable</a></li>
+  <li><a href="http://www.trcimplan.gob.mx/sala-prensa/2018-08-10-comunicado-prensa.html">Presentan colaboraci&oacute;n entre IMPLAN y el Instituto Municipal de la Mujer en Torre&oacute;n.</a></li>
+  <li><a href="http://www.trcimplan.gob.mx/sala-prensa/2017-09-11-resaltan-la-importancia-del-espacio-publico.html">Resaltan la importancia del espacio p&uacute;blico</a></li>
+  <li><a href="http://www.trcimplan.gob.mx/sala-prensa/2018-02-12-laguna-y2040-youth-challenge-2018.html">Presentan segunda edici&oacute;n del encuentro Laguna Y2040 Youth Challenge 2018</a></li>
+  <li><a href="http://www.trcimplan.gob.mx/sala-prensa/2016-08-31-sesion-ordinaria.html">Presentan evaluaci&oacute;n del impacto social y urbano de Ciudad DIF</a></li>
+  <li><a href="http://www.trcimplan.gob.mx/sala-prensa/2016-10-12-congreso-internacional-ciudades-transporte.html">IMPLAN Torre&oacute;n participa en el Congreso Internacional Ciudades y Transporte</a></li>
+  <li><a href="http://www.trcimplan.gob.mx/sala-prensa/2015-08-13-plan-estrategico-metropolitano-movilidad-no-motorizada.html">IMPLAN Torre&oacute;n impulsa la creaci&oacute;n del Plan de Movilidad no Motorizada</a></li>
+</ul>
+  <!-- Extra: Termina -->
+  </aside>
+<div class="contenido-social">
+  <h5>Compartir en Redes Sociales</h5>
+  <a href="https://twitter.com/share" class="twitter-share-button" data-via="trcimplan" data-lang="es">Twittear</a>
+  <iframe src="//www.facebook.com/plugins/like.php?href=http%3A%2F%2Fwww.trcimplan.gob.mx%2Fpet%2Fdiagnostico-estrategico-movilidad-transporte.html&amp;width=300&amp;layout=button_count&amp;action=like&amp;show_faces=true&amp;share=false&amp;height=21" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:300px; height:21px;" allowTransparency="true"></iframe>
+</div>
+    </div>
+    <div class="mapa-inferior">
+          <div class="pull-right redes-sociales">
+            <a class="fa fa-twitter-square" href="http://www.twitter.com/trcimplan" target="_blank"></a>
+            <a class="fa fa-facebook-square" href="https://facebook.com/trcimplan" target="_blank"></a>
+            <a class="fa fa-facebook-square" href="http://www.instagram.com/implantorreon" target="_blank"></a>
+            <a class="fa fa-rss-square" href="../rss.xml"></a>
+          </div>
+    </div>
+  </div>
+</div>
+<!-- Javascript global inicia -->
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
+<script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="../vendor/metisMenu/metisMenu.min.js"></script>
+<script type="text/javascript" src="../vendor/datatables/js/jquery.dataTables.min.js"></script>
+<script type="text/javascript" src="../vendor/datatables-plugins/dataTables.bootstrap.min.js"></script>
+<script type="text/javascript" src="../vendor/datatables-responsive/dataTables.responsive.js"></script>
+<script type="text/javascript" src="../vendor/raphael/raphael.min.js"></script>
+<script type="text/javascript" src="../vendor/morrisjs/morris.min.js"></script>
+<script type="text/javascript" src="../dist/js/sb-admin-2.min.js"></script>
+<script type="text/javascript" src="http://libs.cartocdn.com/cartodb.js/v3/3.15/cartodb.js"></script>
+<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+<!-- Javascript global termina -->
+<!-- Javascript inicia -->
+<script>
+  // Twitter
+  !function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="https://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");
+</script>
+
+<!-- Javascript termina -->
+<!-- Javascript Google Analytics -->
+<script>
+  // Google Analytics
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)})(window,document,'script','//www.google-analytics.com/analytics.js','ga');ga('create', 'UA-58290501-1', 'auto');ga('send', 'pageview');
+</script>
+</body>
+</html>

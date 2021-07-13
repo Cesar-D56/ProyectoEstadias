@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+<!-- ===================================================================================================
+
+        Instituto Municipal de Planeación y Competitividad (IMPLAN) de Torreón.
+
+        3er. generación de la Plataforma del Conocimiento
+        Desarrollado por Ing. Guillermo Valdés Lozano <guivaloz en movimientolibre.com>
+
+        El software que lo construye está bajo la licencia GPL versión 3. © 2014, 2015, 2016, 2017.
+        Una copia está contenida en el archivo LICENCE al bajar desde GitHub.
+
+        Al usar, estudiar y copiar está aceptando los términos de uso de la información y del sitio web:
+          http://www.trcimplan.gob.mx/terminos/terminos-informacion.html
+          http://www.trcimplan.gob.mx/terminos/terminos-sitio.html
+
+        Descargue, estudie y colabore bajando todo este sitio web:
+          IMPLAN Torreón     https://github.com/TRCIMPLAN/trcimplan.github.io
+
+        Agradecemos y compartimos las tecnologías abiertas y gratuitas sobre las que se basa:
+          PHP                http://php.net
+          Twitter Bootstrap  http://getbootstrap.com
+          StartBootStrap     http://startbootstrap.com
+          Morris.js          https://morrisjs.github.io/morris.js/
+          Font Awesome       http://fontawesome.io
+          DataTables         https://www.datatables.net
+          Carto              https://carto.com
+          GitHub             https://github.com
+
+     =================================================================================================== -->
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="En el municipio la cifra de usuarios de las bibliotecas públicas para el primer trimestre de 2018, alcanza casi los 20 mil. La biblioteca con mayor cantidad de usuarios es José García de Letona (ubicada en La Alameda), tanto en 2017 como en 2018.">
+  <meta name="author" content="Lic. Adriana Vargas Flores">
+  <meta name="keywords" content="IMPLAN, Torreon, Cultura, Bibliotecas">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Usuarios de Espacios Culturales y Bibliotecas en Torreón - IMPLAN Torreón">
+  <meta name="twitter:description" content="En el municipio la cifra de usuarios de las bibliotecas públicas para el primer trimestre de 2018, alcanza casi los 20 mil. La biblioteca con mayor cantidad de usuarios es José García de Letona (ubicada en La Alameda), tanto en 2017 como en 2018.">
+  <meta name="twitter:image" content="http://www.trcimplan.gob.mx/blog/usuarios-de-espacios-culturales-y-bibliotecas-en-torreon/imagen-previa.jpg">
+  <meta name="twitter:url" content="http://www.trcimplan.gob.mx/blog/usuarios-de-espacios-culturales-y-bibliotecas-en-torreon.html">
+  <meta name="og:title" content="Usuarios de Espacios Culturales y Bibliotecas en Torreón - IMPLAN Torreón">
+  <meta name="og:description" content="En el municipio la cifra de usuarios de las bibliotecas públicas para el primer trimestre de 2018, alcanza casi los 20 mil. La biblioteca con mayor cantidad de usuarios es José García de Letona (ubicada en La Alameda), tanto en 2017 como en 2018.">
+  <meta name="og:image" content="http://www.trcimplan.gob.mx/blog/usuarios-de-espacios-culturales-y-bibliotecas-en-torreon/imagen-previa.jpg">
+  <meta name="og:url" content="http://www.trcimplan.gob.mx/blog/usuarios-de-espacios-culturales-y-bibliotecas-en-torreon.html">
+  <title>Usuarios de Espacios Culturales y Bibliotecas en Torreón - IMPLAN Torreón</title>
+  <link rel="shortcut icon" type="image/x-icon" href="../imagenes/apple-touch-icon.png">
+  <link rel="apple-touch-icon" href="../imagenes/apple-touch-icon.png">
+  <link rel="apple-touch-icon" href="../imagenes/apple-touch-icon-76x76.png" sizes="76x76">
+  <link rel="apple-touch-icon" href="../imagenes/apple-touch-icon-120x120.png" sizes="120x120">
+  <link rel="apple-touch-icon" href="../imagenes/apple-touch-icon-152x152.png" sizes="152x152">
+  <link rel="apple-touch-icon" href="../imagenes/apple-touch-icon-180x180.png" sizes="180x180">
+  <link rel="icon" href="../imagenes/icon-hires.png" sizes="192x192">
+  <link rel="icon" href="../imagenes/icon-normal.png" sizes="128x128">
+  <link rel="alternate" type="application/rss+xml" href="../rss.xml" title="IMPLAN Torreón">
+  <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+  <link rel="stylesheet" type="text/css" href="../vendor/metisMenu/metisMenu.min.css">
+  <link rel="stylesheet" type="text/css" href="../vendor/datatables-plugins/dataTables.bootstrap.css">
+  <link rel="stylesheet" type="text/css" href="../vendor/morrisjs/morris.css">
+  <link rel="stylesheet" type="text/css" href="../vendor/font-awesome/css/font-awesome.min.css">
+  <link rel="stylesheet" type="text/css" href="../dist/css/sb-admin-2.min.css">
+  <link rel="stylesheet" type="text/css" href="../dist/css/plataforma-de-conocimiento.css">
+  <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Noto+Sans|Roboto+Condensed:400,700">
+  <link rel="stylesheet" type="text/css" href="http://libs.cartocdn.com/cartodb.js/v3/3.15/themes/css/cartodb.css">
+  <link rel="stylesheet" type="text/css" href="../dist/css/estilosvm.css">
+  <link rel="stylesheet" type="text/css" href="../dist/css/trcimplan.css">
+  <!-- SOPORTE PARA IE -->
+  <!--[if lt IE 9]>
+  <script type="text/javascript" src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+  <script type="text/javascript" src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+  <![endif]-->
+</head>
+<body>
+<div id="wrapper">
+  <nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="../index.html"><img class="navbar-brand-img" src="../imagenes/implan-barra-logo-chico-gris.png" alt="IMPLAN Torreón"></a>
+    </div>
+  <div class="navbar-default sidebar" role="navigation">
+    <div class="sidebar-nav navbar-collapse">
+      <ul class="nav" id="side-menu">
+        <li class="sidebar-search">
+          <form method="get" action="http://www.trcimplan.gob.mx/buscador-resultados.html">
+            <div class="input-group custom-search-form">
+              <input type="text" class="form-control" placeholder="Google buscar..." value="" name="q">
+              <span class="input-group-btn">
+                <button class="btn btn-default" type="submit"><i class="fa fa-search"></i></button>
+              </span>
+            </div>
+          </form>
+        </li>
+        <li class="active">
+          <a href="#"><span class="navegacion-icono"><i class="fa fa-lightbulb-o"></i></span> Análisis Publicados<span class="fa arrow"></span></a>
+          <ul class="nav nav-second-level">
+            <li><a href="../blog/index.html"><span class="navegacion-icono"><i class="fa fa-file-text-o"></i></span> Últimos Análisis</a></li>
+            <li><a href="../excolaboradores/index.html"><span class="navegacion-icono"><i class="fa fa-file-text-o"></i></span> Análisis por Autor</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="#"><span class="navegacion-icono"><i class="fa fa-area-chart"></i></span> Indicadores<span class="fa arrow"></span></a>
+          <ul class="nav nav-second-level">
+            <li><a href="../smi/introduccion.html"><span class="navegacion-icono"><i class="fa fa-file-text-o"></i></span> Introducción al SMI</a></li>
+            <li><a href="../indicadores-categorias/index.html"><span class="navegacion-icono"><i class="fa fa-th-list"></i></span> Indicadores por Categoría</a></li>
+            <li><a href="../smi/por-region.html"><span class="navegacion-icono"><i class="fa fa-table"></i></span> Indicadores por Región</a></li>
+            <li><a href="../smi/datos-abiertos.html"><span class="navegacion-icono"><i class="fa fa-download"></i></span> Datos Abiertos</a></li>
+            <li><a href="../smi/niveles-socioeconomicos.html"><span class="navegacion-icono"><i class="fa fa-bar-chart"></i></span> Niveles Socioeconómicos</a></li>
+            <li><a href="../monitores/index.html"><span class="navegacion-icono"><i class="fa fa-file-text-o"></i></span> Monitores</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="#"><span class="navegacion-icono"><i class="fa fa-puzzle-piece"></i></span> Indicadores Básicos de Colonias<span class="fa arrow"></span></a>
+          <ul class="nav nav-second-level">
+            <li><a href="../ibc/introduccion.html"><span class="navegacion-icono"><i class="fa fa-file-text-o"></i></span> Introducción al IBC</a></li>
+            <li><a href="../ibc-colonias-torreon/index.html"><span class="navegacion-icono"><i class="fa fa-font"></i></span> Colonias de Torreón</a></li>
+            <li><a href="https://implantorreon.carto.com/u/sigimplan/builder/907a6bc0-2c7e-451e-9668-b78d952e52ff/embed" target="_blank"><span class="navegacion-icono"><i class="fa fa-external-link"></i></span> Mapa Completo</a></li>
+            <li><a href="../ibc/torreon-urbano.html"><span class="navegacion-icono"><i class="fa fa-table"></i></span> Torreón Urbano</a></li>
+            <li><a href="../ibc/datos-abiertos.html"><span class="navegacion-icono"><i class="fa fa-download"></i></span> Datos Abiertos</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="#"><span class="navegacion-icono"><i class="fa fa-map-marker"></i></span> Información Geográfica<span class="fa arrow"></span></a>
+          <ul class="nav nav-second-level">
+            <li><a href="../sig/introduccion.html"><span class="navegacion-icono"><i class="fa fa-file-text-o"></i></span> Introducción al SIG</a></li>
+            <li><a href="../sig-mapas-torreon/temas-sig.html"><span class="navegacion-icono"><i class="fa fa-map-o"></i></span> Mapas por Tema</a></li>
+            <li><a href="../sig-mapas-torreon/plan-director-desarrollo-urbano.html"><span class="navegacion-icono"><i class="fa fa-map-marker"></i></span> Usos de Suelo</a></li>
+            <li><a href="../sig/datos-abiertos.html"><span class="navegacion-icono"><i class="fa fa-download"></i></span> Datos Abiertos</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="#"><span class="navegacion-icono"><i class="fa fa-book"></i></span> Plan Estratégico Torreón 2040<span class="fa arrow"></span></a>
+          <ul class="nav nav-second-level">
+            <li><a href="../pet/indice.html"><span class="navegacion-icono"><i class="fa fa-list-ul"></i></span> Índice General</a></li>
+            <li><a href="../plan-estrategico-torreon-enfoque-metropolitano-2040/index.html"><span class="navegacion-icono"><i class="fa fa-download"></i></span> Descargar</a></li>
+            <li><a href="../plan-estrategico-metropolitano/descripcion-del-proceso.html"><span class="navegacion-icono"><i class="fa fa-calendar"></i></span> Descripción del proceso</a></li>
+            <li><a href="../proyectos/index.html"><span class="navegacion-icono"><i class="fa fa-check-square"></i></span> Proyectos</a></li>
+            <li><a href="../vision-de-ciudad/vision-de-ciudad.html"><span class="navegacion-icono"><i class="fa fa-file-text-o"></i></span> Visión de Ciudad desde IMPLAN</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="#"><span class="navegacion-icono"><i class="fa fa-briefcase"></i></span> Documentos<span class="fa arrow"></span></a>
+          <ul class="nav nav-second-level">
+            <li><a href="../sig-planes/index.html"><span class="navegacion-icono"><i class="fa fa-book"></i></span> Planes y Programas</a></li>
+            <li><a href="../investigaciones/index.html"><span class="navegacion-icono"><i class="fa fa-file-text-o"></i></span> Investigaciones</a></li>
+            <li><a href="../estudios/index.html"><span class="navegacion-icono"><i class="fa fa-file-text-o"></i></span> Estudios</a></li>
+          </ul>
+        </li>
+        <li><a href="../consejo-directivo/integrantes.html"><span class="navegacion-icono"><i class="fa fa-users"></i></span> Consejo Directivo</a></li>
+        <li><a href="../sala-prensa/index.html"><span class="navegacion-icono"><i class="fa fa-newspaper-o"></i></span> Sala de Prensa</a></li>
+        <li><a href="../programas-radio/index.html"><span class="navegacion-icono"><i class="fa fa-microphone"></i></span> Programas de Radio</a></li>
+        <li>
+          <a href="#"><span class="navegacion-icono"><i class="fa fa-file-text-o"></i></span> Consejo Visión Metrópoli<span class="fa arrow"></span></a>
+          <ul class="nav nav-second-level">
+            <li><a href="../convocatorias/vision-metropoli.html"><span class="navegacion-icono"><i class="fa fa-file-text-o"></i></span> Consejo Juvenil</a></li>
+            <li><a href="../vision-metropoli/integrantes.html"><span class="navegacion-icono"><i class="fa fa-file-text-o"></i></span> Integrantes del Consejo</a></li>
+            <li><a href="../vision-metropoli/index.html"><span class="navegacion-icono"><i class="fa fa-newspaper-o"></i></span> Sala de Prensa</a></li>
+            <li><a href="../vision-metropoli/reglamento-vision-metropoli-2020.pdf"><span class="navegacion-icono"><i class="fa fa-file-text-o"></i></span> Reglamento</a></li>
+            <li><a href="https://issuu.com/consejovisionmetropoli/docs/informe_visi_n_metr_poli_2019_-_2021" target="_blank"><span class="navegacion-icono"><i class="fa fa-file-text-o"></i></span> Informe 2019 - 2021</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="#"><span class="navegacion-icono"><i class="fa fa-building-o"></i></span> Institucional<span class="fa arrow"></span></a>
+          <ul class="nav nav-second-level">
+            <li><a href="../institucional/vision-mision.html"><span class="navegacion-icono"><i class="fa fa-trophy"></i></span> Misión / Visión</a></li>
+            <li><a href="../institucional/NuestrosProyectos.html"><span class="navegacion-icono"><i class="fa fa-pencil-square-o"></i></span> Nuestros Proyectos</a></li>
+            <li><a href="../institucional/mensaje-director.html"><span class="navegacion-icono"><i class="fa fa-comment"></i></span> Mensaje del Director</a></li>
+            <li><a href="../autores/index.html"><span class="navegacion-icono"><i class="fa fa-user"></i></span> Quienes Somos</a></li>
+            <li><a href="../institucional/estructura-organica.html"><span class="navegacion-icono"><i class="fa fa-sitemap"></i></span> Estructura Orgánica</a></li>
+            <li><a href="../institucional/modelo-operativo-universal.html"><span class="navegacion-icono"><i class="fa fa-slideshare"></i></span> Modelo Operativo Univ.</a></li>
+            <li><a href="../institucional/reglamentos.html"><span class="navegacion-icono"><i class="fa fa-gavel"></i></span> Reglamentos</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="#"><span class="navegacion-icono"><i class="fa fa-external-link"></i></span> Transparencia<span class="fa arrow"></span></a>
+          <ul class="nav nav-second-level">
+            <li><a href="http://www2.icai.org.mx/ipo/dependencia.php?dep=178#pageload" target="_blank"><span class="navegacion-icono"><i class="fa fa-file-text-o"></i></span> Transparencia Estatal (ICAI)</a></li>
+            <li><a href="https://consultapublicamx.inai.org.mx/vut-web/faces/view/consultaPublica.xhtml#inicio" target="_blank"><span class="navegacion-icono"><i class="fa fa-file-text-o"></i></span> Plataforma Nacional de Transparencia</a></li>
+            <li><a href="../transparencia/index.html"><span class="navegacion-icono"><i class="fa fa-briefcase"></i></span> Documentos</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="#"><span class="navegacion-icono"><i class="fa fa-share-alt"></i></span> Términos de Uso<span class="fa arrow"></span></a>
+          <ul class="nav nav-second-level">
+            <li><a href="../terminos/terminos-informacion.html"><span class="navegacion-icono"><i class="fa fa-cubes"></i></span> De la información</a></li>
+            <li><a href="../terminos/terminos-sitio.html"><span class="navegacion-icono"><i class="fa fa-globe"></i></span> Del sitio web</a></li>
+            <li><a href="../terminos/privacidad.html"><span class="navegacion-icono"><i class="fa fa-lock"></i></span> Aviso de Privacidad</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="#"><span class="navegacion-icono"><i class="fa fa-phone"></i></span> Contacto<span class="fa arrow"></span></a>
+          <ul class="nav nav-second-level">
+            <li><a href="../contacto/contacto.html"><span class="navegacion-icono"><i class="fa fa-phone"></i></span> Medios de contacto</a></li>
+            <li><a href="../preguntas-frecuentes/preguntas-frecuentes.html"><span class="navegacion-icono"><i class="fa fa-question"></i></span> Preguntas Frecuentes</a></li>
+            <li><a href="http://goo.gl/forms/1rdX4X128PpMOif73" target="_blank"><span class="navegacion-icono"><i class="fa fa-external-link"></i></span> Comentarios y Sugerencias</a></li>
+          </ul>
+        </li>
+        <li><a href="../convocatorias/index.html"><span class="navegacion-icono"><i class="fa fa-file-text-o"></i></span> Convocatorias</a></li>
+        <li><a href="http://177.244.42.17/ovie-torreon/#!" target="_blank"><span class="navegacion-icono"><i class="fa fa-map-marker"></i></span> Oficina Virtual de Información Económica (OVIE)</a></li>
+        <li><a href="https://arcg.is/0vySSr" target="_blank"><span class="navegacion-icono"><i class="fa fa-globe"></i></span> Atlas Municipal de Riesgos de Torreón</a></li>
+      </ul>
+    </div>
+  </div>
+  </nav>
+  <div id="page-wrapper">
+    <div class="cuerpo">
+      <article><div itemscope itemtype="http://schema.org/BlogPosting">
+        <div class="encabezado">
+          <h1 itemprop="headline">Usuarios de Espacios Culturales y Bibliotecas en Torreón</h1>
+          <div class="encabezado-descripcion" itemprop="description">En el municipio la cifra de usuarios de las bibliotecas públicas para el primer trimestre de 2018, alcanza casi los 20 mil. La biblioteca con mayor cantidad de usuarios es José García de Letona (ubicada en La Alameda), tanto en 2017 como en 2018.</div>
+          <div class="encabezado-autor-fecha">
+            Por <span itemprop="author">Lic. Adriana Vargas Flores</span> -
+            <meta itemprop="datePublished" content="2018-07-09T00:00">09/07/2018
+          </div>
+        </div>
+        <span class="contenido-imagen-previa"><img class="img-responsive" itemprop="image" alt="Usuarios de Espacios Culturales y Bibliotecas en Torreón" src="usuarios-de-espacios-culturales-y-bibliotecas-en-torreon/imagen.jpg"></span>
+        <div itemprop="articleBody">
+<!-- Contenido: Inicia  -->
+<p>Aunque la infraestructura cultural de los municipios de la Zona Metropolitana de La Laguna, aún es insuficiente comparada con la de otras ciudades importantes del país, cada vez crece más la población que se beneficia de las actividades en centros culturales y bibliotecas públicas.</p>
+
+<p>De acuerdo con datos del INEGI, la Secretaría de Cultura federal y el Instituto Municipal de Cultura y Educación de Torreón (IMCE), <em>existen 21 museos en La Laguna, de los cuales 14 están ubicados en Torreón: 3 pertenecen al sector privado y 11 al sector público</em>.</p>
+
+<p>Se cuenta con cuatro teatros en Torreón: Teatro Isauro Martínez, Teatro Nazas, Teatro Alfonso Garibay y Teatro de Cámara de la UA de C. Y según datos del 2015 del Sistema de Información Cultural (SIC), hay alrededor de 18 librerías en nuestro municipio; así como 31 biblioteca públicas en Torreón, Matamoros, Gómez Palacio y Lerdo.</p>
+
+<p>Tan sólo en Torreón la cifra de usuarios de las bibliotecas públicas para el primer trimestre de 2018, alcanza casi los 20 mil. La biblioteca con mayor cantidad de usuarios es José García de Letona (ubicada en La Alameda), tanto en 2017 como en 2018. En el periodo comprendido entre enero- marzo 2018 en todas las bibliotecas se prestaron más de 24 mil servicios, de acuerdo con el IMCE.</p>
+
+<p>Las actividades de asistencia a fomento a la lectura en las bibliotecas, fueron en el primer trimestre de 2017: 6,236 y de 6,380 en el primer trimestre de 2018.</p>
+
+<p><strong>La cobertura de bibliotecas es amplia en La Laguna y en el país. En México, la Red Nacional opera actualmente a 7,413 bibliotecas públicas que se encuentran establecidas en 2,282 municipios, - 93.2 por ciento del total existente en el país-, y proporciona servicios bibliotecarios gratuitos a más de 30 millones de usuarios anualmente.</strong></p>
+
+<p>Sin embargo, lo anterior no significa que se haya elevado sustantivamente el nivel de lectura per cápita. Tanto en el país como a nivel estatal y municipal, aún existen diferencias comparado con los niveles de lectura de otros países de Latinoamérica.</p>
+
+<p>Según el Módulo de Lectura del INEGI, en México se leen 1.40 libros por año, mientras que en Coahuila 1.16 libros. A nivel nacional como a nivel estado, los libros que se leen en mayor medida son: novelas, cuentos, ciencia, ficción, poesía, teatro, etc.; los cuales entran en la categoría de literatura.</p>
+
+<p>En la misma proporción que los libros de literatura, también se leen en Coahuila los libros de autoayuda, superación personal y religiosos. Los libros que se leen en menor medida a nivel nacional son los manuales, guías o recetarios, dato que también comparte Coahuila, y los libros clasificados en otros.</p>
+
+<h3>Crece asistencia a centros culturales</h3>
+
+<p><strong>El IMCE en Torreón administra cuatro museos municipales y tres centros culturales</strong>. De acuerdo con su primer informe trimestral, entre enero y marzo de la gestión anterior se contó con una asistencia de 20,881 visitantes únicamente a Museos y Centros Culturales. Con respecto a la información mensual reportada por la coordinación de museos y centros culturales de la actual administración, se tuvo una actividad de 31,395 visitantes en los museos y centros culturales la cual, comparada con datos generados del mismo periodo de la administración anterior, presenta un incremento del 50.35%.</p>
+
+<p><img class="img-responsive" src="usuarios-de-espacios-culturales-y-bibliotecas-en-torreon/visitas-museos.jpg" alt="Comparativo visitas a Museos y Centros Culturales"></p>
+
+<p>Además, se informó que a través de las distintas Coordinaciones de Artes y Espacios Públicos, la población de Torreón puede acceder ahora de una amplia oferta de eventos a los cuales puede asistir no solo en los recintos culturales municipales, sino en distintos espacios como plazas públicas, negocios, instituciones educativas entre otros. En términos cuantitativos, en estos espacios se logró un incremento de 21,964 asistentes mismo que se puede traducir en un 81% con respecto al primer trimestre de 2017.</p>
+
+<p>La asistencia a eventos culturales en espacios públicos se da en mayor medida en la Ruta Poniente, la cual se encuentra en la avenida Morelos e inicia en la calle Leona Vicario, continuando por las calles Treviño, Falcón, Blanco, Acuña, Rodríguez, Cepeda, Valdez Carrillo y Zaragoza. Por otra parte, la asistencia a la Línea Verde ha crecido en febrero y marzo, siendo este último el mes más significativo, pues se observa un crecimiento casi del 80%; informó el IMCE.</p>
+
+<p><img class="img-responsive" src="usuarios-de-espacios-culturales-y-bibliotecas-en-torreon/poblacion-beneficiada.jpg" alt="Comparativo de población beneficiada"></p>
+
+<h3>LECTURA EN MÉXICO Y COAHUILA</h3>
+
+<p><img class="img-responsive" src="usuarios-de-espacios-culturales-y-bibliotecas-en-torreon/grafica.jpg" alt="Lectura en México"></p>
+
+<p>Fuente: INEGI</p>
+
+<p>Fuente de las gráficas:
+Instituto Municipal de Cultura y Educación de Torreón (IMCE) 2018.</p>
+
+<!-- Contenido: Termina -->
+        </div>
+              <div class="publicador" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+          <span class="contenido-imagen-previa"><img class="img-responsive" itemprop="image" alt="Instituto Municipal de Planeación y Competitividad de Torreón" src="../imagenes/implan-logo.png"></span>
+          <h3 class="titulo" itemprop="name">Instituto Municipal de Planeación y Competitividad de Torreón</h3>
+          <div class="descripcion" itemprop="description">Órgano técnico responsable de la planeación del desarrollo del municipio de Torreón, Coahuila, México.</div>
+          <div class="contenido-imagen-previa-final"></div>
+        </div>
+      </div></article>
+      <aside>
+  <!-- Extra: Inicia  -->
+  <h3>Publicaciones relacionadas</h3>
+<p><b>Análisis Publicados</b></p>
+<ul>
+  <li><a href="http://www.trcimplan.gob.mx/blog/el-papel-de-la-cultura-en-la-competitividad.html">El papel de la cultura en la competitividad</a></li>
+  <li><a href="http://www.trcimplan.gob.mx/blog/caracteristicas-de-la-industria-en-la-laguna-marzo2020.html">Caracter&iacute;sticas de la Industria en La Laguna</a></li>
+  <li><a href="http://www.trcimplan.gob.mx/blog/torreon-hacia-una-sociedad-de-la-informacion.html">Torre&oacute;n hacia una Sociedad de la Informaci&oacute;n</a></li>
+  <li><a href="http://www.trcimplan.gob.mx/blog/laguna-y2040-una-oportunidad-de-liderazgo-para-los-jovenes.html">Laguna Y2040: una oportunidad de liderazgo para los j&oacute;venes</a></li>
+  <li><a href="http://www.trcimplan.gob.mx/blog/urgente-reducir-brecha-salarial-en-la-zona-metropolitana-de-la-laguna-dic2018.html">Urgente reducir brecha salarial en la Zona Metropolitana de La Laguna.</a></li>
+  <li><a href="http://www.trcimplan.gob.mx/blog/la-cultura-un-importante-indicador-en-la-calidad-de-vida.html">La Cultura: un importante indicador en la calidad de vida</a></li>
+  <li><a href="http://www.trcimplan.gob.mx/blog/implicaciones-de-la-reforma-fiscal-de-estados-unidos-en-la-zml.html">Implicaciones de la Reforma Fiscal de Estados Unidos en la ZML</a></li>
+  <li><a href="http://www.trcimplan.gob.mx/blog/el-corredor-economico-del-norte-y-su-fortaleza-nacional.html">El Corredor Econ&oacute;mico del Norte y su fortaleza nacional</a></li>
+  <li><a href="http://www.trcimplan.gob.mx/blog/comportamiento-de-la-inflacion-y-el-salario-en-la-laguna.html">Comportamiento de la inflaci&oacute;n y el salario en La Laguna</a></li>
+  <li><a href="http://www.trcimplan.gob.mx/blog/balance-economico-2017.html">Balance Econ&oacute;mico de La Laguna en el 2017</a></li>
+</ul>
+<p><b>Sistema Metropolitano de Indicadores</b></p>
+<ul>
+  <li><a href="http://www.trcimplan.gob.mx/indicadores-gomez-palacio/economia-oferta-de-cuartos-de-hotel-de-cuatro-y-cinco-estrellas.html">Oferta de Cuartos de Hotel de Cuatro y Cinco Estrellas en G&oacute;mez Palacio</a></li>
+  <li><a href="http://www.trcimplan.gob.mx/indicadores-torreon/economia-investigadores.html">Investigadores en Torre&oacute;n</a></li>
+  <li><a href="http://www.trcimplan.gob.mx/indicadores-la-laguna/sociedad-visitas-a-museos-inah.html">Visitas a Museos INAH en La Laguna</a></li>
+  <li><a href="http://www.trcimplan.gob.mx/indicadores-gomez-palacio/sociedad-visitas-a-museos-inah.html">Visitas a Museos INAH en G&oacute;mez Palacio</a></li>
+  <li><a href="http://www.trcimplan.gob.mx/indicadores-matamoros/sociedad-visitas-a-museos-inah.html">Visitas a Museos INAH en Matamoros</a></li>
+  <li><a href="http://www.trcimplan.gob.mx/indicadores-lerdo/sociedad-espacios-culturales.html">Espacios Culturales en Lerdo</a></li>
+  <li><a href="http://www.trcimplan.gob.mx/indicadores-gomez-palacio/economia-investigadores.html">Investigadores en G&oacute;mez Palacio</a></li>
+  <li><a href="http://www.trcimplan.gob.mx/indicadores-lerdo/economia-investigadores.html">Investigadores en Lerdo</a></li>
+  <li><a href="http://www.trcimplan.gob.mx/indicadores-matamoros/economia-investigadores.html">Investigadores en Matamoros</a></li>
+  <li><a href="http://www.trcimplan.gob.mx/indicadores-la-laguna/economia-investigadores.html">Investigadores en La Laguna</a></li>
+</ul>
+<p><b>Sistema de Información Geográfica</b></p>
+<ul>
+  <li><a href="http://www.trcimplan.gob.mx/sig-mapas-torreon/plan-director-desarrollo-urbano.html">Plan Director de Desarrollo Urbano</a></li>
+  <li><a href="http://www.trcimplan.gob.mx/sig-mapas-torreon/patrimonio-arquitectonico.html">Patrimonio Arquitect&oacute;nico</a></li>
+  <li><a href="http://www.trcimplan.gob.mx/sig-mapas-torreon/vida-en-ciudad.html">Vida en la Ciudad</a></li>
+</ul>
+<p><b>Plan Estratégico Torreón</b></p>
+<ul>
+  <li><a href="http://www.trcimplan.gob.mx/pet/cartera-proyectos-desarrollo-social.html">Cartera de Proyectos: Desarrollo Social</a></li>
+  <li><a href="http://www.trcimplan.gob.mx/pet/cartera-proyectos-desarrollo-economico-innovacion.html">Cartera de Proyectos: Desarrollo Econ&oacute;mico e Innovaci&oacute;n</a></li>
+  <li><a href="http://www.trcimplan.gob.mx/pet/diagnostico-estrategico-desarrollo-economico-innovacion.html">Diagn&oacute;stico Estrat&eacute;gico: Desarrollo Econ&oacute;mico e Innovaci&oacute;n</a></li>
+  <li><a href="http://www.trcimplan.gob.mx/pet/diagnostico-estrategico-desarrollo-social.html">Diagn&oacute;stico Estrat&eacute;gico: Desarrollo Social</a></li>
+  <li><a href="http://www.trcimplan.gob.mx/pet/vision-desarrollo-social.html">Visi&oacute;n de Desarrollo Social 2040</a></li>
+  <li><a href="http://www.trcimplan.gob.mx/pet/vision-desarrollo-economico-innovacion.html">Visi&oacute;n de Desarrollo Econ&oacute;mico e Innovaci&oacute;n 2040</a></li>
+  <li><a href="http://www.trcimplan.gob.mx/proyectos/salud-laguna.html">Salud Laguna</a></li>
+  <li><a href="http://www.trcimplan.gob.mx/pet/cartera-proyectos-medio-ambiente-sustentabilidad.html">Cartera de Proyectos: Medio Ambiente y Sustentabilidad</a></li>
+  <li><a href="http://www.trcimplan.gob.mx/pet/cartera-proyectos-movilidad-transporte.html">Cartera de Proyectos: Movilidad y Transporte</a></li>
+  <li><a href="http://www.trcimplan.gob.mx/pet/diagnostico-estrategico-buen-gobierno.html">Diagn&oacute;stico Estrat&eacute;gico: Buen Gobierno</a></li>
+</ul>
+<p><b>Sala de Prensa</b></p>
+<ul>
+  <li><a href="http://www.trcimplan.gob.mx/sala-prensa/2018-02-12-laguna-y2040-youth-challenge-2018.html">Presentan segunda edici&oacute;n del encuentro Laguna Y2040 Youth Challenge 2018</a></li>
+  <li><a href="http://www.trcimplan.gob.mx/sala-prensa/2018-11-29-imco-2018.html">Posici&oacute;n de La Laguna en el &Iacute;ndice de Competitividad Urbana 2018</a></li>
+  <li><a href="http://www.trcimplan.gob.mx/sala-prensa/2017-06-17-comunicado-prensa.html">Comunicado de Prensa - Respuesta del IMPLAN al CLIP</a></li>
+  <li><a href="http://www.trcimplan.gob.mx/sala-prensa/2016-09-07-indice-de-competitividad-urbana.html">&Iacute;ndice de Competitividad Urbana 2016</a></li>
+  <li><a href="http://www.trcimplan.gob.mx/sala-prensa/2018-10-05-programa-parcial-desarrollo-urbano-centro-historico.html">IMPLAN brinda taller sobre el Programa Parcial De Desarrollo Urbano Del Centro Hist&oacute;rico.</a></li>
+  <li><a href="http://www.trcimplan.gob.mx/sala-prensa/2017-08-31-implan-firma-convenio-con-el-cluster-automotriz.html">IMPLAN firma convenio con el Cl&uacute;ster Automotriz</a></li>
+  <li><a href="http://www.trcimplan.gob.mx/sala-prensa/2018-11-14-enoe-3er-trim-2018.html">Principales resultados de la Encuesta Nacional de Ocupaci&oacute;n y Empleo (ENOE) para el &Aacute;rea Metropolitana de La Laguna.</a></li>
+  <li><a href="http://www.trcimplan.gob.mx/sala-prensa/2017-09-11-resaltan-la-importancia-del-espacio-publico.html">Resaltan la importancia del espacio p&uacute;blico</a></li>
+  <li><a href="http://www.trcimplan.gob.mx/sala-prensa/2018-enoe.html">Principales Resultados de la Encuesta Nacional de Ocupaci&oacute;n y Empleo (ENOE) para el &Aacute;rea Metropolitana de la Laguna.</a></li>
+  <li><a href="http://www.trcimplan.gob.mx/sala-prensa/2020-04-15-comunicado-conferencias-virtuales.html">El IMPLAN Torre&oacute;n y su Consejo Juvenil: Visi&oacute;n Metr&oacute;poli, presentar&aacute;n Conferencias Virtuales</a></li>
+</ul>
+  <!-- Extra: Termina -->
+  </aside>
+<div class="contenido-social">
+  <h5>Compartir en Redes Sociales</h5>
+  <a href="https://twitter.com/share" class="twitter-share-button" data-via="trcimplan" data-lang="es">Twittear</a>
+  <iframe src="//www.facebook.com/plugins/like.php?href=http%3A%2F%2Fwww.trcimplan.gob.mx%2Fblog%2Fusuarios-de-espacios-culturales-y-bibliotecas-en-torreon.html&amp;width=300&amp;layout=button_count&amp;action=like&amp;show_faces=true&amp;share=false&amp;height=21" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:300px; height:21px;" allowTransparency="true"></iframe>
+</div>
+    </div>
+    <div class="mapa-inferior">
+          <div class="pull-right redes-sociales">
+            <a class="fa fa-twitter-square" href="http://www.twitter.com/trcimplan" target="_blank"></a>
+            <a class="fa fa-facebook-square" href="https://facebook.com/trcimplan" target="_blank"></a>
+            <a class="fa fa-facebook-square" href="http://www.instagram.com/implantorreon" target="_blank"></a>
+            <a class="fa fa-rss-square" href="../rss.xml"></a>
+          </div>
+    </div>
+  </div>
+</div>
+<!-- Javascript global inicia -->
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
+<script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="../vendor/metisMenu/metisMenu.min.js"></script>
+<script type="text/javascript" src="../vendor/datatables/js/jquery.dataTables.min.js"></script>
+<script type="text/javascript" src="../vendor/datatables-plugins/dataTables.bootstrap.min.js"></script>
+<script type="text/javascript" src="../vendor/datatables-responsive/dataTables.responsive.js"></script>
+<script type="text/javascript" src="../vendor/raphael/raphael.min.js"></script>
+<script type="text/javascript" src="../vendor/morrisjs/morris.min.js"></script>
+<script type="text/javascript" src="../dist/js/sb-admin-2.min.js"></script>
+<script type="text/javascript" src="http://libs.cartocdn.com/cartodb.js/v3/3.15/cartodb.js"></script>
+<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+<!-- Javascript global termina -->
+<!-- Javascript inicia -->
+<script>
+  // Twitter
+  !function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="https://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");
+</script>
+
+<!-- Javascript termina -->
+<!-- Javascript Google Analytics -->
+<script>
+  // Google Analytics
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)})(window,document,'script','//www.google-analytics.com/analytics.js','ga');ga('create', 'UA-58290501-1', 'auto');ga('send', 'pageview');
+</script>
+</body>
+</html>

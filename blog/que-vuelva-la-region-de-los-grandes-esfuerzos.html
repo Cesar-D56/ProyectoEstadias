@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+<!-- ===================================================================================================
+
+        Instituto Municipal de Planeación y Competitividad (IMPLAN) de Torreón.
+
+        3er. generación de la Plataforma del Conocimiento
+        Desarrollado por Ing. Guillermo Valdés Lozano <guivaloz en movimientolibre.com>
+
+        El software que lo construye está bajo la licencia GPL versión 3. © 2014, 2015, 2016, 2017.
+        Una copia está contenida en el archivo LICENCE al bajar desde GitHub.
+
+        Al usar, estudiar y copiar está aceptando los términos de uso de la información y del sitio web:
+          http://www.trcimplan.gob.mx/terminos/terminos-informacion.html
+          http://www.trcimplan.gob.mx/terminos/terminos-sitio.html
+
+        Descargue, estudie y colabore bajando todo este sitio web:
+          IMPLAN Torreón     https://github.com/TRCIMPLAN/trcimplan.github.io
+
+        Agradecemos y compartimos las tecnologías abiertas y gratuitas sobre las que se basa:
+          PHP                http://php.net
+          Twitter Bootstrap  http://getbootstrap.com
+          StartBootStrap     http://startbootstrap.com
+          Morris.js          https://morrisjs.github.io/morris.js/
+          Font Awesome       http://fontawesome.io
+          DataTables         https://www.datatables.net
+          Carto              https://carto.com
+          GitHub             https://github.com
+
+     =================================================================================================== -->
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="La Calificadora Internacional Moodys elevó por primera vez la nota soberana de México a la categoría A3 gracias a las reformas estructurales.">
+  <meta name="author" content="Lic. Eduardo Holguín Zehfuss">
+  <meta name="keywords" content="IMPLAN, Torreon, Mexico, Reformas, Estructurales, Competitividad">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Que vuelva la región de los grandes esfuerzos - IMPLAN Torreón">
+  <meta name="twitter:description" content="La Calificadora Internacional Moodys elevó por primera vez la nota soberana de México a la categoría A3 gracias a las reformas estructurales.">
+  <meta name="twitter:image" content="http://www.trcimplan.gob.mx/blog/que-vuelva-la-region-de-los-grandes-esfuerzos/imagen-previa.jpg">
+  <meta name="twitter:url" content="http://www.trcimplan.gob.mx/blog/que-vuelva-la-region-de-los-grandes-esfuerzos.html">
+  <meta name="og:title" content="Que vuelva la región de los grandes esfuerzos - IMPLAN Torreón">
+  <meta name="og:description" content="La Calificadora Internacional Moodys elevó por primera vez la nota soberana de México a la categoría A3 gracias a las reformas estructurales.">
+  <meta name="og:image" content="http://www.trcimplan.gob.mx/blog/que-vuelva-la-region-de-los-grandes-esfuerzos/imagen-previa.jpg">
+  <meta name="og:url" content="http://www.trcimplan.gob.mx/blog/que-vuelva-la-region-de-los-grandes-esfuerzos.html">
+  <title>Que vuelva la región de los grandes esfuerzos - IMPLAN Torreón</title>
+  <link rel="shortcut icon" type="image/x-icon" href="../imagenes/apple-touch-icon.png">
+  <link rel="apple-touch-icon" href="../imagenes/apple-touch-icon.png">
+  <link rel="apple-touch-icon" href="../imagenes/apple-touch-icon-76x76.png" sizes="76x76">
+  <link rel="apple-touch-icon" href="../imagenes/apple-touch-icon-120x120.png" sizes="120x120">
+  <link rel="apple-touch-icon" href="../imagenes/apple-touch-icon-152x152.png" sizes="152x152">
+  <link rel="apple-touch-icon" href="../imagenes/apple-touch-icon-180x180.png" sizes="180x180">
+  <link rel="icon" href="../imagenes/icon-hires.png" sizes="192x192">
+  <link rel="icon" href="../imagenes/icon-normal.png" sizes="128x128">
+  <link rel="alternate" type="application/rss+xml" href="../rss.xml" title="IMPLAN Torreón">
+  <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+  <link rel="stylesheet" type="text/css" href="../vendor/metisMenu/metisMenu.min.css">
+  <link rel="stylesheet" type="text/css" href="../vendor/datatables-plugins/dataTables.bootstrap.css">
+  <link rel="stylesheet" type="text/css" href="../vendor/morrisjs/morris.css">
+  <link rel="stylesheet" type="text/css" href="../vendor/font-awesome/css/font-awesome.min.css">
+  <link rel="stylesheet" type="text/css" href="../dist/css/sb-admin-2.min.css">
+  <link rel="stylesheet" type="text/css" href="../dist/css/plataforma-de-conocimiento.css">
+  <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Noto+Sans|Roboto+Condensed:400,700">
+  <link rel="stylesheet" type="text/css" href="http://libs.cartocdn.com/cartodb.js/v3/3.15/themes/css/cartodb.css">
+  <link rel="stylesheet" type="text/css" href="../dist/css/estilosvm.css">
+  <link rel="stylesheet" type="text/css" href="../dist/css/trcimplan.css">
+  <!-- SOPORTE PARA IE -->
+  <!--[if lt IE 9]>
+  <script type="text/javascript" src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+  <script type="text/javascript" src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+  <![endif]-->
+</head>
+<body>
+<div id="wrapper">
+  <nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="../index.html"><img class="navbar-brand-img" src="../imagenes/implan-barra-logo-chico-gris.png" alt="IMPLAN Torreón"></a>
+    </div>
+  <div class="navbar-default sidebar" role="navigation">
+    <div class="sidebar-nav navbar-collapse">
+      <ul class="nav" id="side-menu">
+        <li class="sidebar-search">
+          <form method="get" action="http://www.trcimplan.gob.mx/buscador-resultados.html">
+            <div class="input-group custom-search-form">
+              <input type="text" class="form-control" placeholder="Google buscar..." value="" name="q">
+              <span class="input-group-btn">
+                <button class="btn btn-default" type="submit"><i class="fa fa-search"></i></button>
+              </span>
+            </div>
+          </form>
+        </li>
+        <li class="active">
+          <a href="#"><span class="navegacion-icono"><i class="fa fa-lightbulb-o"></i></span> Análisis Publicados<span class="fa arrow"></span></a>
+          <ul class="nav nav-second-level">
+            <li><a href="../blog/index.html"><span class="navegacion-icono"><i class="fa fa-file-text-o"></i></span> Últimos Análisis</a></li>
+            <li><a href="../excolaboradores/index.html"><span class="navegacion-icono"><i class="fa fa-file-text-o"></i></span> Análisis por Autor</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="#"><span class="navegacion-icono"><i class="fa fa-area-chart"></i></span> Indicadores<span class="fa arrow"></span></a>
+          <ul class="nav nav-second-level">
+            <li><a href="../smi/introduccion.html"><span class="navegacion-icono"><i class="fa fa-file-text-o"></i></span> Introducción al SMI</a></li>
+            <li><a href="../indicadores-categorias/index.html"><span class="navegacion-icono"><i class="fa fa-th-list"></i></span> Indicadores por Categoría</a></li>
+            <li><a href="../smi/por-region.html"><span class="navegacion-icono"><i class="fa fa-table"></i></span> Indicadores por Región</a></li>
+            <li><a href="../smi/datos-abiertos.html"><span class="navegacion-icono"><i class="fa fa-download"></i></span> Datos Abiertos</a></li>
+            <li><a href="../smi/niveles-socioeconomicos.html"><span class="navegacion-icono"><i class="fa fa-bar-chart"></i></span> Niveles Socioeconómicos</a></li>
+            <li><a href="../monitores/index.html"><span class="navegacion-icono"><i class="fa fa-file-text-o"></i></span> Monitores</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="#"><span class="navegacion-icono"><i class="fa fa-puzzle-piece"></i></span> Indicadores Básicos de Colonias<span class="fa arrow"></span></a>
+          <ul class="nav nav-second-level">
+            <li><a href="../ibc/introduccion.html"><span class="navegacion-icono"><i class="fa fa-file-text-o"></i></span> Introducción al IBC</a></li>
+            <li><a href="../ibc-colonias-torreon/index.html"><span class="navegacion-icono"><i class="fa fa-font"></i></span> Colonias de Torreón</a></li>
+            <li><a href="https://implantorreon.carto.com/u/sigimplan/builder/907a6bc0-2c7e-451e-9668-b78d952e52ff/embed" target="_blank"><span class="navegacion-icono"><i class="fa fa-external-link"></i></span> Mapa Completo</a></li>
+            <li><a href="../ibc/torreon-urbano.html"><span class="navegacion-icono"><i class="fa fa-table"></i></span> Torreón Urbano</a></li>
+            <li><a href="../ibc/datos-abiertos.html"><span class="navegacion-icono"><i class="fa fa-download"></i></span> Datos Abiertos</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="#"><span class="navegacion-icono"><i class="fa fa-map-marker"></i></span> Información Geográfica<span class="fa arrow"></span></a>
+          <ul class="nav nav-second-level">
+            <li><a href="../sig/introduccion.html"><span class="navegacion-icono"><i class="fa fa-file-text-o"></i></span> Introducción al SIG</a></li>
+            <li><a href="../sig-mapas-torreon/temas-sig.html"><span class="navegacion-icono"><i class="fa fa-map-o"></i></span> Mapas por Tema</a></li>
+            <li><a href="../sig-mapas-torreon/plan-director-desarrollo-urbano.html"><span class="navegacion-icono"><i class="fa fa-map-marker"></i></span> Usos de Suelo</a></li>
+            <li><a href="../sig/datos-abiertos.html"><span class="navegacion-icono"><i class="fa fa-download"></i></span> Datos Abiertos</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="#"><span class="navegacion-icono"><i class="fa fa-book"></i></span> Plan Estratégico Torreón 2040<span class="fa arrow"></span></a>
+          <ul class="nav nav-second-level">
+            <li><a href="../pet/indice.html"><span class="navegacion-icono"><i class="fa fa-list-ul"></i></span> Índice General</a></li>
+            <li><a href="../plan-estrategico-torreon-enfoque-metropolitano-2040/index.html"><span class="navegacion-icono"><i class="fa fa-download"></i></span> Descargar</a></li>
+            <li><a href="../plan-estrategico-metropolitano/descripcion-del-proceso.html"><span class="navegacion-icono"><i class="fa fa-calendar"></i></span> Descripción del proceso</a></li>
+            <li><a href="../proyectos/index.html"><span class="navegacion-icono"><i class="fa fa-check-square"></i></span> Proyectos</a></li>
+            <li><a href="../vision-de-ciudad/vision-de-ciudad.html"><span class="navegacion-icono"><i class="fa fa-file-text-o"></i></span> Visión de Ciudad desde IMPLAN</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="#"><span class="navegacion-icono"><i class="fa fa-briefcase"></i></span> Documentos<span class="fa arrow"></span></a>
+          <ul class="nav nav-second-level">
+            <li><a href="../sig-planes/index.html"><span class="navegacion-icono"><i class="fa fa-book"></i></span> Planes y Programas</a></li>
+            <li><a href="../investigaciones/index.html"><span class="navegacion-icono"><i class="fa fa-file-text-o"></i></span> Investigaciones</a></li>
+            <li><a href="../estudios/index.html"><span class="navegacion-icono"><i class="fa fa-file-text-o"></i></span> Estudios</a></li>
+          </ul>
+        </li>
+        <li><a href="../consejo-directivo/integrantes.html"><span class="navegacion-icono"><i class="fa fa-users"></i></span> Consejo Directivo</a></li>
+        <li><a href="../sala-prensa/index.html"><span class="navegacion-icono"><i class="fa fa-newspaper-o"></i></span> Sala de Prensa</a></li>
+        <li><a href="../programas-radio/index.html"><span class="navegacion-icono"><i class="fa fa-microphone"></i></span> Programas de Radio</a></li>
+        <li>
+          <a href="#"><span class="navegacion-icono"><i class="fa fa-file-text-o"></i></span> Consejo Visión Metrópoli<span class="fa arrow"></span></a>
+          <ul class="nav nav-second-level">
+            <li><a href="../convocatorias/vision-metropoli.html"><span class="navegacion-icono"><i class="fa fa-file-text-o"></i></span> Consejo Juvenil</a></li>
+            <li><a href="../vision-metropoli/integrantes.html"><span class="navegacion-icono"><i class="fa fa-file-text-o"></i></span> Integrantes del Consejo</a></li>
+            <li><a href="../vision-metropoli/index.html"><span class="navegacion-icono"><i class="fa fa-newspaper-o"></i></span> Sala de Prensa</a></li>
+            <li><a href="../vision-metropoli/reglamento-vision-metropoli-2020.pdf"><span class="navegacion-icono"><i class="fa fa-file-text-o"></i></span> Reglamento</a></li>
+            <li><a href="https://issuu.com/consejovisionmetropoli/docs/informe_visi_n_metr_poli_2019_-_2021" target="_blank"><span class="navegacion-icono"><i class="fa fa-file-text-o"></i></span> Informe 2019 - 2021</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="#"><span class="navegacion-icono"><i class="fa fa-building-o"></i></span> Institucional<span class="fa arrow"></span></a>
+          <ul class="nav nav-second-level">
+            <li><a href="../institucional/vision-mision.html"><span class="navegacion-icono"><i class="fa fa-trophy"></i></span> Misión / Visión</a></li>
+            <li><a href="../institucional/NuestrosProyectos.html"><span class="navegacion-icono"><i class="fa fa-pencil-square-o"></i></span> Nuestros Proyectos</a></li>
+            <li><a href="../institucional/mensaje-director.html"><span class="navegacion-icono"><i class="fa fa-comment"></i></span> Mensaje del Director</a></li>
+            <li><a href="../autores/index.html"><span class="navegacion-icono"><i class="fa fa-user"></i></span> Quienes Somos</a></li>
+            <li><a href="../institucional/estructura-organica.html"><span class="navegacion-icono"><i class="fa fa-sitemap"></i></span> Estructura Orgánica</a></li>
+            <li><a href="../institucional/modelo-operativo-universal.html"><span class="navegacion-icono"><i class="fa fa-slideshare"></i></span> Modelo Operativo Univ.</a></li>
+            <li><a href="../institucional/reglamentos.html"><span class="navegacion-icono"><i class="fa fa-gavel"></i></span> Reglamentos</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="#"><span class="navegacion-icono"><i class="fa fa-external-link"></i></span> Transparencia<span class="fa arrow"></span></a>
+          <ul class="nav nav-second-level">
+            <li><a href="http://www2.icai.org.mx/ipo/dependencia.php?dep=178#pageload" target="_blank"><span class="navegacion-icono"><i class="fa fa-file-text-o"></i></span> Transparencia Estatal (ICAI)</a></li>
+            <li><a href="https://consultapublicamx.inai.org.mx/vut-web/faces/view/consultaPublica.xhtml#inicio" target="_blank"><span class="navegacion-icono"><i class="fa fa-file-text-o"></i></span> Plataforma Nacional de Transparencia</a></li>
+            <li><a href="../transparencia/index.html"><span class="navegacion-icono"><i class="fa fa-briefcase"></i></span> Documentos</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="#"><span class="navegacion-icono"><i class="fa fa-share-alt"></i></span> Términos de Uso<span class="fa arrow"></span></a>
+          <ul class="nav nav-second-level">
+            <li><a href="../terminos/terminos-informacion.html"><span class="navegacion-icono"><i class="fa fa-cubes"></i></span> De la información</a></li>
+            <li><a href="../terminos/terminos-sitio.html"><span class="navegacion-icono"><i class="fa fa-globe"></i></span> Del sitio web</a></li>
+            <li><a href="../terminos/privacidad.html"><span class="navegacion-icono"><i class="fa fa-lock"></i></span> Aviso de Privacidad</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="#"><span class="navegacion-icono"><i class="fa fa-phone"></i></span> Contacto<span class="fa arrow"></span></a>
+          <ul class="nav nav-second-level">
+            <li><a href="../contacto/contacto.html"><span class="navegacion-icono"><i class="fa fa-phone"></i></span> Medios de contacto</a></li>
+            <li><a href="../preguntas-frecuentes/preguntas-frecuentes.html"><span class="navegacion-icono"><i class="fa fa-question"></i></span> Preguntas Frecuentes</a></li>
+            <li><a href="http://goo.gl/forms/1rdX4X128PpMOif73" target="_blank"><span class="navegacion-icono"><i class="fa fa-external-link"></i></span> Comentarios y Sugerencias</a></li>
+          </ul>
+        </li>
+        <li><a href="../convocatorias/index.html"><span class="navegacion-icono"><i class="fa fa-file-text-o"></i></span> Convocatorias</a></li>
+        <li><a href="http://177.244.42.17/ovie-torreon/#!" target="_blank"><span class="navegacion-icono"><i class="fa fa-map-marker"></i></span> Oficina Virtual de Información Económica (OVIE)</a></li>
+        <li><a href="https://arcg.is/0vySSr" target="_blank"><span class="navegacion-icono"><i class="fa fa-globe"></i></span> Atlas Municipal de Riesgos de Torreón</a></li>
+      </ul>
+    </div>
+  </div>
+  </nav>
+  <div id="page-wrapper">
+    <div class="cuerpo">
+      <article><div itemscope itemtype="http://schema.org/BlogPosting">
+        <div class="encabezado">
+          <h1 itemprop="headline">Que vuelva la región de los grandes esfuerzos</h1>
+          <div class="encabezado-descripcion" itemprop="description">La Calificadora Internacional Moodys elevó por primera vez la nota soberana de México a la categoría A3 gracias a las reformas estructurales.</div>
+          <div class="encabezado-autor-fecha">
+            Por <span itemprop="author">Lic. Eduardo Holguín Zehfuss</span> -
+            <meta itemprop="datePublished" content="2014-02-25T08:05">25/02/2014 08:05
+          </div>
+        </div>
+        <span class="contenido-imagen-previa"><img class="img-responsive" itemprop="image" alt="Que vuelva la región de los grandes esfuerzos" src="que-vuelva-la-region-de-los-grandes-esfuerzos/imagen.jpg"></span>
+        <div itemprop="articleBody">
+<!-- Contenido: Inicia  -->
+
+<p>Hace unas semanas recibimos una grata noticia: la Calificadora Internacional Moodys elevó por primera vez la nota soberana de México a la categoría A3 gracias a las reformas estructurales promovidas por el Presidente de la República y por el Poder Legislativo. Gracias a esa inédita calificación el territorio azteca se ha vuelto más atractivo para la Inversión Extranjera Directa elevándose su potencial de crecimiento. Gracias a esa nueva capacidad de pago los costos de financiamiento serán menores y los palazos para darle servicio a la deuda serán mayores tanto para el sector público, como para las empresas y las familias mexicanas.</p>
+
+<p>Si, con la globalización económica las calificaciones, los indicadores, los índices y los rankings de confianza, de desempeño, de competitividad han adquirido una relevante importancia.</p>
+
+<p>Esos índices, esos indicadores, esos rankings son las nuevas brújulas de los capitales nacionales e internacionales.</p>
+
+<p>Algo es seguro: ningún inversionista de gran calado osa, en el Siglo XXI, arriesgar sus dólares, sus euros, o sus pesos en un país, en un estado o en una región cuyas calificaciones de competitividad sean bajas.</p>
+
+<p>Es, en ese sentido, que preocupan y nos ocupan los alicaídos y mediocres índices y subíndices de competitividad de La Laguna. De acuerdo al Instituto Mexicano de la Competitividad la región metropolitana conocida como La Laguna, ocupa el lugar 44 de competitividad en un ranking que contempla a 77 zonas urbanas de la República Mexicana. Es decir, el IMCO nos considera en una posición media baja en cuanto a la capacidad que tenemos para atraer y retener inversiones y talentos.</p>
+
+<p>Posición media baja en materia de competitividad urbana que tiene mucho que ver con la larga ausencia de inversiones foráneas, tanto nacionales como extranjeras.</p>
+
+<p>Amigas y amigos: no podemos, ni debemos, ni tenemos por qué mantener a La Laguna en una posición de competitividad tan baja, en un ranking que incide en desempleo, en alicaídos niveles de ingreso y consumo, en fuga de cerebros, en debilitamiento de las cadenas productivas.</p>
+
+<p>Lo que debemos, podemos y tenemos que hacer “todos” los que integramos la sociedad comarcana, es trabajar organizadamente, eficientemente, eficazmente para elevar a la brevedad posible la capacidad de La Laguna para atraer y retener inversiones productivas, inversiones generadoras de empleos y de riqueza social. Tenemos, “todos”, que esforzarnos, planear, proyectar, diseñar y poner en marcha rutas de acción que coloquen a La Laguna en el lugar que merece, en el lugar que no hace mucho ocupaba en el entorno nacional, en el lugar que la pusieron los fundadores de la metrópoli conocida como la “Región de los Grandes Esfuerzos”.</p>
+
+<p>Y al hacer énfasis en el “todos”, me refiero a los que integramos la comunidad lagunera, porque la competitividad es, al final de cuentas, una suma de múltiples factores responsabilidad de múltiples actores. De los gobiernos sí, pero también de los empresarios, de los trabajadores, de los sindicatos, de las universidades, de los profesionistas, de los investigadores, de los comunicadores.</p>
+
+<p>El IMCO mide la competitividad de una región sumando el resultado de 60 indicadores, mismos que tienen que ver con infraestructura urbana, con seguridad, con Estado de Derecho, con hospedaje industrial, con acervo cultural, con educación, con sustentabilidad ecológica, con productividad laboral, con regulación empresarial, con certificación, con emprendimiento, con innovación, con tecnología, entre otros muchos.</p>
+
+<p>Tomando en cuenta que la competitividad es un asunto que compete a gobierno y sociedad, a un esfuerzo de gobernanza, pues, el Alcalde Miguel Riquelme y el honorable Cabildo de Torreón formalizaron la creación del Instituto de Planeación y Competitividad de Torreón, el IMPLAN, un organismo ciudadanizado, descentralizado, con personalidad jurídica y patrimonio propio. Un organismo que se rige por un consejo integrado por 22 personas, 15 ciudadanos y 7 representantes del ayuntamiento.</p>
+
+<p>Un organismo, el IMPLAN, que tiene como propósito el cumplimiento de las funciones de planeación integral que ordene el accionar de las entidades del Ayuntamiento de Torreón y que concerté el accionar de los municipios comarcanos, de los gobiernos estatal y federal, de las universidades, del sector privado a favor de la competitividad de La Laguna.</p>
+
+<p>En el IMPLAN ciudadanos y gobierno empezaremos por determinar el Sistema de Información Geográfica y el balance económico de la región. El balance económico de la región lo haremos construyendo un Sistema Municipal de Indicadores. Con base en el balance diseñaremos la visión de metrópoli a 4, 8, 12, 16 y 20 años, entendiendo que la planeación debe trascender los tiempos políticos acotados en los periodos de gobierno. Entendiendo la urgente necesidad de que el desarrollo de La Laguna no se someta a actos de voluntarismo de un gobierno sino a la unión de capacidades de todos los actores de la Comarca Lagunera en torno a una perspectiva común de largo plazo, en torno a una visión de futuro.</p>
+
+<p>La planeación es el principio ordenador y la competitividad urbana el objetivo intermedio para alcanzar el propósito último de la acción de gobernanza del Instituto Municipal de Planeación y Competitividad de Torreón: Que los ciudadanos de la zona metropolitana conocida como La Laguna logren una vida sana, segura, productiva, en armonía con sus tradiciones, sus valores culturales y espirituales; es decir, un equilibrio entre el desarrollo humano, la prosperidad económica, individual y colectiva, y el respeto de los ecosistemas.</p>
+
+<!-- Contenido: Termina -->
+        </div>
+              <div class="publicador" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+          <span class="contenido-imagen-previa"><img class="img-responsive" itemprop="image" alt="Instituto Municipal de Planeación y Competitividad de Torreón" src="../imagenes/implan-logo.png"></span>
+          <h3 class="titulo" itemprop="name">Instituto Municipal de Planeación y Competitividad de Torreón</h3>
+          <div class="descripcion" itemprop="description">Órgano técnico responsable de la planeación del desarrollo del municipio de Torreón, Coahuila, México.</div>
+          <div class="contenido-imagen-previa-final"></div>
+        </div>
+      </div></article>
+      <aside>
+  <!-- Extra: Inicia  -->
+  <h3>Publicaciones relacionadas</h3>
+<p><b>Análisis Publicados</b></p>
+<ul>
+  <li><a href="http://www.trcimplan.gob.mx/blog/vision-vencedores.html">La visi&oacute;n de los vencedores</a></li>
+  <li><a href="http://www.trcimplan.gob.mx/blog/caracteristicas-de-la-industria-en-la-laguna-marzo2020.html">Caracter&iacute;sticas de la Industria en La Laguna</a></li>
+  <li><a href="http://www.trcimplan.gob.mx/blog/movilidad-urbana-competitividad.html">Movilidad Urbana y Competitividad</a></li>
+  <li><a href="http://www.trcimplan.gob.mx/blog/torreon-una-nueva-realidad-economica.html">Torre&oacute;n: Una Nueva Realidad Econ&oacute;mica</a></li>
+  <li><a href="http://www.trcimplan.gob.mx/blog/resultados-de-los-censos-economicos-2014.html">Resultados de los Censos Econ&oacute;micos 2014</a></li>
+  <li><a href="http://www.trcimplan.gob.mx/blog/panorama-educacion-superior-zml-parte-2.html">Panorama de la Educaci&oacute;n Superior en la Z.M.L. (parte 2)</a></li>
+  <li><a href="http://www.trcimplan.gob.mx/blog/alumnos-por-docente-parte-2.html">Alumnos por docente, indicador clave para la mejora de la educaci&oacute;n (parte 2)</a></li>
+  <li><a href="http://www.trcimplan.gob.mx/blog/alumnos-por-docente-parte-1.html">Alumnos por docente, indicador clave para la mejora de la educaci&oacute;n (parte 1)</a></li>
+  <li><a href="http://www.trcimplan.gob.mx/blog/panorama-educacion-superior-zml-parte-1.html">Panorama de la Educaci&oacute;n Superior en la Z.M.L. (parte 1)</a></li>
+  <li><a href="http://www.trcimplan.gob.mx/blog/consumo-local-alternativa-ciudad-competitiva.html">El consumo local: alternativa para una ciudad competitiva</a></li>
+</ul>
+<p><b>Sistema Metropolitano de Indicadores</b></p>
+<ul>
+  <li><a href="http://www.trcimplan.gob.mx/indicadores-gomez-palacio/economia-investigadores.html">Investigadores en G&oacute;mez Palacio</a></li>
+  <li><a href="http://www.trcimplan.gob.mx/indicadores-gomez-palacio/economia-oferta-de-cuartos-de-hotel-de-cuatro-y-cinco-estrellas.html">Oferta de Cuartos de Hotel de Cuatro y Cinco Estrellas en G&oacute;mez Palacio</a></li>
+  <li><a href="http://www.trcimplan.gob.mx/indicadores-matamoros/economia-indice-de-competitividad-urbana.html">&Iacute;ndice de Competitividad Urbana en Matamoros</a></li>
+  <li><a href="http://www.trcimplan.gob.mx/indicadores-lerdo/economia-indice-de-competitividad-urbana.html">&Iacute;ndice de Competitividad Urbana en Lerdo</a></li>
+  <li><a href="http://www.trcimplan.gob.mx/indicadores-gomez-palacio/economia-indice-de-competitividad-urbana.html">&Iacute;ndice de Competitividad Urbana en G&oacute;mez Palacio</a></li>
+  <li><a href="http://www.trcimplan.gob.mx/indicadores-torreon/economia-indice-de-competitividad-urbana.html">&Iacute;ndice de Competitividad Urbana en Torre&oacute;n</a></li>
+  <li><a href="http://www.trcimplan.gob.mx/indicadores-la-laguna/economia-oferta-de-cuartos-de-hotel-de-cuatro-y-cinco-estrellas.html">Oferta de Cuartos de Hotel de Cuatro y Cinco Estrellas en La Laguna</a></li>
+  <li><a href="http://www.trcimplan.gob.mx/indicadores-matamoros/economia-oferta-de-cuartos-de-hotel-de-cuatro-y-cinco-estrellas.html">Oferta de Cuartos de Hotel de Cuatro y Cinco Estrellas en Matamoros</a></li>
+  <li><a href="http://www.trcimplan.gob.mx/indicadores-lerdo/economia-oferta-de-cuartos-de-hotel-de-cuatro-y-cinco-estrellas.html">Oferta de Cuartos de Hotel de Cuatro y Cinco Estrellas en Lerdo</a></li>
+  <li><a href="http://www.trcimplan.gob.mx/indicadores-torreon/economia-oferta-de-cuartos-de-hotel-de-cuatro-y-cinco-estrellas.html">Oferta de Cuartos de Hotel de Cuatro y Cinco Estrellas en Torre&oacute;n</a></li>
+</ul>
+<p><b>Plan Estratégico Torreón</b></p>
+<ul>
+  <li><a href="http://www.trcimplan.gob.mx/pet/cartera-proyectos-desarrollo-economico-innovacion.html">Cartera de Proyectos: Desarrollo Econ&oacute;mico e Innovaci&oacute;n</a></li>
+  <li><a href="http://www.trcimplan.gob.mx/pet/vision-desarrollo-economico-innovacion.html">Visi&oacute;n de Desarrollo Econ&oacute;mico e Innovaci&oacute;n 2040</a></li>
+  <li><a href="http://www.trcimplan.gob.mx/pet/diagnostico-estrategico-desarrollo-economico-innovacion.html">Diagn&oacute;stico Estrat&eacute;gico: Desarrollo Econ&oacute;mico e Innovaci&oacute;n</a></li>
+</ul>
+<p><b>Sala de Prensa</b></p>
+<ul>
+  <li><a href="http://www.trcimplan.gob.mx/sala-prensa/2017-06-17-comunicado-prensa.html">Comunicado de Prensa - Respuesta del IMPLAN al CLIP</a></li>
+  <li><a href="http://www.trcimplan.gob.mx/sala-prensa/2018-11-29-imco-2018.html">Posici&oacute;n de La Laguna en el &Iacute;ndice de Competitividad Urbana 2018</a></li>
+  <li><a href="http://www.trcimplan.gob.mx/sala-prensa/encuentro-laguna-y2040-2018.html">Encuentro Y2040 2018</a></li>
+  <li><a href="http://www.trcimplan.gob.mx/sala-prensa/2018-02-12-laguna-y2040-youth-challenge-2018.html">Presentan segunda edici&oacute;n del encuentro Laguna Y2040 Youth Challenge 2018</a></li>
+  <li><a href="http://www.trcimplan.gob.mx/sala-prensa/2017-08-31-implan-firma-convenio-con-el-cluster-automotriz.html">IMPLAN firma convenio con el Cl&uacute;ster Automotriz</a></li>
+  <li><a href="http://www.trcimplan.gob.mx/sala-prensa/2016-09-07-indice-de-competitividad-urbana.html">&Iacute;ndice de Competitividad Urbana 2016</a></li>
+  <li><a href="http://www.trcimplan.gob.mx/sala-prensa/2015-11-12-laguna-robot-challange-2015-presentacion.html">IMPLAN busca hacer de La Laguna &ldquo;Capital de la Rob&oacute;tica&rdquo;</a></li>
+  <li><a href="http://www.trcimplan.gob.mx/sala-prensa/2014-05-12-comunicado-prensa.html">Comunicado de Prensa 12.5.14</a></li>
+</ul>
+  <!-- Extra: Termina -->
+  </aside>
+<div class="contenido-social">
+  <h5>Compartir en Redes Sociales</h5>
+  <a href="https://twitter.com/share" class="twitter-share-button" data-via="trcimplan" data-lang="es">Twittear</a>
+  <iframe src="//www.facebook.com/plugins/like.php?href=http%3A%2F%2Fwww.trcimplan.gob.mx%2Fblog%2Fque-vuelva-la-region-de-los-grandes-esfuerzos.html&amp;width=300&amp;layout=button_count&amp;action=like&amp;show_faces=true&amp;share=false&amp;height=21" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:300px; height:21px;" allowTransparency="true"></iframe>
+</div>
+    </div>
+    <div class="mapa-inferior">
+          <div class="pull-right redes-sociales">
+            <a class="fa fa-twitter-square" href="http://www.twitter.com/trcimplan" target="_blank"></a>
+            <a class="fa fa-facebook-square" href="https://facebook.com/trcimplan" target="_blank"></a>
+            <a class="fa fa-facebook-square" href="http://www.instagram.com/implantorreon" target="_blank"></a>
+            <a class="fa fa-rss-square" href="../rss.xml"></a>
+          </div>
+    </div>
+  </div>
+</div>
+<!-- Javascript global inicia -->
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
+<script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="../vendor/metisMenu/metisMenu.min.js"></script>
+<script type="text/javascript" src="../vendor/datatables/js/jquery.dataTables.min.js"></script>
+<script type="text/javascript" src="../vendor/datatables-plugins/dataTables.bootstrap.min.js"></script>
+<script type="text/javascript" src="../vendor/datatables-responsive/dataTables.responsive.js"></script>
+<script type="text/javascript" src="../vendor/raphael/raphael.min.js"></script>
+<script type="text/javascript" src="../vendor/morrisjs/morris.min.js"></script>
+<script type="text/javascript" src="../dist/js/sb-admin-2.min.js"></script>
+<script type="text/javascript" src="http://libs.cartocdn.com/cartodb.js/v3/3.15/cartodb.js"></script>
+<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+<!-- Javascript global termina -->
+<!-- Javascript inicia -->
+<script>
+  // Twitter
+  !function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="https://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");
+</script>
+
+<!-- Javascript termina -->
+<!-- Javascript Google Analytics -->
+<script>
+  // Google Analytics
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)})(window,document,'script','//www.google-analytics.com/analytics.js','ga');ga('create', 'UA-58290501-1', 'auto');ga('send', 'pageview');
+</script>
+</body>
+</html>

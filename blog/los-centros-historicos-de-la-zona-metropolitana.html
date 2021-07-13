@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+<!-- ===================================================================================================
+
+        Instituto Municipal de Planeación y Competitividad (IMPLAN) de Torreón.
+
+        3er. generación de la Plataforma del Conocimiento
+        Desarrollado por Ing. Guillermo Valdés Lozano <guivaloz en movimientolibre.com>
+
+        El software que lo construye está bajo la licencia GPL versión 3. © 2014, 2015, 2016, 2017.
+        Una copia está contenida en el archivo LICENCE al bajar desde GitHub.
+
+        Al usar, estudiar y copiar está aceptando los términos de uso de la información y del sitio web:
+          http://www.trcimplan.gob.mx/terminos/terminos-informacion.html
+          http://www.trcimplan.gob.mx/terminos/terminos-sitio.html
+
+        Descargue, estudie y colabore bajando todo este sitio web:
+          IMPLAN Torreón     https://github.com/TRCIMPLAN/trcimplan.github.io
+
+        Agradecemos y compartimos las tecnologías abiertas y gratuitas sobre las que se basa:
+          PHP                http://php.net
+          Twitter Bootstrap  http://getbootstrap.com
+          StartBootStrap     http://startbootstrap.com
+          Morris.js          https://morrisjs.github.io/morris.js/
+          Font Awesome       http://fontawesome.io
+          DataTables         https://www.datatables.net
+          Carto              https://carto.com
+          GitHub             https://github.com
+
+     =================================================================================================== -->
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="En la Zona Metropolitana de la Laguna es necesario reforzar la identidad y la importancia de los centros históricos, actualmente sólo Torreón cuenta con decreto oficial para este perímetro de la ciudad y en Gómez Palacio este año en Cabildo se aprobó la declaratoria de Centro Histórico de la ciudad.">
+  <meta name="author" content="Arq. Jair Miramontes Chávez">
+  <meta name="keywords" content="IMPLAN, Torreon, Zona Metropolitana, Centro, Historico">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Los Centros Históricos de la Zona Metropolitana - IMPLAN Torreón">
+  <meta name="twitter:description" content="En la Zona Metropolitana de la Laguna es necesario reforzar la identidad y la importancia de los centros históricos, actualmente sólo Torreón cuenta con decreto oficial para este perímetro de la ciudad y en Gómez Palacio este año en Cabildo se aprobó la declaratoria de Centro Histórico de la ciudad.">
+  <meta name="twitter:image" content="http://www.trcimplan.gob.mx/blog/los-centros-historicos-de-la-zona-metropolitana/imagen-previa.jpg">
+  <meta name="twitter:url" content="http://www.trcimplan.gob.mx/blog/los-centros-historicos-de-la-zona-metropolitana.html">
+  <meta name="og:title" content="Los Centros Históricos de la Zona Metropolitana - IMPLAN Torreón">
+  <meta name="og:description" content="En la Zona Metropolitana de la Laguna es necesario reforzar la identidad y la importancia de los centros históricos, actualmente sólo Torreón cuenta con decreto oficial para este perímetro de la ciudad y en Gómez Palacio este año en Cabildo se aprobó la declaratoria de Centro Histórico de la ciudad.">
+  <meta name="og:image" content="http://www.trcimplan.gob.mx/blog/los-centros-historicos-de-la-zona-metropolitana/imagen-previa.jpg">
+  <meta name="og:url" content="http://www.trcimplan.gob.mx/blog/los-centros-historicos-de-la-zona-metropolitana.html">
+  <title>Los Centros Históricos de la Zona Metropolitana - IMPLAN Torreón</title>
+  <link rel="shortcut icon" type="image/x-icon" href="../imagenes/apple-touch-icon.png">
+  <link rel="apple-touch-icon" href="../imagenes/apple-touch-icon.png">
+  <link rel="apple-touch-icon" href="../imagenes/apple-touch-icon-76x76.png" sizes="76x76">
+  <link rel="apple-touch-icon" href="../imagenes/apple-touch-icon-120x120.png" sizes="120x120">
+  <link rel="apple-touch-icon" href="../imagenes/apple-touch-icon-152x152.png" sizes="152x152">
+  <link rel="apple-touch-icon" href="../imagenes/apple-touch-icon-180x180.png" sizes="180x180">
+  <link rel="icon" href="../imagenes/icon-hires.png" sizes="192x192">
+  <link rel="icon" href="../imagenes/icon-normal.png" sizes="128x128">
+  <link rel="alternate" type="application/rss+xml" href="../rss.xml" title="IMPLAN Torreón">
+  <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+  <link rel="stylesheet" type="text/css" href="../vendor/metisMenu/metisMenu.min.css">
+  <link rel="stylesheet" type="text/css" href="../vendor/datatables-plugins/dataTables.bootstrap.css">
+  <link rel="stylesheet" type="text/css" href="../vendor/morrisjs/morris.css">
+  <link rel="stylesheet" type="text/css" href="../vendor/font-awesome/css/font-awesome.min.css">
+  <link rel="stylesheet" type="text/css" href="../dist/css/sb-admin-2.min.css">
+  <link rel="stylesheet" type="text/css" href="../dist/css/plataforma-de-conocimiento.css">
+  <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Noto+Sans|Roboto+Condensed:400,700">
+  <link rel="stylesheet" type="text/css" href="http://libs.cartocdn.com/cartodb.js/v3/3.15/themes/css/cartodb.css">
+  <link rel="stylesheet" type="text/css" href="../dist/css/estilosvm.css">
+  <link rel="stylesheet" type="text/css" href="../dist/css/trcimplan.css">
+  <!-- SOPORTE PARA IE -->
+  <!--[if lt IE 9]>
+  <script type="text/javascript" src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+  <script type="text/javascript" src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+  <![endif]-->
+</head>
+<body>
+<div id="wrapper">
+  <nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="../index.html"><img class="navbar-brand-img" src="../imagenes/implan-barra-logo-chico-gris.png" alt="IMPLAN Torreón"></a>
+    </div>
+  <div class="navbar-default sidebar" role="navigation">
+    <div class="sidebar-nav navbar-collapse">
+      <ul class="nav" id="side-menu">
+        <li class="sidebar-search">
+          <form method="get" action="http://www.trcimplan.gob.mx/buscador-resultados.html">
+            <div class="input-group custom-search-form">
+              <input type="text" class="form-control" placeholder="Google buscar..." value="" name="q">
+              <span class="input-group-btn">
+                <button class="btn btn-default" type="submit"><i class="fa fa-search"></i></button>
+              </span>
+            </div>
+          </form>
+        </li>
+        <li class="active">
+          <a href="#"><span class="navegacion-icono"><i class="fa fa-lightbulb-o"></i></span> Análisis Publicados<span class="fa arrow"></span></a>
+          <ul class="nav nav-second-level">
+            <li><a href="../blog/index.html"><span class="navegacion-icono"><i class="fa fa-file-text-o"></i></span> Últimos Análisis</a></li>
+            <li><a href="../excolaboradores/index.html"><span class="navegacion-icono"><i class="fa fa-file-text-o"></i></span> Análisis por Autor</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="#"><span class="navegacion-icono"><i class="fa fa-area-chart"></i></span> Indicadores<span class="fa arrow"></span></a>
+          <ul class="nav nav-second-level">
+            <li><a href="../smi/introduccion.html"><span class="navegacion-icono"><i class="fa fa-file-text-o"></i></span> Introducción al SMI</a></li>
+            <li><a href="../indicadores-categorias/index.html"><span class="navegacion-icono"><i class="fa fa-th-list"></i></span> Indicadores por Categoría</a></li>
+            <li><a href="../smi/por-region.html"><span class="navegacion-icono"><i class="fa fa-table"></i></span> Indicadores por Región</a></li>
+            <li><a href="../smi/datos-abiertos.html"><span class="navegacion-icono"><i class="fa fa-download"></i></span> Datos Abiertos</a></li>
+            <li><a href="../smi/niveles-socioeconomicos.html"><span class="navegacion-icono"><i class="fa fa-bar-chart"></i></span> Niveles Socioeconómicos</a></li>
+            <li><a href="../monitores/index.html"><span class="navegacion-icono"><i class="fa fa-file-text-o"></i></span> Monitores</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="#"><span class="navegacion-icono"><i class="fa fa-puzzle-piece"></i></span> Indicadores Básicos de Colonias<span class="fa arrow"></span></a>
+          <ul class="nav nav-second-level">
+            <li><a href="../ibc/introduccion.html"><span class="navegacion-icono"><i class="fa fa-file-text-o"></i></span> Introducción al IBC</a></li>
+            <li><a href="../ibc-colonias-torreon/index.html"><span class="navegacion-icono"><i class="fa fa-font"></i></span> Colonias de Torreón</a></li>
+            <li><a href="https://implantorreon.carto.com/u/sigimplan/builder/907a6bc0-2c7e-451e-9668-b78d952e52ff/embed" target="_blank"><span class="navegacion-icono"><i class="fa fa-external-link"></i></span> Mapa Completo</a></li>
+            <li><a href="../ibc/torreon-urbano.html"><span class="navegacion-icono"><i class="fa fa-table"></i></span> Torreón Urbano</a></li>
+            <li><a href="../ibc/datos-abiertos.html"><span class="navegacion-icono"><i class="fa fa-download"></i></span> Datos Abiertos</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="#"><span class="navegacion-icono"><i class="fa fa-map-marker"></i></span> Información Geográfica<span class="fa arrow"></span></a>
+          <ul class="nav nav-second-level">
+            <li><a href="../sig/introduccion.html"><span class="navegacion-icono"><i class="fa fa-file-text-o"></i></span> Introducción al SIG</a></li>
+            <li><a href="../sig-mapas-torreon/temas-sig.html"><span class="navegacion-icono"><i class="fa fa-map-o"></i></span> Mapas por Tema</a></li>
+            <li><a href="../sig-mapas-torreon/plan-director-desarrollo-urbano.html"><span class="navegacion-icono"><i class="fa fa-map-marker"></i></span> Usos de Suelo</a></li>
+            <li><a href="../sig/datos-abiertos.html"><span class="navegacion-icono"><i class="fa fa-download"></i></span> Datos Abiertos</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="#"><span class="navegacion-icono"><i class="fa fa-book"></i></span> Plan Estratégico Torreón 2040<span class="fa arrow"></span></a>
+          <ul class="nav nav-second-level">
+            <li><a href="../pet/indice.html"><span class="navegacion-icono"><i class="fa fa-list-ul"></i></span> Índice General</a></li>
+            <li><a href="../plan-estrategico-torreon-enfoque-metropolitano-2040/index.html"><span class="navegacion-icono"><i class="fa fa-download"></i></span> Descargar</a></li>
+            <li><a href="../plan-estrategico-metropolitano/descripcion-del-proceso.html"><span class="navegacion-icono"><i class="fa fa-calendar"></i></span> Descripción del proceso</a></li>
+            <li><a href="../proyectos/index.html"><span class="navegacion-icono"><i class="fa fa-check-square"></i></span> Proyectos</a></li>
+            <li><a href="../vision-de-ciudad/vision-de-ciudad.html"><span class="navegacion-icono"><i class="fa fa-file-text-o"></i></span> Visión de Ciudad desde IMPLAN</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="#"><span class="navegacion-icono"><i class="fa fa-briefcase"></i></span> Documentos<span class="fa arrow"></span></a>
+          <ul class="nav nav-second-level">
+            <li><a href="../sig-planes/index.html"><span class="navegacion-icono"><i class="fa fa-book"></i></span> Planes y Programas</a></li>
+            <li><a href="../investigaciones/index.html"><span class="navegacion-icono"><i class="fa fa-file-text-o"></i></span> Investigaciones</a></li>
+            <li><a href="../estudios/index.html"><span class="navegacion-icono"><i class="fa fa-file-text-o"></i></span> Estudios</a></li>
+          </ul>
+        </li>
+        <li><a href="../consejo-directivo/integrantes.html"><span class="navegacion-icono"><i class="fa fa-users"></i></span> Consejo Directivo</a></li>
+        <li><a href="../sala-prensa/index.html"><span class="navegacion-icono"><i class="fa fa-newspaper-o"></i></span> Sala de Prensa</a></li>
+        <li><a href="../programas-radio/index.html"><span class="navegacion-icono"><i class="fa fa-microphone"></i></span> Programas de Radio</a></li>
+        <li>
+          <a href="#"><span class="navegacion-icono"><i class="fa fa-file-text-o"></i></span> Consejo Visión Metrópoli<span class="fa arrow"></span></a>
+          <ul class="nav nav-second-level">
+            <li><a href="../convocatorias/vision-metropoli.html"><span class="navegacion-icono"><i class="fa fa-file-text-o"></i></span> Consejo Juvenil</a></li>
+            <li><a href="../vision-metropoli/integrantes.html"><span class="navegacion-icono"><i class="fa fa-file-text-o"></i></span> Integrantes del Consejo</a></li>
+            <li><a href="../vision-metropoli/index.html"><span class="navegacion-icono"><i class="fa fa-newspaper-o"></i></span> Sala de Prensa</a></li>
+            <li><a href="../vision-metropoli/reglamento-vision-metropoli-2020.pdf"><span class="navegacion-icono"><i class="fa fa-file-text-o"></i></span> Reglamento</a></li>
+            <li><a href="https://issuu.com/consejovisionmetropoli/docs/informe_visi_n_metr_poli_2019_-_2021" target="_blank"><span class="navegacion-icono"><i class="fa fa-file-text-o"></i></span> Informe 2019 - 2021</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="#"><span class="navegacion-icono"><i class="fa fa-building-o"></i></span> Institucional<span class="fa arrow"></span></a>
+          <ul class="nav nav-second-level">
+            <li><a href="../institucional/vision-mision.html"><span class="navegacion-icono"><i class="fa fa-trophy"></i></span> Misión / Visión</a></li>
+            <li><a href="../institucional/NuestrosProyectos.html"><span class="navegacion-icono"><i class="fa fa-pencil-square-o"></i></span> Nuestros Proyectos</a></li>
+            <li><a href="../institucional/mensaje-director.html"><span class="navegacion-icono"><i class="fa fa-comment"></i></span> Mensaje del Director</a></li>
+            <li><a href="../autores/index.html"><span class="navegacion-icono"><i class="fa fa-user"></i></span> Quienes Somos</a></li>
+            <li><a href="../institucional/estructura-organica.html"><span class="navegacion-icono"><i class="fa fa-sitemap"></i></span> Estructura Orgánica</a></li>
+            <li><a href="../institucional/modelo-operativo-universal.html"><span class="navegacion-icono"><i class="fa fa-slideshare"></i></span> Modelo Operativo Univ.</a></li>
+            <li><a href="../institucional/reglamentos.html"><span class="navegacion-icono"><i class="fa fa-gavel"></i></span> Reglamentos</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="#"><span class="navegacion-icono"><i class="fa fa-external-link"></i></span> Transparencia<span class="fa arrow"></span></a>
+          <ul class="nav nav-second-level">
+            <li><a href="http://www2.icai.org.mx/ipo/dependencia.php?dep=178#pageload" target="_blank"><span class="navegacion-icono"><i class="fa fa-file-text-o"></i></span> Transparencia Estatal (ICAI)</a></li>
+            <li><a href="https://consultapublicamx.inai.org.mx/vut-web/faces/view/consultaPublica.xhtml#inicio" target="_blank"><span class="navegacion-icono"><i class="fa fa-file-text-o"></i></span> Plataforma Nacional de Transparencia</a></li>
+            <li><a href="../transparencia/index.html"><span class="navegacion-icono"><i class="fa fa-briefcase"></i></span> Documentos</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="#"><span class="navegacion-icono"><i class="fa fa-share-alt"></i></span> Términos de Uso<span class="fa arrow"></span></a>
+          <ul class="nav nav-second-level">
+            <li><a href="../terminos/terminos-informacion.html"><span class="navegacion-icono"><i class="fa fa-cubes"></i></span> De la información</a></li>
+            <li><a href="../terminos/terminos-sitio.html"><span class="navegacion-icono"><i class="fa fa-globe"></i></span> Del sitio web</a></li>
+            <li><a href="../terminos/privacidad.html"><span class="navegacion-icono"><i class="fa fa-lock"></i></span> Aviso de Privacidad</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="#"><span class="navegacion-icono"><i class="fa fa-phone"></i></span> Contacto<span class="fa arrow"></span></a>
+          <ul class="nav nav-second-level">
+            <li><a href="../contacto/contacto.html"><span class="navegacion-icono"><i class="fa fa-phone"></i></span> Medios de contacto</a></li>
+            <li><a href="../preguntas-frecuentes/preguntas-frecuentes.html"><span class="navegacion-icono"><i class="fa fa-question"></i></span> Preguntas Frecuentes</a></li>
+            <li><a href="http://goo.gl/forms/1rdX4X128PpMOif73" target="_blank"><span class="navegacion-icono"><i class="fa fa-external-link"></i></span> Comentarios y Sugerencias</a></li>
+          </ul>
+        </li>
+        <li><a href="../convocatorias/index.html"><span class="navegacion-icono"><i class="fa fa-file-text-o"></i></span> Convocatorias</a></li>
+        <li><a href="http://177.244.42.17/ovie-torreon/#!" target="_blank"><span class="navegacion-icono"><i class="fa fa-map-marker"></i></span> Oficina Virtual de Información Económica (OVIE)</a></li>
+        <li><a href="https://arcg.is/0vySSr" target="_blank"><span class="navegacion-icono"><i class="fa fa-globe"></i></span> Atlas Municipal de Riesgos de Torreón</a></li>
+      </ul>
+    </div>
+  </div>
+  </nav>
+  <div id="page-wrapper">
+    <div class="cuerpo">
+      <article><div itemscope itemtype="http://schema.org/BlogPosting">
+        <div class="encabezado">
+          <h1 itemprop="headline">Los Centros Históricos de la Zona Metropolitana</h1>
+          <div class="encabezado-descripcion" itemprop="description">En la Zona Metropolitana de la Laguna es necesario reforzar la identidad y la importancia de los centros históricos, actualmente sólo Torreón cuenta con decreto oficial para este perímetro de la ciudad y en Gómez Palacio este año en Cabildo se aprobó la declaratoria de Centro Histórico de la ciudad.</div>
+          <div class="encabezado-autor-fecha">
+            Por <span itemprop="author">Arq. Jair Miramontes Chávez</span> -
+            <meta itemprop="datePublished" content="2018-02-21T11:00">21/02/2018 11:00
+          </div>
+        </div>
+        <span class="contenido-imagen-previa"><img class="img-responsive" itemprop="image" alt="Los Centros Históricos de la Zona Metropolitana" src="los-centros-historicos-de-la-zona-metropolitana/imagen.jpg"></span>
+        <div itemprop="articleBody">
+<!-- Contenido: Inicia  -->
+<p>Los <strong>centros históricos</strong> pueden considerarse como los sitios de mayor simbolismo, significativos, apreciados y distintivos de cualquier ciudad, son los espacios que la dotan de un carácter especial y que la hacen diferente de las demás. Son lugares donde existen monumentos históricos, edificaciones simbólicas y conjuntos arquitectónicos de interés.</p>
+
+<p>Estos elementos provocan que la ciudad sea un lugar del cual puedan sentirse orgullosos sus propios habitantes, el centro histórico representa la memoria colectiva de la ciudad, en sus calles se aprecian los vestigios del urbanismo de diferentes épocas y obras arquitectónicas que muestran la historia viva del pasado.</p>
+
+<p>Por esta razón tiene un valor educativo y de interés general en los propios habitantes, viajeros y turistas. Un hecho muy importante es que los centros históricos encierran valores de convivencia para la mayoría de los ciudadanos, las calles y plazas que se ubican en ellos son lugares de paseo y de encuentro, son espacio de diversidad y mezcla funcional que provocan las relaciones sociales. Estas características hacen de los centros históricos los espacios sociales físicos de más valor y complejidad de la ciudad.</p>
+
+<h3>EN LOS MUNICIPIOS LAGUNEROS</h3>
+
+<p>En la Zona Metropolitana de la Laguna es necesario reforzar la identidad y la importancia de los centros históricos, detonar y sacar el mayor provecho de ellos, en lo urbano, turístico, económico y funcional. Torreón es la primer ciudad de la ZML que por decreto se declaró como “Conjunto Histórico de Torreón” (noviembre de 1996)  en el que se incluyen 241 manzanas.</p>
+
+<p>En Gómez Palacio fue en la primera sesión ordinaria de Cabildo de este año que aprobaron la declaratoria de Centro Histórico de la ciudad, así como el reglamento respectivo, donde se autorizó a la Secretaria del Ayuntamiento enviar al Congreso del Estado el proyecto de decreto para darle vigencia a dicha declaratoria, donde se establecerá el marco legal para el resguardo del conjunto de los bienes culturales y naturales, así como la preservación, conservación o rescate del patrimonio histórico y arquitectónico del municipio. El reglamento aprobado consta de 13 capítulos en 113 artículos que abarcan el centro histórico, así como monumentos y fincas rurales.</p>
+
+<p>Con esta declaratoria se tiene la oportunidad de poder evitar que inmuebles de particulares con valor histórico o arquitectónico sean demolidos sin ningún control oficial.</p>
+
+<p>En las ciudades de Lerdo, Durango; y Matamoros, Coahuila; se han realizado acciones de remozamiento en fachadas, banquetas, pavimentos y mejoras de infraestructura en sus centros históricos, pero actualmente no se cuenta con reglamento o delimitación para protección y conservación, lo importante es que se pudiera contar con un “Plan Parcial de Desarrollo Urbano”.</p>
+
+<p>Los planes parciales representan el instrumento rector para el ordenamiento del territorio, pues integran el conjunto de normas específicas a efecto de precisar la zonificación y regular los usos, destinos y reservas en los predios localizados en su área de aplicación.</p>
+
+<p>No todos los centros históricos de las diversas ciudades son iguales, a pesar de que la gran mayoría de estos suelen presentar características comunes, se puede realizar una clasificación atendiendo a su funcionalidad y tipología, a grandes rasgos, los centros históricos se dividen en tres grandes grupos según su funcionalidad:</p>
+
+<p>a) Centros históricos que han dejado de ser el centro urbano a nivel económico o funcional, pero que conservan la centralidad histórica y cultural.</p>
+
+<p>b) Centros históricos que continúan siendo el centro funcional de la ciudad actual.</p>
+
+<p>c) Centros históricos donde lo histórico y lo funcional mantienen cierta complementariedad, conservando además los elementos de centralidad.</p>
+
+<p>Un mal común que sufren estas zonas urbanas son los procesos de degradación, que hacen que estos lugares  ya no sean  un lugar atractivo para vivir, llevando poco a poco a que el centro empiece a estar habitado mayoritariamente por grupos no productivos de rentas bajas y escaso poder económico.</p>
+
+<p>No obstante el centro histórico constituye una pieza fundamental en el paisaje urbano de la ciudad. Aunque representa una parte pequeña en el actual tejido urbano el casco antiguo es el espacio histórico por excelencia y en gran medida la memoria colectiva de la ciudad, es el resultado histórico - social que contribuye a los rasgos singulares de un determinado paisaje urbano y a que la ciudad tenga sus propias señas de identidad.</p>
+
+<h3>SITUACIÓN DE LOS CH</h3>
+
+<p><strong>Torreón es la primer ciudad de la ZML que por decreto se declaró como “Conjunto Histórico de Torreón”  en el que se incluyen 241 manzanas.</strong></p>
+
+<p>Tiene 83 edificios catalogados como históricos por el INAH.</p>
+
+<p>Gómez Palacio cuenta con la declaratoria de Centro Histórico de la ciudad.</p>
+
+<p>El reglamento aprobado consta de 13 capítulos en 113 artículos.</p>
+
+<p>Matamoros cuenta con 50 manzanas como propuesta de regeneración para su Centro Histórico.</p>
+
+<p>Tiene 37 edificios considerados históricos, según su Plan Director de Desarrollo Urbano.</p>
+
+<h3>Centros Históricos de la Zona Metropolitana</h3>
+
+<p><img class="img-responsive" src="los-centros-historicos-de-la-zona-metropolitana/centros-historicos.jpg" alt="Centros Históricos de la Zona Metropolitana"></p>
+
+<h3>Centro Histórico Torreón</h3>
+
+<p><img class="img-responsive" src="los-centros-historicos-de-la-zona-metropolitana/centro2.jpg" alt="Centro Histórico Torreón"></p>
+
+<!-- Contenido: Termina -->
+        </div>
+              <div class="publicador" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+          <span class="contenido-imagen-previa"><img class="img-responsive" itemprop="image" alt="Instituto Municipal de Planeación y Competitividad de Torreón" src="../imagenes/implan-logo.png"></span>
+          <h3 class="titulo" itemprop="name">Instituto Municipal de Planeación y Competitividad de Torreón</h3>
+          <div class="descripcion" itemprop="description">Órgano técnico responsable de la planeación del desarrollo del municipio de Torreón, Coahuila, México.</div>
+          <div class="contenido-imagen-previa-final"></div>
+        </div>
+      </div></article>
+      <aside>
+  <!-- Extra: Inicia  -->
+  <h3>Publicaciones relacionadas</h3>
+<p><b>Análisis Publicados</b></p>
+<ul>
+  <li><a href="http://www.trcimplan.gob.mx/blog/principales-desafios-para-convertir-a-la-laguna-en-una-smart-city-marzo2019.html">Principales desaf&iacute;os para convertir a La Laguna en una Smart City</a></li>
+  <li><a href="http://www.trcimplan.gob.mx/blog/turismo-urbano-como-motor-en-las-ciudades.html">Turismo urbano como motor en las ciudades</a></li>
+  <li><a href="http://www.trcimplan.gob.mx/blog/plaza-de-armas-lugar-emblematico-de-torreon.html">Plaza De Armas: lugar emblem&aacute;tico de Torre&oacute;n</a></li>
+  <li><a href="http://www.trcimplan.gob.mx/blog/caracteristicas-de-un-buen-espacio-publico-ene2020.html">Caracter&iacute;sticas de un Buen Espacio P&uacute;blico</a></li>
+  <li><a href="http://www.trcimplan.gob.mx/blog/reciclaje-urbano-ejemplo-de-recuperacion-de-la-herencia-historica.html">Reciclaje Urbano: ejemplo de recuperaci&oacute;n de la herencia hist&oacute;rica</a></li>
+  <li><a href="http://www.trcimplan.gob.mx/blog/regeneracion-urbana-para-una-calidad-de-vida.html">Regeneraci&oacute;n Urbana para una Mejor Calidad de Vida</a></li>
+  <li><a href="http://www.trcimplan.gob.mx/blog/por-la-conservacion-del-patrimonio-arquitectonico-en-la-laguna.html">Por la conservaci&oacute;n del patrimonio arquitect&oacute;nico en La Laguna</a></li>
+  <li><a href="http://www.trcimplan.gob.mx/blog/nuevas-tendencias-del-fondo-metropolitano-oct2019.html">Nuevas Tendencias del Fondo Metropolitano</a></li>
+  <li><a href="http://www.trcimplan.gob.mx/blog/centros-de-convenciones-julio2019.html">Los Centros de Convenciones como Equipamiento para el Desarrollo del Turismo de Reuniones</a></li>
+  <li><a href="http://www.trcimplan.gob.mx/blog/planificacion-urbana-en-la-salud-publica-de-la-laguna.html">La planificaci&oacute;n urbana, fundamental en la salud p&uacute;blica de los laguneros.</a></li>
+</ul>
+<p><b>Sistema Metropolitano de Indicadores</b></p>
+<ul>
+  <li><a href="http://www.trcimplan.gob.mx/indicadores-torreon/sustentabilidad-acceso-a-vialidades-pavimentadas.html">Acceso a Vialidades Pavimentadas en Torre&oacute;n</a></li>
+  <li><a href="http://www.trcimplan.gob.mx/indicadores-matamoros/sustentabilidad-red-carretera-troncal-federal.html">Red Carretera Troncal Federal en Matamoros</a></li>
+  <li><a href="http://www.trcimplan.gob.mx/indicadores-torreon/sustentabilidad-red-carretera-avanzada.html">Red Carretera Avanzada en Torre&oacute;n</a></li>
+  <li><a href="http://www.trcimplan.gob.mx/indicadores-lerdo/sustentabilidad-red-carretera-avanzada.html">Red Carretera Avanzada en Lerdo</a></li>
+  <li><a href="http://www.trcimplan.gob.mx/indicadores-matamoros/sustentabilidad-red-carretera-avanzada.html">Red Carretera Avanzada en Matamoros</a></li>
+  <li><a href="http://www.trcimplan.gob.mx/indicadores-la-laguna/sustentabilidad-red-carretera-avanzada.html">Red Carretera Avanzada en La Laguna</a></li>
+  <li><a href="http://www.trcimplan.gob.mx/indicadores-gomez-palacio/sustentabilidad-red-carretera-avanzada.html">Red Carretera Avanzada en G&oacute;mez Palacio</a></li>
+  <li><a href="http://www.trcimplan.gob.mx/indicadores-matamoros/sustentabilidad-acceso-a-vialidades-pavimentadas.html">Acceso a Vialidades Pavimentadas en Matamoros</a></li>
+  <li><a href="http://www.trcimplan.gob.mx/indicadores-matamoros/sustentabilidad-red-carretera-de-alimentadoras-estatales.html">Red Carretera de Alimentadoras Estatales en Matamoros</a></li>
+  <li><a href="http://www.trcimplan.gob.mx/indicadores-matamoros/sustentabilidad-red-carretera-total.html">Red Carretera Total en Matamoros</a></li>
+</ul>
+<p><b>Sistema de Información Geográfica</b></p>
+<ul>
+  <li><a href="http://www.trcimplan.gob.mx/sig-mapas-torreon/ambito-regional-zona-metropolitana-laguna.html">&Aacute;mbito Regional de la Zona Metropolitana de La Laguna</a></li>
+  <li><a href="http://www.trcimplan.gob.mx/sig-mapas-torreon/plan-director-desarrollo-urbano.html">Plan Director de Desarrollo Urbano</a></li>
+  <li><a href="http://www.trcimplan.gob.mx/sig-mapas-torreon/inventario-viviendas.html">Inventario de Viviendas</a></li>
+  <li><a href="http://www.trcimplan.gob.mx/sig-mapas-torreon/vida-en-ciudad.html">Vida en la Ciudad</a></li>
+  <li><a href="http://www.trcimplan.gob.mx/sig-mapas-torreon/centros-atencion-adultos-mayores.html">Centros de Atenci&oacute;n a Adultos Mayores</a></li>
+  <li><a href="http://www.trcimplan.gob.mx/sig-mapas-torreon/conjuntos-parques-industriales.html">Conjuntos y Parques Industriales</a></li>
+  <li><a href="http://www.trcimplan.gob.mx/sig-mapas-torreon/peligros-quimicos-tecnologicos.html">Peligros Qu&iacute;micos Tecnol&oacute;gicos</a></li>
+  <li><a href="http://www.trcimplan.gob.mx/sig-mapas-torreon/riesgos-sanitarios-ambientales.html">Riesgos Sanitarios Ambientales</a></li>
+  <li><a href="http://www.trcimplan.gob.mx/sig-mapas-torreon/zonas-riesgo-por-desbordamiento-inundacion-o-estancamiento.html">Zonas de Riesgo por desbordamiento, inundaci&oacute;n o estancamiento</a></li>
+  <li><a href="http://www.trcimplan.gob.mx/sig-mapas-torreon/riesgos-socio-organizativos.html">Riesgos Socio Organizativos</a></li>
+</ul>
+<p><b>Plan Estratégico Torreón</b></p>
+<ul>
+  <li><a href="http://www.trcimplan.gob.mx/pet/diagnostico-estrategico-desarrollo-social.html">Diagn&oacute;stico Estrat&eacute;gico: Desarrollo Social</a></li>
+  <li><a href="http://www.trcimplan.gob.mx/pet/cartera-proyectos-entorno-urbano.html">Cartera de Proyectos: Entorno Urbano</a></li>
+  <li><a href="http://www.trcimplan.gob.mx/pet/cartera-proyectos-desarrollo-social.html">Cartera de Proyectos: Desarrollo Social</a></li>
+  <li><a href="http://www.trcimplan.gob.mx/pet/cartera-proyectos-desarrollo-economico-innovacion.html">Cartera de Proyectos: Desarrollo Econ&oacute;mico e Innovaci&oacute;n</a></li>
+  <li><a href="http://www.trcimplan.gob.mx/pet/vision-entorno-urbano.html">Visi&oacute;n de Entorno Urbano 2040</a></li>
+  <li><a href="http://www.trcimplan.gob.mx/pet/vision-desarrollo-social.html">Visi&oacute;n de Desarrollo Social 2040</a></li>
+  <li><a href="http://www.trcimplan.gob.mx/pet/vision-desarrollo-economico-innovacion.html">Visi&oacute;n de Desarrollo Econ&oacute;mico e Innovaci&oacute;n 2040</a></li>
+  <li><a href="http://www.trcimplan.gob.mx/pet/diagnostico-estrategico-desarrollo-economico-innovacion.html">Diagn&oacute;stico Estrat&eacute;gico: Desarrollo Econ&oacute;mico e Innovaci&oacute;n</a></li>
+  <li><a href="http://www.trcimplan.gob.mx/pet/diagnostico-estrategico-entorno-urbano.html">Diagn&oacute;stico Estrat&eacute;gico: Entorno Urbano</a></li>
+  <li><a href="http://www.trcimplan.gob.mx/proyectos/salud-laguna.html">Salud Laguna</a></li>
+</ul>
+<p><b>Sala de Prensa</b></p>
+<ul>
+  <li><a href="http://www.trcimplan.gob.mx/sala-prensa/2018-10-05-programa-parcial-desarrollo-urbano-centro-historico.html">IMPLAN brinda taller sobre el Programa Parcial De Desarrollo Urbano Del Centro Hist&oacute;rico.</a></li>
+  <li><a href="http://www.trcimplan.gob.mx/sala-prensa/2017-09-11-resaltan-la-importancia-del-espacio-publico.html">Resaltan la importancia del espacio p&uacute;blico</a></li>
+  <li><a href="http://www.trcimplan.gob.mx/sala-prensa/2020-04-15-comunicado-conferencias-virtuales.html">El IMPLAN Torre&oacute;n y su Consejo Juvenil: Visi&oacute;n Metr&oacute;poli, presentar&aacute;n Conferencias Virtuales</a></li>
+  <li><a href="http://www.trcimplan.gob.mx/sala-prensa/2020-02-27-segunda-sesion-consejo-2020.html">Presentan en Segunda Sesi&oacute;n de Consejo el &ldquo;Programa Parcial de Desarrollo Urbano para la Zona Norte de Torre&oacute;n&rdquo;</a></li>
+  <li><a href="http://www.trcimplan.gob.mx/sala-prensa/2020-02-17-comunicado-enoe.html">Disminuye la tasa de desempleo en la Zona Metropolitana de La Laguna (ZML), al cuarto trimestre de 2019</a></li>
+  <li><a href="http://www.trcimplan.gob.mx/sala-prensa/2020-02-06-comunicado-conferencia-imeplan.html">Postura sobre la creaci&oacute;n de un Instituto Metropolitano de Planeaci&oacute;n.</a></li>
+  <li><a href="http://www.trcimplan.gob.mx/sala-prensa/2020-01-30-primer-sesion-consejo-2020.html">Primer Sesi&oacute;n de Consejo 2020. Se renueva el Consejo Directivo del IMPLAN.</a></li>
+  <li><a href="http://www.trcimplan.gob.mx/sala-prensa/2019-09-26-novena-sesion-consejo.html">Novena Sesi&oacute;n de Consejo Implan. Presentan Resultados del Conversatorio y del Concurso &ldquo;Manos a la Cebra&rdquo;.</a></li>
+  <li><a href="http://www.trcimplan.gob.mx/sala-prensa/2019-09-26-seminario-identidad-lagunera.html">Consejo Visi&oacute;n Metr&oacute;poli presenta Seminario de Identidad Lagunera</a></li>
+  <li><a href="http://www.trcimplan.gob.mx/sala-prensa/2019-09-24-manos-a-la-cebra-reporte.html">Manos a la Cebra</a></li>
+</ul>
+  <!-- Extra: Termina -->
+  </aside>
+<div class="contenido-social">
+  <h5>Compartir en Redes Sociales</h5>
+  <a href="https://twitter.com/share" class="twitter-share-button" data-via="trcimplan" data-lang="es">Twittear</a>
+  <iframe src="//www.facebook.com/plugins/like.php?href=http%3A%2F%2Fwww.trcimplan.gob.mx%2Fblog%2Flos-centros-historicos-de-la-zona-metropolitana.html&amp;width=300&amp;layout=button_count&amp;action=like&amp;show_faces=true&amp;share=false&amp;height=21" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:300px; height:21px;" allowTransparency="true"></iframe>
+</div>
+    </div>
+    <div class="mapa-inferior">
+          <div class="pull-right redes-sociales">
+            <a class="fa fa-twitter-square" href="http://www.twitter.com/trcimplan" target="_blank"></a>
+            <a class="fa fa-facebook-square" href="https://facebook.com/trcimplan" target="_blank"></a>
+            <a class="fa fa-facebook-square" href="http://www.instagram.com/implantorreon" target="_blank"></a>
+            <a class="fa fa-rss-square" href="../rss.xml"></a>
+          </div>
+    </div>
+  </div>
+</div>
+<!-- Javascript global inicia -->
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
+<script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="../vendor/metisMenu/metisMenu.min.js"></script>
+<script type="text/javascript" src="../vendor/datatables/js/jquery.dataTables.min.js"></script>
+<script type="text/javascript" src="../vendor/datatables-plugins/dataTables.bootstrap.min.js"></script>
+<script type="text/javascript" src="../vendor/datatables-responsive/dataTables.responsive.js"></script>
+<script type="text/javascript" src="../vendor/raphael/raphael.min.js"></script>
+<script type="text/javascript" src="../vendor/morrisjs/morris.min.js"></script>
+<script type="text/javascript" src="../dist/js/sb-admin-2.min.js"></script>
+<script type="text/javascript" src="http://libs.cartocdn.com/cartodb.js/v3/3.15/cartodb.js"></script>
+<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+<!-- Javascript global termina -->
+<!-- Javascript inicia -->
+<script>
+  // Twitter
+  !function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="https://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");
+</script>
+
+<!-- Javascript termina -->
+<!-- Javascript Google Analytics -->
+<script>
+  // Google Analytics
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)})(window,document,'script','//www.google-analytics.com/analytics.js','ga');ga('create', 'UA-58290501-1', 'auto');ga('send', 'pageview');
+</script>
+</body>
+</html>

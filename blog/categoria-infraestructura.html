@@ -1,0 +1,909 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+<!-- ===================================================================================================
+
+        Instituto Municipal de Planeación y Competitividad (IMPLAN) de Torreón.
+
+        3er. generación de la Plataforma del Conocimiento
+        Desarrollado por Ing. Guillermo Valdés Lozano <guivaloz en movimientolibre.com>
+
+        El software que lo construye está bajo la licencia GPL versión 3. © 2014, 2015, 2016, 2017.
+        Una copia está contenida en el archivo LICENCE al bajar desde GitHub.
+
+        Al usar, estudiar y copiar está aceptando los términos de uso de la información y del sitio web:
+          http://www.trcimplan.gob.mx/terminos/terminos-informacion.html
+          http://www.trcimplan.gob.mx/terminos/terminos-sitio.html
+
+        Descargue, estudie y colabore bajando todo este sitio web:
+          IMPLAN Torreón     https://github.com/TRCIMPLAN/trcimplan.github.io
+
+        Agradecemos y compartimos las tecnologías abiertas y gratuitas sobre las que se basa:
+          PHP                http://php.net
+          Twitter Bootstrap  http://getbootstrap.com
+          StartBootStrap     http://startbootstrap.com
+          Morris.js          https://morrisjs.github.io/morris.js/
+          Font Awesome       http://fontawesome.io
+          DataTables         https://www.datatables.net
+          Carto              https://carto.com
+          GitHub             https://github.com
+
+     =================================================================================================== -->
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="author" content="TrcIMPLAN Staff">
+  <meta name="keywords" content="IMPLAN, Torreon, Analisis, Publicaciones, Estudios, Investigacion, Infraestructura">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Infraestructura - IMPLAN Torreón">
+  <meta name="twitter:description" content="">
+  <meta name="twitter:url" content="http://www.trcimplan.gob.mx/blog/categoria-infraestructura.html">
+  <meta name="og:title" content="Infraestructura - IMPLAN Torreón">
+  <meta name="og:description" content="">
+  <meta name="og:url" content="http://www.trcimplan.gob.mx/blog/categoria-infraestructura.html">
+  <title>Infraestructura - IMPLAN Torreón</title>
+  <link rel="shortcut icon" type="image/x-icon" href="../imagenes/apple-touch-icon.png">
+  <link rel="apple-touch-icon" href="../imagenes/apple-touch-icon.png">
+  <link rel="apple-touch-icon" href="../imagenes/apple-touch-icon-76x76.png" sizes="76x76">
+  <link rel="apple-touch-icon" href="../imagenes/apple-touch-icon-120x120.png" sizes="120x120">
+  <link rel="apple-touch-icon" href="../imagenes/apple-touch-icon-152x152.png" sizes="152x152">
+  <link rel="apple-touch-icon" href="../imagenes/apple-touch-icon-180x180.png" sizes="180x180">
+  <link rel="icon" href="../imagenes/icon-hires.png" sizes="192x192">
+  <link rel="icon" href="../imagenes/icon-normal.png" sizes="128x128">
+  <link rel="alternate" type="application/rss+xml" href="../rss.xml" title="IMPLAN Torreón">
+  <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+  <link rel="stylesheet" type="text/css" href="../vendor/metisMenu/metisMenu.min.css">
+  <link rel="stylesheet" type="text/css" href="../vendor/datatables-plugins/dataTables.bootstrap.css">
+  <link rel="stylesheet" type="text/css" href="../vendor/morrisjs/morris.css">
+  <link rel="stylesheet" type="text/css" href="../vendor/font-awesome/css/font-awesome.min.css">
+  <link rel="stylesheet" type="text/css" href="../dist/css/sb-admin-2.min.css">
+  <link rel="stylesheet" type="text/css" href="../dist/css/plataforma-de-conocimiento.css">
+  <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Noto+Sans|Roboto+Condensed:400,700">
+  <link rel="stylesheet" type="text/css" href="http://libs.cartocdn.com/cartodb.js/v3/3.15/themes/css/cartodb.css">
+  <link rel="stylesheet" type="text/css" href="../dist/css/estilosvm.css">
+  <link rel="stylesheet" type="text/css" href="../dist/css/trcimplan.css">
+  <!-- SOPORTE PARA IE -->
+  <!--[if lt IE 9]>
+  <script type="text/javascript" src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+  <script type="text/javascript" src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+  <![endif]-->
+</head>
+<body>
+<div id="wrapper">
+  <nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="../index.html"><img class="navbar-brand-img" src="../imagenes/implan-barra-logo-chico-gris.png" alt="IMPLAN Torreón"></a>
+    </div>
+  <div class="navbar-default sidebar" role="navigation">
+    <div class="sidebar-nav navbar-collapse">
+      <ul class="nav" id="side-menu">
+        <li class="sidebar-search">
+          <form method="get" action="http://www.trcimplan.gob.mx/buscador-resultados.html">
+            <div class="input-group custom-search-form">
+              <input type="text" class="form-control" placeholder="Google buscar..." value="" name="q">
+              <span class="input-group-btn">
+                <button class="btn btn-default" type="submit"><i class="fa fa-search"></i></button>
+              </span>
+            </div>
+          </form>
+        </li>
+        <li class="active">
+          <a href="#"><span class="navegacion-icono"><i class="fa fa-lightbulb-o"></i></span> Análisis Publicados<span class="fa arrow"></span></a>
+          <ul class="nav nav-second-level">
+            <li><a href="../blog/index.html"><span class="navegacion-icono"><i class="fa fa-file-text-o"></i></span> Últimos Análisis</a></li>
+            <li><a href="../excolaboradores/index.html"><span class="navegacion-icono"><i class="fa fa-file-text-o"></i></span> Análisis por Autor</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="#"><span class="navegacion-icono"><i class="fa fa-area-chart"></i></span> Indicadores<span class="fa arrow"></span></a>
+          <ul class="nav nav-second-level">
+            <li><a href="../smi/introduccion.html"><span class="navegacion-icono"><i class="fa fa-file-text-o"></i></span> Introducción al SMI</a></li>
+            <li><a href="../indicadores-categorias/index.html"><span class="navegacion-icono"><i class="fa fa-th-list"></i></span> Indicadores por Categoría</a></li>
+            <li><a href="../smi/por-region.html"><span class="navegacion-icono"><i class="fa fa-table"></i></span> Indicadores por Región</a></li>
+            <li><a href="../smi/datos-abiertos.html"><span class="navegacion-icono"><i class="fa fa-download"></i></span> Datos Abiertos</a></li>
+            <li><a href="../smi/niveles-socioeconomicos.html"><span class="navegacion-icono"><i class="fa fa-bar-chart"></i></span> Niveles Socioeconómicos</a></li>
+            <li><a href="../monitores/index.html"><span class="navegacion-icono"><i class="fa fa-file-text-o"></i></span> Monitores</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="#"><span class="navegacion-icono"><i class="fa fa-puzzle-piece"></i></span> Indicadores Básicos de Colonias<span class="fa arrow"></span></a>
+          <ul class="nav nav-second-level">
+            <li><a href="../ibc/introduccion.html"><span class="navegacion-icono"><i class="fa fa-file-text-o"></i></span> Introducción al IBC</a></li>
+            <li><a href="../ibc-colonias-torreon/index.html"><span class="navegacion-icono"><i class="fa fa-font"></i></span> Colonias de Torreón</a></li>
+            <li><a href="https://implantorreon.carto.com/u/sigimplan/builder/907a6bc0-2c7e-451e-9668-b78d952e52ff/embed" target="_blank"><span class="navegacion-icono"><i class="fa fa-external-link"></i></span> Mapa Completo</a></li>
+            <li><a href="../ibc/torreon-urbano.html"><span class="navegacion-icono"><i class="fa fa-table"></i></span> Torreón Urbano</a></li>
+            <li><a href="../ibc/datos-abiertos.html"><span class="navegacion-icono"><i class="fa fa-download"></i></span> Datos Abiertos</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="#"><span class="navegacion-icono"><i class="fa fa-map-marker"></i></span> Información Geográfica<span class="fa arrow"></span></a>
+          <ul class="nav nav-second-level">
+            <li><a href="../sig/introduccion.html"><span class="navegacion-icono"><i class="fa fa-file-text-o"></i></span> Introducción al SIG</a></li>
+            <li><a href="../sig-mapas-torreon/temas-sig.html"><span class="navegacion-icono"><i class="fa fa-map-o"></i></span> Mapas por Tema</a></li>
+            <li><a href="../sig-mapas-torreon/plan-director-desarrollo-urbano.html"><span class="navegacion-icono"><i class="fa fa-map-marker"></i></span> Usos de Suelo</a></li>
+            <li><a href="../sig/datos-abiertos.html"><span class="navegacion-icono"><i class="fa fa-download"></i></span> Datos Abiertos</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="#"><span class="navegacion-icono"><i class="fa fa-book"></i></span> Plan Estratégico Torreón 2040<span class="fa arrow"></span></a>
+          <ul class="nav nav-second-level">
+            <li><a href="../pet/indice.html"><span class="navegacion-icono"><i class="fa fa-list-ul"></i></span> Índice General</a></li>
+            <li><a href="../plan-estrategico-torreon-enfoque-metropolitano-2040/index.html"><span class="navegacion-icono"><i class="fa fa-download"></i></span> Descargar</a></li>
+            <li><a href="../plan-estrategico-metropolitano/descripcion-del-proceso.html"><span class="navegacion-icono"><i class="fa fa-calendar"></i></span> Descripción del proceso</a></li>
+            <li><a href="../proyectos/index.html"><span class="navegacion-icono"><i class="fa fa-check-square"></i></span> Proyectos</a></li>
+            <li><a href="../vision-de-ciudad/vision-de-ciudad.html"><span class="navegacion-icono"><i class="fa fa-file-text-o"></i></span> Visión de Ciudad desde IMPLAN</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="#"><span class="navegacion-icono"><i class="fa fa-briefcase"></i></span> Documentos<span class="fa arrow"></span></a>
+          <ul class="nav nav-second-level">
+            <li><a href="../sig-planes/index.html"><span class="navegacion-icono"><i class="fa fa-book"></i></span> Planes y Programas</a></li>
+            <li><a href="../investigaciones/index.html"><span class="navegacion-icono"><i class="fa fa-file-text-o"></i></span> Investigaciones</a></li>
+            <li><a href="../estudios/index.html"><span class="navegacion-icono"><i class="fa fa-file-text-o"></i></span> Estudios</a></li>
+          </ul>
+        </li>
+        <li><a href="../consejo-directivo/integrantes.html"><span class="navegacion-icono"><i class="fa fa-users"></i></span> Consejo Directivo</a></li>
+        <li><a href="../sala-prensa/index.html"><span class="navegacion-icono"><i class="fa fa-newspaper-o"></i></span> Sala de Prensa</a></li>
+        <li><a href="../programas-radio/index.html"><span class="navegacion-icono"><i class="fa fa-microphone"></i></span> Programas de Radio</a></li>
+        <li>
+          <a href="#"><span class="navegacion-icono"><i class="fa fa-file-text-o"></i></span> Consejo Visión Metrópoli<span class="fa arrow"></span></a>
+          <ul class="nav nav-second-level">
+            <li><a href="../convocatorias/vision-metropoli.html"><span class="navegacion-icono"><i class="fa fa-file-text-o"></i></span> Consejo Juvenil</a></li>
+            <li><a href="../vision-metropoli/integrantes.html"><span class="navegacion-icono"><i class="fa fa-file-text-o"></i></span> Integrantes del Consejo</a></li>
+            <li><a href="../vision-metropoli/index.html"><span class="navegacion-icono"><i class="fa fa-newspaper-o"></i></span> Sala de Prensa</a></li>
+            <li><a href="../vision-metropoli/reglamento-vision-metropoli-2020.pdf"><span class="navegacion-icono"><i class="fa fa-file-text-o"></i></span> Reglamento</a></li>
+            <li><a href="https://issuu.com/consejovisionmetropoli/docs/informe_visi_n_metr_poli_2019_-_2021" target="_blank"><span class="navegacion-icono"><i class="fa fa-file-text-o"></i></span> Informe 2019 - 2021</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="#"><span class="navegacion-icono"><i class="fa fa-building-o"></i></span> Institucional<span class="fa arrow"></span></a>
+          <ul class="nav nav-second-level">
+            <li><a href="../institucional/vision-mision.html"><span class="navegacion-icono"><i class="fa fa-trophy"></i></span> Misión / Visión</a></li>
+            <li><a href="../institucional/NuestrosProyectos.html"><span class="navegacion-icono"><i class="fa fa-pencil-square-o"></i></span> Nuestros Proyectos</a></li>
+            <li><a href="../institucional/mensaje-director.html"><span class="navegacion-icono"><i class="fa fa-comment"></i></span> Mensaje del Director</a></li>
+            <li><a href="../autores/index.html"><span class="navegacion-icono"><i class="fa fa-user"></i></span> Quienes Somos</a></li>
+            <li><a href="../institucional/estructura-organica.html"><span class="navegacion-icono"><i class="fa fa-sitemap"></i></span> Estructura Orgánica</a></li>
+            <li><a href="../institucional/modelo-operativo-universal.html"><span class="navegacion-icono"><i class="fa fa-slideshare"></i></span> Modelo Operativo Univ.</a></li>
+            <li><a href="../institucional/reglamentos.html"><span class="navegacion-icono"><i class="fa fa-gavel"></i></span> Reglamentos</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="#"><span class="navegacion-icono"><i class="fa fa-external-link"></i></span> Transparencia<span class="fa arrow"></span></a>
+          <ul class="nav nav-second-level">
+            <li><a href="http://www2.icai.org.mx/ipo/dependencia.php?dep=178#pageload" target="_blank"><span class="navegacion-icono"><i class="fa fa-file-text-o"></i></span> Transparencia Estatal (ICAI)</a></li>
+            <li><a href="https://consultapublicamx.inai.org.mx/vut-web/faces/view/consultaPublica.xhtml#inicio" target="_blank"><span class="navegacion-icono"><i class="fa fa-file-text-o"></i></span> Plataforma Nacional de Transparencia</a></li>
+            <li><a href="../transparencia/index.html"><span class="navegacion-icono"><i class="fa fa-briefcase"></i></span> Documentos</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="#"><span class="navegacion-icono"><i class="fa fa-share-alt"></i></span> Términos de Uso<span class="fa arrow"></span></a>
+          <ul class="nav nav-second-level">
+            <li><a href="../terminos/terminos-informacion.html"><span class="navegacion-icono"><i class="fa fa-cubes"></i></span> De la información</a></li>
+            <li><a href="../terminos/terminos-sitio.html"><span class="navegacion-icono"><i class="fa fa-globe"></i></span> Del sitio web</a></li>
+            <li><a href="../terminos/privacidad.html"><span class="navegacion-icono"><i class="fa fa-lock"></i></span> Aviso de Privacidad</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="#"><span class="navegacion-icono"><i class="fa fa-phone"></i></span> Contacto<span class="fa arrow"></span></a>
+          <ul class="nav nav-second-level">
+            <li><a href="../contacto/contacto.html"><span class="navegacion-icono"><i class="fa fa-phone"></i></span> Medios de contacto</a></li>
+            <li><a href="../preguntas-frecuentes/preguntas-frecuentes.html"><span class="navegacion-icono"><i class="fa fa-question"></i></span> Preguntas Frecuentes</a></li>
+            <li><a href="http://goo.gl/forms/1rdX4X128PpMOif73" target="_blank"><span class="navegacion-icono"><i class="fa fa-external-link"></i></span> Comentarios y Sugerencias</a></li>
+          </ul>
+        </li>
+        <li><a href="../convocatorias/index.html"><span class="navegacion-icono"><i class="fa fa-file-text-o"></i></span> Convocatorias</a></li>
+        <li><a href="http://177.244.42.17/ovie-torreon/#!" target="_blank"><span class="navegacion-icono"><i class="fa fa-map-marker"></i></span> Oficina Virtual de Información Económica (OVIE)</a></li>
+        <li><a href="https://arcg.is/0vySSr" target="_blank"><span class="navegacion-icono"><i class="fa fa-globe"></i></span> Atlas Municipal de Riesgos de Torreón</a></li>
+      </ul>
+    </div>
+  </div>
+  </nav>
+  <div id="page-wrapper">
+    <div class="cuerpo">
+      <div class="encabezado">
+        <span><h1>Análisis Publicados en Infraestructura</h1></span>
+      </div>
+      <div class="media breve">
+        <a class="pull-left" href="la-logistica-de-la-zml-en-el-cen-jun-2021.html"><img class="media-object" src="la-logistica-de-la-zml-en-el-cen-jun-2021/imagen-previa.jpg"></a>
+        <div class="media-body">
+          <h3 class="media-heading detallados-encabezado"><a href="la-logistica-de-la-zml-en-el-cen-jun-2021.html">La Logística de la ZML en el Corredor Económico del Norte</a></h3>
+          <p class="detallados-descripcion">Para atraer inversión empresarial a la Zona Metropolitana de La Laguna (ZML) y así potencializar el papel que juega económicamente en el Corredor Económico del Norte, la Zona cuenta con alrededor de 15 áreas industriales y 151 unidades económicas con más de 100 empleados ya ubicadas dentro de las mismas, pero con espacio disponible para que lleguen más a la zona.</p>
+          <p class="detallados-autor-fecha">Por Lic. Jorge Fernando del Moral Fraire, 28/06/2021</p>
+        </div>
+      </div>
+      <div class="media breve">
+        <a class="pull-left" href="infraestructura-verde-como-politica-publica-abr-2021.html"><img class="media-object" src="infraestructura-verde-como-politica-publica-abr-2021/imagen-previa.jpg"></a>
+        <div class="media-body">
+          <h3 class="media-heading detallados-encabezado"><a href="infraestructura-verde-como-politica-publica-abr-2021.html">Infraestructura verde como política pública municipal</a></h3>
+          <p class="detallados-descripcion">La zona oriente de la ciudad en fraccionamientos como Ciudad Nazas, Sol de Oriente y Villas Universidad es la que menor temperatura superficial registra con un promedio de 25°C.</p>
+          <p class="detallados-autor-fecha">Por Lic. Jesús Abraham Salazar Valadez, 03/05/2021</p>
+        </div>
+      </div>
+      <div class="media breve">
+        <a class="pull-left" href="la-estructura-urbana-de-torreon-oct-2020.html"><img class="media-object" src="la-estructura-urbana-de-torreon-oct-2020/imagen-previa.jpg"></a>
+        <div class="media-body">
+          <h3 class="media-heading detallados-encabezado"><a href="la-estructura-urbana-de-torreon-oct-2020.html">La estructura urbana de Torreón</a></h3>
+          <p class="detallados-descripcion">El área urbana de Torreón actualmente tiene una superficie de 15,288.8 hectáreas, es decir que el 49% del polígono municipal en el que se encuentra la ciudad de Torreón está urbanizado.</p>
+          <p class="detallados-autor-fecha">Por Arq. Carla Estefanía Tovar Triana, 28/10/2020 11:30</p>
+        </div>
+      </div>
+      <div class="media breve">
+        <a class="pull-left" href="infraestructura-verde-en-el-centro-historico-de-torreon-agosto-2020.html"><img class="media-object" src="infraestructura-verde-en-el-centro-historico-de-torreon-agosto-2020/imagen-previa.jpg"></a>
+        <div class="media-body">
+          <h3 class="media-heading detallados-encabezado"><a href="infraestructura-verde-en-el-centro-historico-de-torreon-agosto-2020.html">Infraestructura Verde en el Centro Histórico de Torreón</a></h3>
+          <p class="detallados-descripcion">Hoy en día hay un desbalance entre cómo y cuánto utilizamos de los recursos naturales, cómo vivimos de y con la naturaleza, y la calidad de vida y salud de los humanos, lo cual está fuertemente ligado con la salud del medio ambiente (SEDATU, 2020).</p>
+          <p class="detallados-autor-fecha">Por Arq. Ihanelly Hernández Villa, 04/08/2020</p>
+        </div>
+      </div>
+      <div class="media breve">
+        <a class="pull-left" href="puede-estructura-de-ciudad-ser-violenta-junio-2020.html"><img class="media-object" src="puede-estructura-de-ciudad-ser-violenta-junio-2020/imagen-previa.jpg"></a>
+        <div class="media-body">
+          <h3 class="media-heading detallados-encabezado"><a href="puede-estructura-de-ciudad-ser-violenta-junio-2020.html">¿Puede la Estructura de una Ciudad ser Violenta?</a></h3>
+          <p class="detallados-descripcion">La violencia de infraestructura hace referencia a la infraestructura diseñada para agredir al habitante de una ciudad, ya sea en su implementación o en su funcionamiento.</p>
+          <p class="detallados-autor-fecha">Por Lic. Nina Graciela Hernández Jayme, 08/06/2020 13:00</p>
+        </div>
+      </div>
+      <div class="media breve">
+        <a class="pull-left" href="los-municipios-frente-a-las-adversidades-mayo-2020.html"><img class="media-object" src="los-municipios-frente-a-las-adversidades-mayo-2020/imagen-previa.jpg"></a>
+        <div class="media-body">
+          <h3 class="media-heading detallados-encabezado"><a href="los-municipios-frente-a-las-adversidades-mayo-2020.html">Los Municipios frente a las adversidades.</a></h3>
+          <p class="detallados-descripcion">Los retos que enfrentan los municipios mexicanos en el siglo XXI no solo tienen que ver con la cobertura de servicios básicos desde las limitaciones presupuestales de siempre; están ligados a las tendencias globales que exigen a sus cambiantes administraciones concebir estrategias para asegurar la adaptación de sus ciudadanos a los grandes retos de movilidad, cambio climático, seguridad, migración, vivienda, empleo, salud, etc.</p>
+          <p class="detallados-autor-fecha">Por Lic. Miriam Janeth González Quintana, 06/05/2020</p>
+        </div>
+      </div>
+      <div class="media breve">
+        <a class="pull-left" href="valor-del-suelo-en-el-centro-historico-de-torreon-abril-2020.html"><img class="media-object" src="valor-del-suelo-en-el-centro-historico-de-torreon-abril-2020/imagen-previa.jpg"></a>
+        <div class="media-body">
+          <h3 class="media-heading detallados-encabezado"><a href="valor-del-suelo-en-el-centro-historico-de-torreon-abril-2020.html">Valor del suelo en el Centro Histórico de Torreón</a></h3>
+          <p class="detallados-descripcion">Las infraestructuras y la expedición de la norma urbanística generan valor en el inmueble y, consecuentemente, riqueza a su propietario. (Montaña, C. 2013).</p>
+          <p class="detallados-autor-fecha">Por Arq. Ihanelly Hernández Villa, 29/04/2020 10:00</p>
+        </div>
+      </div>
+      <div class="media breve">
+        <a class="pull-left" href="programa-parcial-desarrollo-urbano-torreon-zona-norte-marzo2020.html"><img class="media-object" src="programa-parcial-desarrollo-urbano-torreon-zona-norte-marzo2020/imagen-previa.jpg"></a>
+        <div class="media-body">
+          <h3 class="media-heading detallados-encabezado"><a href="programa-parcial-desarrollo-urbano-torreon-zona-norte-marzo2020.html">Propuesta de Programa Parcial de Desarrollo Urbano de la Zona Norte de Torreón</a></h3>
+          <p class="detallados-descripcion">“El norte de Torreón tiene un 41.6% de zona urbanizada, pasando de 59.54 hectáreas en el año 2000 a 882.26 hectáreas al año 2018, y pasando de 6,130 habitantes en el 2000 a 29,161 habitantes en 2015”.</p>
+          <p class="detallados-autor-fecha">Por Arq. José Antonio Ramírez Reyes, 30/03/2020</p>
+        </div>
+      </div>
+      <div class="media breve">
+        <a class="pull-left" href="caracteristicas-de-un-buen-espacio-publico-ene2020.html"><img class="media-object" src="caracteristicas-de-un-buen-espacio-publico-ene2020/imagen-previa.jpg"></a>
+        <div class="media-body">
+          <h3 class="media-heading detallados-encabezado"><a href="caracteristicas-de-un-buen-espacio-publico-ene2020.html">Características de un Buen Espacio Público</a></h3>
+          <p class="detallados-descripcion">Un espacio público es aquel lugar en el que convergen distintos factores culturales, intercambios sociales y económicos, de información y al que como su nombre lo indica pueden acceder cualquier persona, sin importar su edad, sexo, preferencia sexual, condición física o nivel socioeconómico.</p>
+          <p class="detallados-autor-fecha">Por Arq. Julio Alexis Magaña Cisneros, 29/01/2020</p>
+        </div>
+      </div>
+      <div class="media breve">
+        <a class="pull-left" href="nuevas-tendencias-del-fondo-metropolitano-oct2019.html"><img class="media-object" src="nuevas-tendencias-del-fondo-metropolitano-oct2019/imagen-previa.jpg"></a>
+        <div class="media-body">
+          <h3 class="media-heading detallados-encabezado"><a href="nuevas-tendencias-del-fondo-metropolitano-oct2019.html">Nuevas Tendencias del Fondo Metropolitano</a></h3>
+          <p class="detallados-descripcion">Se solicitaron fondos para las cuatro zonas metropolitanas del  Estado conformadas por Saltillo, Piedras Negras, La Laguna y Monclova por un monto total de 400 millones de pesos.</p>
+          <p class="detallados-autor-fecha">Por Lic. Miriam Janeth González Quintana, 14/10/2019</p>
+        </div>
+      </div>
+      <div class="media breve">
+        <a class="pull-left" href="gestion-y-cambios-de-uso-de-suelo-en-torreon-oct2019.html"><img class="media-object" src="gestion-y-cambios-de-uso-de-suelo-en-torreon-oct2019/imagen-previa.jpg"></a>
+        <div class="media-body">
+          <h3 class="media-heading detallados-encabezado"><a href="gestion-y-cambios-de-uso-de-suelo-en-torreon-oct2019.html">Gestión y Cambios de Usos de Suelo en Torreón</a></h3>
+          <p class="detallados-descripcion">Por uso de suelo se entiende a la gestión y modificación de las actividades que se realizan en un predio o terreno que es parte del territorio de una administración política, ligado a este se encuentra la planeación urbana que permite regular los usos de suelo de los predios a partir de restricciones y reglamentos que ayudan a controlar, ordenar y dirigir el desarrollo urbano de una ciudad.</p>
+          <p class="detallados-autor-fecha">Por Arq. Julio Alexis Magaña Cisneros, 09/10/2019</p>
+        </div>
+      </div>
+      <div class="media breve">
+        <a class="pull-left" href="centros-de-convenciones-julio2019.html"><img class="media-object" src="centros-de-convenciones-julio2019/imagen-previa.jpg"></a>
+        <div class="media-body">
+          <h3 class="media-heading detallados-encabezado"><a href="centros-de-convenciones-julio2019.html">Los Centros de Convenciones como Equipamiento para el Desarrollo del Turismo de Reuniones</a></h3>
+          <p class="detallados-descripcion">La industria de reuniones en México representa más de 266 mil eventos anuales, 30 millones de cuarto de noche, una derrama económica de 25 mil millones de dólares y la generación del 1.5% del PIB. En Torreón, de acuerdo a datos de la Oficina de Convenciones y visitantes (OCV) los ingresos estimados para la industria de reuniones ascienden a 110.833 mdp con la expectativa de que para 2019 esta cifra se incremente en 47%; pasando de 55 eventos atendidos en 2017 a 85 para 2019.</p>
+          <p class="detallados-autor-fecha">Por Lic. Frida García Gutiérrez, 23/07/2019 12:00</p>
+        </div>
+      </div>
+      <div class="media breve">
+        <a class="pull-left" href="planificacion-urbana-en-la-salud-publica-de-la-laguna.html"><img class="media-object" src="planificacion-urbana-en-la-salud-publica-de-la-laguna/imagen-previa.jpg"></a>
+        <div class="media-body">
+          <h3 class="media-heading detallados-encabezado"><a href="planificacion-urbana-en-la-salud-publica-de-la-laguna.html">La planificación urbana, fundamental en la salud pública de los laguneros.</a></h3>
+          <p class="detallados-descripcion">El entorno construido, el acceso a los servicios sociales, la conexión de la vida urbana, el diseño que  muchas veces opta por la estética o se genera teniendo como modelo el automóvil, entre otros factores, generan condiciones que afectan directamente a la Salud Pública: enfermedades, contaminación, la violencia y los asentamientos irregulares son solo algunos de los problemas que se viven en las poblaciones  y tanto urbanas como rurales padecen de estos.</p>
+          <p class="detallados-autor-fecha">Por Arq. Julio Alexis Magaña Cisneros, 20/06/2019</p>
+        </div>
+      </div>
+      <div class="media breve">
+        <a class="pull-left" href="movilidad-con-perspectiva-de-genero-en-la-laguna.html"><img class="media-object" src="movilidad-con-perspectiva-de-genero-en-la-laguna/imagen-previa.jpg"></a>
+        <div class="media-body">
+          <h3 class="media-heading detallados-encabezado"><a href="movilidad-con-perspectiva-de-genero-en-la-laguna.html">Movilidad con perspectiva de género en La Laguna</a></h3>
+          <p class="detallados-descripcion">La forma en cómo nos movemos mujeres y hombres no es la misma. Los roles de género impuestos históricamente a las personas a partir de su sexo y que hasta la fecha siguen predominando, generan que los hombres se muevan de manera pendular en traslados directos de ida y vuelta, que por lo general son del hogar al trabajo y viceversa.</p>
+          <p class="detallados-autor-fecha">Por Arq. Ihanelly Hernández Villa, 29/05/2019</p>
+        </div>
+      </div>
+      <div class="media breve">
+        <a class="pull-left" href="urbanismo-con-enfoque-de-genero-en-la-laguna.html"><img class="media-object" src="urbanismo-con-enfoque-de-genero-en-la-laguna/imagen-previa.jpg"></a>
+        <div class="media-body">
+          <h3 class="media-heading detallados-encabezado"><a href="urbanismo-con-enfoque-de-genero-en-la-laguna.html">Urbanismo con enfoque de género en La Laguna</a></h3>
+          <p class="detallados-descripcion">“El Urbanismo con perspectiva de género trata de paliar los desequilibrios a la hora de definir estrategias de intervención en las ciudades, buscando un reparto más equitativo de las inversiones, que garanticen un acceso y disfrute del espacio público en igualdad de condiciones para toda la ciudadanía.” (Hiria Kolektiboa, 2010).</p>
+          <p class="detallados-autor-fecha">Por Arq. Ihanelly Hernández Villa, 23/05/2019</p>
+        </div>
+      </div>
+      <div class="media breve">
+        <a class="pull-left" href="el-ciudadano-como-especialista-urbano-abril2019.html"><img class="media-object" src="el-ciudadano-como-especialista-urbano-abril2019/imagen-previa.jpg"></a>
+        <div class="media-body">
+          <h3 class="media-heading detallados-encabezado"><a href="el-ciudadano-como-especialista-urbano-abril2019.html">El Ciudadano como Especialista Urbano</a></h3>
+          <p class="detallados-descripcion">“La ciudad tiene la capacidad de proveer algo para todos, sólo cuando ésta es creada para todos.” Jane Jacobs.</p>
+          <p class="detallados-autor-fecha">Por Arq. Alejandra Martínez Avilés, 30/04/2019</p>
+        </div>
+      </div>
+      <div class="media breve">
+        <a class="pull-left" href="principales-desafios-para-convertir-a-la-laguna-en-una-smart-city-marzo2019.html"><img class="media-object" src="principales-desafios-para-convertir-a-la-laguna-en-una-smart-city-marzo2019/imagen-previa.jpg"></a>
+        <div class="media-body">
+          <h3 class="media-heading detallados-encabezado"><a href="principales-desafios-para-convertir-a-la-laguna-en-una-smart-city-marzo2019.html">Principales desafíos para convertir a La Laguna en una Smart City</a></h3>
+          <p class="detallados-descripcion">El concepto de Smart City o Ciudad Inteligente surge como respuesta a los retos de las ciudades actuales ocasionados por los modelos tradicionales de ciudad, en los que el cambio climático, la desigualdad y los problemas de movilidad son algunos de los efectos secundarios del crecimiento desordenado.</p>
+          <p class="detallados-autor-fecha">Por Lic. Alicia Valdez Ibarra, 26/03/2019</p>
+        </div>
+      </div>
+      <div class="media breve">
+        <a class="pull-left" href="torreon-y-su-integracion-a-la-nueva-agenda-urbana-onu-habitatIII-feb2019.html"><img class="media-object" src="torreon-y-su-integracion-a-la-nueva-agenda-urbana-onu-habitatIII-feb2019/imagen-previa.jpg"></a>
+        <div class="media-body">
+          <h3 class="media-heading detallados-encabezado"><a href="torreon-y-su-integracion-a-la-nueva-agenda-urbana-onu-habitatIII-feb2019.html">Torreón y su integración a la Nueva Agenda Urbana ONU-HABITAT III</a></h3>
+          <p class="detallados-descripcion">Torreón ha crecido horizontalmente de forma desmedida, 7 veces en extensión mientras su población sólo 3 cuando ONU-HABITAT recomienda proporción uno a uno.</p>
+          <p class="detallados-autor-fecha">Por Arq. José Antonio Ramírez Reyes, 11/02/2019</p>
+        </div>
+      </div>
+      <div class="media breve">
+        <a class="pull-left" href="el-transporte-publico-en-la-movilidad-urbana-de-torreon-dic2018.html"><img class="media-object" src="el-transporte-publico-en-la-movilidad-urbana-de-torreon-dic2018/imagen-previa.jpg"></a>
+        <div class="media-body">
+          <h3 class="media-heading detallados-encabezado"><a href="el-transporte-publico-en-la-movilidad-urbana-de-torreon-dic2018.html">El Transporte Público en la Movilidad Urbana de Torreón</a></h3>
+          <p class="detallados-descripcion">La capacidad de los autobuses en operación es de 80 pasajeros, sin embargo, la ocupación máxima está en un rango de 31 a 40 pasajeros. El 72% de las rutas identificadas se estimó están por debajo del 50% de capacidad de las unidades.</p>
+          <p class="detallados-autor-fecha">Por Arq. Julio Alexis Magaña Cisneros, 03/12/2018</p>
+        </div>
+      </div>
+      <div class="media breve">
+        <a class="pull-left" href="el-crecimiento-de-la-ciudad.html"><img class="media-object" src="el-crecimiento-de-la-ciudad/imagen-previa.jpg"></a>
+        <div class="media-body">
+          <h3 class="media-heading detallados-encabezado"><a href="el-crecimiento-de-la-ciudad.html">El crecimiento de la ciudad y su impacto en el transporte público</a></h3>
+          <p class="detallados-descripcion">La Dirección de Vialidad y Movilidad Urbana de Torreón registra un total de 28 rutas de transporte público, que desde 2017, cobran a usuarios en general un precio de $ 11.00 pesos. La tarifa de descuento para usuarios de prepago es de $ 9.60 y la preferencial para personas de la tercera edad, con discapacidad y a estudiantes de $ 7.00.</p>
+          <p class="detallados-autor-fecha">Por Arq. Ihanelly Hernández Villa, 06/06/2018</p>
+        </div>
+      </div>
+      <div class="media breve">
+        <a class="pull-left" href="torreon-y-su-infraestructura-ciclista.html"><img class="media-object" src="torreon-y-su-infraestructura-ciclista/imagen-previa.jpg"></a>
+        <div class="media-body">
+          <h3 class="media-heading detallados-encabezado"><a href="torreon-y-su-infraestructura-ciclista.html">Torreón y su infraestructura ciclista</a></h3>
+          <p class="detallados-descripcion">En la ciudad se cuenta con 8 vialidades con infraestructura para el uso de la bicicleta, de diferente tipología, con un total de  21 kilómetros de longitud. Sin embargo estas rutas no cuentan con las condiciones óptimas.</p>
+          <p class="detallados-autor-fecha">Por Arq. Julio Alexis Magaña Cisneros, 05/03/2018 12:30</p>
+        </div>
+      </div>
+      <div class="media breve">
+        <a class="pull-left" href="los-centros-historicos-de-la-zona-metropolitana.html"><img class="media-object" src="los-centros-historicos-de-la-zona-metropolitana/imagen-previa.jpg"></a>
+        <div class="media-body">
+          <h3 class="media-heading detallados-encabezado"><a href="los-centros-historicos-de-la-zona-metropolitana.html">Los Centros Históricos de la Zona Metropolitana</a></h3>
+          <p class="detallados-descripcion">En la Zona Metropolitana de la Laguna es necesario reforzar la identidad y la importancia de los centros históricos, actualmente sólo Torreón cuenta con decreto oficial para este perímetro de la ciudad y en Gómez Palacio este año en Cabildo se aprobó la declaratoria de Centro Histórico de la ciudad.</p>
+          <p class="detallados-autor-fecha">Por Arq. Jair Miramontes Chávez, 21/02/2018 11:00</p>
+        </div>
+      </div>
+      <div class="media breve">
+        <a class="pull-left" href="puentes-peatonales.html"><img class="media-object" src="puentes-peatonales/imagen-previa.jpg"></a>
+        <div class="media-body">
+          <h3 class="media-heading detallados-encabezado"><a href="puentes-peatonales.html">La funcionalidad de los puentes peatonales</a></h3>
+          <p class="detallados-descripcion">En Torreón existe un total de 47 puentes peatonales, de los cuales el 85% se encuentran sobre vialidades primarias, destacando el eje que une bulevar Revolución y bulevar Torreón-Matamoros con 15 puentes. En contraste, es uno de los cruces con más atropellamientos.</p>
+          <p class="detallados-autor-fecha">Por Arq. Ihanelly Hernández Villa, 14/02/2018</p>
+        </div>
+      </div>
+      <div class="media breve">
+        <a class="pull-left" href="torreon-hacia-una-sociedad-de-la-informacion.html"><img class="media-object" src="torreon-hacia-una-sociedad-de-la-informacion/imagen-previa.jpg"></a>
+        <div class="media-body">
+          <h3 class="media-heading detallados-encabezado"><a href="torreon-hacia-una-sociedad-de-la-informacion.html">Torreón hacia una Sociedad de la Información</a></h3>
+          <p class="detallados-descripcion">En Torreón y su área metropolitana 53% de los hogares cuentan con computadora, mientras a nivel nacional la cobertura es de 46% de los hogares. Sin embargo, la ciudad aún enfrenta retos para considerarse una Sociedad de la Información.</p>
+          <p class="detallados-autor-fecha">Por Lic. Alicia Valdez Ibarra, 15/01/2018 12:40</p>
+        </div>
+      </div>
+      <div class="media breve">
+        <a class="pull-left" href="jimulco-el-paso-del-ferrocarril-y-su-importancia-para-torreon.html"><img class="media-object" src="jimulco-el-paso-del-ferrocarril-y-su-importancia-para-torreon/imagen-previa.jpg"></a>
+        <div class="media-body">
+          <h3 class="media-heading detallados-encabezado"><a href="jimulco-el-paso-del-ferrocarril-y-su-importancia-para-torreon.html">Jimulco: El paso del ferrocarril y su importancia para Torreón</a></h3>
+          <p class="detallados-descripcion">Torreón como gran productor de algodón aceleró su crecimiento desde que formó parte de la ruta del Ferrocarril Central Mexicano. Por Jimulco también pasa esta vía férrea y los hechos históricos que ahí ocurrieron moldearon el futuro de la Comarca Lagunera.</p>
+          <p class="detallados-autor-fecha">Por Ing. Guillermo Valdés Lozano, 02/10/2017 08:26</p>
+        </div>
+      </div>
+      <div class="media breve">
+        <a class="pull-left" href="el-espacio-publico-como-centro-del-nuevo-modelo-urbano.html"><img class="media-object" src="el-espacio-publico-como-centro-del-nuevo-modelo-urbano/imagen-previa.jpg"></a>
+        <div class="media-body">
+          <h3 class="media-heading detallados-encabezado"><a href="el-espacio-publico-como-centro-del-nuevo-modelo-urbano.html">El espacio público como centro del nuevo modelo urbano</a></h3>
+          <p class="detallados-descripcion">La nueva Ley de Asentamientos Humanos define el diseño del espacio público como un elemento fundamental en la planeación de las ciudades para la vida comunitaria, la imagen e identidad de barrios, ciudades y metrópolis.</p>
+          <p class="detallados-autor-fecha">Por Ing. Luis Campos Hinojosa, 17/08/2017 15:20</p>
+        </div>
+      </div>
+      <div class="media breve">
+        <a class="pull-left" href="importancia-y-calidad-de-los-parques-y-plazas-en-torreon.html"><img class="media-object" src="importancia-y-calidad-de-los-parques-y-plazas-en-torreon/imagen-previa.jpg"></a>
+        <div class="media-body">
+          <h3 class="media-heading detallados-encabezado"><a href="importancia-y-calidad-de-los-parques-y-plazas-en-torreon.html">Importancia y calidad de los parques y plazas en Torreón</a></h3>
+          <p class="detallados-descripcion">Torreón cuenta actualmente con tres parques metropolitanos: el Bosque Venustiano Carranza, el Bosque Urbano F. Madero y el Metroparque Río Nazas. Como Parques Vecinales se contabilizan 563, destacando el Parque la Tortuga, la Plaza Kennedy y Plaza de Eco.</p>
+          <p class="detallados-autor-fecha">Por Arq. Cecilio Pedro Secunza Schott, Arq. Teresita Benítez Saludado, 09/08/2017 12:30</p>
+        </div>
+      </div>
+      <div class="media breve">
+        <a class="pull-left" href="plaza-de-armas-lugar-emblematico-de-torreon.html"><img class="media-object" src="plaza-de-armas-lugar-emblematico-de-torreon/imagen-previa.jpg"></a>
+        <div class="media-body">
+          <h3 class="media-heading detallados-encabezado"><a href="plaza-de-armas-lugar-emblematico-de-torreon.html">Plaza De Armas: lugar emblemático de Torreón</a></h3>
+          <p class="detallados-descripcion">La historia de la Plaza de Armas de Torreón se remonta al año de 1883 cuando don Andrés Eppen concibió la idea de una colonia de la "Estación Torreón". Hoy en día es uno de los lugares de convivencia más emblemáticos.</p>
+          <p class="detallados-autor-fecha">Por Arq. Ángeles Melisa Rodríguez Salas, 12/06/2017 22:12</p>
+        </div>
+      </div>
+      <div class="media breve">
+        <a class="pull-left" href="los-barrios-tradicionales-en-el-centro-historico-de-torreon.html"><img class="media-object" src="los-barrios-tradicionales-en-el-centro-historico-de-torreon/imagen-previa.jpg"></a>
+        <div class="media-body">
+          <h3 class="media-heading detallados-encabezado"><a href="los-barrios-tradicionales-en-el-centro-historico-de-torreon.html">Los Barrios Tradicionales en el Centro Histórico de Torreón</a></h3>
+          <p class="detallados-descripcion">Actualmente existen diez barrios que aunque han sufrido una pérdida sostenida de identidad debido a la destrucción de sus edificaciones originales así como la migración de su población, son considerados como tradicionales.</p>
+          <p class="detallados-autor-fecha">Por Arq. Cecilio Pedro Secunza Schott, 24/03/2017 13:35</p>
+        </div>
+      </div>
+      <div class="media breve">
+        <a class="pull-left" href="torreon-bajo-la-mirada-de-onu-habitat.html"><img class="media-object" src="torreon-bajo-la-mirada-de-onu-habitat/imagen-previa.jpg"></a>
+        <div class="media-body">
+          <h3 class="media-heading detallados-encabezado"><a href="torreon-bajo-la-mirada-de-onu-habitat.html">Torreón bajo la mirada de ONU Hábitat</a></h3>
+          <p class="detallados-descripcion">El Índice de las Ciudades Prósperas es un proyecto impulsado por ONU Hábitat y financiado en México por INFONAVIT. Torreón mostró una prosperidad moderada, similar a ciudades como Manila en Filipinas o Quito, Ecuador.</p>
+          <p class="detallados-autor-fecha">Por Lic. Rodrigo González Morales, 23/02/2017 09:03</p>
+        </div>
+      </div>
+      <div class="media breve">
+        <a class="pull-left" href="torreon-hacia-la-resiliencia-urbana.html"><img class="media-object" src="torreon-hacia-la-resiliencia-urbana/imagen-previa.jpg"></a>
+        <div class="media-body">
+          <h3 class="media-heading detallados-encabezado"><a href="torreon-hacia-la-resiliencia-urbana.html">Torreón, hacia la resiliencia urbana</a></h3>
+          <p class="detallados-descripcion">Cada vez más ciudades en el mundo han comenzado a transitar hacia la resiliencia y la reducción de riesgos como una estrategia urbana para lograr un desarrollo sostenible. El Plan de Resiliencia Urbana debe de ser un proyecto prioritario para Torreón.</p>
+          <p class="detallados-autor-fecha">Por Ing. Luis Campos Hinojosa, 13/02/2017 14:02</p>
+        </div>
+      </div>
+      <div class="media breve">
+        <a class="pull-left" href="la-importancia-de-la-imagen-urbana-en-torreon.html"><img class="media-object" src="la-importancia-de-la-imagen-urbana-en-torreon/imagen-previa.jpg"></a>
+        <div class="media-body">
+          <h3 class="media-heading detallados-encabezado"><a href="la-importancia-de-la-imagen-urbana-en-torreon.html">La importancia de la imagen urbana en Torreón</a></h3>
+          <p class="detallados-descripcion">El deterioro de la imagen urbana, principalmente en el perímetro del Centro Histórico, se debe en buena medida a la irregularidad de los anuncios que los comerciantes ubican en la fachadas de sus negocios. Se deben aplicar mayores reglas para armonizar el diseño de la ciudad.</p>
+          <p class="detallados-autor-fecha">Por Arq. Teresita Benítez Saludado, 31/01/2017 10:35</p>
+        </div>
+      </div>
+      <div class="media breve">
+        <a class="pull-left" href="regeneracion-urbana-para-una-mejor-calidad-de-vida-2017.html"><img class="media-object" src="regeneracion-urbana-para-una-mejor-calidad-de-vida-2017/imagen-previa.jpg"></a>
+        <div class="media-body">
+          <h3 class="media-heading detallados-encabezado"><a href="regeneracion-urbana-para-una-mejor-calidad-de-vida-2017.html">Regeneración urbana para una mejor calidad de vida</a></h3>
+          <p class="detallados-descripcion">Poco a poco algunas zona olvidadas de Torreón están reviviendo por el fenómeno de regeneración urbana, que implica la rehabilitación de algún espacio que se encontraba en condiciones deplorables, como es el caso de la Línea Verde al oriente de la ciudad.</p>
+          <p class="detallados-autor-fecha">Por Arq. Jair Miramontes Chávez, 16/01/2017 12:10</p>
+        </div>
+      </div>
+      <div class="media breve">
+        <a class="pull-left" href="obras-son-competitividad-que-no-buenas-razones.html"><img class="media-object" src="obras-son-competitividad-que-no-buenas-razones/imagen-previa.jpg"></a>
+        <div class="media-body">
+          <h3 class="media-heading detallados-encabezado"><a href="obras-son-competitividad-que-no-buenas-razones.html">Obras son competitividad, que no buenas razones</a></h3>
+          <p class="detallados-descripcion">El Complejo Cultural y Deportivo La Jabonera, La Línea Verde, el Metrobús o el Paseo Morelos, son obras que van de acuerdo con las visiones y proyectos del Plan TRC2040 y que buscan ayudar a crear  una ciudad más densificada e incluyente.</p>
+          <p class="detallados-autor-fecha">Por Lic. Adriana Vargas Flores, 14/12/2016 15:30</p>
+        </div>
+      </div>
+      <div class="media breve">
+        <a class="pull-left" href="nueva-ley-de-asentamientos-humanos-estrategia-para-ordenar-la-metropoli.html"><img class="media-object" src="nueva-ley-de-asentamientos-humanos-estrategia-para-ordenar-la-metropoli/imagen-previa.jpg"></a>
+        <div class="media-body">
+          <h3 class="media-heading detallados-encabezado"><a href="nueva-ley-de-asentamientos-humanos-estrategia-para-ordenar-la-metropoli.html">Nueva Ley de Asentamientos Humanos: estrategia para ordenar la metrópoli</a></h3>
+          <p class="detallados-descripcion">Actualmente el uso de suelo habitacional ocupa la mayor superficie urbana de la Zona Metropolitana de La Laguna. De continuar con una baja densidad poblacional, los escenarios de expansión a futuro resultan preocupantes por la inversión que se necesita y los costos ambientales que esto implica.</p>
+          <p class="detallados-autor-fecha">Por Arq. Teresita Benítez Saludado, Lic. Adriana Vargas Flores, 14/12/2016 15:05</p>
+        </div>
+      </div>
+      <div class="media breve">
+        <a class="pull-left" href="los-beneficios-en-el-uso-de-la-infraestructura-verde-en-torreon.html"><img class="media-object" src="los-beneficios-en-el-uso-de-la-infraestructura-verde-en-torreon/imagen-previa.jpg"></a>
+        <div class="media-body">
+          <h3 class="media-heading detallados-encabezado"><a href="los-beneficios-en-el-uso-de-la-infraestructura-verde-en-torreon.html">Los beneficios en el uso de la Infraestructura Verde en Torreón</a></h3>
+          <p class="detallados-descripcion">Implementar la Infraestructura Verde en la planeación de la ciudad podría tener beneficios ambientales, económicos, sociales y de salud. Entre otros puntos fomenta la creación de espacios públicos arborizados que atraen a las personas a realizar actividades recreativas.</p>
+          <p class="detallados-autor-fecha">Por Arq. Cecilio Pedro Secunza Schott, 04/11/2016 13:22</p>
+        </div>
+      </div>
+      <div class="media breve">
+        <a class="pull-left" href="beneficios-de-la-peatonalizacion-en-el-centro-de-torreon.html"><img class="media-object" src="beneficios-de-la-peatonalizacion-en-el-centro-de-torreon/imagen-previa.jpg"></a>
+        <div class="media-body">
+          <h3 class="media-heading detallados-encabezado"><a href="beneficios-de-la-peatonalizacion-en-el-centro-de-torreon.html">Beneficios de la peatonalización en el Centro de Torreón</a></h3>
+          <p class="detallados-descripcion">De acuerdo con INEGI 12.6% de la población de 12 a 65 años realiza traslados a pie por estudio o trabajo. En el centro se ha lanzado el primer proyecto peatonal de la ciudad: El Paseo Morelos con estrategias como la pacificación del tránsito, señalización y cruces seguros.</p>
+          <p class="detallados-autor-fecha">Por Arq. Daniela Patricia Corral Hernández, 23/09/2016 13:35</p>
+        </div>
+      </div>
+      <div class="media breve">
+        <a class="pull-left" href="matriz-energetica-lagunera-necesaria-vision-de-futuro.html"><img class="media-object" src="matriz-energetica-lagunera-necesaria-vision-de-futuro/imagen-previa.jpg"></a>
+        <div class="media-body">
+          <h3 class="media-heading detallados-encabezado"><a href="matriz-energetica-lagunera-necesaria-vision-de-futuro.html">Matriz energética lagunera: necesaria visión de futuro</a></h3>
+          <p class="detallados-descripcion">Es necesario reconocer el gran potencial de La Laguna en materia de energías limpias o energías renovables, dado que contamos con importantes ventajas competitivas y comparativas en la rama de energía solar, energía de la biomasa y energía eólica.</p>
+          <p class="detallados-autor-fecha">Por Lic. Eduardo Holguín Zehfuss, Lic. Adriana Vargas Flores, 08/09/2016 10:25</p>
+        </div>
+      </div>
+      <div class="media breve">
+        <a class="pull-left" href="sistemas-urbanos-rurales-un-nuevo-enfoque-para-el-desarrollo-regional.html"><img class="media-object" src="sistemas-urbanos-rurales-un-nuevo-enfoque-para-el-desarrollo-regional/imagen-previa.jpg"></a>
+        <div class="media-body">
+          <h3 class="media-heading detallados-encabezado"><a href="sistemas-urbanos-rurales-un-nuevo-enfoque-para-el-desarrollo-regional.html">Sistemas Urbanos Rurales: un nuevo enfoque para el desarrollo regional</a></h3>
+          <p class="detallados-descripcion">Este enfoque permite analizar la influencia de las ciudades al desarrollo de una región para elaborar diagnósticos y políticas más certeros acorde a las necesidades del país.</p>
+          <p class="detallados-autor-fecha">Por Lic. Luis A. Gutiérrez Arizpe, Lic. Rodrigo González Morales, 09/08/2016 11:35</p>
+        </div>
+      </div>
+      <div class="media breve">
+        <a class="pull-left" href="torreon-y-su-riqueza-industrial.html"><img class="media-object" src="torreon-y-su-riqueza-industrial/imagen-previa.jpg"></a>
+        <div class="media-body">
+          <h3 class="media-heading detallados-encabezado"><a href="torreon-y-su-riqueza-industrial.html">Torreón y su riqueza industrial</a></h3>
+          <p class="detallados-descripcion">La Dirección de Desarrollo Económico y el IMPLAN han lanzado la Guía de Parques Industriales, que contiene información sobre la infraestructura que posee Torreón para recibir inversiones de clase mundial. Incluye además los principales indicadores económicos, demográficos y sociales de la región lagunera.</p>
+          <p class="detallados-autor-fecha">Por Lic. Adriana Vargas Flores, 25/04/2016 09:20</p>
+        </div>
+      </div>
+      <div class="media breve">
+        <a class="pull-left" href="la-necesidad-de-una-planeacion-urbana-sustentable.html"><img class="media-object" src="la-necesidad-de-una-planeacion-urbana-sustentable/imagen-previa.jpg"></a>
+        <div class="media-body">
+          <h3 class="media-heading detallados-encabezado"><a href="la-necesidad-de-una-planeacion-urbana-sustentable.html">La necesidad de una planeación urbana sustentable</a></h3>
+          <p class="detallados-descripcion">Las proyecciones de crecimiento de población y vivienda para 2020, demuestran que es necesario revisar los instrumentos de planeación existentes en la ciudad de Torreón y la Comarca Lagunera. Se calcula que habrá un aumento de 11,350 viviendas nuevas por año.</p>
+          <p class="detallados-autor-fecha">Por Arq. Teresita Benítez Saludado, 14/04/2016 14:15</p>
+        </div>
+      </div>
+      <div class="media breve">
+        <a class="pull-left" href="normatividad-urbana-el-reto-de-las-ciudades-mexicanas.html"><img class="media-object" src="normatividad-urbana-el-reto-de-las-ciudades-mexicanas/imagen-previa.jpg"></a>
+        <div class="media-body">
+          <h3 class="media-heading detallados-encabezado"><a href="normatividad-urbana-el-reto-de-las-ciudades-mexicanas.html">Normatividad Urbana: el reto de las ciudades mexicanas</a></h3>
+          <p class="detallados-descripcion">El Reglamento de Desarrollo Urbano, Zonificación, Uso de Suelo y Construcción, será vanguardista y congruente con la realidad urbana del municipio. Incorpora nuevos conceptos urbanísticos y será compatible con el Plan Director de Desarrollo Urbano.</p>
+          <p class="detallados-autor-fecha">Por Ing. Luis Campos Hinojosa, 17/03/2016 10:45</p>
+        </div>
+      </div>
+      <div class="media breve">
+        <a class="pull-left" href="principales-retos-de-la-zona-metropolitana-de-la-laguna.html"><img class="media-object" src="principales-retos-de-la-zona-metropolitana-de-la-laguna/imagen-previa.jpg"></a>
+        <div class="media-body">
+          <h3 class="media-heading detallados-encabezado"><a href="principales-retos-de-la-zona-metropolitana-de-la-laguna.html">Principales retos de la Zona Metropolitana de La Laguna</a></h3>
+          <p class="detallados-descripcion">Es necesaria una concertación entre los cuatro municipios de la ZML (Torreón, Matamoros, Gómez Palacio y Lerdo) por medio de una agenda de temas metropolitananos, en los ejes de: Buen Gobierno, Desarrollo Económico, Desarrollo Social, Entorno Urbano, Movilidad, Medio Ambiente y Sustentabilidad.</p>
+          <p class="detallados-autor-fecha">Por Arq. Ilse Ávila García, 09/03/2016 11:30</p>
+        </div>
+      </div>
+      <div class="media breve">
+        <a class="pull-left" href="estructura-y-traza-urbana-de-torreon.html"><img class="media-object" src="estructura-y-traza-urbana-de-torreon/imagen-previa.jpg"></a>
+        <div class="media-body">
+          <h3 class="media-heading detallados-encabezado"><a href="estructura-y-traza-urbana-de-torreon.html">Estructura y Traza Urbana de Torreón</a></h3>
+          <p class="detallados-descripcion">La pérdida de orden en la morfología de Torreón, consecuencia de una falta de planeación urbana, trajo problemas como desconexión vial, cruceros conflictivos, alta necesidad de movilidad motorizada y condiciones viales propicias para la privatización y clausura de los fraccionamientos.</p>
+          <p class="detallados-autor-fecha">Por Arq. Cecilio Pedro Secunza Schott, 26/01/2016 12:50</p>
+        </div>
+      </div>
+      <div class="media breve">
+        <a class="pull-left" href="por-la-conservacion-del-patrimonio-arquitectonico-en-la-laguna.html"><img class="media-object" src="por-la-conservacion-del-patrimonio-arquitectonico-en-la-laguna/imagen-previa.jpg"></a>
+        <div class="media-body">
+          <h3 class="media-heading detallados-encabezado"><a href="por-la-conservacion-del-patrimonio-arquitectonico-en-la-laguna.html">Por la conservación del patrimonio arquitectónico en La Laguna</a></h3>
+          <p class="detallados-descripcion">Si alguna construcción de Torreón se localiza dentro de las manzanas que conforman el polígono del Centro Histórico, está sujeta a restricciones en cuanto a su mantenimiento, uso o conservación.</p>
+          <p class="detallados-autor-fecha">Por Arq. Daniela Patricia Corral Hernández, 21/12/2015 08:00</p>
+        </div>
+      </div>
+      <div class="media breve">
+        <a class="pull-left" href="diagnostico-del-problema-de-drenaje-pluvial-en-torreon.html"><img class="media-object" src="diagnostico-del-problema-de-drenaje-pluvial-en-torreon/imagen-previa.jpg"></a>
+        <div class="media-body">
+          <h3 class="media-heading detallados-encabezado"><a href="diagnostico-del-problema-de-drenaje-pluvial-en-torreon.html">Diagnóstico del problema de drenaje pluvial en Torreón</a></h3>
+          <p class="detallados-descripcion">Se cuenta con 17 sistemas de captación y 10 colectores pluviales que necesitan reparación y mantenimiento, para comenzar a resolver parcialmente el problema de los encharcamientos de lluvia.</p>
+          <p class="detallados-autor-fecha">Por Lic. Adriana Vargas Flores, 30/11/2015 09:00</p>
+        </div>
+      </div>
+      <div class="media breve">
+        <a class="pull-left" href="por-un-crecimiento-ordenado-en-torreon.html"><img class="media-object" src="por-un-crecimiento-ordenado-en-torreon/imagen-previa.jpg"></a>
+        <div class="media-body">
+          <h3 class="media-heading detallados-encabezado"><a href="por-un-crecimiento-ordenado-en-torreon.html">Por un crecimiento ordenado en Torreón</a></h3>
+          <p class="detallados-descripcion">El Plan de Desarrollo Urbano propone la figura de los Polígonos de Actuación, para que la ciudad transite hacia un modelo de desarrollo urbano sustentable, integral e inteligente.</p>
+          <p class="detallados-autor-fecha">Por Arq. Jair Miramontes Chávez, 20/10/2015 14:20</p>
+        </div>
+      </div>
+      <div class="media breve">
+        <a class="pull-left" href="conviviendo-en-nuestras-ciudades.html"><img class="media-object" src="conviviendo-en-nuestras-ciudades/imagen-previa.jpg"></a>
+        <div class="media-body">
+          <h3 class="media-heading detallados-encabezado"><a href="conviviendo-en-nuestras-ciudades.html">Conviviendo en Nuestras Ciudades</a></h3>
+          <p class="detallados-descripcion">La ciudad es el espacio donde sus habitantes se representan, reúnen, conviven fortalecen las estructuras sociales e inclusive se manifiestan. Por ello es necesario cuidar la cantidad y calidad de los servicios que ahí se prestan.</p>
+          <p class="detallados-autor-fecha">Por Arq. Ilse Ávila García, 27/09/2015 19:05</p>
+        </div>
+      </div>
+      <div class="media breve">
+        <a class="pull-left" href="la-importancia-de-la-imagen-urbana.html"><img class="media-object" src="la-importancia-de-la-imagen-urbana/imagen-previa.jpg"></a>
+        <div class="media-body">
+          <h3 class="media-heading detallados-encabezado"><a href="la-importancia-de-la-imagen-urbana.html">La Importancia de la Imagen Urbana</a></h3>
+          <p class="detallados-descripcion">Al darle a la ciudad una buena calidad visual, los usuarios son capaces de desarrollar conductas y comportamientos dignos y creativos. Sin embargo en Torreón el distrito del Centro Histórico sufre un deterioro en su imagen urbana.</p>
+          <p class="detallados-autor-fecha">Por Arq. Teresita Benítez Saludado, 15/09/2015 20:50</p>
+        </div>
+      </div>
+      <div class="media breve">
+        <a class="pull-left" href="regeneracion-urbana-para-una-calidad-de-vida.html"><img class="media-object" src="regeneracion-urbana-para-una-calidad-de-vida/imagen-previa.jpg"></a>
+        <div class="media-body">
+          <h3 class="media-heading detallados-encabezado"><a href="regeneracion-urbana-para-una-calidad-de-vida.html">Regeneración Urbana para una Mejor Calidad de Vida</a></h3>
+          <p class="detallados-descripcion">La regeneración implica recuperar la funcionalidad y la revitalización de la trama urbana del municipio, para lograr el modelo de ciudad sostenible que en la actualidad se quiere alcanzar.</p>
+          <p class="detallados-autor-fecha">Por Arq. Jair Miramontes Chávez, 09/09/2015 13:30</p>
+        </div>
+      </div>
+      <div class="media breve">
+        <a class="pull-left" href="cinco-claves-para-entender-la-movilidad-no-motorizada.html"><img class="media-object" src="cinco-claves-para-entender-la-movilidad-no-motorizada/imagen-previa.jpg"></a>
+        <div class="media-body">
+          <h3 class="media-heading detallados-encabezado"><a href="cinco-claves-para-entender-la-movilidad-no-motorizada.html">Cinco Claves para entender la Movilidad No Motorizada</a></h3>
+          <p class="detallados-descripcion">Los resultados del taller para ubicar los esfuerzos y principios que tienen que realizarse para poder implementar un sistema de movilidad no motorizada.</p>
+          <p class="detallados-autor-fecha">Por Arq. Cecilio Pedro Secunza Schott, 27/08/2015 14:30</p>
+        </div>
+      </div>
+      <div class="media breve">
+        <a class="pull-left" href="por-un-adecuado-manejo-del-agua-en-areas-verdes.html"><img class="media-object" src="por-un-adecuado-manejo-del-agua-en-areas-verdes/imagen-previa.jpg"></a>
+        <div class="media-body">
+          <h3 class="media-heading detallados-encabezado"><a href="por-un-adecuado-manejo-del-agua-en-areas-verdes.html">Por un Adecuado Manejo del Agua en Áreas Verdes</a></h3>
+          <p class="detallados-descripcion">Estrategias específicas para las áreas verdes de la región que tienen en cuenta el uso moderado del agua.</p>
+          <p class="detallados-autor-fecha">Por Arq. Daniela Patricia Corral Hernández, 25/08/2015 21:10</p>
+        </div>
+      </div>
+      <div class="media breve">
+        <a class="pull-left" href="turismo-urbano-como-motor-en-las-ciudades.html"><img class="media-object" src="turismo-urbano-como-motor-en-las-ciudades/imagen-previa.jpg"></a>
+        <div class="media-body">
+          <h3 class="media-heading detallados-encabezado"><a href="turismo-urbano-como-motor-en-las-ciudades.html">Turismo urbano como motor en las ciudades</a></h3>
+          <p class="detallados-descripcion">Los patrimonios históricos de las ciudades se pueden convertir en atractivos turísticos. Promoviendo más actividades y servicios comerciales, la modernización de la infraestructura, enbellecimiento de la imagen urbana y mejor calidad de vida.</p>
+          <p class="detallados-autor-fecha">Por Arq. Ángeles Melisa Rodríguez Salas, 13/08/2015 10:40</p>
+        </div>
+      </div>
+      <div class="media breve">
+        <a class="pull-left" href="la-utopia-de-una-ciudad-caminable.html"><img class="media-object" src="la-utopia-de-una-ciudad-caminable/imagen-previa.jpg"></a>
+        <div class="media-body">
+          <h3 class="media-heading detallados-encabezado"><a href="la-utopia-de-una-ciudad-caminable.html">La Utopía de una Ciudad Caminable</a></h3>
+          <p class="detallados-descripcion">Un lugar agradable y atractivo es un lugar lleno de gente; es por ello que un lugar ideal es caminable, compacto, accesible y diverso.</p>
+          <p class="detallados-autor-fecha">Por Lic. Adriana Vargas Flores, 07/08/2015 16:35</p>
+        </div>
+      </div>
+      <div class="media breve">
+        <a class="pull-left" href="es-mas-facil-cambiar-la-ciudad-que-cambiar-nosotros.html"><img class="media-object" src="es-mas-facil-cambiar-la-ciudad-que-cambiar-nosotros/imagen-previa.jpg"></a>
+        <div class="media-body">
+          <h3 class="media-heading detallados-encabezado"><a href="es-mas-facil-cambiar-la-ciudad-que-cambiar-nosotros.html">Es más fácil cambiar la ciudad que cambiar nosotros</a></h3>
+          <p class="detallados-descripcion">Debemos de tomar acciones que nos lleven a revalorizar nuestro centro histórico, donde está la historia del nacimiento de nuestra ciudad.</p>
+          <p class="detallados-autor-fecha">Por Arq. Ilse Ávila García, 28/07/2015 09:30</p>
+        </div>
+      </div>
+      <div class="media breve">
+        <a class="pull-left" href="la-planeacion-urbana.html"><img class="media-object" src="la-planeacion-urbana/imagen-previa.jpg"></a>
+        <div class="media-body">
+          <h3 class="media-heading detallados-encabezado"><a href="la-planeacion-urbana.html">La Planeación Urbana</a></h3>
+          <p class="detallados-descripcion">Definición de lo que es la Planeación Urbana y los fines de un Plan de Desarrollo Urbano.</p>
+          <p class="detallados-autor-fecha">Por Arq. Teresita Benítez Saludado, 21/07/2015 23:00</p>
+        </div>
+      </div>
+      <div class="media breve">
+        <a class="pull-left" href="hacia-ciudades-que-construyen-humanos-en-convivencia.html"><img class="media-object" src="hacia-ciudades-que-construyen-humanos-en-convivencia/imagen-previa.jpg"></a>
+        <div class="media-body">
+          <h3 class="media-heading detallados-encabezado"><a href="hacia-ciudades-que-construyen-humanos-en-convivencia.html">Hacia Ciudades que Construyen Humanos en Convivencia</a></h3>
+          <p class="detallados-descripcion">El espacio público es donde se tejen las relaciones sociales, por lo tanto su conformación debe contribuir a desarrollar las capacidades humanas.</p>
+          <p class="detallados-autor-fecha">Por Arq. Susana Montano, 07/07/2015 16:00</p>
+        </div>
+      </div>
+      <div class="media breve">
+        <a class="pull-left" href="la-ciudad-compacta-vive-mejor.html"><img class="media-object" src="la-ciudad-compacta-vive-mejor/imagen-previa.jpg"></a>
+        <div class="media-body">
+          <h3 class="media-heading detallados-encabezado"><a href="la-ciudad-compacta-vive-mejor.html">La Ciudad Compacta (como la familia pequeña) Vive Mejor</a></h3>
+          <p class="detallados-descripcion">La política pública a adoptar como estrategia debe ser la de crecimiento interno: densificar la ciudad implotando su crecimiento hacia adentro y hacia arriba.</p>
+          <p class="detallados-autor-fecha">Por Arq. Cecilio Pedro Secunza Schott, 01/07/2015 15:16</p>
+        </div>
+      </div>
+      <div class="media breve">
+        <a class="pull-left" href="reflexion-crecimiento-urbano-torreon.html"><img class="media-object" src="reflexion-crecimiento-urbano-torreon/imagen-previa.jpg"></a>
+        <div class="media-body">
+          <h3 class="media-heading detallados-encabezado"><a href="reflexion-crecimiento-urbano-torreon.html">Reflexión del Crecimiento Urbano en Torreón</a></h3>
+          <p class="detallados-descripcion">La ciudad de Torreón nace a partir de la visión de Sr. Andrés Guillermo Eppen con trazos ordenados, calles anchas, manzanas cuadradas y alineadas con la vía de ferrocarril.</p>
+          <p class="detallados-autor-fecha">Por Arq. Ilse Ávila García, 27/05/2015 16:10</p>
+        </div>
+      </div>
+      <div class="media breve">
+        <a class="pull-left" href="reinventar-futuro-metropoli.html"><img class="media-object" src="reinventar-futuro-metropoli/imagen-previa.jpg"></a>
+        <div class="media-body">
+          <h3 class="media-heading detallados-encabezado"><a href="reinventar-futuro-metropoli.html">Reinventar el futuro de la metrópoli</a></h3>
+          <p class="detallados-descripcion">Ensayo sobre las nuevas tecnologías en materia de vivienda, agricultura y transporte que mejorarán nuestro futuro.</p>
+          <p class="detallados-autor-fecha">Por Ing. Guillermo Valdés Lozano, 06/05/2015 12:40</p>
+        </div>
+      </div>
+      <div class="media breve">
+        <a class="pull-left" href="movilidad-urbana-competitividad.html"><img class="media-object" src="movilidad-urbana-competitividad/imagen-previa.jpg"></a>
+        <div class="media-body">
+          <h3 class="media-heading detallados-encabezado"><a href="movilidad-urbana-competitividad.html">Movilidad Urbana y Competitividad</a></h3>
+          <p class="detallados-descripcion">La movilidad es eje fundamental del desarrollo; al no considerar el transporte como parte de la planeación urbana, se generan graves deficiencias, como dispersión, distanciamiento y desconexión urbana.</p>
+          <p class="detallados-autor-fecha">Por Arq. Cecilio Pedro Secunza Schott, 28/04/2015 11:45</p>
+        </div>
+      </div>
+      <div class="media breve">
+        <a class="pull-left" href="ciudadano-agente-cambio.html"><img class="media-object" src="ciudadano-agente-cambio/imagen-previa.jpg"></a>
+        <div class="media-body">
+          <h3 class="media-heading detallados-encabezado"><a href="ciudadano-agente-cambio.html">Ciudadano como agente de cambio</a></h3>
+          <p class="detallados-descripcion">La participación de la sociedad en proyectos urbanos crea una cultura de co-creación. Destaca Medellín, Colombia donde se aplica en la coordinación, participación y construcción de obra pública.</p>
+          <p class="detallados-autor-fecha">Por Arq. Victoria Aranzábal, 15/04/2015 15:15</p>
+        </div>
+      </div>
+      <div class="media breve">
+        <a class="pull-left" href="espacio-publico-urbano.html"><img class="media-object" src="espacio-publico-urbano/imagen-previa.jpg"></a>
+        <div class="media-body">
+          <h3 class="media-heading detallados-encabezado"><a href="espacio-publico-urbano.html">Espacio Público Urbano</a></h3>
+          <p class="detallados-descripcion">Las calles son la forma más importante de espacio público. Requieren algunos cambios urbanos para que sean más seguras y amistosas para los niños y niñas; que lleguen a ser de alta calidad.</p>
+          <p class="detallados-autor-fecha">Por Arq. Teresita Benítez Saludado, 20/03/2015 14:05</p>
+        </div>
+      </div>
+      <div class="media breve">
+        <a class="pull-left" href="reciclaje-urbano.html"><img class="media-object" src="reciclaje-urbano/imagen-previa.jpg"></a>
+        <div class="media-body">
+          <h3 class="media-heading detallados-encabezado"><a href="reciclaje-urbano.html">Reciclaje Urbano</a></h3>
+          <p class="detallados-descripcion">Con en el reciclaje urbano, se han logrado grandes resultados al convertir zonas degradadas en nuevos barrios con gran potencial y desarrollo que se resulta un nuevo punto de interés para los habitantes y visitantes de la ciudad.</p>
+          <p class="detallados-autor-fecha">Por Arq. Jair Miramontes Chávez, 03/03/2015 08:05</p>
+        </div>
+      </div>
+      <div class="media breve">
+        <a class="pull-left" href="ciudad-abierta-ciudad-fraccionada.html"><img class="media-object" src="ciudad-abierta-ciudad-fraccionada/imagen-previa.jpg"></a>
+        <div class="media-body">
+          <h3 class="media-heading detallados-encabezado"><a href="ciudad-abierta-ciudad-fraccionada.html">Ciudad abierta y ciudad fraccionada</a></h3>
+          <p class="detallados-descripcion">La fragmentación social y urbana provocada por desarrollos habitacionales “seguros” tiene efectos que agravan la percepción de la inseguridad en la ciudad.</p>
+          <p class="detallados-autor-fecha">Por Arq. Cecilio Pedro Secunza Schott, 24/02/2015 08:05</p>
+        </div>
+      </div>
+      <div class="media breve">
+        <a class="pull-left" href="direccionando-hacia-innovacion-urbana.html"><img class="media-object" src="direccionando-hacia-innovacion-urbana/imagen-previa.jpg"></a>
+        <div class="media-body">
+          <h3 class="media-heading detallados-encabezado"><a href="direccionando-hacia-innovacion-urbana.html">Direccionando hacia la innovación urbana</a></h3>
+          <p class="detallados-descripcion">Actualmente el concepto de ciudad inteligente o digital se maneja a nivel global. Muchas ciudades de este tipo se están desarrollando en diferentes lugares del mundo, cada una con su propio sistema, diseño, estructura y organización.</p>
+          <p class="detallados-autor-fecha">Por Arq. Ilse Ávila García, 11/02/2015 08:05</p>
+        </div>
+      </div>
+      <div class="media breve">
+        <a class="pull-left" href="nueva-infraestructura-base-tecnologia-led-torreon.html"><img class="media-object" src="nueva-infraestructura-base-tecnologia-led-torreon/imagen-previa.jpg"></a>
+        <div class="media-body">
+          <h3 class="media-heading detallados-encabezado"><a href="nueva-infraestructura-base-tecnologia-led-torreon.html">Nueva infraestructura a base de tecnología LED en Torreón</a></h3>
+          <p class="detallados-descripcion">La luz blanca de calidad puede transformar el paisaje nocturno, realzando la arquitectura urbana y creando ambientes acogedores que inviten a las personas a pasar más tiempo en ellos.</p>
+          <p class="detallados-autor-fecha">Por Arq. Daniela Patricia Corral Hernández, 10/02/2015 08:05</p>
+        </div>
+      </div>
+      <div class="media breve">
+        <a class="pull-left" href="prevencion-delito-espacio-publico.html"><img class="media-object" src="prevencion-delito-espacio-publico/imagen-previa.jpg"></a>
+        <div class="media-body">
+          <h3 class="media-heading detallados-encabezado"><a href="prevencion-delito-espacio-publico.html">Prevención del delito mediante la construcción del espacio público</a></h3>
+          <p class="detallados-descripcion">Ante el miedo y el temor, el lagunero ha tomado medidas en lo individual y lo colectivo en un intento por evitar ser víctimas de algún delito, se ha encerrado en lo privado despreciando el espacio público como si fuera ajeno.</p>
+          <p class="detallados-autor-fecha">Por Arq. Victoria Aranzábal, 28/01/2015 08:05</p>
+        </div>
+      </div>
+      <div class="media breve">
+        <a class="pull-left" href="ciudad-espacio-publico.html"><img class="media-object" src="ciudad-espacio-publico/imagen-previa.jpg"></a>
+        <div class="media-body">
+          <h3 class="media-heading detallados-encabezado"><a href="ciudad-espacio-publico.html">Ciudad y Espacio Público</a></h3>
+          <p class="detallados-descripcion">Actualmente las teorías urbanas afirman que el buen diseño de calles puede promover calidad de vida para todos.</p>
+          <p class="detallados-autor-fecha">Por Arq. Teresita Benítez Saludado, 13/01/2015 08:05</p>
+        </div>
+      </div>
+      <div class="media breve">
+        <a class="pull-left" href="urbanismo-participativo.html"><img class="media-object" src="urbanismo-participativo/imagen-previa.jpg"></a>
+        <div class="media-body">
+          <h3 class="media-heading detallados-encabezado"><a href="urbanismo-participativo.html">Urbanismo Participativo</a></h3>
+          <p class="detallados-descripcion">Es un concepto de corresponsabilidad que se forma entre el Estado y la sociedad dentro de un modelo de gobernanza, en donde los ciudadanos aportan ideas y evalúan los procesos de planeación del territorio y de los espacios públicos urbanos que lo conforman.</p>
+          <p class="detallados-autor-fecha">Por Arq. Jair Miramontes Chávez, 16/12/2014 08:05</p>
+        </div>
+      </div>
+      <div class="media breve">
+        <a class="pull-left" href="calle-completa-espacio-vital-todos.html"><img class="media-object" src="calle-completa-espacio-vital-todos/imagen-previa.jpg"></a>
+        <div class="media-body">
+          <h3 class="media-heading detallados-encabezado"><a href="calle-completa-espacio-vital-todos.html">La Calle Completa: espacio vial para todos</a></h3>
+          <p class="detallados-descripcion">Con la inclusión del automóvil en el espacio urbano se causó problemas como alta incidencia de accidentes, inaccesibilidad, contaminación, y el deterioro del espacio público más importante: la calle.</p>
+          <p class="detallados-autor-fecha">Por Arq. Cecilio Pedro Secunza Schott, 03/12/2014 08:05</p>
+        </div>
+      </div>
+      <div class="media breve">
+        <a class="pull-left" href="ciudades-mas-humanas.html"><img class="media-object" src="ciudades-mas-humanas/imagen-previa.jpg"></a>
+        <div class="media-body">
+          <h3 class="media-heading detallados-encabezado"><a href="ciudades-mas-humanas.html">Ciudades más Humanas</a></h3>
+          <p class="detallados-descripcion">La calidad de vida en las ciudades es la posibilidad que tiene una persona, una familia o una comunidad, de alcanzar el bienestar y la satisfacción de todas sus necesidades.</p>
+          <p class="detallados-autor-fecha">Por Arq. Ilse Ávila García, 02/12/2014 08:05</p>
+        </div>
+      </div>
+      <div class="media breve">
+        <a class="pull-left" href="movilidad-nuestra-ciudad.html"><img class="media-object" src="movilidad-nuestra-ciudad/imagen-previa.jpg"></a>
+        <div class="media-body">
+          <h3 class="media-heading detallados-encabezado"><a href="movilidad-nuestra-ciudad.html">Movilidad y nuestra ciudad</a></h3>
+          <p class="detallados-descripcion">De 1970 a la fecha la expansión de la mancha urbana en la ciudad de Torreón ha crecido siete veces mientras que la población únicamente tres.</p>
+          <p class="detallados-autor-fecha">Por Lic. Luis A. Gutiérrez Arizpe, 25/11/2014 08:05</p>
+        </div>
+      </div>
+      <div class="media breve">
+        <a class="pull-left" href="bicimetro-innovacion-transporte-urbano.html"><img class="media-object" src="bicimetro-innovacion-transporte-urbano/imagen-previa.jpg"></a>
+        <div class="media-body">
+          <h3 class="media-heading detallados-encabezado"><a href="bicimetro-innovacion-transporte-urbano.html">Bicimetro: La innovación del Transporte Urbano</a></h3>
+          <p class="detallados-descripcion">Cada vez son más los ciudadanos que optan por dejar sus carros y se animan a desempolvar las bicicletas guardadas en los garajes y utilizarlas como medio de transporte ya sea habitual o por recreación.</p>
+          <p class="detallados-autor-fecha">Por Arq. Daniela Patricia Corral Hernández, 19/11/2014 08:05</p>
+        </div>
+      </div>
+      <div class="media breve">
+        <a class="pull-left" href="dot-desarrollo-orientado-transporte.html"><img class="media-object" src="dot-desarrollo-orientado-transporte/imagen-previa.png"></a>
+        <div class="media-body">
+          <h3 class="media-heading detallados-encabezado"><a href="dot-desarrollo-orientado-transporte.html">DOT: Desarrollo Orientado al Transporte</a></h3>
+          <p class="detallados-descripcion">En las últimas décadas, han surgido nuevos modelos urbanos que retoman el componente humano como eje principal de la planeación, buscando el equilibrio entre una ciudad altamente competitiva pero con servicios e infraestructura orientada al confort y las necesidades del ser humano.</p>
+          <p class="detallados-autor-fecha">Por Ing. Luis Campos Hinojosa, 05/11/2014 08:05</p>
+        </div>
+      </div>
+      <div class="media breve">
+        <a class="pull-left" href="ciudades-reto-transformacion.html"><img class="media-object" src="ciudades-reto-transformacion/imagen-previa.jpg"></a>
+        <div class="media-body">
+          <h3 class="media-heading detallados-encabezado"><a href="ciudades-reto-transformacion.html">Las ciudades y el reto de su transformación</a></h3>
+          <p class="detallados-descripcion">El futuro de la humanidad está intrínsecamente relacionado al futuro de las ciudades. A partir de la revolución industrial hubo una movilización de personas del campo a la ciudad, lo que trajo consigo una revolución urbana.</p>
+          <p class="detallados-autor-fecha">Por Arq. Victoria Aranzábal, 28/10/2014 08:05</p>
+        </div>
+      </div>
+      <div class="media breve">
+        <a class="pull-left" href="torreon-camino-redensificacion-2.html"><img class="media-object" src="torreon-camino-redensificacion-2/imagen-previa.jpg"></a>
+        <div class="media-body">
+          <h3 class="media-heading detallados-encabezado"><a href="torreon-camino-redensificacion-2.html">Torreón, camino a la redensificación II</a></h3>
+          <p class="detallados-descripcion">Continuación del tema de la redensificación de ciudades. Las cifras nos indican como el territorio ocupado en Torreón es siete veces contra tres del crecimiento poblacional de la década de 1970 a la fecha.</p>
+          <p class="detallados-autor-fecha">Por Arq. Teresita Benítez Saludado, 23/10/2014 08:05</p>
+        </div>
+      </div>
+      <div class="media breve">
+        <a class="pull-left" href="importancia-suelo-ciudades.html"><img class="media-object" src="importancia-suelo-ciudades/imagen-previa.jpg"></a>
+        <div class="media-body">
+          <h3 class="media-heading detallados-encabezado"><a href="importancia-suelo-ciudades.html">La importancia del suelo en las ciudades</a></h3>
+          <p class="detallados-descripcion">En México el suelo en grandes proporciones ha pasado de ser rural a urbano; la disponibilidad y ordenamiento del mismo son básicos dentro del desarrollo actual.</p>
+          <p class="detallados-autor-fecha">Por Arq. Ilse Ávila García, 15/10/2014 08:05</p>
+        </div>
+      </div>
+      <div class="media breve">
+        <a class="pull-left" href="poligonos-actuacion-desarrollo-urbano-integral.html"><img class="media-object" src="poligonos-actuacion-desarrollo-urbano-integral/imagen-previa.jpg"></a>
+        <div class="media-body">
+          <h3 class="media-heading detallados-encabezado"><a href="poligonos-actuacion-desarrollo-urbano-integral.html">Polígonos de Actuación para un Desarrollo Urbano Integral</a></h3>
+          <p class="detallados-descripcion">El nuevo modelo de desarrollo urbano mexicano que se impulsa en el país es el de fomentar la consolidación de las ciudades y lograr que sean más competitivas, equilibradas, densas, prósperas, justas, seguras y sustentables.</p>
+          <p class="detallados-autor-fecha">Por Arq. Jair Miramontes Chávez, 14/10/2014 08:05</p>
+        </div>
+      </div>
+      <div class="media breve">
+        <a class="pull-left" href="torreon-camino-redensificacion.html"><img class="media-object" src="torreon-camino-redensificacion/imagen-previa.jpg"></a>
+        <div class="media-body">
+          <h3 class="media-heading detallados-encabezado"><a href="torreon-camino-redensificacion.html">Torreón, camino a la redensificación</a></h3>
+          <p class="detallados-descripcion">Torreón no ha aprovechado su territorio e infraestructura contenida, de una manera óptima, debido a su baja densidad de ocupación en su área urbana.</p>
+          <p class="detallados-autor-fecha">Por Arq. Teresita Benítez Saludado, 28/08/2014 08:05</p>
+        </div>
+      </div>
+      <div class="media breve">
+        <a class="pull-left" href="movilidad-laboral-cotidiana-zml.html"><img class="media-object" src="movilidad-laboral-cotidiana-zml/imagen-previa.jpg"></a>
+        <div class="media-body">
+          <h3 class="media-heading detallados-encabezado"><a href="movilidad-laboral-cotidiana-zml.html">Movilidad laboral cotidiana en la ZML</a></h3>
+          <p class="detallados-descripcion">Población ocupada que tiene trabajo en su PROPIO municipio y que tiene trabajo en OTRO Municipio de la Zona Metropolitana de la Laguna.</p>
+          <p class="detallados-autor-fecha">Por Lic. Luis A. Gutiérrez Arizpe, 06/08/2014 08:05</p>
+        </div>
+      </div>
+      <div class="media breve">
+        <a class="pull-left" href="infraestructura.html"><img class="media-object" src="infraestructura/imagen-previa.jpg"></a>
+        <div class="media-body">
+          <h3 class="media-heading detallados-encabezado"><a href="infraestructura.html">Infraestructura (Sectores precursores de clase mundial)</a></h3>
+          <p class="detallados-descripcion">Análisis de los indicadores sobre infraestructura en tecnologías de la información, carreteras avanzadas y tasa de accidentes viales.</p>
+          <p class="detallados-autor-fecha">Por Lic. Rodrigo González Morales, 26/06/2014 08:05</p>
+        </div>
+      </div>
+      <div class="media breve">
+        <a class="pull-left" href="invertir-en-torreon.html"><img class="media-object" src="invertir-en-torreon/imagen-previa.jpg"></a>
+        <div class="media-body">
+          <h3 class="media-heading detallados-encabezado"><a href="invertir-en-torreon.html">Invertir en Torreón</a></h3>
+          <p class="detallados-descripcion">¿Qué buscan las grandes compañías para poder instalarse en nuestra ciudad? Aquí siete razones que las empresas considerarían para invertir en Torreón.</p>
+          <p class="detallados-autor-fecha">Por Lic. Heriberto Ramos Hernández, 13/05/2014 08:05</p>
+        </div>
+      </div>
+    </div>
+    <div class="mapa-inferior">
+          <div class="pull-right redes-sociales">
+            <a class="fa fa-twitter-square" href="http://www.twitter.com/trcimplan" target="_blank"></a>
+            <a class="fa fa-facebook-square" href="https://facebook.com/trcimplan" target="_blank"></a>
+            <a class="fa fa-facebook-square" href="http://www.instagram.com/implantorreon" target="_blank"></a>
+            <a class="fa fa-rss-square" href="../rss.xml"></a>
+          </div>
+    </div>
+  </div>
+</div>
+<!-- Javascript global inicia -->
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
+<script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="../vendor/metisMenu/metisMenu.min.js"></script>
+<script type="text/javascript" src="../vendor/datatables/js/jquery.dataTables.min.js"></script>
+<script type="text/javascript" src="../vendor/datatables-plugins/dataTables.bootstrap.min.js"></script>
+<script type="text/javascript" src="../vendor/datatables-responsive/dataTables.responsive.js"></script>
+<script type="text/javascript" src="../vendor/raphael/raphael.min.js"></script>
+<script type="text/javascript" src="../vendor/morrisjs/morris.min.js"></script>
+<script type="text/javascript" src="../dist/js/sb-admin-2.min.js"></script>
+<script type="text/javascript" src="http://libs.cartocdn.com/cartodb.js/v3/3.15/cartodb.js"></script>
+<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+<!-- Javascript global termina -->
+<!-- Javascript inicia -->
+
+<!-- Javascript termina -->
+<!-- Javascript Google Analytics -->
+<script>
+  // Google Analytics
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)})(window,document,'script','//www.google-analytics.com/analytics.js','ga');ga('create', 'UA-58290501-1', 'auto');ga('send', 'pageview');
+</script>
+</body>
+</html>

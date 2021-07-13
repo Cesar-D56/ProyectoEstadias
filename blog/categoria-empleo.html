@@ -1,0 +1,637 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+<!-- ===================================================================================================
+
+        Instituto Municipal de Planeación y Competitividad (IMPLAN) de Torreón.
+
+        3er. generación de la Plataforma del Conocimiento
+        Desarrollado por Ing. Guillermo Valdés Lozano <guivaloz en movimientolibre.com>
+
+        El software que lo construye está bajo la licencia GPL versión 3. © 2014, 2015, 2016, 2017.
+        Una copia está contenida en el archivo LICENCE al bajar desde GitHub.
+
+        Al usar, estudiar y copiar está aceptando los términos de uso de la información y del sitio web:
+          http://www.trcimplan.gob.mx/terminos/terminos-informacion.html
+          http://www.trcimplan.gob.mx/terminos/terminos-sitio.html
+
+        Descargue, estudie y colabore bajando todo este sitio web:
+          IMPLAN Torreón     https://github.com/TRCIMPLAN/trcimplan.github.io
+
+        Agradecemos y compartimos las tecnologías abiertas y gratuitas sobre las que se basa:
+          PHP                http://php.net
+          Twitter Bootstrap  http://getbootstrap.com
+          StartBootStrap     http://startbootstrap.com
+          Morris.js          https://morrisjs.github.io/morris.js/
+          Font Awesome       http://fontawesome.io
+          DataTables         https://www.datatables.net
+          Carto              https://carto.com
+          GitHub             https://github.com
+
+     =================================================================================================== -->
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="author" content="TrcIMPLAN Staff">
+  <meta name="keywords" content="IMPLAN, Torreon, Analisis, Publicaciones, Estudios, Investigacion, Empleo">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Empleo - IMPLAN Torreón">
+  <meta name="twitter:description" content="">
+  <meta name="twitter:url" content="http://www.trcimplan.gob.mx/blog/categoria-empleo.html">
+  <meta name="og:title" content="Empleo - IMPLAN Torreón">
+  <meta name="og:description" content="">
+  <meta name="og:url" content="http://www.trcimplan.gob.mx/blog/categoria-empleo.html">
+  <title>Empleo - IMPLAN Torreón</title>
+  <link rel="shortcut icon" type="image/x-icon" href="../imagenes/apple-touch-icon.png">
+  <link rel="apple-touch-icon" href="../imagenes/apple-touch-icon.png">
+  <link rel="apple-touch-icon" href="../imagenes/apple-touch-icon-76x76.png" sizes="76x76">
+  <link rel="apple-touch-icon" href="../imagenes/apple-touch-icon-120x120.png" sizes="120x120">
+  <link rel="apple-touch-icon" href="../imagenes/apple-touch-icon-152x152.png" sizes="152x152">
+  <link rel="apple-touch-icon" href="../imagenes/apple-touch-icon-180x180.png" sizes="180x180">
+  <link rel="icon" href="../imagenes/icon-hires.png" sizes="192x192">
+  <link rel="icon" href="../imagenes/icon-normal.png" sizes="128x128">
+  <link rel="alternate" type="application/rss+xml" href="../rss.xml" title="IMPLAN Torreón">
+  <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+  <link rel="stylesheet" type="text/css" href="../vendor/metisMenu/metisMenu.min.css">
+  <link rel="stylesheet" type="text/css" href="../vendor/datatables-plugins/dataTables.bootstrap.css">
+  <link rel="stylesheet" type="text/css" href="../vendor/morrisjs/morris.css">
+  <link rel="stylesheet" type="text/css" href="../vendor/font-awesome/css/font-awesome.min.css">
+  <link rel="stylesheet" type="text/css" href="../dist/css/sb-admin-2.min.css">
+  <link rel="stylesheet" type="text/css" href="../dist/css/plataforma-de-conocimiento.css">
+  <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Noto+Sans|Roboto+Condensed:400,700">
+  <link rel="stylesheet" type="text/css" href="http://libs.cartocdn.com/cartodb.js/v3/3.15/themes/css/cartodb.css">
+  <link rel="stylesheet" type="text/css" href="../dist/css/estilosvm.css">
+  <link rel="stylesheet" type="text/css" href="../dist/css/trcimplan.css">
+  <!-- SOPORTE PARA IE -->
+  <!--[if lt IE 9]>
+  <script type="text/javascript" src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+  <script type="text/javascript" src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+  <![endif]-->
+</head>
+<body>
+<div id="wrapper">
+  <nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="../index.html"><img class="navbar-brand-img" src="../imagenes/implan-barra-logo-chico-gris.png" alt="IMPLAN Torreón"></a>
+    </div>
+  <div class="navbar-default sidebar" role="navigation">
+    <div class="sidebar-nav navbar-collapse">
+      <ul class="nav" id="side-menu">
+        <li class="sidebar-search">
+          <form method="get" action="http://www.trcimplan.gob.mx/buscador-resultados.html">
+            <div class="input-group custom-search-form">
+              <input type="text" class="form-control" placeholder="Google buscar..." value="" name="q">
+              <span class="input-group-btn">
+                <button class="btn btn-default" type="submit"><i class="fa fa-search"></i></button>
+              </span>
+            </div>
+          </form>
+        </li>
+        <li class="active">
+          <a href="#"><span class="navegacion-icono"><i class="fa fa-lightbulb-o"></i></span> Análisis Publicados<span class="fa arrow"></span></a>
+          <ul class="nav nav-second-level">
+            <li><a href="../blog/index.html"><span class="navegacion-icono"><i class="fa fa-file-text-o"></i></span> Últimos Análisis</a></li>
+            <li><a href="../excolaboradores/index.html"><span class="navegacion-icono"><i class="fa fa-file-text-o"></i></span> Análisis por Autor</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="#"><span class="navegacion-icono"><i class="fa fa-area-chart"></i></span> Indicadores<span class="fa arrow"></span></a>
+          <ul class="nav nav-second-level">
+            <li><a href="../smi/introduccion.html"><span class="navegacion-icono"><i class="fa fa-file-text-o"></i></span> Introducción al SMI</a></li>
+            <li><a href="../indicadores-categorias/index.html"><span class="navegacion-icono"><i class="fa fa-th-list"></i></span> Indicadores por Categoría</a></li>
+            <li><a href="../smi/por-region.html"><span class="navegacion-icono"><i class="fa fa-table"></i></span> Indicadores por Región</a></li>
+            <li><a href="../smi/datos-abiertos.html"><span class="navegacion-icono"><i class="fa fa-download"></i></span> Datos Abiertos</a></li>
+            <li><a href="../smi/niveles-socioeconomicos.html"><span class="navegacion-icono"><i class="fa fa-bar-chart"></i></span> Niveles Socioeconómicos</a></li>
+            <li><a href="../monitores/index.html"><span class="navegacion-icono"><i class="fa fa-file-text-o"></i></span> Monitores</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="#"><span class="navegacion-icono"><i class="fa fa-puzzle-piece"></i></span> Indicadores Básicos de Colonias<span class="fa arrow"></span></a>
+          <ul class="nav nav-second-level">
+            <li><a href="../ibc/introduccion.html"><span class="navegacion-icono"><i class="fa fa-file-text-o"></i></span> Introducción al IBC</a></li>
+            <li><a href="../ibc-colonias-torreon/index.html"><span class="navegacion-icono"><i class="fa fa-font"></i></span> Colonias de Torreón</a></li>
+            <li><a href="https://implantorreon.carto.com/u/sigimplan/builder/907a6bc0-2c7e-451e-9668-b78d952e52ff/embed" target="_blank"><span class="navegacion-icono"><i class="fa fa-external-link"></i></span> Mapa Completo</a></li>
+            <li><a href="../ibc/torreon-urbano.html"><span class="navegacion-icono"><i class="fa fa-table"></i></span> Torreón Urbano</a></li>
+            <li><a href="../ibc/datos-abiertos.html"><span class="navegacion-icono"><i class="fa fa-download"></i></span> Datos Abiertos</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="#"><span class="navegacion-icono"><i class="fa fa-map-marker"></i></span> Información Geográfica<span class="fa arrow"></span></a>
+          <ul class="nav nav-second-level">
+            <li><a href="../sig/introduccion.html"><span class="navegacion-icono"><i class="fa fa-file-text-o"></i></span> Introducción al SIG</a></li>
+            <li><a href="../sig-mapas-torreon/temas-sig.html"><span class="navegacion-icono"><i class="fa fa-map-o"></i></span> Mapas por Tema</a></li>
+            <li><a href="../sig-mapas-torreon/plan-director-desarrollo-urbano.html"><span class="navegacion-icono"><i class="fa fa-map-marker"></i></span> Usos de Suelo</a></li>
+            <li><a href="../sig/datos-abiertos.html"><span class="navegacion-icono"><i class="fa fa-download"></i></span> Datos Abiertos</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="#"><span class="navegacion-icono"><i class="fa fa-book"></i></span> Plan Estratégico Torreón 2040<span class="fa arrow"></span></a>
+          <ul class="nav nav-second-level">
+            <li><a href="../pet/indice.html"><span class="navegacion-icono"><i class="fa fa-list-ul"></i></span> Índice General</a></li>
+            <li><a href="../plan-estrategico-torreon-enfoque-metropolitano-2040/index.html"><span class="navegacion-icono"><i class="fa fa-download"></i></span> Descargar</a></li>
+            <li><a href="../plan-estrategico-metropolitano/descripcion-del-proceso.html"><span class="navegacion-icono"><i class="fa fa-calendar"></i></span> Descripción del proceso</a></li>
+            <li><a href="../proyectos/index.html"><span class="navegacion-icono"><i class="fa fa-check-square"></i></span> Proyectos</a></li>
+            <li><a href="../vision-de-ciudad/vision-de-ciudad.html"><span class="navegacion-icono"><i class="fa fa-file-text-o"></i></span> Visión de Ciudad desde IMPLAN</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="#"><span class="navegacion-icono"><i class="fa fa-briefcase"></i></span> Documentos<span class="fa arrow"></span></a>
+          <ul class="nav nav-second-level">
+            <li><a href="../sig-planes/index.html"><span class="navegacion-icono"><i class="fa fa-book"></i></span> Planes y Programas</a></li>
+            <li><a href="../investigaciones/index.html"><span class="navegacion-icono"><i class="fa fa-file-text-o"></i></span> Investigaciones</a></li>
+            <li><a href="../estudios/index.html"><span class="navegacion-icono"><i class="fa fa-file-text-o"></i></span> Estudios</a></li>
+          </ul>
+        </li>
+        <li><a href="../consejo-directivo/integrantes.html"><span class="navegacion-icono"><i class="fa fa-users"></i></span> Consejo Directivo</a></li>
+        <li><a href="../sala-prensa/index.html"><span class="navegacion-icono"><i class="fa fa-newspaper-o"></i></span> Sala de Prensa</a></li>
+        <li><a href="../programas-radio/index.html"><span class="navegacion-icono"><i class="fa fa-microphone"></i></span> Programas de Radio</a></li>
+        <li>
+          <a href="#"><span class="navegacion-icono"><i class="fa fa-file-text-o"></i></span> Consejo Visión Metrópoli<span class="fa arrow"></span></a>
+          <ul class="nav nav-second-level">
+            <li><a href="../convocatorias/vision-metropoli.html"><span class="navegacion-icono"><i class="fa fa-file-text-o"></i></span> Consejo Juvenil</a></li>
+            <li><a href="../vision-metropoli/integrantes.html"><span class="navegacion-icono"><i class="fa fa-file-text-o"></i></span> Integrantes del Consejo</a></li>
+            <li><a href="../vision-metropoli/index.html"><span class="navegacion-icono"><i class="fa fa-newspaper-o"></i></span> Sala de Prensa</a></li>
+            <li><a href="../vision-metropoli/reglamento-vision-metropoli-2020.pdf"><span class="navegacion-icono"><i class="fa fa-file-text-o"></i></span> Reglamento</a></li>
+            <li><a href="https://issuu.com/consejovisionmetropoli/docs/informe_visi_n_metr_poli_2019_-_2021" target="_blank"><span class="navegacion-icono"><i class="fa fa-file-text-o"></i></span> Informe 2019 - 2021</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="#"><span class="navegacion-icono"><i class="fa fa-building-o"></i></span> Institucional<span class="fa arrow"></span></a>
+          <ul class="nav nav-second-level">
+            <li><a href="../institucional/vision-mision.html"><span class="navegacion-icono"><i class="fa fa-trophy"></i></span> Misión / Visión</a></li>
+            <li><a href="../institucional/NuestrosProyectos.html"><span class="navegacion-icono"><i class="fa fa-pencil-square-o"></i></span> Nuestros Proyectos</a></li>
+            <li><a href="../institucional/mensaje-director.html"><span class="navegacion-icono"><i class="fa fa-comment"></i></span> Mensaje del Director</a></li>
+            <li><a href="../autores/index.html"><span class="navegacion-icono"><i class="fa fa-user"></i></span> Quienes Somos</a></li>
+            <li><a href="../institucional/estructura-organica.html"><span class="navegacion-icono"><i class="fa fa-sitemap"></i></span> Estructura Orgánica</a></li>
+            <li><a href="../institucional/modelo-operativo-universal.html"><span class="navegacion-icono"><i class="fa fa-slideshare"></i></span> Modelo Operativo Univ.</a></li>
+            <li><a href="../institucional/reglamentos.html"><span class="navegacion-icono"><i class="fa fa-gavel"></i></span> Reglamentos</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="#"><span class="navegacion-icono"><i class="fa fa-external-link"></i></span> Transparencia<span class="fa arrow"></span></a>
+          <ul class="nav nav-second-level">
+            <li><a href="http://www2.icai.org.mx/ipo/dependencia.php?dep=178#pageload" target="_blank"><span class="navegacion-icono"><i class="fa fa-file-text-o"></i></span> Transparencia Estatal (ICAI)</a></li>
+            <li><a href="https://consultapublicamx.inai.org.mx/vut-web/faces/view/consultaPublica.xhtml#inicio" target="_blank"><span class="navegacion-icono"><i class="fa fa-file-text-o"></i></span> Plataforma Nacional de Transparencia</a></li>
+            <li><a href="../transparencia/index.html"><span class="navegacion-icono"><i class="fa fa-briefcase"></i></span> Documentos</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="#"><span class="navegacion-icono"><i class="fa fa-share-alt"></i></span> Términos de Uso<span class="fa arrow"></span></a>
+          <ul class="nav nav-second-level">
+            <li><a href="../terminos/terminos-informacion.html"><span class="navegacion-icono"><i class="fa fa-cubes"></i></span> De la información</a></li>
+            <li><a href="../terminos/terminos-sitio.html"><span class="navegacion-icono"><i class="fa fa-globe"></i></span> Del sitio web</a></li>
+            <li><a href="../terminos/privacidad.html"><span class="navegacion-icono"><i class="fa fa-lock"></i></span> Aviso de Privacidad</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="#"><span class="navegacion-icono"><i class="fa fa-phone"></i></span> Contacto<span class="fa arrow"></span></a>
+          <ul class="nav nav-second-level">
+            <li><a href="../contacto/contacto.html"><span class="navegacion-icono"><i class="fa fa-phone"></i></span> Medios de contacto</a></li>
+            <li><a href="../preguntas-frecuentes/preguntas-frecuentes.html"><span class="navegacion-icono"><i class="fa fa-question"></i></span> Preguntas Frecuentes</a></li>
+            <li><a href="http://goo.gl/forms/1rdX4X128PpMOif73" target="_blank"><span class="navegacion-icono"><i class="fa fa-external-link"></i></span> Comentarios y Sugerencias</a></li>
+          </ul>
+        </li>
+        <li><a href="../convocatorias/index.html"><span class="navegacion-icono"><i class="fa fa-file-text-o"></i></span> Convocatorias</a></li>
+        <li><a href="http://177.244.42.17/ovie-torreon/#!" target="_blank"><span class="navegacion-icono"><i class="fa fa-map-marker"></i></span> Oficina Virtual de Información Económica (OVIE)</a></li>
+        <li><a href="https://arcg.is/0vySSr" target="_blank"><span class="navegacion-icono"><i class="fa fa-globe"></i></span> Atlas Municipal de Riesgos de Torreón</a></li>
+      </ul>
+    </div>
+  </div>
+  </nav>
+  <div id="page-wrapper">
+    <div class="cuerpo">
+      <div class="encabezado">
+        <span><h1>Análisis Publicados en Empleo</h1></span>
+      </div>
+      <div class="media breve">
+        <a class="pull-left" href="el-periodismo-a-pesar-de-la-covid19-jul-2021.html"><img class="media-object" src="el-periodismo-a-pesar-de-la-covid19-jul-2021/imagen-previa.jpg"></a>
+        <div class="media-body">
+          <h3 class="media-heading detallados-encabezado"><a href="el-periodismo-a-pesar-de-la-covid19-jul-2021.html">El Periodismo a pesar de la COVID-19</a></h3>
+          <p class="detallados-descripcion">Con la llegada de la enfermedad por el coronavirus del 2019 (COVID-19), se modificaron totalmente la forma de vida, laboral, familiar y profesional de todas las personas, incluyendo a los medios de comunicación, que, como todas las dependencias, instituciones, comercios y ciudadanía en general, tuvieron que adaptarse a la nueva normalidad.</p>
+          <p class="detallados-autor-fecha">Por Lic. Maira Ivonne Flores Reyes, 05/07/2021</p>
+        </div>
+      </div>
+      <div class="media breve">
+        <a class="pull-left" href="las-limitaciones-de-la-nom035-may-2021.html"><img class="media-object" src="las-limitaciones-de-la-nom035-may-2021/imagen-previa.jpg"></a>
+        <div class="media-body">
+          <h3 class="media-heading detallados-encabezado"><a href="las-limitaciones-de-la-nom035-may-2021.html">Las limitaciones de la NOM-035</a></h3>
+          <p class="detallados-descripcion">En octubre del 2018, se publicó en el Diario Oficial de la Federación (DOF) la Norma Oficial Mexicana NOM-035-STPS-2018 (NOM-035); un instrumento que permite evaluar el entorno organizacional, así como los factores de riesgo psicosocial en los centros de trabajo.</p>
+          <p class="detallados-autor-fecha">Por Arq. Alejandra Martínez Avilés, 10/05/2021</p>
+        </div>
+      </div>
+      <div class="media breve">
+        <a class="pull-left" href="acceso-a-la-seguridad-social-en-la-laguna-abril-2021.html"><img class="media-object" src="acceso-a-la-seguridad-social-en-la-laguna-abril-2021/imagen-previa.jpg"></a>
+        <div class="media-body">
+          <h3 class="media-heading detallados-encabezado"><a href="acceso-a-la-seguridad-social-en-la-laguna-abril-2021.html">Acceso a la seguridad social en La Laguna.</a></h3>
+          <p class="detallados-descripcion">En Torreón son 202,567 los trabajadores asegurados por el IMSS, dicha cifra tuvo un incremento de 1.94% respecto al 31 de enero de 2019. En cuanto a los asegurados no trabajadores, el incremento fue de 10.27%, cifra que asciende a 30,696 personas.</p>
+          <p class="detallados-autor-fecha">Por Lic. Olga Alejandra Noriega Aranda, 19/04/2021</p>
+        </div>
+      </div>
+      <div class="media breve">
+        <a class="pull-left" href="empleos-formales-mar-2021.html"><img class="media-object" src="empleos-formales-mar-2021/imagen-previa.jpg"></a>
+        <div class="media-body">
+          <h3 class="media-heading detallados-encabezado"><a href="empleos-formales-mar-2021.html">Empleos formales febrero 2021</a></h3>
+          <p class="detallados-descripcion">A un año del inicio de la pandemia en el país y de la pérdida generalizada de empleos, se tiene en la Zona Metropolitana de La Laguna (ZML) una recuperación completa, al registrar para este mes 306 mil 5 personas aseguradas asociadas a un trabajo, solo 0.53% por debajo del mismo mes respecto al año pasado, un incremento del 0.62% respecto a enero del presente año y un incremento del 3.06% respecto al mes que menos trabajadores asegurados registró durante el 2020.</p>
+          <p class="detallados-autor-fecha">Por Dr. Iván de Luna Aldape, 22/03/2021 00:30</p>
+        </div>
+      </div>
+      <div class="media breve">
+        <a class="pull-left" href="caracteristicas-de-la-industria-en-la-laguna-marzo2020.html"><img class="media-object" src="caracteristicas-de-la-industria-en-la-laguna-marzo2020/imagen-previa.jpg"></a>
+        <div class="media-body">
+          <h3 class="media-heading detallados-encabezado"><a href="caracteristicas-de-la-industria-en-la-laguna-marzo2020.html">Características de la Industria en La Laguna</a></h3>
+          <p class="detallados-descripcion">La Industria de la Manufactura es el sector económico más importante en la región de La Laguna, según datos del censo económico 2014 realizado por el INEGI.</p>
+          <p class="detallados-autor-fecha">Por Lic. Pedro Eleazar González Valdez, 26/03/2020</p>
+        </div>
+      </div>
+      <div class="media breve">
+        <a class="pull-left" href="la-resiliencia-economica-de-la-laguna-feb2020.html"><img class="media-object" src="la-resiliencia-economica-de-la-laguna-feb2020/imagen-previa.jpg"></a>
+        <div class="media-body">
+          <h3 class="media-heading detallados-encabezado"><a href="la-resiliencia-economica-de-la-laguna-feb2020.html">La resiliencia económica de La Laguna.</a></h3>
+          <p class="detallados-descripcion">La Zona Metropolitana de La Laguna concentra en la industria manufacturera el 72.85% de la producción bruta total o PBT (INEGI, 2014), ésta se encuentra más diversificada que en regiones como la de Saltillo-Ramos Arizpe.</p>
+          <p class="detallados-autor-fecha">Por Dr. Iván de Luna Aldape, 05/02/2020</p>
+        </div>
+      </div>
+      <div class="media breve">
+        <a class="pull-left" href="dinamica-del-desempleo-en-la-laguna-dic2019.html"><img class="media-object" src="dinamica-del-desempleo-en-la-laguna-dic2019/imagen-previa.jpg"></a>
+        <div class="media-body">
+          <h3 class="media-heading detallados-encabezado"><a href="dinamica-del-desempleo-en-la-laguna-dic2019.html">Dinámica del Desempleo en La Laguna</a></h3>
+          <p class="detallados-descripcion">“El desempleo en La Laguna sigue siendo tema de preocupación:  Al tercer trimestre de 2019, los jóvenes representan el 56.20% de la población desocupada y presentan una tasa de desempleo del 9.17%; mientras que, para el total de la Zona Metropolitana de La Laguna, esta cifra se encuentra en un 4.81%.”</p>
+          <p class="detallados-autor-fecha">Por Lic. Pedro Eleazar González Valdez, 19/12/2019</p>
+        </div>
+      </div>
+      <div class="media breve">
+        <a class="pull-left" href="la-sociedad-del-desempeno-nov2019.html"><img class="media-object" src="la-sociedad-del-desempeno-nov2019/imagen-previa.jpg"></a>
+        <div class="media-body">
+          <h3 class="media-heading detallados-encabezado"><a href="la-sociedad-del-desempeno-nov2019.html">La sociedad del desempeño</a></h3>
+          <p class="detallados-descripcion">El 58% de los mexicanos mayores de 12 años quisiera tener más tiempo para hacer lo que realmente les gusta.</p>
+          <p class="detallados-autor-fecha">Por Dr. Iván de Luna Aldape, 12/11/2019</p>
+        </div>
+      </div>
+      <div class="media breve">
+        <a class="pull-left" href="composicion-del-ingreso-y-del-gasto-en-los-hogares-de-la-laguna-agosto2019.html"><img class="media-object" src="composicion-del-ingreso-y-del-gasto-en-los-hogares-de-la-laguna-agosto2019/imagen-previa.jpg"></a>
+        <div class="media-body">
+          <h3 class="media-heading detallados-encabezado"><a href="composicion-del-ingreso-y-del-gasto-en-los-hogares-de-la-laguna-agosto2019.html">Composición del Ingreso y del Gasto en los Hogares de La Laguna</a></h3>
+          <p class="detallados-descripcion">La ENIGH 2018 es una encuesta realizada por el INEGI a nivel nacional y estatal que ayuda a conocer la composición del gasto e ingreso en los hogares. Este instrumento es útil para el análisis, no solo de la distribución de la riqueza, sino de los factores que influyen en una mejor calidad de vida de las personas.</p>
+          <p class="detallados-autor-fecha">Por Dr. Iván de Luna Aldape, 14/08/2019</p>
+        </div>
+      </div>
+      <div class="media breve">
+        <a class="pull-left" href="urgente-reducir-brecha-salarial-en-la-zona-metropolitana-de-la-laguna-dic2018.html"><img class="media-object" src="urgente-reducir-brecha-salarial-en-la-zona-metropolitana-de-la-laguna-dic2018/imagen-previa.jpg"></a>
+        <div class="media-body">
+          <h3 class="media-heading detallados-encabezado"><a href="urgente-reducir-brecha-salarial-en-la-zona-metropolitana-de-la-laguna-dic2018.html">Urgente reducir brecha salarial en la Zona Metropolitana de La Laguna.</a></h3>
+          <p class="detallados-descripcion">Al tercer trimestre de 2018 el Coeficiente de Gini, el cual mide la igualdad en la distribución del ingreso, se ubicó en 0.397 en el área metropolitana de La Laguna.</p>
+          <p class="detallados-autor-fecha">Por Lic. Alicia Valdez Ibarra, 18/12/2018</p>
+        </div>
+      </div>
+      <div class="media breve">
+        <a class="pull-left" href="impedimentos-laborales-de-la-mujer-en-el-AML.html"><img class="media-object" src="impedimentos-laborales-de-la-mujer-en-el-AML/imagen-previa.jpg"></a>
+        <div class="media-body">
+          <h3 class="media-heading detallados-encabezado"><a href="impedimentos-laborales-de-la-mujer-en-el-AML.html">IMPEDIMENTOS LABORALES DE LA MUJER EN EL ÁREA METROPOLITANA DE LA LAGUNA</a></h3>
+          <p class="detallados-descripcion">Del total de las mujeres encuestadas en la ENOE en Torreón, durante el segundo trimestre del año y que forman parte de la Población Económicamente No Activa (PNEA), el 93% registró tener al menos una hija o un hijo, lo que pone sobre la mesa el papel que juega la maternidad dentro del no buscar incorporarse al mercado laboral.</p>
+          <p class="detallados-autor-fecha">Por Lic. Ana Luisa Pacheco Meraz, 10/09/2018</p>
+        </div>
+      </div>
+      <div class="media breve">
+        <a class="pull-left" href="condiciones-de-ocupacion-de-la-mujer-en-AML.html"><img class="media-object" src="condiciones-de-ocupacion-de-la-mujer-en-AML/imagen-previa.jpg"></a>
+        <div class="media-body">
+          <h3 class="media-heading detallados-encabezado"><a href="condiciones-de-ocupacion-de-la-mujer-en-AML.html">Condiciones de ocupación de la mujer en el Área Metropolitana de La Laguna (AML)</a></h3>
+          <p class="detallados-descripcion">La posición que las mujeres tienen en el trabajo, es decir, si son subordinadas, empleadoras, trabajadoras por cuenta propia, o trabajadoras no remuneradas, ha permanecido constante desde el trimestre abril-junio de 2017. Del total de mujeres ocupadas, la mayoría es trabajadora subordinada y remunerada (73%); y la minoría es empleadora (3%).</p>
+          <p class="detallados-autor-fecha">Por Lic. Ana Luisa Pacheco Meraz, 03/09/2018</p>
+        </div>
+      </div>
+      <div class="media breve">
+        <a class="pull-left" href="evolucion-del-empleo-en-la-laguna.html"><img class="media-object" src="evolucion-del-empleo-en-la-laguna/imagen-previa.jpg"></a>
+        <div class="media-body">
+          <h3 class="media-heading detallados-encabezado"><a href="evolucion-del-empleo-en-la-laguna.html">Evolución del empleo en La Laguna</a></h3>
+          <p class="detallados-descripcion">La población ocupada de la ciudad está compuesta en un 74.81% por trabajadores subordinados y remunerados, 17.43% por trabajadores por cuenta propia, 8.82% por empleadores y en un 2.19% por trabajadores no remunerados.</p>
+          <p class="detallados-autor-fecha">Por Lic. Daniel López Murga, 20/08/2018</p>
+        </div>
+      </div>
+      <div class="media breve">
+        <a class="pull-left" href="analisis-de-la-ocupacion-y-el-empleo-1er-trimestre-2018.html"><img class="media-object" src="analisis-de-la-ocupacion-y-el-empleo-1er-trimestre-2018/imagen-previa.jpg"></a>
+        <div class="media-body">
+          <h3 class="media-heading detallados-encabezado"><a href="analisis-de-la-ocupacion-y-el-empleo-1er-trimestre-2018.html">Análisis de la ocupación y el empleo en el 1er. trimestre de 2018.</a></h3>
+          <p class="detallados-descripcion">De acuerdo con los últimos datos de INEGI, en La Laguna el 12.33% de las personas ocupadas ganan hasta un salario mínimo, mientras que el 32% de la población ocupada, gana entre 1 y 2 salarios mínimos. Asimismo el comercio emplea al  21.77% de la PEA.</p>
+          <p class="detallados-autor-fecha">Por Dr. Iván de Luna Aldape, 28/05/2018</p>
+        </div>
+      </div>
+      <div class="media breve">
+        <a class="pull-left" href="condiciones-laborales-de-las-mujeres-en-torreon.html"><img class="media-object" src="condiciones-laborales-de-las-mujeres-en-torreon/imagen-previa.jpg"></a>
+        <div class="media-body">
+          <h3 class="media-heading detallados-encabezado"><a href="condiciones-laborales-de-las-mujeres-en-torreon.html">Condiciones laborales de las mujeres en Torreón.</a></h3>
+          <p class="detallados-descripcion">De acuerdo con INEGI aunque las mujeres trabajan, lo hacen por menos tiempo que los hombres, tienen un salario menor y además, tienen un acceso más restringido a prestaciones laborales. De las trabajadoras en Torreón, un 34% no tiene acceso a instituciones de salud y un 15% no tiene otras prestaciones.</p>
+          <p class="detallados-autor-fecha">Por Lic. Ana Luisa Pacheco Meraz, 09/03/2018 08:05</p>
+        </div>
+      </div>
+      <div class="media breve">
+        <a class="pull-left" href="analisis-de-las-condiciones-del-empleo-en-la-laguna.html"><img class="media-object" src="analisis-de-las-condiciones-del-empleo-en-la-laguna/imagen-previa.jpg"></a>
+        <div class="media-body">
+          <h3 class="media-heading detallados-encabezado"><a href="analisis-de-las-condiciones-del-empleo-en-la-laguna.html">Análisis de las condiciones del empleo en La Laguna</a></h3>
+          <p class="detallados-descripcion">De acuerdo con el INEGI, en el segundo trimestre del año la población ocupada representó 95% de la Población Económicamente Activa (PEA). En esta clasificación se encuentran tanto los empleos formales como los informales, los empleadores, subordinados y trabajadores por cuenta propia.</p>
+          <p class="detallados-autor-fecha">Por Lic. Alicia Valdez Ibarra, 04/09/2017 11:50</p>
+        </div>
+      </div>
+      <div class="media breve">
+        <a class="pull-left" href="se-mantiene-el-mercado-laboral-pero-sube-la-inflacion-en-la-laguna.html"><img class="media-object" src="se-mantiene-el-mercado-laboral-pero-sube-la-inflacion-en-la-laguna/imagen-previa.jpg"></a>
+        <div class="media-body">
+          <h3 class="media-heading detallados-encabezado"><a href="se-mantiene-el-mercado-laboral-pero-sube-la-inflacion-en-la-laguna.html">Se mantiene el mercado laboral, pero sube la inflación en La Laguna</a></h3>
+          <p class="detallados-descripcion">En el primer trimestre de 2017 los precios de los bienes y servicios de La Laguna se vieron afectados por el entorno económico nacional, sin embargo la formalización de empleos ha sido una fortaleza de la economía de La Laguna.</p>
+          <p class="detallados-autor-fecha">Por Autor, 03/07/2017 15:00</p>
+        </div>
+      </div>
+      <div class="media breve">
+        <a class="pull-left" href="muestra-mejoria-el-mercado-laboral-de-la-laguna.html"><img class="media-object" src="muestra-mejoria-el-mercado-laboral-de-la-laguna/imagen-previa.jpg"></a>
+        <div class="media-body">
+          <h3 class="media-heading detallados-encabezado"><a href="muestra-mejoria-el-mercado-laboral-de-la-laguna.html">Muestra mejoría el mercado laboral de La Laguna</a></h3>
+          <p class="detallados-descripcion">La evolución en el mercado laboral fue general en la Zona Metropolitana al cierre del año pasado. La formalidad, los salarios y hasta las condiciones de ocupación se mostraron congruentes con la disminución del desempleo.</p>
+          <p class="detallados-autor-fecha">Por Lic. Alicia Valdez Ibarra, 29/03/2017 10:05</p>
+        </div>
+      </div>
+      <div class="media breve">
+        <a class="pull-left" href="balance-del-tercer-trimestre-en-la-economia-de-la-laguna.html"><img class="media-object" src="balance-del-tercer-trimestre-en-la-economia-de-la-laguna/imagen-previa.jpg"></a>
+        <div class="media-body">
+          <h3 class="media-heading detallados-encabezado"><a href="balance-del-tercer-trimestre-en-la-economia-de-la-laguna.html">Balance del tercer trimestre en la economía de La Laguna</a></h3>
+          <p class="detallados-descripcion">A un trimestre para el cierre del año la Zona Metropolitana de La Laguna muestra mejoría en empleo, formalidad, salario promedio y apertura de empresas. Sin embargo 2016 ha sido un año difícil no sólo para la región sino también para México.</p>
+          <p class="detallados-autor-fecha">Por Lic. Alicia Valdez Ibarra, 10/01/2017 15:10</p>
+        </div>
+      </div>
+      <div class="media breve">
+        <a class="pull-left" href="comercio-y-servicios-fuerte-impulso-a-la-economia-en-torreon.html"><img class="media-object" src="comercio-y-servicios-fuerte-impulso-a-la-economia-en-torreon/imagen-previa.jpg"></a>
+        <div class="media-body">
+          <h3 class="media-heading detallados-encabezado"><a href="comercio-y-servicios-fuerte-impulso-a-la-economia-en-torreon.html">Comercio y Servicios: fuerte impulso a la economía en Torreón</a></h3>
+          <p class="detallados-descripcion">Durante los primeros tres trimestres de 2016 se han registrado 1,735 empresas en la ventanilla universal del Municipio de Torreón, con una inversión estimada de más de 500 millones de pesos y más de 10,000 empleos. El sector terciario fue el principal receptor de inversión en el tercer trimestre.</p>
+          <p class="detallados-autor-fecha">Por Lic. Alicia Valdez Ibarra, 22/11/2016 12:15</p>
+        </div>
+      </div>
+      <div class="media breve">
+        <a class="pull-left" href="la-economia-en-el-centro-historico-de-torreon.html"><img class="media-object" src="la-economia-en-el-centro-historico-de-torreon/imagen-previa.jpg"></a>
+        <div class="media-body">
+          <h3 class="media-heading detallados-encabezado"><a href="la-economia-en-el-centro-historico-de-torreon.html">La economía en el Centro Histórico de Torreón</a></h3>
+          <p class="detallados-descripcion">Este sector de la ciudad comprende 241 manzanas y concentra más del 15% de la actividad económica de Torreón, con fuerte presencia de negocios semifijos. Las políticas de crecimiento del centro, se deben dirigir a incentivar el comercio formal, un mayor uso habitacional y a la protección, restauración y conservación de edificios y plazas.</p>
+          <p class="detallados-autor-fecha">Por Arq. Teresita Benítez Saludado, 24/08/2016 14:30</p>
+        </div>
+      </div>
+      <div class="media breve">
+        <a class="pull-left" href="torreon-tasa-de-ocupacion-critica-menor-a-la-media-nacional.html"><img class="media-object" src="torreon-tasa-de-ocupacion-critica-menor-a-la-media-nacional/imagen-previa.jpg"></a>
+        <div class="media-body">
+          <h3 class="media-heading detallados-encabezado"><a href="torreon-tasa-de-ocupacion-critica-menor-a-la-media-nacional.html">Torreón: tasa de ocupación crítica menor a la media nacional</a></h3>
+          <p class="detallados-descripcion">En los últimos años ha aumentado la Tasa de Condiciones Críticas de Ocupación en la Comarca Lagunera. No obstante, Torreón se encuentra por debajo de la tasa estatal y nacional con un 8% del total del personal ocupado. Las personas que más se enfrentan a esta problemática cuentan con menor escolaridad.</p>
+          <p class="detallados-autor-fecha">Por Lic. Alicia Valdez Ibarra, 01/07/2016 19:40</p>
+        </div>
+      </div>
+      <div class="media breve">
+        <a class="pull-left" href="expo-automotriz-detona-a-la-industria-y-a-la-economia-en-la-laguna.html"><img class="media-object" src="expo-automotriz-detona-a-la-industria-y-a-la-economia-en-la-laguna/imagen-previa.jpg"></a>
+        <div class="media-body">
+          <h3 class="media-heading detallados-encabezado"><a href="expo-automotriz-detona-a-la-industria-y-a-la-economia-en-la-laguna.html">Expo Automotriz detona a la industria y a la economía en La Laguna</a></h3>
+          <p class="detallados-descripcion">La Expo Congreso Automotriz Laguna 2016, dejó una derrama de más de 700 mil pesos en la región, contó con la participación de casi 70 empresarios como expositores. El resultado fueron importantes perspectivas de negocio y la necesidad de contar en La Laguna con un Centro de Manufactura Avanzada.</p>
+          <p class="detallados-autor-fecha">Por Lic. Adriana Vargas Flores, 12/05/2016 08:00</p>
+        </div>
+      </div>
+      <div class="media breve">
+        <a class="pull-left" href="torreon-y-su-riqueza-industrial.html"><img class="media-object" src="torreon-y-su-riqueza-industrial/imagen-previa.jpg"></a>
+        <div class="media-body">
+          <h3 class="media-heading detallados-encabezado"><a href="torreon-y-su-riqueza-industrial.html">Torreón y su riqueza industrial</a></h3>
+          <p class="detallados-descripcion">La Dirección de Desarrollo Económico y el IMPLAN han lanzado la Guía de Parques Industriales, que contiene información sobre la infraestructura que posee Torreón para recibir inversiones de clase mundial. Incluye además los principales indicadores económicos, demográficos y sociales de la región lagunera.</p>
+          <p class="detallados-autor-fecha">Por Lic. Adriana Vargas Flores, 25/04/2016 09:20</p>
+        </div>
+      </div>
+      <div class="media breve">
+        <a class="pull-left" href="evolucion-de-la-economia-de-torreon-durante-2015.html"><img class="media-object" src="evolucion-de-la-economia-de-torreon-durante-2015/imagen-previa.jpg"></a>
+        <div class="media-body">
+          <h3 class="media-heading detallados-encabezado"><a href="evolucion-de-la-economia-de-torreon-durante-2015.html">Evolución de la economía de Torreón durante 2015</a></h3>
+          <p class="detallados-descripcion">En el 2015 el municipio presenta una disminución en la tasa de desempleo durante el último trimestre y una inflación mínima histórica de 1.7% anual, sin embargo fue un año de poco movimiento para los indicadores económicos de Torreón, Coahuila y La Laguna.</p>
+          <p class="detallados-autor-fecha">Por Lic. Alicia Valdez Ibarra, 06/04/2016 10:20</p>
+        </div>
+      </div>
+      <div class="media breve">
+        <a class="pull-left" href="la-fuerza-de-las-micro-pequenas-y-medianas-empresas-en-la-laguna.html"><img class="media-object" src="la-fuerza-de-las-micro-pequenas-y-medianas-empresas-en-la-laguna/imagen-previa.jpg"></a>
+        <div class="media-body">
+          <h3 class="media-heading detallados-encabezado"><a href="la-fuerza-de-las-micro-pequenas-y-medianas-empresas-en-la-laguna.html">La fuerza de las micro, pequeñas y medianas empresas en La Laguna</a></h3>
+          <p class="detallados-descripcion">En la Comarca Lagunera contamos con 29 MiPyMes por cada 1000 habitantes. La densidad es menor que la del promedio nacional e internacional, que es de 36 y 31 por cada 1000 habitantes respectivamente. Este sector merece un impulso cada vez mayor dada su importante participación en la economía.</p>
+          <p class="detallados-autor-fecha">Por Lic. Alicia Valdez Ibarra, 01/03/2016 11:20</p>
+        </div>
+      </div>
+      <div class="media breve">
+        <a class="pull-left" href="jovenes-los-mas-afectados-por-el-desempleo-en-la-laguna.html"><img class="media-object" src="jovenes-los-mas-afectados-por-el-desempleo-en-la-laguna/imagen-previa.jpg"></a>
+        <div class="media-body">
+          <h3 class="media-heading detallados-encabezado"><a href="jovenes-los-mas-afectados-por-el-desempleo-en-la-laguna.html">Jóvenes: los más afectados por el desempleo en La Laguna</a></h3>
+          <p class="detallados-descripcion">El salario promedio para un lagunero de 50 años con un empleo de jornada completa es de más de 6 mil pesos, un joven de 20 años gana aproximadamente 4 mil pesos mensuales.</p>
+          <p class="detallados-autor-fecha">Por Lic. Alicia Valdez Ibarra, 28/12/2015 08:00</p>
+        </div>
+      </div>
+      <div class="media breve">
+        <a class="pull-left" href="la-laguna-capital-humano-y-calidad-de-vida.html"><img class="media-object" src="la-laguna-capital-humano-y-calidad-de-vida/imagen-previa.jpg"></a>
+        <div class="media-body">
+          <h3 class="media-heading detallados-encabezado"><a href="la-laguna-capital-humano-y-calidad-de-vida.html">La Laguna: Capital Humano y Calidad de Vida</a></h3>
+          <p class="detallados-descripcion">La Zona Metropolitana mantiene primeros lugares a nivel nacional en diferentes rubros, que la ubican como una de las mejores regiones para habitar. Torreón destaca como ejemplo.</p>
+          <p class="detallados-autor-fecha">Por Dirección de Investigación Estratégica, 16/11/2015 08:00</p>
+        </div>
+      </div>
+      <div class="media breve">
+        <a class="pull-left" href="ciudades-24-7-como-estrategia-para-revitalizar-el-espacio-urbano.html"><img class="media-object" src="ciudades-24-7-como-estrategia-para-revitalizar-el-espacio-urbano/imagen-previa.jpg"></a>
+        <div class="media-body">
+          <h3 class="media-heading detallados-encabezado"><a href="ciudades-24-7-como-estrategia-para-revitalizar-el-espacio-urbano.html">Ciudades 24/7 como estrategia para revitalizar el espacio urbano</a></h3>
+          <p class="detallados-descripcion">El reto para nuestras ciudades está en desarrollar políticas que humanicen y promuevan la noche como un espacio social positivo y menos restringido.</p>
+          <p class="detallados-autor-fecha">Por Arq. Ángeles Melisa Rodríguez Salas, 15/10/2015 08:15</p>
+        </div>
+      </div>
+      <div class="media breve">
+        <a class="pull-left" href="el-fuerte-crecimiento-del-sector-automotriz-en-la-laguna.html"><img class="media-object" src="el-fuerte-crecimiento-del-sector-automotriz-en-la-laguna/imagen-previa.jpg"></a>
+        <div class="media-body">
+          <h3 class="media-heading detallados-encabezado"><a href="el-fuerte-crecimiento-del-sector-automotriz-en-la-laguna.html">El fuerte crecimiento del sector automotriz en La Laguna</a></h3>
+          <p class="detallados-descripcion">La participación económica de la industria automotriz en la Comarca Lagunera ha crecido aceleradamente, tan sólo en Torreón el personal ocupado en las distintas ramas de este sector representa más de 20% del empleo total del municipio.</p>
+          <p class="detallados-autor-fecha">Por Lic. Alicia Valdez Ibarra, Lic. Adriana Vargas Flores, 06/10/2015 12:15</p>
+        </div>
+      </div>
+      <div class="media breve">
+        <a class="pull-left" href="el-corredor-economico-del-norte-y-su-fortaleza-nacional.html"><img class="media-object" src="el-corredor-economico-del-norte-y-su-fortaleza-nacional/imagen-previa.jpg"></a>
+        <div class="media-body">
+          <h3 class="media-heading detallados-encabezado"><a href="el-corredor-economico-del-norte-y-su-fortaleza-nacional.html">El Corredor Económico del Norte y su fortaleza nacional</a></h3>
+          <p class="detallados-descripcion">La Zona Metropolitana de la Laguna, anfitriona del 6to Encuentro de Instituciones del Corredor Económico del Norte, es una región líder en formación de capital humano, transparencia y productividad.</p>
+          <p class="detallados-autor-fecha">Por Lic. Alicia Valdez Ibarra, Lic. Rodrigo González Morales, 29/09/2015 10:40</p>
+        </div>
+      </div>
+      <div class="media breve">
+        <a class="pull-left" href="torreon-una-nueva-realidad-economica.html"><img class="media-object" src="torreon-una-nueva-realidad-economica/imagen-previa.jpg"></a>
+        <div class="media-body">
+          <h3 class="media-heading detallados-encabezado"><a href="torreon-una-nueva-realidad-economica.html">Torreón: Una Nueva Realidad Económica</a></h3>
+          <p class="detallados-descripcion">La apertura de negocios, la baja inflación y una disminución en la tasa de informalidad caracterizan al segundo trimestre en el municipio de Torreón, de acuerdo con el Balance Económico Local.</p>
+          <p class="detallados-autor-fecha">Por Lic. Alicia Valdez Ibarra, 01/09/2015 09:50</p>
+        </div>
+      </div>
+      <div class="media breve">
+        <a class="pull-left" href="resultados-de-los-censos-economicos-2014.html"><img class="media-object" src="resultados-de-los-censos-economicos-2014/imagen-previa.jpg"></a>
+        <div class="media-body">
+          <h3 class="media-heading detallados-encabezado"><a href="resultados-de-los-censos-economicos-2014.html">Resultados de los Censos Económicos 2014</a></h3>
+          <p class="detallados-descripcion">Torreón tuvo un crecimiento mayor al de municipios como Saltillo, Querétaro y San Luis Potosí.</p>
+          <p class="detallados-autor-fecha">Por Lic. Alicia Valdez Ibarra, 29/07/2015 15:50</p>
+        </div>
+      </div>
+      <div class="media breve">
+        <a class="pull-left" href="indicadores-economicos-primer-trimestre-2015-torreon.html"><img class="media-object" src="indicadores-economicos-primer-trimestre-2015-torreon/imagen-previa.jpg"></a>
+        <div class="media-body">
+          <h3 class="media-heading detallados-encabezado"><a href="indicadores-economicos-primer-trimestre-2015-torreon.html">Indicadores Económicos del primer trimestre de 2015 para el Municipio de Torreón</a></h3>
+          <p class="detallados-descripcion">Análisis de los indicadores de inflación, apertura de empresas, trabajadores asegurados y salario promedio para el municipio de Torreón.</p>
+          <p class="detallados-autor-fecha">Por Lic. Alicia Valdez Ibarra, 20/05/2015 12:50</p>
+        </div>
+      </div>
+      <div class="media breve">
+        <a class="pull-left" href="efectos-informalidad-politicas-prevenirla.html"><img class="media-object" src="efectos-informalidad-politicas-prevenirla/imagen-previa.jpg"></a>
+        <div class="media-body">
+          <h3 class="media-heading detallados-encabezado"><a href="efectos-informalidad-politicas-prevenirla.html">Efectos de la informalidad y políticas para prevenirla</a></h3>
+          <p class="detallados-descripcion">La informalidad tiene repercusiones directas sobre la competitividad y el crecimiento económico. Es cierto que ocupa a población desempleada en el sector formal y sus insumos e inversión apoyan a la economía, sin embargo es mayor el daño generado en el crecimiento a largo plazo.</p>
+          <p class="detallados-autor-fecha">Por Lic. Alicia Valdez Ibarra, 10/03/2015 08:05</p>
+        </div>
+      </div>
+      <div class="media breve">
+        <a class="pull-left" href="comercio-al-por-menor-alternativa-crecimiento-economico.html"><img class="media-object" src="comercio-al-por-menor-alternativa-crecimiento-economico/imagen-previa.jpg"></a>
+        <div class="media-body">
+          <h3 class="media-heading detallados-encabezado"><a href="comercio-al-por-menor-alternativa-crecimiento-economico.html">Comercio al por menor como alternativa de crecimiento económico</a></h3>
+          <p class="detallados-descripcion">El comercio se vuelve tan importante como la industria tradicional para una localidad en la medida en que éste aumente el ingreso local y reduzca la fuga de consumo y empleo hacia otras ciudades.</p>
+          <p class="detallados-autor-fecha">Por Lic. Alicia Valdez Ibarra, 06/01/2015 08:05</p>
+        </div>
+      </div>
+      <div class="media breve">
+        <a class="pull-left" href="industrial-metalmecanica-la-laguna.html"><img class="media-object" src="industrial-metalmecanica-la-laguna/imagen-previa.jpg"></a>
+        <div class="media-body">
+          <h3 class="media-heading detallados-encabezado"><a href="industrial-metalmecanica-la-laguna.html">La industria metalmecánica y La Laguna</a></h3>
+          <p class="detallados-descripcion">A diferencia del año 2013 cuando la industria metalmecánica creció 4% a nivel nacional, la directora de Fabetch México pronosticó en Julio un crecimiento de 8% para el presente año.</p>
+          <p class="detallados-autor-fecha">Por Lic. Alicia Valdez Ibarra, 12/11/2014 08:05</p>
+        </div>
+      </div>
+      <div class="media breve">
+        <a class="pull-left" href="vision-vencedores.html"><img class="media-object" src="vision-vencedores/imagen-previa.jpg"></a>
+        <div class="media-body">
+          <h3 class="media-heading detallados-encabezado"><a href="vision-vencedores.html">La visión de los vencedores</a></h3>
+          <p class="detallados-descripcion">El regreso de La Laguna a los primeros lugares en el ranking de competitividad nacional demanda de una comunidad que retome los valores y el empuje de “Los Fundadores”, de los hombres y mujeres que lejos de considerarse victimas de las adversidades, de su entorno natural y político, construyeron una de las regiones más prósperas de México.</p>
+          <p class="detallados-autor-fecha">Por Lic. Eduardo Holguín Zehfuss, 21/10/2014 08:05</p>
+        </div>
+      </div>
+      <div class="media breve">
+        <a class="pull-left" href="economia-sector-salud-laguna.html"><img class="media-object" src="economia-sector-salud-laguna/imagen-previa.jpg"></a>
+        <div class="media-body">
+          <h3 class="media-heading detallados-encabezado"><a href="economia-sector-salud-laguna.html">Economía del Sector Salud en La Laguna</a></h3>
+          <p class="detallados-descripcion">El sector salud contribuye en la economía de La Laguna empleando a 8,584 locales en actividades que incluyen el cuidado y asistencia a enfermos en hospitales generales y servicios de orientación y trabajo social, entre otros.</p>
+          <p class="detallados-autor-fecha">Por Lic. Alicia Valdez Ibarra, 07/10/2014 08:05</p>
+        </div>
+      </div>
+      <div class="media breve">
+        <a class="pull-left" href="retrospectiva-estado-actual-empleo.html"><img class="media-object" src="retrospectiva-estado-actual-empleo/imagen-previa.jpg"></a>
+        <div class="media-body">
+          <h3 class="media-heading detallados-encabezado"><a href="retrospectiva-estado-actual-empleo.html">Retrospectiva y estado actual del empleo en Torreón y la ZML</a></h3>
+          <p class="detallados-descripcion">El empleo es uno de los principales indicadores, que muestra el desempeño económico de una ciudad, región o país. Desde hace 9 años Torreón y la Zona Metropolitana de la Laguna se habían separado a la alza de la media nacional.</p>
+          <p class="detallados-autor-fecha">Por Lic. Rodrigo González Morales, 26/09/2014 08:05</p>
+        </div>
+      </div>
+      <div class="media breve">
+        <a class="pull-left" href="equidad-genero-informatica.html"><img class="media-object" src="equidad-genero-informatica/imagen-previa.jpg"></a>
+        <div class="media-body">
+          <h3 class="media-heading detallados-encabezado"><a href="equidad-genero-informatica.html">Equidad de Género en Informática</a></h3>
+          <p class="detallados-descripcion">Aunque vivimos el mejor momento de las Ciencias Computacionales, el género femenino tiene muy poca participación en el sector.</p>
+          <p class="detallados-autor-fecha">Por Ing. Guillermo Valdés Lozano, 19/09/2014 08:05</p>
+        </div>
+      </div>
+      <div class="media breve">
+        <a class="pull-left" href="movilidad-laboral-cotidiana-zml.html"><img class="media-object" src="movilidad-laboral-cotidiana-zml/imagen-previa.jpg"></a>
+        <div class="media-body">
+          <h3 class="media-heading detallados-encabezado"><a href="movilidad-laboral-cotidiana-zml.html">Movilidad laboral cotidiana en la ZML</a></h3>
+          <p class="detallados-descripcion">Población ocupada que tiene trabajo en su PROPIO municipio y que tiene trabajo en OTRO Municipio de la Zona Metropolitana de la Laguna.</p>
+          <p class="detallados-autor-fecha">Por Lic. Luis A. Gutiérrez Arizpe, 06/08/2014 08:05</p>
+        </div>
+      </div>
+      <div class="media breve">
+        <a class="pull-left" href="contribucion-tic-competitividad-productividad.html"><img class="media-object" src="contribucion-tic-competitividad-productividad/imagen-previa.jpg"></a>
+        <div class="media-body">
+          <h3 class="media-heading detallados-encabezado"><a href="contribucion-tic-competitividad-productividad.html">Contribución de las TICs en la competitividad y productividad</a></h3>
+          <p class="detallados-descripcion">La implementación de las TICs en las actividades económicas se ha vuelto indispensable para el óptimo desarrollo de una región.</p>
+          <p class="detallados-autor-fecha">Por Lic. Alicia Valdez Ibarra, 04/08/2014 08:05</p>
+        </div>
+      </div>
+      <div class="media breve">
+        <a class="pull-left" href="laguna-apostarle-industria-automotriz.html"><img class="media-object" src="laguna-apostarle-industria-automotriz/imagen-previa.jpg"></a>
+        <div class="media-body">
+          <h3 class="media-heading detallados-encabezado"><a href="laguna-apostarle-industria-automotriz.html">La Laguna debe apostarle a la Industria Automotriz</a></h3>
+          <p class="detallados-descripcion">En industria automotriz hay mayor inversión en la investigación y desarrollo que origina una derrama de capacidades tecnológicas con aplicación en otros sectores como el eléctrico, electrónico y aeroespacial.</p>
+          <p class="detallados-autor-fecha">Por Lic. Alicia Valdez Ibarra, 30/07/2014 08:05</p>
+        </div>
+      </div>
+      <div class="media breve">
+        <a class="pull-left" href="productividad-zml.html"><img class="media-object" src="productividad-zml/imagen-previa.jpg"></a>
+        <div class="media-body">
+          <h3 class="media-heading detallados-encabezado"><a href="productividad-zml.html">Productividad en la Zona Metropolitana de La Laguna</a></h3>
+          <p class="detallados-descripcion">Análisis de la productividad laboral, industria manufacturera y eficiencia del trabajo en la Zona Metropolitana de la Laguna.</p>
+          <p class="detallados-autor-fecha">Por Lic. Alicia Valdez Ibarra, 01/07/2014 08:05</p>
+        </div>
+      </div>
+      <div class="media breve">
+        <a class="pull-left" href="economia-estable.html"><img class="media-object" src="economia-estable/imagen-previa.jpg"></a>
+        <div class="media-body">
+          <h3 class="media-heading detallados-encabezado"><a href="economia-estable.html">Economía Estable</a></h3>
+          <p class="detallados-descripcion">Análisis de las variables macroeconómicas como crédito, mercado hipotecario, cartera vencida, PIB y desempleo.</p>
+          <p class="detallados-autor-fecha">Por Lic. Rodrigo González Morales, 24/06/2014 08:05</p>
+        </div>
+      </div>
+      <div class="media breve">
+        <a class="pull-left" href="mercado-factores-eficientes.html"><img class="media-object" src="mercado-factores-eficientes/imagen-previa.jpg"></a>
+        <div class="media-body">
+          <h3 class="media-heading detallados-encabezado"><a href="mercado-factores-eficientes.html">Mercado de Factores Eficientes</a></h3>
+          <p class="detallados-descripcion">Análisis del mercado, las huelgas, el salario promedio mensual, productividad y demandas laborales en la Zona Metropolitana de la Laguna.</p>
+          <p class="detallados-autor-fecha">Por Lic. Rodrigo González Morales, 17/06/2014 08:05</p>
+        </div>
+      </div>
+      <div class="media breve">
+        <a class="pull-left" href="indicadores-por-municipio-metodologia-imco.html"><img class="media-object" src="indicadores-por-municipio-metodologia-imco/imagen-previa.jpg"></a>
+        <div class="media-body">
+          <h3 class="media-heading detallados-encabezado"><a href="indicadores-por-municipio-metodologia-imco.html">Indicadores por municipio construidos por el IMPLAN con la base de datos y metodología del IMCO</a></h3>
+          <p class="detallados-descripcion">Índice de Competitividad Urbana de la Zona Metropolitana de la Laguna, Torreón, Gómez Palacio, Lerdo y Matamoros en 2012.</p>
+          <p class="detallados-autor-fecha">Por Lic. Rodrigo González Morales, Lic. Luis A. Gutiérrez Arizpe, 28/05/2014 08:05</p>
+        </div>
+      </div>
+      <div class="media breve">
+        <a class="pull-left" href="hacia-donde-debe-dirigirse-torreon.html"><img class="media-object" src="hacia-donde-debe-dirigirse-torreon/imagen-previa.jpg"></a>
+        <div class="media-body">
+          <h3 class="media-heading detallados-encabezado"><a href="hacia-donde-debe-dirigirse-torreon.html">Hacia dónde debe dirigirse Torreón</a></h3>
+          <p class="detallados-descripcion">¿En realidad generan más valor las actividades tecnológicas y de servicios?</p>
+          <p class="detallados-autor-fecha">Por Lic. Alicia Valdez Ibarra, 16/04/2014 08:05</p>
+        </div>
+      </div>
+    </div>
+    <div class="mapa-inferior">
+          <div class="pull-right redes-sociales">
+            <a class="fa fa-twitter-square" href="http://www.twitter.com/trcimplan" target="_blank"></a>
+            <a class="fa fa-facebook-square" href="https://facebook.com/trcimplan" target="_blank"></a>
+            <a class="fa fa-facebook-square" href="http://www.instagram.com/implantorreon" target="_blank"></a>
+            <a class="fa fa-rss-square" href="../rss.xml"></a>
+          </div>
+    </div>
+  </div>
+</div>
+<!-- Javascript global inicia -->
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
+<script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="../vendor/metisMenu/metisMenu.min.js"></script>
+<script type="text/javascript" src="../vendor/datatables/js/jquery.dataTables.min.js"></script>
+<script type="text/javascript" src="../vendor/datatables-plugins/dataTables.bootstrap.min.js"></script>
+<script type="text/javascript" src="../vendor/datatables-responsive/dataTables.responsive.js"></script>
+<script type="text/javascript" src="../vendor/raphael/raphael.min.js"></script>
+<script type="text/javascript" src="../vendor/morrisjs/morris.min.js"></script>
+<script type="text/javascript" src="../dist/js/sb-admin-2.min.js"></script>
+<script type="text/javascript" src="http://libs.cartocdn.com/cartodb.js/v3/3.15/cartodb.js"></script>
+<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+<!-- Javascript global termina -->
+<!-- Javascript inicia -->
+
+<!-- Javascript termina -->
+<!-- Javascript Google Analytics -->
+<script>
+  // Google Analytics
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)})(window,document,'script','//www.google-analytics.com/analytics.js','ga');ga('create', 'UA-58290501-1', 'auto');ga('send', 'pageview');
+</script>
+</body>
+</html>

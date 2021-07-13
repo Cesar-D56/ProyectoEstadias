@@ -1,0 +1,467 @@
+.slider{
+    width:90%;
+    margin:auto;
+    overflow:hidden;
+    //*border-radius:5px;*//
+}
+
+.slider ul{
+    display:flex;
+    padding:0;
+    width:800%;
+
+    animation: cambio 120s infinite alternate linear;
+    animation-timing-function:ease;
+}
+
+.slider li{
+    width:100%;
+    list-style:none;
+}
+
+.slider a{
+    width:120%;
+    list-style:none;
+    padding:2;
+}
+
+.slider img{
+    width:85%;
+    border-radius: 7px;
+    padding:0;
+}
+
+
+
+@keyframes cambio {
+    0% {margin-left: 0;}
+    10% {margin-left: 0;}
+
+    15% {margin-left: -50%;}
+    29% {margin-left: -50%;}
+
+    30% {margin-left: -100%;}
+    40% {margin-left: -100%;}
+
+    45% {margin-left: -200%;}
+    55% {margin-left: -200%;}
+
+    60% {margin-left: -300%;}
+    70% {margin-left: -300%;}
+
+
+    75% {margin-left: -400%;}
+    85% {margin-left: -400%;}
+
+    90% {margin-left: -500%;}
+    100% {margin-left: -500%;}
+
+
+
+}
+//* comienza slider 2    *//
+.slider2{
+    width:80%;
+    margin:auto;
+    overflow:hidden;
+    //*border-radius:5px;*//
+}
+
+.slider2 ul{
+    display:flex;
+    padding:0;
+    width:500%;
+
+    animation: cambio2 35s infinite alternate linear;
+    animation-timing-function:ease;
+}
+
+
+
+.slider2 li{
+    width:400%;
+    list-style:none;
+}
+
+.slider2 a{
+    width:500%;
+    list-style:none;
+    padding:4;
+}
+
+.slider2 img{
+    width:95%;
+    border-radius:15px;
+    padding:5;
+}
+
+
+@keyframes cambio2 {
+    0% {margin-left: 0;}
+    15% {margin-left: 0;}
+
+    30% {margin-left: -100%;}
+    35% {margin-left: -100%;}
+
+    40% {margin-left: -200%;}
+    70% {margin-left: -200%;}
+
+/*    75% {margin-left: -200%;}
+    100% {margin-left: -200%;}
+*/
+    75% {margin-left: -300%;}
+    90% {margin-left: -300%;}
+
+
+    95% {margin-left: -400%;}
+    100% {margin-left: -400%;}
+
+/*    90% {margin-left: -500%;}
+    100% {margin-left: -500%;}*/
+}
+
+//* comienza slider 3    *//
+.slider3{
+    width:60%;
+    margin:auto;
+    overflow:hidden;
+    //*border-radius:5px;  pantalla gral*//
+}
+
+.slider3 ul{
+    display:flex;
+    padding:0;
+    width:300%;
+
+    animation: cambio3 20s infinite alternate linear;
+    animation-timing-function:ease;
+}
+
+.slider3 li{
+    width:700%;
+    list-style:none;
+}
+
+.slider3 a{
+    width:500%;
+    list-style:none;
+    padding:4;
+}
+
+.slider3 img{
+    width:65%;
+    border-radius:15px;
+    padding:5;
+}
+
+
+@keyframes cambio3 {
+    0% {margin-left: 0;}
+    50% {margin-left: -100;}
+    100% {margin-left: -150%;}
+}
+
+//* comienza slider 6    *//
+.slider6{
+    width:90%;
+    margin:auto;
+    overflow:hidden;
+    //*border-radius:5px;*//
+}
+
+.slider6 ul{
+    display:flex;
+    padding:0;
+    width:600%;
+
+    animation: cambio6 35s infinite alternate linear;
+    animation-timing-function:ease;
+}
+
+.slider6 li{
+    width:100%;
+    list-style:none;
+}
+
+.slider6 a{
+    width:120%;
+    list-style:none;
+    padding:2;
+}
+
+.slider6 img{
+    width:95%;
+    border-radius:15px;
+    padding:0;
+}
+
+
+@keyframes cambio6 {
+
+    0% {margin-left: 0;}
+    15% {margin-left: 0;}
+
+    30% {margin-left: -100%;}
+    35% {margin-left: -100%;}
+
+    40% {margin-left: -200%;}
+    60% {margin-left: -200%;}
+
+/*    75% {margin-left: -200%;}
+    100% {margin-left: -200%;}
+*/
+    65% {margin-left: -300%;}
+    80% {margin-left: -300%;}
+
+
+    85% {margin-left: -400%;}
+    90% {margin-left: -400%;}
+
+    95% {margin-left: -500%;}
+    100% {margin-left: -500%;}
+}
+
+
+//* comienza slider 8    *//
+.slider8{
+    width:90%;
+    margin:auto;
+    overflow:hidden;
+    //*border-radius:5px;*//
+}
+
+.slider8 ul{
+    display:flex;
+    padding:0;
+    width:600%;
+
+    animation: cambio8 35s infinite alternate linear;
+    animation-timing-function:ease;
+}
+/*
+.slider8 li{
+    width:600%;
+    list-style:none;
+}
+*/
+.slider8 a{
+    width:600%;
+    list-style:none;
+    padding:4;
+}
+
+.slider8 img{
+    width:85%;
+    border-radius:15px;
+    padding:5;
+}
+
+
+@keyframes cambio8 {
+    0% {margin-left: 0;}
+    15% {margin-left: 0;}
+
+    30% {margin-left: -50%;}
+    35% {margin-left: -50%;}
+
+    40% {margin-left: -150%;}
+    45% {margin-left: -150%;}
+
+/*    75% {margin-left: -200%;}
+    100% {margin-left: -200%;}
+*/
+    50% {margin-left: -250%;}
+    55% {margin-left: -250%;}
+
+
+    60% {margin-left: -400%;}
+    65% {margin-left: -400%;}
+
+    70% {margin-left: -500%;}
+    75% {margin-left: -500%;}
+
+    80% {margin-left: -600%;}
+    85% {margin-left: -600%;}
+
+
+    90% {margin-left: -700%;}
+    100% {margin-left: -700%;}
+}
+
+
+//* comienza slider x    *//
+.sliderx{
+    width:80%;
+    margin:auto;
+    overflow:hidden;
+    //*border-radius:5px;*//
+}
+
+.sliderx ul{
+    display:flex;
+    padding:0;
+    width:100%;
+
+    animation: cambio 35s infinite alternate linear;
+    animation-timing-function:ease;
+}
+
+
+
+.sliderx li{
+    width:100%;
+    list-style:none;
+}
+
+.sliderx a{
+    width:90%;
+    list-style:none;
+    padding:24;
+}
+
+.sliderx img{
+    width:400%;
+    border-radius:35px;
+    padding:15;
+}
+
+@keyframes cambiox {
+    0% {margin-left: 0;}
+    15% {margin-left: 0;}
+
+    30% {margin-left: -100%;}
+    35% {margin-left: -100%;}
+
+    40% {margin-left: -200%;}
+    70% {margin-left: -200%;}
+
+    75% {margin-left: -300%;}
+    90% {margin-left: -300%;}
+
+
+    95% {margin-left: -400%;}
+    100% {margin-left: -400%;}
+
+}
+
+/*Prubas de sliders*/
+
+/*PRUEBA 1*/
+.auto-slider{
+    max-width:max-content;
+    margin: 5px;
+    overflow: hidden;
+    text-align: center;
+    background-color: aqua;
+}
+
+div#sliderTest { overflow: hidden; background-color: chartreuse;}
+/*Imagen Normal o Pequeña*/
+div#sliderTest figure .img1 { width: 20%;
+    float:left;
+    border-radius: 5% 6% 6% 5% / 17% 18% 18% 17% ;
+    padding: 5px 0.5%;
+    height: 100%;
+    background-color: blue;
+}
+/*Imagen Muy Grande en Relacion Con el Resto (Puede ajustar la imagen)*/
+div#sliderTest figure .img2 { width:20%;
+    float: left;
+    border-radius: 6% 7% 7% 6% / 18% 19% 19% 18% ;
+    padding: 0.3% 5%; /*padding*/
+    margin-right: auto;/*40%;*/
+    margin-left: auto;/*40%;*/
+    height:auto;
+    background-color: blue;
+}
+
+div#sliderTest figure {
+  position:relative;
+  display:inline-block;
+  padding: 5px auto;
+  width: 500%;
+  height: 100%;
+  left: 0;
+  text-align: center;
+  font-size: 0;
+  background-color: blueviolet;
+  animation: 35s animacion_sliding cubic-bezier(0.43, -0.15, 0.15, 0.98) infinite;
+}
+
+@keyframes animacion_sliding{
+    0%{left: 0%; }
+    5%{left: 0%; }
+    
+    20%{left: -100%;}
+    25%{left: -100%;}
+    
+    40%{left: -200%;}
+    45%{left: -200%;}
+    
+    60%{left: -300%;}
+    65%{left: -300%;}
+    
+    80%{left: -400%;}
+    85%{left: -400%;}
+    
+    100%{left: 0%;}
+}
+/*MEJOR INTENTO - PRUEBA 2*/
+div#sliderIndex { overflow: hidden; 
+    background-color: rgb(203, 208, 212);
+    text-align: center;
+    box-sizing: border-box;
+    border-radius: 2% / 8%;
+}
+div#sliderIndex a{
+    width: 500%;
+    margin: auto 0.5%;
+    text-align: center;
+    height: 100%;
+}
+/*Imagen Normal o Pequeña*/
+div#sliderIndex figure .img3 { width:100%;
+    float:left;
+    display: block;
+    /*border-radius: 5% 6% 6% 5% / 17% 18% 18% 17% ;*/
+    border-radius: 2% / 8% ;
+    height: 100%;
+}
+/*Imagen Muy Grande en Relacion Con el Resto (Puede ajustar la imagen)*/
+div#sliderIndex figure .img4 { width:50%; /*Ajustar a la imagen*/
+    float: left;
+    display: block;
+    border-radius: 2% / 8%;
+    margin: 0.1% 25%; /*Ajustar a la imagen*/
+    height:100%;
+}
+
+div#sliderIndex figure {
+  position:relative;
+  white-space: nowrap;
+  display:flex;
+  padding: 0.5% 0px; 
+  margin: 0.5% 0px;
+  width: 500%;
+  height: 100%;
+  animation: 35s animacion_sliding cubic-bezier(0.43, -0.15, 0.15, 0.98) infinite;
+}
+
+@keyframes animacion_sliding{
+    0%{left: 0%; }
+    5%{left: 0%; }
+    
+    20%{left: -100%;}
+    25%{left: -100%;}
+    
+    40%{left: -200%;}
+    45%{left: -200%;}
+    
+    60%{left: -300%;}
+    65%{left: -300%;}
+    
+    80%{left: -400%;}
+    85%{left: -400%;}
+    
+    100%{left: 0%;}
+}

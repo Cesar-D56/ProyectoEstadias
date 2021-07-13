@@ -1,0 +1,469 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+<!-- ===================================================================================================
+
+        Instituto Municipal de Planeación y Competitividad (IMPLAN) de Torreón.
+
+        3er. generación de la Plataforma del Conocimiento
+        Desarrollado por Ing. Guillermo Valdés Lozano <guivaloz en movimientolibre.com>
+
+        El software que lo construye está bajo la licencia GPL versión 3. © 2014, 2015, 2016, 2017.
+        Una copia está contenida en el archivo LICENCE al bajar desde GitHub.
+
+        Al usar, estudiar y copiar está aceptando los términos de uso de la información y del sitio web:
+          http://www.trcimplan.gob.mx/terminos/terminos-informacion.html
+          http://www.trcimplan.gob.mx/terminos/terminos-sitio.html
+
+        Descargue, estudie y colabore bajando todo este sitio web:
+          IMPLAN Torreón     https://github.com/TRCIMPLAN/trcimplan.github.io
+
+        Agradecemos y compartimos las tecnologías abiertas y gratuitas sobre las que se basa:
+          PHP                http://php.net
+          Twitter Bootstrap  http://getbootstrap.com
+          StartBootStrap     http://startbootstrap.com
+          Morris.js          https://morrisjs.github.io/morris.js/
+          Font Awesome       http://fontawesome.io
+          DataTables         https://www.datatables.net
+          Carto              https://carto.com
+          GitHub             https://github.com
+
+     =================================================================================================== -->
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="author" content="TrcIMPLAN Staff">
+  <meta name="keywords" content="IMPLAN, Torreon, Analisis, Publicaciones, Estudios, Investigacion, Vialidad">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Vialidad - IMPLAN Torreón">
+  <meta name="twitter:description" content="">
+  <meta name="twitter:url" content="http://www.trcimplan.gob.mx/blog/categoria-vialidad.html">
+  <meta name="og:title" content="Vialidad - IMPLAN Torreón">
+  <meta name="og:description" content="">
+  <meta name="og:url" content="http://www.trcimplan.gob.mx/blog/categoria-vialidad.html">
+  <title>Vialidad - IMPLAN Torreón</title>
+  <link rel="shortcut icon" type="image/x-icon" href="../imagenes/apple-touch-icon.png">
+  <link rel="apple-touch-icon" href="../imagenes/apple-touch-icon.png">
+  <link rel="apple-touch-icon" href="../imagenes/apple-touch-icon-76x76.png" sizes="76x76">
+  <link rel="apple-touch-icon" href="../imagenes/apple-touch-icon-120x120.png" sizes="120x120">
+  <link rel="apple-touch-icon" href="../imagenes/apple-touch-icon-152x152.png" sizes="152x152">
+  <link rel="apple-touch-icon" href="../imagenes/apple-touch-icon-180x180.png" sizes="180x180">
+  <link rel="icon" href="../imagenes/icon-hires.png" sizes="192x192">
+  <link rel="icon" href="../imagenes/icon-normal.png" sizes="128x128">
+  <link rel="alternate" type="application/rss+xml" href="../rss.xml" title="IMPLAN Torreón">
+  <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+  <link rel="stylesheet" type="text/css" href="../vendor/metisMenu/metisMenu.min.css">
+  <link rel="stylesheet" type="text/css" href="../vendor/datatables-plugins/dataTables.bootstrap.css">
+  <link rel="stylesheet" type="text/css" href="../vendor/morrisjs/morris.css">
+  <link rel="stylesheet" type="text/css" href="../vendor/font-awesome/css/font-awesome.min.css">
+  <link rel="stylesheet" type="text/css" href="../dist/css/sb-admin-2.min.css">
+  <link rel="stylesheet" type="text/css" href="../dist/css/plataforma-de-conocimiento.css">
+  <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Noto+Sans|Roboto+Condensed:400,700">
+  <link rel="stylesheet" type="text/css" href="http://libs.cartocdn.com/cartodb.js/v3/3.15/themes/css/cartodb.css">
+  <link rel="stylesheet" type="text/css" href="../dist/css/estilosvm.css">
+  <link rel="stylesheet" type="text/css" href="../dist/css/trcimplan.css">
+  <!-- SOPORTE PARA IE -->
+  <!--[if lt IE 9]>
+  <script type="text/javascript" src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+  <script type="text/javascript" src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+  <![endif]-->
+</head>
+<body>
+<div id="wrapper">
+  <nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="../index.html"><img class="navbar-brand-img" src="../imagenes/implan-barra-logo-chico-gris.png" alt="IMPLAN Torreón"></a>
+    </div>
+  <div class="navbar-default sidebar" role="navigation">
+    <div class="sidebar-nav navbar-collapse">
+      <ul class="nav" id="side-menu">
+        <li class="sidebar-search">
+          <form method="get" action="http://www.trcimplan.gob.mx/buscador-resultados.html">
+            <div class="input-group custom-search-form">
+              <input type="text" class="form-control" placeholder="Google buscar..." value="" name="q">
+              <span class="input-group-btn">
+                <button class="btn btn-default" type="submit"><i class="fa fa-search"></i></button>
+              </span>
+            </div>
+          </form>
+        </li>
+        <li class="active">
+          <a href="#"><span class="navegacion-icono"><i class="fa fa-lightbulb-o"></i></span> Análisis Publicados<span class="fa arrow"></span></a>
+          <ul class="nav nav-second-level">
+            <li><a href="../blog/index.html"><span class="navegacion-icono"><i class="fa fa-file-text-o"></i></span> Últimos Análisis</a></li>
+            <li><a href="../excolaboradores/index.html"><span class="navegacion-icono"><i class="fa fa-file-text-o"></i></span> Análisis por Autor</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="#"><span class="navegacion-icono"><i class="fa fa-area-chart"></i></span> Indicadores<span class="fa arrow"></span></a>
+          <ul class="nav nav-second-level">
+            <li><a href="../smi/introduccion.html"><span class="navegacion-icono"><i class="fa fa-file-text-o"></i></span> Introducción al SMI</a></li>
+            <li><a href="../indicadores-categorias/index.html"><span class="navegacion-icono"><i class="fa fa-th-list"></i></span> Indicadores por Categoría</a></li>
+            <li><a href="../smi/por-region.html"><span class="navegacion-icono"><i class="fa fa-table"></i></span> Indicadores por Región</a></li>
+            <li><a href="../smi/datos-abiertos.html"><span class="navegacion-icono"><i class="fa fa-download"></i></span> Datos Abiertos</a></li>
+            <li><a href="../smi/niveles-socioeconomicos.html"><span class="navegacion-icono"><i class="fa fa-bar-chart"></i></span> Niveles Socioeconómicos</a></li>
+            <li><a href="../monitores/index.html"><span class="navegacion-icono"><i class="fa fa-file-text-o"></i></span> Monitores</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="#"><span class="navegacion-icono"><i class="fa fa-puzzle-piece"></i></span> Indicadores Básicos de Colonias<span class="fa arrow"></span></a>
+          <ul class="nav nav-second-level">
+            <li><a href="../ibc/introduccion.html"><span class="navegacion-icono"><i class="fa fa-file-text-o"></i></span> Introducción al IBC</a></li>
+            <li><a href="../ibc-colonias-torreon/index.html"><span class="navegacion-icono"><i class="fa fa-font"></i></span> Colonias de Torreón</a></li>
+            <li><a href="https://implantorreon.carto.com/u/sigimplan/builder/907a6bc0-2c7e-451e-9668-b78d952e52ff/embed" target="_blank"><span class="navegacion-icono"><i class="fa fa-external-link"></i></span> Mapa Completo</a></li>
+            <li><a href="../ibc/torreon-urbano.html"><span class="navegacion-icono"><i class="fa fa-table"></i></span> Torreón Urbano</a></li>
+            <li><a href="../ibc/datos-abiertos.html"><span class="navegacion-icono"><i class="fa fa-download"></i></span> Datos Abiertos</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="#"><span class="navegacion-icono"><i class="fa fa-map-marker"></i></span> Información Geográfica<span class="fa arrow"></span></a>
+          <ul class="nav nav-second-level">
+            <li><a href="../sig/introduccion.html"><span class="navegacion-icono"><i class="fa fa-file-text-o"></i></span> Introducción al SIG</a></li>
+            <li><a href="../sig-mapas-torreon/temas-sig.html"><span class="navegacion-icono"><i class="fa fa-map-o"></i></span> Mapas por Tema</a></li>
+            <li><a href="../sig-mapas-torreon/plan-director-desarrollo-urbano.html"><span class="navegacion-icono"><i class="fa fa-map-marker"></i></span> Usos de Suelo</a></li>
+            <li><a href="../sig/datos-abiertos.html"><span class="navegacion-icono"><i class="fa fa-download"></i></span> Datos Abiertos</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="#"><span class="navegacion-icono"><i class="fa fa-book"></i></span> Plan Estratégico Torreón 2040<span class="fa arrow"></span></a>
+          <ul class="nav nav-second-level">
+            <li><a href="../pet/indice.html"><span class="navegacion-icono"><i class="fa fa-list-ul"></i></span> Índice General</a></li>
+            <li><a href="../plan-estrategico-torreon-enfoque-metropolitano-2040/index.html"><span class="navegacion-icono"><i class="fa fa-download"></i></span> Descargar</a></li>
+            <li><a href="../plan-estrategico-metropolitano/descripcion-del-proceso.html"><span class="navegacion-icono"><i class="fa fa-calendar"></i></span> Descripción del proceso</a></li>
+            <li><a href="../proyectos/index.html"><span class="navegacion-icono"><i class="fa fa-check-square"></i></span> Proyectos</a></li>
+            <li><a href="../vision-de-ciudad/vision-de-ciudad.html"><span class="navegacion-icono"><i class="fa fa-file-text-o"></i></span> Visión de Ciudad desde IMPLAN</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="#"><span class="navegacion-icono"><i class="fa fa-briefcase"></i></span> Documentos<span class="fa arrow"></span></a>
+          <ul class="nav nav-second-level">
+            <li><a href="../sig-planes/index.html"><span class="navegacion-icono"><i class="fa fa-book"></i></span> Planes y Programas</a></li>
+            <li><a href="../investigaciones/index.html"><span class="navegacion-icono"><i class="fa fa-file-text-o"></i></span> Investigaciones</a></li>
+            <li><a href="../estudios/index.html"><span class="navegacion-icono"><i class="fa fa-file-text-o"></i></span> Estudios</a></li>
+          </ul>
+        </li>
+        <li><a href="../consejo-directivo/integrantes.html"><span class="navegacion-icono"><i class="fa fa-users"></i></span> Consejo Directivo</a></li>
+        <li><a href="../sala-prensa/index.html"><span class="navegacion-icono"><i class="fa fa-newspaper-o"></i></span> Sala de Prensa</a></li>
+        <li><a href="../programas-radio/index.html"><span class="navegacion-icono"><i class="fa fa-microphone"></i></span> Programas de Radio</a></li>
+        <li>
+          <a href="#"><span class="navegacion-icono"><i class="fa fa-file-text-o"></i></span> Consejo Visión Metrópoli<span class="fa arrow"></span></a>
+          <ul class="nav nav-second-level">
+            <li><a href="../convocatorias/vision-metropoli.html"><span class="navegacion-icono"><i class="fa fa-file-text-o"></i></span> Consejo Juvenil</a></li>
+            <li><a href="../vision-metropoli/integrantes.html"><span class="navegacion-icono"><i class="fa fa-file-text-o"></i></span> Integrantes del Consejo</a></li>
+            <li><a href="../vision-metropoli/index.html"><span class="navegacion-icono"><i class="fa fa-newspaper-o"></i></span> Sala de Prensa</a></li>
+            <li><a href="../vision-metropoli/reglamento-vision-metropoli-2020.pdf"><span class="navegacion-icono"><i class="fa fa-file-text-o"></i></span> Reglamento</a></li>
+            <li><a href="https://issuu.com/consejovisionmetropoli/docs/informe_visi_n_metr_poli_2019_-_2021" target="_blank"><span class="navegacion-icono"><i class="fa fa-file-text-o"></i></span> Informe 2019 - 2021</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="#"><span class="navegacion-icono"><i class="fa fa-building-o"></i></span> Institucional<span class="fa arrow"></span></a>
+          <ul class="nav nav-second-level">
+            <li><a href="../institucional/vision-mision.html"><span class="navegacion-icono"><i class="fa fa-trophy"></i></span> Misión / Visión</a></li>
+            <li><a href="../institucional/NuestrosProyectos.html"><span class="navegacion-icono"><i class="fa fa-pencil-square-o"></i></span> Nuestros Proyectos</a></li>
+            <li><a href="../institucional/mensaje-director.html"><span class="navegacion-icono"><i class="fa fa-comment"></i></span> Mensaje del Director</a></li>
+            <li><a href="../autores/index.html"><span class="navegacion-icono"><i class="fa fa-user"></i></span> Quienes Somos</a></li>
+            <li><a href="../institucional/estructura-organica.html"><span class="navegacion-icono"><i class="fa fa-sitemap"></i></span> Estructura Orgánica</a></li>
+            <li><a href="../institucional/modelo-operativo-universal.html"><span class="navegacion-icono"><i class="fa fa-slideshare"></i></span> Modelo Operativo Univ.</a></li>
+            <li><a href="../institucional/reglamentos.html"><span class="navegacion-icono"><i class="fa fa-gavel"></i></span> Reglamentos</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="#"><span class="navegacion-icono"><i class="fa fa-external-link"></i></span> Transparencia<span class="fa arrow"></span></a>
+          <ul class="nav nav-second-level">
+            <li><a href="http://www2.icai.org.mx/ipo/dependencia.php?dep=178#pageload" target="_blank"><span class="navegacion-icono"><i class="fa fa-file-text-o"></i></span> Transparencia Estatal (ICAI)</a></li>
+            <li><a href="https://consultapublicamx.inai.org.mx/vut-web/faces/view/consultaPublica.xhtml#inicio" target="_blank"><span class="navegacion-icono"><i class="fa fa-file-text-o"></i></span> Plataforma Nacional de Transparencia</a></li>
+            <li><a href="../transparencia/index.html"><span class="navegacion-icono"><i class="fa fa-briefcase"></i></span> Documentos</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="#"><span class="navegacion-icono"><i class="fa fa-share-alt"></i></span> Términos de Uso<span class="fa arrow"></span></a>
+          <ul class="nav nav-second-level">
+            <li><a href="../terminos/terminos-informacion.html"><span class="navegacion-icono"><i class="fa fa-cubes"></i></span> De la información</a></li>
+            <li><a href="../terminos/terminos-sitio.html"><span class="navegacion-icono"><i class="fa fa-globe"></i></span> Del sitio web</a></li>
+            <li><a href="../terminos/privacidad.html"><span class="navegacion-icono"><i class="fa fa-lock"></i></span> Aviso de Privacidad</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="#"><span class="navegacion-icono"><i class="fa fa-phone"></i></span> Contacto<span class="fa arrow"></span></a>
+          <ul class="nav nav-second-level">
+            <li><a href="../contacto/contacto.html"><span class="navegacion-icono"><i class="fa fa-phone"></i></span> Medios de contacto</a></li>
+            <li><a href="../preguntas-frecuentes/preguntas-frecuentes.html"><span class="navegacion-icono"><i class="fa fa-question"></i></span> Preguntas Frecuentes</a></li>
+            <li><a href="http://goo.gl/forms/1rdX4X128PpMOif73" target="_blank"><span class="navegacion-icono"><i class="fa fa-external-link"></i></span> Comentarios y Sugerencias</a></li>
+          </ul>
+        </li>
+        <li><a href="../convocatorias/index.html"><span class="navegacion-icono"><i class="fa fa-file-text-o"></i></span> Convocatorias</a></li>
+        <li><a href="http://177.244.42.17/ovie-torreon/#!" target="_blank"><span class="navegacion-icono"><i class="fa fa-map-marker"></i></span> Oficina Virtual de Información Económica (OVIE)</a></li>
+        <li><a href="https://arcg.is/0vySSr" target="_blank"><span class="navegacion-icono"><i class="fa fa-globe"></i></span> Atlas Municipal de Riesgos de Torreón</a></li>
+      </ul>
+    </div>
+  </div>
+  </nav>
+  <div id="page-wrapper">
+    <div class="cuerpo">
+      <div class="encabezado">
+        <span><h1>Análisis Publicados en Vialidad</h1></span>
+      </div>
+      <div class="media breve">
+        <a class="pull-left" href="la-seguridad-vial-como-un-tema-de-salud-abril-2021.html"><img class="media-object" src="la-seguridad-vial-como-un-tema-de-salud-abril-2021/imagen-previa.jpg"></a>
+        <div class="media-body">
+          <h3 class="media-heading detallados-encabezado"><a href="la-seguridad-vial-como-un-tema-de-salud-abril-2021.html">Seguridad Vial: Un Tema de Salud que nos compete a Todos y Todas.</a></h3>
+          <p class="detallados-descripcion">Los primeros casos de traumatismos ocasionados por un incidente vial se registraron en 1896, pero fue hasta 2004 cuando la Organización Mundial de la Salud (OMS), declaró que se trataba de una pandemia que estaba cobrando a nivel mundial alrededor de 1,35 millones de vidas y si lo comparamos con los 1,8 millones de personas que fallecieron por COVID 19 en el año 2020, podríamos incluso suponer que los incidentes viales son otro tipo de pandemia.</p>
+          <p class="detallados-autor-fecha">Por Arq. Olga Daniela Sánchez Valles, 12/04/2021</p>
+        </div>
+      </div>
+      <div class="media breve">
+        <a class="pull-left" href="seguridad-vial-y-calle-completa-mar-2021.html"><img class="media-object" src="seguridad-vial-y-calle-completa-mar-2021/imagen-previa.jpg"></a>
+        <div class="media-body">
+          <h3 class="media-heading detallados-encabezado"><a href="seguridad-vial-y-calle-completa-mar-2021.html">Seguridad vial, la Calle Completa como estrategia</a></h3>
+          <p class="detallados-descripcion">En el municipio de Torreón en el año de 2019 ocurrieron 6,517 incidentes viales, que en promedio fueron 543 accidentes mensuales. Del total anual de accidentes, 162 fueron atropellos a ciclistas y 184 a peatones, siendo los choques entre automóviles el número más alto con 5,420.</p>
+          <p class="detallados-autor-fecha">Por Arq. Julio Alexis Magaña Cisneros, 02/03/2021</p>
+        </div>
+      </div>
+      <div class="media breve">
+        <a class="pull-left" href="manual-de-calles-y-la-seguridad-vial-sep-2020.html"><img class="media-object" src="manual-de-calles-y-la-seguridad-vial-sep-2020/imagen-previa.jpg"></a>
+        <div class="media-body">
+          <h3 class="media-heading detallados-encabezado"><a href="manual-de-calles-y-la-seguridad-vial-sep-2020.html">Manual de calles y la seguridad vial.</a></h3>
+          <p class="detallados-descripcion">La calle es la base de cualquier sistema de movilidad urbana, y también uno de los pilares del desarrollo económico de las ciudades.</p>
+          <p class="detallados-autor-fecha">Por Arq. Julio Alexis Magaña Cisneros, 08/09/2020</p>
+        </div>
+      </div>
+      <div class="media breve">
+        <a class="pull-left" href="seguridad-vial-sep2019.html"><img class="media-object" src="seguridad-vial-sep2019/imagen-previa.jpg"></a>
+        <div class="media-body">
+          <h3 class="media-heading detallados-encabezado"><a href="seguridad-vial-sep2019.html">Seguridad Vial: ninguna vida debe perderse por el simple hecho de trasladarnos</a></h3>
+          <p class="detallados-descripcion">El pasado 17 de agosto tuvo lugar la celebración del día del peatón, fecha instaurada por la Organización Mundial de la Salud (OMS) en conmemoración del primer incidente de tráfico que dejara una víctima mortal registrado en 1897 en Londres, Inglaterra; para recordar la importancia de la seguridad vial y promover el respeto entre los distintos usuarios de las vías.</p>
+          <p class="detallados-autor-fecha">Por Arq. Ihanelly Hernández Villa, 02/09/2019</p>
+        </div>
+      </div>
+      <div class="media breve">
+        <a class="pull-left" href="calles-mejor-conectadas-julio2019.html"><img class="media-object" src="calles-mejor-conectadas-julio2019/imagen-previa.jpg"></a>
+        <div class="media-body">
+          <h3 class="media-heading detallados-encabezado"><a href="calles-mejor-conectadas-julio2019.html">Calles Mejor Conectadas, Mejor Calidad de Vida Urbana</a></h3>
+          <p class="detallados-descripcion">El concepto de conectividad vial refiere a la capacidad que tiene una red de calles en las ciudades para interconectar, en mayor o menor medida, las necesidades de movilidad entre puntos de origen-destino, garantizar seguridad y accesibilidad a todos los modos de transporte e integrar las actividades sociales y económicas con su entorno construido.</p>
+          <p class="detallados-autor-fecha">Por Arq. Cecilio Pedro Secunza Schott, 30/07/2019</p>
+        </div>
+      </div>
+      <div class="media breve">
+        <a class="pull-left" href="urbanismo-tactico-pequenas-apuestas-para-solucionar-problemas-urbanos-ene2019.html"><img class="media-object" src="urbanismo-tactico-pequenas-apuestas-para-solucionar-problemas-urbanos-ene2019/imagen-previa.jpg"></a>
+        <div class="media-body">
+          <h3 class="media-heading detallados-encabezado"><a href="urbanismo-tactico-pequenas-apuestas-para-solucionar-problemas-urbanos-ene2019.html">Urbanismo táctico, pequeñas apuestas para solucionar problemas urbanos</a></h3>
+          <p class="detallados-descripcion">En Torreón, en el transcurso de enero a octubre del 2018 han ocurrido en total 180 atropellamientos a peatones y 159 atropellamientos a ciclistas.</p>
+          <p class="detallados-autor-fecha">Por Arq. Jair Miramontes Chávez, 07/01/2019 12:20</p>
+        </div>
+      </div>
+      <div class="media breve">
+        <a class="pull-left" href="el-comercio-a-pie-de-calle.html"><img class="media-object" src="el-comercio-a-pie-de-calle/imagen-previa.jpg"></a>
+        <div class="media-body">
+          <h3 class="media-heading detallados-encabezado"><a href="el-comercio-a-pie-de-calle.html">El comercio a pie de calle, un acercamiento al antes y el después del Paseo Morelos</a></h3>
+          <p class="detallados-descripcion">Para noviembre del 2017, se registraron un total de 216 unidades económicas, 34 unidades más que antes de la semi-peatonalización, lo que representa un incremento del 18.68%.</p>
+          <p class="detallados-autor-fecha">Por Arq. José Antonio Ramírez Reyes, 29/08/2018</p>
+        </div>
+      </div>
+      <div class="media breve">
+        <a class="pull-left" href="vialidad-mayo-2018.html"><img class="media-object" src="vialidad-mayo-2018/imagen-previa.jpg"></a>
+        <div class="media-body">
+          <h3 class="media-heading detallados-encabezado"><a href="vialidad-mayo-2018.html">¿Cómo manejamos los laguneros?</a></h3>
+          <p class="detallados-descripcion">El total de los accidentes reportados en el Tribunal de Justicia Municipal para el primer trimestre del 2018 es de 1,106 choques, 40 atropellos y 40 volcaduras. La mayoría de las causas son falta de precaución (60%), seguido de no respetar las señales de alto o cruceros semaforizados (30%).</p>
+          <p class="detallados-autor-fecha">Por Dr. Iván de Luna Aldape, 09/05/2018 12:00</p>
+        </div>
+      </div>
+      <div class="media breve">
+        <a class="pull-left" href="puentes-peatonales.html"><img class="media-object" src="puentes-peatonales/imagen-previa.jpg"></a>
+        <div class="media-body">
+          <h3 class="media-heading detallados-encabezado"><a href="puentes-peatonales.html">La funcionalidad de los puentes peatonales</a></h3>
+          <p class="detallados-descripcion">En Torreón existe un total de 47 puentes peatonales, de los cuales el 85% se encuentran sobre vialidades primarias, destacando el eje que une bulevar Revolución y bulevar Torreón-Matamoros con 15 puentes. En contraste, es uno de los cruces con más atropellamientos.</p>
+          <p class="detallados-autor-fecha">Por Arq. Ihanelly Hernández Villa, 14/02/2018</p>
+        </div>
+      </div>
+      <div class="media breve">
+        <a class="pull-left" href="menos-estacionamiento-mas-espacio-publico-de-calidad.html"><img class="media-object" src="menos-estacionamiento-mas-espacio-publico-de-calidad/imagen-previa.jpg"></a>
+        <div class="media-body">
+          <h3 class="media-heading detallados-encabezado"><a href="menos-estacionamiento-mas-espacio-publico-de-calidad.html">Menos estacionamiento, más espacio público de calidad</a></h3>
+          <p class="detallados-descripcion">Las nuevas tendencias urbanísticas no buscan prohibir la construcción de cajones de estacionamiento sino de revertir su tendencia de crecimiento exponencial.</p>
+          <p class="detallados-autor-fecha">Por Arq. Daniela Patricia Corral Hernández, 14/09/2017 12:30</p>
+        </div>
+      </div>
+      <div class="media breve">
+        <a class="pull-left" href="el-buen-futuro-se-planea.html"><img class="media-object" src="el-buen-futuro-se-planea/imagen-previa.jpg"></a>
+        <div class="media-body">
+          <h3 class="media-heading detallados-encabezado"><a href="el-buen-futuro-se-planea.html">El buen futuro se planea</a></h3>
+          <p class="detallados-descripcion">En el Índice Básico de Ciudades Prósperas presentado por ONU Hábitat, Torreón obtuvo una calificación de 55.51 en una escala del 1 al 100, situándose como moderadamente débil. Sin embargo, en sub dimensiones como Educación, Salud o Inclusión de género se colocó en una escala moderadamente sólida.</p>
+          <p class="detallados-autor-fecha">Por Lic. Eduardo Holguín Zehfuss, 07/08/2017 09:30</p>
+        </div>
+      </div>
+      <div class="media breve">
+        <a class="pull-left" href="torreon-y-la-laguna-necesitan-una-vision-cero.html"><img class="media-object" src="torreon-y-la-laguna-necesitan-una-vision-cero/imagen-previa.jpg"></a>
+        <div class="media-body">
+          <h3 class="media-heading detallados-encabezado"><a href="torreon-y-la-laguna-necesitan-una-vision-cero.html">Torreón y La Laguna necesitan una Visión Cero</a></h3>
+          <p class="detallados-descripcion">Los incidentes de tránsito siguen siendo la principal causa de muerte en los jóvenes de Coahuila y la tasa de atropellamiento a peatones en Torreón mostró un aumento de 4.8 a 5.2 por cada mil habitantes.</p>
+          <p class="detallados-autor-fecha">Por Lic. Adriana Vargas Flores, 17/07/2017 14:45</p>
+        </div>
+      </div>
+      <div class="media breve">
+        <a class="pull-left" href="beneficios-de-la-peatonalizacion-en-el-centro-de-torreon.html"><img class="media-object" src="beneficios-de-la-peatonalizacion-en-el-centro-de-torreon/imagen-previa.jpg"></a>
+        <div class="media-body">
+          <h3 class="media-heading detallados-encabezado"><a href="beneficios-de-la-peatonalizacion-en-el-centro-de-torreon.html">Beneficios de la peatonalización en el Centro de Torreón</a></h3>
+          <p class="detallados-descripcion">De acuerdo con INEGI 12.6% de la población de 12 a 65 años realiza traslados a pie por estudio o trabajo. En el centro se ha lanzado el primer proyecto peatonal de la ciudad: El Paseo Morelos con estrategias como la pacificación del tránsito, señalización y cruces seguros.</p>
+          <p class="detallados-autor-fecha">Por Arq. Daniela Patricia Corral Hernández, 23/09/2016 13:35</p>
+        </div>
+      </div>
+      <div class="media breve">
+        <a class="pull-left" href="con-metrobus-laguna-21-mil-toneladas-menos-de-co2.html"><img class="media-object" src="con-metrobus-laguna-21-mil-toneladas-menos-de-co2/imagen-previa.jpg"></a>
+        <div class="media-body">
+          <h3 class="media-heading detallados-encabezado"><a href="con-metrobus-laguna-21-mil-toneladas-menos-de-co2.html">Con Metrobús Laguna, 21 mil toneladas menos de CO2</a></h3>
+          <p class="detallados-descripcion">La disminución en tiempo de traslados en 15 minutos y el uso de un sistema que no produce emisiones contaminantes, es parte de los beneficios de la implementación del Metrobús en La Laguna. El proyecto contempla también beneficios económicos y una movilidad más equitativa.</p>
+          <p class="detallados-autor-fecha">Por Lic. Adriana Vargas Flores, 01/07/2016 19:30</p>
+        </div>
+      </div>
+      <div class="media breve">
+        <a class="pull-left" href="en-busca-de-una-movilidad-sustentable.html"><img class="media-object" src="en-busca-de-una-movilidad-sustentable/imagen-previa.jpg"></a>
+        <div class="media-body">
+          <h3 class="media-heading detallados-encabezado"><a href="en-busca-de-una-movilidad-sustentable.html">En busca de una Movilidad Sustentable</a></h3>
+          <p class="detallados-descripcion">Debido al acelerado crecimiento de la mancha urbana en la Comarca, el Desarrollo Orientado al Transporte (DOT) puede ayudar a crear una ciudad compacta y de alta densidad, donde las personas puedan elegir un modo de transporte diferente al automóvil y puedan contar con infraestructura peatonal y ciclista de calidad.</p>
+          <p class="detallados-autor-fecha">Por Arq. Ángeles Melisa Rodríguez Salas, 07/06/2016 16:05</p>
+        </div>
+      </div>
+      <div class="media breve">
+        <a class="pull-left" href="menos-tiempo-en-transporte-mayor-calidad-de-vida.html"><img class="media-object" src="menos-tiempo-en-transporte-mayor-calidad-de-vida/imagen-previa.jpg"></a>
+        <div class="media-body">
+          <h3 class="media-heading detallados-encabezado"><a href="menos-tiempo-en-transporte-mayor-calidad-de-vida.html">Menos tiempo en transporte, mayor calidad de vida</a></h3>
+          <p class="detallados-descripcion">La relación entre transporte público efectivo y competitividad es directa, pero para que la competitividad se traduzca en calidad de vida se debe reducir el tiempo de traslado de estudiantes y trabajadores. Con la llegada del Metrobus se podría lograr que el 70% de la población trabajadora invierta menos de media hora en cada traslado.</p>
+          <p class="detallados-autor-fecha">Por Lic. Luis A. Gutiérrez Arizpe, 07/06/2016 14:50</p>
+        </div>
+      </div>
+      <div class="media breve">
+        <a class="pull-left" href="crecimiento-historico-de-la-vivienda-en-torreon.html"><img class="media-object" src="crecimiento-historico-de-la-vivienda-en-torreon/imagen-previa.jpg"></a>
+        <div class="media-body">
+          <h3 class="media-heading detallados-encabezado"><a href="crecimiento-historico-de-la-vivienda-en-torreon.html">Crecimiento histórico de la vivienda en Torreón</a></h3>
+          <p class="detallados-descripcion">El crecimiento disperso de la vivienda ha permitido que surjan conjuntos habitacionales alejados de los centros urbanos donde se encuentran los puntos de trabajo, educación y recreación.  Carecen de equipamientos de espacios públicos, servicios de abasto, de educación, de salud y recreación.</p>
+          <p class="detallados-autor-fecha">Por Arq. Ilse Ávila García, 28/04/2016 14:30</p>
+        </div>
+      </div>
+      <div class="media breve">
+        <a class="pull-left" href="primer-analisis-de-datos-abiertos-en-seguridad-vial.html"><img class="media-object" src="primer-analisis-de-datos-abiertos-en-seguridad-vial/imagen-previa.jpg"></a>
+        <div class="media-body">
+          <h3 class="media-heading detallados-encabezado"><a href="primer-analisis-de-datos-abiertos-en-seguridad-vial.html">Primer Análisis de Datos Abiertos en Seguridad Vial</a></h3>
+          <p class="detallados-descripcion">En 2015 la Dirección de Tránsito y Vialidad de Torreón modernizó la forma de llevar su registro de eventos sobre seguridad vial al cambiar del formato físico al digital.</p>
+          <p class="detallados-autor-fecha">Por Ing. Guillermo Valdés Lozano, 29/03/2016 09:20</p>
+        </div>
+      </div>
+      <div class="media breve">
+        <a class="pull-left" href="estructura-y-traza-urbana-de-torreon.html"><img class="media-object" src="estructura-y-traza-urbana-de-torreon/imagen-previa.jpg"></a>
+        <div class="media-body">
+          <h3 class="media-heading detallados-encabezado"><a href="estructura-y-traza-urbana-de-torreon.html">Estructura y Traza Urbana de Torreón</a></h3>
+          <p class="detallados-descripcion">La pérdida de orden en la morfología de Torreón, consecuencia de una falta de planeación urbana, trajo problemas como desconexión vial, cruceros conflictivos, alta necesidad de movilidad motorizada y condiciones viales propicias para la privatización y clausura de los fraccionamientos.</p>
+          <p class="detallados-autor-fecha">Por Arq. Cecilio Pedro Secunza Schott, 26/01/2016 12:50</p>
+        </div>
+      </div>
+      <div class="media breve">
+        <a class="pull-left" href="la-movilidad-urbana-y-laboral-en-la-laguna.html"><img class="media-object" src="la-movilidad-urbana-y-laboral-en-la-laguna/imagen-previa.jpg"></a>
+        <div class="media-body">
+          <h3 class="media-heading detallados-encabezado"><a href="la-movilidad-urbana-y-laboral-en-la-laguna.html">La movilidad urbana y laboral en La Laguna</a></h3>
+          <p class="detallados-descripcion">La expansión de la mancha urbana en la región ha ocasionado que se privilegie el uso de automóvil particular, provocando efectos negativos sobre la salud, ocupación creciente del espacio y costos extremos.</p>
+          <p class="detallados-autor-fecha">Por Lic. Luis A. Gutiérrez Arizpe, Arq. Cecilio Pedro Secunza Schott, 14/10/2015 13:50</p>
+        </div>
+      </div>
+      <div class="media breve">
+        <a class="pull-left" href="recomendaciones-pacificacion-transito.html"><img class="media-object" src="recomendaciones-pacificacion-transito/imagen-previa.jpg"></a>
+        <div class="media-body">
+          <h3 class="media-heading detallados-encabezado"><a href="recomendaciones-pacificacion-transito.html">Recomendaciones para la Pacificación del Tránsito</a></h3>
+          <p class="detallados-descripcion">Técnicas para bajar la velocidad de los vehículos motorizados, logrando mejorar la seguridad de los peatones, incrementar las ventas y hacer de las calles céntricas espacios sociales y culturales.</p>
+          <p class="detallados-autor-fecha">Por Arq. Ángeles Melisa Rodríguez Salas, 17/06/2015 16:00</p>
+        </div>
+      </div>
+      <div class="media breve">
+        <a class="pull-left" href="camina-la-roma-por-buenos-disenos-peatonales.html"><img class="media-object" src="camina-la-roma-por-buenos-disenos-peatonales/imagen-previa.jpg"></a>
+        <div class="media-body">
+          <h3 class="media-heading detallados-encabezado"><a href="camina-la-roma-por-buenos-disenos-peatonales.html">#Camina La Roma por buenos diseños peatonales</a></h3>
+          <p class="detallados-descripcion">Ejercicio realizado por el Instituto de Políticas para el Transporte y el Desarrollo (ITDP por sus siglas en inglés) México para analizar cómo funcionaría una intersección vial si estuviera diseñada para las personas que andan a pie.</p>
+          <p class="detallados-autor-fecha">Por Alejandra Leal @alelealv, Luz Viramontes @yazvf, 10/06/2015 14:55</p>
+        </div>
+      </div>
+      <div class="media breve">
+        <a class="pull-left" href="reflexion-crecimiento-urbano-torreon.html"><img class="media-object" src="reflexion-crecimiento-urbano-torreon/imagen-previa.jpg"></a>
+        <div class="media-body">
+          <h3 class="media-heading detallados-encabezado"><a href="reflexion-crecimiento-urbano-torreon.html">Reflexión del Crecimiento Urbano en Torreón</a></h3>
+          <p class="detallados-descripcion">La ciudad de Torreón nace a partir de la visión de Sr. Andrés Guillermo Eppen con trazos ordenados, calles anchas, manzanas cuadradas y alineadas con la vía de ferrocarril.</p>
+          <p class="detallados-autor-fecha">Por Arq. Ilse Ávila García, 27/05/2015 16:10</p>
+        </div>
+      </div>
+      <div class="media breve">
+        <a class="pull-left" href="francisco-i-madero-ejemplo-rescate-espacio-publico.html"><img class="media-object" src="francisco-i-madero-ejemplo-rescate-espacio-publico/imagen-previa.jpg"></a>
+        <div class="media-body">
+          <h3 class="media-heading detallados-encabezado"><a href="francisco-i-madero-ejemplo-rescate-espacio-publico.html">Francisco I. Madero: Ejemplo de un rescate de Espacio Público</a></h3>
+          <p class="detallados-descripcion">El Corredor Peatonal Madero ha motivado el crecimiento comercial y favorecido la conservación sus edificios históricos, en lo que hoy es una calle sólo para transeúntes.</p>
+          <p class="detallados-autor-fecha">Por Arq. Ángeles Melisa Rodríguez Salas, 21/04/2015 15:25</p>
+        </div>
+      </div>
+      <div class="media breve">
+        <a class="pull-left" href="dot-desarrollo-orientado-transporte.html"><img class="media-object" src="dot-desarrollo-orientado-transporte/imagen-previa.png"></a>
+        <div class="media-body">
+          <h3 class="media-heading detallados-encabezado"><a href="dot-desarrollo-orientado-transporte.html">DOT: Desarrollo Orientado al Transporte</a></h3>
+          <p class="detallados-descripcion">En las últimas décadas, han surgido nuevos modelos urbanos que retoman el componente humano como eje principal de la planeación, buscando el equilibrio entre una ciudad altamente competitiva pero con servicios e infraestructura orientada al confort y las necesidades del ser humano.</p>
+          <p class="detallados-autor-fecha">Por Ing. Luis Campos Hinojosa, 05/11/2014 08:05</p>
+        </div>
+      </div>
+      <div class="media breve">
+        <a class="pull-left" href="cultura-seguridad-vial.html"><img class="media-object" src="cultura-seguridad-vial/imagen-previa.png"></a>
+        <div class="media-body">
+          <h3 class="media-heading detallados-encabezado"><a href="cultura-seguridad-vial.html">Cultura y seguridad vial</a></h3>
+          <p class="detallados-descripcion">La cultura vial se refiere a la construcción de una convivencia armoniosa, responsable y de respeto entre todos los que hacemos uso de las vías de tránsito, sean estas aceras, rutas, caminos, ciclo vías, etc.</p>
+          <p class="detallados-autor-fecha">Por Lic. Alfredo Viesca Domínguez, 22/10/2014 08:05</p>
+        </div>
+      </div>
+      <div class="media breve">
+        <a class="pull-left" href="movilidad-laboral-cotidiana-zml.html"><img class="media-object" src="movilidad-laboral-cotidiana-zml/imagen-previa.jpg"></a>
+        <div class="media-body">
+          <h3 class="media-heading detallados-encabezado"><a href="movilidad-laboral-cotidiana-zml.html">Movilidad laboral cotidiana en la ZML</a></h3>
+          <p class="detallados-descripcion">Población ocupada que tiene trabajo en su PROPIO municipio y que tiene trabajo en OTRO Municipio de la Zona Metropolitana de la Laguna.</p>
+          <p class="detallados-autor-fecha">Por Lic. Luis A. Gutiérrez Arizpe, 06/08/2014 08:05</p>
+        </div>
+      </div>
+      <div class="media breve">
+        <a class="pull-left" href="infraestructura.html"><img class="media-object" src="infraestructura/imagen-previa.jpg"></a>
+        <div class="media-body">
+          <h3 class="media-heading detallados-encabezado"><a href="infraestructura.html">Infraestructura (Sectores precursores de clase mundial)</a></h3>
+          <p class="detallados-descripcion">Análisis de los indicadores sobre infraestructura en tecnologías de la información, carreteras avanzadas y tasa de accidentes viales.</p>
+          <p class="detallados-autor-fecha">Por Lic. Rodrigo González Morales, 26/06/2014 08:05</p>
+        </div>
+      </div>
+    </div>
+    <div class="mapa-inferior">
+          <div class="pull-right redes-sociales">
+            <a class="fa fa-twitter-square" href="http://www.twitter.com/trcimplan" target="_blank"></a>
+            <a class="fa fa-facebook-square" href="https://facebook.com/trcimplan" target="_blank"></a>
+            <a class="fa fa-facebook-square" href="http://www.instagram.com/implantorreon" target="_blank"></a>
+            <a class="fa fa-rss-square" href="../rss.xml"></a>
+          </div>
+    </div>
+  </div>
+</div>
+<!-- Javascript global inicia -->
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
+<script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="../vendor/metisMenu/metisMenu.min.js"></script>
+<script type="text/javascript" src="../vendor/datatables/js/jquery.dataTables.min.js"></script>
+<script type="text/javascript" src="../vendor/datatables-plugins/dataTables.bootstrap.min.js"></script>
+<script type="text/javascript" src="../vendor/datatables-responsive/dataTables.responsive.js"></script>
+<script type="text/javascript" src="../vendor/raphael/raphael.min.js"></script>
+<script type="text/javascript" src="../vendor/morrisjs/morris.min.js"></script>
+<script type="text/javascript" src="../dist/js/sb-admin-2.min.js"></script>
+<script type="text/javascript" src="http://libs.cartocdn.com/cartodb.js/v3/3.15/cartodb.js"></script>
+<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+<!-- Javascript global termina -->
+<!-- Javascript inicia -->
+
+<!-- Javascript termina -->
+<!-- Javascript Google Analytics -->
+<script>
+  // Google Analytics
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)})(window,document,'script','//www.google-analytics.com/analytics.js','ga');ga('create', 'UA-58290501-1', 'auto');ga('send', 'pageview');
+</script>
+</body>
+</html>

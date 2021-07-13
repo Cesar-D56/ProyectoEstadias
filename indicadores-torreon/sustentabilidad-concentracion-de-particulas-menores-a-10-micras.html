@@ -1,0 +1,5714 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+<!-- ===================================================================================================
+
+        Instituto Municipal de Planeación y Competitividad (IMPLAN) de Torreón.
+
+        3er. generación de la Plataforma del Conocimiento
+        Desarrollado por Ing. Guillermo Valdés Lozano <guivaloz en movimientolibre.com>
+
+        El software que lo construye está bajo la licencia GPL versión 3. © 2014, 2015, 2016, 2017.
+        Una copia está contenida en el archivo LICENCE al bajar desde GitHub.
+
+        Al usar, estudiar y copiar está aceptando los términos de uso de la información y del sitio web:
+          http://www.trcimplan.gob.mx/terminos/terminos-informacion.html
+          http://www.trcimplan.gob.mx/terminos/terminos-sitio.html
+
+        Descargue, estudie y colabore bajando todo este sitio web:
+          IMPLAN Torreón     https://github.com/TRCIMPLAN/trcimplan.github.io
+
+        Agradecemos y compartimos las tecnologías abiertas y gratuitas sobre las que se basa:
+          PHP                http://php.net
+          Twitter Bootstrap  http://getbootstrap.com
+          StartBootStrap     http://startbootstrap.com
+          Morris.js          https://morrisjs.github.io/morris.js/
+          Font Awesome       http://fontawesome.io
+          DataTables         https://www.datatables.net
+          Carto              https://carto.com
+          GitHub             https://github.com
+
+     =================================================================================================== -->
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Calidad del aire por la medición de las partículas menores a 10 microgramos por metro cúbico en promedio de 24 horas. La Norma Oficial Mexicana NOM-025-SSA1-2014 indica que el límite para efectos de protección de la salud es 75 ug por m3.">
+  <meta name="author" content="Dirección de Investigación Estratégica">
+  <meta name="keywords" content="IMPLAN, Torreón, Medio Ambiente, Recursos Naturales">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Concentración de Partículas menores a 10 micras en Torreón - IMPLAN Torreón">
+  <meta name="twitter:description" content="Calidad del aire por la medición de las partículas menores a 10 microgramos por metro cúbico en promedio de 24 horas. La Norma Oficial Mexicana NOM-025-SSA1-2014 indica que el límite para efectos de protección de la salud es 75 ug por m3.">
+  <meta name="twitter:image" content="http://www.trcimplan.gob.mx/indicadores-torreon/../imagenes/imagen-previa.jpg">
+  <meta name="twitter:url" content="http://www.trcimplan.gob.mx/indicadores-torreon/sustentabilidad-concentracion-de-particulas-menores-a-10-micras.html">
+  <meta name="og:title" content="Concentración de Partículas menores a 10 micras en Torreón - IMPLAN Torreón">
+  <meta name="og:description" content="Calidad del aire por la medición de las partículas menores a 10 microgramos por metro cúbico en promedio de 24 horas. La Norma Oficial Mexicana NOM-025-SSA1-2014 indica que el límite para efectos de protección de la salud es 75 ug por m3.">
+  <meta name="og:image" content="http://www.trcimplan.gob.mx/indicadores-torreon/../imagenes/imagen-previa.jpg">
+  <meta name="og:url" content="http://www.trcimplan.gob.mx/indicadores-torreon/sustentabilidad-concentracion-de-particulas-menores-a-10-micras.html">
+  <title>Concentración de Partículas menores a 10 micras en Torreón - IMPLAN Torreón</title>
+  <link rel="shortcut icon" type="image/x-icon" href="../imagenes/apple-touch-icon.png">
+  <link rel="apple-touch-icon" href="../imagenes/apple-touch-icon.png">
+  <link rel="apple-touch-icon" href="../imagenes/apple-touch-icon-76x76.png" sizes="76x76">
+  <link rel="apple-touch-icon" href="../imagenes/apple-touch-icon-120x120.png" sizes="120x120">
+  <link rel="apple-touch-icon" href="../imagenes/apple-touch-icon-152x152.png" sizes="152x152">
+  <link rel="apple-touch-icon" href="../imagenes/apple-touch-icon-180x180.png" sizes="180x180">
+  <link rel="icon" href="../imagenes/icon-hires.png" sizes="192x192">
+  <link rel="icon" href="../imagenes/icon-normal.png" sizes="128x128">
+  <link rel="alternate" type="application/rss+xml" href="../rss.xml" title="IMPLAN Torreón">
+  <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+  <link rel="stylesheet" type="text/css" href="../vendor/metisMenu/metisMenu.min.css">
+  <link rel="stylesheet" type="text/css" href="../vendor/datatables-plugins/dataTables.bootstrap.css">
+  <link rel="stylesheet" type="text/css" href="../vendor/morrisjs/morris.css">
+  <link rel="stylesheet" type="text/css" href="../vendor/font-awesome/css/font-awesome.min.css">
+  <link rel="stylesheet" type="text/css" href="../dist/css/sb-admin-2.min.css">
+  <link rel="stylesheet" type="text/css" href="../dist/css/plataforma-de-conocimiento.css">
+  <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Noto+Sans|Roboto+Condensed:400,700">
+  <link rel="stylesheet" type="text/css" href="http://libs.cartocdn.com/cartodb.js/v3/3.15/themes/css/cartodb.css">
+  <link rel="stylesheet" type="text/css" href="../dist/css/estilosvm.css">
+  <link rel="stylesheet" type="text/css" href="../dist/css/trcimplan.css">
+  <!-- SOPORTE PARA IE -->
+  <!--[if lt IE 9]>
+  <script type="text/javascript" src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+  <script type="text/javascript" src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+  <![endif]-->
+</head>
+<body>
+<div id="wrapper">
+  <nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="../index.html"><img class="navbar-brand-img" src="../imagenes/implan-barra-logo-chico-gris.png" alt="IMPLAN Torreón"></a>
+    </div>
+  <div class="navbar-default sidebar" role="navigation">
+    <div class="sidebar-nav navbar-collapse">
+      <ul class="nav" id="side-menu">
+        <li class="sidebar-search">
+          <form method="get" action="http://www.trcimplan.gob.mx/buscador-resultados.html">
+            <div class="input-group custom-search-form">
+              <input type="text" class="form-control" placeholder="Google buscar..." value="" name="q">
+              <span class="input-group-btn">
+                <button class="btn btn-default" type="submit"><i class="fa fa-search"></i></button>
+              </span>
+            </div>
+          </form>
+        </li>
+        <li>
+          <a href="#"><span class="navegacion-icono"><i class="fa fa-lightbulb-o"></i></span> Análisis Publicados<span class="fa arrow"></span></a>
+          <ul class="nav nav-second-level">
+            <li><a href="../blog/index.html"><span class="navegacion-icono"><i class="fa fa-file-text-o"></i></span> Últimos Análisis</a></li>
+            <li><a href="../excolaboradores/index.html"><span class="navegacion-icono"><i class="fa fa-file-text-o"></i></span> Análisis por Autor</a></li>
+          </ul>
+        </li>
+        <li class="active">
+          <a href="#"><span class="navegacion-icono"><i class="fa fa-area-chart"></i></span> Indicadores<span class="fa arrow"></span></a>
+          <ul class="nav nav-second-level">
+            <li><a href="../smi/introduccion.html"><span class="navegacion-icono"><i class="fa fa-file-text-o"></i></span> Introducción al SMI</a></li>
+            <li><a href="../indicadores-categorias/index.html"><span class="navegacion-icono"><i class="fa fa-th-list"></i></span> Indicadores por Categoría</a></li>
+            <li class="active"><a href="../smi/por-region.html"><span class="navegacion-icono"><i class="fa fa-table"></i></span> Indicadores por Región</a></li>
+            <li><a href="../smi/datos-abiertos.html"><span class="navegacion-icono"><i class="fa fa-download"></i></span> Datos Abiertos</a></li>
+            <li><a href="../smi/niveles-socioeconomicos.html"><span class="navegacion-icono"><i class="fa fa-bar-chart"></i></span> Niveles Socioeconómicos</a></li>
+            <li><a href="../monitores/index.html"><span class="navegacion-icono"><i class="fa fa-file-text-o"></i></span> Monitores</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="#"><span class="navegacion-icono"><i class="fa fa-puzzle-piece"></i></span> Indicadores Básicos de Colonias<span class="fa arrow"></span></a>
+          <ul class="nav nav-second-level">
+            <li><a href="../ibc/introduccion.html"><span class="navegacion-icono"><i class="fa fa-file-text-o"></i></span> Introducción al IBC</a></li>
+            <li><a href="../ibc-colonias-torreon/index.html"><span class="navegacion-icono"><i class="fa fa-font"></i></span> Colonias de Torreón</a></li>
+            <li><a href="https://implantorreon.carto.com/u/sigimplan/builder/907a6bc0-2c7e-451e-9668-b78d952e52ff/embed" target="_blank"><span class="navegacion-icono"><i class="fa fa-external-link"></i></span> Mapa Completo</a></li>
+            <li><a href="../ibc/torreon-urbano.html"><span class="navegacion-icono"><i class="fa fa-table"></i></span> Torreón Urbano</a></li>
+            <li><a href="../ibc/datos-abiertos.html"><span class="navegacion-icono"><i class="fa fa-download"></i></span> Datos Abiertos</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="#"><span class="navegacion-icono"><i class="fa fa-map-marker"></i></span> Información Geográfica<span class="fa arrow"></span></a>
+          <ul class="nav nav-second-level">
+            <li><a href="../sig/introduccion.html"><span class="navegacion-icono"><i class="fa fa-file-text-o"></i></span> Introducción al SIG</a></li>
+            <li><a href="../sig-mapas-torreon/temas-sig.html"><span class="navegacion-icono"><i class="fa fa-map-o"></i></span> Mapas por Tema</a></li>
+            <li><a href="../sig-mapas-torreon/plan-director-desarrollo-urbano.html"><span class="navegacion-icono"><i class="fa fa-map-marker"></i></span> Usos de Suelo</a></li>
+            <li><a href="../sig/datos-abiertos.html"><span class="navegacion-icono"><i class="fa fa-download"></i></span> Datos Abiertos</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="#"><span class="navegacion-icono"><i class="fa fa-book"></i></span> Plan Estratégico Torreón 2040<span class="fa arrow"></span></a>
+          <ul class="nav nav-second-level">
+            <li><a href="../pet/indice.html"><span class="navegacion-icono"><i class="fa fa-list-ul"></i></span> Índice General</a></li>
+            <li><a href="../plan-estrategico-torreon-enfoque-metropolitano-2040/index.html"><span class="navegacion-icono"><i class="fa fa-download"></i></span> Descargar</a></li>
+            <li><a href="../plan-estrategico-metropolitano/descripcion-del-proceso.html"><span class="navegacion-icono"><i class="fa fa-calendar"></i></span> Descripción del proceso</a></li>
+            <li><a href="../proyectos/index.html"><span class="navegacion-icono"><i class="fa fa-check-square"></i></span> Proyectos</a></li>
+            <li><a href="../vision-de-ciudad/vision-de-ciudad.html"><span class="navegacion-icono"><i class="fa fa-file-text-o"></i></span> Visión de Ciudad desde IMPLAN</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="#"><span class="navegacion-icono"><i class="fa fa-briefcase"></i></span> Documentos<span class="fa arrow"></span></a>
+          <ul class="nav nav-second-level">
+            <li><a href="../sig-planes/index.html"><span class="navegacion-icono"><i class="fa fa-book"></i></span> Planes y Programas</a></li>
+            <li><a href="../investigaciones/index.html"><span class="navegacion-icono"><i class="fa fa-file-text-o"></i></span> Investigaciones</a></li>
+            <li><a href="../estudios/index.html"><span class="navegacion-icono"><i class="fa fa-file-text-o"></i></span> Estudios</a></li>
+          </ul>
+        </li>
+        <li><a href="../consejo-directivo/integrantes.html"><span class="navegacion-icono"><i class="fa fa-users"></i></span> Consejo Directivo</a></li>
+        <li><a href="../sala-prensa/index.html"><span class="navegacion-icono"><i class="fa fa-newspaper-o"></i></span> Sala de Prensa</a></li>
+        <li><a href="../programas-radio/index.html"><span class="navegacion-icono"><i class="fa fa-microphone"></i></span> Programas de Radio</a></li>
+        <li>
+          <a href="#"><span class="navegacion-icono"><i class="fa fa-file-text-o"></i></span> Consejo Visión Metrópoli<span class="fa arrow"></span></a>
+          <ul class="nav nav-second-level">
+            <li><a href="../convocatorias/vision-metropoli.html"><span class="navegacion-icono"><i class="fa fa-file-text-o"></i></span> Consejo Juvenil</a></li>
+            <li><a href="../vision-metropoli/integrantes.html"><span class="navegacion-icono"><i class="fa fa-file-text-o"></i></span> Integrantes del Consejo</a></li>
+            <li><a href="../vision-metropoli/index.html"><span class="navegacion-icono"><i class="fa fa-newspaper-o"></i></span> Sala de Prensa</a></li>
+            <li><a href="../vision-metropoli/reglamento-vision-metropoli-2020.pdf"><span class="navegacion-icono"><i class="fa fa-file-text-o"></i></span> Reglamento</a></li>
+            <li><a href="https://issuu.com/consejovisionmetropoli/docs/informe_visi_n_metr_poli_2019_-_2021" target="_blank"><span class="navegacion-icono"><i class="fa fa-file-text-o"></i></span> Informe 2019 - 2021</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="#"><span class="navegacion-icono"><i class="fa fa-building-o"></i></span> Institucional<span class="fa arrow"></span></a>
+          <ul class="nav nav-second-level">
+            <li><a href="../institucional/vision-mision.html"><span class="navegacion-icono"><i class="fa fa-trophy"></i></span> Misión / Visión</a></li>
+            <li><a href="../institucional/NuestrosProyectos.html"><span class="navegacion-icono"><i class="fa fa-pencil-square-o"></i></span> Nuestros Proyectos</a></li>
+            <li><a href="../institucional/mensaje-director.html"><span class="navegacion-icono"><i class="fa fa-comment"></i></span> Mensaje del Director</a></li>
+            <li><a href="../autores/index.html"><span class="navegacion-icono"><i class="fa fa-user"></i></span> Quienes Somos</a></li>
+            <li><a href="../institucional/estructura-organica.html"><span class="navegacion-icono"><i class="fa fa-sitemap"></i></span> Estructura Orgánica</a></li>
+            <li><a href="../institucional/modelo-operativo-universal.html"><span class="navegacion-icono"><i class="fa fa-slideshare"></i></span> Modelo Operativo Univ.</a></li>
+            <li><a href="../institucional/reglamentos.html"><span class="navegacion-icono"><i class="fa fa-gavel"></i></span> Reglamentos</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="#"><span class="navegacion-icono"><i class="fa fa-external-link"></i></span> Transparencia<span class="fa arrow"></span></a>
+          <ul class="nav nav-second-level">
+            <li><a href="http://www2.icai.org.mx/ipo/dependencia.php?dep=178#pageload" target="_blank"><span class="navegacion-icono"><i class="fa fa-file-text-o"></i></span> Transparencia Estatal (ICAI)</a></li>
+            <li><a href="https://consultapublicamx.inai.org.mx/vut-web/faces/view/consultaPublica.xhtml#inicio" target="_blank"><span class="navegacion-icono"><i class="fa fa-file-text-o"></i></span> Plataforma Nacional de Transparencia</a></li>
+            <li><a href="../transparencia/index.html"><span class="navegacion-icono"><i class="fa fa-briefcase"></i></span> Documentos</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="#"><span class="navegacion-icono"><i class="fa fa-share-alt"></i></span> Términos de Uso<span class="fa arrow"></span></a>
+          <ul class="nav nav-second-level">
+            <li><a href="../terminos/terminos-informacion.html"><span class="navegacion-icono"><i class="fa fa-cubes"></i></span> De la información</a></li>
+            <li><a href="../terminos/terminos-sitio.html"><span class="navegacion-icono"><i class="fa fa-globe"></i></span> Del sitio web</a></li>
+            <li><a href="../terminos/privacidad.html"><span class="navegacion-icono"><i class="fa fa-lock"></i></span> Aviso de Privacidad</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="#"><span class="navegacion-icono"><i class="fa fa-phone"></i></span> Contacto<span class="fa arrow"></span></a>
+          <ul class="nav nav-second-level">
+            <li><a href="../contacto/contacto.html"><span class="navegacion-icono"><i class="fa fa-phone"></i></span> Medios de contacto</a></li>
+            <li><a href="../preguntas-frecuentes/preguntas-frecuentes.html"><span class="navegacion-icono"><i class="fa fa-question"></i></span> Preguntas Frecuentes</a></li>
+            <li><a href="http://goo.gl/forms/1rdX4X128PpMOif73" target="_blank"><span class="navegacion-icono"><i class="fa fa-external-link"></i></span> Comentarios y Sugerencias</a></li>
+          </ul>
+        </li>
+        <li><a href="../convocatorias/index.html"><span class="navegacion-icono"><i class="fa fa-file-text-o"></i></span> Convocatorias</a></li>
+        <li><a href="http://177.244.42.17/ovie-torreon/#!" target="_blank"><span class="navegacion-icono"><i class="fa fa-map-marker"></i></span> Oficina Virtual de Información Económica (OVIE)</a></li>
+        <li><a href="https://arcg.is/0vySSr" target="_blank"><span class="navegacion-icono"><i class="fa fa-globe"></i></span> Atlas Municipal de Riesgos de Torreón</a></li>
+      </ul>
+    </div>
+  </div>
+  </nav>
+  <div id="page-wrapper">
+    <div class="cuerpo">
+      <article><div itemscope itemtype="http://schema.org/Article">
+        <div class="encabezado">
+          <h1 itemprop="headline">Concentración de Partículas menores a 10 micras en Torreón</h1>
+          <div class="encabezado-descripcion" itemprop="description">Calidad del aire por la medición de las partículas menores a 10 microgramos por metro cúbico en promedio de 24 horas. La Norma Oficial Mexicana NOM-025-SSA1-2014 indica que el límite para efectos de protección de la salud es 75 ug por m3.</div>
+          <div class="encabezado-autor-fecha">
+            Por <span itemprop="author">Dirección de Investigación Estratégica</span> -
+            <meta itemprop="datePublished" content="2017-04-04T09:26:11">04/04/2017 09:26
+          </div>
+        </div>
+        <div itemprop="articleBody">
+<!-- Contenido: Inicia  -->
+<div>
+  <ul class="nav nav-tabs lenguetas" role="tablist" id="LenguetasIndicador">
+    <li role="presentation" class="active"><a href="#LenguetasIndicadorDatos" aria-controls="LenguetasIndicadorDatos" role="tab" data-toggle="tab">Datos</a></li>
+    <li role="presentation"><a href="#LenguetasIndicadorGrafica1" aria-controls="LenguetasIndicadorGrafica1" role="tab" data-toggle="tab">Gráfica 1</a></li>
+    <li role="presentation"><a href="#LenguetasIndicadorGrafica2" aria-controls="LenguetasIndicadorGrafica2" role="tab" data-toggle="tab">Gráfica 2</a></li>
+    <li role="presentation"><a href="#LenguetasIndicadorGrafica3" aria-controls="LenguetasIndicadorGrafica3" role="tab" data-toggle="tab">Gráfica 3</a></li>
+  </ul>
+  <div class="tab-content lengueta-contenido">
+  <div role="tabpanel" class="tab-pane active" id="LenguetasIndicadorDatos">
+  <table id="SmiDatosConcentracionDeParticulasMenoresA10MicrasEnTorreon" class="table table-hover table-bordered">
+    <thead>
+      <tr>
+        <th>Fecha</th>
+        <th>Dato</th>
+        <th>Fuente</th>
+        <th>Notas</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td class="centrado">2015-01-06</td>
+        <td class="derecha">40</td>
+        <td>DIF Revolución</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2015-01-13</td>
+        <td class="derecha">47</td>
+        <td>DIF Revolución</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2015-01-20</td>
+        <td class="derecha">63</td>
+        <td>DIF Revolución</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2015-01-27</td>
+        <td class="derecha">54</td>
+        <td>DIF Revolución</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2015-02-04</td>
+        <td class="derecha">60</td>
+        <td>DIF Revolución</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2015-02-10</td>
+        <td class="derecha">54</td>
+        <td>DIF Revolución</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2015-02-11</td>
+        <td class="derecha">102</td>
+        <td>HECAT</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2015-02-17</td>
+        <td class="derecha">40</td>
+        <td>DIF Revolución</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2015-02-18</td>
+        <td class="derecha">75</td>
+        <td>HECAT</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2015-02-24</td>
+        <td class="derecha">55</td>
+        <td>DIF Revolución</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2015-02-25</td>
+        <td class="derecha">68</td>
+        <td>HECAT</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2015-03-03</td>
+        <td class="derecha">14</td>
+        <td>DIF Revolución</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2015-03-04</td>
+        <td class="derecha">60</td>
+        <td>HECAT</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2015-03-10</td>
+        <td class="derecha">26</td>
+        <td>DIF Revolución</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2015-03-11</td>
+        <td class="derecha">27</td>
+        <td>HECAT</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2015-03-18</td>
+        <td class="derecha">48</td>
+        <td>DIF Revolución</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2015-03-18</td>
+        <td class="derecha">63</td>
+        <td>HECAT</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2015-03-24</td>
+        <td class="derecha">48</td>
+        <td>DIF Revolución</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2015-03-25</td>
+        <td class="derecha">97</td>
+        <td>HECAT</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2015-04-07</td>
+        <td class="derecha">56</td>
+        <td>DIF Revolución</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2015-04-08</td>
+        <td class="derecha">71</td>
+        <td>HECAT</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2015-04-14</td>
+        <td class="derecha">34</td>
+        <td>DIF Revolución</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2015-04-15</td>
+        <td class="derecha">63</td>
+        <td>HECAT</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2015-04-21</td>
+        <td class="derecha">49</td>
+        <td>DIF Revolución</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2015-04-22</td>
+        <td class="derecha">71</td>
+        <td>HECAT</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2015-04-28</td>
+        <td class="derecha">28</td>
+        <td>DIF Revolución</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2015-04-29</td>
+        <td class="derecha">55</td>
+        <td>HECAT</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2015-05-06</td>
+        <td class="derecha">36</td>
+        <td>DIF Revolución</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2015-05-06</td>
+        <td class="derecha">51</td>
+        <td>HECAT</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2015-05-12</td>
+        <td class="derecha">42</td>
+        <td>DIF Revolución</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2015-05-13</td>
+        <td class="derecha">56</td>
+        <td>HECAT</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2015-05-19</td>
+        <td class="derecha">43</td>
+        <td>DIF Revolución</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2015-05-26</td>
+        <td class="derecha">58</td>
+        <td>DIF Revolución</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2015-05-27</td>
+        <td class="derecha">79</td>
+        <td>HECAT</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2015-06-02</td>
+        <td class="derecha">43</td>
+        <td>DIF Revolución</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2015-06-03</td>
+        <td class="derecha">50</td>
+        <td>HECAT</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2015-06-09</td>
+        <td class="derecha">35</td>
+        <td>DIF Revolución</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2015-06-10</td>
+        <td class="derecha">87</td>
+        <td>HECAT</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2015-06-16</td>
+        <td class="derecha">28</td>
+        <td>DIF Revolución</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2015-06-17</td>
+        <td class="derecha">35</td>
+        <td>HECAT</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2015-06-23</td>
+        <td class="derecha">35</td>
+        <td>DIF Revolución</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2015-06-24</td>
+        <td class="derecha">56</td>
+        <td>HECAT</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2015-06-30</td>
+        <td class="derecha">28</td>
+        <td>DIF Revolución</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2015-07-01</td>
+        <td class="derecha">35</td>
+        <td>HECAT</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2015-07-07</td>
+        <td class="derecha">28</td>
+        <td>DIF Revolución</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2015-07-08</td>
+        <td class="derecha">35</td>
+        <td>HECAT</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2015-07-14</td>
+        <td class="derecha">51</td>
+        <td>DIF Revolución</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2015-07-15</td>
+        <td class="derecha">86</td>
+        <td>HECAT</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2015-07-21</td>
+        <td class="derecha">28</td>
+        <td>DIF Revolución</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2015-07-22</td>
+        <td class="derecha">72</td>
+        <td>HECAT</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2015-07-28</td>
+        <td class="derecha">50</td>
+        <td>DIF Revolución</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2015-07-29</td>
+        <td class="derecha">71</td>
+        <td>HECAT</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2015-08-04</td>
+        <td class="derecha">36</td>
+        <td>DIF Revolución</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2015-08-05</td>
+        <td class="derecha">64</td>
+        <td>HECAT</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2015-08-11</td>
+        <td class="derecha">35</td>
+        <td>DIF Revolución</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2015-08-12</td>
+        <td class="derecha">42</td>
+        <td>HECAT</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2015-08-18</td>
+        <td class="derecha">29</td>
+        <td>DIF Revolución</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2015-08-19</td>
+        <td class="derecha">109</td>
+        <td>HECAT</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2015-08-26</td>
+        <td class="derecha">49</td>
+        <td>HECAT</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2015-09-01</td>
+        <td class="derecha">43</td>
+        <td>DIF Revolución</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2015-09-02</td>
+        <td class="derecha">78</td>
+        <td>HECAT</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2015-09-08</td>
+        <td class="derecha">43</td>
+        <td>DIF Revolución</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2015-09-09</td>
+        <td class="derecha">78</td>
+        <td>HECAT</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2015-09-17</td>
+        <td class="derecha">36</td>
+        <td>DIF Revolución</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2015-09-17</td>
+        <td class="derecha">57</td>
+        <td>HECAT</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2015-09-22</td>
+        <td class="derecha">28</td>
+        <td>DIF Revolución</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2015-09-23</td>
+        <td class="derecha">50</td>
+        <td>HECAT</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2015-09-29</td>
+        <td class="derecha">50</td>
+        <td>DIF Revolución</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2015-09-30</td>
+        <td class="derecha">63</td>
+        <td>HECAT</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2015-10-06</td>
+        <td class="derecha">21</td>
+        <td>DIF Revolución</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2015-10-07</td>
+        <td class="derecha">64</td>
+        <td>HECAT</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2015-10-13</td>
+        <td class="derecha">43</td>
+        <td>DIF Revolución</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2015-10-14</td>
+        <td class="derecha">63</td>
+        <td>HECAT</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2015-10-20</td>
+        <td class="derecha">56</td>
+        <td>DIF Revolución</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2015-10-21</td>
+        <td class="derecha">63</td>
+        <td>HECAT</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2015-10-27</td>
+        <td class="derecha">42</td>
+        <td>DIF Revolución</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2015-10-28</td>
+        <td class="derecha">76</td>
+        <td>HECAT</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2015-11-03</td>
+        <td class="derecha">35</td>
+        <td>DIF Revolución</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2015-11-04</td>
+        <td class="derecha">76</td>
+        <td>HECAT</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2015-11-10</td>
+        <td class="derecha">71</td>
+        <td>DIF Revolución</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2015-11-11</td>
+        <td class="derecha">111</td>
+        <td>HECAT</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2015-11-17</td>
+        <td class="derecha">52</td>
+        <td>DIF Revolución</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2015-11-18</td>
+        <td class="derecha">125</td>
+        <td>HECAT</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2015-11-24</td>
+        <td class="derecha">79</td>
+        <td>DIF Revolución</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2015-11-25</td>
+        <td class="derecha">139</td>
+        <td>HECAT</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2015-12-01</td>
+        <td class="derecha">45</td>
+        <td>DIF Revolución</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2015-12-02</td>
+        <td class="derecha">81</td>
+        <td>HECAT</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2015-12-08</td>
+        <td class="derecha">78</td>
+        <td>DIF Revolución</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2015-12-09</td>
+        <td class="derecha">121</td>
+        <td>HECAT</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2015-12-15</td>
+        <td class="derecha">27</td>
+        <td>DIF Revolución</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2015-12-16</td>
+        <td class="derecha">73</td>
+        <td>HECAT</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2015-12-22</td>
+        <td class="derecha">21</td>
+        <td>DIF Revolución</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2015-12-23</td>
+        <td class="derecha">21</td>
+        <td>HECAT</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2016-01-12</td>
+        <td class="derecha">59</td>
+        <td>DIF Revolución</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2016-01-12</td>
+        <td class="derecha">59</td>
+        <td>DIF Revolución</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2016-01-13</td>
+        <td class="derecha">67</td>
+        <td>HECAT</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2016-01-13</td>
+        <td class="derecha">67</td>
+        <td>HECAT</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2016-01-19</td>
+        <td class="derecha">83</td>
+        <td>DIF Revolución</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2016-01-19</td>
+        <td class="derecha">83</td>
+        <td>DIF Revolución</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2016-01-20</td>
+        <td class="derecha">123</td>
+        <td>HECAT</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2016-01-20</td>
+        <td class="derecha">123</td>
+        <td>HECAT</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2016-01-26</td>
+        <td class="derecha">40</td>
+        <td>DIF Revolución</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2016-01-26</td>
+        <td class="derecha">40</td>
+        <td>DIF Revolución</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2016-01-27</td>
+        <td class="derecha">36</td>
+        <td>HECAT</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2016-01-27</td>
+        <td class="derecha">36</td>
+        <td>HECAT</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2016-02-02</td>
+        <td class="derecha">27</td>
+        <td>DIF Revolución</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2016-02-02</td>
+        <td class="derecha">27</td>
+        <td>DIF Revolución</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2016-02-03</td>
+        <td class="derecha">49</td>
+        <td>HECAT</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2016-02-03</td>
+        <td class="derecha">49</td>
+        <td>HECAT</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2016-02-09</td>
+        <td class="derecha">61</td>
+        <td>DIF Revolución</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2016-02-09</td>
+        <td class="derecha">61</td>
+        <td>DIF Revolución</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2016-02-10</td>
+        <td class="derecha">91</td>
+        <td>HECAT</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2016-02-10</td>
+        <td class="derecha">91</td>
+        <td>HECAT</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2016-02-16</td>
+        <td class="derecha">84</td>
+        <td>DIF Revolución</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2016-02-16</td>
+        <td class="derecha">84</td>
+        <td>DIF Revolución</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2016-02-17</td>
+        <td class="derecha">87</td>
+        <td>HECAT</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2016-02-17</td>
+        <td class="derecha">87</td>
+        <td>HECAT</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2016-02-23</td>
+        <td class="derecha">54</td>
+        <td>DIF Revolución</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2016-02-23</td>
+        <td class="derecha">54</td>
+        <td>DIF Revolución</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2016-02-24</td>
+        <td class="derecha">84</td>
+        <td>HECAT</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2016-02-24</td>
+        <td class="derecha">84</td>
+        <td>HECAT</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2016-03-01</td>
+        <td class="derecha">49</td>
+        <td>DIF Revolución</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2016-03-01</td>
+        <td class="derecha">49</td>
+        <td>DIF Revolución</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2016-03-02</td>
+        <td class="derecha">89</td>
+        <td>HECAT</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2016-03-02</td>
+        <td class="derecha">89</td>
+        <td>HECAT</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2016-03-08</td>
+        <td class="derecha">34</td>
+        <td>DIF Revolución</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2016-03-08</td>
+        <td class="derecha">34</td>
+        <td>DIF Revolución</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2016-03-09</td>
+        <td class="derecha">59</td>
+        <td>HECAT</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2016-03-09</td>
+        <td class="derecha">59</td>
+        <td>HECAT</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2016-03-12</td>
+        <td class="derecha">42</td>
+        <td>DIF Revolución</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2016-03-15</td>
+        <td class="derecha">56</td>
+        <td>DIF Revolución</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2016-03-15</td>
+        <td class="derecha">56</td>
+        <td>DIF Revolución</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2016-03-16</td>
+        <td class="derecha">71</td>
+        <td>HECAT</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2016-03-16</td>
+        <td class="derecha">71</td>
+        <td>HECAT</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2016-03-19</td>
+        <td class="derecha">57</td>
+        <td>DIF Revolución</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2016-03-26</td>
+        <td class="derecha">30</td>
+        <td>DIF Revolución</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2016-03-29</td>
+        <td class="derecha">21</td>
+        <td>DIF Revolución</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2016-03-29</td>
+        <td class="derecha">21</td>
+        <td>DIF Revolución</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2016-03-30</td>
+        <td class="derecha">92</td>
+        <td>HECAT</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2016-03-30</td>
+        <td class="derecha">92</td>
+        <td>HECAT</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2016-04-05</td>
+        <td class="derecha">55</td>
+        <td>DIF Revolución</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2016-04-05</td>
+        <td class="derecha">55</td>
+        <td>DIF Revolución</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2016-04-06</td>
+        <td class="derecha">96</td>
+        <td>HECAT</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2016-04-06</td>
+        <td class="derecha">96</td>
+        <td>HECAT</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2016-04-12</td>
+        <td class="derecha">42</td>
+        <td>DIF Revolución</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2016-04-13</td>
+        <td class="derecha">64</td>
+        <td>HECAT</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2016-04-13</td>
+        <td class="derecha">64</td>
+        <td>HECAT</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2016-04-19</td>
+        <td class="derecha">57</td>
+        <td>DIF Revolución</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2016-04-20</td>
+        <td class="derecha">103</td>
+        <td>HECAT</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2016-04-20</td>
+        <td class="derecha">103</td>
+        <td>HECAT</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2016-04-26</td>
+        <td class="derecha">30</td>
+        <td>DIF Revolución</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2016-04-27</td>
+        <td class="derecha">47</td>
+        <td>HECAT</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2016-04-27</td>
+        <td class="derecha">47</td>
+        <td>HECAT</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2016-05-03</td>
+        <td class="derecha">42</td>
+        <td>DIF Revolución</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2016-05-03</td>
+        <td class="derecha">42</td>
+        <td>DIF Revolución</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2016-05-10</td>
+        <td class="derecha">44</td>
+        <td>DIF Revolución</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2016-05-10</td>
+        <td class="derecha">44</td>
+        <td>DIF Revolución</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2016-05-11</td>
+        <td class="derecha">68</td>
+        <td>HECAT</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2016-05-11</td>
+        <td class="derecha">68</td>
+        <td>HECAT</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2016-05-17</td>
+        <td class="derecha">30</td>
+        <td>DIF Revolución</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2016-05-17</td>
+        <td class="derecha">30</td>
+        <td>DIF Revolución</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2016-05-18</td>
+        <td class="derecha">66</td>
+        <td>HECAT</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2016-05-18</td>
+        <td class="derecha">66</td>
+        <td>HECAT</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2016-05-24</td>
+        <td class="derecha">51</td>
+        <td>DIF Revolución</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2016-05-24</td>
+        <td class="derecha">51</td>
+        <td>DIF Revolución</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2016-05-25</td>
+        <td class="derecha">136</td>
+        <td>HECAT</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2016-05-25</td>
+        <td class="derecha">136</td>
+        <td>HECAT</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2016-05-31</td>
+        <td class="derecha">43</td>
+        <td>DIF Revolución</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2016-05-31</td>
+        <td class="derecha">43</td>
+        <td>DIF Revolución</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2016-06-01</td>
+        <td class="derecha">77</td>
+        <td>HECAT</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2016-06-01</td>
+        <td class="derecha">77</td>
+        <td>HECAT</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2016-06-07</td>
+        <td class="derecha">50</td>
+        <td>DIF Revolución</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2016-06-07</td>
+        <td class="derecha">50</td>
+        <td>DIF Revolución</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2016-06-08</td>
+        <td class="derecha">34</td>
+        <td>HECAT</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2016-06-08</td>
+        <td class="derecha">34</td>
+        <td>HECAT</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2016-06-14</td>
+        <td class="derecha">37</td>
+        <td>DIF Revolución</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2016-06-14</td>
+        <td class="derecha">37</td>
+        <td>DIF Revolución</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2016-06-15</td>
+        <td class="derecha">105</td>
+        <td>HECAT</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2016-06-15</td>
+        <td class="derecha">105</td>
+        <td>HECAT</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2016-06-21</td>
+        <td class="derecha">28</td>
+        <td>DIF Revolución</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2016-06-21</td>
+        <td class="derecha">28</td>
+        <td>DIF Revolución</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2016-06-22</td>
+        <td class="derecha">59</td>
+        <td>HECAT</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2016-06-22</td>
+        <td class="derecha">59</td>
+        <td>HECAT</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2016-06-29</td>
+        <td class="derecha">54</td>
+        <td>HECAT</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2016-06-29</td>
+        <td class="derecha">54</td>
+        <td>HECAT</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2016-07-05</td>
+        <td class="derecha">28</td>
+        <td>DIF Revolución</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2016-07-05</td>
+        <td class="derecha">28</td>
+        <td>DIF Revolución</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2016-07-06</td>
+        <td class="derecha">66</td>
+        <td>HECAT</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2016-07-06</td>
+        <td class="derecha">66</td>
+        <td>HECAT</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2016-07-12</td>
+        <td class="derecha">35</td>
+        <td>DIF Revolución</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2016-07-12</td>
+        <td class="derecha">35</td>
+        <td>DIF Revolución</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2016-07-13</td>
+        <td class="derecha">45</td>
+        <td>HECAT</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2016-07-13</td>
+        <td class="derecha">45</td>
+        <td>HECAT</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2016-07-19</td>
+        <td class="derecha">28</td>
+        <td>DIF Revolución</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2016-07-19</td>
+        <td class="derecha">28</td>
+        <td>DIF Revolución</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2016-07-20</td>
+        <td class="derecha">65</td>
+        <td>HECAT</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2016-07-20</td>
+        <td class="derecha">65</td>
+        <td>HECAT</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2016-07-26</td>
+        <td class="derecha">35</td>
+        <td>DIF Revolución</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2016-07-26</td>
+        <td class="derecha">35</td>
+        <td>DIF Revolución</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2016-07-27</td>
+        <td class="derecha">64</td>
+        <td>HECAT</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2016-07-27</td>
+        <td class="derecha">64</td>
+        <td>HECAT</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2016-08-02</td>
+        <td class="derecha">43</td>
+        <td>DIF Revolución</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2016-08-02</td>
+        <td class="derecha">43</td>
+        <td>DIF Revolución</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2016-08-03</td>
+        <td class="derecha">52</td>
+        <td>HECAT</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2016-08-03</td>
+        <td class="derecha">52</td>
+        <td>HECAT</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2016-08-09</td>
+        <td class="derecha">25</td>
+        <td>DIF Revolución</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2016-08-09</td>
+        <td class="derecha">25</td>
+        <td>DIF Revolución</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2016-08-10</td>
+        <td class="derecha">52</td>
+        <td>HECAT</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2016-08-10</td>
+        <td class="derecha">52</td>
+        <td>HECAT</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2016-08-16</td>
+        <td class="derecha">35</td>
+        <td>DIF Revolución</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2016-08-16</td>
+        <td class="derecha">35</td>
+        <td>DIF Revolución</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2016-08-17</td>
+        <td class="derecha">32</td>
+        <td>HECAT</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2016-08-17</td>
+        <td class="derecha">32</td>
+        <td>HECAT</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2016-08-23</td>
+        <td class="derecha">35</td>
+        <td>DIF Revolución</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2016-08-23</td>
+        <td class="derecha">35</td>
+        <td>DIF Revolución</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2016-08-24</td>
+        <td class="derecha">32</td>
+        <td>HECAT</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2016-08-24</td>
+        <td class="derecha">32</td>
+        <td>HECAT</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2016-09-06</td>
+        <td class="derecha">29</td>
+        <td>DIF Revolución</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2016-09-06</td>
+        <td class="derecha">29</td>
+        <td>DIF Revolución</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2016-09-07</td>
+        <td class="derecha">71</td>
+        <td>HECAT</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2016-09-07</td>
+        <td class="derecha">71</td>
+        <td>HECAT</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2016-09-13</td>
+        <td class="derecha">42</td>
+        <td>DIF Revolución</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2016-09-13</td>
+        <td class="derecha">42</td>
+        <td>DIF Revolución</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2016-09-14</td>
+        <td class="derecha">64</td>
+        <td>HECAT</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2016-09-14</td>
+        <td class="derecha">64</td>
+        <td>HECAT</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2016-09-20</td>
+        <td class="derecha">43</td>
+        <td>DIF Revolución</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2016-09-20</td>
+        <td class="derecha">43</td>
+        <td>DIF Revolución</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2016-09-21</td>
+        <td class="derecha">52</td>
+        <td>HECAT</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2016-09-21</td>
+        <td class="derecha">52</td>
+        <td>HECAT</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2016-09-27</td>
+        <td class="derecha">48</td>
+        <td>DIF Revolución</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2016-09-27</td>
+        <td class="derecha">41</td>
+        <td>Centro Cultural José R. Mijares</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2016-09-27</td>
+        <td class="derecha">48</td>
+        <td>DIF Revolución</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2016-09-28</td>
+        <td class="derecha">63</td>
+        <td>HECAT</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2016-09-28</td>
+        <td class="derecha">63</td>
+        <td>HECAT</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2016-10-04</td>
+        <td class="derecha">42</td>
+        <td>DIF Revolución</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2016-10-04</td>
+        <td class="derecha">111</td>
+        <td>Centro Cultural José R. Mijares</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2016-10-04</td>
+        <td class="derecha">42</td>
+        <td>DIF Revolución</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2016-10-05</td>
+        <td class="derecha">97</td>
+        <td>HECAT</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2016-10-05</td>
+        <td class="derecha">97</td>
+        <td>HECAT</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2016-10-11</td>
+        <td class="derecha">48</td>
+        <td>DIF Revolución</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2016-10-11</td>
+        <td class="derecha">106</td>
+        <td>Centro Cultural José R. Mijares</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2016-10-11</td>
+        <td class="derecha">48</td>
+        <td>DIF Revolución</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2016-10-12</td>
+        <td class="derecha">109</td>
+        <td>HECAT</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2016-10-12</td>
+        <td class="derecha">109</td>
+        <td>HECAT</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2016-10-18</td>
+        <td class="derecha">64</td>
+        <td>DIF Revolución</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2016-10-18</td>
+        <td class="derecha">169</td>
+        <td>Centro Cultural José R. Mijares</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2016-10-18</td>
+        <td class="derecha">64</td>
+        <td>DIF Revolución</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2016-10-19</td>
+        <td class="derecha">109</td>
+        <td>HECAT</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2016-10-19</td>
+        <td class="derecha">109</td>
+        <td>HECAT</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2016-10-25</td>
+        <td class="derecha">42</td>
+        <td>DIF Revolución</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2016-10-25</td>
+        <td class="derecha">70</td>
+        <td>Centro Cultural José R. Mijares</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2016-10-25</td>
+        <td class="derecha">42</td>
+        <td>DIF Revolución</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2016-10-26</td>
+        <td class="derecha">64</td>
+        <td>HECAT</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2016-10-26</td>
+        <td class="derecha">64</td>
+        <td>HECAT</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2016-11-01</td>
+        <td class="derecha">70</td>
+        <td>DIF Revolución</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2016-11-01</td>
+        <td class="derecha">155</td>
+        <td>Centro Cultural José R. Mijares</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2016-11-01</td>
+        <td class="derecha">70</td>
+        <td>DIF Revolución</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2016-11-02</td>
+        <td class="derecha">109</td>
+        <td>HECAT</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2016-11-02</td>
+        <td class="derecha">109</td>
+        <td>HECAT</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2016-11-08</td>
+        <td class="derecha">41</td>
+        <td>DIF Revolución</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2016-11-08</td>
+        <td class="derecha">71</td>
+        <td>Centro Cultural José R. Mijares</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2016-11-08</td>
+        <td class="derecha">41</td>
+        <td>DIF Revolución</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2016-11-09</td>
+        <td class="derecha">25</td>
+        <td>HECAT</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2016-11-09</td>
+        <td class="derecha">25</td>
+        <td>HECAT</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2016-11-15</td>
+        <td class="derecha">47</td>
+        <td>DIF Revolución</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2016-11-15</td>
+        <td class="derecha">116</td>
+        <td>Centro Cultural José R. Mijares</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2016-11-15</td>
+        <td class="derecha">47</td>
+        <td>DIF Revolución</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2016-11-16</td>
+        <td class="derecha">90</td>
+        <td>HECAT</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2016-11-16</td>
+        <td class="derecha">90</td>
+        <td>HECAT</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2016-11-22</td>
+        <td class="derecha">49</td>
+        <td>DIF Revolución</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2016-11-22</td>
+        <td class="derecha">89</td>
+        <td>Centro Cultural José R. Mijares</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2016-11-22</td>
+        <td class="derecha">49</td>
+        <td>DIF Revolución</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2016-11-23</td>
+        <td class="derecha">76</td>
+        <td>HECAT</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2016-11-23</td>
+        <td class="derecha">76</td>
+        <td>HECAT</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2016-11-29</td>
+        <td class="derecha">34</td>
+        <td>DIF Revolución</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2016-11-29</td>
+        <td class="derecha">84</td>
+        <td>Centro Cultural José R. Mijares</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2016-11-29</td>
+        <td class="derecha">34</td>
+        <td>DIF Revolución</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2016-11-30</td>
+        <td class="derecha">105</td>
+        <td>HECAT</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2016-11-30</td>
+        <td class="derecha">105</td>
+        <td>HECAT</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2016-12-06</td>
+        <td class="derecha">65</td>
+        <td>DIF Revolución</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2016-12-06</td>
+        <td class="derecha">149</td>
+        <td>Centro Cultural José R. Mijares</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2016-12-06</td>
+        <td class="derecha">65</td>
+        <td>DIF Revolución</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2016-12-07</td>
+        <td class="derecha">99</td>
+        <td>HECAT</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2016-12-07</td>
+        <td class="derecha">99</td>
+        <td>HECAT</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2016-12-13</td>
+        <td class="derecha">68</td>
+        <td>DIF Revolución</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2016-12-13</td>
+        <td class="derecha">174</td>
+        <td>Centro Cultural José R. Mijares</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2016-12-13</td>
+        <td class="derecha">68</td>
+        <td>DIF Revolución</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2016-12-14</td>
+        <td class="derecha">180</td>
+        <td>HECAT</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2016-12-14</td>
+        <td class="derecha">180</td>
+        <td>HECAT</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2016-12-20</td>
+        <td class="derecha">76</td>
+        <td>DIF Revolución</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2016-12-20</td>
+        <td class="derecha">192</td>
+        <td>Centro Cultural José R. Mijares</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2016-12-21</td>
+        <td class="derecha">126</td>
+        <td>HECAT</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2017-01-03</td>
+        <td class="derecha">171</td>
+        <td>Centro Cultural José R. Mijares</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2017-01-03</td>
+        <td class="derecha">73</td>
+        <td>DIF Revolución</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2017-01-04</td>
+        <td class="derecha">183</td>
+        <td>HECAT</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2017-01-10</td>
+        <td class="derecha">223</td>
+        <td>Centro Cultural José R. Mijares</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2017-01-10</td>
+        <td class="derecha">67</td>
+        <td>DIF Revolución</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2017-01-11</td>
+        <td class="derecha">110</td>
+        <td>HECAT</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2017-01-17</td>
+        <td class="derecha">75</td>
+        <td>Centro Cultural José R. Mijares</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2017-01-17</td>
+        <td class="derecha">27</td>
+        <td>DIF Revolución</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2017-01-18</td>
+        <td class="derecha">84</td>
+        <td>HECAT</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2017-01-23</td>
+        <td class="derecha">104</td>
+        <td>Centro Cultural José R. Mijares</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2017-01-24</td>
+        <td class="derecha">28</td>
+        <td>DIF Revolución</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2017-01-25</td>
+        <td class="derecha">99</td>
+        <td>HECAT</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2017-01-30</td>
+        <td class="derecha">150</td>
+        <td>Centro Cultural José R. Mijares</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2017-01-31</td>
+        <td class="derecha">66</td>
+        <td>DIF Revolución</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2017-02-01</td>
+        <td class="derecha">143</td>
+        <td>HECAT</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2017-02-07</td>
+        <td class="derecha">146</td>
+        <td>Centro Cultural José R. Mijares</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2017-02-07</td>
+        <td class="derecha">69</td>
+        <td>DIF Revolución</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2017-02-08</td>
+        <td class="derecha">86</td>
+        <td>HECAT</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2017-02-13</td>
+        <td class="derecha">124</td>
+        <td>Centro Cultural José R. Mijares</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2017-02-14</td>
+        <td class="derecha">33</td>
+        <td>DIF Revolución</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2017-02-15</td>
+        <td class="derecha">73</td>
+        <td>HECAT</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2017-02-20</td>
+        <td class="derecha">61</td>
+        <td>Centro Cultural José R. Mijares</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2017-02-21</td>
+        <td class="derecha">61</td>
+        <td>DIF Revolución</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2017-02-22</td>
+        <td class="derecha">68</td>
+        <td>HECAT</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2017-02-27</td>
+        <td class="derecha">111</td>
+        <td>Centro Cultural José R. Mijares</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2017-02-28</td>
+        <td class="derecha">48</td>
+        <td>DIF Revolución</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2017-03-01</td>
+        <td class="derecha">130</td>
+        <td>HECAT</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2017-03-13</td>
+        <td class="derecha">73</td>
+        <td>Centro Cultural José R. Mijares</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2017-03-14</td>
+        <td class="derecha">48</td>
+        <td>DIF Revolución</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2017-03-15</td>
+        <td class="derecha">74</td>
+        <td>HECAT</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2017-03-21</td>
+        <td class="derecha">127</td>
+        <td>Centro Cultural José R. Mijares</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2017-03-22</td>
+        <td class="derecha">56</td>
+        <td>DIF Revolución</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2017-03-22</td>
+        <td class="derecha">74</td>
+        <td>HECAT</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2017-03-27</td>
+        <td class="derecha">38</td>
+        <td>Centro Cultural José R. Mijares</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2017-03-28</td>
+        <td class="derecha">150</td>
+        <td>DIF Revolución</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2017-03-29</td>
+        <td class="derecha">131</td>
+        <td>HECAT</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2017-04-03</td>
+        <td class="derecha">132</td>
+        <td>Centro Cultural José R. Mijares</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2017-04-04</td>
+        <td class="derecha">47</td>
+        <td>DIF Revolución</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2017-04-05</td>
+        <td class="derecha">105</td>
+        <td>HECAT</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2017-04-10</td>
+        <td class="derecha">141</td>
+        <td>Centro Cultural José R. Mijares</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2017-04-10</td>
+        <td class="derecha">86</td>
+        <td>DIF Revolución</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2017-04-10</td>
+        <td class="derecha">46</td>
+        <td>HECAT</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2017-04-17</td>
+        <td class="derecha">132</td>
+        <td>Centro Cultural José R. Mijares</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2017-04-18</td>
+        <td class="derecha">40</td>
+        <td>DIF Revolución</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2017-04-18</td>
+        <td class="derecha">45</td>
+        <td>HECAT</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2017-04-24</td>
+        <td class="derecha">64</td>
+        <td>Centro Cultural José R. Mijares</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2017-04-25</td>
+        <td class="derecha">28</td>
+        <td>DIF Revolución</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2017-04-26</td>
+        <td class="derecha">52</td>
+        <td>HECAT</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2017-05-02</td>
+        <td class="derecha">76</td>
+        <td>Centro Cultural José R. Mijares</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2017-05-02</td>
+        <td class="derecha">40</td>
+        <td>DIF Revolución</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2017-05-02</td>
+        <td class="derecha">64</td>
+        <td>HECAT</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2017-05-08</td>
+        <td class="derecha">45</td>
+        <td>Centro Cultural José R. Mijares</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2017-05-09</td>
+        <td class="derecha">34</td>
+        <td>DIF Revolución</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2017-05-09</td>
+        <td class="derecha">32</td>
+        <td>HECAT</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2017-05-15</td>
+        <td class="derecha">45</td>
+        <td>Centro Cultural José R. Mijares</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2017-05-16</td>
+        <td class="derecha">20</td>
+        <td>DIF Revolución</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2017-05-16</td>
+        <td class="derecha">39</td>
+        <td>HECAT</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2017-05-22</td>
+        <td class="derecha">64</td>
+        <td>Centro Cultural José R. Mijares</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2017-05-23</td>
+        <td class="derecha">41</td>
+        <td>DIF Revolución</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2017-05-23</td>
+        <td class="derecha">51</td>
+        <td>HECAT</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2017-05-29</td>
+        <td class="derecha">64</td>
+        <td>Centro Cultural José R. Mijares</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2017-05-30</td>
+        <td class="derecha">27</td>
+        <td>DIF Revolución</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2017-06-05</td>
+        <td class="derecha">64</td>
+        <td>Centro Cultural José R. Mijares</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2017-06-06</td>
+        <td class="derecha">27</td>
+        <td>DIF Revolución</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2017-06-12</td>
+        <td class="derecha">51</td>
+        <td>Centro Cultural José R. Mijares</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2017-06-13</td>
+        <td class="derecha">41</td>
+        <td>DIF Revolución</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2017-06-13</td>
+        <td class="derecha">54</td>
+        <td>HECAT</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2017-06-19</td>
+        <td class="derecha">64</td>
+        <td>Centro Cultural José R. Mijares</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2017-06-20</td>
+        <td class="derecha">26</td>
+        <td>DIF Revolución</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2017-06-20</td>
+        <td class="derecha">33</td>
+        <td>HECAT</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2017-06-26</td>
+        <td class="derecha">20</td>
+        <td>Centro Cultural José R. Mijares</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2017-06-27</td>
+        <td class="derecha">27</td>
+        <td>DIF Revolución</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2017-06-27</td>
+        <td class="derecha">32</td>
+        <td>HECAT</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2017-07-03</td>
+        <td class="derecha">40</td>
+        <td>Centro Cultural José R. Mijares</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2017-07-04</td>
+        <td class="derecha">41</td>
+        <td>DIF Revolución</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2017-07-04</td>
+        <td class="derecha">39</td>
+        <td>HECAT</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2017-07-10</td>
+        <td class="derecha">27</td>
+        <td>Centro Cultural José R. Mijares</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2017-07-11</td>
+        <td class="derecha">34</td>
+        <td>DIF Revolución</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2017-07-11</td>
+        <td class="derecha">39</td>
+        <td>HECAT</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2017-07-17</td>
+        <td class="derecha">25</td>
+        <td>Centro Cultural José R. Mijares</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2017-07-20</td>
+        <td class="derecha">13</td>
+        <td>DIF Revolución</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2017-07-20</td>
+        <td class="derecha">19</td>
+        <td>HECAT</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2017-07-24</td>
+        <td class="derecha">45</td>
+        <td>Centro Cultural José R. Mijares</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2017-07-25</td>
+        <td class="derecha">20</td>
+        <td>DIF Revolución</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2017-07-25</td>
+        <td class="derecha">32</td>
+        <td>HECAT</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2017-07-31</td>
+        <td class="derecha">52</td>
+        <td>Centro Cultural José R. Mijares</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2017-08-01</td>
+        <td class="derecha">40</td>
+        <td>DIF Revolución</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2017-08-01</td>
+        <td class="derecha">39</td>
+        <td>HECAT</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2017-08-07</td>
+        <td class="derecha">54</td>
+        <td>Centro Cultural José R. Mijares</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2017-08-08</td>
+        <td class="derecha">20</td>
+        <td>DIF Revolución</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2017-08-08</td>
+        <td class="derecha">19</td>
+        <td>HECAT</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2017-08-14</td>
+        <td class="derecha">46</td>
+        <td>Centro Cultural José R. Mijares</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2017-08-15</td>
+        <td class="derecha">27</td>
+        <td>DIF Revolución</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2017-08-15</td>
+        <td class="derecha">39</td>
+        <td>HECAT</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2017-08-21</td>
+        <td class="derecha">40</td>
+        <td>Centro Cultural José R. Mijares</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2017-08-22</td>
+        <td class="derecha">40</td>
+        <td>DIF Revolución</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2017-08-22</td>
+        <td class="derecha">39</td>
+        <td>HECAT</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2017-08-28</td>
+        <td class="derecha">27</td>
+        <td>Centro Cultural José R. Mijares</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2017-08-29</td>
+        <td class="derecha">40</td>
+        <td>DIF Revolución</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2017-08-29</td>
+        <td class="derecha">25</td>
+        <td>HECAT</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2017-09-04</td>
+        <td class="derecha">20</td>
+        <td>Centro Cultural José R. Mijares</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2017-09-05</td>
+        <td class="derecha">35</td>
+        <td>DIF Revolución</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2017-09-05</td>
+        <td class="derecha">19</td>
+        <td>HECAT</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2017-09-11</td>
+        <td class="derecha">52</td>
+        <td>Centro Cultural José R. Mijares</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2017-09-12</td>
+        <td class="derecha">42</td>
+        <td>DIF Revolución</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2017-09-12</td>
+        <td class="derecha">64</td>
+        <td>HECAT</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2017-09-18</td>
+        <td class="derecha">46</td>
+        <td>Centro Cultural José R. Mijares</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2017-09-19</td>
+        <td class="derecha">51</td>
+        <td>DIF Revolución</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2017-09-19</td>
+        <td class="derecha">42</td>
+        <td>HECAT</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2017-09-25</td>
+        <td class="derecha">33</td>
+        <td>Centro Cultural José R. Mijares</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2017-09-26</td>
+        <td class="derecha">34</td>
+        <td>DIF Revolución</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2017-09-26</td>
+        <td class="derecha">25</td>
+        <td>HECAT</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2017-10-02</td>
+        <td class="derecha">14</td>
+        <td>Centro Cultural José R. Mijares</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2017-10-03</td>
+        <td class="derecha">34</td>
+        <td>DIF Revolución</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2017-10-03</td>
+        <td class="derecha">27</td>
+        <td>HECAT</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2017-10-09</td>
+        <td class="derecha">29</td>
+        <td>Centro Cultural José R. Mijares</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2017-10-10</td>
+        <td class="derecha">34</td>
+        <td>DIF Revolución</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2017-10-11</td>
+        <td class="derecha">44</td>
+        <td>HECAT</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2017-10-16</td>
+        <td class="derecha">46</td>
+        <td>Centro Cultural José R. Mijares</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2017-10-17</td>
+        <td class="derecha">60</td>
+        <td>DIF Revolución</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2017-10-17</td>
+        <td class="derecha">60</td>
+        <td>HECAT</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2017-10-23</td>
+        <td class="derecha">79</td>
+        <td>Centro Cultural José R. Mijares</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2017-10-24</td>
+        <td class="derecha">40</td>
+        <td>DIF Revolución</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2017-10-24</td>
+        <td class="derecha">43</td>
+        <td>HECAT</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2017-10-31</td>
+        <td class="derecha">73</td>
+        <td>DIF Revolución</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2017-10-31</td>
+        <td class="derecha">79</td>
+        <td>HECAT</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2017-11-06</td>
+        <td class="derecha">142</td>
+        <td>Centro Cultural José R. Mijares</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2017-11-07</td>
+        <td class="derecha">73</td>
+        <td>DIF Revolución</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2017-11-07</td>
+        <td class="derecha">110</td>
+        <td>HECAT</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2017-11-13</td>
+        <td class="derecha">90</td>
+        <td>Centro Cultural José R. Mijares</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2017-11-14</td>
+        <td class="derecha">73</td>
+        <td>DIF Revolución</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2017-11-14</td>
+        <td class="derecha">91</td>
+        <td>HECAT</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2017-11-21</td>
+        <td class="derecha">95</td>
+        <td>Centro Cultural José R. Mijares</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2017-11-21</td>
+        <td class="derecha">72</td>
+        <td>DIF Revolución</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2017-11-21</td>
+        <td class="derecha">72</td>
+        <td>HECAT</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2017-11-27</td>
+        <td class="derecha">118</td>
+        <td>Centro Cultural José R. Mijares</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2017-11-28</td>
+        <td class="derecha">114</td>
+        <td>DIF Revolución</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2017-11-28</td>
+        <td class="derecha">85</td>
+        <td>HECAT</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2017-12-04</td>
+        <td class="derecha">122</td>
+        <td>Centro Cultural José R. Mijares</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2017-12-05</td>
+        <td class="derecha">79</td>
+        <td>DIF Revolución</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2017-12-05</td>
+        <td class="derecha">89</td>
+        <td>HECAT</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2017-12-11</td>
+        <td class="derecha">129</td>
+        <td>Centro Cultural José R. Mijares</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2017-12-12</td>
+        <td class="derecha">64</td>
+        <td>DIF Revolución</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2017-12-12</td>
+        <td class="derecha">64</td>
+        <td>HECAT</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2017-12-18</td>
+        <td class="derecha">74</td>
+        <td>Centro Cultural José R. Mijares</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2017-12-18</td>
+        <td class="derecha">45</td>
+        <td>DIF Revolución</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2017-12-18</td>
+        <td class="derecha">42</td>
+        <td>HECAT</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2018-01-02</td>
+        <td class="derecha">139</td>
+        <td>Centro Cultural José R. Mijares</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2018-01-03</td>
+        <td class="derecha">59</td>
+        <td>DIF Revolución</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2018-01-03</td>
+        <td class="derecha">51</td>
+        <td>HECAT</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2018-01-08</td>
+        <td class="derecha">112</td>
+        <td>Centro Cultural José R. Mijares</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2018-01-09</td>
+        <td class="derecha">65</td>
+        <td>DIF Revolución</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2018-01-10</td>
+        <td class="derecha">66</td>
+        <td>HECAT</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2018-01-16</td>
+        <td class="derecha">38</td>
+        <td>DIF Revolución</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2018-01-17</td>
+        <td class="derecha">48</td>
+        <td>Centro Cultural José R. Mijares</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2018-01-17</td>
+        <td class="derecha">29</td>
+        <td>HECAT</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2018-01-22</td>
+        <td class="derecha">74</td>
+        <td>Centro Cultural José R. Mijares</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2018-01-23</td>
+        <td class="derecha">64</td>
+        <td>DIF Revolución</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2018-01-24</td>
+        <td class="derecha">47</td>
+        <td>HECAT</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2018-01-29</td>
+        <td class="derecha">65</td>
+        <td>Centro Cultural José R. Mijares</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2018-01-31</td>
+        <td class="derecha">72</td>
+        <td>DIF Revolución</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2018-02-01</td>
+        <td class="derecha">60</td>
+        <td>HECAT</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2018-02-06</td>
+        <td class="derecha">68</td>
+        <td>Centro Cultural José R. Mijares</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2018-02-06</td>
+        <td class="derecha">52</td>
+        <td>DIF Revolución</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2018-02-07</td>
+        <td class="derecha">37</td>
+        <td>HECAT</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2018-02-12</td>
+        <td class="derecha">59</td>
+        <td>Centro Cultural José R. Mijares</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2018-02-13</td>
+        <td class="derecha">59</td>
+        <td>DIF Revolución</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2018-02-14</td>
+        <td class="derecha">72</td>
+        <td>HECAT</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2018-02-19</td>
+        <td class="derecha">37</td>
+        <td>Centro Cultural José R. Mijares</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2018-02-20</td>
+        <td class="derecha">40</td>
+        <td>DIF Revolución</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2018-02-21</td>
+        <td class="derecha">24</td>
+        <td>HECAT</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2018-02-26</td>
+        <td class="derecha">91</td>
+        <td>Centro Cultural José R. Mijares</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2018-02-27</td>
+        <td class="derecha">33</td>
+        <td>DIF Revolución</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2018-02-28</td>
+        <td class="derecha">73</td>
+        <td>HECAT</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2018-03-05</td>
+        <td class="derecha">43</td>
+        <td>Centro Cultural José R. Mijares</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2018-03-06</td>
+        <td class="derecha">86</td>
+        <td>DIF Revolución</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2018-03-07</td>
+        <td class="derecha">49</td>
+        <td>HECAT</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2018-03-14</td>
+        <td class="derecha">60</td>
+        <td>Centro Cultural José R. Mijares</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2018-03-14</td>
+        <td class="derecha">58</td>
+        <td>DIF Revolución</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2018-03-14</td>
+        <td class="derecha">41</td>
+        <td>HECAT</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2018-03-20</td>
+        <td class="derecha">97</td>
+        <td>Centro Cultural José R. Mijares</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2018-03-20</td>
+        <td class="derecha">73</td>
+        <td>DIF Revolución</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2018-03-21</td>
+        <td class="derecha">67</td>
+        <td>HECAT</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2018-04-02</td>
+        <td class="derecha">74</td>
+        <td>Centro Cultural José R. Mijares</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2018-04-04</td>
+        <td class="derecha">52</td>
+        <td>DIF Revolución</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2018-04-04</td>
+        <td class="derecha">56</td>
+        <td>HECAT</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2018-04-09</td>
+        <td class="derecha">155</td>
+        <td>Centro Cultural José R. Mijares</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2018-04-10</td>
+        <td class="derecha">33</td>
+        <td>DIF Revolución</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2018-04-12</td>
+        <td class="derecha">48</td>
+        <td>HECAT</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2018-04-16</td>
+        <td class="derecha">122</td>
+        <td>Centro Cultural José R. Mijares</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2018-04-17</td>
+        <td class="derecha">48</td>
+        <td>DIF Revolución</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2018-04-18</td>
+        <td class="derecha">57</td>
+        <td>HECAT</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2018-04-23</td>
+        <td class="derecha">56</td>
+        <td>Centro Cultural José R. Mijares</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2018-04-24</td>
+        <td class="derecha">53</td>
+        <td>DIF Revolución</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2018-04-25</td>
+        <td class="derecha">50</td>
+        <td>HECAT</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2018-05-02</td>
+        <td class="derecha">77</td>
+        <td>Centro Cultural José R. Mijares</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2018-05-02</td>
+        <td class="derecha">35</td>
+        <td>DIF Revolución</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2018-05-02</td>
+        <td class="derecha">38</td>
+        <td>HECAT</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2018-05-07</td>
+        <td class="derecha">55</td>
+        <td>Centro Cultural José R. Mijares</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2018-05-08</td>
+        <td class="derecha">21</td>
+        <td>DIF Revolución</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2018-05-09</td>
+        <td class="derecha">44</td>
+        <td>HECAT</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2018-05-14</td>
+        <td class="derecha">50</td>
+        <td>Centro Cultural José R. Mijares</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2018-05-15</td>
+        <td class="derecha">40</td>
+        <td>DIF Revolución</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2018-05-16</td>
+        <td class="derecha">38</td>
+        <td>HECAT</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2018-05-21</td>
+        <td class="derecha">94</td>
+        <td>Centro Cultural José R. Mijares</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2018-05-22</td>
+        <td class="derecha">34</td>
+        <td>DIF Revolución</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2018-05-23</td>
+        <td class="derecha">58</td>
+        <td>HECAT</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2018-05-28</td>
+        <td class="derecha">88</td>
+        <td>Centro Cultural José R. Mijares</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2018-05-29</td>
+        <td class="derecha">56</td>
+        <td>DIF Revolución</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2018-05-30</td>
+        <td class="derecha">122</td>
+        <td>HECAT</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2018-06-04</td>
+        <td class="derecha">88</td>
+        <td>Centro Cultural José R. Mijares</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2018-06-06</td>
+        <td class="derecha">57</td>
+        <td>HECAT</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2018-06-11</td>
+        <td class="derecha">64</td>
+        <td>Centro Cultural José R. Mijares</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2018-06-12</td>
+        <td class="derecha">68</td>
+        <td>DIF Revolución</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2018-06-13</td>
+        <td class="derecha">32</td>
+        <td>HECAT</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2018-06-18</td>
+        <td class="derecha">51</td>
+        <td>Centro Cultural José R. Mijares</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2018-06-19</td>
+        <td class="derecha">34</td>
+        <td>DIF Revolución</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2018-06-20</td>
+        <td class="derecha">32</td>
+        <td>HECAT</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2018-06-25</td>
+        <td class="derecha">71</td>
+        <td>Centro Cultural José R. Mijares</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2018-06-26</td>
+        <td class="derecha">20</td>
+        <td>DIF Revolución</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2018-06-27</td>
+        <td class="derecha">25</td>
+        <td>HECAT</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2018-07-02</td>
+        <td class="derecha">89</td>
+        <td>Centro Cultural José R. Mijares</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2018-07-03</td>
+        <td class="derecha">47</td>
+        <td>DIF Revolución</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2018-07-04</td>
+        <td class="derecha">45</td>
+        <td>HECAT</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2018-07-09</td>
+        <td class="derecha">76</td>
+        <td>Centro Cultural José R. Mijares</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2018-07-11</td>
+        <td class="derecha">26</td>
+        <td>DIF Revolución</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2018-07-11</td>
+        <td class="derecha">39</td>
+        <td>HECAT</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2018-07-16</td>
+        <td class="derecha">69</td>
+        <td>Centro Cultural José R. Mijares</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2018-07-18</td>
+        <td class="derecha">56</td>
+        <td>DIF Revolución</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2018-07-18</td>
+        <td class="derecha">45</td>
+        <td>HECAT</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2018-07-23</td>
+        <td class="derecha">69</td>
+        <td>Centro Cultural José R. Mijares</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2018-07-25</td>
+        <td class="derecha">63</td>
+        <td>DIF Revolución</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2018-07-25</td>
+        <td class="derecha">107</td>
+        <td>HECAT</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2018-07-30</td>
+        <td class="derecha">57</td>
+        <td>Centro Cultural José R. Mijares</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2018-08-01</td>
+        <td class="derecha">31</td>
+        <td>HECAT</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2018-08-07</td>
+        <td class="derecha">45</td>
+        <td>Centro Cultural José R. Mijares</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2018-08-07</td>
+        <td class="derecha">27</td>
+        <td>DIF Revolución</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2018-08-07</td>
+        <td class="derecha">25</td>
+        <td>HECAT</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2018-08-15</td>
+        <td class="derecha">76</td>
+        <td>Centro Cultural José R. Mijares</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2018-08-15</td>
+        <td class="derecha">47</td>
+        <td>DIF Revolución</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2018-08-15</td>
+        <td class="derecha">44</td>
+        <td>HECAT</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2018-08-22</td>
+        <td class="derecha">38</td>
+        <td>Centro Cultural José R. Mijares</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2018-08-22</td>
+        <td class="derecha">26</td>
+        <td>DIF Revolución</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2018-08-22</td>
+        <td class="derecha">25</td>
+        <td>HECAT</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2018-08-29</td>
+        <td class="derecha">48</td>
+        <td>Centro Cultural José R. Mijares</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2018-08-29</td>
+        <td class="derecha">32</td>
+        <td>DIF Revolución</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2018-08-29</td>
+        <td class="derecha">32</td>
+        <td>HECAT</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2018-09-05</td>
+        <td class="derecha">43</td>
+        <td>Centro Cultural José R. Mijares</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2018-09-05</td>
+        <td class="derecha">40</td>
+        <td>DIF Revolución</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2018-09-05</td>
+        <td class="derecha">26</td>
+        <td>HECAT</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2018-09-12</td>
+        <td class="derecha">57</td>
+        <td>Centro Cultural José R. Mijares</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2018-09-12</td>
+        <td class="derecha">40</td>
+        <td>DIF Revolución</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2018-09-12</td>
+        <td class="derecha">45</td>
+        <td>HECAT</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2018-09-18</td>
+        <td class="derecha">37</td>
+        <td>Centro Cultural José R. Mijares</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2018-09-19</td>
+        <td class="derecha">33</td>
+        <td>DIF Revolución</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2018-09-19</td>
+        <td class="derecha">19</td>
+        <td>HECAT</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2018-09-26</td>
+        <td class="derecha">55</td>
+        <td>Centro Cultural José R. Mijares</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2018-09-26</td>
+        <td class="derecha">40</td>
+        <td>DIF Revolución</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2018-09-26</td>
+        <td class="derecha">32</td>
+        <td>HECAT</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2018-10-03</td>
+        <td class="derecha">47</td>
+        <td>DIF Revolución</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2018-10-03</td>
+        <td class="derecha">63</td>
+        <td>HECAT</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2018-10-10</td>
+        <td class="derecha">97</td>
+        <td>Centro Cultural José R. Mijares</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2018-10-10</td>
+        <td class="derecha">53</td>
+        <td>DIF Revolución</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2018-10-10</td>
+        <td class="derecha">63</td>
+        <td>HECAT</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2018-10-18</td>
+        <td class="derecha">65</td>
+        <td>Centro Cultural José R. Mijares</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2018-10-25</td>
+        <td class="derecha">109</td>
+        <td>Centro Cultural José R. Mijares</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2018-10-25</td>
+        <td class="derecha">60</td>
+        <td>DIF Revolución</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2018-10-25</td>
+        <td class="derecha">80</td>
+        <td>HECAT</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2018-10-31</td>
+        <td class="derecha">85</td>
+        <td>Centro Cultural José R. Mijares</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2018-10-31</td>
+        <td class="derecha">46</td>
+        <td>DIF Revolución</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2018-10-31</td>
+        <td class="derecha">49</td>
+        <td>HECAT</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2018-11-07</td>
+        <td class="derecha">146</td>
+        <td>Centro Cultural José R. Mijares</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2018-11-07</td>
+        <td class="derecha">79</td>
+        <td>DIF Revolución</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2018-11-07</td>
+        <td class="derecha">97</td>
+        <td>HECAT</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2018-11-14</td>
+        <td class="derecha">92</td>
+        <td>Centro Cultural José R. Mijares</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2018-11-14</td>
+        <td class="derecha">49</td>
+        <td>DIF Revolución</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2018-11-14</td>
+        <td class="derecha">82</td>
+        <td>HECAT</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2018-11-21</td>
+        <td class="derecha">77</td>
+        <td>Centro Cultural José R. Mijares</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2018-11-21</td>
+        <td class="derecha">51</td>
+        <td>DIF Revolución</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2018-11-21</td>
+        <td class="derecha">53</td>
+        <td>HECAT</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2018-11-28</td>
+        <td class="derecha">108</td>
+        <td>Centro Cultural José R. Mijares</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2018-11-28</td>
+        <td class="derecha">58</td>
+        <td>DIF Revolución</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2018-11-28</td>
+        <td class="derecha">78</td>
+        <td>HECAT</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2018-12-05</td>
+        <td class="derecha">95</td>
+        <td>Centro Cultural José R. Mijares</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2018-12-05</td>
+        <td class="derecha">58</td>
+        <td>DIF Revolución</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2018-12-05</td>
+        <td class="derecha">61</td>
+        <td>HECAT</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2018-12-12</td>
+        <td class="derecha">83</td>
+        <td>Centro Cultural José R. Mijares</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2018-12-12</td>
+        <td class="derecha">57</td>
+        <td>DIF Revolución</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2018-12-12</td>
+        <td class="derecha">71</td>
+        <td>HECAT</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2018-12-19</td>
+        <td class="derecha">77</td>
+        <td>Centro Cultural José R. Mijares</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2018-12-20</td>
+        <td class="derecha">51</td>
+        <td>DIF Revolución</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2018-12-20</td>
+        <td class="derecha">70</td>
+        <td>HECAT</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2019-01-02</td>
+        <td class="derecha">71</td>
+        <td>Centro Cultural José R. Mijares</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2019-01-02</td>
+        <td class="derecha">32</td>
+        <td>DIF Revolución</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2019-01-02</td>
+        <td class="derecha">43</td>
+        <td>HECAT</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2019-01-09</td>
+        <td class="derecha">54</td>
+        <td>Centro Cultural José R. Mijares</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2019-01-09</td>
+        <td class="derecha">39</td>
+        <td>DIF Revolución</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2019-01-09</td>
+        <td class="derecha">37</td>
+        <td>HECAT</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2019-01-16</td>
+        <td class="derecha">100</td>
+        <td>Centro Cultural José R. Mijares</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2019-01-16</td>
+        <td class="derecha">64</td>
+        <td>DIF Revolución</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2019-01-16</td>
+        <td class="derecha">70</td>
+        <td>HECAT</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2019-01-23</td>
+        <td class="derecha">84</td>
+        <td>Centro Cultural José R. Mijares</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2019-01-23</td>
+        <td class="derecha">38</td>
+        <td>DIF Revolución</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2019-01-23</td>
+        <td class="derecha">48</td>
+        <td>HECAT</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2019-01-30</td>
+        <td class="derecha">112</td>
+        <td>Centro Cultural José R. Mijares</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2019-01-30</td>
+        <td class="derecha">64</td>
+        <td>DIF Revolución</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2019-01-30</td>
+        <td class="derecha">73</td>
+        <td>HECAT</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2019-02-06</td>
+        <td class="derecha">73</td>
+        <td>Centro Cultural José R. Mijares</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2019-02-06</td>
+        <td class="derecha">26</td>
+        <td>DIF Revolución</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2019-02-06</td>
+        <td class="derecha">37</td>
+        <td>HECAT</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2019-02-13</td>
+        <td class="derecha">107</td>
+        <td>Centro Cultural José R. Mijares</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2019-02-13</td>
+        <td class="derecha">58</td>
+        <td>DIF Revolución</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2019-02-13</td>
+        <td class="derecha">80</td>
+        <td>HECAT</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2019-02-20</td>
+        <td class="derecha">103</td>
+        <td>Centro Cultural José R. Mijares</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2019-02-20</td>
+        <td class="derecha">52</td>
+        <td>DIF Revolución</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2019-02-20</td>
+        <td class="derecha">72</td>
+        <td>HECAT</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2019-02-27</td>
+        <td class="derecha">108</td>
+        <td>Centro Cultural José R. Mijares</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2019-02-27</td>
+        <td class="derecha">58</td>
+        <td>DIF Revolución</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2019-02-27</td>
+        <td class="derecha">72</td>
+        <td>HECAT</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2019-03-06</td>
+        <td class="derecha">100</td>
+        <td>Centro Cultural José R. Mijares</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2019-03-06</td>
+        <td class="derecha">76</td>
+        <td>DIF Revolución</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2019-03-06</td>
+        <td class="derecha">104</td>
+        <td>HECAT</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2019-03-13</td>
+        <td class="derecha">67</td>
+        <td>Centro Cultural José R. Mijares</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2019-03-13</td>
+        <td class="derecha">26</td>
+        <td>DIF Revolución</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2019-03-14</td>
+        <td class="derecha">85</td>
+        <td>HECAT</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2019-03-20</td>
+        <td class="derecha">60</td>
+        <td>Centro Cultural José R. Mijares</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2019-03-20</td>
+        <td class="derecha">26</td>
+        <td>DIF Revolución</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2019-03-20</td>
+        <td class="derecha">30</td>
+        <td>HECAT</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2019-03-27</td>
+        <td class="derecha">85</td>
+        <td>Centro Cultural José R. Mijares</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2019-03-27</td>
+        <td class="derecha">46</td>
+        <td>DIF Revolución</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2019-03-27</td>
+        <td class="derecha">49</td>
+        <td>HECAT</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2019-04-03</td>
+        <td class="derecha">110</td>
+        <td>Centro Cultural José R. Mijares</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2019-04-03</td>
+        <td class="derecha">46</td>
+        <td>DIF Revolución</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2019-04-03</td>
+        <td class="derecha">76</td>
+        <td>HECAT</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2019-04-10</td>
+        <td class="derecha">105</td>
+        <td>Centro Cultural José R. Mijares</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2019-04-10</td>
+        <td class="derecha">27</td>
+        <td>DIF Revolución</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2019-04-10</td>
+        <td class="derecha">57</td>
+        <td>HECAT</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2019-04-24</td>
+        <td class="derecha">135</td>
+        <td>Centro Cultural José R. Mijares</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2019-04-24</td>
+        <td class="derecha">34</td>
+        <td>DIF Revolución</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2019-04-24</td>
+        <td class="derecha">57</td>
+        <td>HECAT</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2019-05-02</td>
+        <td class="derecha">105</td>
+        <td>Centro Cultural José R. Mijares</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2019-05-02</td>
+        <td class="derecha">47</td>
+        <td>DIF Revolución</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2019-05-02</td>
+        <td class="derecha">71</td>
+        <td>HECAT</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2019-05-08</td>
+        <td class="derecha">118</td>
+        <td>Centro Cultural José R. Mijares</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2019-05-08</td>
+        <td class="derecha">54</td>
+        <td>DIF Revolución</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2019-05-08</td>
+        <td class="derecha">84</td>
+        <td>HECAT</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2019-05-15</td>
+        <td class="derecha">93</td>
+        <td>Centro Cultural José R. Mijares</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2019-05-15</td>
+        <td class="derecha">57</td>
+        <td>DIF Revolución</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2019-05-15</td>
+        <td class="derecha">96</td>
+        <td>HECAT</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2019-05-22</td>
+        <td class="derecha">120</td>
+        <td>Centro Cultural José R. Mijares</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2019-05-22</td>
+        <td class="derecha">48</td>
+        <td>DIF Revolución</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2019-05-22</td>
+        <td class="derecha">56</td>
+        <td>HECAT</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2019-05-29</td>
+        <td class="derecha">105</td>
+        <td>Centro Cultural José R. Mijares</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2019-05-29</td>
+        <td class="derecha">42</td>
+        <td>DIF Revolución</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2019-05-29</td>
+        <td class="derecha">59</td>
+        <td>HECAT</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2019-06-05</td>
+        <td class="derecha">100</td>
+        <td>Centro Cultural José R. Mijares</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2019-06-05</td>
+        <td class="derecha">51</td>
+        <td>DIF Revolución</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2019-06-05</td>
+        <td class="derecha">57</td>
+        <td>HECAT</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2019-06-12</td>
+        <td class="derecha">81</td>
+        <td>Centro Cultural José R. Mijares</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2019-06-12</td>
+        <td class="derecha">29</td>
+        <td>DIF Revolución</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2019-06-12</td>
+        <td class="derecha">31</td>
+        <td>HECAT</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2019-06-19</td>
+        <td class="derecha">63</td>
+        <td>Centro Cultural José R. Mijares</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2019-06-19</td>
+        <td class="derecha">30</td>
+        <td>DIF Revolución</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2019-06-19</td>
+        <td class="derecha">41</td>
+        <td>HECAT</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2019-06-26</td>
+        <td class="derecha">68</td>
+        <td>Centro Cultural José R. Mijares</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2019-06-26</td>
+        <td class="derecha">30</td>
+        <td>DIF Revolución</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2019-06-26</td>
+        <td class="derecha">40</td>
+        <td>HECAT</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2019-07-03</td>
+        <td class="derecha">125</td>
+        <td>Centro Cultural José R. Mijares</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2019-07-03</td>
+        <td class="derecha">30</td>
+        <td>DIF Revolución</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2019-07-03</td>
+        <td class="derecha">46</td>
+        <td>HECAT</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2019-07-10</td>
+        <td class="derecha">69</td>
+        <td>Centro Cultural José R. Mijares</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2019-07-10</td>
+        <td class="derecha">37</td>
+        <td>DIF Revolución</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2019-07-10</td>
+        <td class="derecha">40</td>
+        <td>HECAT</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2019-07-17</td>
+        <td class="derecha">94</td>
+        <td>Centro Cultural José R. Mijares</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2019-07-17</td>
+        <td class="derecha">35</td>
+        <td>DIF Revolución</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2019-07-17</td>
+        <td class="derecha">44</td>
+        <td>HECAT</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2019-07-24</td>
+        <td class="derecha">68</td>
+        <td>Centro Cultural José R. Mijares</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2019-07-24</td>
+        <td class="derecha">28</td>
+        <td>DIF Revolución</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2019-07-24</td>
+        <td class="derecha">31</td>
+        <td>HECAT</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2019-07-31</td>
+        <td class="derecha">131</td>
+        <td>Centro Cultural José R. Mijares</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2019-07-31</td>
+        <td class="derecha">50</td>
+        <td>DIF Revolución</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2019-07-31</td>
+        <td class="derecha">56</td>
+        <td>HECAT</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2019-08-07</td>
+        <td class="derecha">100</td>
+        <td>Centro Cultural José R. Mijares</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2019-08-07</td>
+        <td class="derecha">35</td>
+        <td>DIF Revolución</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2019-08-07</td>
+        <td class="derecha">45</td>
+        <td>HECAT</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2019-08-14</td>
+        <td class="derecha">44</td>
+        <td>Centro Cultural José R. Mijares</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2019-08-14</td>
+        <td class="derecha">42</td>
+        <td>DIF Revolución</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2019-08-14</td>
+        <td class="derecha">56</td>
+        <td>HECAT</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2019-08-21</td>
+        <td class="derecha">28</td>
+        <td>DIF Revolución</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2019-08-21</td>
+        <td class="derecha">43</td>
+        <td>HECAT</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2019-08-28</td>
+        <td class="derecha">94</td>
+        <td>Centro Cultural José R. Mijares</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2019-08-28</td>
+        <td class="derecha">42</td>
+        <td>DIF Revolución</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2019-08-28</td>
+        <td class="derecha">57</td>
+        <td>HECAT</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2019-09-04</td>
+        <td class="derecha">25</td>
+        <td>Centro Cultural José R. Mijares</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2019-09-04</td>
+        <td class="derecha">21</td>
+        <td>DIF Revolución</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2019-09-04</td>
+        <td class="derecha">20</td>
+        <td>HECAT</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2019-09-11</td>
+        <td class="derecha">43</td>
+        <td>Centro Cultural José R. Mijares</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2019-09-11</td>
+        <td class="derecha">28</td>
+        <td>DIF Revolución</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2019-09-11</td>
+        <td class="derecha">32</td>
+        <td>HECAT</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2019-09-18</td>
+        <td class="derecha">74</td>
+        <td>Centro Cultural José R. Mijares</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2019-09-18</td>
+        <td class="derecha">42</td>
+        <td>DIF Revolución</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2019-09-18</td>
+        <td class="derecha">57</td>
+        <td>HECAT</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2019-09-25</td>
+        <td class="derecha">62</td>
+        <td>Centro Cultural José R. Mijares</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2019-09-25</td>
+        <td class="derecha">35</td>
+        <td>DIF Revolución</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2019-09-25</td>
+        <td class="derecha">46</td>
+        <td>HECAT</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2019-10-02</td>
+        <td class="derecha">55</td>
+        <td>Centro Cultural José R. Mijares</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2019-10-02</td>
+        <td class="derecha">25</td>
+        <td>DIF Revolución</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2019-10-09</td>
+        <td class="derecha">98</td>
+        <td>Centro Cultural José R. Mijares</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2019-10-09</td>
+        <td class="derecha">56</td>
+        <td>DIF Revolución</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2019-10-09</td>
+        <td class="derecha">51</td>
+        <td>HECAT</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2019-10-16</td>
+        <td class="derecha">92</td>
+        <td>Centro Cultural José R. Mijares</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2019-10-16</td>
+        <td class="derecha">28</td>
+        <td>DIF Revolución</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2019-10-16</td>
+        <td class="derecha">38</td>
+        <td>HECAT</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2019-10-23</td>
+        <td class="derecha">68</td>
+        <td>Centro Cultural José R. Mijares</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2019-10-23</td>
+        <td class="derecha">44</td>
+        <td>DIF Revolución</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2019-10-23</td>
+        <td class="derecha">53</td>
+        <td>HECAT</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2019-10-30</td>
+        <td class="derecha">91</td>
+        <td>Centro Cultural José R. Mijares</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2019-10-30</td>
+        <td class="derecha">48</td>
+        <td>DIF Revolución</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2019-10-30</td>
+        <td class="derecha">63</td>
+        <td>HECAT</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2019-11-06</td>
+        <td class="derecha">67</td>
+        <td>Centro Cultural José R. Mijares</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2019-11-06</td>
+        <td class="derecha">35</td>
+        <td>DIF Revolución</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2019-11-06</td>
+        <td class="derecha">44</td>
+        <td>HECAT</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2019-11-13</td>
+        <td class="derecha">71</td>
+        <td>Centro Cultural José R. Mijares</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2019-11-14</td>
+        <td class="derecha">45</td>
+        <td>DIF Revolución</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2019-11-14</td>
+        <td class="derecha">43</td>
+        <td>HECAT</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2019-11-20</td>
+        <td class="derecha">62</td>
+        <td>Centro Cultural José R. Mijares</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2019-11-20</td>
+        <td class="derecha">20</td>
+        <td>DIF Revolución</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2019-11-20</td>
+        <td class="derecha">20</td>
+        <td>HECAT</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2019-11-27</td>
+        <td class="derecha">158</td>
+        <td>Centro Cultural José R. Mijares</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2019-11-27</td>
+        <td class="derecha">75</td>
+        <td>DIF Revolución</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2019-11-27</td>
+        <td class="derecha">105</td>
+        <td>HECAT</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2019-12-04</td>
+        <td class="derecha">166</td>
+        <td>Centro Cultural José R. Mijares</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2019-12-04</td>
+        <td class="derecha">73</td>
+        <td>DIF Revolución</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2019-12-04</td>
+        <td class="derecha">109</td>
+        <td>HECAT</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2019-12-11</td>
+        <td class="derecha">88</td>
+        <td>Centro Cultural José R. Mijares</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2019-12-11</td>
+        <td class="derecha">40</td>
+        <td>DIF Revolución</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2019-12-11</td>
+        <td class="derecha">55</td>
+        <td>HECAT</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2019-12-17</td>
+        <td class="derecha">117</td>
+        <td>Centro Cultural José R. Mijares</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2019-12-17</td>
+        <td class="derecha">32</td>
+        <td>DIF Revolución</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2019-12-17</td>
+        <td class="derecha">48</td>
+        <td>HECAT</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2019-12-19</td>
+        <td class="derecha">77</td>
+        <td>Centro Cultural José R. Mijares</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2019-12-20</td>
+        <td class="derecha">51</td>
+        <td>DIF Revolución</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2019-12-20</td>
+        <td class="derecha">70</td>
+        <td>HECAT</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2020-01-08</td>
+        <td class="derecha">125</td>
+        <td>Centro Cultural José R. Mijares</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2020-01-08</td>
+        <td class="derecha">53</td>
+        <td>DIF Revolución</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2020-01-08</td>
+        <td class="derecha">84</td>
+        <td>HECAT</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2020-01-15</td>
+        <td class="derecha">174</td>
+        <td>Centro Cultural José R. Mijares</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2020-01-15</td>
+        <td class="derecha">73</td>
+        <td>DIF Revolución</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2020-01-22</td>
+        <td class="derecha">341</td>
+        <td>Centro Cultural José R. Mijares</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2020-01-22</td>
+        <td class="derecha">238</td>
+        <td>DIF Revolución</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2020-01-22</td>
+        <td class="derecha">167</td>
+        <td>HECAT</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2020-01-29</td>
+        <td class="derecha">113</td>
+        <td>Centro Cultural José R. Mijares</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2020-01-29</td>
+        <td class="derecha">40</td>
+        <td>DIF Revolución</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2020-01-29</td>
+        <td class="derecha">55</td>
+        <td>HECAT</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2020-02-05</td>
+        <td class="derecha">132</td>
+        <td>Centro Cultural José R. Mijares</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2020-02-05</td>
+        <td class="derecha">68</td>
+        <td>DIF Revolución</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2020-02-05</td>
+        <td class="derecha">63</td>
+        <td>HECAT</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2020-02-12</td>
+        <td class="derecha">85</td>
+        <td>Centro Cultural José R. Mijares</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2020-02-13</td>
+        <td class="derecha">46</td>
+        <td>DIF Revolución</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2020-02-13</td>
+        <td class="derecha">67</td>
+        <td>HECAT</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2020-02-19</td>
+        <td class="derecha">85</td>
+        <td>Centro Cultural José R. Mijares</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2020-02-19</td>
+        <td class="derecha">48</td>
+        <td>DIF Revolución</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2020-02-19</td>
+        <td class="derecha">68</td>
+        <td>HECAT</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2020-02-26</td>
+        <td class="derecha">64</td>
+        <td>Centro Cultural José R. Mijares</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2020-02-26</td>
+        <td class="derecha">32</td>
+        <td>DIF Revolución</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2020-02-26</td>
+        <td class="derecha">36</td>
+        <td>HECAT</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2020-03-04</td>
+        <td class="derecha">47</td>
+        <td>Centro Cultural José R. Mijares</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2020-03-11</td>
+        <td class="derecha">116</td>
+        <td>Centro Cultural José R. Mijares</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2020-03-11</td>
+        <td class="derecha">62</td>
+        <td>DIF Revolución</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2020-03-11</td>
+        <td class="derecha">95</td>
+        <td>HECAT</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2020-03-18</td>
+        <td class="derecha">87</td>
+        <td>Centro Cultural José R. Mijares</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2020-03-18</td>
+        <td class="derecha">35</td>
+        <td>DIF Revolución</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2020-03-18</td>
+        <td class="derecha">51</td>
+        <td>HECAT</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  </div>
+  <div role="tabpanel" class="tab-pane" id="LenguetasIndicadorGrafica1">
+    <h3>Concentración de Partículas menores a 10 micras en Torreón con fuente Centro Cultural José R. Mijares</h3>
+
+    <div id="SmiGraficasConcentracionDeParticulasMenoresA10MicrasEnTorreonCentroCulturalJoseRMijares" class="grafica"></div>
+  </div>
+  <div role="tabpanel" class="tab-pane" id="LenguetasIndicadorGrafica2">
+    <h3>Concentración de Partículas menores a 10 micras en Torreón con fuente DIF Revolución</h3>
+
+    <div id="SmiGraficasConcentracionDeParticulasMenoresA10MicrasEnTorreonDifRevolucion" class="grafica"></div>
+  </div>
+  <div role="tabpanel" class="tab-pane" id="LenguetasIndicadorGrafica3">
+    <h3>Concentración de Partículas menores a 10 micras en Torreón con fuente HECAT</h3>
+
+    <div id="SmiGraficasConcentracionDeParticulasMenoresA10MicrasEnTorreonHecat" class="grafica"></div>
+  </div>
+  </div>
+</div>
+<h3>Observaciones</h3>
+<ul>
+<li>En 2016 Torreón contaba con 7 equipos manuales de PST (Partículas Suspendidas Totales) y 3 equipos de PM10 (Partículas Menores a 10 micras). En 2017 sólo se tienen operando los 3 equipos de PM10.</li>
+<li>Se ajustaron las fuentes para generar varias gráficas, una por cada estación de monitoreo.</li>
+<li>Fuente: <a href="http://www.torreon.gob.mx/medioambiente/">Dirección General de Medio Ambiente de Torreón</a></li>
+<li>Descarga: <a href="http://datostrc.gob.mx/datasets/ver/32732">Portal de Datos Públicos de Torreón - Resultados de Monitoreo Atmosférico</a></li>
+<li><a href="http://www.salud.gob.mx/unidades/cdi/nom/025ssa13.html">Norma Oficial Mexicana NOM-025-SSA1-1993</a></li>
+<li><a href="http://dof.gob.mx/nota_detalle.php?codigo=5357042&amp;fecha=20/08/2014">Norma Oficial Mexicana NOM-025-SSA1-2014</a></li>
+</ul>
+
+<!-- Contenido: Termina -->
+        </div>
+      </div></article>
+      <aside>
+  <!-- Extra: Inicia  -->
+  <h3>Publicaciones relacionadas</h3>
+<p><b>Análisis Publicados</b></p>
+<ul>
+  <li><a href="http://www.trcimplan.gob.mx/blog/problematica-del-agua-en-la-comarca-lagunera.html">Problem&aacute;tica del agua en la Comarca Lagunera</a></li>
+  <li><a href="http://www.trcimplan.gob.mx/blog/agua-recurso-indispensable-para-el-desarrollo-de-la-zml.html">Agua, recurso indispensable para el desarrollo de la ZML</a></li>
+  <li><a href="http://www.trcimplan.gob.mx/blog/eficiencia-financiera-de-simas-en-la-laguna-marzo2019.html">La eficiencia financiera de los Sistemas Municipales de Aguas y Saneamiento en La Laguna.</a></li>
+  <li><a href="http://www.trcimplan.gob.mx/blog/el-bosque-venustiano-carranza-diagnostico-y-problematicas.html">El Bosque Venustiano Carranza: diagn&oacute;stico y problem&aacute;ticas</a></li>
+  <li><a href="http://www.trcimplan.gob.mx/blog/torreon-y-su-integracion-a-la-nueva-agenda-urbana-onu-habitatIII-feb2019.html">Torre&oacute;n y su integraci&oacute;n a la Nueva Agenda Urbana ONU-HABITAT III</a></li>
+  <li><a href="http://www.trcimplan.gob.mx/blog/la-alameda-y-la-consulta-ciudadana.html">La Alameda y la consulta ciudadana</a></li>
+  <li><a href="http://www.trcimplan.gob.mx/blog/importancia-suelo-ciudades.html">La importancia del suelo en las ciudades</a></li>
+  <li><a href="http://www.trcimplan.gob.mx/blog/mas-laguneros-se-unen-a-la-reforestacion.html">M&aacute;s laguneros se unen a la reforestaci&oacute;n</a></li>
+  <li><a href="http://www.trcimplan.gob.mx/blog/paisajismo-natural-en-torreon-y-la-laguna.html">Paisajismo natural en Torre&oacute;n y La Laguna</a></li>
+  <li><a href="http://www.trcimplan.gob.mx/blog/torreon-bajo-la-mirada-de-onu-habitat.html">Torre&oacute;n bajo la mirada de ONU H&aacute;bitat</a></li>
+</ul>
+<p><b>Sistema Metropolitano de Indicadores</b></p>
+<ul>
+  <li><a href="http://www.trcimplan.gob.mx/indicadores-torreon/sustentabilidad-emergencias-ambientales.html">Emergencias Ambientales en Torre&oacute;n</a></li>
+  <li><a href="http://www.trcimplan.gob.mx/indicadores-torreon/sustentabilidad-area-no-urbanizada.html">&Aacute;rea No Urbanizada en Torre&oacute;n</a></li>
+  <li><a href="http://www.trcimplan.gob.mx/indicadores-torreon/sustentabilidad-sobreexplotacion-del-acuifero.html">Sobreexplotaci&oacute;n del Acu&iacute;fero en Torre&oacute;n</a></li>
+  <li><a href="http://www.trcimplan.gob.mx/indicadores-torreon/sustentabilidad-capacidad-de-tratamiento-de-agua-en-operacion.html">Capacidad de Tratamiento de Agua en Operaci&oacute;n en Torre&oacute;n</a></li>
+  <li><a href="http://www.trcimplan.gob.mx/indicadores-torreon/sustentabilidad-disposicion-adecuada-de-residuos-solidos.html">Disposici&oacute;n Adecuada de Residuos S&oacute;lidos en Torre&oacute;n</a></li>
+  <li><a href="http://www.trcimplan.gob.mx/indicadores-torreon/sustentabilidad-aprovechamiento-del-biogas-en-rellenos-sanitarios.html">Aprovechamiento del Biog&aacute;s en Rellenos Sanitarios en Torre&oacute;n</a></li>
+  <li><a href="http://www.trcimplan.gob.mx/indicadores-torreon/sustentabilidad-concentracion-de-particulas-suspendidas-totales.html">Concentraci&oacute;n de Part&iacute;culas Suspendidas Totales en Torre&oacute;n</a></li>
+  <li><a href="http://www.trcimplan.gob.mx/indicadores-torreon/sustentabilidad-consumo-de-diesel-en-transporte-de-bienes.html">Consumo de Diesel en Transporte de Bienes en Torre&oacute;n</a></li>
+  <li><a href="http://www.trcimplan.gob.mx/indicadores-torreon/sustentabilidad-economia-intensiva-en-energia.html">Econom&iacute;a Intensiva en Energ&iacute;a en Torre&oacute;n</a></li>
+  <li><a href="http://www.trcimplan.gob.mx/indicadores-torreon/sustentabilidad-consumo-de-agua.html">Consumo de Agua en Torre&oacute;n</a></li>
+</ul>
+<p><b>Sistema de Información Geográfica</b></p>
+<ul>
+  <li><a href="http://www.trcimplan.gob.mx/sig-mapas-torreon/monitoreo-atmosferico-pm10.html">Monitoreo Atmosf&eacute;rico PM10</a></li>
+  <li><a href="http://www.trcimplan.gob.mx/sig-mapas-torreon/areas-verdes.html">&Aacute;reas Verdes</a></li>
+</ul>
+<p><b>Plan Estratégico Torreón</b></p>
+<ul>
+  <li><a href="http://www.trcimplan.gob.mx/pet/cartera-proyectos-medio-ambiente-sustentabilidad.html">Cartera de Proyectos: Medio Ambiente y Sustentabilidad</a></li>
+  <li><a href="http://www.trcimplan.gob.mx/pet/cartera-proyectos-entorno-urbano.html">Cartera de Proyectos: Entorno Urbano</a></li>
+  <li><a href="http://www.trcimplan.gob.mx/pet/vision-medio-ambiente-sustentabilidad.html">Visi&oacute;n de Medio Ambiente y Sustentabilidad 2040</a></li>
+  <li><a href="http://www.trcimplan.gob.mx/pet/vision-entorno-urbano.html">Visi&oacute;n de Entorno Urbano 2040</a></li>
+  <li><a href="http://www.trcimplan.gob.mx/proyectos/vive-tu-alameda.html">Vive Tu Alameda</a></li>
+  <li><a href="http://www.trcimplan.gob.mx/pet/diagnostico-estrategico-medio-ambiente-sustentabilidad.html">Diagn&oacute;stico Estrat&eacute;gico: Medio Ambiente y Sustentabilidad</a></li>
+  <li><a href="http://www.trcimplan.gob.mx/proyectos/aire-para-todos.html">Aire Para Todos</a></li>
+  <li><a href="http://www.trcimplan.gob.mx/pet/diagnostico-estrategico-entorno-urbano.html">Diagn&oacute;stico Estrat&eacute;gico: Entorno Urbano</a></li>
+  <li><a href="http://www.trcimplan.gob.mx/pet/diagnostico-estrategico-buen-gobierno.html">Diagn&oacute;stico Estrat&eacute;gico: Buen Gobierno</a></li>
+  <li><a href="http://www.trcimplan.gob.mx/proyectos/plata-laguna.html">Plata Laguna</a></li>
+</ul>
+<p><b>Sala de Prensa</b></p>
+<ul>
+  <li><a href="http://www.trcimplan.gob.mx/sala-prensa/2016-08-18-realizan-mesas-de-trabajo-sobre-el-bosque-venustiano-carranza.html">Realizan mesas de trabajo sobre el Bosque Venustiano Carranza</a></li>
+  <li><a href="http://www.trcimplan.gob.mx/sala-prensa/2017-04-28-sesion-ordinaria.html">IMPLAN y Medio Ambiente presentan el an&aacute;lisis Calidad del Aire</a></li>
+  <li><a href="http://www.trcimplan.gob.mx/sala-prensa/2017-07-18-firman-convenio-de-colaboracion-implan-torreon-implan-saltillo.html">Firman convenio de colaboraci&oacute;n IMPLAN Torre&oacute;n &ndash; IMPLAN Saltillo</a></li>
+  <li><a href="http://www.trcimplan.gob.mx/sala-prensa/2020-04-15-comunicado-conferencias-virtuales.html">El IMPLAN Torre&oacute;n y su Consejo Juvenil: Visi&oacute;n Metr&oacute;poli, presentar&aacute;n Conferencias Virtuales</a></li>
+  <li><a href="http://www.trcimplan.gob.mx/sala-prensa/2020-02-27-segunda-sesion-consejo-2020.html">Presentan en Segunda Sesi&oacute;n de Consejo el &ldquo;Programa Parcial de Desarrollo Urbano para la Zona Norte de Torre&oacute;n&rdquo;</a></li>
+  <li><a href="http://www.trcimplan.gob.mx/sala-prensa/2020-02-17-comunicado-enoe.html">Disminuye la tasa de desempleo en la Zona Metropolitana de La Laguna (ZML), al cuarto trimestre de 2019</a></li>
+  <li><a href="http://www.trcimplan.gob.mx/sala-prensa/2020-02-06-comunicado-conferencia-imeplan.html">Postura sobre la creaci&oacute;n de un Instituto Metropolitano de Planeaci&oacute;n.</a></li>
+  <li><a href="http://www.trcimplan.gob.mx/sala-prensa/2020-01-30-primer-sesion-consejo-2020.html">Primer Sesi&oacute;n de Consejo 2020. Se renueva el Consejo Directivo del IMPLAN.</a></li>
+  <li><a href="http://www.trcimplan.gob.mx/sala-prensa/2019-09-26-seminario-identidad-lagunera.html">Consejo Visi&oacute;n Metr&oacute;poli presenta Seminario de Identidad Lagunera</a></li>
+  <li><a href="http://www.trcimplan.gob.mx/sala-prensa/2019-09-26-novena-sesion-consejo.html">Novena Sesi&oacute;n de Consejo Implan. Presentan Resultados del Conversatorio y del Concurso &ldquo;Manos a la Cebra&rdquo;.</a></li>
+</ul>
+  <!-- Extra: Termina -->
+  </aside>
+<div class="contenido-social">
+  <h5>Compartir en Redes Sociales</h5>
+  <a href="https://twitter.com/share" class="twitter-share-button" data-via="trcimplan" data-lang="es">Twittear</a>
+  <iframe src="//www.facebook.com/plugins/like.php?href=http%3A%2F%2Fwww.trcimplan.gob.mx%2Findicadores-torreon%2Fsustentabilidad-concentracion-de-particulas-menores-a-10-micras.html&amp;width=300&amp;layout=button_count&amp;action=like&amp;show_faces=true&amp;share=false&amp;height=21" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:300px; height:21px;" allowTransparency="true"></iframe>
+</div>
+    </div>
+    <div class="mapa-inferior">
+          <div class="pull-right redes-sociales">
+            <a class="fa fa-twitter-square" href="http://www.twitter.com/trcimplan" target="_blank"></a>
+            <a class="fa fa-facebook-square" href="https://facebook.com/trcimplan" target="_blank"></a>
+            <a class="fa fa-facebook-square" href="http://www.instagram.com/implantorreon" target="_blank"></a>
+            <a class="fa fa-rss-square" href="../rss.xml"></a>
+          </div>
+    </div>
+  </div>
+</div>
+<!-- Javascript global inicia -->
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
+<script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="../vendor/metisMenu/metisMenu.min.js"></script>
+<script type="text/javascript" src="../vendor/datatables/js/jquery.dataTables.min.js"></script>
+<script type="text/javascript" src="../vendor/datatables-plugins/dataTables.bootstrap.min.js"></script>
+<script type="text/javascript" src="../vendor/datatables-responsive/dataTables.responsive.js"></script>
+<script type="text/javascript" src="../vendor/raphael/raphael.min.js"></script>
+<script type="text/javascript" src="../vendor/morrisjs/morris.min.js"></script>
+<script type="text/javascript" src="../dist/js/sb-admin-2.min.js"></script>
+<script type="text/javascript" src="http://libs.cartocdn.com/cartodb.js/v3/3.15/cartodb.js"></script>
+<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+<!-- Javascript global termina -->
+<!-- Javascript inicia -->
+<script>
+  // LenguetaWeb LenguetasIndicadorDatos
+  if (typeof varSmiDatosConcentracionDeParticulasMenoresA10MicrasEnTorreon === 'undefined') {
+     $('#SmiDatosConcentracionDeParticulasMenoresA10MicrasEnTorreon').DataTable({
+      "language": {
+        "lengthMenu":   "Mostrando _MENU_ filas por página",
+        "zeroRecords":  "No se encontró nada",
+        "info":         "Mostrando página _PAGE_ de _PAGES_",
+        "infoEmpty":    "No se encontraron registros",
+        "infoFiltered": "(fitrados a partir de un máximo de _MAX_ registros)",
+        "search":       "Filtrar:",
+        "paginate": {
+          "previous":   "Anterior",
+          "next":       "Siguiente"
+        }
+      }
+    });
+    varSmiDatosConcentracionDeParticulasMenoresA10MicrasEnTorreon = 1;
+  }
+  // LenguetaWeb LenguetasIndicadorGrafica1 ejecuta lo siguiente al mostrar
+  $('#LenguetasIndicador a[href="#LenguetasIndicadorGrafica1"]').on('shown.bs.tab', function(e){
+  if (typeof varSmiGraficasConcentracionDeParticulasMenoresA10MicrasEnTorreonCentroCulturalJoseRMijares === 'undefined') {
+    varSmiGraficasConcentracionDeParticulasMenoresA10MicrasEnTorreonCentroCulturalJoseRMijares = Morris.Line({
+      element: 'SmiGraficasConcentracionDeParticulasMenoresA10MicrasEnTorreonCentroCulturalJoseRMijares',
+      data: [
+        { fecha: '2016-09-27', dato: 41 },
+        { fecha: '2016-10-04', dato: 111 },
+        { fecha: '2016-10-11', dato: 106 },
+        { fecha: '2016-10-18', dato: 169 },
+        { fecha: '2016-10-25', dato: 70 },
+        { fecha: '2016-11-01', dato: 155 },
+        { fecha: '2016-11-08', dato: 71 },
+        { fecha: '2016-11-15', dato: 116 },
+        { fecha: '2016-11-22', dato: 89 },
+        { fecha: '2016-11-29', dato: 84 },
+        { fecha: '2016-12-06', dato: 149 },
+        { fecha: '2016-12-13', dato: 174 },
+        { fecha: '2016-12-20', dato: 192 },
+        { fecha: '2017-01-03', dato: 171 },
+        { fecha: '2017-01-10', dato: 223 },
+        { fecha: '2017-01-17', dato: 75 },
+        { fecha: '2017-01-23', dato: 104 },
+        { fecha: '2017-01-30', dato: 150 },
+        { fecha: '2017-02-07', dato: 146 },
+        { fecha: '2017-02-13', dato: 124 },
+        { fecha: '2017-02-20', dato: 61 },
+        { fecha: '2017-02-27', dato: 111 },
+        { fecha: '2017-03-13', dato: 73 },
+        { fecha: '2017-03-21', dato: 127 },
+        { fecha: '2017-03-27', dato: 38 },
+        { fecha: '2017-04-03', dato: 132 },
+        { fecha: '2017-04-10', dato: 141 },
+        { fecha: '2017-04-17', dato: 132 },
+        { fecha: '2017-04-24', dato: 64 },
+        { fecha: '2017-05-02', dato: 76 },
+        { fecha: '2017-05-08', dato: 45 },
+        { fecha: '2017-05-15', dato: 45 },
+        { fecha: '2017-05-22', dato: 64 },
+        { fecha: '2017-05-29', dato: 64 },
+        { fecha: '2017-06-05', dato: 64 },
+        { fecha: '2017-06-12', dato: 51 },
+        { fecha: '2017-06-19', dato: 64 },
+        { fecha: '2017-06-26', dato: 20 },
+        { fecha: '2017-07-03', dato: 40 },
+        { fecha: '2017-07-10', dato: 27 },
+        { fecha: '2017-07-17', dato: 25 },
+        { fecha: '2017-07-24', dato: 45 },
+        { fecha: '2017-07-31', dato: 52 },
+        { fecha: '2017-08-07', dato: 54 },
+        { fecha: '2017-08-14', dato: 46 },
+        { fecha: '2017-08-21', dato: 40 },
+        { fecha: '2017-08-28', dato: 27 },
+        { fecha: '2017-09-04', dato: 20 },
+        { fecha: '2017-09-11', dato: 52 },
+        { fecha: '2017-09-18', dato: 46 },
+        { fecha: '2017-09-25', dato: 33 },
+        { fecha: '2017-10-02', dato: 14 },
+        { fecha: '2017-10-09', dato: 29 },
+        { fecha: '2017-10-16', dato: 46 },
+        { fecha: '2017-10-23', dato: 79 },
+        { fecha: '2017-11-06', dato: 142 },
+        { fecha: '2017-11-13', dato: 90 },
+        { fecha: '2017-11-21', dato: 95 },
+        { fecha: '2017-11-27', dato: 118 },
+        { fecha: '2017-12-04', dato: 122 },
+        { fecha: '2017-12-11', dato: 129 },
+        { fecha: '2017-12-18', dato: 74 },
+        { fecha: '2018-01-02', dato: 139 },
+        { fecha: '2018-01-08', dato: 112 },
+        { fecha: '2018-01-17', dato: 48 },
+        { fecha: '2018-01-22', dato: 74 },
+        { fecha: '2018-01-29', dato: 65 },
+        { fecha: '2018-02-06', dato: 68 },
+        { fecha: '2018-02-12', dato: 59 },
+        { fecha: '2018-02-19', dato: 37 },
+        { fecha: '2018-02-26', dato: 91 },
+        { fecha: '2018-03-05', dato: 43 },
+        { fecha: '2018-03-14', dato: 60 },
+        { fecha: '2018-03-20', dato: 97 },
+        { fecha: '2018-04-02', dato: 74 },
+        { fecha: '2018-04-09', dato: 155 },
+        { fecha: '2018-04-16', dato: 122 },
+        { fecha: '2018-04-23', dato: 56 },
+        { fecha: '2018-05-02', dato: 77 },
+        { fecha: '2018-05-07', dato: 55 },
+        { fecha: '2018-05-14', dato: 50 },
+        { fecha: '2018-05-21', dato: 94 },
+        { fecha: '2018-05-28', dato: 88 },
+        { fecha: '2018-06-04', dato: 88 },
+        { fecha: '2018-06-11', dato: 64 },
+        { fecha: '2018-06-18', dato: 51 },
+        { fecha: '2018-06-25', dato: 71 },
+        { fecha: '2018-07-02', dato: 89 },
+        { fecha: '2018-07-09', dato: 76 },
+        { fecha: '2018-07-16', dato: 69 },
+        { fecha: '2018-07-23', dato: 69 },
+        { fecha: '2018-07-30', dato: 57 },
+        { fecha: '2018-08-07', dato: 45 },
+        { fecha: '2018-08-15', dato: 76 },
+        { fecha: '2018-08-22', dato: 38 },
+        { fecha: '2018-08-29', dato: 48 },
+        { fecha: '2018-09-05', dato: 43 },
+        { fecha: '2018-09-12', dato: 57 },
+        { fecha: '2018-09-18', dato: 37 },
+        { fecha: '2018-09-26', dato: 55 },
+        { fecha: '2018-10-10', dato: 97 },
+        { fecha: '2018-10-18', dato: 65 },
+        { fecha: '2018-10-25', dato: 109 },
+        { fecha: '2018-10-31', dato: 85 },
+        { fecha: '2018-11-07', dato: 146 },
+        { fecha: '2018-11-14', dato: 92 },
+        { fecha: '2018-11-21', dato: 77 },
+        { fecha: '2018-11-28', dato: 108 },
+        { fecha: '2018-12-05', dato: 95 },
+        { fecha: '2018-12-12', dato: 83 },
+        { fecha: '2018-12-19', dato: 77 },
+        { fecha: '2019-01-02', dato: 71 },
+        { fecha: '2019-01-09', dato: 54 },
+        { fecha: '2019-01-16', dato: 100 },
+        { fecha: '2019-01-23', dato: 84 },
+        { fecha: '2019-01-30', dato: 112 },
+        { fecha: '2019-02-06', dato: 73 },
+        { fecha: '2019-02-13', dato: 107 },
+        { fecha: '2019-02-20', dato: 103 },
+        { fecha: '2019-02-27', dato: 108 },
+        { fecha: '2019-03-06', dato: 100 },
+        { fecha: '2019-03-13', dato: 67 },
+        { fecha: '2019-03-20', dato: 60 },
+        { fecha: '2019-03-27', dato: 85 },
+        { fecha: '2019-04-03', dato: 110 },
+        { fecha: '2019-04-10', dato: 105 },
+        { fecha: '2019-04-24', dato: 135 },
+        { fecha: '2019-05-02', dato: 105 },
+        { fecha: '2019-05-08', dato: 118 },
+        { fecha: '2019-05-15', dato: 93 },
+        { fecha: '2019-05-22', dato: 120 },
+        { fecha: '2019-05-29', dato: 105 },
+        { fecha: '2019-06-05', dato: 100 },
+        { fecha: '2019-06-12', dato: 81 },
+        { fecha: '2019-06-19', dato: 63 },
+        { fecha: '2019-06-26', dato: 68 },
+        { fecha: '2019-07-03', dato: 125 },
+        { fecha: '2019-07-10', dato: 69 },
+        { fecha: '2019-07-17', dato: 94 },
+        { fecha: '2019-07-24', dato: 68 },
+        { fecha: '2019-07-31', dato: 131 },
+        { fecha: '2019-08-07', dato: 100 },
+        { fecha: '2019-08-14', dato: 44 },
+        { fecha: '2019-08-28', dato: 94 },
+        { fecha: '2019-09-04', dato: 25 },
+        { fecha: '2019-09-11', dato: 43 },
+        { fecha: '2019-09-18', dato: 74 },
+        { fecha: '2019-09-25', dato: 62 },
+        { fecha: '2019-10-02', dato: 55 },
+        { fecha: '2019-10-09', dato: 98 },
+        { fecha: '2019-10-16', dato: 92 },
+        { fecha: '2019-10-23', dato: 68 },
+        { fecha: '2019-10-30', dato: 91 },
+        { fecha: '2019-11-06', dato: 67 },
+        { fecha: '2019-11-13', dato: 71 },
+        { fecha: '2019-11-20', dato: 62 },
+        { fecha: '2019-11-27', dato: 158 },
+        { fecha: '2019-12-04', dato: 166 },
+        { fecha: '2019-12-11', dato: 88 },
+        { fecha: '2019-12-17', dato: 117 },
+        { fecha: '2019-12-19', dato: 77 },
+        { fecha: '2020-01-08', dato: 125 },
+        { fecha: '2020-01-15', dato: 174 },
+        { fecha: '2020-01-22', dato: 341 },
+        { fecha: '2020-01-29', dato: 113 },
+        { fecha: '2020-02-05', dato: 132 },
+        { fecha: '2020-02-12', dato: 85 },
+        { fecha: '2020-02-19', dato: 85 },
+        { fecha: '2020-02-26', dato: 64 },
+        { fecha: '2020-03-04', dato: 47 },
+        { fecha: '2020-03-11', dato: 116 },
+        { fecha: '2020-03-18', dato: 87 }],
+      xkey: 'fecha',
+      ykeys: ['dato'],
+      labels: ['Dato'],
+      lineColors: ['#FF5B02'],
+      xLabelFormat: function(d) { return d.getDate()+'/'+(d.getMonth()+1)+'/'+d.getFullYear(); },
+      dateFormat: function(ts) { var d = new Date(ts); return d.getDate() + '/' + (d.getMonth() + 1) + '/' + d.getFullYear(); }
+    });
+  }
+  })
+  // LenguetaWeb LenguetasIndicadorGrafica2 ejecuta lo siguiente al mostrar
+  $('#LenguetasIndicador a[href="#LenguetasIndicadorGrafica2"]').on('shown.bs.tab', function(e){
+  if (typeof varSmiGraficasConcentracionDeParticulasMenoresA10MicrasEnTorreonDifRevolucion === 'undefined') {
+    varSmiGraficasConcentracionDeParticulasMenoresA10MicrasEnTorreonDifRevolucion = Morris.Line({
+      element: 'SmiGraficasConcentracionDeParticulasMenoresA10MicrasEnTorreonDifRevolucion',
+      data: [
+        { fecha: '2015-01-06', dato: 40 },
+        { fecha: '2015-01-13', dato: 47 },
+        { fecha: '2015-01-20', dato: 63 },
+        { fecha: '2015-01-27', dato: 54 },
+        { fecha: '2015-02-04', dato: 60 },
+        { fecha: '2015-02-10', dato: 54 },
+        { fecha: '2015-02-17', dato: 40 },
+        { fecha: '2015-02-24', dato: 55 },
+        { fecha: '2015-03-03', dato: 14 },
+        { fecha: '2015-03-10', dato: 26 },
+        { fecha: '2015-03-18', dato: 48 },
+        { fecha: '2015-03-24', dato: 48 },
+        { fecha: '2015-04-07', dato: 56 },
+        { fecha: '2015-04-14', dato: 34 },
+        { fecha: '2015-04-21', dato: 49 },
+        { fecha: '2015-04-28', dato: 28 },
+        { fecha: '2015-05-06', dato: 36 },
+        { fecha: '2015-05-12', dato: 42 },
+        { fecha: '2015-05-19', dato: 43 },
+        { fecha: '2015-05-26', dato: 58 },
+        { fecha: '2015-06-02', dato: 43 },
+        { fecha: '2015-06-09', dato: 35 },
+        { fecha: '2015-06-16', dato: 28 },
+        { fecha: '2015-06-23', dato: 35 },
+        { fecha: '2015-06-30', dato: 28 },
+        { fecha: '2015-07-07', dato: 28 },
+        { fecha: '2015-07-14', dato: 51 },
+        { fecha: '2015-07-21', dato: 28 },
+        { fecha: '2015-07-28', dato: 50 },
+        { fecha: '2015-08-04', dato: 36 },
+        { fecha: '2015-08-11', dato: 35 },
+        { fecha: '2015-08-18', dato: 29 },
+        { fecha: '2015-09-01', dato: 43 },
+        { fecha: '2015-09-08', dato: 43 },
+        { fecha: '2015-09-17', dato: 36 },
+        { fecha: '2015-09-22', dato: 28 },
+        { fecha: '2015-09-29', dato: 50 },
+        { fecha: '2015-10-06', dato: 21 },
+        { fecha: '2015-10-13', dato: 43 },
+        { fecha: '2015-10-20', dato: 56 },
+        { fecha: '2015-10-27', dato: 42 },
+        { fecha: '2015-11-03', dato: 35 },
+        { fecha: '2015-11-10', dato: 71 },
+        { fecha: '2015-11-17', dato: 52 },
+        { fecha: '2015-11-24', dato: 79 },
+        { fecha: '2015-12-01', dato: 45 },
+        { fecha: '2015-12-08', dato: 78 },
+        { fecha: '2015-12-15', dato: 27 },
+        { fecha: '2015-12-22', dato: 21 },
+        { fecha: '2016-01-12', dato: 59 },
+        { fecha: '2016-01-19', dato: 83 },
+        { fecha: '2016-01-26', dato: 40 },
+        { fecha: '2016-02-02', dato: 27 },
+        { fecha: '2016-02-09', dato: 61 },
+        { fecha: '2016-02-16', dato: 84 },
+        { fecha: '2016-02-23', dato: 54 },
+        { fecha: '2016-03-01', dato: 49 },
+        { fecha: '2016-03-08', dato: 34 },
+        { fecha: '2016-03-12', dato: 42 },
+        { fecha: '2016-03-15', dato: 56 },
+        { fecha: '2016-03-19', dato: 57 },
+        { fecha: '2016-03-26', dato: 30 },
+        { fecha: '2016-03-29', dato: 21 },
+        { fecha: '2016-04-05', dato: 55 },
+        { fecha: '2016-04-12', dato: 42 },
+        { fecha: '2016-04-19', dato: 57 },
+        { fecha: '2016-04-26', dato: 30 },
+        { fecha: '2016-05-03', dato: 42 },
+        { fecha: '2016-05-10', dato: 44 },
+        { fecha: '2016-05-17', dato: 30 },
+        { fecha: '2016-05-24', dato: 51 },
+        { fecha: '2016-05-31', dato: 43 },
+        { fecha: '2016-06-07', dato: 50 },
+        { fecha: '2016-06-14', dato: 37 },
+        { fecha: '2016-06-21', dato: 28 },
+        { fecha: '2016-07-05', dato: 28 },
+        { fecha: '2016-07-12', dato: 35 },
+        { fecha: '2016-07-19', dato: 28 },
+        { fecha: '2016-07-26', dato: 35 },
+        { fecha: '2016-08-02', dato: 43 },
+        { fecha: '2016-08-09', dato: 25 },
+        { fecha: '2016-08-16', dato: 35 },
+        { fecha: '2016-08-23', dato: 35 },
+        { fecha: '2016-09-06', dato: 29 },
+        { fecha: '2016-09-13', dato: 42 },
+        { fecha: '2016-09-20', dato: 43 },
+        { fecha: '2016-09-27', dato: 48 },
+        { fecha: '2016-10-04', dato: 42 },
+        { fecha: '2016-10-11', dato: 48 },
+        { fecha: '2016-10-18', dato: 64 },
+        { fecha: '2016-10-25', dato: 42 },
+        { fecha: '2016-11-01', dato: 70 },
+        { fecha: '2016-11-08', dato: 41 },
+        { fecha: '2016-11-15', dato: 47 },
+        { fecha: '2016-11-22', dato: 49 },
+        { fecha: '2016-11-29', dato: 34 },
+        { fecha: '2016-12-06', dato: 65 },
+        { fecha: '2016-12-13', dato: 68 },
+        { fecha: '2016-12-20', dato: 76 },
+        { fecha: '2017-01-03', dato: 73 },
+        { fecha: '2017-01-10', dato: 67 },
+        { fecha: '2017-01-17', dato: 27 },
+        { fecha: '2017-01-24', dato: 28 },
+        { fecha: '2017-01-31', dato: 66 },
+        { fecha: '2017-02-07', dato: 69 },
+        { fecha: '2017-02-14', dato: 33 },
+        { fecha: '2017-02-21', dato: 61 },
+        { fecha: '2017-02-28', dato: 48 },
+        { fecha: '2017-03-14', dato: 48 },
+        { fecha: '2017-03-22', dato: 56 },
+        { fecha: '2017-03-28', dato: 150 },
+        { fecha: '2017-04-04', dato: 47 },
+        { fecha: '2017-04-10', dato: 86 },
+        { fecha: '2017-04-18', dato: 40 },
+        { fecha: '2017-04-25', dato: 28 },
+        { fecha: '2017-05-02', dato: 40 },
+        { fecha: '2017-05-09', dato: 34 },
+        { fecha: '2017-05-16', dato: 20 },
+        { fecha: '2017-05-23', dato: 41 },
+        { fecha: '2017-05-30', dato: 27 },
+        { fecha: '2017-06-06', dato: 27 },
+        { fecha: '2017-06-13', dato: 41 },
+        { fecha: '2017-06-20', dato: 26 },
+        { fecha: '2017-06-27', dato: 27 },
+        { fecha: '2017-07-04', dato: 41 },
+        { fecha: '2017-07-11', dato: 34 },
+        { fecha: '2017-07-20', dato: 13 },
+        { fecha: '2017-07-25', dato: 20 },
+        { fecha: '2017-08-01', dato: 40 },
+        { fecha: '2017-08-08', dato: 20 },
+        { fecha: '2017-08-15', dato: 27 },
+        { fecha: '2017-08-22', dato: 40 },
+        { fecha: '2017-08-29', dato: 40 },
+        { fecha: '2017-09-05', dato: 35 },
+        { fecha: '2017-09-12', dato: 42 },
+        { fecha: '2017-09-19', dato: 51 },
+        { fecha: '2017-09-26', dato: 34 },
+        { fecha: '2017-10-03', dato: 34 },
+        { fecha: '2017-10-10', dato: 34 },
+        { fecha: '2017-10-17', dato: 60 },
+        { fecha: '2017-10-24', dato: 40 },
+        { fecha: '2017-10-31', dato: 73 },
+        { fecha: '2017-11-07', dato: 73 },
+        { fecha: '2017-11-14', dato: 73 },
+        { fecha: '2017-11-21', dato: 72 },
+        { fecha: '2017-11-28', dato: 114 },
+        { fecha: '2017-12-05', dato: 79 },
+        { fecha: '2017-12-12', dato: 64 },
+        { fecha: '2017-12-18', dato: 45 },
+        { fecha: '2018-01-03', dato: 59 },
+        { fecha: '2018-01-09', dato: 65 },
+        { fecha: '2018-01-16', dato: 38 },
+        { fecha: '2018-01-23', dato: 64 },
+        { fecha: '2018-01-31', dato: 72 },
+        { fecha: '2018-02-06', dato: 52 },
+        { fecha: '2018-02-13', dato: 59 },
+        { fecha: '2018-02-20', dato: 40 },
+        { fecha: '2018-02-27', dato: 33 },
+        { fecha: '2018-03-06', dato: 86 },
+        { fecha: '2018-03-14', dato: 58 },
+        { fecha: '2018-03-20', dato: 73 },
+        { fecha: '2018-04-04', dato: 52 },
+        { fecha: '2018-04-10', dato: 33 },
+        { fecha: '2018-04-17', dato: 48 },
+        { fecha: '2018-04-24', dato: 53 },
+        { fecha: '2018-05-02', dato: 35 },
+        { fecha: '2018-05-08', dato: 21 },
+        { fecha: '2018-05-15', dato: 40 },
+        { fecha: '2018-05-22', dato: 34 },
+        { fecha: '2018-05-29', dato: 56 },
+        { fecha: '2018-06-12', dato: 68 },
+        { fecha: '2018-06-19', dato: 34 },
+        { fecha: '2018-06-26', dato: 20 },
+        { fecha: '2018-07-03', dato: 47 },
+        { fecha: '2018-07-11', dato: 26 },
+        { fecha: '2018-07-18', dato: 56 },
+        { fecha: '2018-07-25', dato: 63 },
+        { fecha: '2018-08-07', dato: 27 },
+        { fecha: '2018-08-15', dato: 47 },
+        { fecha: '2018-08-22', dato: 26 },
+        { fecha: '2018-08-29', dato: 32 },
+        { fecha: '2018-09-05', dato: 40 },
+        { fecha: '2018-09-12', dato: 40 },
+        { fecha: '2018-09-19', dato: 33 },
+        { fecha: '2018-09-26', dato: 40 },
+        { fecha: '2018-10-03', dato: 47 },
+        { fecha: '2018-10-10', dato: 53 },
+        { fecha: '2018-10-25', dato: 60 },
+        { fecha: '2018-10-31', dato: 46 },
+        { fecha: '2018-11-07', dato: 79 },
+        { fecha: '2018-11-14', dato: 49 },
+        { fecha: '2018-11-21', dato: 51 },
+        { fecha: '2018-11-28', dato: 58 },
+        { fecha: '2018-12-05', dato: 58 },
+        { fecha: '2018-12-12', dato: 57 },
+        { fecha: '2018-12-20', dato: 51 },
+        { fecha: '2019-01-02', dato: 32 },
+        { fecha: '2019-01-09', dato: 39 },
+        { fecha: '2019-01-16', dato: 64 },
+        { fecha: '2019-01-23', dato: 38 },
+        { fecha: '2019-01-30', dato: 64 },
+        { fecha: '2019-02-06', dato: 26 },
+        { fecha: '2019-02-13', dato: 58 },
+        { fecha: '2019-02-20', dato: 52 },
+        { fecha: '2019-02-27', dato: 58 },
+        { fecha: '2019-03-06', dato: 76 },
+        { fecha: '2019-03-13', dato: 26 },
+        { fecha: '2019-03-20', dato: 26 },
+        { fecha: '2019-03-27', dato: 46 },
+        { fecha: '2019-04-03', dato: 46 },
+        { fecha: '2019-04-10', dato: 27 },
+        { fecha: '2019-04-24', dato: 34 },
+        { fecha: '2019-05-02', dato: 47 },
+        { fecha: '2019-05-08', dato: 54 },
+        { fecha: '2019-05-15', dato: 57 },
+        { fecha: '2019-05-22', dato: 48 },
+        { fecha: '2019-05-29', dato: 42 },
+        { fecha: '2019-06-05', dato: 51 },
+        { fecha: '2019-06-12', dato: 29 },
+        { fecha: '2019-06-19', dato: 30 },
+        { fecha: '2019-06-26', dato: 30 },
+        { fecha: '2019-07-03', dato: 30 },
+        { fecha: '2019-07-10', dato: 37 },
+        { fecha: '2019-07-17', dato: 35 },
+        { fecha: '2019-07-24', dato: 28 },
+        { fecha: '2019-07-31', dato: 50 },
+        { fecha: '2019-08-07', dato: 35 },
+        { fecha: '2019-08-14', dato: 42 },
+        { fecha: '2019-08-21', dato: 28 },
+        { fecha: '2019-08-28', dato: 42 },
+        { fecha: '2019-09-04', dato: 21 },
+        { fecha: '2019-09-11', dato: 28 },
+        { fecha: '2019-09-18', dato: 42 },
+        { fecha: '2019-09-25', dato: 35 },
+        { fecha: '2019-10-02', dato: 25 },
+        { fecha: '2019-10-09', dato: 56 },
+        { fecha: '2019-10-16', dato: 28 },
+        { fecha: '2019-10-23', dato: 44 },
+        { fecha: '2019-10-30', dato: 48 },
+        { fecha: '2019-11-06', dato: 35 },
+        { fecha: '2019-11-14', dato: 45 },
+        { fecha: '2019-11-20', dato: 20 },
+        { fecha: '2019-11-27', dato: 75 },
+        { fecha: '2019-12-04', dato: 73 },
+        { fecha: '2019-12-11', dato: 40 },
+        { fecha: '2019-12-17', dato: 32 },
+        { fecha: '2019-12-20', dato: 51 },
+        { fecha: '2020-01-08', dato: 53 },
+        { fecha: '2020-01-15', dato: 73 },
+        { fecha: '2020-01-22', dato: 238 },
+        { fecha: '2020-01-29', dato: 40 },
+        { fecha: '2020-02-05', dato: 68 },
+        { fecha: '2020-02-13', dato: 46 },
+        { fecha: '2020-02-19', dato: 48 },
+        { fecha: '2020-02-26', dato: 32 },
+        { fecha: '2020-03-11', dato: 62 },
+        { fecha: '2020-03-18', dato: 35 }],
+      xkey: 'fecha',
+      ykeys: ['dato'],
+      labels: ['Dato'],
+      lineColors: ['#FF5B02'],
+      xLabelFormat: function(d) { return d.getDate()+'/'+(d.getMonth()+1)+'/'+d.getFullYear(); },
+      dateFormat: function(ts) { var d = new Date(ts); return d.getDate() + '/' + (d.getMonth() + 1) + '/' + d.getFullYear(); }
+    });
+  }
+  })
+  // LenguetaWeb LenguetasIndicadorGrafica3 ejecuta lo siguiente al mostrar
+  $('#LenguetasIndicador a[href="#LenguetasIndicadorGrafica3"]').on('shown.bs.tab', function(e){
+  if (typeof varSmiGraficasConcentracionDeParticulasMenoresA10MicrasEnTorreonHecat === 'undefined') {
+    varSmiGraficasConcentracionDeParticulasMenoresA10MicrasEnTorreonHecat = Morris.Line({
+      element: 'SmiGraficasConcentracionDeParticulasMenoresA10MicrasEnTorreonHecat',
+      data: [
+        { fecha: '2015-02-11', dato: 102 },
+        { fecha: '2015-02-18', dato: 75 },
+        { fecha: '2015-02-25', dato: 68 },
+        { fecha: '2015-03-04', dato: 60 },
+        { fecha: '2015-03-11', dato: 27 },
+        { fecha: '2015-03-18', dato: 63 },
+        { fecha: '2015-03-25', dato: 97 },
+        { fecha: '2015-04-08', dato: 71 },
+        { fecha: '2015-04-15', dato: 63 },
+        { fecha: '2015-04-22', dato: 71 },
+        { fecha: '2015-04-29', dato: 55 },
+        { fecha: '2015-05-06', dato: 51 },
+        { fecha: '2015-05-13', dato: 56 },
+        { fecha: '2015-05-27', dato: 79 },
+        { fecha: '2015-06-03', dato: 50 },
+        { fecha: '2015-06-10', dato: 87 },
+        { fecha: '2015-06-17', dato: 35 },
+        { fecha: '2015-06-24', dato: 56 },
+        { fecha: '2015-07-01', dato: 35 },
+        { fecha: '2015-07-08', dato: 35 },
+        { fecha: '2015-07-15', dato: 86 },
+        { fecha: '2015-07-22', dato: 72 },
+        { fecha: '2015-07-29', dato: 71 },
+        { fecha: '2015-08-05', dato: 64 },
+        { fecha: '2015-08-12', dato: 42 },
+        { fecha: '2015-08-19', dato: 109 },
+        { fecha: '2015-08-26', dato: 49 },
+        { fecha: '2015-09-02', dato: 78 },
+        { fecha: '2015-09-09', dato: 78 },
+        { fecha: '2015-09-17', dato: 57 },
+        { fecha: '2015-09-23', dato: 50 },
+        { fecha: '2015-09-30', dato: 63 },
+        { fecha: '2015-10-07', dato: 64 },
+        { fecha: '2015-10-14', dato: 63 },
+        { fecha: '2015-10-21', dato: 63 },
+        { fecha: '2015-10-28', dato: 76 },
+        { fecha: '2015-11-04', dato: 76 },
+        { fecha: '2015-11-11', dato: 111 },
+        { fecha: '2015-11-18', dato: 125 },
+        { fecha: '2015-11-25', dato: 139 },
+        { fecha: '2015-12-02', dato: 81 },
+        { fecha: '2015-12-09', dato: 121 },
+        { fecha: '2015-12-16', dato: 73 },
+        { fecha: '2015-12-23', dato: 21 },
+        { fecha: '2016-01-13', dato: 67 },
+        { fecha: '2016-01-20', dato: 123 },
+        { fecha: '2016-01-27', dato: 36 },
+        { fecha: '2016-02-03', dato: 49 },
+        { fecha: '2016-02-10', dato: 91 },
+        { fecha: '2016-02-17', dato: 87 },
+        { fecha: '2016-02-24', dato: 84 },
+        { fecha: '2016-03-02', dato: 89 },
+        { fecha: '2016-03-09', dato: 59 },
+        { fecha: '2016-03-16', dato: 71 },
+        { fecha: '2016-03-30', dato: 92 },
+        { fecha: '2016-04-06', dato: 96 },
+        { fecha: '2016-04-13', dato: 64 },
+        { fecha: '2016-04-20', dato: 103 },
+        { fecha: '2016-04-27', dato: 47 },
+        { fecha: '2016-05-11', dato: 68 },
+        { fecha: '2016-05-18', dato: 66 },
+        { fecha: '2016-05-25', dato: 136 },
+        { fecha: '2016-06-01', dato: 77 },
+        { fecha: '2016-06-08', dato: 34 },
+        { fecha: '2016-06-15', dato: 105 },
+        { fecha: '2016-06-22', dato: 59 },
+        { fecha: '2016-06-29', dato: 54 },
+        { fecha: '2016-07-06', dato: 66 },
+        { fecha: '2016-07-13', dato: 45 },
+        { fecha: '2016-07-20', dato: 65 },
+        { fecha: '2016-07-27', dato: 64 },
+        { fecha: '2016-08-03', dato: 52 },
+        { fecha: '2016-08-10', dato: 52 },
+        { fecha: '2016-08-17', dato: 32 },
+        { fecha: '2016-08-24', dato: 32 },
+        { fecha: '2016-09-07', dato: 71 },
+        { fecha: '2016-09-14', dato: 64 },
+        { fecha: '2016-09-21', dato: 52 },
+        { fecha: '2016-09-28', dato: 63 },
+        { fecha: '2016-10-05', dato: 97 },
+        { fecha: '2016-10-12', dato: 109 },
+        { fecha: '2016-10-19', dato: 109 },
+        { fecha: '2016-10-26', dato: 64 },
+        { fecha: '2016-11-02', dato: 109 },
+        { fecha: '2016-11-09', dato: 25 },
+        { fecha: '2016-11-16', dato: 90 },
+        { fecha: '2016-11-23', dato: 76 },
+        { fecha: '2016-11-30', dato: 105 },
+        { fecha: '2016-12-07', dato: 99 },
+        { fecha: '2016-12-14', dato: 180 },
+        { fecha: '2016-12-21', dato: 126 },
+        { fecha: '2017-01-04', dato: 183 },
+        { fecha: '2017-01-11', dato: 110 },
+        { fecha: '2017-01-18', dato: 84 },
+        { fecha: '2017-01-25', dato: 99 },
+        { fecha: '2017-02-01', dato: 143 },
+        { fecha: '2017-02-08', dato: 86 },
+        { fecha: '2017-02-15', dato: 73 },
+        { fecha: '2017-02-22', dato: 68 },
+        { fecha: '2017-03-01', dato: 130 },
+        { fecha: '2017-03-15', dato: 74 },
+        { fecha: '2017-03-22', dato: 74 },
+        { fecha: '2017-03-29', dato: 131 },
+        { fecha: '2017-04-05', dato: 105 },
+        { fecha: '2017-04-10', dato: 46 },
+        { fecha: '2017-04-18', dato: 45 },
+        { fecha: '2017-04-26', dato: 52 },
+        { fecha: '2017-05-02', dato: 64 },
+        { fecha: '2017-05-09', dato: 32 },
+        { fecha: '2017-05-16', dato: 39 },
+        { fecha: '2017-05-23', dato: 51 },
+        { fecha: '2017-06-13', dato: 54 },
+        { fecha: '2017-06-20', dato: 33 },
+        { fecha: '2017-06-27', dato: 32 },
+        { fecha: '2017-07-04', dato: 39 },
+        { fecha: '2017-07-11', dato: 39 },
+        { fecha: '2017-07-20', dato: 19 },
+        { fecha: '2017-07-25', dato: 32 },
+        { fecha: '2017-08-01', dato: 39 },
+        { fecha: '2017-08-08', dato: 19 },
+        { fecha: '2017-08-15', dato: 39 },
+        { fecha: '2017-08-22', dato: 39 },
+        { fecha: '2017-08-29', dato: 25 },
+        { fecha: '2017-09-05', dato: 19 },
+        { fecha: '2017-09-12', dato: 64 },
+        { fecha: '2017-09-19', dato: 42 },
+        { fecha: '2017-09-26', dato: 25 },
+        { fecha: '2017-10-03', dato: 27 },
+        { fecha: '2017-10-11', dato: 44 },
+        { fecha: '2017-10-17', dato: 60 },
+        { fecha: '2017-10-24', dato: 43 },
+        { fecha: '2017-10-31', dato: 79 },
+        { fecha: '2017-11-07', dato: 110 },
+        { fecha: '2017-11-14', dato: 91 },
+        { fecha: '2017-11-21', dato: 72 },
+        { fecha: '2017-11-28', dato: 85 },
+        { fecha: '2017-12-05', dato: 89 },
+        { fecha: '2017-12-12', dato: 64 },
+        { fecha: '2017-12-18', dato: 42 },
+        { fecha: '2018-01-03', dato: 51 },
+        { fecha: '2018-01-10', dato: 66 },
+        { fecha: '2018-01-17', dato: 29 },
+        { fecha: '2018-01-24', dato: 47 },
+        { fecha: '2018-02-01', dato: 60 },
+        { fecha: '2018-02-07', dato: 37 },
+        { fecha: '2018-02-14', dato: 72 },
+        { fecha: '2018-02-21', dato: 24 },
+        { fecha: '2018-02-28', dato: 73 },
+        { fecha: '2018-03-07', dato: 49 },
+        { fecha: '2018-03-14', dato: 41 },
+        { fecha: '2018-03-21', dato: 67 },
+        { fecha: '2018-04-04', dato: 56 },
+        { fecha: '2018-04-12', dato: 48 },
+        { fecha: '2018-04-18', dato: 57 },
+        { fecha: '2018-04-25', dato: 50 },
+        { fecha: '2018-05-02', dato: 38 },
+        { fecha: '2018-05-09', dato: 44 },
+        { fecha: '2018-05-16', dato: 38 },
+        { fecha: '2018-05-23', dato: 58 },
+        { fecha: '2018-05-30', dato: 122 },
+        { fecha: '2018-06-06', dato: 57 },
+        { fecha: '2018-06-13', dato: 32 },
+        { fecha: '2018-06-20', dato: 32 },
+        { fecha: '2018-06-27', dato: 25 },
+        { fecha: '2018-07-04', dato: 45 },
+        { fecha: '2018-07-11', dato: 39 },
+        { fecha: '2018-07-18', dato: 45 },
+        { fecha: '2018-07-25', dato: 107 },
+        { fecha: '2018-08-01', dato: 31 },
+        { fecha: '2018-08-07', dato: 25 },
+        { fecha: '2018-08-15', dato: 44 },
+        { fecha: '2018-08-22', dato: 25 },
+        { fecha: '2018-08-29', dato: 32 },
+        { fecha: '2018-09-05', dato: 26 },
+        { fecha: '2018-09-12', dato: 45 },
+        { fecha: '2018-09-19', dato: 19 },
+        { fecha: '2018-09-26', dato: 32 },
+        { fecha: '2018-10-03', dato: 63 },
+        { fecha: '2018-10-10', dato: 63 },
+        { fecha: '2018-10-25', dato: 80 },
+        { fecha: '2018-10-31', dato: 49 },
+        { fecha: '2018-11-07', dato: 97 },
+        { fecha: '2018-11-14', dato: 82 },
+        { fecha: '2018-11-21', dato: 53 },
+        { fecha: '2018-11-28', dato: 78 },
+        { fecha: '2018-12-05', dato: 61 },
+        { fecha: '2018-12-12', dato: 71 },
+        { fecha: '2018-12-20', dato: 70 },
+        { fecha: '2019-01-02', dato: 43 },
+        { fecha: '2019-01-09', dato: 37 },
+        { fecha: '2019-01-16', dato: 70 },
+        { fecha: '2019-01-23', dato: 48 },
+        { fecha: '2019-01-30', dato: 73 },
+        { fecha: '2019-02-06', dato: 37 },
+        { fecha: '2019-02-13', dato: 80 },
+        { fecha: '2019-02-20', dato: 72 },
+        { fecha: '2019-02-27', dato: 72 },
+        { fecha: '2019-03-06', dato: 104 },
+        { fecha: '2019-03-14', dato: 85 },
+        { fecha: '2019-03-20', dato: 30 },
+        { fecha: '2019-03-27', dato: 49 },
+        { fecha: '2019-04-03', dato: 76 },
+        { fecha: '2019-04-10', dato: 57 },
+        { fecha: '2019-04-24', dato: 57 },
+        { fecha: '2019-05-02', dato: 71 },
+        { fecha: '2019-05-08', dato: 84 },
+        { fecha: '2019-05-15', dato: 96 },
+        { fecha: '2019-05-22', dato: 56 },
+        { fecha: '2019-05-29', dato: 59 },
+        { fecha: '2019-06-05', dato: 57 },
+        { fecha: '2019-06-12', dato: 31 },
+        { fecha: '2019-06-19', dato: 41 },
+        { fecha: '2019-06-26', dato: 40 },
+        { fecha: '2019-07-03', dato: 46 },
+        { fecha: '2019-07-10', dato: 40 },
+        { fecha: '2019-07-17', dato: 44 },
+        { fecha: '2019-07-24', dato: 31 },
+        { fecha: '2019-07-31', dato: 56 },
+        { fecha: '2019-08-07', dato: 45 },
+        { fecha: '2019-08-14', dato: 56 },
+        { fecha: '2019-08-21', dato: 43 },
+        { fecha: '2019-08-28', dato: 57 },
+        { fecha: '2019-09-04', dato: 20 },
+        { fecha: '2019-09-11', dato: 32 },
+        { fecha: '2019-09-18', dato: 57 },
+        { fecha: '2019-09-25', dato: 46 },
+        { fecha: '2019-10-09', dato: 51 },
+        { fecha: '2019-10-16', dato: 38 },
+        { fecha: '2019-10-23', dato: 53 },
+        { fecha: '2019-10-30', dato: 63 },
+        { fecha: '2019-11-06', dato: 44 },
+        { fecha: '2019-11-14', dato: 43 },
+        { fecha: '2019-11-20', dato: 20 },
+        { fecha: '2019-11-27', dato: 105 },
+        { fecha: '2019-12-04', dato: 109 },
+        { fecha: '2019-12-11', dato: 55 },
+        { fecha: '2019-12-17', dato: 48 },
+        { fecha: '2019-12-20', dato: 70 },
+        { fecha: '2020-01-08', dato: 84 },
+        { fecha: '2020-01-22', dato: 167 },
+        { fecha: '2020-01-29', dato: 55 },
+        { fecha: '2020-02-05', dato: 63 },
+        { fecha: '2020-02-13', dato: 67 },
+        { fecha: '2020-02-19', dato: 68 },
+        { fecha: '2020-02-26', dato: 36 },
+        { fecha: '2020-03-11', dato: 95 },
+        { fecha: '2020-03-18', dato: 51 }],
+      xkey: 'fecha',
+      ykeys: ['dato'],
+      labels: ['Dato'],
+      lineColors: ['#FF5B02'],
+      xLabelFormat: function(d) { return d.getDate()+'/'+(d.getMonth()+1)+'/'+d.getFullYear(); },
+      dateFormat: function(ts) { var d = new Date(ts); return d.getDate() + '/' + (d.getMonth() + 1) + '/' + d.getFullYear(); }
+    });
+  }
+  })
+  // LenguetasWeb LenguetasIndicador ordenar que Datos es la que se mostrará
+  $(document).ready(function(){
+    $('#LenguetasIndicador a[href="#LenguetasIndicadorDatos"]').tab('show')
+  });
+</script>
+<script>
+  // Twitter
+  !function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="https://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");
+</script>
+
+<!-- Javascript termina -->
+<!-- Javascript Google Analytics -->
+<script>
+  // Google Analytics
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)})(window,document,'script','//www.google-analytics.com/analytics.js','ga');ga('create', 'UA-58290501-1', 'auto');ga('send', 'pageview');
+</script>
+</body>
+</html>

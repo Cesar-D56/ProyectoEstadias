@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+<!-- ===================================================================================================
+
+        Instituto Municipal de Planeación y Competitividad (IMPLAN) de Torreón.
+
+        3er. generación de la Plataforma del Conocimiento
+        Desarrollado por Ing. Guillermo Valdés Lozano <guivaloz en movimientolibre.com>
+
+        El software que lo construye está bajo la licencia GPL versión 3. © 2014, 2015, 2016, 2017.
+        Una copia está contenida en el archivo LICENCE al bajar desde GitHub.
+
+        Al usar, estudiar y copiar está aceptando los términos de uso de la información y del sitio web:
+          http://www.trcimplan.gob.mx/terminos/terminos-informacion.html
+          http://www.trcimplan.gob.mx/terminos/terminos-sitio.html
+
+        Descargue, estudie y colabore bajando todo este sitio web:
+          IMPLAN Torreón     https://github.com/TRCIMPLAN/trcimplan.github.io
+
+        Agradecemos y compartimos las tecnologías abiertas y gratuitas sobre las que se basa:
+          PHP                http://php.net
+          Twitter Bootstrap  http://getbootstrap.com
+          StartBootStrap     http://startbootstrap.com
+          Morris.js          https://morrisjs.github.io/morris.js/
+          Font Awesome       http://fontawesome.io
+          DataTables         https://www.datatables.net
+          Carto              https://carto.com
+          GitHub             https://github.com
+
+     =================================================================================================== -->
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Los datos abiertos son los datos digitales de carácter público que son accesibles en línea y que también pueden ser usados, reutilizados y redistribuidos por cualquier interesado.">
+  <meta name="author" content="Ing. Guillermo Valdés Lozano">
+  <meta name="keywords" content="IMPLAN, Torreon, Datos Abiertos">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="¿Qué son los datos abiertos? - IMPLAN Torreón">
+  <meta name="twitter:description" content="Los datos abiertos son los datos digitales de carácter público que son accesibles en línea y que también pueden ser usados, reutilizados y redistribuidos por cualquier interesado.">
+  <meta name="twitter:image" content="http://www.trcimplan.gob.mx/blog/que-son-datos-abiertos/imagen-previa.jpg">
+  <meta name="twitter:url" content="http://www.trcimplan.gob.mx/blog/que-son-datos-abiertos.html">
+  <meta name="og:title" content="¿Qué son los datos abiertos? - IMPLAN Torreón">
+  <meta name="og:description" content="Los datos abiertos son los datos digitales de carácter público que son accesibles en línea y que también pueden ser usados, reutilizados y redistribuidos por cualquier interesado.">
+  <meta name="og:image" content="http://www.trcimplan.gob.mx/blog/que-son-datos-abiertos/imagen-previa.jpg">
+  <meta name="og:url" content="http://www.trcimplan.gob.mx/blog/que-son-datos-abiertos.html">
+  <title>¿Qué son los datos abiertos? - IMPLAN Torreón</title>
+  <link rel="shortcut icon" type="image/x-icon" href="../imagenes/apple-touch-icon.png">
+  <link rel="apple-touch-icon" href="../imagenes/apple-touch-icon.png">
+  <link rel="apple-touch-icon" href="../imagenes/apple-touch-icon-76x76.png" sizes="76x76">
+  <link rel="apple-touch-icon" href="../imagenes/apple-touch-icon-120x120.png" sizes="120x120">
+  <link rel="apple-touch-icon" href="../imagenes/apple-touch-icon-152x152.png" sizes="152x152">
+  <link rel="apple-touch-icon" href="../imagenes/apple-touch-icon-180x180.png" sizes="180x180">
+  <link rel="icon" href="../imagenes/icon-hires.png" sizes="192x192">
+  <link rel="icon" href="../imagenes/icon-normal.png" sizes="128x128">
+  <link rel="alternate" type="application/rss+xml" href="../rss.xml" title="IMPLAN Torreón">
+  <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+  <link rel="stylesheet" type="text/css" href="../vendor/metisMenu/metisMenu.min.css">
+  <link rel="stylesheet" type="text/css" href="../vendor/datatables-plugins/dataTables.bootstrap.css">
+  <link rel="stylesheet" type="text/css" href="../vendor/morrisjs/morris.css">
+  <link rel="stylesheet" type="text/css" href="../vendor/font-awesome/css/font-awesome.min.css">
+  <link rel="stylesheet" type="text/css" href="../dist/css/sb-admin-2.min.css">
+  <link rel="stylesheet" type="text/css" href="../dist/css/plataforma-de-conocimiento.css">
+  <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Noto+Sans|Roboto+Condensed:400,700">
+  <link rel="stylesheet" type="text/css" href="http://libs.cartocdn.com/cartodb.js/v3/3.15/themes/css/cartodb.css">
+  <link rel="stylesheet" type="text/css" href="../dist/css/estilosvm.css">
+  <link rel="stylesheet" type="text/css" href="../dist/css/trcimplan.css">
+  <!-- SOPORTE PARA IE -->
+  <!--[if lt IE 9]>
+  <script type="text/javascript" src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+  <script type="text/javascript" src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+  <![endif]-->
+</head>
+<body>
+<div id="wrapper">
+  <nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="../index.html"><img class="navbar-brand-img" src="../imagenes/implan-barra-logo-chico-gris.png" alt="IMPLAN Torreón"></a>
+    </div>
+  <div class="navbar-default sidebar" role="navigation">
+    <div class="sidebar-nav navbar-collapse">
+      <ul class="nav" id="side-menu">
+        <li class="sidebar-search">
+          <form method="get" action="http://www.trcimplan.gob.mx/buscador-resultados.html">
+            <div class="input-group custom-search-form">
+              <input type="text" class="form-control" placeholder="Google buscar..." value="" name="q">
+              <span class="input-group-btn">
+                <button class="btn btn-default" type="submit"><i class="fa fa-search"></i></button>
+              </span>
+            </div>
+          </form>
+        </li>
+        <li class="active">
+          <a href="#"><span class="navegacion-icono"><i class="fa fa-lightbulb-o"></i></span> Análisis Publicados<span class="fa arrow"></span></a>
+          <ul class="nav nav-second-level">
+            <li><a href="../blog/index.html"><span class="navegacion-icono"><i class="fa fa-file-text-o"></i></span> Últimos Análisis</a></li>
+            <li><a href="../excolaboradores/index.html"><span class="navegacion-icono"><i class="fa fa-file-text-o"></i></span> Análisis por Autor</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="#"><span class="navegacion-icono"><i class="fa fa-area-chart"></i></span> Indicadores<span class="fa arrow"></span></a>
+          <ul class="nav nav-second-level">
+            <li><a href="../smi/introduccion.html"><span class="navegacion-icono"><i class="fa fa-file-text-o"></i></span> Introducción al SMI</a></li>
+            <li><a href="../indicadores-categorias/index.html"><span class="navegacion-icono"><i class="fa fa-th-list"></i></span> Indicadores por Categoría</a></li>
+            <li><a href="../smi/por-region.html"><span class="navegacion-icono"><i class="fa fa-table"></i></span> Indicadores por Región</a></li>
+            <li><a href="../smi/datos-abiertos.html"><span class="navegacion-icono"><i class="fa fa-download"></i></span> Datos Abiertos</a></li>
+            <li><a href="../smi/niveles-socioeconomicos.html"><span class="navegacion-icono"><i class="fa fa-bar-chart"></i></span> Niveles Socioeconómicos</a></li>
+            <li><a href="../monitores/index.html"><span class="navegacion-icono"><i class="fa fa-file-text-o"></i></span> Monitores</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="#"><span class="navegacion-icono"><i class="fa fa-puzzle-piece"></i></span> Indicadores Básicos de Colonias<span class="fa arrow"></span></a>
+          <ul class="nav nav-second-level">
+            <li><a href="../ibc/introduccion.html"><span class="navegacion-icono"><i class="fa fa-file-text-o"></i></span> Introducción al IBC</a></li>
+            <li><a href="../ibc-colonias-torreon/index.html"><span class="navegacion-icono"><i class="fa fa-font"></i></span> Colonias de Torreón</a></li>
+            <li><a href="https://implantorreon.carto.com/u/sigimplan/builder/907a6bc0-2c7e-451e-9668-b78d952e52ff/embed" target="_blank"><span class="navegacion-icono"><i class="fa fa-external-link"></i></span> Mapa Completo</a></li>
+            <li><a href="../ibc/torreon-urbano.html"><span class="navegacion-icono"><i class="fa fa-table"></i></span> Torreón Urbano</a></li>
+            <li><a href="../ibc/datos-abiertos.html"><span class="navegacion-icono"><i class="fa fa-download"></i></span> Datos Abiertos</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="#"><span class="navegacion-icono"><i class="fa fa-map-marker"></i></span> Información Geográfica<span class="fa arrow"></span></a>
+          <ul class="nav nav-second-level">
+            <li><a href="../sig/introduccion.html"><span class="navegacion-icono"><i class="fa fa-file-text-o"></i></span> Introducción al SIG</a></li>
+            <li><a href="../sig-mapas-torreon/temas-sig.html"><span class="navegacion-icono"><i class="fa fa-map-o"></i></span> Mapas por Tema</a></li>
+            <li><a href="../sig-mapas-torreon/plan-director-desarrollo-urbano.html"><span class="navegacion-icono"><i class="fa fa-map-marker"></i></span> Usos de Suelo</a></li>
+            <li><a href="../sig/datos-abiertos.html"><span class="navegacion-icono"><i class="fa fa-download"></i></span> Datos Abiertos</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="#"><span class="navegacion-icono"><i class="fa fa-book"></i></span> Plan Estratégico Torreón 2040<span class="fa arrow"></span></a>
+          <ul class="nav nav-second-level">
+            <li><a href="../pet/indice.html"><span class="navegacion-icono"><i class="fa fa-list-ul"></i></span> Índice General</a></li>
+            <li><a href="../plan-estrategico-torreon-enfoque-metropolitano-2040/index.html"><span class="navegacion-icono"><i class="fa fa-download"></i></span> Descargar</a></li>
+            <li><a href="../plan-estrategico-metropolitano/descripcion-del-proceso.html"><span class="navegacion-icono"><i class="fa fa-calendar"></i></span> Descripción del proceso</a></li>
+            <li><a href="../proyectos/index.html"><span class="navegacion-icono"><i class="fa fa-check-square"></i></span> Proyectos</a></li>
+            <li><a href="../vision-de-ciudad/vision-de-ciudad.html"><span class="navegacion-icono"><i class="fa fa-file-text-o"></i></span> Visión de Ciudad desde IMPLAN</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="#"><span class="navegacion-icono"><i class="fa fa-briefcase"></i></span> Documentos<span class="fa arrow"></span></a>
+          <ul class="nav nav-second-level">
+            <li><a href="../sig-planes/index.html"><span class="navegacion-icono"><i class="fa fa-book"></i></span> Planes y Programas</a></li>
+            <li><a href="../investigaciones/index.html"><span class="navegacion-icono"><i class="fa fa-file-text-o"></i></span> Investigaciones</a></li>
+            <li><a href="../estudios/index.html"><span class="navegacion-icono"><i class="fa fa-file-text-o"></i></span> Estudios</a></li>
+          </ul>
+        </li>
+        <li><a href="../consejo-directivo/integrantes.html"><span class="navegacion-icono"><i class="fa fa-users"></i></span> Consejo Directivo</a></li>
+        <li><a href="../sala-prensa/index.html"><span class="navegacion-icono"><i class="fa fa-newspaper-o"></i></span> Sala de Prensa</a></li>
+        <li><a href="../programas-radio/index.html"><span class="navegacion-icono"><i class="fa fa-microphone"></i></span> Programas de Radio</a></li>
+        <li>
+          <a href="#"><span class="navegacion-icono"><i class="fa fa-file-text-o"></i></span> Consejo Visión Metrópoli<span class="fa arrow"></span></a>
+          <ul class="nav nav-second-level">
+            <li><a href="../convocatorias/vision-metropoli.html"><span class="navegacion-icono"><i class="fa fa-file-text-o"></i></span> Consejo Juvenil</a></li>
+            <li><a href="../vision-metropoli/integrantes.html"><span class="navegacion-icono"><i class="fa fa-file-text-o"></i></span> Integrantes del Consejo</a></li>
+            <li><a href="../vision-metropoli/index.html"><span class="navegacion-icono"><i class="fa fa-newspaper-o"></i></span> Sala de Prensa</a></li>
+            <li><a href="../vision-metropoli/reglamento-vision-metropoli-2020.pdf"><span class="navegacion-icono"><i class="fa fa-file-text-o"></i></span> Reglamento</a></li>
+            <li><a href="https://issuu.com/consejovisionmetropoli/docs/informe_visi_n_metr_poli_2019_-_2021" target="_blank"><span class="navegacion-icono"><i class="fa fa-file-text-o"></i></span> Informe 2019 - 2021</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="#"><span class="navegacion-icono"><i class="fa fa-building-o"></i></span> Institucional<span class="fa arrow"></span></a>
+          <ul class="nav nav-second-level">
+            <li><a href="../institucional/vision-mision.html"><span class="navegacion-icono"><i class="fa fa-trophy"></i></span> Misión / Visión</a></li>
+            <li><a href="../institucional/NuestrosProyectos.html"><span class="navegacion-icono"><i class="fa fa-pencil-square-o"></i></span> Nuestros Proyectos</a></li>
+            <li><a href="../institucional/mensaje-director.html"><span class="navegacion-icono"><i class="fa fa-comment"></i></span> Mensaje del Director</a></li>
+            <li><a href="../autores/index.html"><span class="navegacion-icono"><i class="fa fa-user"></i></span> Quienes Somos</a></li>
+            <li><a href="../institucional/estructura-organica.html"><span class="navegacion-icono"><i class="fa fa-sitemap"></i></span> Estructura Orgánica</a></li>
+            <li><a href="../institucional/modelo-operativo-universal.html"><span class="navegacion-icono"><i class="fa fa-slideshare"></i></span> Modelo Operativo Univ.</a></li>
+            <li><a href="../institucional/reglamentos.html"><span class="navegacion-icono"><i class="fa fa-gavel"></i></span> Reglamentos</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="#"><span class="navegacion-icono"><i class="fa fa-external-link"></i></span> Transparencia<span class="fa arrow"></span></a>
+          <ul class="nav nav-second-level">
+            <li><a href="http://www2.icai.org.mx/ipo/dependencia.php?dep=178#pageload" target="_blank"><span class="navegacion-icono"><i class="fa fa-file-text-o"></i></span> Transparencia Estatal (ICAI)</a></li>
+            <li><a href="https://consultapublicamx.inai.org.mx/vut-web/faces/view/consultaPublica.xhtml#inicio" target="_blank"><span class="navegacion-icono"><i class="fa fa-file-text-o"></i></span> Plataforma Nacional de Transparencia</a></li>
+            <li><a href="../transparencia/index.html"><span class="navegacion-icono"><i class="fa fa-briefcase"></i></span> Documentos</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="#"><span class="navegacion-icono"><i class="fa fa-share-alt"></i></span> Términos de Uso<span class="fa arrow"></span></a>
+          <ul class="nav nav-second-level">
+            <li><a href="../terminos/terminos-informacion.html"><span class="navegacion-icono"><i class="fa fa-cubes"></i></span> De la información</a></li>
+            <li><a href="../terminos/terminos-sitio.html"><span class="navegacion-icono"><i class="fa fa-globe"></i></span> Del sitio web</a></li>
+            <li><a href="../terminos/privacidad.html"><span class="navegacion-icono"><i class="fa fa-lock"></i></span> Aviso de Privacidad</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="#"><span class="navegacion-icono"><i class="fa fa-phone"></i></span> Contacto<span class="fa arrow"></span></a>
+          <ul class="nav nav-second-level">
+            <li><a href="../contacto/contacto.html"><span class="navegacion-icono"><i class="fa fa-phone"></i></span> Medios de contacto</a></li>
+            <li><a href="../preguntas-frecuentes/preguntas-frecuentes.html"><span class="navegacion-icono"><i class="fa fa-question"></i></span> Preguntas Frecuentes</a></li>
+            <li><a href="http://goo.gl/forms/1rdX4X128PpMOif73" target="_blank"><span class="navegacion-icono"><i class="fa fa-external-link"></i></span> Comentarios y Sugerencias</a></li>
+          </ul>
+        </li>
+        <li><a href="../convocatorias/index.html"><span class="navegacion-icono"><i class="fa fa-file-text-o"></i></span> Convocatorias</a></li>
+        <li><a href="http://177.244.42.17/ovie-torreon/#!" target="_blank"><span class="navegacion-icono"><i class="fa fa-map-marker"></i></span> Oficina Virtual de Información Económica (OVIE)</a></li>
+        <li><a href="https://arcg.is/0vySSr" target="_blank"><span class="navegacion-icono"><i class="fa fa-globe"></i></span> Atlas Municipal de Riesgos de Torreón</a></li>
+      </ul>
+    </div>
+  </div>
+  </nav>
+  <div id="page-wrapper">
+    <div class="cuerpo">
+      <article><div itemscope itemtype="http://schema.org/BlogPosting">
+        <div class="encabezado">
+          <h1 itemprop="headline">¿Qué son los datos abiertos?</h1>
+          <div class="encabezado-descripcion" itemprop="description">Los datos abiertos son los datos digitales de carácter público que son accesibles en línea y que también pueden ser usados, reutilizados y redistribuidos por cualquier interesado.</div>
+          <div class="encabezado-autor-fecha">
+            Por <span itemprop="author">Ing. Guillermo Valdés Lozano</span> -
+            <meta itemprop="datePublished" content="2015-02-26T08:35">26/02/2015 08:35
+          </div>
+        </div>
+        <span class="contenido-imagen-previa"><img class="img-responsive" itemprop="image" alt="¿Qué son los datos abiertos?" src="que-son-datos-abiertos/imagen.jpg"></span>
+        <div itemprop="articleBody">
+<!-- Contenido: Inicia  -->
+<p>Los <strong>datos abiertos</strong> son los datos digitales de carácter público que son <strong>accesibles en línea</strong>, es decir, por Internet, y que también <strong>pueden ser usados, reutilizados y redistribuidos por cualquier interesado</strong>.</p>
+
+<p>Ampliando la definición anterior, los datos abiertos constituyen una <strong>poderosa herramienta que mejora la forma de trabajar, dentro y fuera del gobierno federal, estatal o municipal.</strong> Hacia el interior aumenta la eficiencia del trabajo entre las dependencias; hacia el exterior, se vuelven componentes básicos para resolver problemáticas del ciudadano, empresas y organizaciones civiles.</p>
+
+<p>Cabe aclarar que datos abiertos <strong>no</strong> se refiere a datos personales, confidenciales, reservados o de seguridad nacional. <strong>Ni tampoco,</strong> que datos abiertos <em>es lo mismo que</em> transparencia; más bien, <strong>la transparencia es un beneficio adicional de tener una política de datos abiertos</strong>.</p>
+
+<h3>¿Para qué sirven los datos abiertos?</h3>
+
+<p>Los datos abiertos tienen el potencial de promover el desarrollo de nuevos instrumentos, conocimiento, productos y servicios. Con éstos, tanto el gobierno como pequeñas y grandes empresas, académicos y periodistas pueden:</p>
+
+<ul>
+<li>Generar crecimiento económico e innovación.</li>
+<li>Incrementar la eficiencia del gobierno.</li>
+<li>Mejorar el análisis y diseño de políticas públicas.</li>
+<li>Desarrollar nuevos y mejores servicios públicos.</li>
+<li>Fomentar la transparencia y rendición de cuentas.</li>
+<li>Crear impacto social.</li>
+</ul>
+
+<div class="videowrapper well"><iframe width="560" height="315" src="https://www.youtube.com/embed/SXlW5ShXh8o?rel=0" frameborder="0" allowfullscreen></iframe></div>
+
+<h3>Caso ejemplar “Mejora Tu Escuela”</h3>
+
+<p><a href="http://www.mejoratuescuela.org/">MejoraTuEscuela.org</a> es un sitio web del <a href="http://imco.org.mx">Instituto Mexicano para la Competitividad, A.C.</a> que tiene como objetivos poner a disposición de los padres de familia información de interés de las escuelas públicas y privadas con el fin de transformar la educación en México.</p>
+
+<p>Anteriormente a la existencia de este sitio web, como padres, era difícil encontrar datos de las evaluaciones de una o muchas escuela, los programas de apoyo a los que estén inscritas, las características de su infraestructura o la cantidad de maestros, entre muchas cosas.</p>
+
+<p><a href="http://www.mejoratuescuela.org/">MejoraTuEscuela.org</a> integra datos abiertos de la prueba ENLACE, de la SEP, del Registro Nacional de Alumnos, Maestros y Escuelas y del Sistema Nacional de Información Estadística Educativa de la SEP. La interfaz permite de forma sencilla encontrar y comparar los datos de una o más escuelas; además es posible realizar comentarios sobre una escuela y ver los que hayan hecho otros padres.</p>
+
+<p><img class="img-responsive" src="que-son-datos-abiertos/mejora-tu-escuela.jpg" alt="Mejora Tu Escuela"></p>
+
+<h3>Una política de datos abiertos no sólo requiere tecnología nueva</h3>
+
+<p>Estaríamos equivocados si creyéramos que para tener datos abiertos sólo se necesitara un nuevo sistema informático y su portal web para hacer pública la información. Para ser dignos de tener una política de datos abiertos habrá que <strong>revisar y cambiar los procesos</strong> que los crean, procesan y resguardan. Además de comprometernos, como servidores públicos, como las personas que trabajamos en estas labores, porque en nuestras manos están estos valiosos datos que compartiremos con todos los ciudadanos; esto implica <strong>cambiar nuestra forma de pensar y trabajar</strong> en aras de mejorar siempre.</p>
+
+<h3>Red México Abierto</h3>
+
+<p>El <a href="http://www.presidencia.gob.mx/edn/">Gobierno Federal bajo la Estrategia Digital Nacional</a> organizó los días 19 y 20 de febrero de 2015 el evento <a href="http://mxabierto.org/">MX Abierto: Seminario de Innovación Pública</a> con apoyo del Laboratorio Nacional de Políticas Públicas del <a href="http://www.cide.edu/">CIDE</a> y de la <a href="http://www.usaid.gov/where-we-work/latin-american-and-caribbean/mexico">USAID</a>.</p>
+
+<p>Durante el mismo se hizo público el <a href="http://www.dof.gob.mx/nota_detalle.php?codigo=5382838&amp;fecha=20/02/2015">decreto por el que se establece la regulación en materia de datos abiertos</a>. En su artículo noveno se establece que habrá convenios de colaboración con los gobiernos estatales y municipales para poner datos abiertos en el sitio de internet <a href="http://datos.gob.mx">www.datos.gob.mx</a>.</p>
+
+<div class="videowrapper well"><iframe width="560" height="315" src="https://www.youtube.com/embed/S6vbBzaAUlM?rel=0" frameborder="0" allowfullscreen></iframe></div>
+
+<!-- Contenido: Termina -->
+        </div>
+              <div class="publicador" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+          <span class="contenido-imagen-previa"><img class="img-responsive" itemprop="image" alt="Instituto Municipal de Planeación y Competitividad de Torreón" src="../imagenes/implan-logo.png"></span>
+          <h3 class="titulo" itemprop="name">Instituto Municipal de Planeación y Competitividad de Torreón</h3>
+          <div class="descripcion" itemprop="description">Órgano técnico responsable de la planeación del desarrollo del municipio de Torreón, Coahuila, México.</div>
+          <div class="contenido-imagen-previa-final"></div>
+        </div>
+      </div></article>
+      <aside>
+  <!-- Extra: Inicia  -->
+  <h3>Publicaciones relacionadas</h3>
+<p><b>Análisis Publicados</b></p>
+<ul>
+  <li><a href="http://www.trcimplan.gob.mx/blog/experiencias-sobre-datos-abiertos-en-mexico.html">Experiencias sobre Datos Abiertos en M&eacute;xico</a></li>
+  <li><a href="http://www.trcimplan.gob.mx/blog/datos-abiertos-gobiernos-municipales.html">Datos Abiertos en los Gobiernos Municipales</a></li>
+  <li><a href="http://www.trcimplan.gob.mx/blog/la-gran-oportunidad-del-gobierno-abierto.html">La Gran Oportunidad del Gobierno Abierto</a></li>
+  <li><a href="http://www.trcimplan.gob.mx/blog/introduccion-a-la-ciencia-de-datos-parte-1.html">Introducci&oacute;n a la Ciencia de Datos (parte 1)</a></li>
+  <li><a href="http://www.trcimplan.gob.mx/blog/la-plataforma-del-conocimiento-del-implan-torreon.html">La Plataforma del Conocimiento del IMPLAN Torre&oacute;n</a></li>
+  <li><a href="http://www.trcimplan.gob.mx/blog/nuevas-tecnologias-estandares-web.html">Nuevas Tecnolog&iacute;as y Est&aacute;ndares para la Web</a></li>
+  <li><a href="http://www.trcimplan.gob.mx/blog/plataformas-de-conocimiento-de-calidad.html">Plataformas de Conocimiento de Calidad</a></li>
+  <li><a href="http://www.trcimplan.gob.mx/blog/primer-analisis-de-datos-abiertos-en-seguridad-vial.html">Primer An&aacute;lisis de Datos Abiertos en Seguridad Vial</a></li>
+  <li><a href="http://www.trcimplan.gob.mx/blog/mejores-sitios-web-para-gobiernos-abiertos.html">Mejores sitios web y datos abiertos para Gobiernos Abiertos</a></li>
+  <li><a href="http://www.trcimplan.gob.mx/blog/introduccion-a-la-ciencia-de-datos-parte-2.html">Introducci&oacute;n a la Ciencia de Datos (parte 2)</a></li>
+</ul>
+<p><b>Sistema Metropolitano de Indicadores</b></p>
+<ul>
+  <li><a href="http://www.trcimplan.gob.mx/indicadores-torreon/gobierno-indice-de-herramientas-electronicas-de-gobiernos-locales.html">&Iacute;ndice de Herramientas Electr&oacute;nicas de Gobiernos Locales en Torre&oacute;n</a></li>
+  <li><a href="http://www.trcimplan.gob.mx/indicadores-gomez-palacio/gobierno-indice-de-informacion-presupuestal.html">&Iacute;ndice de Informaci&oacute;n Presupuestal en G&oacute;mez Palacio</a></li>
+  <li><a href="http://www.trcimplan.gob.mx/indicadores-torreon/gobierno-indice-de-informacion-presupuestal.html">&Iacute;ndice de Informaci&oacute;n Presupuestal en Torre&oacute;n</a></li>
+  <li><a href="http://www.trcimplan.gob.mx/indicadores-la-laguna/gobierno-indice-de-informacion-presupuestal.html">&Iacute;ndice de Informaci&oacute;n Presupuestal en La Laguna</a></li>
+  <li><a href="http://www.trcimplan.gob.mx/indicadores-matamoros/gobierno-indice-de-informacion-presupuestal.html">&Iacute;ndice de Informaci&oacute;n Presupuestal en Matamoros</a></li>
+  <li><a href="http://www.trcimplan.gob.mx/indicadores-lerdo/gobierno-indice-de-informacion-presupuestal.html">&Iacute;ndice de Informaci&oacute;n Presupuestal en Lerdo</a></li>
+  <li><a href="http://www.trcimplan.gob.mx/indicadores-la-laguna/gobierno-indice-de-gobierno-electronico-municipal.html">&Iacute;ndice de Gobierno Electr&oacute;nico Municipal en La Laguna</a></li>
+  <li><a href="http://www.trcimplan.gob.mx/indicadores-matamoros/gobierno-indice-de-gobierno-electronico-municipal.html">&Iacute;ndice de Gobierno Electr&oacute;nico Municipal en Matamoros</a></li>
+  <li><a href="http://www.trcimplan.gob.mx/indicadores-lerdo/gobierno-indice-de-gobierno-electronico-municipal.html">&Iacute;ndice de Gobierno Electr&oacute;nico Municipal en Lerdo</a></li>
+  <li><a href="http://www.trcimplan.gob.mx/indicadores-gomez-palacio/gobierno-indice-de-gobierno-electronico-municipal.html">&Iacute;ndice de Gobierno Electr&oacute;nico Municipal en G&oacute;mez Palacio</a></li>
+</ul>
+<p><b>Plan Estratégico Torreón</b></p>
+<ul>
+  <li><a href="http://www.trcimplan.gob.mx/pet/cartera-proyectos-buen-gobierno.html">Cartera de Proyectos: Buen Gobierno</a></li>
+  <li><a href="http://www.trcimplan.gob.mx/pet/vision-buen-gobierno.html">Visi&oacute;n de Buen Gobierno 2040</a></li>
+  <li><a href="http://www.trcimplan.gob.mx/pet/diagnostico-estrategico-buen-gobierno.html">Diagn&oacute;stico Estrat&eacute;gico: Buen Gobierno</a></li>
+  <li><a href="http://www.trcimplan.gob.mx/proyectos/cartera-pem.html">Cartera P.E.M.</a></li>
+  <li><a href="http://www.trcimplan.gob.mx/proyectos/planes-y-programas.html">Planes y Programas</a></li>
+  <li><a href="http://www.trcimplan.gob.mx/proyectos/proyectos-por-ejes.html">Proyectos por Ejes</a></li>
+  <li><a href="http://www.trcimplan.gob.mx/proyectos/banco-municipal-proyectos-inversion.html">Banco Municipal de Proyectos de Inversi&oacute;n</a></li>
+</ul>
+  <!-- Extra: Termina -->
+  </aside>
+<div class="contenido-social">
+  <h5>Compartir en Redes Sociales</h5>
+  <a href="https://twitter.com/share" class="twitter-share-button" data-via="trcimplan" data-lang="es">Twittear</a>
+  <iframe src="//www.facebook.com/plugins/like.php?href=http%3A%2F%2Fwww.trcimplan.gob.mx%2Fblog%2Fque-son-datos-abiertos.html&amp;width=300&amp;layout=button_count&amp;action=like&amp;show_faces=true&amp;share=false&amp;height=21" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:300px; height:21px;" allowTransparency="true"></iframe>
+</div>
+    </div>
+    <div class="mapa-inferior">
+          <div class="pull-right redes-sociales">
+            <a class="fa fa-twitter-square" href="http://www.twitter.com/trcimplan" target="_blank"></a>
+            <a class="fa fa-facebook-square" href="https://facebook.com/trcimplan" target="_blank"></a>
+            <a class="fa fa-facebook-square" href="http://www.instagram.com/implantorreon" target="_blank"></a>
+            <a class="fa fa-rss-square" href="../rss.xml"></a>
+          </div>
+    </div>
+  </div>
+</div>
+<!-- Javascript global inicia -->
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
+<script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="../vendor/metisMenu/metisMenu.min.js"></script>
+<script type="text/javascript" src="../vendor/datatables/js/jquery.dataTables.min.js"></script>
+<script type="text/javascript" src="../vendor/datatables-plugins/dataTables.bootstrap.min.js"></script>
+<script type="text/javascript" src="../vendor/datatables-responsive/dataTables.responsive.js"></script>
+<script type="text/javascript" src="../vendor/raphael/raphael.min.js"></script>
+<script type="text/javascript" src="../vendor/morrisjs/morris.min.js"></script>
+<script type="text/javascript" src="../dist/js/sb-admin-2.min.js"></script>
+<script type="text/javascript" src="http://libs.cartocdn.com/cartodb.js/v3/3.15/cartodb.js"></script>
+<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+<!-- Javascript global termina -->
+<!-- Javascript inicia -->
+<script>
+  // Twitter
+  !function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="https://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");
+</script>
+
+<!-- Javascript termina -->
+<!-- Javascript Google Analytics -->
+<script>
+  // Google Analytics
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)})(window,document,'script','//www.google-analytics.com/analytics.js','ga');ga('create', 'UA-58290501-1', 'auto');ga('send', 'pageview');
+</script>
+</body>
+</html>

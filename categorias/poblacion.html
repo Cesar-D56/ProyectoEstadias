@@ -1,0 +1,528 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+<!-- ===================================================================================================
+
+        Instituto Municipal de Planeación y Competitividad (IMPLAN) de Torreón.
+
+        3er. generación de la Plataforma del Conocimiento
+        Desarrollado por Ing. Guillermo Valdés Lozano <guivaloz en movimientolibre.com>
+
+        El software que lo construye está bajo la licencia GPL versión 3. © 2014, 2015, 2016, 2017.
+        Una copia está contenida en el archivo LICENCE al bajar desde GitHub.
+
+        Al usar, estudiar y copiar está aceptando los términos de uso de la información y del sitio web:
+          http://www.trcimplan.gob.mx/terminos/terminos-informacion.html
+          http://www.trcimplan.gob.mx/terminos/terminos-sitio.html
+
+        Descargue, estudie y colabore bajando todo este sitio web:
+          IMPLAN Torreón     https://github.com/TRCIMPLAN/trcimplan.github.io
+
+        Agradecemos y compartimos las tecnologías abiertas y gratuitas sobre las que se basa:
+          PHP                http://php.net
+          Twitter Bootstrap  http://getbootstrap.com
+          StartBootStrap     http://startbootstrap.com
+          Morris.js          https://morrisjs.github.io/morris.js/
+          Font Awesome       http://fontawesome.io
+          DataTables         https://www.datatables.net
+          Carto              https://carto.com
+          GitHub             https://github.com
+
+     =================================================================================================== -->
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="author" content="TrcIMPLAN Staff">
+  <meta name="keywords" content="Categoria, Población">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Población - IMPLAN Torreón">
+  <meta name="twitter:description" content="">
+  <meta name="twitter:url" content="http://www.trcimplan.gob.mx/categorias/poblacion.html">
+  <meta name="og:title" content="Población - IMPLAN Torreón">
+  <meta name="og:description" content="">
+  <meta name="og:url" content="http://www.trcimplan.gob.mx/categorias/poblacion.html">
+  <title>Población - IMPLAN Torreón</title>
+  <link rel="shortcut icon" type="image/x-icon" href="../imagenes/apple-touch-icon.png">
+  <link rel="apple-touch-icon" href="../imagenes/apple-touch-icon.png">
+  <link rel="apple-touch-icon" href="../imagenes/apple-touch-icon-76x76.png" sizes="76x76">
+  <link rel="apple-touch-icon" href="../imagenes/apple-touch-icon-120x120.png" sizes="120x120">
+  <link rel="apple-touch-icon" href="../imagenes/apple-touch-icon-152x152.png" sizes="152x152">
+  <link rel="apple-touch-icon" href="../imagenes/apple-touch-icon-180x180.png" sizes="180x180">
+  <link rel="icon" href="../imagenes/icon-hires.png" sizes="192x192">
+  <link rel="icon" href="../imagenes/icon-normal.png" sizes="128x128">
+  <link rel="alternate" type="application/rss+xml" href="../rss.xml" title="IMPLAN Torreón">
+  <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+  <link rel="stylesheet" type="text/css" href="../vendor/metisMenu/metisMenu.min.css">
+  <link rel="stylesheet" type="text/css" href="../vendor/datatables-plugins/dataTables.bootstrap.css">
+  <link rel="stylesheet" type="text/css" href="../vendor/morrisjs/morris.css">
+  <link rel="stylesheet" type="text/css" href="../vendor/font-awesome/css/font-awesome.min.css">
+  <link rel="stylesheet" type="text/css" href="../dist/css/sb-admin-2.min.css">
+  <link rel="stylesheet" type="text/css" href="../dist/css/plataforma-de-conocimiento.css">
+  <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Noto+Sans|Roboto+Condensed:400,700">
+  <link rel="stylesheet" type="text/css" href="http://libs.cartocdn.com/cartodb.js/v3/3.15/themes/css/cartodb.css">
+  <link rel="stylesheet" type="text/css" href="../dist/css/estilosvm.css">
+  <link rel="stylesheet" type="text/css" href="../dist/css/trcimplan.css">
+  <!-- SOPORTE PARA IE -->
+  <!--[if lt IE 9]>
+  <script type="text/javascript" src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+  <script type="text/javascript" src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+  <![endif]-->
+</head>
+<body>
+<div id="wrapper">
+  <nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="../index.html"><img class="navbar-brand-img" src="../imagenes/implan-barra-logo-chico-gris.png" alt="IMPLAN Torreón"></a>
+    </div>
+  <div class="navbar-default sidebar" role="navigation">
+    <div class="sidebar-nav navbar-collapse">
+      <ul class="nav" id="side-menu">
+        <li class="sidebar-search">
+          <form method="get" action="http://www.trcimplan.gob.mx/buscador-resultados.html">
+            <div class="input-group custom-search-form">
+              <input type="text" class="form-control" placeholder="Google buscar..." value="" name="q">
+              <span class="input-group-btn">
+                <button class="btn btn-default" type="submit"><i class="fa fa-search"></i></button>
+              </span>
+            </div>
+          </form>
+        </li>
+        <li>
+          <a href="#"><span class="navegacion-icono"><i class="fa fa-lightbulb-o"></i></span> Análisis Publicados<span class="fa arrow"></span></a>
+          <ul class="nav nav-second-level">
+            <li><a href="../blog/index.html"><span class="navegacion-icono"><i class="fa fa-file-text-o"></i></span> Últimos Análisis</a></li>
+            <li><a href="../excolaboradores/index.html"><span class="navegacion-icono"><i class="fa fa-file-text-o"></i></span> Análisis por Autor</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="#"><span class="navegacion-icono"><i class="fa fa-area-chart"></i></span> Indicadores<span class="fa arrow"></span></a>
+          <ul class="nav nav-second-level">
+            <li><a href="../smi/introduccion.html"><span class="navegacion-icono"><i class="fa fa-file-text-o"></i></span> Introducción al SMI</a></li>
+            <li><a href="../indicadores-categorias/index.html"><span class="navegacion-icono"><i class="fa fa-th-list"></i></span> Indicadores por Categoría</a></li>
+            <li><a href="../smi/por-region.html"><span class="navegacion-icono"><i class="fa fa-table"></i></span> Indicadores por Región</a></li>
+            <li><a href="../smi/datos-abiertos.html"><span class="navegacion-icono"><i class="fa fa-download"></i></span> Datos Abiertos</a></li>
+            <li><a href="../smi/niveles-socioeconomicos.html"><span class="navegacion-icono"><i class="fa fa-bar-chart"></i></span> Niveles Socioeconómicos</a></li>
+            <li><a href="../monitores/index.html"><span class="navegacion-icono"><i class="fa fa-file-text-o"></i></span> Monitores</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="#"><span class="navegacion-icono"><i class="fa fa-puzzle-piece"></i></span> Indicadores Básicos de Colonias<span class="fa arrow"></span></a>
+          <ul class="nav nav-second-level">
+            <li><a href="../ibc/introduccion.html"><span class="navegacion-icono"><i class="fa fa-file-text-o"></i></span> Introducción al IBC</a></li>
+            <li><a href="../ibc-colonias-torreon/index.html"><span class="navegacion-icono"><i class="fa fa-font"></i></span> Colonias de Torreón</a></li>
+            <li><a href="https://implantorreon.carto.com/u/sigimplan/builder/907a6bc0-2c7e-451e-9668-b78d952e52ff/embed" target="_blank"><span class="navegacion-icono"><i class="fa fa-external-link"></i></span> Mapa Completo</a></li>
+            <li><a href="../ibc/torreon-urbano.html"><span class="navegacion-icono"><i class="fa fa-table"></i></span> Torreón Urbano</a></li>
+            <li><a href="../ibc/datos-abiertos.html"><span class="navegacion-icono"><i class="fa fa-download"></i></span> Datos Abiertos</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="#"><span class="navegacion-icono"><i class="fa fa-map-marker"></i></span> Información Geográfica<span class="fa arrow"></span></a>
+          <ul class="nav nav-second-level">
+            <li><a href="../sig/introduccion.html"><span class="navegacion-icono"><i class="fa fa-file-text-o"></i></span> Introducción al SIG</a></li>
+            <li><a href="../sig-mapas-torreon/temas-sig.html"><span class="navegacion-icono"><i class="fa fa-map-o"></i></span> Mapas por Tema</a></li>
+            <li><a href="../sig-mapas-torreon/plan-director-desarrollo-urbano.html"><span class="navegacion-icono"><i class="fa fa-map-marker"></i></span> Usos de Suelo</a></li>
+            <li><a href="../sig/datos-abiertos.html"><span class="navegacion-icono"><i class="fa fa-download"></i></span> Datos Abiertos</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="#"><span class="navegacion-icono"><i class="fa fa-book"></i></span> Plan Estratégico Torreón 2040<span class="fa arrow"></span></a>
+          <ul class="nav nav-second-level">
+            <li><a href="../pet/indice.html"><span class="navegacion-icono"><i class="fa fa-list-ul"></i></span> Índice General</a></li>
+            <li><a href="../plan-estrategico-torreon-enfoque-metropolitano-2040/index.html"><span class="navegacion-icono"><i class="fa fa-download"></i></span> Descargar</a></li>
+            <li><a href="../plan-estrategico-metropolitano/descripcion-del-proceso.html"><span class="navegacion-icono"><i class="fa fa-calendar"></i></span> Descripción del proceso</a></li>
+            <li><a href="../proyectos/index.html"><span class="navegacion-icono"><i class="fa fa-check-square"></i></span> Proyectos</a></li>
+            <li><a href="../vision-de-ciudad/vision-de-ciudad.html"><span class="navegacion-icono"><i class="fa fa-file-text-o"></i></span> Visión de Ciudad desde IMPLAN</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="#"><span class="navegacion-icono"><i class="fa fa-briefcase"></i></span> Documentos<span class="fa arrow"></span></a>
+          <ul class="nav nav-second-level">
+            <li><a href="../sig-planes/index.html"><span class="navegacion-icono"><i class="fa fa-book"></i></span> Planes y Programas</a></li>
+            <li><a href="../investigaciones/index.html"><span class="navegacion-icono"><i class="fa fa-file-text-o"></i></span> Investigaciones</a></li>
+            <li><a href="../estudios/index.html"><span class="navegacion-icono"><i class="fa fa-file-text-o"></i></span> Estudios</a></li>
+          </ul>
+        </li>
+        <li><a href="../consejo-directivo/integrantes.html"><span class="navegacion-icono"><i class="fa fa-users"></i></span> Consejo Directivo</a></li>
+        <li><a href="../sala-prensa/index.html"><span class="navegacion-icono"><i class="fa fa-newspaper-o"></i></span> Sala de Prensa</a></li>
+        <li><a href="../programas-radio/index.html"><span class="navegacion-icono"><i class="fa fa-microphone"></i></span> Programas de Radio</a></li>
+        <li>
+          <a href="#"><span class="navegacion-icono"><i class="fa fa-file-text-o"></i></span> Consejo Visión Metrópoli<span class="fa arrow"></span></a>
+          <ul class="nav nav-second-level">
+            <li><a href="../convocatorias/vision-metropoli.html"><span class="navegacion-icono"><i class="fa fa-file-text-o"></i></span> Consejo Juvenil</a></li>
+            <li><a href="../vision-metropoli/integrantes.html"><span class="navegacion-icono"><i class="fa fa-file-text-o"></i></span> Integrantes del Consejo</a></li>
+            <li><a href="../vision-metropoli/index.html"><span class="navegacion-icono"><i class="fa fa-newspaper-o"></i></span> Sala de Prensa</a></li>
+            <li><a href="../vision-metropoli/reglamento-vision-metropoli-2020.pdf"><span class="navegacion-icono"><i class="fa fa-file-text-o"></i></span> Reglamento</a></li>
+            <li><a href="https://issuu.com/consejovisionmetropoli/docs/informe_visi_n_metr_poli_2019_-_2021" target="_blank"><span class="navegacion-icono"><i class="fa fa-file-text-o"></i></span> Informe 2019 - 2021</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="#"><span class="navegacion-icono"><i class="fa fa-building-o"></i></span> Institucional<span class="fa arrow"></span></a>
+          <ul class="nav nav-second-level">
+            <li><a href="../institucional/vision-mision.html"><span class="navegacion-icono"><i class="fa fa-trophy"></i></span> Misión / Visión</a></li>
+            <li><a href="../institucional/NuestrosProyectos.html"><span class="navegacion-icono"><i class="fa fa-pencil-square-o"></i></span> Nuestros Proyectos</a></li>
+            <li><a href="../institucional/mensaje-director.html"><span class="navegacion-icono"><i class="fa fa-comment"></i></span> Mensaje del Director</a></li>
+            <li><a href="../autores/index.html"><span class="navegacion-icono"><i class="fa fa-user"></i></span> Quienes Somos</a></li>
+            <li><a href="../institucional/estructura-organica.html"><span class="navegacion-icono"><i class="fa fa-sitemap"></i></span> Estructura Orgánica</a></li>
+            <li><a href="../institucional/modelo-operativo-universal.html"><span class="navegacion-icono"><i class="fa fa-slideshare"></i></span> Modelo Operativo Univ.</a></li>
+            <li><a href="../institucional/reglamentos.html"><span class="navegacion-icono"><i class="fa fa-gavel"></i></span> Reglamentos</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="#"><span class="navegacion-icono"><i class="fa fa-external-link"></i></span> Transparencia<span class="fa arrow"></span></a>
+          <ul class="nav nav-second-level">
+            <li><a href="http://www2.icai.org.mx/ipo/dependencia.php?dep=178#pageload" target="_blank"><span class="navegacion-icono"><i class="fa fa-file-text-o"></i></span> Transparencia Estatal (ICAI)</a></li>
+            <li><a href="https://consultapublicamx.inai.org.mx/vut-web/faces/view/consultaPublica.xhtml#inicio" target="_blank"><span class="navegacion-icono"><i class="fa fa-file-text-o"></i></span> Plataforma Nacional de Transparencia</a></li>
+            <li><a href="../transparencia/index.html"><span class="navegacion-icono"><i class="fa fa-briefcase"></i></span> Documentos</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="#"><span class="navegacion-icono"><i class="fa fa-share-alt"></i></span> Términos de Uso<span class="fa arrow"></span></a>
+          <ul class="nav nav-second-level">
+            <li><a href="../terminos/terminos-informacion.html"><span class="navegacion-icono"><i class="fa fa-cubes"></i></span> De la información</a></li>
+            <li><a href="../terminos/terminos-sitio.html"><span class="navegacion-icono"><i class="fa fa-globe"></i></span> Del sitio web</a></li>
+            <li><a href="../terminos/privacidad.html"><span class="navegacion-icono"><i class="fa fa-lock"></i></span> Aviso de Privacidad</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="#"><span class="navegacion-icono"><i class="fa fa-phone"></i></span> Contacto<span class="fa arrow"></span></a>
+          <ul class="nav nav-second-level">
+            <li><a href="../contacto/contacto.html"><span class="navegacion-icono"><i class="fa fa-phone"></i></span> Medios de contacto</a></li>
+            <li><a href="../preguntas-frecuentes/preguntas-frecuentes.html"><span class="navegacion-icono"><i class="fa fa-question"></i></span> Preguntas Frecuentes</a></li>
+            <li><a href="http://goo.gl/forms/1rdX4X128PpMOif73" target="_blank"><span class="navegacion-icono"><i class="fa fa-external-link"></i></span> Comentarios y Sugerencias</a></li>
+          </ul>
+        </li>
+        <li><a href="../convocatorias/index.html"><span class="navegacion-icono"><i class="fa fa-file-text-o"></i></span> Convocatorias</a></li>
+        <li><a href="http://177.244.42.17/ovie-torreon/#!" target="_blank"><span class="navegacion-icono"><i class="fa fa-map-marker"></i></span> Oficina Virtual de Información Económica (OVIE)</a></li>
+        <li><a href="https://arcg.is/0vySSr" target="_blank"><span class="navegacion-icono"><i class="fa fa-globe"></i></span> Atlas Municipal de Riesgos de Torreón</a></li>
+      </ul>
+    </div>
+  </div>
+  </nav>
+  <div id="page-wrapper">
+    <div class="cuerpo">
+      <div class="encabezado">
+        <span><h1>Población</h1></span>
+      </div>
+<div class="panel-group" id="categorias-individual" role="tablist" aria-multiselectable="true">
+  <div class="panel panel-default">
+    <div class="panel-heading" role="tab" id="headingblog">
+      <h4 class="panel-title">
+        <a                   role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseblog" aria-expanded="true"  aria-controls="collapseblog">
+          Análisis Publicados
+        </a>
+      </h4>
+    </div>
+    <div id="collapseblog" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingblog">
+      <div class="panel-body">
+              <ul>
+        <li><a href="../blog/abuso-y-maltrato-contra-ninos-y-ninas-abr-2021.html">Abuso sexual contra niños, niñas y adolescentes en Coahuila.</a></li>
+        <li><a href="../blog/caracteristicas-demograficas-de-las-colonias-de-torreon.html">Características demográficas de las colonias de Torreón</a></li>
+        <li><a href="../blog/cartografia-geoestadistica-mayo-2021.html">Cartografía Geoestadística, una herramienta para la planeación.</a></li>
+        <li><a href="../blog/consumo-local-en-tiempos-de-pandemia-sep-2020.html">Consumo local en tiempos de pandemia</a></li>
+        <li><a href="../blog/costo-ambiental-del-crecimiento-urbano-mar-2021.html">El costo ambiental del crecimiento urbano y la acción local para mitigarlo.</a></li>
+        <li><a href="../blog/crecimiento-poblacional-en-torreon.html">Crecimiento Poblacional en Torreón</a></li>
+        <li><a href="../blog/Crecimiento-de-la-poblacion-en-torreon-med-y-res-mar2021.html">Crecimiento de la población en Torreón: Medición y Resultados</a></li>
+        <li><a href="../blog/disminucion-de-la-pobreza-en-torreon-hacia-agenda2030-oct2019.html">Disminución de la Pobreza en Torreón, Hacia la Agenda 2030.</a></li>
+        <li><a href="../blog/el-buen-futuro-se-planea.html">El buen futuro se planea</a></li>
+        <li><a href="../blog/censo-de-poblacion-y-vivienda-en-la-planeacion-urbana-feb-2021.html">El Censo de Población y Vivienda como insumo en la Planeación Urbana.</a></li>
+        <li><a href="../blog/el-ciudadano-como-especialista-urbano-abril2019.html">El Ciudadano como Especialista Urbano</a></li>
+        <li><a href="../blog/equidad-economica-torreon.html">Equidad Económica en Torreón</a></li>
+        <li><a href="../blog/espacios-publicos-seguros-para-mujeres-y-ninas.html">Espacios públicos seguros para mujeres y niñas</a></li>
+        <li><a href="../blog/estrategia-contra-el-rezago-en-la-region.html">Programa de Mejoramiento Urbano: estrategia contra el rezago en la región.</a></li>
+        <li><a href="../blog/estrategias-contra-el-crecimiento-desmedido-en-las-ciudades.html">Estrategias contra el crecimiento desmedido en las ciudades</a></li>
+        <li><a href="../blog/hacia-la-gobernanza-metropolitana-en-la-laguna-ene2020.html">Hacia la Gobernanza Metropolitana en La Laguna </a></li>
+        <li><a href="../blog/hacinamiento-en-torreon-marzo2020.html">La Situación de Hacinamiento en Torreón</a></li>
+        <li><a href="../blog/implementacion-de-las-asociaciones-publico-privadas-mayo2019.html">Implementación de las Asociaciones Público Privadas en Torreón</a></li>
+        <li><a href="../blog/indice-de-maternidad-en-la-laguna.html">Índice de Maternidad en La Laguna</a></li>
+        <li><a href="../blog/inmigracion-en-torreon.html">Inmigración en Torreón</a></li>
+        <li><a href="../blog/jimulco-el-paso-del-ferrocarril-y-su-importancia-para-torreon.html">Jimulco: El paso del ferrocarril y su importancia para Torreón</a></li>
+        <li><a href="../blog/jovenes-los-mas-afectados-por-el-desempleo-en-la-laguna.html">Jóvenes: los más afectados por el desempleo en La Laguna</a></li>
+        <li><a href="../blog/la-accesibilidad-universal-en-espacios-publicos.html">La accesibilidad universal en espacios públicos</a></li>
+        <li><a href="../blog/la-cuarentena-y-sus-implicaciones-en-la-laguna-mayo-2020.html">La cuarentena y sus implicaciones en La Laguna.</a></li>
+        <li><a href="../blog/la-infancia-en-confinamiento-mar-2021.html">La infancia en confinamiento</a></li>
+        <li><a href="../blog/la-laguna-capital-humano-y-calidad-de-vida.html">La Laguna: Capital Humano y Calidad de Vida</a></li>
+        <li><a href="../blog/la-necesidad-de-una-planeacion-urbana-sustentable.html">La necesidad de una planeación urbana sustentable</a></li>
+        <li><a href="../blog/la-nueva-masculinidad-en-la-laguna-junio-2020.html">La nueva masculinidad en La Laguna.</a></li>
+        <li><a href="../blog/la-planificacion-de-la-ciudad-para-prevenir-desastres-junio-2020.html">La planificación de la ciudad como herramienta para prevenir desastres.</a></li>
+        <li><a href="../blog/la-transformacion-de-la-periferia-urbana-de-torreon-dic2019.html">La Transformación de la Periferia Urbana de Torreón</a></li>
+        <li><a href="../blog/los-grandes-retos-del-futuro-de-la-ciudad-de-torreon-dic-2020.html">Los Grandes Retos Del Futuro De La Ciudad De Torreón</a></li>
+        <li><a href="../blog/los-municipios-frente-a-las-adversidades-mayo-2020.html">Los Municipios frente a las adversidades.</a></li>
+        <li><a href="../blog/plan-dn-iii-en-tiempos-de-covid19-enero-2021.html">Plan DN-III-E en tiempos de Covid-19</a></li>
+        <li><a href="../blog/planeacion-urbana-con-perspectiva-de-genero-mar-2021.html">Planeación Urbana con Perspectiva de Género, el Concepto de Ciudad Cuidadora</a></li>
+        <li><a href="../blog/programa-parcial-desarrollo-urbano-torreon-zona-norte-marzo2020.html">Propuesta de Programa Parcial de Desarrollo Urbano de la Zona Norte de Torreón</a></li>
+        <li><a href="../blog/retos-urbanos-en-la-laguna-trc2040-mar-2021.html">Retos Urbanos en La Laguna y por qué dar seguimiento al TRC 2040</a></li>
+        <li><a href="../blog/la-seguridad-en-tiempos-de-pandemia-julio-2020.html">La seguridad en tiempos de Pandemia</a></li>
+        <li><a href="../blog/sistemas-urbanos-rurales-un-nuevo-enfoque-para-el-desarrollo-regional.html">Sistemas Urbanos Rurales: un nuevo enfoque para el desarrollo regional</a></li>
+        <li><a href="../blog/tenencia-de-la-tierra-mar-2021.html">Tenencia de la Tierra en Torreón</a></li>
+        <li><a href="../blog/torreon-de-ciudadano-a-consumidor-sep2019.html">Torreón, de ciudadano a consumidor</a></li>
+        <li><a href="../blog/torreon-migracion-y-ciudad-de-transito-agosto-2020.html">Torreón: migración y ciudad de tránsito.</a></li>
+        <li><a href="../blog/torreon-vulnerabilidad-social.html">Torreón y la Vulnerabilidad Social</a></li>
+        <li><a href="../blog/torreon-y-las-determinantes-de-su-crecimiento-urbano-abril2020.html">Torreón y las Determinantes de su Crecimiento Urbano</a></li>
+        <li><a href="../blog/torreon-y-su-integracion-a-la-nueva-agenda-urbana-onu-habitatIII-feb2019.html">Torreón y su integración a la Nueva Agenda Urbana ONU-HABITAT III</a></li>
+        <li><a href="../blog/suelo-mixto-como-politica-de-desarrollo-sostenible-nov2019.html">El Suelo Mixto como Política de Desarrollo Sostenible.</a></li>
+      </ul>
+      </div>
+    </div>
+  </div>
+  <div class="panel panel-default">
+    <div class="panel-heading" role="tab" id="headingindicadores-torreon">
+      <h4 class="panel-title">
+        <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseindicadores-torreon" aria-expanded="false" aria-controls="collapseindicadores-torreon">
+          Indicadores de Torreón
+        </a>
+      </h4>
+    </div>
+    <div id="collapseindicadores-torreon" class="panel-collapse collapse"    role="tabpanel" aria-labelledby="headingindicadores-torreon">
+      <div class="panel-body">
+              <ul>
+        <li><a href="../indicadores-torreon/sociedad-viviendas-particulares-habitadas-que-disponen-de-television-de-paga.html">Viviendas Particulares Habitadas que disponen de Televisión de Paga en Torreón</a></li>
+        <li><a href="../indicadores-torreon/sociedad-viviendas-particulares-temporales-en-el-centro-historico.html">Viviendas particulares temporales en el Centro Histórico en Torreón</a></li>
+        <li><a href="../indicadores-torreon/sustentabilidad-densidad-media-urbana.html">Densidad Media Urbana en Torreón</a></li>
+      </ul>
+      </div>
+    </div>
+  </div>
+  <div class="panel panel-default">
+    <div class="panel-heading" role="tab" id="headingindicadores-gomez-palacio">
+      <h4 class="panel-title">
+        <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseindicadores-gomez-palacio" aria-expanded="false" aria-controls="collapseindicadores-gomez-palacio">
+          Indicadores de Gómez Palacio
+        </a>
+      </h4>
+    </div>
+    <div id="collapseindicadores-gomez-palacio" class="panel-collapse collapse"    role="tabpanel" aria-labelledby="headingindicadores-gomez-palacio">
+      <div class="panel-body">
+              <ul>
+        <li><a href="../indicadores-gomez-palacio/economia-densidad-poblacional.html">Densidad Poblacional en Gómez Palacio</a></li>
+        <li><a href="../indicadores-gomez-palacio/economia-personas-con-ingresos-mayores-al-promedio-de-la-ciudad.html">Personas con ingresos mayores al promedio de la Ciudad en Gómez Palacio</a></li>
+        <li><a href="../indicadores-gomez-palacio/economia-poblacion-economicamente-activa-pea.html">Población Económicamente Activa (PEA) en Gómez Palacio</a></li>
+        <li><a href="../indicadores-gomez-palacio/economia-poblacion-ocupada.html">Población ocupada en Gómez Palacio</a></li>
+        <li><a href="../indicadores-gomez-palacio/economia-proporcion-de-la-pea-de-la-ciudad-por-municipio.html">Proporción de la PEA de la ciudad por municipio en Gómez Palacio</a></li>
+        <li><a href="../indicadores-gomez-palacio/sociedad-carencia-por-acceso-a-la-alimentacion.html">Carencia por acceso a la alimentación en Gómez Palacio</a></li>
+        <li><a href="../indicadores-gomez-palacio/sociedad-carencia-por-acceso-a-la-seguridad-social.html">Carencia por acceso a la seguridad social en Gómez Palacio</a></li>
+        <li><a href="../indicadores-gomez-palacio/sociedad-carencia-por-acceso-a-los-servicios-basicos-de-la-vivienda.html">Carencia por acceso a los servicios básicos de la vivienda en Gómez Palacio</a></li>
+        <li><a href="../indicadores-gomez-palacio/sociedad-carencia-por-acceso-a-los-servicios-de-salud.html">Carencia por acceso a los servicios de salud en Gómez Palacio</a></li>
+        <li><a href="../indicadores-gomez-palacio/sociedad-fecundidad.html">Fecundidad en Gómez Palacio</a></li>
+      </ul>
+      </div>
+    </div>
+  </div>
+  <div class="panel panel-default">
+    <div class="panel-heading" role="tab" id="headingindicadores-lerdo">
+      <h4 class="panel-title">
+        <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseindicadores-lerdo" aria-expanded="false" aria-controls="collapseindicadores-lerdo">
+          Indicadores de Lerdo
+        </a>
+      </h4>
+    </div>
+    <div id="collapseindicadores-lerdo" class="panel-collapse collapse"    role="tabpanel" aria-labelledby="headingindicadores-lerdo">
+      <div class="panel-body">
+              <ul>
+        <li><a href="../indicadores-lerdo/economia-densidad-poblacional.html">Densidad Poblacional en Lerdo</a></li>
+        <li><a href="../indicadores-lerdo/economia-personas-con-ingresos-mayores-al-promedio-de-la-ciudad.html">Personas con ingresos mayores al promedio de la Ciudad en Lerdo</a></li>
+        <li><a href="../indicadores-lerdo/economia-poblacion-economicamente-activa-pea.html">Población Económicamente Activa (PEA) en Lerdo</a></li>
+        <li><a href="../indicadores-lerdo/economia-poblacion-ocupada.html">Población ocupada en Lerdo</a></li>
+        <li><a href="../indicadores-lerdo/economia-proporcion-de-la-pea-de-la-ciudad-por-municipio.html">Proporción de la PEA de la ciudad por municipio en Lerdo</a></li>
+        <li><a href="../indicadores-lerdo/sociedad-carencia-por-acceso-a-la-alimentacion.html">Carencia por acceso a la alimentación en Lerdo</a></li>
+        <li><a href="../indicadores-lerdo/sociedad-carencia-por-acceso-a-la-seguridad-social.html">Carencia por acceso a la seguridad social en Lerdo</a></li>
+        <li><a href="../indicadores-lerdo/sociedad-carencia-por-acceso-a-los-servicios-basicos-de-la-vivienda.html">Carencia por acceso a los servicios básicos de la vivienda en Lerdo</a></li>
+        <li><a href="../indicadores-lerdo/sociedad-carencia-por-acceso-a-los-servicios-de-salud.html">Carencia por acceso a los servicios de salud en Lerdo</a></li>
+        <li><a href="../indicadores-lerdo/sociedad-fecundidad.html">Fecundidad en Lerdo</a></li>
+        <li><a href="../indicadores-lerdo/sociedad-migrantes-nal-y-ext-con-educacion-superior.html">Migrantes (Nal y Ext) con educación superior en Lerdo</a></li>
+        <li><a href="../indicadores-lerdo/sociedad-participacion-del-municipio-en-la-poblacion-del-estado.html">Participación del municipio en la población del estado en Lerdo</a></li>
+        <li><a href="../indicadores-lerdo/sociedad-poblacion-catolica.html">Población Católica en Lerdo</a></li>
+        <li><a href="../indicadores-lerdo/sociedad-poblacion-de-18-a-25-anos.html">Población de 18 a 25 años en Lerdo</a></li>
+        <li><a href="../indicadores-lerdo/sociedad-poblacion-del-estado-al-que-pertenece-el-municipio.html">Población del estado al que pertenece el municipio en Lerdo</a></li>
+        <li><a href="../indicadores-lerdo/sociedad-poblacion-estimada.html">Población Estimada en Lerdo</a></li>
+        <li><a href="../indicadores-lerdo/sociedad-proporcion-de-la-poblacion-de-la-ciudad-por-municipio.html">Proporción de la población de la ciudad por municipio en Lerdo</a></li>
+        <li><a href="../indicadores-lerdo/sociedad-tasa-de-suicidios.html">Tasa de suicidios en Lerdo</a></li>
+        <li><a href="../indicadores-lerdo/sustentabilidad-densidad-media-urbana.html">Densidad Media Urbana en Lerdo</a></li>
+      </ul>
+      </div>
+    </div>
+  </div>
+  <div class="panel panel-default">
+    <div class="panel-heading" role="tab" id="headingindicadores-matamoros">
+      <h4 class="panel-title">
+        <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseindicadores-matamoros" aria-expanded="false" aria-controls="collapseindicadores-matamoros">
+          Indicadores de Matamoros
+        </a>
+      </h4>
+    </div>
+    <div id="collapseindicadores-matamoros" class="panel-collapse collapse"    role="tabpanel" aria-labelledby="headingindicadores-matamoros">
+      <div class="panel-body">
+              <ul>
+        <li><a href="../indicadores-matamoros/sociedad-fecundidad.html">Fecundidad en Matamoros</a></li>
+        <li><a href="../indicadores-matamoros/sociedad-migrantes-nal-y-ext-con-educacion-superior.html">Migrantes (Nal y Ext) con educación superior en Matamoros</a></li>
+        <li><a href="../indicadores-matamoros/sociedad-participacion-del-municipio-en-la-poblacion-del-estado.html">Participación del municipio en la población del estado en Matamoros</a></li>
+        <li><a href="../indicadores-matamoros/sociedad-poblacion-catolica.html">Población Católica en Matamoros</a></li>
+        <li><a href="../indicadores-matamoros/sociedad-poblacion-de-18-a-25-anos.html">Población de 18 a 25 años en Matamoros</a></li>
+        <li><a href="../indicadores-matamoros/sociedad-poblacion-del-estado-al-que-pertenece-el-municipio.html">Población del estado al que pertenece el municipio en Matamoros</a></li>
+        <li><a href="../indicadores-matamoros/sociedad-poblacion-estimada.html">Población Estimada en Matamoros</a></li>
+        <li><a href="../indicadores-matamoros/sociedad-proporcion-de-la-poblacion-de-la-ciudad-por-municipio.html">Proporción de la población de la ciudad por municipio en Matamoros</a></li>
+        <li><a href="../indicadores-matamoros/sociedad-suicidios.html">Suicidios en Matamoros</a></li>
+        <li><a href="../indicadores-matamoros/sociedad-tasa-de-suicidios.html">Tasa de suicidios en Matamoros</a></li>
+        <li><a href="../indicadores-matamoros/sustentabilidad-densidad-media-urbana.html">Densidad Media Urbana en Matamoros</a></li>
+      </ul>
+      </div>
+    </div>
+  </div>
+  <div class="panel panel-default">
+    <div class="panel-heading" role="tab" id="headingindicadores-la-laguna">
+      <h4 class="panel-title">
+        <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseindicadores-la-laguna" aria-expanded="false" aria-controls="collapseindicadores-la-laguna">
+          Indicadores de La Laguna
+        </a>
+      </h4>
+    </div>
+    <div id="collapseindicadores-la-laguna" class="panel-collapse collapse"    role="tabpanel" aria-labelledby="headingindicadores-la-laguna">
+      <div class="panel-body">
+              <ul>
+        <li><a href="../indicadores-la-laguna/economia-densidad-poblacional.html">Densidad Poblacional en La Laguna</a></li>
+        <li><a href="../indicadores-la-laguna/economia-personas-con-ingresos-mayores-al-promedio-de-la-ciudad.html">Personas con ingresos mayores al promedio de la Ciudad en La Laguna</a></li>
+        <li><a href="../indicadores-la-laguna/economia-poblacion-economicamente-activa-pea.html">Población Económicamente Activa (PEA) en La Laguna</a></li>
+        <li><a href="../indicadores-la-laguna/economia-poblacion-ocupada.html">Población ocupada en La Laguna</a></li>
+        <li><a href="../indicadores-la-laguna/sociedad-carencia-por-acceso-a-la-alimentacion.html">Carencia por acceso a la alimentación en La Laguna</a></li>
+        <li><a href="../indicadores-la-laguna/sociedad-carencia-por-acceso-a-la-seguridad-social.html">Carencia por acceso a la seguridad social en La Laguna</a></li>
+        <li><a href="../indicadores-la-laguna/sociedad-carencia-por-acceso-a-los-servicios-basicos-de-la-vivienda.html">Carencia por acceso a los servicios básicos de la vivienda en La Laguna</a></li>
+        <li><a href="../indicadores-la-laguna/sociedad-carencia-por-acceso-a-los-servicios-de-salud.html">Carencia por acceso a los servicios de salud en La Laguna</a></li>
+        <li><a href="../indicadores-la-laguna/sociedad-defunciones.html">Defunciones en La Laguna</a></li>
+        <li><a href="../indicadores-la-laguna/sociedad-equidad-laboral.html">Equidad laboral en La Laguna</a></li>
+        <li><a href="../indicadores-la-laguna/sociedad-esperanza-de-vida-al-nacer.html">Esperanza de vida al nacer en La Laguna</a></li>
+        <li><a href="../indicadores-la-laguna/sociedad-matrimonio-infantil-precoz-o-forzado.html">Matrimonio infantil, precoz o forzado en La Laguna</a></li>
+        <li><a href="../indicadores-la-laguna/sociedad-migrantes-nal-y-ext-con-educacion-superior.html">Migrantes (Nal y Ext) con educación superior en La Laguna</a></li>
+        <li><a href="../indicadores-la-laguna/sociedad-nacimientos.html">Nacimientos en La Laguna</a></li>
+        <li><a href="../indicadores-la-laguna/sociedad-participacion-del-municipio-en-la-poblacion-del-estado.html">Participación del municipio en la población del estado en La Laguna</a></li>
+        <li><a href="../indicadores-la-laguna/sociedad-poblacion-catolica.html">Población Católica en La Laguna</a></li>
+        <li><a href="../indicadores-la-laguna/sociedad-poblacion-de-18-a-25-anos.html">Población de 18 a 25 años en La Laguna</a></li>
+        <li><a href="../indicadores-la-laguna/sociedad-poblacion-estimada.html">Población Estimada en La Laguna</a></li>
+        <li><a href="../indicadores-la-laguna/sociedad-proporcion-de-mujeres.html">Proporción de mujeres en La Laguna</a></li>
+        <li><a href="../indicadores-la-laguna/sociedad-tasa-de-suicidios.html">Tasa de suicidios en La Laguna</a></li>
+        <li><a href="../indicadores-la-laguna/sociedad-trabajo-no-remunerado-de-hombres-y-mujeres.html">Trabajo no remunerado de hombres y mujeres en La Laguna</a></li>
+        <li><a href="../indicadores-la-laguna/sociedad-viviendas-particulares-habitadas-que-disponen-de-telefono-celular.html">Viviendas Particulares Habitadas que disponen de Teléfono Celular en La Laguna</a></li>
+      </ul>
+      </div>
+    </div>
+  </div>
+  <div class="panel panel-default">
+    <div class="panel-heading" role="tab" id="headingindicadores-coahuila">
+      <h4 class="panel-title">
+        <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseindicadores-coahuila" aria-expanded="false" aria-controls="collapseindicadores-coahuila">
+          Indicadores de Coahuila
+        </a>
+      </h4>
+    </div>
+    <div id="collapseindicadores-coahuila" class="panel-collapse collapse"    role="tabpanel" aria-labelledby="headingindicadores-coahuila">
+      <div class="panel-body">
+              <ul>
+        <li><a href="../indicadores-coahuila/economia-poblacion-economicamente-activa-pea.html">Población Económicamente Activa (PEA) en Coahuila</a></li>
+        <li><a href="../indicadores-coahuila/sociedad-esperanza-de-vida-de-las-mujeres.html">Esperanza de Vida de las Mujeres en Coahuila</a></li>
+        <li><a href="../indicadores-coahuila/sociedad-esperanza-de-vida-de-los-hombres.html">Esperanza de Vida de los Hombres en Coahuila</a></li>
+        <li><a href="../indicadores-coahuila/sociedad-poblacion-estimada.html">Población Estimada en Coahuila</a></li>
+      </ul>
+      </div>
+    </div>
+  </div>
+  <div class="panel panel-default">
+    <div class="panel-heading" role="tab" id="headingindicadores-durango">
+      <h4 class="panel-title">
+        <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseindicadores-durango" aria-expanded="false" aria-controls="collapseindicadores-durango">
+          Indicadores de Durango
+        </a>
+      </h4>
+    </div>
+    <div id="collapseindicadores-durango" class="panel-collapse collapse"    role="tabpanel" aria-labelledby="headingindicadores-durango">
+      <div class="panel-body">
+              <ul>
+        <li><a href="../indicadores-durango/economia-poblacion-economicamente-activa-pea.html">Población Económicamente Activa (PEA) en Durango</a></li>
+        <li><a href="../indicadores-durango/sociedad-esperanza-de-vida-de-las-mujeres.html">Esperanza de Vida de las Mujeres en Durango</a></li>
+        <li><a href="../indicadores-durango/sociedad-esperanza-de-vida-de-los-hombres.html">Esperanza de Vida de los Hombres en Durango</a></li>
+        <li><a href="../indicadores-durango/sociedad-poblacion-estimada.html">Población Estimada en Durango</a></li>
+      </ul>
+      </div>
+    </div>
+  </div>
+  <div class="panel panel-default">
+    <div class="panel-heading" role="tab" id="headingindicadores-nacional">
+      <h4 class="panel-title">
+        <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseindicadores-nacional" aria-expanded="false" aria-controls="collapseindicadores-nacional">
+          Indicadores de Nacional
+        </a>
+      </h4>
+    </div>
+    <div id="collapseindicadores-nacional" class="panel-collapse collapse"    role="tabpanel" aria-labelledby="headingindicadores-nacional">
+      <div class="panel-body">
+              <ul>
+        <li><a href="../indicadores-nacional/economia-poblacion-economicamente-activa-pea.html">Población Económicamente Activa (PEA) en Nacional</a></li>
+        <li><a href="../indicadores-nacional/sociedad-esperanza-de-vida-de-las-mujeres.html">Esperanza de Vida de las Mujeres en Nacional</a></li>
+        <li><a href="../indicadores-nacional/sociedad-esperanza-de-vida-de-los-hombres.html">Esperanza de Vida de los Hombres en Nacional</a></li>
+        <li><a href="../indicadores-nacional/sociedad-poblacion-catolica.html">Población Católica en Nacional</a></li>
+        <li><a href="../indicadores-nacional/sociedad-poblacion-estimada.html">Población Estimada en Nacional</a></li>
+      </ul>
+      </div>
+    </div>
+  </div>
+  <div class="panel panel-default">
+    <div class="panel-heading" role="tab" id="headingsig-mapas-torreon">
+      <h4 class="panel-title">
+        <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapsesig-mapas-torreon" aria-expanded="false" aria-controls="collapsesig-mapas-torreon">
+          Sistema de Información Geográfica de Torreón
+        </a>
+      </h4>
+    </div>
+    <div id="collapsesig-mapas-torreon" class="panel-collapse collapse"    role="tabpanel" aria-labelledby="headingsig-mapas-torreon">
+      <div class="panel-body">
+              <ul>
+        <li><a href="../sig-mapas-torreon/apertura-nuevas-empresas.html">Apertura de Nuevas Empresas</a></li>
+        <li><a href="../sig-mapas-torreon/caracteristicas-economicas.html">Características Económicas</a></li>
+        <li><a href="../sig-mapas-torreon/crecimiento-decrecimiento-poblacion.html">Crecimiento y Decrecimiento de Población</a></li>
+        <li><a href="../sig-mapas-torreon/demografia.html">Demografía</a></li>
+        <li><a href="../sig-mapas-torreon/indicadores-socioeconomicos.html">Indicadores Socioeconómicos</a></li>
+        <li><a href="../sig-mapas-torreon/poligonos-pobreza.html">Polígonos de Pobreza</a></li>
+        <li><a href="../sig-mapas-torreon/valores-catastrales-por-vialidades.html">Valores Catastrales por Vialidades</a></li>
+        <li><a href="../sig-mapas-torreon/viviendas.html">Viviendas</a></li>
+      </ul>
+      </div>
+    </div>
+  </div>
+  </div>
+    </div>
+    <div class="mapa-inferior">
+          <div class="pull-right redes-sociales">
+            <a class="fa fa-twitter-square" href="http://www.twitter.com/trcimplan" target="_blank"></a>
+            <a class="fa fa-facebook-square" href="https://facebook.com/trcimplan" target="_blank"></a>
+            <a class="fa fa-facebook-square" href="http://www.instagram.com/implantorreon" target="_blank"></a>
+            <a class="fa fa-rss-square" href="../rss.xml"></a>
+          </div>
+    </div>
+  </div>
+</div>
+<!-- Javascript global inicia -->
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
+<script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="../vendor/metisMenu/metisMenu.min.js"></script>
+<script type="text/javascript" src="../vendor/datatables/js/jquery.dataTables.min.js"></script>
+<script type="text/javascript" src="../vendor/datatables-plugins/dataTables.bootstrap.min.js"></script>
+<script type="text/javascript" src="../vendor/datatables-responsive/dataTables.responsive.js"></script>
+<script type="text/javascript" src="../vendor/raphael/raphael.min.js"></script>
+<script type="text/javascript" src="../vendor/morrisjs/morris.min.js"></script>
+<script type="text/javascript" src="../dist/js/sb-admin-2.min.js"></script>
+<script type="text/javascript" src="http://libs.cartocdn.com/cartodb.js/v3/3.15/cartodb.js"></script>
+<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+<!-- Javascript global termina -->
+<!-- Javascript inicia -->
+
+<!-- Javascript termina -->
+<!-- Javascript Google Analytics -->
+<script>
+  // Google Analytics
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)})(window,document,'script','//www.google-analytics.com/analytics.js','ga');ga('create', 'UA-58290501-1', 'auto');ga('send', 'pageview');
+</script>
+</body>
+</html>

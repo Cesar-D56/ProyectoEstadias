@@ -1,0 +1,574 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+<!-- ===================================================================================================
+
+        Instituto Municipal de Planeación y Competitividad (IMPLAN) de Torreón.
+
+        3er. generación de la Plataforma del Conocimiento
+        Desarrollado por Ing. Guillermo Valdés Lozano <guivaloz en movimientolibre.com>
+
+        El software que lo construye está bajo la licencia GPL versión 3. © 2014, 2015, 2016, 2017.
+        Una copia está contenida en el archivo LICENCE al bajar desde GitHub.
+
+        Al usar, estudiar y copiar está aceptando los términos de uso de la información y del sitio web:
+          http://www.trcimplan.gob.mx/terminos/terminos-informacion.html
+          http://www.trcimplan.gob.mx/terminos/terminos-sitio.html
+
+        Descargue, estudie y colabore bajando todo este sitio web:
+          IMPLAN Torreón     https://github.com/TRCIMPLAN/trcimplan.github.io
+
+        Agradecemos y compartimos las tecnologías abiertas y gratuitas sobre las que se basa:
+          PHP                http://php.net
+          Twitter Bootstrap  http://getbootstrap.com
+          StartBootStrap     http://startbootstrap.com
+          Morris.js          https://morrisjs.github.io/morris.js/
+          Font Awesome       http://fontawesome.io
+          DataTables         https://www.datatables.net
+          Carto              https://carto.com
+          GitHub             https://github.com
+
+     =================================================================================================== -->
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Diagnóstico y Lineamientos para la elaboración del Plan Estratégico de Drenaje Pluvial de Torreón.">
+  <meta name="author" content="Dirección de Proyectos Estratégicos">
+  <meta name="keywords" content="IMPLAN, Torreon, Drenaje, Pluvial">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Plan Estratégico de Drenaje Pluvial de Torreón - IMPLAN Torreón">
+  <meta name="twitter:description" content="Diagnóstico y Lineamientos para la elaboración del Plan Estratégico de Drenaje Pluvial de Torreón.">
+  <meta name="twitter:image" content="http://www.trcimplan.gob.mx/proyectos/plan-estrategico-drenaje-pluvial-torreon/imagen-previa.jpg">
+  <meta name="twitter:url" content="http://www.trcimplan.gob.mx/proyectos/plan-estrategico-drenaje-pluvial-torreon.html">
+  <meta name="og:title" content="Plan Estratégico de Drenaje Pluvial de Torreón - IMPLAN Torreón">
+  <meta name="og:description" content="Diagnóstico y Lineamientos para la elaboración del Plan Estratégico de Drenaje Pluvial de Torreón.">
+  <meta name="og:image" content="http://www.trcimplan.gob.mx/proyectos/plan-estrategico-drenaje-pluvial-torreon/imagen-previa.jpg">
+  <meta name="og:url" content="http://www.trcimplan.gob.mx/proyectos/plan-estrategico-drenaje-pluvial-torreon.html">
+  <title>Plan Estratégico de Drenaje Pluvial de Torreón - IMPLAN Torreón</title>
+  <link rel="shortcut icon" type="image/x-icon" href="../imagenes/apple-touch-icon.png">
+  <link rel="apple-touch-icon" href="../imagenes/apple-touch-icon.png">
+  <link rel="apple-touch-icon" href="../imagenes/apple-touch-icon-76x76.png" sizes="76x76">
+  <link rel="apple-touch-icon" href="../imagenes/apple-touch-icon-120x120.png" sizes="120x120">
+  <link rel="apple-touch-icon" href="../imagenes/apple-touch-icon-152x152.png" sizes="152x152">
+  <link rel="apple-touch-icon" href="../imagenes/apple-touch-icon-180x180.png" sizes="180x180">
+  <link rel="icon" href="../imagenes/icon-hires.png" sizes="192x192">
+  <link rel="icon" href="../imagenes/icon-normal.png" sizes="128x128">
+  <link rel="alternate" type="application/rss+xml" href="../rss.xml" title="IMPLAN Torreón">
+  <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+  <link rel="stylesheet" type="text/css" href="../vendor/metisMenu/metisMenu.min.css">
+  <link rel="stylesheet" type="text/css" href="../vendor/datatables-plugins/dataTables.bootstrap.css">
+  <link rel="stylesheet" type="text/css" href="../vendor/morrisjs/morris.css">
+  <link rel="stylesheet" type="text/css" href="../vendor/font-awesome/css/font-awesome.min.css">
+  <link rel="stylesheet" type="text/css" href="../dist/css/sb-admin-2.min.css">
+  <link rel="stylesheet" type="text/css" href="../dist/css/plataforma-de-conocimiento.css">
+  <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Noto+Sans|Roboto+Condensed:400,700">
+  <link rel="stylesheet" type="text/css" href="http://libs.cartocdn.com/cartodb.js/v3/3.15/themes/css/cartodb.css">
+  <link rel="stylesheet" type="text/css" href="../dist/css/estilosvm.css">
+  <link rel="stylesheet" type="text/css" href="../dist/css/trcimplan.css">
+  <!-- SOPORTE PARA IE -->
+  <!--[if lt IE 9]>
+  <script type="text/javascript" src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+  <script type="text/javascript" src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+  <![endif]-->
+</head>
+<body>
+<div id="wrapper">
+  <nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="../index.html"><img class="navbar-brand-img" src="../imagenes/implan-barra-logo-chico-gris.png" alt="IMPLAN Torreón"></a>
+    </div>
+  <div class="navbar-default sidebar" role="navigation">
+    <div class="sidebar-nav navbar-collapse">
+      <ul class="nav" id="side-menu">
+        <li class="sidebar-search">
+          <form method="get" action="http://www.trcimplan.gob.mx/buscador-resultados.html">
+            <div class="input-group custom-search-form">
+              <input type="text" class="form-control" placeholder="Google buscar..." value="" name="q">
+              <span class="input-group-btn">
+                <button class="btn btn-default" type="submit"><i class="fa fa-search"></i></button>
+              </span>
+            </div>
+          </form>
+        </li>
+        <li>
+          <a href="#"><span class="navegacion-icono"><i class="fa fa-lightbulb-o"></i></span> Análisis Publicados<span class="fa arrow"></span></a>
+          <ul class="nav nav-second-level">
+            <li><a href="../blog/index.html"><span class="navegacion-icono"><i class="fa fa-file-text-o"></i></span> Últimos Análisis</a></li>
+            <li><a href="../excolaboradores/index.html"><span class="navegacion-icono"><i class="fa fa-file-text-o"></i></span> Análisis por Autor</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="#"><span class="navegacion-icono"><i class="fa fa-area-chart"></i></span> Indicadores<span class="fa arrow"></span></a>
+          <ul class="nav nav-second-level">
+            <li><a href="../smi/introduccion.html"><span class="navegacion-icono"><i class="fa fa-file-text-o"></i></span> Introducción al SMI</a></li>
+            <li><a href="../indicadores-categorias/index.html"><span class="navegacion-icono"><i class="fa fa-th-list"></i></span> Indicadores por Categoría</a></li>
+            <li><a href="../smi/por-region.html"><span class="navegacion-icono"><i class="fa fa-table"></i></span> Indicadores por Región</a></li>
+            <li><a href="../smi/datos-abiertos.html"><span class="navegacion-icono"><i class="fa fa-download"></i></span> Datos Abiertos</a></li>
+            <li><a href="../smi/niveles-socioeconomicos.html"><span class="navegacion-icono"><i class="fa fa-bar-chart"></i></span> Niveles Socioeconómicos</a></li>
+            <li><a href="../monitores/index.html"><span class="navegacion-icono"><i class="fa fa-file-text-o"></i></span> Monitores</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="#"><span class="navegacion-icono"><i class="fa fa-puzzle-piece"></i></span> Indicadores Básicos de Colonias<span class="fa arrow"></span></a>
+          <ul class="nav nav-second-level">
+            <li><a href="../ibc/introduccion.html"><span class="navegacion-icono"><i class="fa fa-file-text-o"></i></span> Introducción al IBC</a></li>
+            <li><a href="../ibc-colonias-torreon/index.html"><span class="navegacion-icono"><i class="fa fa-font"></i></span> Colonias de Torreón</a></li>
+            <li><a href="https://implantorreon.carto.com/u/sigimplan/builder/907a6bc0-2c7e-451e-9668-b78d952e52ff/embed" target="_blank"><span class="navegacion-icono"><i class="fa fa-external-link"></i></span> Mapa Completo</a></li>
+            <li><a href="../ibc/torreon-urbano.html"><span class="navegacion-icono"><i class="fa fa-table"></i></span> Torreón Urbano</a></li>
+            <li><a href="../ibc/datos-abiertos.html"><span class="navegacion-icono"><i class="fa fa-download"></i></span> Datos Abiertos</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="#"><span class="navegacion-icono"><i class="fa fa-map-marker"></i></span> Información Geográfica<span class="fa arrow"></span></a>
+          <ul class="nav nav-second-level">
+            <li><a href="../sig/introduccion.html"><span class="navegacion-icono"><i class="fa fa-file-text-o"></i></span> Introducción al SIG</a></li>
+            <li><a href="../sig-mapas-torreon/temas-sig.html"><span class="navegacion-icono"><i class="fa fa-map-o"></i></span> Mapas por Tema</a></li>
+            <li><a href="../sig-mapas-torreon/plan-director-desarrollo-urbano.html"><span class="navegacion-icono"><i class="fa fa-map-marker"></i></span> Usos de Suelo</a></li>
+            <li><a href="../sig/datos-abiertos.html"><span class="navegacion-icono"><i class="fa fa-download"></i></span> Datos Abiertos</a></li>
+          </ul>
+        </li>
+        <li class="active">
+          <a href="#"><span class="navegacion-icono"><i class="fa fa-book"></i></span> Plan Estratégico Torreón 2040<span class="fa arrow"></span></a>
+          <ul class="nav nav-second-level">
+            <li><a href="../pet/indice.html"><span class="navegacion-icono"><i class="fa fa-list-ul"></i></span> Índice General</a></li>
+            <li><a href="../plan-estrategico-torreon-enfoque-metropolitano-2040/index.html"><span class="navegacion-icono"><i class="fa fa-download"></i></span> Descargar</a></li>
+            <li><a href="../plan-estrategico-metropolitano/descripcion-del-proceso.html"><span class="navegacion-icono"><i class="fa fa-calendar"></i></span> Descripción del proceso</a></li>
+            <li class="active"><a href="../proyectos/index.html"><span class="navegacion-icono"><i class="fa fa-check-square"></i></span> Proyectos</a></li>
+            <li><a href="../vision-de-ciudad/vision-de-ciudad.html"><span class="navegacion-icono"><i class="fa fa-file-text-o"></i></span> Visión de Ciudad desde IMPLAN</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="#"><span class="navegacion-icono"><i class="fa fa-briefcase"></i></span> Documentos<span class="fa arrow"></span></a>
+          <ul class="nav nav-second-level">
+            <li><a href="../sig-planes/index.html"><span class="navegacion-icono"><i class="fa fa-book"></i></span> Planes y Programas</a></li>
+            <li><a href="../investigaciones/index.html"><span class="navegacion-icono"><i class="fa fa-file-text-o"></i></span> Investigaciones</a></li>
+            <li><a href="../estudios/index.html"><span class="navegacion-icono"><i class="fa fa-file-text-o"></i></span> Estudios</a></li>
+          </ul>
+        </li>
+        <li><a href="../consejo-directivo/integrantes.html"><span class="navegacion-icono"><i class="fa fa-users"></i></span> Consejo Directivo</a></li>
+        <li><a href="../sala-prensa/index.html"><span class="navegacion-icono"><i class="fa fa-newspaper-o"></i></span> Sala de Prensa</a></li>
+        <li><a href="../programas-radio/index.html"><span class="navegacion-icono"><i class="fa fa-microphone"></i></span> Programas de Radio</a></li>
+        <li>
+          <a href="#"><span class="navegacion-icono"><i class="fa fa-file-text-o"></i></span> Consejo Visión Metrópoli<span class="fa arrow"></span></a>
+          <ul class="nav nav-second-level">
+            <li><a href="../convocatorias/vision-metropoli.html"><span class="navegacion-icono"><i class="fa fa-file-text-o"></i></span> Consejo Juvenil</a></li>
+            <li><a href="../vision-metropoli/integrantes.html"><span class="navegacion-icono"><i class="fa fa-file-text-o"></i></span> Integrantes del Consejo</a></li>
+            <li><a href="../vision-metropoli/index.html"><span class="navegacion-icono"><i class="fa fa-newspaper-o"></i></span> Sala de Prensa</a></li>
+            <li><a href="../vision-metropoli/reglamento-vision-metropoli-2020.pdf"><span class="navegacion-icono"><i class="fa fa-file-text-o"></i></span> Reglamento</a></li>
+            <li><a href="https://issuu.com/consejovisionmetropoli/docs/informe_visi_n_metr_poli_2019_-_2021" target="_blank"><span class="navegacion-icono"><i class="fa fa-file-text-o"></i></span> Informe 2019 - 2021</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="#"><span class="navegacion-icono"><i class="fa fa-building-o"></i></span> Institucional<span class="fa arrow"></span></a>
+          <ul class="nav nav-second-level">
+            <li><a href="../institucional/vision-mision.html"><span class="navegacion-icono"><i class="fa fa-trophy"></i></span> Misión / Visión</a></li>
+            <li><a href="../institucional/NuestrosProyectos.html"><span class="navegacion-icono"><i class="fa fa-pencil-square-o"></i></span> Nuestros Proyectos</a></li>
+            <li><a href="../institucional/mensaje-director.html"><span class="navegacion-icono"><i class="fa fa-comment"></i></span> Mensaje del Director</a></li>
+            <li><a href="../autores/index.html"><span class="navegacion-icono"><i class="fa fa-user"></i></span> Quienes Somos</a></li>
+            <li><a href="../institucional/estructura-organica.html"><span class="navegacion-icono"><i class="fa fa-sitemap"></i></span> Estructura Orgánica</a></li>
+            <li><a href="../institucional/modelo-operativo-universal.html"><span class="navegacion-icono"><i class="fa fa-slideshare"></i></span> Modelo Operativo Univ.</a></li>
+            <li><a href="../institucional/reglamentos.html"><span class="navegacion-icono"><i class="fa fa-gavel"></i></span> Reglamentos</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="#"><span class="navegacion-icono"><i class="fa fa-external-link"></i></span> Transparencia<span class="fa arrow"></span></a>
+          <ul class="nav nav-second-level">
+            <li><a href="http://www2.icai.org.mx/ipo/dependencia.php?dep=178#pageload" target="_blank"><span class="navegacion-icono"><i class="fa fa-file-text-o"></i></span> Transparencia Estatal (ICAI)</a></li>
+            <li><a href="https://consultapublicamx.inai.org.mx/vut-web/faces/view/consultaPublica.xhtml#inicio" target="_blank"><span class="navegacion-icono"><i class="fa fa-file-text-o"></i></span> Plataforma Nacional de Transparencia</a></li>
+            <li><a href="../transparencia/index.html"><span class="navegacion-icono"><i class="fa fa-briefcase"></i></span> Documentos</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="#"><span class="navegacion-icono"><i class="fa fa-share-alt"></i></span> Términos de Uso<span class="fa arrow"></span></a>
+          <ul class="nav nav-second-level">
+            <li><a href="../terminos/terminos-informacion.html"><span class="navegacion-icono"><i class="fa fa-cubes"></i></span> De la información</a></li>
+            <li><a href="../terminos/terminos-sitio.html"><span class="navegacion-icono"><i class="fa fa-globe"></i></span> Del sitio web</a></li>
+            <li><a href="../terminos/privacidad.html"><span class="navegacion-icono"><i class="fa fa-lock"></i></span> Aviso de Privacidad</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="#"><span class="navegacion-icono"><i class="fa fa-phone"></i></span> Contacto<span class="fa arrow"></span></a>
+          <ul class="nav nav-second-level">
+            <li><a href="../contacto/contacto.html"><span class="navegacion-icono"><i class="fa fa-phone"></i></span> Medios de contacto</a></li>
+            <li><a href="../preguntas-frecuentes/preguntas-frecuentes.html"><span class="navegacion-icono"><i class="fa fa-question"></i></span> Preguntas Frecuentes</a></li>
+            <li><a href="http://goo.gl/forms/1rdX4X128PpMOif73" target="_blank"><span class="navegacion-icono"><i class="fa fa-external-link"></i></span> Comentarios y Sugerencias</a></li>
+          </ul>
+        </li>
+        <li><a href="../convocatorias/index.html"><span class="navegacion-icono"><i class="fa fa-file-text-o"></i></span> Convocatorias</a></li>
+        <li><a href="http://177.244.42.17/ovie-torreon/#!" target="_blank"><span class="navegacion-icono"><i class="fa fa-map-marker"></i></span> Oficina Virtual de Información Económica (OVIE)</a></li>
+        <li><a href="https://arcg.is/0vySSr" target="_blank"><span class="navegacion-icono"><i class="fa fa-globe"></i></span> Atlas Municipal de Riesgos de Torreón</a></li>
+      </ul>
+    </div>
+  </div>
+  </nav>
+  <div id="page-wrapper">
+    <div class="cuerpo">
+      <article><div itemscope itemtype="http://schema.org/Article">
+        <div class="encabezado">
+          <h1 itemprop="headline">Plan Estratégico de Drenaje Pluvial de Torreón</h1>
+          <div class="encabezado-descripcion" itemprop="description">Diagnóstico y Lineamientos para la elaboración del Plan Estratégico de Drenaje Pluvial de Torreón.</div>
+          <div class="encabezado-autor-fecha">
+            Por <span itemprop="author">Dirección de Proyectos Estratégicos</span> -
+            <meta itemprop="datePublished" content="2016-08-04T14:30">04/08/2016 14:30
+          </div>
+        </div>
+        <div itemprop="articleBody">
+<!-- Contenido: Inicia  -->
+
+<h3>Presentación</h3>
+
+<p><b>Instrucciones:</b> Cada 12 segundos cambia la imagen. Puede arrastrar a la izquierda para avanzar y a la derecha para retroceder.</p>
+
+<!-- PHOTO SLIDER PRESENTACION INICIA -->
+<div id="plan_estrategico_drenaje_pluvial_torreon_container" style="position: relative; top: 0px; left: 0px; width: 800px; height: 500px;">
+  <div u="slides" style="cursor: move; position: absolute; left: 0px; top: 0px; width: 800px; height: 500px; overflow: hidden;">
+    <div><img u="image" src="plan-estrategico-drenaje-pluvial-torreon/trcimplan-plan-estrategico-drenaje-pluvial-torreon-00.jpg"></div>
+    <div><img u="image" src="plan-estrategico-drenaje-pluvial-torreon/trcimplan-plan-estrategico-drenaje-pluvial-torreon-01.jpg"></div>
+    <div><img u="image" src="plan-estrategico-drenaje-pluvial-torreon/trcimplan-plan-estrategico-drenaje-pluvial-torreon-02.jpg"></div>
+    <div><img u="image" src="plan-estrategico-drenaje-pluvial-torreon/trcimplan-plan-estrategico-drenaje-pluvial-torreon-03.jpg"></div>
+    <div><img u="image" src="plan-estrategico-drenaje-pluvial-torreon/trcimplan-plan-estrategico-drenaje-pluvial-torreon-04.jpg"></div>
+    <div><img u="image" src="plan-estrategico-drenaje-pluvial-torreon/trcimplan-plan-estrategico-drenaje-pluvial-torreon-05.jpg"></div>
+    <div><img u="image" src="plan-estrategico-drenaje-pluvial-torreon/trcimplan-plan-estrategico-drenaje-pluvial-torreon-06.jpg"></div>
+    <div><img u="image" src="plan-estrategico-drenaje-pluvial-torreon/trcimplan-plan-estrategico-drenaje-pluvial-torreon-07.jpg"></div>
+    <div><img u="image" src="plan-estrategico-drenaje-pluvial-torreon/trcimplan-plan-estrategico-drenaje-pluvial-torreon-08.jpg"></div>
+    <div><img u="image" src="plan-estrategico-drenaje-pluvial-torreon/trcimplan-plan-estrategico-drenaje-pluvial-torreon-09.jpg"></div>
+    <div><img u="image" src="plan-estrategico-drenaje-pluvial-torreon/trcimplan-plan-estrategico-drenaje-pluvial-torreon-10.jpg"></div>
+    <div><img u="image" src="plan-estrategico-drenaje-pluvial-torreon/trcimplan-plan-estrategico-drenaje-pluvial-torreon-11.jpg"></div>
+    <div><img u="image" src="plan-estrategico-drenaje-pluvial-torreon/trcimplan-plan-estrategico-drenaje-pluvial-torreon-12.jpg"></div>
+    <div><img u="image" src="plan-estrategico-drenaje-pluvial-torreon/trcimplan-plan-estrategico-drenaje-pluvial-torreon-13.jpg"></div>
+    <div><img u="image" src="plan-estrategico-drenaje-pluvial-torreon/trcimplan-plan-estrategico-drenaje-pluvial-torreon-14.jpg"></div>
+    <div><img u="image" src="plan-estrategico-drenaje-pluvial-torreon/trcimplan-plan-estrategico-drenaje-pluvial-torreon-15.jpg"></div>
+    <div><img u="image" src="plan-estrategico-drenaje-pluvial-torreon/trcimplan-plan-estrategico-drenaje-pluvial-torreon-16.jpg"></div>
+    <div><img u="image" src="plan-estrategico-drenaje-pluvial-torreon/trcimplan-plan-estrategico-drenaje-pluvial-torreon-17.jpg"></div>
+    <div><img u="image" src="plan-estrategico-drenaje-pluvial-torreon/trcimplan-plan-estrategico-drenaje-pluvial-torreon-18.jpg"></div>
+  </div>
+  <a style="display: none" href="http://www.jssor.com">Image Slider</a>
+</div>
+<!-- PHOTO SLIDER PRESENTACION TERMINA -->
+<h2>Plan Estratégico Metropolitano</h2>
+
+<p>Desde OCTUBRE de 2014 más de 264</p>
+
+<ul>
+<li>Expertos</li>
+<li>Servidores Públicos</li>
+<li>Representantes Gremiales</li>
+<li>Ambientalistas</li>
+<li>ONG’s</li>
+<li>Especialistas</li>
+<li>Universidades</li>
+<li>Empresarios</li>
+<li>Técnicos</li>
+<li>Ciudadanos Diversos</li>
+</ul>
+
+<p>Alrededor de 20 hrs. de Trabajo</p>
+
+<p>La mesa de Entorno Urbano se encargó de discutir, entre otros temas, la problemática concerniente a infraestructura y servicios urbanos.</p>
+
+<p>De esta manera se planteó el futuro deseado en materia urbana, así como los objetivos y metas para llegar a esta visión, así como sus estrategias y accio­nes prioritarias entre las que destaca el proyecto de aguas pluviales que se orienta principalmente a atender el problema de los encharcamientos pro­ ducto de las lluvias veraniegas.</p>
+
+<h2>Objetivos del Comité Técnico</h2>
+
+<p>El Comité Técnico se trazó tres objetivos básicos alrededor de los cualesgiró el trabajo del mismo:</p>
+
+<ul>
+<li>Obtener un diagnóstico del drenaje pluvial­ exis­tente.</li>
+<li>Identificar y evaluar las propuestas de solución.</li>
+<li>Elaborar un marco de referencia para definir los lineamientos del Plan Estratégi­co para el Manejo Integral del Aguas Pluviales (PEMIAP).</li>
+</ul>
+
+<p>Las múltiples administraciones municipales han atendido el problema pluvial de manera parcial conforme ha ido creciendo la ciudad. La desaparición de los tres principales tajos para dar lugar a modernos bulevares agravó el proble­ma de los encharcamientos y, en la medida que la ciudad creció, las alternativas de solución se dificultaron.</p>
+
+<p>No obstante lo anterior, el Sistema Municipal de Aguas y Saneamiento de Torreón, SIMAS, tiene registrados...</p>
+
+<h2>Diagnóstico</h2>
+
+<ul>
+<li>La precipitación pluvial promedio de los últi­mos 40 años es de 227 mm por año</li>
+<li>Máximos de 504 mm en el año de 1986</li>
+<li>396 mm en el año 1990.</li>
+<li>En promedio, los meses de Mayo a</li>
+<li>Septiembre­ concentran el 76% de la precipit­ación anual</li>
+<li>El resto del año las lluvias ocasionales no repre­sentan mayor riesgo de encharcamientos.</li>
+<li>Las lluvias veraniegas en Torreón son torren­cial, de alta intensidad y de relativamente poca duración.</li>
+</ul>
+
+<h2>Presipitación Máxima Mensual y Diaria</h2>
+
+<p>La topografía plana de la es la causa básica de los encharcamientos que ocurren, cuando las lluvias son excesivas o de alta intensidad.</p>
+
+<p>Ante la limitada existencia de drenes naturales o construidos para el escurrimiento pluvial.</p>
+
+<table class="table table-hover table-bordered">
+<thead>
+<tr>
+  <th>Precipitación(mm)</th>
+  <th align="right">Mayo 1992</th>
+  <th align="right">Junio 1999</th>
+  <th align="right">Julio 1990</th>
+  <th align="right">Agosto 1998</th>
+  <th align="right">Septiembre 1995</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td>Max. Mensual</td>
+  <td align="right">110</td>
+  <td align="right">146</td>
+  <td align="right">119</td>
+  <td align="right">218</td>
+  <td align="right">158</td>
+</tr>
+<tr>
+  <td>Max. Diaria</td>
+  <td align="right">93</td>
+  <td align="right">55</td>
+  <td align="right">51</td>
+  <td align="right">102</td>
+  <td align="right">99</td>
+</tr>
+<tr>
+  <td>Anual</td>
+  <td align="right">251</td>
+  <td align="right">210</td>
+  <td align="right">396</td>
+  <td align="right">284</td>
+  <td align="right">248</td>
+</tr>
+<tr>
+  <td>% Diaria-Mensual</td>
+  <td align="right">84%</td>
+  <td align="right">38%</td>
+  <td align="right">43%</td>
+  <td align="right">47%</td>
+  <td align="right">63%</td>
+</tr>
+<tr>
+  <td>%Mes-Anual</td>
+  <td align="right">44%</td>
+  <td align="right">70%</td>
+  <td align="right">30%</td>
+  <td align="right">77%</td>
+  <td align="right">64%</td>
+</tr>
+</tbody>
+</table>
+
+<h2>Problemática Territorial de Encharcamiento</h2>
+
+<p><img class="img-responsive" src="plan-estrategico-drenaje-pluvial-torreon/plano-areas-de-inundacion-de-torreon.jpg" alt="Plano de Areas de Inundacion de Torreon"></p>
+
+<h2>Problemática Territorial</h2>
+
+<p>Los 7 principales puntos viales de encharcamiento en Torreón</p>
+
+<ul>
+<li>Cruce del libramiento Raúl López Sánchez y antigua carretera a San Pedro.</li>
+<li>Diagonal las Fuentes entre Calle del Ángel y Calle del Patriarca, en la colonia La Fuente</li>
+<li>Cruce del Blvd. Nueva Laguna y calle decimosexta, en la colonia Braulio Fernández Aguirre.</li>
+<li>Blvd. Independencia entre calle Cepeda y calle Javier­ Mina.</li>
+<li>Blvd. Rodríguez Triana entre calzada de las Misiones y Blvd. Torreón - Matamoros.</li>
+<li>Blvd. Constitución desde Prolongación Colón hasta calzada Salvador Creel.</li>
+<li>Avenida Villa del Torreón entre Av. Universidad y calle de los Peltres, en la colonia Rincón de la Merced­.</li>
+</ul>
+
+<h2>Colectores Pluviales</h2>
+
+<p><img class="img-responsive" src="plan-estrategico-drenaje-pluvial-torreon/colectores-pluviales.jpg" alt="Colectores Pluviales de Torreon"></p>
+
+<p>El Sistema Municipal de Aguas y Saneamiento de Torreón cuenta con un registro de 17 Sistemas de Captación y 10 Colectores Pluviales con diversos estados de mantenimiento.</p>
+
+<h2>Problemática Jurídica</h2>
+
+<ul>
+<li>La legislación estatal y municipal en materia de aguas pluviales es muy limitada.</li>
+<li>La Ley de Asentamientos Humanos y Desarrollo Ur­bano para el Estado de Coahuila ni los Reglamentos de Construcción del Municipio de Torreón estable­cen normas y disposiciones específicas que deben cumplir los diversos actores del desarrollo urbano e inmobiliario para lograr una captación y conduc­ción ordenada de las aguas pluviales hacia puntos de descarga establecidos.</li>
+</ul>
+
+<p>En su sesión del mes de agosto del 2015, el Consejo Directi­vo del IMPLAN aprobó el proyecto de Reglamento de Zoni­ficación y Usos de Suelo, el cual incluye por primera vez en la historia reglamentaria en materia urbana de Torreón y del mismo estado de Coahuila, una propuesta de reglamenta­ción puntual y sistemática. (Pendiente su aprobación por el H. Cabildo de Torreón).</p>
+
+<h2>Problemática Institucional</h2>
+
+<ul>
+<li>Falta de reglamentación, hoy en día no existe auto­ridad municipal que tenga a su cargo la operación, mantenimiento y administración de la totalidad de las redes pluviales existentes.</li>
+<li>Algunas redes están bajo la responsabilidad del SIMAS­, otras tantas son mantenidas por la Dirección de Obras Públicas del municipio y algunas más es­tán abandonadas sin que autoridad alguna se enc­argue de ellas.</li>
+<li>A consecuencia de tal vacío de autoridad, el estado físico en que se encuentran esas redes es deficien­te.</li>
+</ul>
+
+<p>Torreón debe contar con una dependencia u órgano espe­cializado que tenga bajo su responsabilidad no sólo la ope­r­a­ción del sistema de aguas pluviales de la ciudad, sino al mismo tiempo la ejecución de un Plan Estratégico para el Manejo Integral del Drenaje Pluvial (PEMIDP).</p>
+
+<h2>Lineamientos</h2>
+
+<p>El PEMIDP será el instrumento estra­tégico de la Administración Municipal para que, a través de una dependencia u organismo público municipal, pue­da llevar a cabo las acciones y pro­gramas necesarios que permitan el cumplimiento de metas y objetivos a corto, mediano­ y largo plazo.</p>
+
+<p>El PEMIDP contará con:</p>
+
+<ol>
+<li>Objetivo del Plan. Administrar de manera integral y eficiente los escurri­mientos pluviales que se generan en la ciudad de Torreón, buscando el mayor aprovechamiento del agua para fines de riego de áreas verdes o foresta­das y para la posible recarga del acuífero, al mismo tiempo de prevenir y mitigar los efectos nocivos de las lluvias extraordinarias que periódicamente afec­tan la ciudad.LINEAMIENTOS</li>
+<li>Programas Estratégicos:</li>
+</ol>
+
+<ul>
+<li>Inventario de redes pluviales existentes, en funcio­ namiento o desactivadas, indicando equipamiento, capacidad, tipo y longitud de redes, puntos de cap­tación y puntos de descarga, así como el presupues­to para su puesta en marcha y operación eficiente.</li>
+<li>Construcción y rehabilitación de canales de de­sagüe pluvial e incorporación de canales a cargo de CONAGUA­ al sistema de desagüe pluvial.</li>
+<li>Solución integral de los 7 puntos citadinos más afec­tados por los encharcamientos</li>
+<li>Vecinos en acción. Promover la participación activa de la ciudadanía organizada por barrios y colonias para proponer soluciones prácticas y de bajo costo en materia de encharcamientos.</li>
+</ul>
+
+<h2>Conclusiones</h2>
+
+<p>En concordancia con la recomendación de la actualización de 2013 del Plan Di­rector de Desarrollo Urbano de Torreón, en el sentido de designar una agencia, organismo o dependencia responsable de la planeación, ejecución, operación, mantenimiento y control del sistema in­tegral de aguas pluviales, se considera que el Sistema Municipal de Aguas y Saneamiento de Torreón debe asumir esa responsabilidad.</p>
+
+<p>Tanto la experiencia técnica del per­sonal del SIMAS, como las economías de escala que sus activos fijos otorgan para la operación a un bajo costo mar­ginal del conjunto de redes pluviales, hace del SIMAS el organismo público más idóneo para tomar bajo su mando y responsabilidad el PEMIDP y, por su­ puesto, el mantenimiento y operación del sistema de redes pluviales.</p>
+
+<p>La inversión en materia de nueva in­fraestructura pluvial seguiría corrien­do por cuenta del presupuesto de Obras­ Públicas del Municipio, pero la operación y mantenimiento estaría bajo la responsabilidad del SIMAS.</p>
+
+<!-- Contenido: Termina -->
+        </div>
+      </div></article>
+      <aside>
+  <!-- Extra: Inicia  -->
+  <h3>Publicaciones relacionadas</h3>
+<p><b>Análisis Publicados</b></p>
+<ul>
+  <li><a href="http://www.trcimplan.gob.mx/blog/programa-parcial-desarrollo-urbano-torreon-zona-norte-marzo2020.html">Propuesta de Programa Parcial de Desarrollo Urbano de la Zona Norte de Torre&oacute;n</a></li>
+  <li><a href="http://www.trcimplan.gob.mx/blog/caracteristicas-de-un-buen-espacio-publico-ene2020.html">Caracter&iacute;sticas de un Buen Espacio P&uacute;blico</a></li>
+  <li><a href="http://www.trcimplan.gob.mx/blog/nuevas-tendencias-del-fondo-metropolitano-oct2019.html">Nuevas Tendencias del Fondo Metropolitano</a></li>
+  <li><a href="http://www.trcimplan.gob.mx/blog/gestion-y-cambios-de-uso-de-suelo-en-torreon-oct2019.html">Gesti&oacute;n y Cambios de Usos de Suelo en Torre&oacute;n</a></li>
+  <li><a href="http://www.trcimplan.gob.mx/blog/centros-de-convenciones-julio2019.html">Los Centros de Convenciones como Equipamiento para el Desarrollo del Turismo de Reuniones</a></li>
+  <li><a href="http://www.trcimplan.gob.mx/blog/planificacion-urbana-en-la-salud-publica-de-la-laguna.html">La planificaci&oacute;n urbana, fundamental en la salud p&uacute;blica de los laguneros.</a></li>
+  <li><a href="http://www.trcimplan.gob.mx/blog/movilidad-con-perspectiva-de-genero-en-la-laguna.html">Movilidad con perspectiva de g&eacute;nero en La Laguna</a></li>
+  <li><a href="http://www.trcimplan.gob.mx/blog/urbanismo-con-enfoque-de-genero-en-la-laguna.html">Urbanismo con enfoque de g&eacute;nero en La Laguna</a></li>
+  <li><a href="http://www.trcimplan.gob.mx/blog/el-ciudadano-como-especialista-urbano-abril2019.html">El Ciudadano como Especialista Urbano</a></li>
+  <li><a href="http://www.trcimplan.gob.mx/blog/estructura-y-traza-urbana-de-torreon.html">Estructura y Traza Urbana de Torre&oacute;n</a></li>
+</ul>
+<p><b>Sistema Metropolitano de Indicadores</b></p>
+<ul>
+  <li><a href="http://www.trcimplan.gob.mx/indicadores-torreon/sustentabilidad-red-carretera-avanzada.html">Red Carretera Avanzada en Torre&oacute;n</a></li>
+  <li><a href="http://www.trcimplan.gob.mx/indicadores-torreon/economia-crecimiento-de-la-mancha-urbana.html">Crecimiento de la Mancha Urbana en Torre&oacute;n</a></li>
+  <li><a href="http://www.trcimplan.gob.mx/indicadores-torreon/sustentabilidad-densidad-media-urbana.html">Densidad Media Urbana en Torre&oacute;n</a></li>
+  <li><a href="http://www.trcimplan.gob.mx/indicadores-torreon/sustentabilidad-red-carretera-troncal-federal.html">Red Carretera Troncal Federal en Torre&oacute;n</a></li>
+  <li><a href="http://www.trcimplan.gob.mx/indicadores-torreon/sustentabilidad-red-carretera-total.html">Red Carretera Total en Torre&oacute;n</a></li>
+  <li><a href="http://www.trcimplan.gob.mx/indicadores-torreon/sustentabilidad-red-carretera-de-alimentadoras-estatales.html">Red Carretera de Alimentadoras Estatales en Torre&oacute;n</a></li>
+  <li><a href="http://www.trcimplan.gob.mx/indicadores-torreon/sustentabilidad-acceso-a-vialidades-pavimentadas.html">Acceso a Vialidades Pavimentadas en Torre&oacute;n</a></li>
+  <li><a href="http://www.trcimplan.gob.mx/indicadores-torreon/sustentabilidad-disponibilidad-de-banqueta.html">Disponibilidad de Banqueta en Torre&oacute;n</a></li>
+  <li><a href="http://www.trcimplan.gob.mx/indicadores-la-laguna/sustentabilidad-red-carretera-avanzada.html">Red Carretera Avanzada en La Laguna</a></li>
+  <li><a href="http://www.trcimplan.gob.mx/indicadores-matamoros/sustentabilidad-red-carretera-total.html">Red Carretera Total en Matamoros</a></li>
+</ul>
+<p><b>Sistema de Información Geográfica</b></p>
+<ul>
+  <li><a href="http://www.trcimplan.gob.mx/sig-mapas-torreon/inventario-viviendas.html">Inventario de Viviendas</a></li>
+  <li><a href="http://www.trcimplan.gob.mx/sig-mapas-torreon/caracteristicas-viviendas.html">Caracter&iacute;sticas de las Viviendas</a></li>
+  <li><a href="http://www.trcimplan.gob.mx/sig-mapas-torreon/torreon-jardin.html">torreon-jardin</a></li>
+  <li><a href="http://www.trcimplan.gob.mx/sig-mapas-torreon/red-ciclista2.html">red-ciclista2</a></li>
+  <li><a href="http://www.trcimplan.gob.mx/sig-mapas-torreon/riesgos-socio-organizativos.html">Riesgos Socio Organizativos</a></li>
+  <li><a href="http://www.trcimplan.gob.mx/sig-mapas-torreon/zonas-riesgo-por-desbordamiento-inundacion-o-estancamiento.html">Zonas de Riesgo por desbordamiento, inundaci&oacute;n o estancamiento</a></li>
+  <li><a href="http://www.trcimplan.gob.mx/sig-mapas-torreon/riesgos-sanitarios-ambientales.html">Riesgos Sanitarios Ambientales</a></li>
+  <li><a href="http://www.trcimplan.gob.mx/sig-mapas-torreon/peligros-quimicos-tecnologicos.html">Peligros Qu&iacute;micos Tecnol&oacute;gicos</a></li>
+  <li><a href="http://www.trcimplan.gob.mx/sig-mapas-torreon/conjuntos-parques-industriales.html">Conjuntos y Parques Industriales</a></li>
+  <li><a href="http://www.trcimplan.gob.mx/sig-mapas-torreon/centros-atencion-adultos-mayores.html">Centros de Atenci&oacute;n a Adultos Mayores</a></li>
+</ul>
+<p><b>Plan Estratégico Torreón</b></p>
+<ul>
+  <li><a href="http://www.trcimplan.gob.mx/pet/diagnostico-estrategico-desarrollo-economico-innovacion.html">Diagn&oacute;stico Estrat&eacute;gico: Desarrollo Econ&oacute;mico e Innovaci&oacute;n</a></li>
+  <li><a href="http://www.trcimplan.gob.mx/pet/cartera-proyectos-entorno-urbano.html">Cartera de Proyectos: Entorno Urbano</a></li>
+  <li><a href="http://www.trcimplan.gob.mx/pet/cartera-proyectos-desarrollo-economico-innovacion.html">Cartera de Proyectos: Desarrollo Econ&oacute;mico e Innovaci&oacute;n</a></li>
+  <li><a href="http://www.trcimplan.gob.mx/proyectos/plan-centro-laguna.html">Plan Centro Laguna</a></li>
+  <li><a href="http://www.trcimplan.gob.mx/pet/vision-entorno-urbano.html">Visi&oacute;n de Entorno Urbano 2040</a></li>
+  <li><a href="http://www.trcimplan.gob.mx/proyectos/zona-30.html">Zona 30</a></li>
+  <li><a href="http://www.trcimplan.gob.mx/pet/vision-desarrollo-economico-innovacion.html">Visi&oacute;n de Desarrollo Econ&oacute;mico e Innovaci&oacute;n 2040</a></li>
+  <li><a href="http://www.trcimplan.gob.mx/pet/diagnostico-estrategico-entorno-urbano.html">Diagn&oacute;stico Estrat&eacute;gico: Entorno Urbano</a></li>
+  <li><a href="http://www.trcimplan.gob.mx/pet/cartera-proyectos-medio-ambiente-sustentabilidad.html">Cartera de Proyectos: Medio Ambiente y Sustentabilidad</a></li>
+  <li><a href="http://www.trcimplan.gob.mx/proyectos/plata-laguna.html">Plata Laguna</a></li>
+</ul>
+<p><b>Sala de Prensa</b></p>
+<ul>
+  <li><a href="http://www.trcimplan.gob.mx/sala-prensa/2015-09-24-interesa-como-referente-nacional.html">Interesa como referente nacional esquema de Planeaci&oacute;n y el proyecto Calle Completa de Torre&oacute;n</a></li>
+  <li><a href="http://www.trcimplan.gob.mx/sala-prensa/2015-09-25-avances-del-proyecto-calle-completa.html">IMPLAN presenta avances del proyecto &ldquo;Calle Completa&rdquo;</a></li>
+  <li><a href="http://www.trcimplan.gob.mx/sala-prensa/2017-02-09-piden-georreferenciar-avance-y-desarrollo-de-obra-publica.html">Piden georreferenciar avance y desarrollo de obra p&uacute;blica</a></li>
+  <li><a href="http://www.trcimplan.gob.mx/sala-prensa/2017-09-11-resaltan-la-importancia-del-espacio-publico.html">Resaltan la importancia del espacio p&uacute;blico</a></li>
+  <li><a href="http://www.trcimplan.gob.mx/sala-prensa/2018-10-31-decima-sesion.html">Presentan &ldquo;Propuesta conceptual para el manejo sustentable del agua&rdquo; en Sesi&oacute;n del IMPLAN.</a></li>
+  <li><a href="http://www.trcimplan.gob.mx/sala-prensa/2018-10-05-programa-parcial-desarrollo-urbano-centro-historico.html">IMPLAN brinda taller sobre el Programa Parcial De Desarrollo Urbano Del Centro Hist&oacute;rico.</a></li>
+  <li><a href="http://www.trcimplan.gob.mx/sala-prensa/2016-07-19-sesion-ordinaria.html">IMPLAN Torre&oacute;n y Obras P&uacute;blicas presentan propuestas para mejorar el Centro Hist&oacute;rico de Torre&oacute;n</a></li>
+  <li><a href="http://www.trcimplan.gob.mx/sala-prensa/2020-04-15-comunicado-conferencias-virtuales.html">El IMPLAN Torre&oacute;n y su Consejo Juvenil: Visi&oacute;n Metr&oacute;poli, presentar&aacute;n Conferencias Virtuales</a></li>
+  <li><a href="http://www.trcimplan.gob.mx/sala-prensa/2020-02-27-segunda-sesion-consejo-2020.html">Presentan en Segunda Sesi&oacute;n de Consejo el &ldquo;Programa Parcial de Desarrollo Urbano para la Zona Norte de Torre&oacute;n&rdquo;</a></li>
+  <li><a href="http://www.trcimplan.gob.mx/sala-prensa/2020-02-17-comunicado-enoe.html">Disminuye la tasa de desempleo en la Zona Metropolitana de La Laguna (ZML), al cuarto trimestre de 2019</a></li>
+</ul>
+  <!-- Extra: Termina -->
+  </aside>
+<div class="contenido-social">
+  <h5>Compartir en Redes Sociales</h5>
+  <a href="https://twitter.com/share" class="twitter-share-button" data-via="trcimplan" data-lang="es">Twittear</a>
+  <iframe src="//www.facebook.com/plugins/like.php?href=http%3A%2F%2Fwww.trcimplan.gob.mx%2Fproyectos%2Fplan-estrategico-drenaje-pluvial-torreon.html&amp;width=300&amp;layout=button_count&amp;action=like&amp;show_faces=true&amp;share=false&amp;height=21" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:300px; height:21px;" allowTransparency="true"></iframe>
+</div>
+    </div>
+    <div class="mapa-inferior">
+          <div class="pull-right redes-sociales">
+            <a class="fa fa-twitter-square" href="http://www.twitter.com/trcimplan" target="_blank"></a>
+            <a class="fa fa-facebook-square" href="https://facebook.com/trcimplan" target="_blank"></a>
+            <a class="fa fa-facebook-square" href="http://www.instagram.com/implantorreon" target="_blank"></a>
+            <a class="fa fa-rss-square" href="../rss.xml"></a>
+          </div>
+    </div>
+  </div>
+</div>
+<!-- Javascript global inicia -->
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
+<script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="../vendor/metisMenu/metisMenu.min.js"></script>
+<script type="text/javascript" src="../vendor/datatables/js/jquery.dataTables.min.js"></script>
+<script type="text/javascript" src="../vendor/datatables-plugins/dataTables.bootstrap.min.js"></script>
+<script type="text/javascript" src="../vendor/datatables-responsive/dataTables.responsive.js"></script>
+<script type="text/javascript" src="../vendor/raphael/raphael.min.js"></script>
+<script type="text/javascript" src="../vendor/morrisjs/morris.min.js"></script>
+<script type="text/javascript" src="../dist/js/sb-admin-2.min.js"></script>
+<script type="text/javascript" src="http://libs.cartocdn.com/cartodb.js/v3/3.15/cartodb.js"></script>
+<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+<!-- Javascript global termina -->
+<!-- Javascript inicia -->
+<script type="text/javascript" src="../vendor/jssor/jssor.slider.min.js"></script>
+<script>
+  // PHOTO SLIDER PRESENTACION
+  jQuery(document).ready(function ($) {
+    var options = {
+        $AutoPlay: true,
+        $ChanceToShow: 5,
+        $DragOrientation: 1,
+        $AutoPlayInterval: 12000
+    };
+    var jssor_slider1 = new $JssorSlider$("plan_estrategico_drenaje_pluvial_torreon_container", options);
+    function ScaleSlider() {
+        var parentWidth = $('#plan_estrategico_drenaje_pluvial_torreon_container').parent().width();
+        if (parentWidth) {
+            jssor_slider1.$ScaleWidth(parentWidth);
+        }
+        else
+            window.setTimeout(ScaleSlider, 30);
+    }
+    ScaleSlider();
+    $(window).bind("load", ScaleSlider);
+    $(window).bind("resize", ScaleSlider);
+    $(window).bind("orientationchange", ScaleSlider);
+  });
+</script>
+
+<script>
+  // Twitter
+  !function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="https://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");
+</script>
+
+<!-- Javascript termina -->
+<!-- Javascript Google Analytics -->
+<script>
+  // Google Analytics
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)})(window,document,'script','//www.google-analytics.com/analytics.js','ga');ga('create', 'UA-58290501-1', 'auto');ga('send', 'pageview');
+</script>
+</body>
+</html>

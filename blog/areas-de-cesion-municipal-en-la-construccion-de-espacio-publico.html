@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+<!-- ===================================================================================================
+
+        Instituto Municipal de Planeación y Competitividad (IMPLAN) de Torreón.
+
+        3er. generación de la Plataforma del Conocimiento
+        Desarrollado por Ing. Guillermo Valdés Lozano <guivaloz en movimientolibre.com>
+
+        El software que lo construye está bajo la licencia GPL versión 3. © 2014, 2015, 2016, 2017.
+        Una copia está contenida en el archivo LICENCE al bajar desde GitHub.
+
+        Al usar, estudiar y copiar está aceptando los términos de uso de la información y del sitio web:
+          http://www.trcimplan.gob.mx/terminos/terminos-informacion.html
+          http://www.trcimplan.gob.mx/terminos/terminos-sitio.html
+
+        Descargue, estudie y colabore bajando todo este sitio web:
+          IMPLAN Torreón     https://github.com/TRCIMPLAN/trcimplan.github.io
+
+        Agradecemos y compartimos las tecnologías abiertas y gratuitas sobre las que se basa:
+          PHP                http://php.net
+          Twitter Bootstrap  http://getbootstrap.com
+          StartBootStrap     http://startbootstrap.com
+          Morris.js          https://morrisjs.github.io/morris.js/
+          Font Awesome       http://fontawesome.io
+          DataTables         https://www.datatables.net
+          Carto              https://carto.com
+          GitHub             https://github.com
+
+     =================================================================================================== -->
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="La ciudad, en su concepto más básico, es entendida en dos formas básicas: el espacio privado y el espacio público. El primero refiere a todo suelo urbano con carácter de propiedad privada dedicado a actividades de vivienda, comercio, servicios, industria, recreación etc, Su acceso, por definición, no es público y está regulado por él o los propietarios que lo poseen. Por otra parte, el espacio público en la ciudad es todo aquel que pertenece a la totalidad de los ciudadanos (al estado) y por ende su propiedad, uso y dominio es colectivo. Está compuesto por las calles, los parques, las plazas, y los equipamientos urbanos públicos. Es esta compleja red de espacios públicos y privados y sus interacciones sociales las que construyen y le da carácter a la ciudad.">
+  <meta name="author" content="Arq. Cecilio Pedro Secunza Schott">
+  <meta name="keywords" content="IMPLAN, Torreon, ">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Las Áreas de Cesión Municipal en la Construcción de Espacio Público - IMPLAN Torreón">
+  <meta name="twitter:description" content="La ciudad, en su concepto más básico, es entendida en dos formas básicas: el espacio privado y el espacio público. El primero refiere a todo suelo urbano con carácter de propiedad privada dedicado a actividades de vivienda, comercio, servicios, industria, recreación etc, Su acceso, por definición, no es público y está regulado por él o los propietarios que lo poseen. Por otra parte, el espacio público en la ciudad es todo aquel que pertenece a la totalidad de los ciudadanos (al estado) y por ende su propiedad, uso y dominio es colectivo. Está compuesto por las calles, los parques, las plazas, y los equipamientos urbanos públicos. Es esta compleja red de espacios públicos y privados y sus interacciones sociales las que construyen y le da carácter a la ciudad.">
+  <meta name="twitter:image" content="http://www.trcimplan.gob.mx/blog/areas-de-cesion-municipal-en-la-construccion-de-espacio-publico/imagen-previa.jpg">
+  <meta name="twitter:url" content="http://www.trcimplan.gob.mx/blog/areas-de-cesion-municipal-en-la-construccion-de-espacio-publico.html">
+  <meta name="og:title" content="Las Áreas de Cesión Municipal en la Construcción de Espacio Público - IMPLAN Torreón">
+  <meta name="og:description" content="La ciudad, en su concepto más básico, es entendida en dos formas básicas: el espacio privado y el espacio público. El primero refiere a todo suelo urbano con carácter de propiedad privada dedicado a actividades de vivienda, comercio, servicios, industria, recreación etc, Su acceso, por definición, no es público y está regulado por él o los propietarios que lo poseen. Por otra parte, el espacio público en la ciudad es todo aquel que pertenece a la totalidad de los ciudadanos (al estado) y por ende su propiedad, uso y dominio es colectivo. Está compuesto por las calles, los parques, las plazas, y los equipamientos urbanos públicos. Es esta compleja red de espacios públicos y privados y sus interacciones sociales las que construyen y le da carácter a la ciudad.">
+  <meta name="og:image" content="http://www.trcimplan.gob.mx/blog/areas-de-cesion-municipal-en-la-construccion-de-espacio-publico/imagen-previa.jpg">
+  <meta name="og:url" content="http://www.trcimplan.gob.mx/blog/areas-de-cesion-municipal-en-la-construccion-de-espacio-publico.html">
+  <title>Las Áreas de Cesión Municipal en la Construcción de Espacio Público - IMPLAN Torreón</title>
+  <link rel="shortcut icon" type="image/x-icon" href="../imagenes/apple-touch-icon.png">
+  <link rel="apple-touch-icon" href="../imagenes/apple-touch-icon.png">
+  <link rel="apple-touch-icon" href="../imagenes/apple-touch-icon-76x76.png" sizes="76x76">
+  <link rel="apple-touch-icon" href="../imagenes/apple-touch-icon-120x120.png" sizes="120x120">
+  <link rel="apple-touch-icon" href="../imagenes/apple-touch-icon-152x152.png" sizes="152x152">
+  <link rel="apple-touch-icon" href="../imagenes/apple-touch-icon-180x180.png" sizes="180x180">
+  <link rel="icon" href="../imagenes/icon-hires.png" sizes="192x192">
+  <link rel="icon" href="../imagenes/icon-normal.png" sizes="128x128">
+  <link rel="alternate" type="application/rss+xml" href="../rss.xml" title="IMPLAN Torreón">
+  <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+  <link rel="stylesheet" type="text/css" href="../vendor/metisMenu/metisMenu.min.css">
+  <link rel="stylesheet" type="text/css" href="../vendor/datatables-plugins/dataTables.bootstrap.css">
+  <link rel="stylesheet" type="text/css" href="../vendor/morrisjs/morris.css">
+  <link rel="stylesheet" type="text/css" href="../vendor/font-awesome/css/font-awesome.min.css">
+  <link rel="stylesheet" type="text/css" href="../dist/css/sb-admin-2.min.css">
+  <link rel="stylesheet" type="text/css" href="../dist/css/plataforma-de-conocimiento.css">
+  <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Noto+Sans|Roboto+Condensed:400,700">
+  <link rel="stylesheet" type="text/css" href="http://libs.cartocdn.com/cartodb.js/v3/3.15/themes/css/cartodb.css">
+  <link rel="stylesheet" type="text/css" href="../dist/css/estilosvm.css">
+  <link rel="stylesheet" type="text/css" href="../dist/css/trcimplan.css">
+  <!-- SOPORTE PARA IE -->
+  <!--[if lt IE 9]>
+  <script type="text/javascript" src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+  <script type="text/javascript" src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+  <![endif]-->
+</head>
+<body>
+<div id="wrapper">
+  <nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="../index.html"><img class="navbar-brand-img" src="../imagenes/implan-barra-logo-chico-gris.png" alt="IMPLAN Torreón"></a>
+    </div>
+  <div class="navbar-default sidebar" role="navigation">
+    <div class="sidebar-nav navbar-collapse">
+      <ul class="nav" id="side-menu">
+        <li class="sidebar-search">
+          <form method="get" action="http://www.trcimplan.gob.mx/buscador-resultados.html">
+            <div class="input-group custom-search-form">
+              <input type="text" class="form-control" placeholder="Google buscar..." value="" name="q">
+              <span class="input-group-btn">
+                <button class="btn btn-default" type="submit"><i class="fa fa-search"></i></button>
+              </span>
+            </div>
+          </form>
+        </li>
+        <li class="active">
+          <a href="#"><span class="navegacion-icono"><i class="fa fa-lightbulb-o"></i></span> Análisis Publicados<span class="fa arrow"></span></a>
+          <ul class="nav nav-second-level">
+            <li><a href="../blog/index.html"><span class="navegacion-icono"><i class="fa fa-file-text-o"></i></span> Últimos Análisis</a></li>
+            <li><a href="../excolaboradores/index.html"><span class="navegacion-icono"><i class="fa fa-file-text-o"></i></span> Análisis por Autor</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="#"><span class="navegacion-icono"><i class="fa fa-area-chart"></i></span> Indicadores<span class="fa arrow"></span></a>
+          <ul class="nav nav-second-level">
+            <li><a href="../smi/introduccion.html"><span class="navegacion-icono"><i class="fa fa-file-text-o"></i></span> Introducción al SMI</a></li>
+            <li><a href="../indicadores-categorias/index.html"><span class="navegacion-icono"><i class="fa fa-th-list"></i></span> Indicadores por Categoría</a></li>
+            <li><a href="../smi/por-region.html"><span class="navegacion-icono"><i class="fa fa-table"></i></span> Indicadores por Región</a></li>
+            <li><a href="../smi/datos-abiertos.html"><span class="navegacion-icono"><i class="fa fa-download"></i></span> Datos Abiertos</a></li>
+            <li><a href="../smi/niveles-socioeconomicos.html"><span class="navegacion-icono"><i class="fa fa-bar-chart"></i></span> Niveles Socioeconómicos</a></li>
+            <li><a href="../monitores/index.html"><span class="navegacion-icono"><i class="fa fa-file-text-o"></i></span> Monitores</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="#"><span class="navegacion-icono"><i class="fa fa-puzzle-piece"></i></span> Indicadores Básicos de Colonias<span class="fa arrow"></span></a>
+          <ul class="nav nav-second-level">
+            <li><a href="../ibc/introduccion.html"><span class="navegacion-icono"><i class="fa fa-file-text-o"></i></span> Introducción al IBC</a></li>
+            <li><a href="../ibc-colonias-torreon/index.html"><span class="navegacion-icono"><i class="fa fa-font"></i></span> Colonias de Torreón</a></li>
+            <li><a href="https://implantorreon.carto.com/u/sigimplan/builder/907a6bc0-2c7e-451e-9668-b78d952e52ff/embed" target="_blank"><span class="navegacion-icono"><i class="fa fa-external-link"></i></span> Mapa Completo</a></li>
+            <li><a href="../ibc/torreon-urbano.html"><span class="navegacion-icono"><i class="fa fa-table"></i></span> Torreón Urbano</a></li>
+            <li><a href="../ibc/datos-abiertos.html"><span class="navegacion-icono"><i class="fa fa-download"></i></span> Datos Abiertos</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="#"><span class="navegacion-icono"><i class="fa fa-map-marker"></i></span> Información Geográfica<span class="fa arrow"></span></a>
+          <ul class="nav nav-second-level">
+            <li><a href="../sig/introduccion.html"><span class="navegacion-icono"><i class="fa fa-file-text-o"></i></span> Introducción al SIG</a></li>
+            <li><a href="../sig-mapas-torreon/temas-sig.html"><span class="navegacion-icono"><i class="fa fa-map-o"></i></span> Mapas por Tema</a></li>
+            <li><a href="../sig-mapas-torreon/plan-director-desarrollo-urbano.html"><span class="navegacion-icono"><i class="fa fa-map-marker"></i></span> Usos de Suelo</a></li>
+            <li><a href="../sig/datos-abiertos.html"><span class="navegacion-icono"><i class="fa fa-download"></i></span> Datos Abiertos</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="#"><span class="navegacion-icono"><i class="fa fa-book"></i></span> Plan Estratégico Torreón 2040<span class="fa arrow"></span></a>
+          <ul class="nav nav-second-level">
+            <li><a href="../pet/indice.html"><span class="navegacion-icono"><i class="fa fa-list-ul"></i></span> Índice General</a></li>
+            <li><a href="../plan-estrategico-torreon-enfoque-metropolitano-2040/index.html"><span class="navegacion-icono"><i class="fa fa-download"></i></span> Descargar</a></li>
+            <li><a href="../plan-estrategico-metropolitano/descripcion-del-proceso.html"><span class="navegacion-icono"><i class="fa fa-calendar"></i></span> Descripción del proceso</a></li>
+            <li><a href="../proyectos/index.html"><span class="navegacion-icono"><i class="fa fa-check-square"></i></span> Proyectos</a></li>
+            <li><a href="../vision-de-ciudad/vision-de-ciudad.html"><span class="navegacion-icono"><i class="fa fa-file-text-o"></i></span> Visión de Ciudad desde IMPLAN</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="#"><span class="navegacion-icono"><i class="fa fa-briefcase"></i></span> Documentos<span class="fa arrow"></span></a>
+          <ul class="nav nav-second-level">
+            <li><a href="../sig-planes/index.html"><span class="navegacion-icono"><i class="fa fa-book"></i></span> Planes y Programas</a></li>
+            <li><a href="../investigaciones/index.html"><span class="navegacion-icono"><i class="fa fa-file-text-o"></i></span> Investigaciones</a></li>
+            <li><a href="../estudios/index.html"><span class="navegacion-icono"><i class="fa fa-file-text-o"></i></span> Estudios</a></li>
+          </ul>
+        </li>
+        <li><a href="../consejo-directivo/integrantes.html"><span class="navegacion-icono"><i class="fa fa-users"></i></span> Consejo Directivo</a></li>
+        <li><a href="../sala-prensa/index.html"><span class="navegacion-icono"><i class="fa fa-newspaper-o"></i></span> Sala de Prensa</a></li>
+        <li><a href="../programas-radio/index.html"><span class="navegacion-icono"><i class="fa fa-microphone"></i></span> Programas de Radio</a></li>
+        <li>
+          <a href="#"><span class="navegacion-icono"><i class="fa fa-file-text-o"></i></span> Consejo Visión Metrópoli<span class="fa arrow"></span></a>
+          <ul class="nav nav-second-level">
+            <li><a href="../convocatorias/vision-metropoli.html"><span class="navegacion-icono"><i class="fa fa-file-text-o"></i></span> Consejo Juvenil</a></li>
+            <li><a href="../vision-metropoli/integrantes.html"><span class="navegacion-icono"><i class="fa fa-file-text-o"></i></span> Integrantes del Consejo</a></li>
+            <li><a href="../vision-metropoli/index.html"><span class="navegacion-icono"><i class="fa fa-newspaper-o"></i></span> Sala de Prensa</a></li>
+            <li><a href="../vision-metropoli/reglamento-vision-metropoli-2020.pdf"><span class="navegacion-icono"><i class="fa fa-file-text-o"></i></span> Reglamento</a></li>
+            <li><a href="https://issuu.com/consejovisionmetropoli/docs/informe_visi_n_metr_poli_2019_-_2021" target="_blank"><span class="navegacion-icono"><i class="fa fa-file-text-o"></i></span> Informe 2019 - 2021</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="#"><span class="navegacion-icono"><i class="fa fa-building-o"></i></span> Institucional<span class="fa arrow"></span></a>
+          <ul class="nav nav-second-level">
+            <li><a href="../institucional/vision-mision.html"><span class="navegacion-icono"><i class="fa fa-trophy"></i></span> Misión / Visión</a></li>
+            <li><a href="../institucional/NuestrosProyectos.html"><span class="navegacion-icono"><i class="fa fa-pencil-square-o"></i></span> Nuestros Proyectos</a></li>
+            <li><a href="../institucional/mensaje-director.html"><span class="navegacion-icono"><i class="fa fa-comment"></i></span> Mensaje del Director</a></li>
+            <li><a href="../autores/index.html"><span class="navegacion-icono"><i class="fa fa-user"></i></span> Quienes Somos</a></li>
+            <li><a href="../institucional/estructura-organica.html"><span class="navegacion-icono"><i class="fa fa-sitemap"></i></span> Estructura Orgánica</a></li>
+            <li><a href="../institucional/modelo-operativo-universal.html"><span class="navegacion-icono"><i class="fa fa-slideshare"></i></span> Modelo Operativo Univ.</a></li>
+            <li><a href="../institucional/reglamentos.html"><span class="navegacion-icono"><i class="fa fa-gavel"></i></span> Reglamentos</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="#"><span class="navegacion-icono"><i class="fa fa-external-link"></i></span> Transparencia<span class="fa arrow"></span></a>
+          <ul class="nav nav-second-level">
+            <li><a href="http://www2.icai.org.mx/ipo/dependencia.php?dep=178#pageload" target="_blank"><span class="navegacion-icono"><i class="fa fa-file-text-o"></i></span> Transparencia Estatal (ICAI)</a></li>
+            <li><a href="https://consultapublicamx.inai.org.mx/vut-web/faces/view/consultaPublica.xhtml#inicio" target="_blank"><span class="navegacion-icono"><i class="fa fa-file-text-o"></i></span> Plataforma Nacional de Transparencia</a></li>
+            <li><a href="../transparencia/index.html"><span class="navegacion-icono"><i class="fa fa-briefcase"></i></span> Documentos</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="#"><span class="navegacion-icono"><i class="fa fa-share-alt"></i></span> Términos de Uso<span class="fa arrow"></span></a>
+          <ul class="nav nav-second-level">
+            <li><a href="../terminos/terminos-informacion.html"><span class="navegacion-icono"><i class="fa fa-cubes"></i></span> De la información</a></li>
+            <li><a href="../terminos/terminos-sitio.html"><span class="navegacion-icono"><i class="fa fa-globe"></i></span> Del sitio web</a></li>
+            <li><a href="../terminos/privacidad.html"><span class="navegacion-icono"><i class="fa fa-lock"></i></span> Aviso de Privacidad</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="#"><span class="navegacion-icono"><i class="fa fa-phone"></i></span> Contacto<span class="fa arrow"></span></a>
+          <ul class="nav nav-second-level">
+            <li><a href="../contacto/contacto.html"><span class="navegacion-icono"><i class="fa fa-phone"></i></span> Medios de contacto</a></li>
+            <li><a href="../preguntas-frecuentes/preguntas-frecuentes.html"><span class="navegacion-icono"><i class="fa fa-question"></i></span> Preguntas Frecuentes</a></li>
+            <li><a href="http://goo.gl/forms/1rdX4X128PpMOif73" target="_blank"><span class="navegacion-icono"><i class="fa fa-external-link"></i></span> Comentarios y Sugerencias</a></li>
+          </ul>
+        </li>
+        <li><a href="../convocatorias/index.html"><span class="navegacion-icono"><i class="fa fa-file-text-o"></i></span> Convocatorias</a></li>
+        <li><a href="http://177.244.42.17/ovie-torreon/#!" target="_blank"><span class="navegacion-icono"><i class="fa fa-map-marker"></i></span> Oficina Virtual de Información Económica (OVIE)</a></li>
+        <li><a href="https://arcg.is/0vySSr" target="_blank"><span class="navegacion-icono"><i class="fa fa-globe"></i></span> Atlas Municipal de Riesgos de Torreón</a></li>
+      </ul>
+    </div>
+  </div>
+  </nav>
+  <div id="page-wrapper">
+    <div class="cuerpo">
+      <article><div itemscope itemtype="http://schema.org/BlogPosting">
+        <div class="encabezado">
+          <h1 itemprop="headline">Las Áreas de Cesión Municipal en la Construcción de Espacio Público</h1>
+          <div class="encabezado-descripcion" itemprop="description">La ciudad, en su concepto más básico, es entendida en dos formas básicas: el espacio privado y el espacio público. El primero refiere a todo suelo urbano con carácter de propiedad privada dedicado a actividades de vivienda, comercio, servicios, industria, recreación etc, Su acceso, por definición, no es público y está regulado por él o los propietarios que lo poseen. Por otra parte, el espacio público en la ciudad es todo aquel que pertenece a la totalidad de los ciudadanos (al estado) y por ende su propiedad, uso y dominio es colectivo. Está compuesto por las calles, los parques, las plazas, y los equipamientos urbanos públicos. Es esta compleja red de espacios públicos y privados y sus interacciones sociales las que construyen y le da carácter a la ciudad.</div>
+          <div class="encabezado-autor-fecha">
+            Por <span itemprop="author">Arq. Cecilio Pedro Secunza Schott</span> -
+            <meta itemprop="datePublished" content="2018-09-18T00:00">18/09/2018
+          </div>
+        </div>
+        <span class="contenido-imagen-previa"><img class="img-responsive" itemprop="image" alt="Las Áreas de Cesión Municipal en la Construcción de Espacio Público" src="areas-de-cesion-municipal-en-la-construccion-de-espacio-publico/imagen.jpg"></span>
+        <div itemprop="articleBody">
+<!-- Contenido: Inicia  -->
+<p><strong>La ciudad, en su concepto más básico, es entendida en dos formas básicas: el espacio privado y el espacio público.</strong> El primero refiere a todo suelo urbano con carácter de propiedad privada dedicado a actividades de vivienda, comercio, servicios, industria, recreación etc, Su acceso, por definición, no es público y está regulado por él o los propietarios que lo poseen. Por otra parte, el espacio público en la ciudad es todo aquel que pertenece a la totalidad de los ciudadanos (al estado) y por ende su propiedad, uso y dominio es colectivo. Está compuesto por las calles, los parques, las plazas, y los equipamientos urbanos públicos. Es esta compleja red de espacios públicos y privados y sus interacciones sociales las que construyen y le da carácter a la ciudad.</p>
+
+<p>La gran diferencia entre construir ciudad y construir solo áreas de vivienda radica precisamente en el espacio público; en su cantidad y calidad, así como en el grado de apropiación de sus usuarios hacia él.</p>
+
+<p>Son los gobiernos municipales (facultados por el Art. 115 de la Constitución), los encargados de dotar al territorio municipal con suelo de propiedad pública. El reto radica en que la mayor parte del suelo en el entorno de las ciudades es de propiedad privada. A través del mecanismo de Área de Cesión, la cual puede ser descrita como una obligación por parte del desarrollador, o un “impuesto espacial” al desarrollo urbano, donde cierta proporción del terreno a urbanizar debe ser cedida como espacio público.</p>
+
+<p>El Reglamento de Desarrollo Urbano, Zonificación, Uso de Suelo y Construcción del Municipio de Torreón, establece que todo fraccionamiento debe ceder a título gratuito a favor del municipio, un porcentaje –entre un 10% y un 15% según la densidad urbana propuesta por el Plan Director de Desarrollo Urbano- de la superficie vendible total.</p>
+
+<table class="table table-hover table-bordered">
+<thead>
+<tr>
+  <th>Uso de Suelo</th>
+  <th>Área de Cesión</th>
+  <th>Usos</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td>Habitacional Campestre</td>
+  <td>10%</td>
+  <td>Área Verde</td>
+</tr>
+<tr>
+  <td>Habitacional Densidad Muy Baja</td>
+  <td>15%</td>
+  <td>Área Verde</td>
+</tr>
+<tr>
+  <td>Habitacional Densidad Baja</td>
+  <td>15%</td>
+  <td>Área Verde</td>
+</tr>
+<tr>
+  <td>Habitacional Densidad Media Baja</td>
+  <td>15%</td>
+  <td>50% equipamiento y 50% área verde</td>
+</tr>
+<tr>
+  <td>Habitacional Densidad Media</td>
+  <td>15%</td>
+  <td>50% equipamiento y 50% área verde</td>
+</tr>
+<tr>
+  <td>Habitacional Densidad Media-media</td>
+  <td>15%</td>
+  <td>50% equipamiento y 50% área verde</td>
+</tr>
+<tr>
+  <td>Habitacional Densidad Media Alta</td>
+  <td>15%</td>
+  <td>80% equipamiento y 20% área verde</td>
+</tr>
+<tr>
+  <td>Habitacional Densidad Alta</td>
+  <td>15%</td>
+  <td>80% equipamiento y 20% área verde</td>
+</tr>
+<tr>
+  <td>Industrial</td>
+  <td>10%</td>
+  <td>Equipamiento</td>
+</tr>
+</tbody>
+</table>
+
+<p><em>Fuente: Reglamento de Desarrollo Urbano, Zonificación, Uso de Suelo y Construcción del municipio de Torreón.</em></p>
+
+<p>Tomando estos lineamientos urbanos como base, la ciudad debería entonces contar con un promedio de 15% de su superficie destinada exclusivamente para equipamientos y áreas verdes; sin considerar el área de vialidades, la cual es regulada mediante normas técnicas en la estrategia de vialidad del Plan Director, y dependiendo de la jerarquía vial (primaria, secundaria, colectora o local) debe apegarse a ciertos lineamientos de dimensión y diseño vial.</p>
+
+<p>Sin embargo la realidad local dista mucho de esta suposición. Se calcula que existen 49 Hectáreas por cada 100 mil habitantes de plazas y parques en el municipio, es decir, 4.9m2 por habitante. El Índice de Ciudades Prósperas (2015) elaborado por ONU-Habitat califica a Torreón con 21.87 /100 en el indicador de Áreas Verdes per Cápita. A su vez, 50% de los parques y plazas del municipio cuentan con acceso restringido, debido a que se encuentran dentro de fraccionamientos “cerrados”. Estas áreas de cesión (municipal pública) se convierten entonces en áreas semi-privadas, y al perder su acceso, goce y aprovechamiento colectivo, pierden también su calidad de “público”; ocasionando desequilibrios como segregación y pérdida de inclusión social.</p>
+
+<p>Los instrumentos jurídicos y de gestión del municipio son las principales herramientas que, aplicadas cabalmente, pueden lograr que haya un equilibrio entre el espacio colectivo y el privado. El Plan Director de Desarrollo Urbano, a través de estrategias de zonificación de áreas verdes y equipamientos urbanos, así como de designación de reservas territoriales, de la mano con el Reglamento de Desarrollo Urbano, deben contar con mecanismos que aseguren la existencia y suficiencia del espacio público.</p>
+
+<pre><code>La Ley General de Asentamientos Humanos, Ordenamiento Territorial y Desarrollo Urbano, tiene como uno de sus principios la “Protección y Progresividad del Espacio Público”, es decir, el fomento a la creación, rescate y mantenimiento de los espacios públicos, que podrán ampliarse o mejorarse, pero nunca destruirse o verse disminuidos al ser enajenados para convertirse en propiedad privada.
+</code></pre>
+
+<p></br></br></br></br></p>
+
+<!-- Contenido: Termina -->
+        </div>
+              <div class="publicador" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+          <span class="contenido-imagen-previa"><img class="img-responsive" itemprop="image" alt="Instituto Municipal de Planeación y Competitividad de Torreón" src="../imagenes/implan-logo.png"></span>
+          <h3 class="titulo" itemprop="name">Instituto Municipal de Planeación y Competitividad de Torreón</h3>
+          <div class="descripcion" itemprop="description">Órgano técnico responsable de la planeación del desarrollo del municipio de Torreón, Coahuila, México.</div>
+          <div class="contenido-imagen-previa-final"></div>
+        </div>
+      </div></article>
+      <aside>
+  <!-- Extra: Inicia  -->
+  <h3>Publicaciones relacionadas</h3>
+<p><b>Análisis Publicados</b></p>
+<ul>
+  <li><a href="http://www.trcimplan.gob.mx/blog/caracteristicas-de-un-buen-espacio-publico-ene2020.html">Caracter&iacute;sticas de un Buen Espacio P&uacute;blico</a></li>
+  <li><a href="http://www.trcimplan.gob.mx/blog/planificacion-urbana-en-la-salud-publica-de-la-laguna.html">La planificaci&oacute;n urbana, fundamental en la salud p&uacute;blica de los laguneros.</a></li>
+  <li><a href="http://www.trcimplan.gob.mx/blog/estrategia-contra-el-rezago-en-la-region.html">Programa de Mejoramiento Urbano: estrategia contra el rezago en la regi&oacute;n.</a></li>
+  <li><a href="http://www.trcimplan.gob.mx/blog/eficiencia-financiera-de-simas-en-la-laguna-marzo2019.html">La eficiencia financiera de los Sistemas Municipales de Aguas y Saneamiento en La Laguna.</a></li>
+  <li><a href="http://www.trcimplan.gob.mx/blog/como-recuperar-el-espacio-publico-en-torreon-feb2019.html">&iquest;C&oacute;mo recuperar el espacio p&uacute;blico en Torre&oacute;n?</a></li>
+  <li><a href="http://www.trcimplan.gob.mx/blog/el-espacio-publico-como-area-de-convivencia-en-el-paseo-morelos.html">El Espacio P&uacute;blico como &Aacute;rea de Convivencia en el Paseo Morelos</a></li>
+  <li><a href="http://www.trcimplan.gob.mx/blog/cobertura-y-rezago-de-servicios-en-las-viviendas-de-torreon.html">Cobertura y rezago de servicios en las viviendas de Torre&oacute;n</a></li>
+  <li><a href="http://www.trcimplan.gob.mx/blog/la-cuenca-alta-del-nazas.html">La Cuenca Alta del Nazas</a></li>
+  <li><a href="http://www.trcimplan.gob.mx/blog/la-lluvia-y-la-basura.html">La Lluvia y la Basura</a></li>
+  <li><a href="http://www.trcimplan.gob.mx/blog/podas-escombro-y-ciudadanos.html">Podas, escombro y ciudadanos</a></li>
+</ul>
+<p><b>Sistema Metropolitano de Indicadores</b></p>
+<ul>
+  <li><a href="http://www.trcimplan.gob.mx/indicadores-torreon/sustentabilidad-red-de-transporte-publico.html">Red de Transporte P&uacute;blico en Torre&oacute;n</a></li>
+  <li><a href="http://www.trcimplan.gob.mx/indicadores-torreon/sustentabilidad-camiones-de-bomberos.html">Camiones de bomberos en Torre&oacute;n</a></li>
+  <li><a href="http://www.trcimplan.gob.mx/indicadores-torreon/sociedad-viviendas-con-agua-entubada.html">Viviendas con Agua Entubada en Torre&oacute;n</a></li>
+  <li><a href="http://www.trcimplan.gob.mx/indicadores-torreon/sociedad-viviendas-particulares-habitadas-que-disponen-de-energia-electrica.html">Viviendas Particulares Habitadas que Disponen de Energ&iacute;a El&eacute;ctrica en Torre&oacute;n</a></li>
+  <li><a href="http://www.trcimplan.gob.mx/indicadores-torreon/sociedad-viviendas-particulares-habitadas-que-disponen-de-drenaje.html">Viviendas Particulares Habitadas que Disponen de Drenaje en Torre&oacute;n</a></li>
+  <li><a href="http://www.trcimplan.gob.mx/indicadores-torreon/gobierno-inversion-en-transporte-publico.html">Inversi&oacute;n en transporte p&uacute;blico en Torre&oacute;n</a></li>
+  <li><a href="http://www.trcimplan.gob.mx/indicadores-torreon/economia-costo-de-electricidad.html">Costo de electricidad en Torre&oacute;n</a></li>
+  <li><a href="http://www.trcimplan.gob.mx/indicadores-torreon/economia-intensidad-energetica-en-la-economia.html">Intensidad energ&eacute;tica en la econom&iacute;a en Torre&oacute;n</a></li>
+  <li><a href="http://www.trcimplan.gob.mx/indicadores-torreon/sustentabilidad-zonas-verdes.html">Zonas verdes en Torre&oacute;n</a></li>
+  <li><a href="http://www.trcimplan.gob.mx/indicadores-torreon/sustentabilidad-alumbrado-publico.html">Alumbrado P&uacute;blico en Torre&oacute;n</a></li>
+</ul>
+<p><b>Sistema de Información Geográfica</b></p>
+<ul>
+  <li><a href="http://www.trcimplan.gob.mx/sig-mapas-torreon/inventario-viviendas.html">Inventario de Viviendas</a></li>
+  <li><a href="http://www.trcimplan.gob.mx/sig-mapas-torreon/caracteristicas-viviendas.html">Caracter&iacute;sticas de las Viviendas</a></li>
+  <li><a href="http://www.trcimplan.gob.mx/sig-mapas-torreon/centros-atencion-adultos-mayores.html">Centros de Atenci&oacute;n a Adultos Mayores</a></li>
+  <li><a href="http://www.trcimplan.gob.mx/sig-mapas-torreon/avance-reconversion-tecnologica-led-alumbrado-publico.html">Avance de Reconversi&oacute;n Tecnol&oacute;gica Led del Alumbrado P&uacute;blico</a></li>
+  <li><a href="http://www.trcimplan.gob.mx/sig-mapas-torreon/torreon-jardin.html">torreon-jardin</a></li>
+  <li><a href="http://www.trcimplan.gob.mx/sig-mapas-torreon/red-ciclista2.html">red-ciclista2</a></li>
+</ul>
+<p><b>Plan Estratégico Torreón</b></p>
+<ul>
+  <li><a href="http://www.trcimplan.gob.mx/pet/cartera-proyectos-medio-ambiente-sustentabilidad.html">Cartera de Proyectos: Medio Ambiente y Sustentabilidad</a></li>
+  <li><a href="http://www.trcimplan.gob.mx/pet/cartera-proyectos-entorno-urbano.html">Cartera de Proyectos: Entorno Urbano</a></li>
+  <li><a href="http://www.trcimplan.gob.mx/pet/vision-medio-ambiente-sustentabilidad.html">Visi&oacute;n de Medio Ambiente y Sustentabilidad 2040</a></li>
+  <li><a href="http://www.trcimplan.gob.mx/pet/vision-entorno-urbano.html">Visi&oacute;n de Entorno Urbano 2040</a></li>
+  <li><a href="http://www.trcimplan.gob.mx/pet/diagnostico-estrategico-medio-ambiente-sustentabilidad.html">Diagn&oacute;stico Estrat&eacute;gico: Medio Ambiente y Sustentabilidad</a></li>
+  <li><a href="http://www.trcimplan.gob.mx/pet/diagnostico-estrategico-entorno-urbano.html">Diagn&oacute;stico Estrat&eacute;gico: Entorno Urbano</a></li>
+  <li><a href="http://www.trcimplan.gob.mx/pet/diagnostico-estrategico-buen-gobierno.html">Diagn&oacute;stico Estrat&eacute;gico: Buen Gobierno</a></li>
+  <li><a href="http://www.trcimplan.gob.mx/proyectos/plata-laguna.html">Plata Laguna</a></li>
+  <li><a href="http://www.trcimplan.gob.mx/proyectos/salud-laguna.html">Salud Laguna</a></li>
+  <li><a href="http://www.trcimplan.gob.mx/proyectos/calle-completa.html">Calle Completa</a></li>
+</ul>
+<p><b>Sala de Prensa</b></p>
+<ul>
+  <li><a href="http://www.trcimplan.gob.mx/sala-prensa/2018-10-31-decima-sesion.html">Presentan &ldquo;Propuesta conceptual para el manejo sustentable del agua&rdquo; en Sesi&oacute;n del IMPLAN.</a></li>
+  <li><a href="http://www.trcimplan.gob.mx/sala-prensa/2020-04-15-comunicado-conferencias-virtuales.html">El IMPLAN Torre&oacute;n y su Consejo Juvenil: Visi&oacute;n Metr&oacute;poli, presentar&aacute;n Conferencias Virtuales</a></li>
+  <li><a href="http://www.trcimplan.gob.mx/sala-prensa/2020-02-27-segunda-sesion-consejo-2020.html">Presentan en Segunda Sesi&oacute;n de Consejo el &ldquo;Programa Parcial de Desarrollo Urbano para la Zona Norte de Torre&oacute;n&rdquo;</a></li>
+  <li><a href="http://www.trcimplan.gob.mx/sala-prensa/2020-02-17-comunicado-enoe.html">Disminuye la tasa de desempleo en la Zona Metropolitana de La Laguna (ZML), al cuarto trimestre de 2019</a></li>
+  <li><a href="http://www.trcimplan.gob.mx/sala-prensa/2020-02-06-comunicado-conferencia-imeplan.html">Postura sobre la creaci&oacute;n de un Instituto Metropolitano de Planeaci&oacute;n.</a></li>
+  <li><a href="http://www.trcimplan.gob.mx/sala-prensa/2020-01-30-primer-sesion-consejo-2020.html">Primer Sesi&oacute;n de Consejo 2020. Se renueva el Consejo Directivo del IMPLAN.</a></li>
+  <li><a href="http://www.trcimplan.gob.mx/sala-prensa/2019-09-26-novena-sesion-consejo.html">Novena Sesi&oacute;n de Consejo Implan. Presentan Resultados del Conversatorio y del Concurso &ldquo;Manos a la Cebra&rdquo;.</a></li>
+  <li><a href="http://www.trcimplan.gob.mx/sala-prensa/2019-09-26-seminario-identidad-lagunera.html">Consejo Visi&oacute;n Metr&oacute;poli presenta Seminario de Identidad Lagunera</a></li>
+  <li><a href="http://www.trcimplan.gob.mx/sala-prensa/2019-09-24-manos-a-la-cebra-reporte.html">Manos a la Cebra</a></li>
+  <li><a href="http://www.trcimplan.gob.mx/sala-prensa/2019-09-12-resultado-conversatorio-rectores-implan-empresa.html">Presentan resultados del Conversatorio entre Rectores, IMPLAN y Empresarios</a></li>
+</ul>
+  <!-- Extra: Termina -->
+  </aside>
+<div class="contenido-social">
+  <h5>Compartir en Redes Sociales</h5>
+  <a href="https://twitter.com/share" class="twitter-share-button" data-via="trcimplan" data-lang="es">Twittear</a>
+  <iframe src="//www.facebook.com/plugins/like.php?href=http%3A%2F%2Fwww.trcimplan.gob.mx%2Fblog%2Fareas-de-cesion-municipal-en-la-construccion-de-espacio-publico.html&amp;width=300&amp;layout=button_count&amp;action=like&amp;show_faces=true&amp;share=false&amp;height=21" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:300px; height:21px;" allowTransparency="true"></iframe>
+</div>
+    </div>
+    <div class="mapa-inferior">
+          <div class="pull-right redes-sociales">
+            <a class="fa fa-twitter-square" href="http://www.twitter.com/trcimplan" target="_blank"></a>
+            <a class="fa fa-facebook-square" href="https://facebook.com/trcimplan" target="_blank"></a>
+            <a class="fa fa-facebook-square" href="http://www.instagram.com/implantorreon" target="_blank"></a>
+            <a class="fa fa-rss-square" href="../rss.xml"></a>
+          </div>
+    </div>
+  </div>
+</div>
+<!-- Javascript global inicia -->
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
+<script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="../vendor/metisMenu/metisMenu.min.js"></script>
+<script type="text/javascript" src="../vendor/datatables/js/jquery.dataTables.min.js"></script>
+<script type="text/javascript" src="../vendor/datatables-plugins/dataTables.bootstrap.min.js"></script>
+<script type="text/javascript" src="../vendor/datatables-responsive/dataTables.responsive.js"></script>
+<script type="text/javascript" src="../vendor/raphael/raphael.min.js"></script>
+<script type="text/javascript" src="../vendor/morrisjs/morris.min.js"></script>
+<script type="text/javascript" src="../dist/js/sb-admin-2.min.js"></script>
+<script type="text/javascript" src="http://libs.cartocdn.com/cartodb.js/v3/3.15/cartodb.js"></script>
+<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+<!-- Javascript global termina -->
+<!-- Javascript inicia -->
+<script>
+  // Twitter
+  !function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="https://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");
+</script>
+
+<!-- Javascript termina -->
+<!-- Javascript Google Analytics -->
+<script>
+  // Google Analytics
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)})(window,document,'script','//www.google-analytics.com/analytics.js','ga');ga('create', 'UA-58290501-1', 'auto');ga('send', 'pageview');
+</script>
+</body>
+</html>

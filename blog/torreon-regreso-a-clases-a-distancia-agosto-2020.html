@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+<!-- ===================================================================================================
+
+        Instituto Municipal de Planeación y Competitividad (IMPLAN) de Torreón.
+
+        3er. generación de la Plataforma del Conocimiento
+        Desarrollado por Ing. Guillermo Valdés Lozano <guivaloz en movimientolibre.com>
+
+        El software que lo construye está bajo la licencia GPL versión 3. © 2014, 2015, 2016, 2017.
+        Una copia está contenida en el archivo LICENCE al bajar desde GitHub.
+
+        Al usar, estudiar y copiar está aceptando los términos de uso de la información y del sitio web:
+          http://www.trcimplan.gob.mx/terminos/terminos-informacion.html
+          http://www.trcimplan.gob.mx/terminos/terminos-sitio.html
+
+        Descargue, estudie y colabore bajando todo este sitio web:
+          IMPLAN Torreón     https://github.com/TRCIMPLAN/trcimplan.github.io
+
+        Agradecemos y compartimos las tecnologías abiertas y gratuitas sobre las que se basa:
+          PHP                http://php.net
+          Twitter Bootstrap  http://getbootstrap.com
+          StartBootStrap     http://startbootstrap.com
+          Morris.js          https://morrisjs.github.io/morris.js/
+          Font Awesome       http://fontawesome.io
+          DataTables         https://www.datatables.net
+          Carto              https://carto.com
+          GitHub             https://github.com
+
+     =================================================================================================== -->
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="El escenario actual de una pandemia ha obligado a modificar las rutinas de las y los estudiantes y sus familias. El alumnado que había concluido su año escolar anterior en un formato a distancia, con clases a través de la televisión, enviando y recibiendo tareas en redes sociales y estableciendo videollamadas en diversas plataformas, inician este ciclo escolar bajo las mismas condiciones.">
+  <meta name="author" content="Lic. Edgardo de la Cruz Torres">
+  <meta name="keywords" content="IMPLAN, Torreon, educacion, distancia, pandemia, covid, escolar, redes sociales">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Torreón: Regreso a Clases a Distancia. - IMPLAN Torreón">
+  <meta name="twitter:description" content="El escenario actual de una pandemia ha obligado a modificar las rutinas de las y los estudiantes y sus familias. El alumnado que había concluido su año escolar anterior en un formato a distancia, con clases a través de la televisión, enviando y recibiendo tareas en redes sociales y estableciendo videollamadas en diversas plataformas, inician este ciclo escolar bajo las mismas condiciones.">
+  <meta name="twitter:image" content="http://www.trcimplan.gob.mx/blog/torreon-regreso-a-clases-a-distancia-agosto-2020/imagen-previa.jpg">
+  <meta name="twitter:url" content="http://www.trcimplan.gob.mx/blog/torreon-regreso-a-clases-a-distancia-agosto-2020.html">
+  <meta name="og:title" content="Torreón: Regreso a Clases a Distancia. - IMPLAN Torreón">
+  <meta name="og:description" content="El escenario actual de una pandemia ha obligado a modificar las rutinas de las y los estudiantes y sus familias. El alumnado que había concluido su año escolar anterior en un formato a distancia, con clases a través de la televisión, enviando y recibiendo tareas en redes sociales y estableciendo videollamadas en diversas plataformas, inician este ciclo escolar bajo las mismas condiciones.">
+  <meta name="og:image" content="http://www.trcimplan.gob.mx/blog/torreon-regreso-a-clases-a-distancia-agosto-2020/imagen-previa.jpg">
+  <meta name="og:url" content="http://www.trcimplan.gob.mx/blog/torreon-regreso-a-clases-a-distancia-agosto-2020.html">
+  <title>Torreón: Regreso a Clases a Distancia. - IMPLAN Torreón</title>
+  <link rel="shortcut icon" type="image/x-icon" href="../imagenes/apple-touch-icon.png">
+  <link rel="apple-touch-icon" href="../imagenes/apple-touch-icon.png">
+  <link rel="apple-touch-icon" href="../imagenes/apple-touch-icon-76x76.png" sizes="76x76">
+  <link rel="apple-touch-icon" href="../imagenes/apple-touch-icon-120x120.png" sizes="120x120">
+  <link rel="apple-touch-icon" href="../imagenes/apple-touch-icon-152x152.png" sizes="152x152">
+  <link rel="apple-touch-icon" href="../imagenes/apple-touch-icon-180x180.png" sizes="180x180">
+  <link rel="icon" href="../imagenes/icon-hires.png" sizes="192x192">
+  <link rel="icon" href="../imagenes/icon-normal.png" sizes="128x128">
+  <link rel="alternate" type="application/rss+xml" href="../rss.xml" title="IMPLAN Torreón">
+  <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+  <link rel="stylesheet" type="text/css" href="../vendor/metisMenu/metisMenu.min.css">
+  <link rel="stylesheet" type="text/css" href="../vendor/datatables-plugins/dataTables.bootstrap.css">
+  <link rel="stylesheet" type="text/css" href="../vendor/morrisjs/morris.css">
+  <link rel="stylesheet" type="text/css" href="../vendor/font-awesome/css/font-awesome.min.css">
+  <link rel="stylesheet" type="text/css" href="../dist/css/sb-admin-2.min.css">
+  <link rel="stylesheet" type="text/css" href="../dist/css/plataforma-de-conocimiento.css">
+  <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Noto+Sans|Roboto+Condensed:400,700">
+  <link rel="stylesheet" type="text/css" href="http://libs.cartocdn.com/cartodb.js/v3/3.15/themes/css/cartodb.css">
+  <link rel="stylesheet" type="text/css" href="../dist/css/estilosvm.css">
+  <link rel="stylesheet" type="text/css" href="../dist/css/trcimplan.css">
+  <!-- SOPORTE PARA IE -->
+  <!--[if lt IE 9]>
+  <script type="text/javascript" src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+  <script type="text/javascript" src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+  <![endif]-->
+</head>
+<body>
+<div id="wrapper">
+  <nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="../index.html"><img class="navbar-brand-img" src="../imagenes/implan-barra-logo-chico-gris.png" alt="IMPLAN Torreón"></a>
+    </div>
+  <div class="navbar-default sidebar" role="navigation">
+    <div class="sidebar-nav navbar-collapse">
+      <ul class="nav" id="side-menu">
+        <li class="sidebar-search">
+          <form method="get" action="http://www.trcimplan.gob.mx/buscador-resultados.html">
+            <div class="input-group custom-search-form">
+              <input type="text" class="form-control" placeholder="Google buscar..." value="" name="q">
+              <span class="input-group-btn">
+                <button class="btn btn-default" type="submit"><i class="fa fa-search"></i></button>
+              </span>
+            </div>
+          </form>
+        </li>
+        <li class="active">
+          <a href="#"><span class="navegacion-icono"><i class="fa fa-lightbulb-o"></i></span> Análisis Publicados<span class="fa arrow"></span></a>
+          <ul class="nav nav-second-level">
+            <li><a href="../blog/index.html"><span class="navegacion-icono"><i class="fa fa-file-text-o"></i></span> Últimos Análisis</a></li>
+            <li><a href="../excolaboradores/index.html"><span class="navegacion-icono"><i class="fa fa-file-text-o"></i></span> Análisis por Autor</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="#"><span class="navegacion-icono"><i class="fa fa-area-chart"></i></span> Indicadores<span class="fa arrow"></span></a>
+          <ul class="nav nav-second-level">
+            <li><a href="../smi/introduccion.html"><span class="navegacion-icono"><i class="fa fa-file-text-o"></i></span> Introducción al SMI</a></li>
+            <li><a href="../indicadores-categorias/index.html"><span class="navegacion-icono"><i class="fa fa-th-list"></i></span> Indicadores por Categoría</a></li>
+            <li><a href="../smi/por-region.html"><span class="navegacion-icono"><i class="fa fa-table"></i></span> Indicadores por Región</a></li>
+            <li><a href="../smi/datos-abiertos.html"><span class="navegacion-icono"><i class="fa fa-download"></i></span> Datos Abiertos</a></li>
+            <li><a href="../smi/niveles-socioeconomicos.html"><span class="navegacion-icono"><i class="fa fa-bar-chart"></i></span> Niveles Socioeconómicos</a></li>
+            <li><a href="../monitores/index.html"><span class="navegacion-icono"><i class="fa fa-file-text-o"></i></span> Monitores</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="#"><span class="navegacion-icono"><i class="fa fa-puzzle-piece"></i></span> Indicadores Básicos de Colonias<span class="fa arrow"></span></a>
+          <ul class="nav nav-second-level">
+            <li><a href="../ibc/introduccion.html"><span class="navegacion-icono"><i class="fa fa-file-text-o"></i></span> Introducción al IBC</a></li>
+            <li><a href="../ibc-colonias-torreon/index.html"><span class="navegacion-icono"><i class="fa fa-font"></i></span> Colonias de Torreón</a></li>
+            <li><a href="https://implantorreon.carto.com/u/sigimplan/builder/907a6bc0-2c7e-451e-9668-b78d952e52ff/embed" target="_blank"><span class="navegacion-icono"><i class="fa fa-external-link"></i></span> Mapa Completo</a></li>
+            <li><a href="../ibc/torreon-urbano.html"><span class="navegacion-icono"><i class="fa fa-table"></i></span> Torreón Urbano</a></li>
+            <li><a href="../ibc/datos-abiertos.html"><span class="navegacion-icono"><i class="fa fa-download"></i></span> Datos Abiertos</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="#"><span class="navegacion-icono"><i class="fa fa-map-marker"></i></span> Información Geográfica<span class="fa arrow"></span></a>
+          <ul class="nav nav-second-level">
+            <li><a href="../sig/introduccion.html"><span class="navegacion-icono"><i class="fa fa-file-text-o"></i></span> Introducción al SIG</a></li>
+            <li><a href="../sig-mapas-torreon/temas-sig.html"><span class="navegacion-icono"><i class="fa fa-map-o"></i></span> Mapas por Tema</a></li>
+            <li><a href="../sig-mapas-torreon/plan-director-desarrollo-urbano.html"><span class="navegacion-icono"><i class="fa fa-map-marker"></i></span> Usos de Suelo</a></li>
+            <li><a href="../sig/datos-abiertos.html"><span class="navegacion-icono"><i class="fa fa-download"></i></span> Datos Abiertos</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="#"><span class="navegacion-icono"><i class="fa fa-book"></i></span> Plan Estratégico Torreón 2040<span class="fa arrow"></span></a>
+          <ul class="nav nav-second-level">
+            <li><a href="../pet/indice.html"><span class="navegacion-icono"><i class="fa fa-list-ul"></i></span> Índice General</a></li>
+            <li><a href="../plan-estrategico-torreon-enfoque-metropolitano-2040/index.html"><span class="navegacion-icono"><i class="fa fa-download"></i></span> Descargar</a></li>
+            <li><a href="../plan-estrategico-metropolitano/descripcion-del-proceso.html"><span class="navegacion-icono"><i class="fa fa-calendar"></i></span> Descripción del proceso</a></li>
+            <li><a href="../proyectos/index.html"><span class="navegacion-icono"><i class="fa fa-check-square"></i></span> Proyectos</a></li>
+            <li><a href="../vision-de-ciudad/vision-de-ciudad.html"><span class="navegacion-icono"><i class="fa fa-file-text-o"></i></span> Visión de Ciudad desde IMPLAN</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="#"><span class="navegacion-icono"><i class="fa fa-briefcase"></i></span> Documentos<span class="fa arrow"></span></a>
+          <ul class="nav nav-second-level">
+            <li><a href="../sig-planes/index.html"><span class="navegacion-icono"><i class="fa fa-book"></i></span> Planes y Programas</a></li>
+            <li><a href="../investigaciones/index.html"><span class="navegacion-icono"><i class="fa fa-file-text-o"></i></span> Investigaciones</a></li>
+            <li><a href="../estudios/index.html"><span class="navegacion-icono"><i class="fa fa-file-text-o"></i></span> Estudios</a></li>
+          </ul>
+        </li>
+        <li><a href="../consejo-directivo/integrantes.html"><span class="navegacion-icono"><i class="fa fa-users"></i></span> Consejo Directivo</a></li>
+        <li><a href="../sala-prensa/index.html"><span class="navegacion-icono"><i class="fa fa-newspaper-o"></i></span> Sala de Prensa</a></li>
+        <li><a href="../programas-radio/index.html"><span class="navegacion-icono"><i class="fa fa-microphone"></i></span> Programas de Radio</a></li>
+        <li>
+          <a href="#"><span class="navegacion-icono"><i class="fa fa-file-text-o"></i></span> Consejo Visión Metrópoli<span class="fa arrow"></span></a>
+          <ul class="nav nav-second-level">
+            <li><a href="../convocatorias/vision-metropoli.html"><span class="navegacion-icono"><i class="fa fa-file-text-o"></i></span> Consejo Juvenil</a></li>
+            <li><a href="../vision-metropoli/integrantes.html"><span class="navegacion-icono"><i class="fa fa-file-text-o"></i></span> Integrantes del Consejo</a></li>
+            <li><a href="../vision-metropoli/index.html"><span class="navegacion-icono"><i class="fa fa-newspaper-o"></i></span> Sala de Prensa</a></li>
+            <li><a href="../vision-metropoli/reglamento-vision-metropoli-2020.pdf"><span class="navegacion-icono"><i class="fa fa-file-text-o"></i></span> Reglamento</a></li>
+            <li><a href="https://issuu.com/consejovisionmetropoli/docs/informe_visi_n_metr_poli_2019_-_2021" target="_blank"><span class="navegacion-icono"><i class="fa fa-file-text-o"></i></span> Informe 2019 - 2021</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="#"><span class="navegacion-icono"><i class="fa fa-building-o"></i></span> Institucional<span class="fa arrow"></span></a>
+          <ul class="nav nav-second-level">
+            <li><a href="../institucional/vision-mision.html"><span class="navegacion-icono"><i class="fa fa-trophy"></i></span> Misión / Visión</a></li>
+            <li><a href="../institucional/NuestrosProyectos.html"><span class="navegacion-icono"><i class="fa fa-pencil-square-o"></i></span> Nuestros Proyectos</a></li>
+            <li><a href="../institucional/mensaje-director.html"><span class="navegacion-icono"><i class="fa fa-comment"></i></span> Mensaje del Director</a></li>
+            <li><a href="../autores/index.html"><span class="navegacion-icono"><i class="fa fa-user"></i></span> Quienes Somos</a></li>
+            <li><a href="../institucional/estructura-organica.html"><span class="navegacion-icono"><i class="fa fa-sitemap"></i></span> Estructura Orgánica</a></li>
+            <li><a href="../institucional/modelo-operativo-universal.html"><span class="navegacion-icono"><i class="fa fa-slideshare"></i></span> Modelo Operativo Univ.</a></li>
+            <li><a href="../institucional/reglamentos.html"><span class="navegacion-icono"><i class="fa fa-gavel"></i></span> Reglamentos</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="#"><span class="navegacion-icono"><i class="fa fa-external-link"></i></span> Transparencia<span class="fa arrow"></span></a>
+          <ul class="nav nav-second-level">
+            <li><a href="http://www2.icai.org.mx/ipo/dependencia.php?dep=178#pageload" target="_blank"><span class="navegacion-icono"><i class="fa fa-file-text-o"></i></span> Transparencia Estatal (ICAI)</a></li>
+            <li><a href="https://consultapublicamx.inai.org.mx/vut-web/faces/view/consultaPublica.xhtml#inicio" target="_blank"><span class="navegacion-icono"><i class="fa fa-file-text-o"></i></span> Plataforma Nacional de Transparencia</a></li>
+            <li><a href="../transparencia/index.html"><span class="navegacion-icono"><i class="fa fa-briefcase"></i></span> Documentos</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="#"><span class="navegacion-icono"><i class="fa fa-share-alt"></i></span> Términos de Uso<span class="fa arrow"></span></a>
+          <ul class="nav nav-second-level">
+            <li><a href="../terminos/terminos-informacion.html"><span class="navegacion-icono"><i class="fa fa-cubes"></i></span> De la información</a></li>
+            <li><a href="../terminos/terminos-sitio.html"><span class="navegacion-icono"><i class="fa fa-globe"></i></span> Del sitio web</a></li>
+            <li><a href="../terminos/privacidad.html"><span class="navegacion-icono"><i class="fa fa-lock"></i></span> Aviso de Privacidad</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="#"><span class="navegacion-icono"><i class="fa fa-phone"></i></span> Contacto<span class="fa arrow"></span></a>
+          <ul class="nav nav-second-level">
+            <li><a href="../contacto/contacto.html"><span class="navegacion-icono"><i class="fa fa-phone"></i></span> Medios de contacto</a></li>
+            <li><a href="../preguntas-frecuentes/preguntas-frecuentes.html"><span class="navegacion-icono"><i class="fa fa-question"></i></span> Preguntas Frecuentes</a></li>
+            <li><a href="http://goo.gl/forms/1rdX4X128PpMOif73" target="_blank"><span class="navegacion-icono"><i class="fa fa-external-link"></i></span> Comentarios y Sugerencias</a></li>
+          </ul>
+        </li>
+        <li><a href="../convocatorias/index.html"><span class="navegacion-icono"><i class="fa fa-file-text-o"></i></span> Convocatorias</a></li>
+        <li><a href="http://177.244.42.17/ovie-torreon/#!" target="_blank"><span class="navegacion-icono"><i class="fa fa-map-marker"></i></span> Oficina Virtual de Información Económica (OVIE)</a></li>
+        <li><a href="https://arcg.is/0vySSr" target="_blank"><span class="navegacion-icono"><i class="fa fa-globe"></i></span> Atlas Municipal de Riesgos de Torreón</a></li>
+      </ul>
+    </div>
+  </div>
+  </nav>
+  <div id="page-wrapper">
+    <div class="cuerpo">
+      <article><div itemscope itemtype="http://schema.org/BlogPosting">
+        <div class="encabezado">
+          <h1 itemprop="headline">Torreón: Regreso a Clases a Distancia.</h1>
+          <div class="encabezado-descripcion" itemprop="description">El escenario actual de una pandemia ha obligado a modificar las rutinas de las y los estudiantes y sus familias. El alumnado que había concluido su año escolar anterior en un formato a distancia, con clases a través de la televisión, enviando y recibiendo tareas en redes sociales y estableciendo videollamadas en diversas plataformas, inician este ciclo escolar bajo las mismas condiciones.</div>
+          <div class="encabezado-autor-fecha">
+            Por <span itemprop="author">Lic. Edgardo de la Cruz Torres</span> -
+            <meta itemprop="datePublished" content="2020-08-25T00:00">25/08/2020
+          </div>
+        </div>
+        <span class="contenido-imagen-previa"><img class="img-responsive" itemprop="image" alt="Torreón: Regreso a Clases a Distancia." src="torreon-regreso-a-clases-a-distancia-agosto-2020/imagen.jpg"></span>
+        <div itemprop="articleBody">
+<!-- Contenido: Inicia  -->
+<p>
+   <a title="ir a Otras Publicaciones de este Autor" href="http://www.trcimplan.gob.mx/autores/edgardo-de-la-cruz-torres.html"><img class="img-responsive contenido-imagen" src="../imagenes/128/lic-edgardo-de-la-cruz-torres-top2.png" align="right" alt="Foto Edgardo" width="500" height="200"></a>
+
+</p>
+
+<h2></br></br></br></br></br></br></br></h2>
+
+<p><b>Escuchar el Programa de radio de este Tema</b></br>
+<a title="ir a Programa de Radio" href="https://t.co/elp0G7BJfX"> 1ra. parte 🔊   .</a>
+<a title="ir a Programa de Radio" href="https://t.co/vamlVFgG66"> 2da. parte 🔊</a></p>
+
+<hr />
+
+<p>El escenario actual de una pandemia ha obligado a modificar las rutinas de las y los estudiantes y sus familias. El alumnado que había concluido su año escolar anterior en un formato a distancia, con clases a través de la televisión, enviando y recibiendo tareas en redes sociales y estableciendo videollamadas en diversas plataformas, inician este ciclo escolar bajo las mismas condiciones.</p>
+
+<p>No es necesario profundizar sobre porque se han tomado estas decisiones, pues la enfermedad de la Covid-19 nos ha colocado a prueba a todas y todos. Después de semanas de resguardo, hemos recobrado poco a poco nuestras actividades habituales, pero ahora bajo nuevas reglas de limpieza y sanitización, y en su caso de prevención, como ocurre en esta modalidad educativa a distancia.</p>
+
+<p>Sin embargo, diversos investigadores han señalado las posibles complicaciones que entraña un modelo educativo de estas características, por ejemplo, el doctor Fernando Escalante Gonzalbo, académico de El Colegio de México, advierte que “la necesidad de mantener a los niños en casa, y continuar de alguna manera la educación en casa, reduce a la escuela al ámbito privado, es decir al ámbito de la desigualdad”. Y añade que “en un salón de clases puede atenuarse un poco la diferencia que hay entre una familia y otra”.[ CITATION Esc20 \l 2058 ]</p>
+
+<p>Entre tanto, Blanca Heredia, profesora investigadora del Centro de Investigación y Docencia Económicas, señala que la escuela a distancia “es una opción mucho menos buena que la educación presencial (…) porque priva a educadores y educandos de los nexos sociales y afectivos de carácter presencial”.[CITATION Her20 \l 2058 ]</p>
+
+<p>En este contexto, el municipio de Torreón registraba al período escolar 2019- 2020, 872 escuelas de educación básica escolarizada (preescolar, primaria y secundaria), siendo 508 (58.25%) de sostenimiento público y 364 (41.74%) de tipo privado. La población estudiantil ascendió a 137,266 personas, desagregada en 69,599 alumnos y 67,667 alumnas.[ CITATION Dir20 \l 2058 ]</p>
+
+<p><img src="torreon-regreso-a-clases-a-distancia-agosto-2020/ima01.jpg" alt="imagen 1"></p>
+
+<p>Gráfica 1. Fuente: Elaboración propia, con datos del Sistema Interactivo de Consulta de </br>
+Estadística Educativa de la Dirección General de Planeación, Programación y Estadística Educativa.</p>
+
+<hr />
+
+<p><img src="torreon-regreso-a-clases-a-distancia-agosto-2020/ima02.jpg" alt="imagen 2"></p>
+
+<p>Gráfica 2. Fuente: Elaboración propia, con datos del Sistema Interactivo de Consulta de </br>
+Estadística Educativa de la Dirección General de Planeación, Programación y Estadística Educativa.</p>
+
+<hr />
+
+<p>De lo anterior, se desprende que 97,050 personas se encuentran en la educación básica de sostenimiento público, divididas en 47,927 alumnas y 49,123 alumnos. Por su parte, el estudiantado de escuelas de control privado representaba a 40,216 personas, divididas en 19,740 estudiantes mujeres y 20,476 estudiantes hombres.[ CITATION Dir20 \l 2058 ]</p>
+
+<p><img src="torreon-regreso-a-clases-a-distancia-agosto-2020/ima03.jpg" alt="imagen 3"></p>
+
+<p>Gráfica 3. Fuente: Elaboración propia, con datos del Sistema Interactivo de Consulta de </br>
+Estadística Educativa de la Dirección General de Planeación, Programación y Estadística Educativa.</p>
+
+<hr />
+
+<p><img src="torreon-regreso-a-clases-a-distancia-agosto-2020/ima04.jpg" alt="imagen 4"></p>
+
+<p>Gráfica 4. Fuente: Elaboración propia, con datos del Sistema Interactivo de Consulta de </br>
+Estadística Educativa de la Dirección General de Planeación, Programación y Estadística Educativa.</p>
+
+<hr />
+
+<p>Entre tanto, para la educación media superior escolarizada, considerando los niveles de bachillerato y profesional técnico, se reporta la existencia de 175 instituciones, 47 de ellas de sostenimiento público (26.85%), y 128 de tipo privado (73.14%) con una población total de 14,833 alumnas y 14,838 alumnos, en total, 29,671 alumnas y alumnos.[ CITATION Dir20 \l 2058 ]</p>
+
+<p><img src="torreon-regreso-a-clases-a-distancia-agosto-2020/ima05.jpg" alt="imagen 5"></p>
+
+<p>Gráfica 5. Fuente: Elaboración propia, con datos del Sistema Interactivo de Consulta de </br>
+Estadística Educativa de la Dirección General de Planeación, Programación y Estadística Educativa</p>
+
+<hr />
+
+<p><img src="torreon-regreso-a-clases-a-distancia-agosto-2020/ima06.jpg" alt="imagen 6"></p>
+
+<p>Gráfica 6. Fuente: Elaboración propia, con datos del Sistema Interactivo de Consulta de </br>
+Estadística Educativa de la Dirección General de Planeación, Programación y Estadística Educativa</p>
+
+<hr />
+
+<p>En una separación más específica, el estudiantado de bachilleratos y/o profesionales técnicos escolarizados de sostenimiento público es de 13,580 personas en total, dividas en 6,470 alumnas y 7,110 alumnos. Entre tanto, la educación media superior escolarizada de tipo privada, suma una población de 16,091 personas, de las cuales 7,728 son hombres y 8,363 son mujeres.[ CITATION Dir20 \l 2058 ]</p>
+
+<p><img src="torreon-regreso-a-clases-a-distancia-agosto-2020/ima07.jpg" alt="imagen 7"></p>
+
+<p>Gráfica 7. Fuente: Elaboración propia, con datos del Sistema Interactivo de Consulta de </br>
+Estadística Educativa de la Dirección General de Planeación, Programación y Estadística Educativa.</p>
+
+<hr />
+
+<p><img src="torreon-regreso-a-clases-a-distancia-agosto-2020/ima08.jpg" alt="imagen 8"></p>
+
+<p>Gráfica 8. Fuente: Elaboración propia, con datos del Sistema Interactivo de Consulta de </br>
+Estadística Educativa de la Dirección General de Planeación, Programación y Estadística Educativa.</p>
+
+<hr />
+
+<p>Las cifras anteriores nos permiten vislumbrar la magnitud de la población local que experimentará este fenómeno inusitado. El impacto en sus vidas probablemente será permanente o de gran duración, por lo que será necesario el diseño e implementación de políticas públicas que traten esta situación.</p>
+
+<p>En el corto plazo existen varias medidas que pueden ser útiles, el Fondo de las Naciones Unidas para la Infancia (UNICEF México) recomienda a padres y madres que no traten de convertirse en maestros o maestras, sino que sean acompañantes en el proceso de aprendizaje, faciliten la designación de un lugar y momento específico para la educación a distancia, y presten atención a la salud mental de sus hijos e hijas.[ CITATION UNI20 \l 2058 ]</p>
+
+<p>Para las y los adolescentes, UNICEF México les exhorta a reconocer sus emociones y a compartirlas con sus amigas y amigos.[ CITATION UNI201 \l 2058 ] Por su parte, la Organización Mundial de la Salud, ha emitido una serie de recomendaciones a la población en general, y que también pueden ser aplicables a la juventud, a saber: limitar el tiempo para escuchar o ver noticias, mantener un estilo de vida saludable y contactar a familiares y/o amistades.[ CITATION Org20 \l 2058 ]</p>
+
+<p>La educación a distancia también ha contribuido a transformar diversos fenómenos urbanos, verbigracia, según estimaciones de ONU Habitat México, el programa de Naciones Unidas para los asentamientos urbanos, la movilidad se ha visto drásticamente reducida. Junto con ello, las escuelas en su calidad de espacios públicos deberán ahora garantizar el distanciamiento físico, por lo que deberán ser adaptadas y así consolidar su relación con la salud pública.[ CITATION ONU20 \l 2058 ]</p>
+
+<p>En resumen, el reto de la educación a distancia no es menor, e implica una corresponsabilidad entre profesorado, estudiantado, padres y madres de familia, autoridades gubernamentales y sociedad en general.</p>
+
+<h3>Bibliografía</h3>
+
+<ul>
+<li><p>Arnold, P., Lazarte Hoyle, A., &amp; Arredondo Ruiz, S. (Agosto de 2020). Guía Metodológica de Recuperación Socioeconómica Municipal en contexto de COVID-19 (Cuaderno Técnico) . Obtenido de ONU HABITAT: <a href="http://70.35.196.242/onuhabitatmexico/Guia-Covid-Cuaderno-Tecnico.pdf">http://70.35.196.242/onuhabitatmexico/Guia-Covid-Cuaderno-Tecnico.pdf</a></p></li>
+<li><p>Centro de Investigación y Docencia Económicas A.C. (2020). Profesores. Obtenido de CIDE: <a href="https://www.cide.edu/nosotros/comunidad/profesores/perfil/?id=111">https://www.cide.edu/nosotros/comunidad/profesores/perfil/?id=111</a></p></li>
+<li><p>Dirección General de Planeación, Programación y Estadística Educativa. (2020). Sistema Interactivo de Consulta de Estadística Educativa. Obtenido de Secretaría de Educación Pública: <a href="https://www.planeacion.sep.gob.mx/principalescifras/">https://www.planeacion.sep.gob.mx/principalescifras/</a></p></li>
+<li><p>El Colegio de México. (2020). Centro de Estudios Internacionales. Obtenido de El Colegio de México: <a href="https://cei.colmex.mx/es/personal-academico/fernando-escalante">https://cei.colmex.mx/es/personal-academico/fernando-escalante</a></p></li>
+<li><p>Escalante Gonzalbo, F. (12 de agosto de 2020). Milenio Opinión. Obtenido de Milenio:
+<a href="https://www.milenio.com/opinion/fernando-escalante-gonzalbo/entre-parentesis/el-tiempo-perdido">https://www.milenio.com/opinion/fernando-escalante-gonzalbo/entre-parentesis/el-tiempo-perdido</a></p></li>
+<li><p>Heredia Rubio, B. (12 de agosto de 2020). El Financiero Opinión. Obtenido de El Financiero: <a href="https://www.elfinanciero.com.mx/opinion/blanca-heredia/como-evitar-que-la-escuela-a-distancia-sea-un-desastre-total">https://www.elfinanciero.com.mx/opinion/blanca-heredia/como-evitar-que-la-escuela-a-distancia-sea-un-desastre-total</a></p></li>
+<li><p>ONU Habitat. (10 de juniio de 2019). ONU-Habitat - El Programa de las Naciones Unidas para los Asentamientos Humanos. Obtenido de ONU Habitat México: <a href="https://onuhabitat.org.mx/index.php/sobre-onu-habitat">https://onuhabitat.org.mx/index.php/sobre-onu-habitat</a></p></li>
+<li><p>ONU Habitat México. (30 de junio de 2020). Espacio Público y COVID-19. Obtenido de ONU HABITAT: <a href="https://onuhabitat.org.mx/index.php/espacio-publico-y-covid-19https://onuhabitat.org.mx/index.php/espacio-publico-y-covid-19">https://onuhabitat.org.mx/index.php/espacio-publico-y-covid-19https://onuhabitat.org.mx/index.php/espacio-publico-y-covid-19</a></p></li>
+<li><p>Organización Panamericana de la Salud/ Organización Mundial de la Salud. (2020). Infografía: Lidiar con el estrés durante el brote de 2019-nCoV. Obtenido de OPS: <a href="https://www.paho.org/es/documentos/infografia-lidiar-con-estres-durante-brote-2019-ncov">https://www.paho.org/es/documentos/infografia-lidiar-con-estres-durante-brote-2019-ncov</a></p></li>
+<li><p>UNICEF. (2020). Preguntas frecuentes. Obtenido de UNICEF : <a href="https://www.unicef.org/es/acerca-de-unicef/preguntas-frecuentes#1">https://www.unicef.org/es/acerca-de-unicef/preguntas-frecuentes#1</a></p></li>
+<li><p>UNICEF México. (2020). Educación en tiempos de COVID-19. Obtenido de Unicef México: <a href="https://www.unicef.org/mexico/educaci%C3%B3n-en-tiempos-de-covid-19">https://www.unicef.org/mexico/educaci%C3%B3n-en-tiempos-de-covid-19</a></p></li>
+<li><p>UNICEF México. (2020). Salud mental de las y los adolescentes ante el COVID-19. Obtenido de UNICEF México: <a href="https://www.unicef.org/mexico/educaci%C3%B3n-en-tiempos-de-covid-19">https://www.unicef.org/mexico/educaci%C3%B3n-en-tiempos-de-covid-19</a></p></li>
+</ul>
+
+<!-- Contenido: Termina -->
+        </div>
+              <div class="publicador" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+          <span class="contenido-imagen-previa"><img class="img-responsive" itemprop="image" alt="Instituto Municipal de Planeación y Competitividad de Torreón" src="../imagenes/implan-logo.png"></span>
+          <h3 class="titulo" itemprop="name">Instituto Municipal de Planeación y Competitividad de Torreón</h3>
+          <div class="descripcion" itemprop="description">Órgano técnico responsable de la planeación del desarrollo del municipio de Torreón, Coahuila, México.</div>
+          <div class="contenido-imagen-previa-final"></div>
+        </div>
+      </div></article>
+<div class="contenido-social">
+  <h5>Compartir en Redes Sociales</h5>
+  <a href="https://twitter.com/share" class="twitter-share-button" data-via="trcimplan" data-lang="es">Twittear</a>
+  <iframe src="//www.facebook.com/plugins/like.php?href=http%3A%2F%2Fwww.trcimplan.gob.mx%2Fblog%2Ftorreon-regreso-a-clases-a-distancia-agosto-2020.html&amp;width=300&amp;layout=button_count&amp;action=like&amp;show_faces=true&amp;share=false&amp;height=21" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:300px; height:21px;" allowTransparency="true"></iframe>
+</div>
+    </div>
+    <div class="mapa-inferior">
+          <div class="pull-right redes-sociales">
+            <a class="fa fa-twitter-square" href="http://www.twitter.com/trcimplan" target="_blank"></a>
+            <a class="fa fa-facebook-square" href="https://facebook.com/trcimplan" target="_blank"></a>
+            <a class="fa fa-facebook-square" href="http://www.instagram.com/implantorreon" target="_blank"></a>
+            <a class="fa fa-rss-square" href="../rss.xml"></a>
+          </div>
+    </div>
+  </div>
+</div>
+<!-- Javascript global inicia -->
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
+<script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="../vendor/metisMenu/metisMenu.min.js"></script>
+<script type="text/javascript" src="../vendor/datatables/js/jquery.dataTables.min.js"></script>
+<script type="text/javascript" src="../vendor/datatables-plugins/dataTables.bootstrap.min.js"></script>
+<script type="text/javascript" src="../vendor/datatables-responsive/dataTables.responsive.js"></script>
+<script type="text/javascript" src="../vendor/raphael/raphael.min.js"></script>
+<script type="text/javascript" src="../vendor/morrisjs/morris.min.js"></script>
+<script type="text/javascript" src="../dist/js/sb-admin-2.min.js"></script>
+<script type="text/javascript" src="http://libs.cartocdn.com/cartodb.js/v3/3.15/cartodb.js"></script>
+<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+<!-- Javascript global termina -->
+<!-- Javascript inicia -->
+<script>
+  // Twitter
+  !function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="https://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");
+</script>
+
+<!-- Javascript termina -->
+<!-- Javascript Google Analytics -->
+<script>
+  // Google Analytics
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)})(window,document,'script','//www.google-analytics.com/analytics.js','ga');ga('create', 'UA-58290501-1', 'auto');ga('send', 'pageview');
+</script>
+</body>
+</html>

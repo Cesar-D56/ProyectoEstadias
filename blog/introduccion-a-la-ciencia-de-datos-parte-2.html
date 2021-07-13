@@ -1,0 +1,546 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+<!-- ===================================================================================================
+
+        Instituto Municipal de Planeación y Competitividad (IMPLAN) de Torreón.
+
+        3er. generación de la Plataforma del Conocimiento
+        Desarrollado por Ing. Guillermo Valdés Lozano <guivaloz en movimientolibre.com>
+
+        El software que lo construye está bajo la licencia GPL versión 3. © 2014, 2015, 2016, 2017.
+        Una copia está contenida en el archivo LICENCE al bajar desde GitHub.
+
+        Al usar, estudiar y copiar está aceptando los términos de uso de la información y del sitio web:
+          http://www.trcimplan.gob.mx/terminos/terminos-informacion.html
+          http://www.trcimplan.gob.mx/terminos/terminos-sitio.html
+
+        Descargue, estudie y colabore bajando todo este sitio web:
+          IMPLAN Torreón     https://github.com/TRCIMPLAN/trcimplan.github.io
+
+        Agradecemos y compartimos las tecnologías abiertas y gratuitas sobre las que se basa:
+          PHP                http://php.net
+          Twitter Bootstrap  http://getbootstrap.com
+          StartBootStrap     http://startbootstrap.com
+          Morris.js          https://morrisjs.github.io/morris.js/
+          Font Awesome       http://fontawesome.io
+          DataTables         https://www.datatables.net
+          Carto              https://carto.com
+          GitHub             https://github.com
+
+     =================================================================================================== -->
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Ejemplo práctico de cómo bajar datos abiertos sobre escuelas y realizar un análisis de los mismos.">
+  <meta name="author" content="Ing. Guillermo Valdés Lozano">
+  <meta name="keywords" content="IMPLAN, Torreon, Ciencia, Científico, Datos">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Introducción a la Ciencia de Datos (parte 2) - IMPLAN Torreón">
+  <meta name="twitter:description" content="Ejemplo práctico de cómo bajar datos abiertos sobre escuelas y realizar un análisis de los mismos.">
+  <meta name="twitter:image" content="http://www.trcimplan.gob.mx/blog/introduccion-a-la-ciencia-de-datos-parte-2/imagen-previa.png">
+  <meta name="twitter:url" content="http://www.trcimplan.gob.mx/blog/introduccion-a-la-ciencia-de-datos-parte-2.html">
+  <meta name="og:title" content="Introducción a la Ciencia de Datos (parte 2) - IMPLAN Torreón">
+  <meta name="og:description" content="Ejemplo práctico de cómo bajar datos abiertos sobre escuelas y realizar un análisis de los mismos.">
+  <meta name="og:image" content="http://www.trcimplan.gob.mx/blog/introduccion-a-la-ciencia-de-datos-parte-2/imagen-previa.png">
+  <meta name="og:url" content="http://www.trcimplan.gob.mx/blog/introduccion-a-la-ciencia-de-datos-parte-2.html">
+  <title>Introducción a la Ciencia de Datos (parte 2) - IMPLAN Torreón</title>
+  <link rel="shortcut icon" type="image/x-icon" href="../imagenes/apple-touch-icon.png">
+  <link rel="apple-touch-icon" href="../imagenes/apple-touch-icon.png">
+  <link rel="apple-touch-icon" href="../imagenes/apple-touch-icon-76x76.png" sizes="76x76">
+  <link rel="apple-touch-icon" href="../imagenes/apple-touch-icon-120x120.png" sizes="120x120">
+  <link rel="apple-touch-icon" href="../imagenes/apple-touch-icon-152x152.png" sizes="152x152">
+  <link rel="apple-touch-icon" href="../imagenes/apple-touch-icon-180x180.png" sizes="180x180">
+  <link rel="icon" href="../imagenes/icon-hires.png" sizes="192x192">
+  <link rel="icon" href="../imagenes/icon-normal.png" sizes="128x128">
+  <link rel="alternate" type="application/rss+xml" href="../rss.xml" title="IMPLAN Torreón">
+  <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+  <link rel="stylesheet" type="text/css" href="../vendor/metisMenu/metisMenu.min.css">
+  <link rel="stylesheet" type="text/css" href="../vendor/datatables-plugins/dataTables.bootstrap.css">
+  <link rel="stylesheet" type="text/css" href="../vendor/morrisjs/morris.css">
+  <link rel="stylesheet" type="text/css" href="../vendor/font-awesome/css/font-awesome.min.css">
+  <link rel="stylesheet" type="text/css" href="../dist/css/sb-admin-2.min.css">
+  <link rel="stylesheet" type="text/css" href="../dist/css/plataforma-de-conocimiento.css">
+  <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Noto+Sans|Roboto+Condensed:400,700">
+  <link rel="stylesheet" type="text/css" href="http://libs.cartocdn.com/cartodb.js/v3/3.15/themes/css/cartodb.css">
+  <link rel="stylesheet" type="text/css" href="../dist/css/estilosvm.css">
+  <link rel="stylesheet" type="text/css" href="../dist/css/trcimplan.css">
+  <!-- SOPORTE PARA IE -->
+  <!--[if lt IE 9]>
+  <script type="text/javascript" src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+  <script type="text/javascript" src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+  <![endif]-->
+</head>
+<body>
+<div id="wrapper">
+  <nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="../index.html"><img class="navbar-brand-img" src="../imagenes/implan-barra-logo-chico-gris.png" alt="IMPLAN Torreón"></a>
+    </div>
+  <div class="navbar-default sidebar" role="navigation">
+    <div class="sidebar-nav navbar-collapse">
+      <ul class="nav" id="side-menu">
+        <li class="sidebar-search">
+          <form method="get" action="http://www.trcimplan.gob.mx/buscador-resultados.html">
+            <div class="input-group custom-search-form">
+              <input type="text" class="form-control" placeholder="Google buscar..." value="" name="q">
+              <span class="input-group-btn">
+                <button class="btn btn-default" type="submit"><i class="fa fa-search"></i></button>
+              </span>
+            </div>
+          </form>
+        </li>
+        <li class="active">
+          <a href="#"><span class="navegacion-icono"><i class="fa fa-lightbulb-o"></i></span> Análisis Publicados<span class="fa arrow"></span></a>
+          <ul class="nav nav-second-level">
+            <li><a href="../blog/index.html"><span class="navegacion-icono"><i class="fa fa-file-text-o"></i></span> Últimos Análisis</a></li>
+            <li><a href="../excolaboradores/index.html"><span class="navegacion-icono"><i class="fa fa-file-text-o"></i></span> Análisis por Autor</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="#"><span class="navegacion-icono"><i class="fa fa-area-chart"></i></span> Indicadores<span class="fa arrow"></span></a>
+          <ul class="nav nav-second-level">
+            <li><a href="../smi/introduccion.html"><span class="navegacion-icono"><i class="fa fa-file-text-o"></i></span> Introducción al SMI</a></li>
+            <li><a href="../indicadores-categorias/index.html"><span class="navegacion-icono"><i class="fa fa-th-list"></i></span> Indicadores por Categoría</a></li>
+            <li><a href="../smi/por-region.html"><span class="navegacion-icono"><i class="fa fa-table"></i></span> Indicadores por Región</a></li>
+            <li><a href="../smi/datos-abiertos.html"><span class="navegacion-icono"><i class="fa fa-download"></i></span> Datos Abiertos</a></li>
+            <li><a href="../smi/niveles-socioeconomicos.html"><span class="navegacion-icono"><i class="fa fa-bar-chart"></i></span> Niveles Socioeconómicos</a></li>
+            <li><a href="../monitores/index.html"><span class="navegacion-icono"><i class="fa fa-file-text-o"></i></span> Monitores</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="#"><span class="navegacion-icono"><i class="fa fa-puzzle-piece"></i></span> Indicadores Básicos de Colonias<span class="fa arrow"></span></a>
+          <ul class="nav nav-second-level">
+            <li><a href="../ibc/introduccion.html"><span class="navegacion-icono"><i class="fa fa-file-text-o"></i></span> Introducción al IBC</a></li>
+            <li><a href="../ibc-colonias-torreon/index.html"><span class="navegacion-icono"><i class="fa fa-font"></i></span> Colonias de Torreón</a></li>
+            <li><a href="https://implantorreon.carto.com/u/sigimplan/builder/907a6bc0-2c7e-451e-9668-b78d952e52ff/embed" target="_blank"><span class="navegacion-icono"><i class="fa fa-external-link"></i></span> Mapa Completo</a></li>
+            <li><a href="../ibc/torreon-urbano.html"><span class="navegacion-icono"><i class="fa fa-table"></i></span> Torreón Urbano</a></li>
+            <li><a href="../ibc/datos-abiertos.html"><span class="navegacion-icono"><i class="fa fa-download"></i></span> Datos Abiertos</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="#"><span class="navegacion-icono"><i class="fa fa-map-marker"></i></span> Información Geográfica<span class="fa arrow"></span></a>
+          <ul class="nav nav-second-level">
+            <li><a href="../sig/introduccion.html"><span class="navegacion-icono"><i class="fa fa-file-text-o"></i></span> Introducción al SIG</a></li>
+            <li><a href="../sig-mapas-torreon/temas-sig.html"><span class="navegacion-icono"><i class="fa fa-map-o"></i></span> Mapas por Tema</a></li>
+            <li><a href="../sig-mapas-torreon/plan-director-desarrollo-urbano.html"><span class="navegacion-icono"><i class="fa fa-map-marker"></i></span> Usos de Suelo</a></li>
+            <li><a href="../sig/datos-abiertos.html"><span class="navegacion-icono"><i class="fa fa-download"></i></span> Datos Abiertos</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="#"><span class="navegacion-icono"><i class="fa fa-book"></i></span> Plan Estratégico Torreón 2040<span class="fa arrow"></span></a>
+          <ul class="nav nav-second-level">
+            <li><a href="../pet/indice.html"><span class="navegacion-icono"><i class="fa fa-list-ul"></i></span> Índice General</a></li>
+            <li><a href="../plan-estrategico-torreon-enfoque-metropolitano-2040/index.html"><span class="navegacion-icono"><i class="fa fa-download"></i></span> Descargar</a></li>
+            <li><a href="../plan-estrategico-metropolitano/descripcion-del-proceso.html"><span class="navegacion-icono"><i class="fa fa-calendar"></i></span> Descripción del proceso</a></li>
+            <li><a href="../proyectos/index.html"><span class="navegacion-icono"><i class="fa fa-check-square"></i></span> Proyectos</a></li>
+            <li><a href="../vision-de-ciudad/vision-de-ciudad.html"><span class="navegacion-icono"><i class="fa fa-file-text-o"></i></span> Visión de Ciudad desde IMPLAN</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="#"><span class="navegacion-icono"><i class="fa fa-briefcase"></i></span> Documentos<span class="fa arrow"></span></a>
+          <ul class="nav nav-second-level">
+            <li><a href="../sig-planes/index.html"><span class="navegacion-icono"><i class="fa fa-book"></i></span> Planes y Programas</a></li>
+            <li><a href="../investigaciones/index.html"><span class="navegacion-icono"><i class="fa fa-file-text-o"></i></span> Investigaciones</a></li>
+            <li><a href="../estudios/index.html"><span class="navegacion-icono"><i class="fa fa-file-text-o"></i></span> Estudios</a></li>
+          </ul>
+        </li>
+        <li><a href="../consejo-directivo/integrantes.html"><span class="navegacion-icono"><i class="fa fa-users"></i></span> Consejo Directivo</a></li>
+        <li><a href="../sala-prensa/index.html"><span class="navegacion-icono"><i class="fa fa-newspaper-o"></i></span> Sala de Prensa</a></li>
+        <li><a href="../programas-radio/index.html"><span class="navegacion-icono"><i class="fa fa-microphone"></i></span> Programas de Radio</a></li>
+        <li>
+          <a href="#"><span class="navegacion-icono"><i class="fa fa-file-text-o"></i></span> Consejo Visión Metrópoli<span class="fa arrow"></span></a>
+          <ul class="nav nav-second-level">
+            <li><a href="../convocatorias/vision-metropoli.html"><span class="navegacion-icono"><i class="fa fa-file-text-o"></i></span> Consejo Juvenil</a></li>
+            <li><a href="../vision-metropoli/integrantes.html"><span class="navegacion-icono"><i class="fa fa-file-text-o"></i></span> Integrantes del Consejo</a></li>
+            <li><a href="../vision-metropoli/index.html"><span class="navegacion-icono"><i class="fa fa-newspaper-o"></i></span> Sala de Prensa</a></li>
+            <li><a href="../vision-metropoli/reglamento-vision-metropoli-2020.pdf"><span class="navegacion-icono"><i class="fa fa-file-text-o"></i></span> Reglamento</a></li>
+            <li><a href="https://issuu.com/consejovisionmetropoli/docs/informe_visi_n_metr_poli_2019_-_2021" target="_blank"><span class="navegacion-icono"><i class="fa fa-file-text-o"></i></span> Informe 2019 - 2021</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="#"><span class="navegacion-icono"><i class="fa fa-building-o"></i></span> Institucional<span class="fa arrow"></span></a>
+          <ul class="nav nav-second-level">
+            <li><a href="../institucional/vision-mision.html"><span class="navegacion-icono"><i class="fa fa-trophy"></i></span> Misión / Visión</a></li>
+            <li><a href="../institucional/NuestrosProyectos.html"><span class="navegacion-icono"><i class="fa fa-pencil-square-o"></i></span> Nuestros Proyectos</a></li>
+            <li><a href="../institucional/mensaje-director.html"><span class="navegacion-icono"><i class="fa fa-comment"></i></span> Mensaje del Director</a></li>
+            <li><a href="../autores/index.html"><span class="navegacion-icono"><i class="fa fa-user"></i></span> Quienes Somos</a></li>
+            <li><a href="../institucional/estructura-organica.html"><span class="navegacion-icono"><i class="fa fa-sitemap"></i></span> Estructura Orgánica</a></li>
+            <li><a href="../institucional/modelo-operativo-universal.html"><span class="navegacion-icono"><i class="fa fa-slideshare"></i></span> Modelo Operativo Univ.</a></li>
+            <li><a href="../institucional/reglamentos.html"><span class="navegacion-icono"><i class="fa fa-gavel"></i></span> Reglamentos</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="#"><span class="navegacion-icono"><i class="fa fa-external-link"></i></span> Transparencia<span class="fa arrow"></span></a>
+          <ul class="nav nav-second-level">
+            <li><a href="http://www2.icai.org.mx/ipo/dependencia.php?dep=178#pageload" target="_blank"><span class="navegacion-icono"><i class="fa fa-file-text-o"></i></span> Transparencia Estatal (ICAI)</a></li>
+            <li><a href="https://consultapublicamx.inai.org.mx/vut-web/faces/view/consultaPublica.xhtml#inicio" target="_blank"><span class="navegacion-icono"><i class="fa fa-file-text-o"></i></span> Plataforma Nacional de Transparencia</a></li>
+            <li><a href="../transparencia/index.html"><span class="navegacion-icono"><i class="fa fa-briefcase"></i></span> Documentos</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="#"><span class="navegacion-icono"><i class="fa fa-share-alt"></i></span> Términos de Uso<span class="fa arrow"></span></a>
+          <ul class="nav nav-second-level">
+            <li><a href="../terminos/terminos-informacion.html"><span class="navegacion-icono"><i class="fa fa-cubes"></i></span> De la información</a></li>
+            <li><a href="../terminos/terminos-sitio.html"><span class="navegacion-icono"><i class="fa fa-globe"></i></span> Del sitio web</a></li>
+            <li><a href="../terminos/privacidad.html"><span class="navegacion-icono"><i class="fa fa-lock"></i></span> Aviso de Privacidad</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="#"><span class="navegacion-icono"><i class="fa fa-phone"></i></span> Contacto<span class="fa arrow"></span></a>
+          <ul class="nav nav-second-level">
+            <li><a href="../contacto/contacto.html"><span class="navegacion-icono"><i class="fa fa-phone"></i></span> Medios de contacto</a></li>
+            <li><a href="../preguntas-frecuentes/preguntas-frecuentes.html"><span class="navegacion-icono"><i class="fa fa-question"></i></span> Preguntas Frecuentes</a></li>
+            <li><a href="http://goo.gl/forms/1rdX4X128PpMOif73" target="_blank"><span class="navegacion-icono"><i class="fa fa-external-link"></i></span> Comentarios y Sugerencias</a></li>
+          </ul>
+        </li>
+        <li><a href="../convocatorias/index.html"><span class="navegacion-icono"><i class="fa fa-file-text-o"></i></span> Convocatorias</a></li>
+        <li><a href="http://177.244.42.17/ovie-torreon/#!" target="_blank"><span class="navegacion-icono"><i class="fa fa-map-marker"></i></span> Oficina Virtual de Información Económica (OVIE)</a></li>
+        <li><a href="https://arcg.is/0vySSr" target="_blank"><span class="navegacion-icono"><i class="fa fa-globe"></i></span> Atlas Municipal de Riesgos de Torreón</a></li>
+      </ul>
+    </div>
+  </div>
+  </nav>
+  <div id="page-wrapper">
+    <div class="cuerpo">
+      <article><div itemscope itemtype="http://schema.org/BlogPosting">
+        <div class="encabezado">
+          <h1 itemprop="headline">Introducción a la Ciencia de Datos (parte 2)</h1>
+          <div class="encabezado-descripcion" itemprop="description">Ejemplo práctico de cómo bajar datos abiertos sobre escuelas y realizar un análisis de los mismos.</div>
+          <div class="encabezado-autor-fecha">
+            Por <span itemprop="author">Ing. Guillermo Valdés Lozano</span> -
+            <meta itemprop="datePublished" content="2015-09-22T10:25">22/09/2015 10:25
+          </div>
+        </div>
+        <span class="contenido-imagen-previa"><img class="img-responsive" itemprop="image" alt="Introducción a la Ciencia de Datos (parte 2)" src="introduccion-a-la-ciencia-de-datos-parte-2/imagen.png"></span>
+        <div itemprop="articleBody">
+<!-- Contenido: Inicia  -->
+<p>Esta publicación documenta <strong>un ejercicio completo desde la descarga hasta el análisis de la información</strong> usando software libre, de alta capacidad y confiabilidad. Esperamos que sirva de base para trabajar con muchos <strong>datos abiertos</strong> más complejos y más grandes que los que usamos en este ejemplo. Y con la noble intensión de compartir conocimiento para que haya más entusiastas en el análisis de los datos que publica <a href="http://www.mxabierto.org/">Red México Abierto</a>.</p>
+
+<p>El reto es averiguar <strong>las cantidades de escuelas de educación preescolar, primaria y secundaria en nuestra ciudad.</strong></p>
+
+<h3>Requerimientos</h3>
+
+<ul>
+<li>Previamente debe tener instalado, configurado y funcionando un <strong>motor de base de datos relacional</strong> como <a href="https://mariadb.org/">MariaDB</a>, <a href="http://www.postgresql.org/">PostgreSQL</a> u otro que opere con comandos <strong>SQL</strong>. Esta guía hace uso de <strong>PostgreSQL</strong> del cual se tienen excelentes resultados con grandes cantidades de información.</li>
+<li>Recomiendo la <em>suite de oficina</em> <a href="https://es.libreoffice.org/">LibreOffice</a> la cual es <strong>software libre</strong>. Podría usar Microsoft Office, aunque <strong>no lo recomiendo</strong> por ser <a href="https://es.wikipedia.org/wiki/Software_propietario">software privativo</a>.</li>
+<li>Sistema Operativo con <strong>navegador de internet</strong> y <strong>descompresor de archivos ZIP.</strong> Tanto GNU/Linux, Windows o MacOS tienen estas herramientas. En esta guía verá imágenes de <strong>GNU/Linux</strong> y <strong>KDE</strong> como entorno gráfico.</li>
+<li>Buena conectividad a <strong>Internet</strong>.</li>
+</ul>
+
+<h3>Obtenga datos abiertos en datos.gob.mx</h3>
+
+<p>La plataforma <a href="http://datos.gob.mx">datos.gob.mx</a> es el sitio oficial de <strong>Datos Abiertos</strong> del <strong>Gobierno de la República.</strong> Allí se encuentra el <strong>Catálogo de Datos Abiertos</strong> que de manera gradual está incorporando todos los Datos Abiertos del Gobierno de la República. En su navegador de internet, vaya a <a href="http://datos.gob.mx">datos.gob.mx</a> y de clic en <strong>Explora los Datos</strong>.</p>
+
+<p><img class="img-responsive" src="introduccion-a-la-ciencia-de-datos-parte-2/01-datos.gob.mx.png" alt=""></p>
+
+<p>La forma más fácil de encontrar alguna información es escribir algunas palabras que la describan en el campo de búsqueda. Escriba "escuelas" y presione <strong>ENTER</strong>.</p>
+
+<p><img class="img-responsive" src="introduccion-a-la-ciencia-de-datos-parte-2/02-datos.gob.mx-buscar-escuelas.png" alt=""></p>
+
+<p>Al momento de escribir esta guía, el primer resultado es el <strong>Censo de Escuelas, Maestros y Alumnos de Educación Básica y Especial</strong>. De clic sobre este texto.</p>
+
+<p><img class="img-responsive" src="introduccion-a-la-ciencia-de-datos-parte-2/03-datos.gob.mx-resultado-busqueda.png" alt=""></p>
+
+<p>Así tendrá a la vista varios conjuntos de <strong>datos abiertos</strong> que la <strong>Secretaría de Educación Pública</strong> proporciona con la información de los centros escolares de educación básica, media superior y superior.</p>
+
+<p><img class="img-responsive" src="introduccion-a-la-ciencia-de-datos-parte-2/04-datos.gob.mx-censo-de-escuelas.png" alt=""></p>
+
+<p>Busque en este listado el <strong>Catálogo Centros de Trabajo</strong> el cual contiene la información de los planteles educativos. De clic sobre este título y <strong>descargará un archivo ZIP</strong> llamado <strong>CATALOGO_CT.zip</strong>.</p>
+
+<p><img class="img-responsive" src="introduccion-a-la-ciencia-de-datos-parte-2/05-datos.gob.mx-descargar-catalogo-centros-de-trabajo.png" alt=""></p>
+
+<p>Los <strong>archivos ZIP ayudan a disminuir los tiempos de descarga.</strong> Esta reducción de tamaño es muy notable en archivos que contienen texto. De clic con el botón derecho y elija la opción para extraer o descomprimir; esta opción puede variar según su sistema operativo y la versión que use. Por lo general todos los S.O. modernos la tienen.</p>
+
+<p><img class="img-responsive" src="introduccion-a-la-ciencia-de-datos-parte-2/06-desempacar-archivo-zip.png" alt=""></p>
+
+<p>Un <strong>archivo CSV es texto separado por comas.</strong> Es uno de los tipos recomendados para publicar datos abiertos por su portabilidad y flexibilidad. <strong>Pero, debe revisar su tamaño antes de tratar de abrirlo,</strong> algunos CSV pueden pesar varios megabytes y sobrepasar las capacidades de una hoja de cálculo, como Microsoft Excel o LibreOffice. Observe que en este caso, se tiene un archivo CSV de <strong>¡30 millones de bytes (MB) y 273,318 renglones o filas!</strong></p>
+
+<p><img class="img-responsive" src="introduccion-a-la-ciencia-de-datos-parte-2/08-analizar-archivo-csv.png" alt=""></p>
+
+<h3>Alimente su base de datos</h3>
+
+<p>Cuando la cantidad o complejidad de los datos rebasen las capacidades de una hoja de cálculo, deberá utilizar una base de datos relacional como <a href="https://mariadb.org/">MariaDB</a> o <a href="http://www.postgresql.org/">PostgreSQL</a>. Estos "motores" son capaces de lidiar con miles o millones de registros con un gran desempeño y absoluta confiabilidad. Cree un archivo con nombre <strong>sep_centros_trabajos.sql</strong> y escriba este comando SQL para <strong>crear una tabla con las mismas columnas que el archivo CSV.</strong></p>
+
+<pre><code>--
+-- sep_centros_trabajos.sql
+--
+CREATE TABLE sep_centros_trabajos (
+    id_inm           character(6),
+    clave_ct         character(11),
+    ent              character(2),
+    mun              character(3),
+    loc              character(4),
+    ent_admon        character(2),
+    nombrect         character varying,
+    c_estatus_ct     character(1),
+    nivel            character(1),
+    modalidad        character(1),
+    turno            character(1),
+    control          character(1),
+    ct_multigrado    character(1),
+    ent_carga        character(2),
+    mun_carga        character(3),
+    loc_carga        character(4),
+    extra            character varying
+);
+</code></pre>
+
+<p>Tome nota que los tipos de datos de cada columna son congruentes con las líneas del archivo CSV. Por ejemplo, la columna <strong>clave_ct</strong> siempre tiene 11 caracteres, por eso se define como <strong>character(11)</strong>. En alguna línea hay un dato demás que remedié agregando una columna <strong>extra</strong> como <em>polizón</em>.</p>
+
+<p>El siguiente paso es <strong>crear una nueva base de datos</strong> con nombre <strong>sep_censo_escuelas</strong>, que con PostgreSQL se hace desde la terminal con el comando <strong>createdb</strong>. Por costumbre, le asigno que el <em>dueño</em> de esta base de datos sea otro usuario (previamente creado) llamado <strong>trcimplan</strong>. Este usuario no tiene privilegios mayores, lo que me asegura que si otro sistema lo toma u otro usuario se hace pasar por éste, <strong>no nos haga</strong> <em>travesuras</em> con las demás bases de datos.</p>
+
+<pre><code>$ createdb -O trcimplan sep_censo_escuelas
+</code></pre>
+
+<p>Sigue <strong>cargar el archivo sep_centros_trabajos.sql y ordenar su ejecución.</strong> Así la tabla estará lista, aunque vacía por el momento:</p>
+
+<pre><code>$ psql -U trcimplan -f sep_centros_trabajos.sql sep_censo_escuelas
+</code></pre>
+
+<p>Continuamos con la <em>carga masiva</em> de las <strong>273,318 líneas</strong> que están en el archivo <strong>CATALOGO_CT.csv</strong>. Antes de mostrar las órdenas a escribir, revisaremos estos detalles que no hay que subestimar.</p>
+
+<ul>
+<li><strong>No cualquier usuario PostgreSQL puede ejecutar el comando COPY</strong>: Porque requiere un <strong>superusuario</strong>. Como recordará, he recomendado que el <em>dueño</em> tenga pocos privilegios, entre los que está <strong>NO</strong> ejecutar <strong>COPY</strong>. Así que uso mi usuario habital que sí tiene dicho <em>poder</em>.</li>
+<li><strong>La ubicación del archivo</strong>: El comando COPY de PostgreSQL es bastante quejoso cuando se le da una ruta elaborada. Así que haga una copia a una ruta corta, en mi ejemplo, a <strong>/tmp</strong>.</li>
+<li><strong>La codificación de caracteres del archivo CSV</strong>: Se desearía que los datos abiertos usen <strong>UTF-8</strong> el cual es el estándard moderno. Pero este archivo ofrecido por la <strong>S.E.P.</strong> está en el anticuado <strong>ISO 8859-1</strong>. Afortunadamente, <a href="http://www.postgresql.org/docs/current/static/multibyte.html">PostgreSQL puede cambiar la codificación al cargar archivos</a> con la orden <strong>encoding.</strong></li>
+<li><strong>Identificar el caracter que separa los datos de cada columna</strong>: Observe que se usan comas para separar los datos, inclusive los textos están entre comillas; respetando la forma en que un archivo CSV debe ser escrito.</li>
+<li><strong>Si la primer línea contiene los encabezados de las columnas</strong>: Entonces <strong>no</strong> debe agregarse como un registro a la base de datos.</li>
+</ul>
+
+<p>Con estos detalles identificados y convertidos a específicas instrucciones, realizamos la <strong>carga del archivo CSV a la base de datos.</strong> Identifique Usted mismo la función de cada pieza:</p>
+
+<pre><code>$ psql sep_censo_escuelas
+sep_censo_escuelas=# \encoding LATIN1
+sep_censo_escuelas=# COPY sep_centros_trabajos FROM '/tmp/CATALOGO_CT.csv' DELIMITER ',' CSV HEADER;
+sep_censo_escuelas=# \q
+</code></pre>
+
+<h3>Con LibreOffice Base podrá comunicarse con PostgreSQL</h3>
+
+<p>Ejecute <strong>LibreOffice Base</strong>, al aparecer la ventana del asistente, elija la opción <strong>Conectar con una base de datos existente</strong> y en el campo seleccione <strong>PostgreSQL</strong>. Luego de clic en <strong>Siguiente</strong>:</p>
+
+<p><img class="img-responsive" src="introduccion-a-la-ciencia-de-datos-parte-2/11-libreoffice-base-paso-1.png" alt=""></p>
+
+<p>En el segundo paso <strong>LibreOffice Base</strong> le pregunta el <strong>URL del origen de datos</strong>; en este campo se establece la dirección IP del servidor con PostgreSQL y varios parámetros como el nombre de la base de datos. En este ejercicio, nuestro propio equipo tiene PostgreSQL en ejecución, así que con el texto <strong>host=127.0.0.1</strong> le indicamos que nuestro propio equipo (127.0.0.1) la tiene. Seguido del nombre de la base de datos con <strong>dbname=sep_censo_escuelas</strong>. Escriba eso y de clic en siguiente:</p>
+
+<p><img class="img-responsive" src="introduccion-a-la-ciencia-de-datos-parte-2/12-libreoffice-base-paso-2.png" alt=""></p>
+
+<p>De forma predeterminada, salvo que haya cambiado la configuración, PostgreSQL permite conexiones desde <strong>localhost</strong> con un usuario válido, sin revisar la contraseña. Como sugerí que <strong>trcimplan</strong> sea el dueño de <strong>sep_censo_escuelas</strong> entonces lo usamos como nombre de usuario. Habilite la casilla <strong>contraseña obligatoria</strong> y de clic en el botón <strong>Probar conexión</strong>. Pruebe con cualquier contraseña mientras no esté vacía:</p>
+
+<p><img class="img-responsive" src="introduccion-a-la-ciencia-de-datos-parte-2/13-libreoffice-base-paso-3.png" alt=""></p>
+
+<p>La siguiente ventana muestra que ha sido exitosa la comunicación entre LibreOffice y PostgreSQL. En caso de que falle, revise los pasos anteriores o la configuración de su servidor PostgreSQL. De estar todo bien, siga con clic en <strong>Aceptar</strong> para cerrar esta pequeña ventana y luego a <strong>Siguiente</strong> en el asistente:</p>
+
+<p><img class="img-responsive" src="introduccion-a-la-ciencia-de-datos-parte-2/14-libreoffice-base-prueba-de-conexion.png" alt=""></p>
+
+<p>Deje la opción <strong>Sí, registrar la base de datos</strong> es para tener acceso a esta base de datos desde las otras aplicaciones de LibreOffice. Y <strong>Abrir la base de datos para su edición</strong> para hacer pruebas y nuestra primera consulta. De clic en <strong>Finalizar</strong>:</p>
+
+<p><img class="img-responsive" src="introduccion-a-la-ciencia-de-datos-parte-2/15-libreoffice-base-paso-4.png" alt=""></p>
+
+<p>LibreOffice Base solicitará que se guarde un <strong>archivo ODB</strong> donde recordará estas configuraciones y más detalles. Este archivo <strong>NO</strong> contiene copia de los datos, ni de las hojas de cálculo que vayamos a hacer. Al abrirlo, podemos crear y modificar las consultas. Determine un nombre y un lugar en sus documentos donde guardarlo. En este ejemplo, con el nombre <strong>SEP Censo Escuelas.odb</strong>:</p>
+
+<p><img class="img-responsive" src="introduccion-a-la-ciencia-de-datos-parte-2/16-libreoffice-base-guardar.png" alt=""></p>
+
+<p>Tendremos a la vista el apartado de <strong>Tablas</strong>. A modo de prueba, podemos visualizar los datos al elegir la carpeta <strong>public</strong> y dar doble clic en <strong>sep_centros_trabajos</strong>:</p>
+
+<p><img class="img-responsive" src="introduccion-a-la-ciencia-de-datos-parte-2/17-libreoffice-base-tablas.png" alt=""></p>
+
+<p>Esta segunda ventana nos muestra los primeros registros de todos los contenidos en la tabla <strong>sep_centros_trabajos</strong>. Tenga en mente que la tabla contiene <strong>TODOS los centros de trabajo del país</strong>; por lo que necesitamos buscar la forma de filtrarla para tener sólo los registros de nuestra ciudad.</p>
+
+<p><img class="img-responsive" src="introduccion-a-la-ciencia-de-datos-parte-2/18-libreoffice-base-tabla-sep_censo_escuelas.png" alt=""></p>
+
+<p>Identifique que hay columnas para la entidad con <strong>ent</strong>, el municipio con <strong>mun</strong> y la localidad con <strong>loc</strong>. Use el <a href="http://www.inegi.org.mx/geo/contenidos/geoestadistica/CatalogoClaves.aspx">Catálogo Único de Claves</a> del <strong>INEGI</strong> para averiguar los números que identifican a su estado, municipio y localidad. Para nuestro ejercicio, Coahuila de Zaragoza es <strong>05</strong>, Municipio de Torreón es <strong>035</strong> y la localidad de Torreón es <strong>0001</strong>.</p>
+
+<h3>Filtrar los datos</h3>
+
+<p>De clic en el icono <strong>Consultas</strong> del lado derecho y luego en <strong>Crear consulta en modo diseño</strong> para usar un asistente gráfico. Si domina el uso de comandos SQL puede optar por <strong>Crear una consulta en modo SQL</strong>:</p>
+
+<p><img class="img-responsive" src="introduccion-a-la-ciencia-de-datos-parte-2/21-libreoffice-base-crear-consulta.png" alt=""></p>
+
+<p>El asistente le solicita que agregue por lo menos una tabla. En otro caso, cuando quiere hacer una consulta con dos o más tablas, este asistente permite agregarlas, respetando las relaciones entre ellas. <strong>Agregue</strong> la tabla <strong>sep_centros_trabajos</strong> del esquema <strong>public</strong>.</p>
+
+<p><img class="img-responsive" src="introduccion-a-la-ciencia-de-datos-parte-2/22-libreoffice-base-definir-columnas.png" alt=""></p>
+
+<p>Arrastre las columnas <strong>ent</strong>, <strong>mun</strong>, <strong>loc</strong>, <strong>clave_ct</strong> y <strong>nombrect</strong> desde la tabla hasta las columnas de la parte inferior; también funciona dando doble clic al nombre de la columna en la tabla. En el renglón <strong>Criterio</strong> se escribe el valor por el que se quiere filtrar una o varias columnas. Escriba <strong>'05'</strong> (Coahuila de Zaragoza) en <em>ent</em>, <strong>'035'</strong> (Municipio Torreón) en <em>mun</em> y <strong>'0001'</strong> (Localidad Torreón) en <em>loc</em>. Defina el orden como <strong>ascendente</strong> en <em>clave_ct</em> y en <em>nombrect</em>. Presione el botón que <strong>ejecuta la consulta</strong> y revise que los registros entregados sean los que los filtros dejen pasar. Guarde la consulta como <strong>SEP Centros Trabajos Torreón</strong>:</p>
+
+<p><img class="img-responsive" src="introduccion-a-la-ciencia-de-datos-parte-2/23-libreoffice-base-guardar-consulta.png" alt=""></p>
+
+<p>Corra LibreOffice Calc y en una nueva hoja de cálculo presione F4 (o en el menú <strong>Ver</strong> elija <strong>Orígenes de datos</strong>) para que aparezca las conexiones que Base ha establecido. Despliegue <strong>SEP Censo Escuelas</strong>, luego <strong>Consultas</strong> y de clic en <strong>SEP Centros Trabajos Torreón</strong>. Una vista previa de los datos aparece del lado derecho. Arrastre <strong>SEP Centros Trabajos Torreón</strong> y deje caer en la celda <strong>A1</strong> para que todos los datos de la consulta se pasen a la hoja de cálculo.</p>
+
+<p><img class="img-responsive" src="introduccion-a-la-ciencia-de-datos-parte-2/24-libreoffice-calc-importar-a-hoja-de-calculo.png" alt=""></p>
+
+<p>Un buen tip es que estas celdas se quedan relacionadas con la consulta externa. Así cuando haya habido cambios en la Base de Datos, puede actualizar con el menú <strong>Datos</strong> y la opción <strong>Actualizar área</strong>.</p>
+
+<h3>Filtrar por tipo de centro de trabajo</h3>
+
+<p>Regrese a LibreOffice Base y al apartado de <strong>Consultas</strong>. Para aprovechar la consulta que se tiene como base para nuevas, de clic con del botón derecho en <strong>SEP Centros Trabajos Torreón</strong> y elija en el menú contextual <strong>Editar</strong>:</p>
+
+<p><img class="img-responsive" src="introduccion-a-la-ciencia-de-datos-parte-2/31-libreoffice-base-editar.png" alt=""></p>
+
+<p>Según el <a href="http://cumplimientopef.sep.gob.mx/glosario_de_terminos/">Glosario de Términos Utilizados</a>, la Clave del Centro de Trabajo <strong>clave_ct</strong> está formada por:</p>
+
+<ul>
+<li>Dos números para la entidad federativa, desde 01 para Aguascalientes hasta 32 para Zacatecas.</li>
+<li>Una letra clasificadora de acuerdo con la naturaleza del financimiento: <strong>D</strong> Federal, <strong>E</strong> Estatal y <strong>K</strong> Conafe</li>
+<li>Dos letras para clasificar los diferentes tipos, nieveles y servicios:
+
+<ul>
+<li><strong>CC</strong> Escuela de Educación Preescolar Indígena</li>
+<li><strong>JN</strong> Escuela de Educación Preescolar</li>
+<li><strong>PB</strong> Escuela de Educación Primaria Indígena</li>
+<li><strong>PR</strong> Escuela de Educación Primaria</li>
+<li><strong>ES</strong> Escuela de Educación Secundaria General</li>
+<li><strong>ST</strong> Escuela de Educación Secundaria Técnica</li>
+<li><strong>TV</strong> Telesecundaria</li>
+</ul></li>
+<li>Un número progresivo de hasta cuatro caracteres.</li>
+<li>Un caracter verificador.</li>
+</ul>
+
+<p>Entonces, para filtrar sólo las claves para <strong>Preescolar</strong> escriba en el campo <strong>Criterio</strong> el filtro <strong>LIKE '???JN*'</strong>. Éste indica que los primeros tres caracteres pueden ser cualquiera, que el cuarto y quinto sean <strong>JN</strong>, seguido por lo que sea. Guarde esta consulta con otro nombre, vaya a <strong>Archivo</strong> y elija <strong>Guardar como</strong>, nómbrelo <strong>SEP Centros Trabajos Torreón Preescolar</strong>:</p>
+
+<p><img class="img-responsive" src="introduccion-a-la-ciencia-de-datos-parte-2/32-libreoffice-base-filtrar-por-clave.png" alt=""></p>
+
+<p>Repita estas acciones para crear consultas que filtren por <strong>PR</strong> Primaria, <strong>ES</strong> Secundaria General y <strong>ST</strong> Secundaria Técnica.</p>
+
+<p>Vaya a LibreOffice Calc e importe los datos de estas cuatro consultas a un libro, donde cada consulta vaya en una hoja; nombre las hojas <strong>Preescolar</strong>, <strong>Primarias</strong>, <strong>Secundarias</strong> y <strong>Secundarias Técnicas</strong> respectivamente:</p>
+
+<p><img class="img-responsive" src="introduccion-a-la-ciencia-de-datos-parte-2/33-libreoffice-calc-cargar-cada-consulta.png" alt=""></p>
+
+<p>En otra hoja, llamada <strong>Reporte</strong>, vamos a contabilizar y graficar las escuelas por su tipo. La función <strong>CONTAR.SI</strong> de LibreOffice Calc sirve para contar las celdas que cumplen una condición; en nuestro ejemplo, la usamos para contar las celdas en la columna <strong>A</strong> que tienen el texto <strong>05</strong>:</p>
+
+<p><img class="img-responsive" src="introduccion-a-la-ciencia-de-datos-parte-2/34-libreoffice-calc-reporte.png" alt=""></p>
+
+<h3>Reflexiones</h3>
+
+<p><strong>La información puede ser inmensamente poderosa para comprender y dirigir los complejos problemas sociales.</strong> Para lograr este objetivo, no sólo se necesitan los datos correctos, también la gente correcta que sea capaz de obtener los números esenciales; aquellos que apunten a los detalles técnicos críticos y den soporte a las decisiones más importantes.</p>
+
+<p>Quien aspire a ser un <strong>Científico de Datos</strong> deberá dominar no sólo una, sino un gran número de herramientas; que usará como un hipotético <a href="https://es.wikipedia.org/wiki/MacGyver">MacGyver</a> quien con lo que tenga "a la mano", sea capaz de "atrapar" a la solución del problema que enfrente.</p>
+
+<p>En próximas entregas seguiermos ejercitando y explorando nuevas formas de alcanzar estos objetivos.</p>
+
+<h3>Referencias</h3>
+
+<ul>
+<li><a href="http://datos.gob.mx/">Datos.gob.mx</a></li>
+<li><a href="http://www.snie.sep.gob.mx/">Sistema Nacional de información Estadística Educativa</a></li>
+<li><a href="http://www.inegi.org.mx/geo/contenidos/geoestadistica/CatalogoClaves.aspx">Catálogo Único de Claves de Áreas Geoestadísticas Estatales, Municipales y Localidades</a></li>
+<li><a href="http://cumplimientopef.sep.gob.mx/glosario_de_terminos/">Portal de Cumplimiento del Art. 10 del PEF 2012 - Glosario de Términos Utilizados - Clave de Centro de Trabajo</a></li>
+</ul>
+
+<!-- Contenido: Termina -->
+        </div>
+              <div class="publicador" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+          <span class="contenido-imagen-previa"><img class="img-responsive" itemprop="image" alt="Instituto Municipal de Planeación y Competitividad de Torreón" src="../imagenes/implan-logo.png"></span>
+          <h3 class="titulo" itemprop="name">Instituto Municipal de Planeación y Competitividad de Torreón</h3>
+          <div class="descripcion" itemprop="description">Órgano técnico responsable de la planeación del desarrollo del municipio de Torreón, Coahuila, México.</div>
+          <div class="contenido-imagen-previa-final"></div>
+        </div>
+      </div></article>
+      <aside>
+  <!-- Extra: Inicia  -->
+  <h3>Publicaciones relacionadas</h3>
+<p><b>Análisis Publicados</b></p>
+<ul>
+  <li><a href="http://www.trcimplan.gob.mx/blog/experiencias-sobre-datos-abiertos-en-mexico.html">Experiencias sobre Datos Abiertos en M&eacute;xico</a></li>
+  <li><a href="http://www.trcimplan.gob.mx/blog/mejores-sitios-web-para-gobiernos-abiertos.html">Mejores sitios web y datos abiertos para Gobiernos Abiertos</a></li>
+  <li><a href="http://www.trcimplan.gob.mx/blog/la-plataforma-del-conocimiento-del-implan-torreon.html">La Plataforma del Conocimiento del IMPLAN Torre&oacute;n</a></li>
+  <li><a href="http://www.trcimplan.gob.mx/blog/introduccion-a-la-ciencia-de-datos-parte-1.html">Introducci&oacute;n a la Ciencia de Datos (parte 1)</a></li>
+  <li><a href="http://www.trcimplan.gob.mx/blog/nuevas-tecnologias-estandares-web.html">Nuevas Tecnolog&iacute;as y Est&aacute;ndares para la Web</a></li>
+  <li><a href="http://www.trcimplan.gob.mx/blog/la-fuerza-de-las-micro-pequenas-y-medianas-empresas-en-la-laguna.html">La fuerza de las micro, peque&ntilde;as y medianas empresas en La Laguna</a></li>
+  <li><a href="http://www.trcimplan.gob.mx/blog/datos-abiertos-gobiernos-municipales.html">Datos Abiertos en los Gobiernos Municipales</a></li>
+  <li><a href="http://www.trcimplan.gob.mx/blog/la-gran-oportunidad-del-gobierno-abierto.html">La Gran Oportunidad del Gobierno Abierto</a></li>
+  <li><a href="http://www.trcimplan.gob.mx/blog/innovacion-internet-competitividad.html">Innovaci&oacute;n, Internet y Competitividad</a></li>
+  <li><a href="http://www.trcimplan.gob.mx/blog/primer-analisis-de-datos-abiertos-en-seguridad-vial.html">Primer An&aacute;lisis de Datos Abiertos en Seguridad Vial</a></li>
+</ul>
+<p><b>Sistema Metropolitano de Indicadores</b></p>
+<ul>
+  <li><a href="http://www.trcimplan.gob.mx/indicadores-torreon/gobierno-indice-de-gobierno-electronico-municipal.html">&Iacute;ndice de Gobierno Electr&oacute;nico Municipal en Torre&oacute;n</a></li>
+  <li><a href="http://www.trcimplan.gob.mx/indicadores-torreon/economia-empresas.html">Empresas en Torre&oacute;n</a></li>
+  <li><a href="http://www.trcimplan.gob.mx/indicadores-torreon/economia-centros-de-investigacion.html">Centros de Investigaci&oacute;n en Torre&oacute;n</a></li>
+  <li><a href="http://www.trcimplan.gob.mx/indicadores-torreon/sociedad-uso-de-twitter-como-proxy-de-uso-de-tecnologias-de-informacion.html">Uso de Twitter como Proxy de Uso de Tecnolog&iacute;as de Informaci&oacute;n en Torre&oacute;n</a></li>
+  <li><a href="http://www.trcimplan.gob.mx/indicadores-torreon/economia-grandes-empresas-segun-cnn-expansion.html">Grandes Empresas (seg&uacute;n CNN Expansi&oacute;n) en Torre&oacute;n</a></li>
+  <li><a href="http://www.trcimplan.gob.mx/indicadores-torreon/economia-patentes.html">Patentes en Torre&oacute;n</a></li>
+  <li><a href="http://www.trcimplan.gob.mx/indicadores-torreon/economia-empresas-certificadas-con-iso-9000-y-14000.html">Empresas Certificadas con ISO-9000 y 14000 en Torre&oacute;n</a></li>
+  <li><a href="http://www.trcimplan.gob.mx/indicadores-torreon/economia-posgrados-de-calidad-por-cada-100mil-de-pea.html">Posgrados de Calidad (por cada 100mil de PEA) en Torre&oacute;n</a></li>
+  <li><a href="http://www.trcimplan.gob.mx/indicadores-torreon/economia-posgrados-de-calidad.html">Posgrados de Calidad en Torre&oacute;n</a></li>
+  <li><a href="http://www.trcimplan.gob.mx/indicadores-torreon/gobierno-indice-de-herramientas-electronicas-de-gobiernos-locales.html">&Iacute;ndice de Herramientas Electr&oacute;nicas de Gobiernos Locales en Torre&oacute;n</a></li>
+</ul>
+<p><b>Plan Estratégico Torreón</b></p>
+<ul>
+  <li><a href="http://www.trcimplan.gob.mx/proyectos/banco-municipal-proyectos-inversion.html">Banco Municipal de Proyectos de Inversi&oacute;n</a></li>
+  <li><a href="http://www.trcimplan.gob.mx/pet/diagnostico-estrategico-buen-gobierno.html">Diagn&oacute;stico Estrat&eacute;gico: Buen Gobierno</a></li>
+  <li><a href="http://www.trcimplan.gob.mx/pet/vision-buen-gobierno.html">Visi&oacute;n de Buen Gobierno 2040</a></li>
+  <li><a href="http://www.trcimplan.gob.mx/pet/vision-desarrollo-economico-innovacion.html">Visi&oacute;n de Desarrollo Econ&oacute;mico e Innovaci&oacute;n 2040</a></li>
+  <li><a href="http://www.trcimplan.gob.mx/pet/diagnostico-estrategico-desarrollo-economico-innovacion.html">Diagn&oacute;stico Estrat&eacute;gico: Desarrollo Econ&oacute;mico e Innovaci&oacute;n</a></li>
+  <li><a href="http://www.trcimplan.gob.mx/pet/cartera-proyectos-buen-gobierno.html">Cartera de Proyectos: Buen Gobierno</a></li>
+  <li><a href="http://www.trcimplan.gob.mx/pet/cartera-proyectos-desarrollo-economico-innovacion.html">Cartera de Proyectos: Desarrollo Econ&oacute;mico e Innovaci&oacute;n</a></li>
+  <li><a href="http://www.trcimplan.gob.mx/proyectos/plata-laguna.html">Plata Laguna</a></li>
+  <li><a href="http://www.trcimplan.gob.mx/proyectos/proyectos-por-ejes.html">Proyectos por Ejes</a></li>
+  <li><a href="http://www.trcimplan.gob.mx/proyectos/planes-y-programas.html">Planes y Programas</a></li>
+</ul>
+<p><b>Sala de Prensa</b></p>
+<ul>
+  <li><a href="http://www.trcimplan.gob.mx/sala-prensa/2017-01-26-sesion-ordinaria.html">Presentan la Plataforma del Conocimiento trcimplan.gob.mx</a></li>
+  <li><a href="http://www.trcimplan.gob.mx/sala-prensa/2015-09-24-interesa-como-referente-nacional.html">Interesa como referente nacional esquema de Planeaci&oacute;n y el proyecto Calle Completa de Torre&oacute;n</a></li>
+  <li><a href="http://www.trcimplan.gob.mx/sala-prensa/2015-11-24-el-cide-premia-al-implan.html">El CIDE premia al IMPLAN por el uso efectivo de las Tecnolog&iacute;as de la Informaci&oacute;n y de la Comunicaci&oacute;n</a></li>
+  <li><a href="http://www.trcimplan.gob.mx/sala-prensa/2015-10-29-torreon-recibe-tres-reconocimientos-a-nivel-nacional.html">Torre&oacute;n recibe tres reconocimientos a nivel nacional</a></li>
+  <li><a href="http://www.trcimplan.gob.mx/sala-prensa/2020-04-15-comunicado-conferencias-virtuales.html">El IMPLAN Torre&oacute;n y su Consejo Juvenil: Visi&oacute;n Metr&oacute;poli, presentar&aacute;n Conferencias Virtuales</a></li>
+  <li><a href="http://www.trcimplan.gob.mx/sala-prensa/2020-02-27-segunda-sesion-consejo-2020.html">Presentan en Segunda Sesi&oacute;n de Consejo el &ldquo;Programa Parcial de Desarrollo Urbano para la Zona Norte de Torre&oacute;n&rdquo;</a></li>
+  <li><a href="http://www.trcimplan.gob.mx/sala-prensa/2020-02-17-comunicado-enoe.html">Disminuye la tasa de desempleo en la Zona Metropolitana de La Laguna (ZML), al cuarto trimestre de 2019</a></li>
+  <li><a href="http://www.trcimplan.gob.mx/sala-prensa/2020-02-06-comunicado-conferencia-imeplan.html">Postura sobre la creaci&oacute;n de un Instituto Metropolitano de Planeaci&oacute;n.</a></li>
+  <li><a href="http://www.trcimplan.gob.mx/sala-prensa/2020-01-30-primer-sesion-consejo-2020.html">Primer Sesi&oacute;n de Consejo 2020. Se renueva el Consejo Directivo del IMPLAN.</a></li>
+  <li><a href="http://www.trcimplan.gob.mx/sala-prensa/2019-09-26-novena-sesion-consejo.html">Novena Sesi&oacute;n de Consejo Implan. Presentan Resultados del Conversatorio y del Concurso &ldquo;Manos a la Cebra&rdquo;.</a></li>
+</ul>
+  <!-- Extra: Termina -->
+  </aside>
+<div class="contenido-social">
+  <h5>Compartir en Redes Sociales</h5>
+  <a href="https://twitter.com/share" class="twitter-share-button" data-via="trcimplan" data-lang="es">Twittear</a>
+  <iframe src="//www.facebook.com/plugins/like.php?href=http%3A%2F%2Fwww.trcimplan.gob.mx%2Fblog%2Fintroduccion-a-la-ciencia-de-datos-parte-2.html&amp;width=300&amp;layout=button_count&amp;action=like&amp;show_faces=true&amp;share=false&amp;height=21" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:300px; height:21px;" allowTransparency="true"></iframe>
+</div>
+    </div>
+    <div class="mapa-inferior">
+          <div class="pull-right redes-sociales">
+            <a class="fa fa-twitter-square" href="http://www.twitter.com/trcimplan" target="_blank"></a>
+            <a class="fa fa-facebook-square" href="https://facebook.com/trcimplan" target="_blank"></a>
+            <a class="fa fa-facebook-square" href="http://www.instagram.com/implantorreon" target="_blank"></a>
+            <a class="fa fa-rss-square" href="../rss.xml"></a>
+          </div>
+    </div>
+  </div>
+</div>
+<!-- Javascript global inicia -->
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
+<script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="../vendor/metisMenu/metisMenu.min.js"></script>
+<script type="text/javascript" src="../vendor/datatables/js/jquery.dataTables.min.js"></script>
+<script type="text/javascript" src="../vendor/datatables-plugins/dataTables.bootstrap.min.js"></script>
+<script type="text/javascript" src="../vendor/datatables-responsive/dataTables.responsive.js"></script>
+<script type="text/javascript" src="../vendor/raphael/raphael.min.js"></script>
+<script type="text/javascript" src="../vendor/morrisjs/morris.min.js"></script>
+<script type="text/javascript" src="../dist/js/sb-admin-2.min.js"></script>
+<script type="text/javascript" src="http://libs.cartocdn.com/cartodb.js/v3/3.15/cartodb.js"></script>
+<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+<!-- Javascript global termina -->
+<!-- Javascript inicia -->
+<script>
+  // Twitter
+  !function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="https://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");
+</script>
+
+<!-- Javascript termina -->
+<!-- Javascript Google Analytics -->
+<script>
+  // Google Analytics
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)})(window,document,'script','//www.google-analytics.com/analytics.js','ga');ga('create', 'UA-58290501-1', 'auto');ga('send', 'pageview');
+</script>
+</body>
+</html>

@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+<!-- ===================================================================================================
+
+        Instituto Municipal de Planeación y Competitividad (IMPLAN) de Torreón.
+
+        3er. generación de la Plataforma del Conocimiento
+        Desarrollado por Ing. Guillermo Valdés Lozano <guivaloz en movimientolibre.com>
+
+        El software que lo construye está bajo la licencia GPL versión 3. © 2014, 2015, 2016, 2017.
+        Una copia está contenida en el archivo LICENCE al bajar desde GitHub.
+
+        Al usar, estudiar y copiar está aceptando los términos de uso de la información y del sitio web:
+          http://www.trcimplan.gob.mx/terminos/terminos-informacion.html
+          http://www.trcimplan.gob.mx/terminos/terminos-sitio.html
+
+        Descargue, estudie y colabore bajando todo este sitio web:
+          IMPLAN Torreón     https://github.com/TRCIMPLAN/trcimplan.github.io
+
+        Agradecemos y compartimos las tecnologías abiertas y gratuitas sobre las que se basa:
+          PHP                http://php.net
+          Twitter Bootstrap  http://getbootstrap.com
+          StartBootStrap     http://startbootstrap.com
+          Morris.js          https://morrisjs.github.io/morris.js/
+          Font Awesome       http://fontawesome.io
+          DataTables         https://www.datatables.net
+          Carto              https://carto.com
+          GitHub             https://github.com
+
+     =================================================================================================== -->
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="En los últimos años ha aumentado la Tasa de Condiciones Críticas de Ocupación en la Comarca Lagunera. No obstante, Torreón se encuentra por debajo de la tasa estatal y nacional con un 8% del total del personal ocupado. Las personas que más se enfrentan a esta problemática cuentan con menor escolaridad.">
+  <meta name="author" content="Lic. Alicia Valdez Ibarra">
+  <meta name="keywords" content="IMPLAN, Torreon, Tasa, ocupacion, Trabajo, Trabajadores">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Torreón: tasa de ocupación crítica menor a la media nacional - IMPLAN Torreón">
+  <meta name="twitter:description" content="En los últimos años ha aumentado la Tasa de Condiciones Críticas de Ocupación en la Comarca Lagunera. No obstante, Torreón se encuentra por debajo de la tasa estatal y nacional con un 8% del total del personal ocupado. Las personas que más se enfrentan a esta problemática cuentan con menor escolaridad.">
+  <meta name="twitter:image" content="http://www.trcimplan.gob.mx/blog/torreon-tasa-de-ocupacion-critica-menor-a-la-media-nacional/imagen-previa.jpg">
+  <meta name="twitter:url" content="http://www.trcimplan.gob.mx/blog/torreon-tasa-de-ocupacion-critica-menor-a-la-media-nacional.html">
+  <meta name="og:title" content="Torreón: tasa de ocupación crítica menor a la media nacional - IMPLAN Torreón">
+  <meta name="og:description" content="En los últimos años ha aumentado la Tasa de Condiciones Críticas de Ocupación en la Comarca Lagunera. No obstante, Torreón se encuentra por debajo de la tasa estatal y nacional con un 8% del total del personal ocupado. Las personas que más se enfrentan a esta problemática cuentan con menor escolaridad.">
+  <meta name="og:image" content="http://www.trcimplan.gob.mx/blog/torreon-tasa-de-ocupacion-critica-menor-a-la-media-nacional/imagen-previa.jpg">
+  <meta name="og:url" content="http://www.trcimplan.gob.mx/blog/torreon-tasa-de-ocupacion-critica-menor-a-la-media-nacional.html">
+  <title>Torreón: tasa de ocupación crítica menor a la media nacional - IMPLAN Torreón</title>
+  <link rel="shortcut icon" type="image/x-icon" href="../imagenes/apple-touch-icon.png">
+  <link rel="apple-touch-icon" href="../imagenes/apple-touch-icon.png">
+  <link rel="apple-touch-icon" href="../imagenes/apple-touch-icon-76x76.png" sizes="76x76">
+  <link rel="apple-touch-icon" href="../imagenes/apple-touch-icon-120x120.png" sizes="120x120">
+  <link rel="apple-touch-icon" href="../imagenes/apple-touch-icon-152x152.png" sizes="152x152">
+  <link rel="apple-touch-icon" href="../imagenes/apple-touch-icon-180x180.png" sizes="180x180">
+  <link rel="icon" href="../imagenes/icon-hires.png" sizes="192x192">
+  <link rel="icon" href="../imagenes/icon-normal.png" sizes="128x128">
+  <link rel="alternate" type="application/rss+xml" href="../rss.xml" title="IMPLAN Torreón">
+  <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+  <link rel="stylesheet" type="text/css" href="../vendor/metisMenu/metisMenu.min.css">
+  <link rel="stylesheet" type="text/css" href="../vendor/datatables-plugins/dataTables.bootstrap.css">
+  <link rel="stylesheet" type="text/css" href="../vendor/morrisjs/morris.css">
+  <link rel="stylesheet" type="text/css" href="../vendor/font-awesome/css/font-awesome.min.css">
+  <link rel="stylesheet" type="text/css" href="../dist/css/sb-admin-2.min.css">
+  <link rel="stylesheet" type="text/css" href="../dist/css/plataforma-de-conocimiento.css">
+  <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Noto+Sans|Roboto+Condensed:400,700">
+  <link rel="stylesheet" type="text/css" href="http://libs.cartocdn.com/cartodb.js/v3/3.15/themes/css/cartodb.css">
+  <link rel="stylesheet" type="text/css" href="../dist/css/estilosvm.css">
+  <link rel="stylesheet" type="text/css" href="../dist/css/trcimplan.css">
+  <!-- SOPORTE PARA IE -->
+  <!--[if lt IE 9]>
+  <script type="text/javascript" src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+  <script type="text/javascript" src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+  <![endif]-->
+</head>
+<body>
+<div id="wrapper">
+  <nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="../index.html"><img class="navbar-brand-img" src="../imagenes/implan-barra-logo-chico-gris.png" alt="IMPLAN Torreón"></a>
+    </div>
+  <div class="navbar-default sidebar" role="navigation">
+    <div class="sidebar-nav navbar-collapse">
+      <ul class="nav" id="side-menu">
+        <li class="sidebar-search">
+          <form method="get" action="http://www.trcimplan.gob.mx/buscador-resultados.html">
+            <div class="input-group custom-search-form">
+              <input type="text" class="form-control" placeholder="Google buscar..." value="" name="q">
+              <span class="input-group-btn">
+                <button class="btn btn-default" type="submit"><i class="fa fa-search"></i></button>
+              </span>
+            </div>
+          </form>
+        </li>
+        <li class="active">
+          <a href="#"><span class="navegacion-icono"><i class="fa fa-lightbulb-o"></i></span> Análisis Publicados<span class="fa arrow"></span></a>
+          <ul class="nav nav-second-level">
+            <li><a href="../blog/index.html"><span class="navegacion-icono"><i class="fa fa-file-text-o"></i></span> Últimos Análisis</a></li>
+            <li><a href="../excolaboradores/index.html"><span class="navegacion-icono"><i class="fa fa-file-text-o"></i></span> Análisis por Autor</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="#"><span class="navegacion-icono"><i class="fa fa-area-chart"></i></span> Indicadores<span class="fa arrow"></span></a>
+          <ul class="nav nav-second-level">
+            <li><a href="../smi/introduccion.html"><span class="navegacion-icono"><i class="fa fa-file-text-o"></i></span> Introducción al SMI</a></li>
+            <li><a href="../indicadores-categorias/index.html"><span class="navegacion-icono"><i class="fa fa-th-list"></i></span> Indicadores por Categoría</a></li>
+            <li><a href="../smi/por-region.html"><span class="navegacion-icono"><i class="fa fa-table"></i></span> Indicadores por Región</a></li>
+            <li><a href="../smi/datos-abiertos.html"><span class="navegacion-icono"><i class="fa fa-download"></i></span> Datos Abiertos</a></li>
+            <li><a href="../smi/niveles-socioeconomicos.html"><span class="navegacion-icono"><i class="fa fa-bar-chart"></i></span> Niveles Socioeconómicos</a></li>
+            <li><a href="../monitores/index.html"><span class="navegacion-icono"><i class="fa fa-file-text-o"></i></span> Monitores</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="#"><span class="navegacion-icono"><i class="fa fa-puzzle-piece"></i></span> Indicadores Básicos de Colonias<span class="fa arrow"></span></a>
+          <ul class="nav nav-second-level">
+            <li><a href="../ibc/introduccion.html"><span class="navegacion-icono"><i class="fa fa-file-text-o"></i></span> Introducción al IBC</a></li>
+            <li><a href="../ibc-colonias-torreon/index.html"><span class="navegacion-icono"><i class="fa fa-font"></i></span> Colonias de Torreón</a></li>
+            <li><a href="https://implantorreon.carto.com/u/sigimplan/builder/907a6bc0-2c7e-451e-9668-b78d952e52ff/embed" target="_blank"><span class="navegacion-icono"><i class="fa fa-external-link"></i></span> Mapa Completo</a></li>
+            <li><a href="../ibc/torreon-urbano.html"><span class="navegacion-icono"><i class="fa fa-table"></i></span> Torreón Urbano</a></li>
+            <li><a href="../ibc/datos-abiertos.html"><span class="navegacion-icono"><i class="fa fa-download"></i></span> Datos Abiertos</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="#"><span class="navegacion-icono"><i class="fa fa-map-marker"></i></span> Información Geográfica<span class="fa arrow"></span></a>
+          <ul class="nav nav-second-level">
+            <li><a href="../sig/introduccion.html"><span class="navegacion-icono"><i class="fa fa-file-text-o"></i></span> Introducción al SIG</a></li>
+            <li><a href="../sig-mapas-torreon/temas-sig.html"><span class="navegacion-icono"><i class="fa fa-map-o"></i></span> Mapas por Tema</a></li>
+            <li><a href="../sig-mapas-torreon/plan-director-desarrollo-urbano.html"><span class="navegacion-icono"><i class="fa fa-map-marker"></i></span> Usos de Suelo</a></li>
+            <li><a href="../sig/datos-abiertos.html"><span class="navegacion-icono"><i class="fa fa-download"></i></span> Datos Abiertos</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="#"><span class="navegacion-icono"><i class="fa fa-book"></i></span> Plan Estratégico Torreón 2040<span class="fa arrow"></span></a>
+          <ul class="nav nav-second-level">
+            <li><a href="../pet/indice.html"><span class="navegacion-icono"><i class="fa fa-list-ul"></i></span> Índice General</a></li>
+            <li><a href="../plan-estrategico-torreon-enfoque-metropolitano-2040/index.html"><span class="navegacion-icono"><i class="fa fa-download"></i></span> Descargar</a></li>
+            <li><a href="../plan-estrategico-metropolitano/descripcion-del-proceso.html"><span class="navegacion-icono"><i class="fa fa-calendar"></i></span> Descripción del proceso</a></li>
+            <li><a href="../proyectos/index.html"><span class="navegacion-icono"><i class="fa fa-check-square"></i></span> Proyectos</a></li>
+            <li><a href="../vision-de-ciudad/vision-de-ciudad.html"><span class="navegacion-icono"><i class="fa fa-file-text-o"></i></span> Visión de Ciudad desde IMPLAN</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="#"><span class="navegacion-icono"><i class="fa fa-briefcase"></i></span> Documentos<span class="fa arrow"></span></a>
+          <ul class="nav nav-second-level">
+            <li><a href="../sig-planes/index.html"><span class="navegacion-icono"><i class="fa fa-book"></i></span> Planes y Programas</a></li>
+            <li><a href="../investigaciones/index.html"><span class="navegacion-icono"><i class="fa fa-file-text-o"></i></span> Investigaciones</a></li>
+            <li><a href="../estudios/index.html"><span class="navegacion-icono"><i class="fa fa-file-text-o"></i></span> Estudios</a></li>
+          </ul>
+        </li>
+        <li><a href="../consejo-directivo/integrantes.html"><span class="navegacion-icono"><i class="fa fa-users"></i></span> Consejo Directivo</a></li>
+        <li><a href="../sala-prensa/index.html"><span class="navegacion-icono"><i class="fa fa-newspaper-o"></i></span> Sala de Prensa</a></li>
+        <li><a href="../programas-radio/index.html"><span class="navegacion-icono"><i class="fa fa-microphone"></i></span> Programas de Radio</a></li>
+        <li>
+          <a href="#"><span class="navegacion-icono"><i class="fa fa-file-text-o"></i></span> Consejo Visión Metrópoli<span class="fa arrow"></span></a>
+          <ul class="nav nav-second-level">
+            <li><a href="../convocatorias/vision-metropoli.html"><span class="navegacion-icono"><i class="fa fa-file-text-o"></i></span> Consejo Juvenil</a></li>
+            <li><a href="../vision-metropoli/integrantes.html"><span class="navegacion-icono"><i class="fa fa-file-text-o"></i></span> Integrantes del Consejo</a></li>
+            <li><a href="../vision-metropoli/index.html"><span class="navegacion-icono"><i class="fa fa-newspaper-o"></i></span> Sala de Prensa</a></li>
+            <li><a href="../vision-metropoli/reglamento-vision-metropoli-2020.pdf"><span class="navegacion-icono"><i class="fa fa-file-text-o"></i></span> Reglamento</a></li>
+            <li><a href="https://issuu.com/consejovisionmetropoli/docs/informe_visi_n_metr_poli_2019_-_2021" target="_blank"><span class="navegacion-icono"><i class="fa fa-file-text-o"></i></span> Informe 2019 - 2021</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="#"><span class="navegacion-icono"><i class="fa fa-building-o"></i></span> Institucional<span class="fa arrow"></span></a>
+          <ul class="nav nav-second-level">
+            <li><a href="../institucional/vision-mision.html"><span class="navegacion-icono"><i class="fa fa-trophy"></i></span> Misión / Visión</a></li>
+            <li><a href="../institucional/NuestrosProyectos.html"><span class="navegacion-icono"><i class="fa fa-pencil-square-o"></i></span> Nuestros Proyectos</a></li>
+            <li><a href="../institucional/mensaje-director.html"><span class="navegacion-icono"><i class="fa fa-comment"></i></span> Mensaje del Director</a></li>
+            <li><a href="../autores/index.html"><span class="navegacion-icono"><i class="fa fa-user"></i></span> Quienes Somos</a></li>
+            <li><a href="../institucional/estructura-organica.html"><span class="navegacion-icono"><i class="fa fa-sitemap"></i></span> Estructura Orgánica</a></li>
+            <li><a href="../institucional/modelo-operativo-universal.html"><span class="navegacion-icono"><i class="fa fa-slideshare"></i></span> Modelo Operativo Univ.</a></li>
+            <li><a href="../institucional/reglamentos.html"><span class="navegacion-icono"><i class="fa fa-gavel"></i></span> Reglamentos</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="#"><span class="navegacion-icono"><i class="fa fa-external-link"></i></span> Transparencia<span class="fa arrow"></span></a>
+          <ul class="nav nav-second-level">
+            <li><a href="http://www2.icai.org.mx/ipo/dependencia.php?dep=178#pageload" target="_blank"><span class="navegacion-icono"><i class="fa fa-file-text-o"></i></span> Transparencia Estatal (ICAI)</a></li>
+            <li><a href="https://consultapublicamx.inai.org.mx/vut-web/faces/view/consultaPublica.xhtml#inicio" target="_blank"><span class="navegacion-icono"><i class="fa fa-file-text-o"></i></span> Plataforma Nacional de Transparencia</a></li>
+            <li><a href="../transparencia/index.html"><span class="navegacion-icono"><i class="fa fa-briefcase"></i></span> Documentos</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="#"><span class="navegacion-icono"><i class="fa fa-share-alt"></i></span> Términos de Uso<span class="fa arrow"></span></a>
+          <ul class="nav nav-second-level">
+            <li><a href="../terminos/terminos-informacion.html"><span class="navegacion-icono"><i class="fa fa-cubes"></i></span> De la información</a></li>
+            <li><a href="../terminos/terminos-sitio.html"><span class="navegacion-icono"><i class="fa fa-globe"></i></span> Del sitio web</a></li>
+            <li><a href="../terminos/privacidad.html"><span class="navegacion-icono"><i class="fa fa-lock"></i></span> Aviso de Privacidad</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="#"><span class="navegacion-icono"><i class="fa fa-phone"></i></span> Contacto<span class="fa arrow"></span></a>
+          <ul class="nav nav-second-level">
+            <li><a href="../contacto/contacto.html"><span class="navegacion-icono"><i class="fa fa-phone"></i></span> Medios de contacto</a></li>
+            <li><a href="../preguntas-frecuentes/preguntas-frecuentes.html"><span class="navegacion-icono"><i class="fa fa-question"></i></span> Preguntas Frecuentes</a></li>
+            <li><a href="http://goo.gl/forms/1rdX4X128PpMOif73" target="_blank"><span class="navegacion-icono"><i class="fa fa-external-link"></i></span> Comentarios y Sugerencias</a></li>
+          </ul>
+        </li>
+        <li><a href="../convocatorias/index.html"><span class="navegacion-icono"><i class="fa fa-file-text-o"></i></span> Convocatorias</a></li>
+        <li><a href="http://177.244.42.17/ovie-torreon/#!" target="_blank"><span class="navegacion-icono"><i class="fa fa-map-marker"></i></span> Oficina Virtual de Información Económica (OVIE)</a></li>
+        <li><a href="https://arcg.is/0vySSr" target="_blank"><span class="navegacion-icono"><i class="fa fa-globe"></i></span> Atlas Municipal de Riesgos de Torreón</a></li>
+      </ul>
+    </div>
+  </div>
+  </nav>
+  <div id="page-wrapper">
+    <div class="cuerpo">
+      <article><div itemscope itemtype="http://schema.org/BlogPosting">
+        <div class="encabezado">
+          <h1 itemprop="headline">Torreón: tasa de ocupación crítica menor a la media nacional</h1>
+          <div class="encabezado-descripcion" itemprop="description">En los últimos años ha aumentado la Tasa de Condiciones Críticas de Ocupación en la Comarca Lagunera. No obstante, Torreón se encuentra por debajo de la tasa estatal y nacional con un 8% del total del personal ocupado. Las personas que más se enfrentan a esta problemática cuentan con menor escolaridad.</div>
+          <div class="encabezado-autor-fecha">
+            Por <span itemprop="author">Lic. Alicia Valdez Ibarra</span> -
+            <meta itemprop="datePublished" content="2016-07-01T19:40">01/07/2016 19:40
+          </div>
+        </div>
+        <span class="contenido-imagen-previa"><img class="img-responsive" itemprop="image" alt="Torreón: tasa de ocupación crítica menor a la media nacional" src="torreon-tasa-de-ocupacion-critica-menor-a-la-media-nacional/imagen.jpg"></span>
+        <div itemprop="articleBody">
+<!-- Contenido: Inicia  -->
+<p>De acuerdo a la Encuesta Nacional de Ocupación y Empleo (ENOE) de INEGI, 10.5% del personal ocupado en la Zona Metropolitana de La Laguna labora en condiciones críticas de ocupación. En otras palabras, aproximadamente 50,094 laguneros tienen una relación inadecuada entre la duración de las jornadas laborales y la remuneración que perciben.</p>
+
+<p>En esta situación crítica se encuentra únicamente el personal que cumpla con alguno de los siguientes criterios: 1) trabajar menos de 35 horas a la semana por razones ajenas a su decisión, 2) trabajar 35 horas o más y recibir una remuneración de hasta un salario mínimo y 3) trabajar más de 48 horas a la semana y percibir ingresos de entre uno y dos salarios mínimos.</p>
+
+<p>En los últimos dos años, la Tasa de Condiciones Críticas de Ocupación (TCCO) de La Laguna casi se duplicó, pasando de 5.9 a 10.5%, mientras a nivel estatal y nacional el incremento fue de 2 puntos porcentuales en el mismo periodo. Sin embargo Torreón, además de ubicarse debajo de la tasa metropolitana, con 8% de los ocupados en condiciones críticas, está por debajo de las tasas estatal y nacional de 9.5 y 13.9% respectivamente.</p>
+
+<p>A nivel nacional, esta problemática se presenta en mayor medida en zonas rurales, con una tasa que dobla a la de las zonas más urbanizadas: 20% del personal ocupado en zonas rurales se encuentra en condiciones críticas, cuando en las zonas urbanas es el 10%.</p>
+
+<p>En el caso de La Laguna, la mayor TCCO se encuentra en el sector primario, pues la agricultura, ganadería, silvicultura, caza y pesca, tienen una tasa de 26.25%. En contraste, la cifra en la industria manufacturera es de 7.12%. El dato es congruente al comparar a los municipios de La Laguna con municipios más industrializados como Monterrey, Guadalajara y Querétaro, donde la tasa de condiciones críticas es de entre 3 y 5%.</p>
+
+<p>Otra característica relacionada a las condiciones de ocupación es la escolaridad. En el caso de La Laguna, las personas que con mayor frecuencia se enfrentan a esta problemática son, entre otros, aquellos con menor escolaridad.</p>
+
+<p>Al primer trimestre de 2016, 85% del personal lagunero en condiciones críticas de ocupación no contaba con estudios de nivel medio superior (preparatoria), y 34% de ellos sólo cuenta con educación primaria. No obstante, la población con educación superior no está exenta, pues 15% del personal en condiciones críticas terminó los estudios superiores.</p>
+
+<p>Los jóvenes también sufren de  malas condiciones laborales, 17% de los laguneros en condiciones laborales críticas se encuentran en el rango de 14 a 24 años de edad. Sin embargo, la mayor cantidad de empleados en esta situación son los de 25 a 44 años, pues representan 44% del total.</p>
+
+<p>Los datos anteriores muestran que el problema no se trata simplemente de la falta de empleos de calidad, sino también de la falta de educación y capacitación de la mano de obra, pues la gran mayoría de los trabajadores que se enfrentan a las malas condiciones laborales tienen una educación trunca y/o laboran en actividades económicas primarias con poco valor agregado.</p>
+
+<p>Es por esto que las políticas diseñadas para combatir las condiciones críticas de ocupación no deben centrarse únicamente en la creación de empleos, también en la capacitación y especialización de la mano de obra y en mejorar la calidad de la educación, así como en facilitar el acceso y la permanencia en ésta. Asimismo debe ser prioritario mejorar el nivel de ingresos de los empleados.</p>
+
+<p>Las inadecuadas prácticas en el mercado laboral le restan productividad a las empresas y competitividad a las ciudades y por si fuera poco, trabajar largas jornadas por una remuneración mínima  les quita a los trabajadores el fin último de las sociedades, que es la calidad de vida.</p>
+
+<h3>Gráficas</h3>
+
+<p><img class="img-responsive" src="torreon-tasa-de-ocupacion-critica-menor-a-la-media-nacional/clasificacion-empleados-condiciones-criticas-nivel-estudios.png" alt="Clasificacion de empleados en condiciones criticas por nivel de estudios"></p>
+
+<p><img class="img-responsive" src="torreon-tasa-de-ocupacion-critica-menor-a-la-media-nacional/porcentaje-empleos-condiciones-criticas-ocupacion.png" alt="Porcentaje de empleos en condiciones criticas de ocupacion"></p>
+
+<p><img class="img-responsive" src="torreon-tasa-de-ocupacion-critica-menor-a-la-media-nacional/tasa-condiciones-criticas-ocupacion-2016.png" alt="Tasa de condiciones criticas de ocupacion primer trimestre de 2016"></p>
+
+<h3>Fuente</h3>
+
+<ul>
+<li>Encuesta Nacional de Ocupaciòn y Empleo, primer trimestre de 2016.</li>
+</ul>
+
+<h3>Una versión de divulgación de este análisis apareció en Milenio Laguna</h3>
+
+<p><a href="http://www.milenio.com/negocios/IMPLAN_Torreon-Empleo_Torreon-tasa_de_ocupacion_en_Torreon-INEGI-escolaridad_0_763723678.html">Torreón: tasa de ocupación crítica menor a la media nacional</a></p>
+
+<!-- Contenido: Termina -->
+        </div>
+              <div class="publicador" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+          <span class="contenido-imagen-previa"><img class="img-responsive" itemprop="image" alt="Instituto Municipal de Planeación y Competitividad de Torreón" src="../imagenes/implan-logo.png"></span>
+          <h3 class="titulo" itemprop="name">Instituto Municipal de Planeación y Competitividad de Torreón</h3>
+          <div class="descripcion" itemprop="description">Órgano técnico responsable de la planeación del desarrollo del municipio de Torreón, Coahuila, México.</div>
+          <div class="contenido-imagen-previa-final"></div>
+        </div>
+      </div></article>
+      <aside>
+  <!-- Extra: Inicia  -->
+  <h3>Publicaciones relacionadas</h3>
+<p><b>Análisis Publicados</b></p>
+<ul>
+  <li><a href="http://www.trcimplan.gob.mx/blog/urgente-reducir-brecha-salarial-en-la-zona-metropolitana-de-la-laguna-dic2018.html">Urgente reducir brecha salarial en la Zona Metropolitana de La Laguna.</a></li>
+  <li><a href="http://www.trcimplan.gob.mx/blog/el-corredor-economico-del-norte-y-su-fortaleza-nacional.html">El Corredor Econ&oacute;mico del Norte y su fortaleza nacional</a></li>
+  <li><a href="http://www.trcimplan.gob.mx/blog/caracteristicas-de-la-industria-en-la-laguna-marzo2020.html">Caracter&iacute;sticas de la Industria en La Laguna</a></li>
+  <li><a href="http://www.trcimplan.gob.mx/blog/torreon-una-nueva-realidad-economica.html">Torre&oacute;n: Una Nueva Realidad Econ&oacute;mica</a></li>
+  <li><a href="http://www.trcimplan.gob.mx/blog/indicadores-por-municipio-metodologia-imco.html">Indicadores por municipio construidos por el IMPLAN con la base de datos y metodolog&iacute;a del IMCO</a></li>
+  <li><a href="http://www.trcimplan.gob.mx/blog/analisis-de-las-condiciones-del-empleo-en-la-laguna.html">An&aacute;lisis de las condiciones del empleo en La Laguna</a></li>
+  <li><a href="http://www.trcimplan.gob.mx/blog/torreon-hacia-una-sociedad-de-la-informacion.html">Torre&oacute;n hacia una Sociedad de la Informaci&oacute;n</a></li>
+  <li><a href="http://www.trcimplan.gob.mx/blog/laguna-apostarle-industria-automotriz.html">La Laguna debe apostarle a la Industria Automotriz</a></li>
+  <li><a href="http://www.trcimplan.gob.mx/blog/dinamica-del-desempleo-en-la-laguna-dic2019.html">Din&aacute;mica del Desempleo en La Laguna</a></li>
+  <li><a href="http://www.trcimplan.gob.mx/blog/la-sociedad-del-desempeno-nov2019.html">La sociedad del desempe&ntilde;o</a></li>
+</ul>
+<p><b>Sistema Metropolitano de Indicadores</b></p>
+<ul>
+  <li><a href="http://www.trcimplan.gob.mx/indicadores-la-laguna/economia-ingresos-promedio-por-hora-trabajada-en-mujeres.html">Ingresos promedio por hora trabajada en mujeres en La Laguna</a></li>
+  <li><a href="http://www.trcimplan.gob.mx/indicadores-torreon/economia-personal-ocupado-en-la-industria-manufacturera.html">Personal Ocupado en la Industria Manufacturera en Torre&oacute;n</a></li>
+  <li><a href="http://www.trcimplan.gob.mx/indicadores-la-laguna/sociedad-mujeres-que-realizan-una-actividad-productiva-adicional-a-su-trabajo.html">Mujeres que realizan una actividad productiva adicional a su trabajo en La Laguna</a></li>
+  <li><a href="http://www.trcimplan.gob.mx/indicadores-la-laguna/sociedad-mujeres-que-trabajan-en-el-sector-secundario.html">Mujeres que trabajan en el sector secundario en La Laguna</a></li>
+  <li><a href="http://www.trcimplan.gob.mx/indicadores-la-laguna/sociedad-mujeres-que-trabajan-en-el-sector-terciario.html">Mujeres que trabajan en el sector terciario en La Laguna</a></li>
+  <li><a href="http://www.trcimplan.gob.mx/indicadores-la-laguna/sociedad-mujeres-que-ganan-mas-de-3-salarios-minimos.html">Mujeres que ganan m&aacute;s de 3 salarios m&iacute;nimos en La Laguna</a></li>
+  <li><a href="http://www.trcimplan.gob.mx/indicadores-la-laguna/sociedad-mujeres-que-ganan-de-1-a-2-salarios-minimos.html">Mujeres que ganan de 1 a 2 salarios m&iacute;nimos en La Laguna</a></li>
+  <li><a href="http://www.trcimplan.gob.mx/indicadores-la-laguna/sociedad-mujeres-que-ganan-hasta-un-salario-minimo.html">Mujeres que ganan hasta un salario m&iacute;nimo en La Laguna</a></li>
+  <li><a href="http://www.trcimplan.gob.mx/indicadores-la-laguna/sociedad-mujeres-empleadoras.html">Mujeres empleadoras en La Laguna</a></li>
+  <li><a href="http://www.trcimplan.gob.mx/indicadores-la-laguna/sociedad-mujeres-subordinadas-y-remuneradas.html">Mujeres subordinadas y remuneradas en La Laguna</a></li>
+</ul>
+<p><b>Plan Estratégico Torreón</b></p>
+<ul>
+  <li><a href="http://www.trcimplan.gob.mx/pet/vision-desarrollo-economico-innovacion.html">Visi&oacute;n de Desarrollo Econ&oacute;mico e Innovaci&oacute;n 2040</a></li>
+  <li><a href="http://www.trcimplan.gob.mx/pet/cartera-proyectos-desarrollo-economico-innovacion.html">Cartera de Proyectos: Desarrollo Econ&oacute;mico e Innovaci&oacute;n</a></li>
+  <li><a href="http://www.trcimplan.gob.mx/pet/diagnostico-estrategico-desarrollo-economico-innovacion.html">Diagn&oacute;stico Estrat&eacute;gico: Desarrollo Econ&oacute;mico e Innovaci&oacute;n</a></li>
+  <li><a href="http://www.trcimplan.gob.mx/proyectos/salud-laguna.html">Salud Laguna</a></li>
+  <li><a href="http://www.trcimplan.gob.mx/pet/cartera-proyectos-medio-ambiente-sustentabilidad.html">Cartera de Proyectos: Medio Ambiente y Sustentabilidad</a></li>
+  <li><a href="http://www.trcimplan.gob.mx/pet/diagnostico-estrategico-buen-gobierno.html">Diagn&oacute;stico Estrat&eacute;gico: Buen Gobierno</a></li>
+  <li><a href="http://www.trcimplan.gob.mx/pet/diagnostico-estrategico-desarrollo-social.html">Diagn&oacute;stico Estrat&eacute;gico: Desarrollo Social</a></li>
+  <li><a href="http://www.trcimplan.gob.mx/pet/diagnostico-estrategico-entorno-urbano.html">Diagn&oacute;stico Estrat&eacute;gico: Entorno Urbano</a></li>
+  <li><a href="http://www.trcimplan.gob.mx/pet/cartera-proyectos-movilidad-transporte.html">Cartera de Proyectos: Movilidad y Transporte</a></li>
+  <li><a href="http://www.trcimplan.gob.mx/pet/diagnostico-estrategico-medio-ambiente-sustentabilidad.html">Diagn&oacute;stico Estrat&eacute;gico: Medio Ambiente y Sustentabilidad</a></li>
+</ul>
+<p><b>Sala de Prensa</b></p>
+<ul>
+  <li><a href="http://www.trcimplan.gob.mx/sala-prensa/2017-06-17-comunicado-prensa.html">Comunicado de Prensa - Respuesta del IMPLAN al CLIP</a></li>
+  <li><a href="http://www.trcimplan.gob.mx/sala-prensa/2018-enoe.html">Principales Resultados de la Encuesta Nacional de Ocupaci&oacute;n y Empleo (ENOE) para el &Aacute;rea Metropolitana de la Laguna.</a></li>
+  <li><a href="http://www.trcimplan.gob.mx/sala-prensa/2018-11-14-enoe-3er-trim-2018.html">Principales resultados de la Encuesta Nacional de Ocupaci&oacute;n y Empleo (ENOE) para el &Aacute;rea Metropolitana de La Laguna.</a></li>
+  <li><a href="http://www.trcimplan.gob.mx/sala-prensa/2019-08-21-empleo-julio-2019.html">Se mantiene el empleo en La Laguna</a></li>
+  <li><a href="http://www.trcimplan.gob.mx/sala-prensa/2016-09-07-indice-de-competitividad-urbana.html">&Iacute;ndice de Competitividad Urbana 2016</a></li>
+  <li><a href="http://www.trcimplan.gob.mx/sala-prensa/2018-02-12-laguna-y2040-youth-challenge-2018.html">Presentan segunda edici&oacute;n del encuentro Laguna Y2040 Youth Challenge 2018</a></li>
+  <li><a href="http://www.trcimplan.gob.mx/sala-prensa/2018-11-29-imco-2018.html">Posici&oacute;n de La Laguna en el &Iacute;ndice de Competitividad Urbana 2018</a></li>
+  <li><a href="http://www.trcimplan.gob.mx/sala-prensa/2019-02-15-enoe-4to-trim-2018.html">Indicadores de empleo en el &aacute;rea metropolitana de Torre&oacute;n al cuarto trimestre de 2018.</a></li>
+  <li><a href="http://www.trcimplan.gob.mx/sala-prensa/2017-08-31-implan-firma-convenio-con-el-cluster-automotriz.html">IMPLAN firma convenio con el Cl&uacute;ster Automotriz</a></li>
+  <li><a href="http://www.trcimplan.gob.mx/sala-prensa/2020-04-15-comunicado-conferencias-virtuales.html">El IMPLAN Torre&oacute;n y su Consejo Juvenil: Visi&oacute;n Metr&oacute;poli, presentar&aacute;n Conferencias Virtuales</a></li>
+</ul>
+  <!-- Extra: Termina -->
+  </aside>
+<div class="contenido-social">
+  <h5>Compartir en Redes Sociales</h5>
+  <a href="https://twitter.com/share" class="twitter-share-button" data-via="trcimplan" data-lang="es">Twittear</a>
+  <iframe src="//www.facebook.com/plugins/like.php?href=http%3A%2F%2Fwww.trcimplan.gob.mx%2Fblog%2Ftorreon-tasa-de-ocupacion-critica-menor-a-la-media-nacional.html&amp;width=300&amp;layout=button_count&amp;action=like&amp;show_faces=true&amp;share=false&amp;height=21" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:300px; height:21px;" allowTransparency="true"></iframe>
+</div>
+    </div>
+    <div class="mapa-inferior">
+          <div class="pull-right redes-sociales">
+            <a class="fa fa-twitter-square" href="http://www.twitter.com/trcimplan" target="_blank"></a>
+            <a class="fa fa-facebook-square" href="https://facebook.com/trcimplan" target="_blank"></a>
+            <a class="fa fa-facebook-square" href="http://www.instagram.com/implantorreon" target="_blank"></a>
+            <a class="fa fa-rss-square" href="../rss.xml"></a>
+          </div>
+    </div>
+  </div>
+</div>
+<!-- Javascript global inicia -->
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
+<script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="../vendor/metisMenu/metisMenu.min.js"></script>
+<script type="text/javascript" src="../vendor/datatables/js/jquery.dataTables.min.js"></script>
+<script type="text/javascript" src="../vendor/datatables-plugins/dataTables.bootstrap.min.js"></script>
+<script type="text/javascript" src="../vendor/datatables-responsive/dataTables.responsive.js"></script>
+<script type="text/javascript" src="../vendor/raphael/raphael.min.js"></script>
+<script type="text/javascript" src="../vendor/morrisjs/morris.min.js"></script>
+<script type="text/javascript" src="../dist/js/sb-admin-2.min.js"></script>
+<script type="text/javascript" src="http://libs.cartocdn.com/cartodb.js/v3/3.15/cartodb.js"></script>
+<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+<!-- Javascript global termina -->
+<!-- Javascript inicia -->
+<script>
+  // Twitter
+  !function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="https://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");
+</script>
+
+<!-- Javascript termina -->
+<!-- Javascript Google Analytics -->
+<script>
+  // Google Analytics
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)})(window,document,'script','//www.google-analytics.com/analytics.js','ga');ga('create', 'UA-58290501-1', 'auto');ga('send', 'pageview');
+</script>
+</body>
+</html>

@@ -1,0 +1,493 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+<!-- ===================================================================================================
+
+        Instituto Municipal de Planeación y Competitividad (IMPLAN) de Torreón.
+
+        3er. generación de la Plataforma del Conocimiento
+        Desarrollado por Ing. Guillermo Valdés Lozano <guivaloz en movimientolibre.com>
+
+        El software que lo construye está bajo la licencia GPL versión 3. © 2014, 2015, 2016, 2017.
+        Una copia está contenida en el archivo LICENCE al bajar desde GitHub.
+
+        Al usar, estudiar y copiar está aceptando los términos de uso de la información y del sitio web:
+          http://www.trcimplan.gob.mx/terminos/terminos-informacion.html
+          http://www.trcimplan.gob.mx/terminos/terminos-sitio.html
+
+        Descargue, estudie y colabore bajando todo este sitio web:
+          IMPLAN Torreón     https://github.com/TRCIMPLAN/trcimplan.github.io
+
+        Agradecemos y compartimos las tecnologías abiertas y gratuitas sobre las que se basa:
+          PHP                http://php.net
+          Twitter Bootstrap  http://getbootstrap.com
+          StartBootStrap     http://startbootstrap.com
+          Morris.js          https://morrisjs.github.io/morris.js/
+          Font Awesome       http://fontawesome.io
+          DataTables         https://www.datatables.net
+          Carto              https://carto.com
+          GitHub             https://github.com
+
+     =================================================================================================== -->
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="author" content="TrcIMPLAN Staff">
+  <meta name="keywords" content="IMPLAN, Torreon, Analisis, Publicaciones, Estudios, Investigacion, Vivienda">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Vivienda - IMPLAN Torreón">
+  <meta name="twitter:description" content="">
+  <meta name="twitter:url" content="http://www.trcimplan.gob.mx/blog/categoria-vivienda.html">
+  <meta name="og:title" content="Vivienda - IMPLAN Torreón">
+  <meta name="og:description" content="">
+  <meta name="og:url" content="http://www.trcimplan.gob.mx/blog/categoria-vivienda.html">
+  <title>Vivienda - IMPLAN Torreón</title>
+  <link rel="shortcut icon" type="image/x-icon" href="../imagenes/apple-touch-icon.png">
+  <link rel="apple-touch-icon" href="../imagenes/apple-touch-icon.png">
+  <link rel="apple-touch-icon" href="../imagenes/apple-touch-icon-76x76.png" sizes="76x76">
+  <link rel="apple-touch-icon" href="../imagenes/apple-touch-icon-120x120.png" sizes="120x120">
+  <link rel="apple-touch-icon" href="../imagenes/apple-touch-icon-152x152.png" sizes="152x152">
+  <link rel="apple-touch-icon" href="../imagenes/apple-touch-icon-180x180.png" sizes="180x180">
+  <link rel="icon" href="../imagenes/icon-hires.png" sizes="192x192">
+  <link rel="icon" href="../imagenes/icon-normal.png" sizes="128x128">
+  <link rel="alternate" type="application/rss+xml" href="../rss.xml" title="IMPLAN Torreón">
+  <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+  <link rel="stylesheet" type="text/css" href="../vendor/metisMenu/metisMenu.min.css">
+  <link rel="stylesheet" type="text/css" href="../vendor/datatables-plugins/dataTables.bootstrap.css">
+  <link rel="stylesheet" type="text/css" href="../vendor/morrisjs/morris.css">
+  <link rel="stylesheet" type="text/css" href="../vendor/font-awesome/css/font-awesome.min.css">
+  <link rel="stylesheet" type="text/css" href="../dist/css/sb-admin-2.min.css">
+  <link rel="stylesheet" type="text/css" href="../dist/css/plataforma-de-conocimiento.css">
+  <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Noto+Sans|Roboto+Condensed:400,700">
+  <link rel="stylesheet" type="text/css" href="http://libs.cartocdn.com/cartodb.js/v3/3.15/themes/css/cartodb.css">
+  <link rel="stylesheet" type="text/css" href="../dist/css/estilosvm.css">
+  <link rel="stylesheet" type="text/css" href="../dist/css/trcimplan.css">
+  <!-- SOPORTE PARA IE -->
+  <!--[if lt IE 9]>
+  <script type="text/javascript" src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+  <script type="text/javascript" src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+  <![endif]-->
+</head>
+<body>
+<div id="wrapper">
+  <nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="../index.html"><img class="navbar-brand-img" src="../imagenes/implan-barra-logo-chico-gris.png" alt="IMPLAN Torreón"></a>
+    </div>
+  <div class="navbar-default sidebar" role="navigation">
+    <div class="sidebar-nav navbar-collapse">
+      <ul class="nav" id="side-menu">
+        <li class="sidebar-search">
+          <form method="get" action="http://www.trcimplan.gob.mx/buscador-resultados.html">
+            <div class="input-group custom-search-form">
+              <input type="text" class="form-control" placeholder="Google buscar..." value="" name="q">
+              <span class="input-group-btn">
+                <button class="btn btn-default" type="submit"><i class="fa fa-search"></i></button>
+              </span>
+            </div>
+          </form>
+        </li>
+        <li class="active">
+          <a href="#"><span class="navegacion-icono"><i class="fa fa-lightbulb-o"></i></span> Análisis Publicados<span class="fa arrow"></span></a>
+          <ul class="nav nav-second-level">
+            <li><a href="../blog/index.html"><span class="navegacion-icono"><i class="fa fa-file-text-o"></i></span> Últimos Análisis</a></li>
+            <li><a href="../excolaboradores/index.html"><span class="navegacion-icono"><i class="fa fa-file-text-o"></i></span> Análisis por Autor</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="#"><span class="navegacion-icono"><i class="fa fa-area-chart"></i></span> Indicadores<span class="fa arrow"></span></a>
+          <ul class="nav nav-second-level">
+            <li><a href="../smi/introduccion.html"><span class="navegacion-icono"><i class="fa fa-file-text-o"></i></span> Introducción al SMI</a></li>
+            <li><a href="../indicadores-categorias/index.html"><span class="navegacion-icono"><i class="fa fa-th-list"></i></span> Indicadores por Categoría</a></li>
+            <li><a href="../smi/por-region.html"><span class="navegacion-icono"><i class="fa fa-table"></i></span> Indicadores por Región</a></li>
+            <li><a href="../smi/datos-abiertos.html"><span class="navegacion-icono"><i class="fa fa-download"></i></span> Datos Abiertos</a></li>
+            <li><a href="../smi/niveles-socioeconomicos.html"><span class="navegacion-icono"><i class="fa fa-bar-chart"></i></span> Niveles Socioeconómicos</a></li>
+            <li><a href="../monitores/index.html"><span class="navegacion-icono"><i class="fa fa-file-text-o"></i></span> Monitores</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="#"><span class="navegacion-icono"><i class="fa fa-puzzle-piece"></i></span> Indicadores Básicos de Colonias<span class="fa arrow"></span></a>
+          <ul class="nav nav-second-level">
+            <li><a href="../ibc/introduccion.html"><span class="navegacion-icono"><i class="fa fa-file-text-o"></i></span> Introducción al IBC</a></li>
+            <li><a href="../ibc-colonias-torreon/index.html"><span class="navegacion-icono"><i class="fa fa-font"></i></span> Colonias de Torreón</a></li>
+            <li><a href="https://implantorreon.carto.com/u/sigimplan/builder/907a6bc0-2c7e-451e-9668-b78d952e52ff/embed" target="_blank"><span class="navegacion-icono"><i class="fa fa-external-link"></i></span> Mapa Completo</a></li>
+            <li><a href="../ibc/torreon-urbano.html"><span class="navegacion-icono"><i class="fa fa-table"></i></span> Torreón Urbano</a></li>
+            <li><a href="../ibc/datos-abiertos.html"><span class="navegacion-icono"><i class="fa fa-download"></i></span> Datos Abiertos</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="#"><span class="navegacion-icono"><i class="fa fa-map-marker"></i></span> Información Geográfica<span class="fa arrow"></span></a>
+          <ul class="nav nav-second-level">
+            <li><a href="../sig/introduccion.html"><span class="navegacion-icono"><i class="fa fa-file-text-o"></i></span> Introducción al SIG</a></li>
+            <li><a href="../sig-mapas-torreon/temas-sig.html"><span class="navegacion-icono"><i class="fa fa-map-o"></i></span> Mapas por Tema</a></li>
+            <li><a href="../sig-mapas-torreon/plan-director-desarrollo-urbano.html"><span class="navegacion-icono"><i class="fa fa-map-marker"></i></span> Usos de Suelo</a></li>
+            <li><a href="../sig/datos-abiertos.html"><span class="navegacion-icono"><i class="fa fa-download"></i></span> Datos Abiertos</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="#"><span class="navegacion-icono"><i class="fa fa-book"></i></span> Plan Estratégico Torreón 2040<span class="fa arrow"></span></a>
+          <ul class="nav nav-second-level">
+            <li><a href="../pet/indice.html"><span class="navegacion-icono"><i class="fa fa-list-ul"></i></span> Índice General</a></li>
+            <li><a href="../plan-estrategico-torreon-enfoque-metropolitano-2040/index.html"><span class="navegacion-icono"><i class="fa fa-download"></i></span> Descargar</a></li>
+            <li><a href="../plan-estrategico-metropolitano/descripcion-del-proceso.html"><span class="navegacion-icono"><i class="fa fa-calendar"></i></span> Descripción del proceso</a></li>
+            <li><a href="../proyectos/index.html"><span class="navegacion-icono"><i class="fa fa-check-square"></i></span> Proyectos</a></li>
+            <li><a href="../vision-de-ciudad/vision-de-ciudad.html"><span class="navegacion-icono"><i class="fa fa-file-text-o"></i></span> Visión de Ciudad desde IMPLAN</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="#"><span class="navegacion-icono"><i class="fa fa-briefcase"></i></span> Documentos<span class="fa arrow"></span></a>
+          <ul class="nav nav-second-level">
+            <li><a href="../sig-planes/index.html"><span class="navegacion-icono"><i class="fa fa-book"></i></span> Planes y Programas</a></li>
+            <li><a href="../investigaciones/index.html"><span class="navegacion-icono"><i class="fa fa-file-text-o"></i></span> Investigaciones</a></li>
+            <li><a href="../estudios/index.html"><span class="navegacion-icono"><i class="fa fa-file-text-o"></i></span> Estudios</a></li>
+          </ul>
+        </li>
+        <li><a href="../consejo-directivo/integrantes.html"><span class="navegacion-icono"><i class="fa fa-users"></i></span> Consejo Directivo</a></li>
+        <li><a href="../sala-prensa/index.html"><span class="navegacion-icono"><i class="fa fa-newspaper-o"></i></span> Sala de Prensa</a></li>
+        <li><a href="../programas-radio/index.html"><span class="navegacion-icono"><i class="fa fa-microphone"></i></span> Programas de Radio</a></li>
+        <li>
+          <a href="#"><span class="navegacion-icono"><i class="fa fa-file-text-o"></i></span> Consejo Visión Metrópoli<span class="fa arrow"></span></a>
+          <ul class="nav nav-second-level">
+            <li><a href="../convocatorias/vision-metropoli.html"><span class="navegacion-icono"><i class="fa fa-file-text-o"></i></span> Consejo Juvenil</a></li>
+            <li><a href="../vision-metropoli/integrantes.html"><span class="navegacion-icono"><i class="fa fa-file-text-o"></i></span> Integrantes del Consejo</a></li>
+            <li><a href="../vision-metropoli/index.html"><span class="navegacion-icono"><i class="fa fa-newspaper-o"></i></span> Sala de Prensa</a></li>
+            <li><a href="../vision-metropoli/reglamento-vision-metropoli-2020.pdf"><span class="navegacion-icono"><i class="fa fa-file-text-o"></i></span> Reglamento</a></li>
+            <li><a href="https://issuu.com/consejovisionmetropoli/docs/informe_visi_n_metr_poli_2019_-_2021" target="_blank"><span class="navegacion-icono"><i class="fa fa-file-text-o"></i></span> Informe 2019 - 2021</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="#"><span class="navegacion-icono"><i class="fa fa-building-o"></i></span> Institucional<span class="fa arrow"></span></a>
+          <ul class="nav nav-second-level">
+            <li><a href="../institucional/vision-mision.html"><span class="navegacion-icono"><i class="fa fa-trophy"></i></span> Misión / Visión</a></li>
+            <li><a href="../institucional/NuestrosProyectos.html"><span class="navegacion-icono"><i class="fa fa-pencil-square-o"></i></span> Nuestros Proyectos</a></li>
+            <li><a href="../institucional/mensaje-director.html"><span class="navegacion-icono"><i class="fa fa-comment"></i></span> Mensaje del Director</a></li>
+            <li><a href="../autores/index.html"><span class="navegacion-icono"><i class="fa fa-user"></i></span> Quienes Somos</a></li>
+            <li><a href="../institucional/estructura-organica.html"><span class="navegacion-icono"><i class="fa fa-sitemap"></i></span> Estructura Orgánica</a></li>
+            <li><a href="../institucional/modelo-operativo-universal.html"><span class="navegacion-icono"><i class="fa fa-slideshare"></i></span> Modelo Operativo Univ.</a></li>
+            <li><a href="../institucional/reglamentos.html"><span class="navegacion-icono"><i class="fa fa-gavel"></i></span> Reglamentos</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="#"><span class="navegacion-icono"><i class="fa fa-external-link"></i></span> Transparencia<span class="fa arrow"></span></a>
+          <ul class="nav nav-second-level">
+            <li><a href="http://www2.icai.org.mx/ipo/dependencia.php?dep=178#pageload" target="_blank"><span class="navegacion-icono"><i class="fa fa-file-text-o"></i></span> Transparencia Estatal (ICAI)</a></li>
+            <li><a href="https://consultapublicamx.inai.org.mx/vut-web/faces/view/consultaPublica.xhtml#inicio" target="_blank"><span class="navegacion-icono"><i class="fa fa-file-text-o"></i></span> Plataforma Nacional de Transparencia</a></li>
+            <li><a href="../transparencia/index.html"><span class="navegacion-icono"><i class="fa fa-briefcase"></i></span> Documentos</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="#"><span class="navegacion-icono"><i class="fa fa-share-alt"></i></span> Términos de Uso<span class="fa arrow"></span></a>
+          <ul class="nav nav-second-level">
+            <li><a href="../terminos/terminos-informacion.html"><span class="navegacion-icono"><i class="fa fa-cubes"></i></span> De la información</a></li>
+            <li><a href="../terminos/terminos-sitio.html"><span class="navegacion-icono"><i class="fa fa-globe"></i></span> Del sitio web</a></li>
+            <li><a href="../terminos/privacidad.html"><span class="navegacion-icono"><i class="fa fa-lock"></i></span> Aviso de Privacidad</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="#"><span class="navegacion-icono"><i class="fa fa-phone"></i></span> Contacto<span class="fa arrow"></span></a>
+          <ul class="nav nav-second-level">
+            <li><a href="../contacto/contacto.html"><span class="navegacion-icono"><i class="fa fa-phone"></i></span> Medios de contacto</a></li>
+            <li><a href="../preguntas-frecuentes/preguntas-frecuentes.html"><span class="navegacion-icono"><i class="fa fa-question"></i></span> Preguntas Frecuentes</a></li>
+            <li><a href="http://goo.gl/forms/1rdX4X128PpMOif73" target="_blank"><span class="navegacion-icono"><i class="fa fa-external-link"></i></span> Comentarios y Sugerencias</a></li>
+          </ul>
+        </li>
+        <li><a href="../convocatorias/index.html"><span class="navegacion-icono"><i class="fa fa-file-text-o"></i></span> Convocatorias</a></li>
+        <li><a href="http://177.244.42.17/ovie-torreon/#!" target="_blank"><span class="navegacion-icono"><i class="fa fa-map-marker"></i></span> Oficina Virtual de Información Económica (OVIE)</a></li>
+        <li><a href="https://arcg.is/0vySSr" target="_blank"><span class="navegacion-icono"><i class="fa fa-globe"></i></span> Atlas Municipal de Riesgos de Torreón</a></li>
+      </ul>
+    </div>
+  </div>
+  </nav>
+  <div id="page-wrapper">
+    <div class="cuerpo">
+      <div class="encabezado">
+        <span><h1>Análisis Publicados en Vivienda</h1></span>
+      </div>
+      <div class="media breve">
+        <a class="pull-left" href="viviendas-deshabitadas-en-la-comarca-lagunera-jul-2021.html"><img class="media-object" src="viviendas-deshabitadas-en-la-comarca-lagunera-jul-2021/imagen-previa.jpg"></a>
+        <div class="media-body">
+          <h3 class="media-heading detallados-encabezado"><a href="viviendas-deshabitadas-en-la-comarca-lagunera-jul-2021.html">Viviendas Deshabitadas en la Comarca Lagunera</a></h3>
+          <p class="detallados-descripcion">Actualmente, el tema de las viviendas deshabitadas en la Comarca Lagunera es muy evidente. De acuerdo con las últimas estadísticas del Inventario Nacional de Viviendas 2016 del Instituto Nacional de Estadística y Geografía (INEGI), un promedio de 90,300 viviendas en La Laguna está deshabitada, de un total de aproximadamente 410,000 viviendas; contando los nuevos desarrollos inmobiliarios, dando como resultado aproximadamente un 20% del total. La situación se da tanto en las periferias de las ciudades, como en los centros consolidados.</p>
+          <p class="detallados-autor-fecha">Por Gilberto Eduardo Ríos Buendía, 12/07/2021</p>
+        </div>
+      </div>
+      <div class="media breve">
+        <a class="pull-left" href="censo-de-poblacion-y-vivienda-en-la-planeacion-urbana-feb-2021.html"><img class="media-object" src="censo-de-poblacion-y-vivienda-en-la-planeacion-urbana-feb-2021/imagen-previa.png"></a>
+        <div class="media-body">
+          <h3 class="media-heading detallados-encabezado"><a href="censo-de-poblacion-y-vivienda-en-la-planeacion-urbana-feb-2021.html">El Censo de Población y Vivienda como insumo en la Planeación Urbana.</a></h3>
+          <p class="detallados-descripcion">Según el Censo de Población y Vivienda, en Torreón reside un total de 720,848 personas, el 51.20 % corresponden a mujeres y 48.80% a hombres.</p>
+          <p class="detallados-autor-fecha">Por Arq. Jair Miramontes Chávez, 25/02/2021</p>
+        </div>
+      </div>
+      <div class="media breve">
+        <a class="pull-left" href="tenencia-de-la-tierra-en-el-mpio-de-torreon-oct-2020.html"><img class="media-object" src="tenencia-de-la-tierra-en-el-mpio-de-torreon-oct-2020/imagen-previa.jpg"></a>
+        <div class="media-body">
+          <h3 class="media-heading detallados-encabezado"><a href="tenencia-de-la-tierra-en-el-mpio-de-torreon-oct-2020.html">La Tenencia de la Tierra en el Municipio de Torreón</a></h3>
+          <p class="detallados-descripcion">Es importante conocer y diferenciar los diferentes regímenes de propiedad que existen al interior del municipio, ya que los actos y requisitos para poseer una determinada superficie de tierra depende del régimen de propiedad al que esta pertenezca como puede ser: propiedad social, propiedad privada y propiedad pública.</p>
+          <p class="detallados-autor-fecha">Por Arq. Jair Miramontes Chávez, 13/10/2020</p>
+        </div>
+      </div>
+      <div class="media breve">
+        <a class="pull-left" href="diseno-fraccionamientos-habitacionales-torreon-mayo-2020.html"><img class="media-object" src="diseno-fraccionamientos-habitacionales-torreon-mayo-2020/imagen-previa.jpg"></a>
+        <div class="media-body">
+          <h3 class="media-heading detallados-encabezado"><a href="diseno-fraccionamientos-habitacionales-torreon-mayo-2020.html">Manual de diseño de fraccionamientos habitacionales</a></h3>
+          <p class="detallados-descripcion">“El Manual es un instrumento técnico complementario del Reglamento de Desarrollo Urbano y Construcción del Municipio de Torreón, con el cual se podrán visualizar de manera gráfica las disposiciones referentes a la construcción de fraccionamientos habitacionales”. </p>
+          <p class="detallados-autor-fecha">Por Lic. Jesús Abraham Salazar Valadez, 27/05/2020</p>
+        </div>
+      </div>
+      <div class="media breve">
+        <a class="pull-left" href="programa-parcial-desarrollo-urbano-torreon-zona-norte-marzo2020.html"><img class="media-object" src="programa-parcial-desarrollo-urbano-torreon-zona-norte-marzo2020/imagen-previa.jpg"></a>
+        <div class="media-body">
+          <h3 class="media-heading detallados-encabezado"><a href="programa-parcial-desarrollo-urbano-torreon-zona-norte-marzo2020.html">Propuesta de Programa Parcial de Desarrollo Urbano de la Zona Norte de Torreón</a></h3>
+          <p class="detallados-descripcion">“El norte de Torreón tiene un 41.6% de zona urbanizada, pasando de 59.54 hectáreas en el año 2000 a 882.26 hectáreas al año 2018, y pasando de 6,130 habitantes en el 2000 a 29,161 habitantes en 2015”.</p>
+          <p class="detallados-autor-fecha">Por Arq. José Antonio Ramírez Reyes, 30/03/2020</p>
+        </div>
+      </div>
+      <div class="media breve">
+        <a class="pull-left" href="hacinamiento-en-torreon-marzo2020.html"><img class="media-object" src="hacinamiento-en-torreon-marzo2020/imagen-previa.jpg"></a>
+        <div class="media-body">
+          <h3 class="media-heading detallados-encabezado"><a href="hacinamiento-en-torreon-marzo2020.html">La Situación de Hacinamiento en Torreón</a></h3>
+          <p class="detallados-descripcion">La Organización Mundial de la Salud (OMS), define el hacinamiento como la “condición donde el número de ocupantes excede la capacidad de espacio de vivienda”; el indicador: 3 personas o más viviendo en una misma habitación.</p>
+          <p class="detallados-autor-fecha">Por Arq. Alejandra Martínez Avilés, 04/03/2020 15:00</p>
+        </div>
+      </div>
+      <div class="media breve">
+        <a class="pull-left" href="nuevos-esquemas-para-acceder-a-la-vivienda-enero2020.html"><img class="media-object" src="nuevos-esquemas-para-acceder-a-la-vivienda-enero2020/imagen-previa.jpg"></a>
+        <div class="media-body">
+          <h3 class="media-heading detallados-encabezado"><a href="nuevos-esquemas-para-acceder-a-la-vivienda-enero2020.html">Nuevos esquemas para acceder a la vivienda.</a></h3>
+          <p class="detallados-descripcion">La vivienda puede ser concebida como el espacio que habitan las personas y familias. Es un derecho humano garantizado por la Constitución Política y para poder acceder a ella, se crearon diferentes organismos que cuentan con diversas soluciones financieras.</p>
+          <p class="detallados-autor-fecha">Por Arq. Ihanelly Hernández Villa, 06/01/2020</p>
+        </div>
+      </div>
+      <div class="media breve">
+        <a class="pull-left" href="la-transformacion-de-la-periferia-urbana-de-torreon-dic2019.html"><img class="media-object" src="la-transformacion-de-la-periferia-urbana-de-torreon-dic2019/imagen-previa.jpg"></a>
+        <div class="media-body">
+          <h3 class="media-heading detallados-encabezado"><a href="la-transformacion-de-la-periferia-urbana-de-torreon-dic2019.html">La Transformación de la Periferia Urbana de Torreón</a></h3>
+          <p class="detallados-descripcion">La crisis económica de 1994 dejó un rezago habitacional importante a nivel nacional. Fue durante los sexenios del 2000-2012 en que se crearon las Políticas Nacionales de Desarrollo Urbano y Habitacional que buscaron impulsar el desarrollo de vivienda social nueva por medio de apoyos financieros.</p>
+          <p class="detallados-autor-fecha">Por Arq. Carla Estefanía Tovar Triana, 30/12/2019</p>
+        </div>
+      </div>
+      <div class="media breve">
+        <a class="pull-left" href="credito-de-vivienda-en-colonias-tradicionales-dic2019.html"><img class="media-object" src="credito-de-vivienda-en-colonias-tradicionales-dic2019/imagen-previa.jpg"></a>
+        <div class="media-body">
+          <h3 class="media-heading detallados-encabezado"><a href="credito-de-vivienda-en-colonias-tradicionales-dic2019.html">Créditos de Vivienda en Colonias Tradicionales como Estrategia para la Consolidación Urbana</a></h3>
+          <p class="detallados-descripcion">Del 2018 al 2019 la demanda de vivienda usada ha superado en un 5.6 % a la vivienda nueva en el Municipio de Torreón.</p>
+          <p class="detallados-autor-fecha">Por Lic. Jesús Abraham Salazar Valadez, 14/12/2019</p>
+        </div>
+      </div>
+      <div class="media breve">
+        <a class="pull-left" href="suelo-mixto-como-politica-de-desarrollo-sostenible-nov2019.html"><img class="media-object" src="suelo-mixto-como-politica-de-desarrollo-sostenible-nov2019/imagen-previa.jpg"></a>
+        <div class="media-body">
+          <h3 class="media-heading detallados-encabezado"><a href="suelo-mixto-como-politica-de-desarrollo-sostenible-nov2019.html">El Suelo Mixto como Política de Desarrollo Sostenible.</a></h3>
+          <p class="detallados-descripcion">“ONU-HABITAT impulsa, a través de la Nueva Agenda Urbana en su numeral 51, diseños urbanos que apoyan el ordenamiento a través de policentrismos y usos mixtos”.</p>
+          <p class="detallados-autor-fecha">Por Arq. José Antonio Ramírez Reyes, 26/11/2019</p>
+        </div>
+      </div>
+      <div class="media breve">
+        <a class="pull-left" href="estructura-familiar-y-el-mercado-inmobiliario-en-torreon-julio2019.html"><img class="media-object" src="estructura-familiar-y-el-mercado-inmobiliario-en-torreon-julio2019/imagen-previa.jpg"></a>
+        <div class="media-body">
+          <h3 class="media-heading detallados-encabezado"><a href="estructura-familiar-y-el-mercado-inmobiliario-en-torreon-julio2019.html">La Estructura Familiar y el Mercado Inmobiliario en Torreón.</a></h3>
+          <p class="detallados-descripcion">Durante el 2018, en Torreón fueron otorgados 11,895 créditos para vivienda; la mayoría de estos créditos (36.8%) fueron destinados a la adquisición de una vivienda nueva, mientras que el segundo mayor uso de estos créditos fue para la adquisición de una vivienda usada (31.7%).</p>
+          <p class="detallados-autor-fecha">Por Arq. Jair Miramontes Chávez, 09/07/2019</p>
+        </div>
+      </div>
+      <div class="media breve">
+        <a class="pull-left" href="urbanismo-con-enfoque-de-genero-en-la-laguna.html"><img class="media-object" src="urbanismo-con-enfoque-de-genero-en-la-laguna/imagen-previa.jpg"></a>
+        <div class="media-body">
+          <h3 class="media-heading detallados-encabezado"><a href="urbanismo-con-enfoque-de-genero-en-la-laguna.html">Urbanismo con enfoque de género en La Laguna</a></h3>
+          <p class="detallados-descripcion">“El Urbanismo con perspectiva de género trata de paliar los desequilibrios a la hora de definir estrategias de intervención en las ciudades, buscando un reparto más equitativo de las inversiones, que garanticen un acceso y disfrute del espacio público en igualdad de condiciones para toda la ciudadanía.” (Hiria Kolektiboa, 2010).</p>
+          <p class="detallados-autor-fecha">Por Arq. Ihanelly Hernández Villa, 23/05/2019</p>
+        </div>
+      </div>
+      <div class="media breve">
+        <a class="pull-left" href="incremento-de-personas-adultas-mayores-en-torreon-y-su-reto-de-vivienda-digna-ene2019.html"><img class="media-object" src="incremento-de-personas-adultas-mayores-en-torreon-y-su-reto-de-vivienda-digna-ene2019/imagen-previa.jpg"></a>
+        <div class="media-body">
+          <h3 class="media-heading detallados-encabezado"><a href="incremento-de-personas-adultas-mayores-en-torreon-y-su-reto-de-vivienda-digna-ene2019.html">Incremento de las Personas Adultas Mayores en Torreón y su reto de vivienda digna.</a></h3>
+          <p class="detallados-descripcion">En Torreón, se estima que para mediados de 2018, habitaban más de 53 mil personas mayores de 65 años (CONAPO); es decir 7.4% de la población total torreonense. Esta cifra aumentará para 2030 a más de 84,000 (10.6%).</p>
+          <p class="detallados-autor-fecha">Por Arq. Cecilio Pedro Secunza Schott, 07/01/2019 12:10</p>
+        </div>
+      </div>
+      <div class="media breve">
+        <a class="pull-left" href="la-asequibilidad-de-la-vivienda-en-torreon.html"><img class="media-object" src="la-asequibilidad-de-la-vivienda-en-torreon/imagen-previa.jpg"></a>
+        <div class="media-body">
+          <h3 class="media-heading detallados-encabezado"><a href="la-asequibilidad-de-la-vivienda-en-torreon.html">La Asequibilidad de la Vivienda en Torreón</a></h3>
+          <p class="detallados-descripcion">En el Índice de Precios de la Vivienda, y como se reporta en el Monitor de Vivienda del IMPLAN, el valor medio de las casa en Coahuila es de $425 mil pesos.</p>
+          <p class="detallados-autor-fecha">Por Dr. Iván de Luna Aldape, 24/09/2018 14:00</p>
+        </div>
+      </div>
+      <div class="media breve">
+        <a class="pull-left" href="estrategias-contra-el-crecimiento-desmedido-en-las-ciudades.html"><img class="media-object" src="estrategias-contra-el-crecimiento-desmedido-en-las-ciudades/imagen-previa.jpg"></a>
+        <div class="media-body">
+          <h3 class="media-heading detallados-encabezado"><a href="estrategias-contra-el-crecimiento-desmedido-en-las-ciudades.html">Estrategias contra el crecimiento desmedido en las ciudades</a></h3>
+          <p class="detallados-descripcion">Con los Perímetros de Contención Urbana (PCU) propuestos por la CONAVI, se busca crear ciudades más compactas con mayor densidad de población y actividad económica, fomentando la nueva vivienda sustentable desde las dimensiones económica, ecológica y social.</p>
+          <p class="detallados-autor-fecha">Por Arq. Jair Miramontes Chávez, 17/05/2018 14:00</p>
+        </div>
+      </div>
+      <div class="media breve">
+        <a class="pull-left" href="panorama-del-mercado-de-la-vivienda-en-la-laguna.html"><img class="media-object" src="panorama-del-mercado-de-la-vivienda-en-la-laguna/imagen-previa.jpg"></a>
+        <div class="media-body">
+          <h3 class="media-heading detallados-encabezado"><a href="panorama-del-mercado-de-la-vivienda-en-la-laguna.html">Panorama del mercado de la vivienda en La Laguna</a></h3>
+          <p class="detallados-descripcion">Durante el segundo trimestre del 2017 la vivienda en Torreón presentó una apreciación del 7.1% en el valor de los precios de los hogares con respecto al mismo periodo del año anterior, de acuerdo con el Índice de Precios de la Vivienda en México de la Sociedad Hipotecaria Federal.</p>
+          <p class="detallados-autor-fecha">Por Arq. Ihanelly Hernández Villa, 14/12/2017 08:52</p>
+        </div>
+      </div>
+      <div class="media breve">
+        <a class="pull-left" href="cobertura-y-rezago-de-servicios-en-las-viviendas-de-torreon.html"><img class="media-object" src="cobertura-y-rezago-de-servicios-en-las-viviendas-de-torreon/imagen-previa.jpg"></a>
+        <div class="media-body">
+          <h3 class="media-heading detallados-encabezado"><a href="cobertura-y-rezago-de-servicios-en-las-viviendas-de-torreon.html">Cobertura y rezago de servicios en las viviendas de Torreón</a></h3>
+          <p class="detallados-descripcion">Análisis de las colonias de Torreón con mayor brecha en la cobertura de bienes y servicios en la vivienda y su repercusión en la calidad de vida de sus habitantes.</p>
+          <p class="detallados-autor-fecha">Por Lic. Luis A. Gutiérrez Arizpe, 30/11/2017 10:00</p>
+        </div>
+      </div>
+      <div class="media breve">
+        <a class="pull-left" href="la-importancia-de-impulsar-un-urbanismo-participativo.html"><img class="media-object" src="la-importancia-de-impulsar-un-urbanismo-participativo/imagen-previa.jpg"></a>
+        <div class="media-body">
+          <h3 class="media-heading detallados-encabezado"><a href="la-importancia-de-impulsar-un-urbanismo-participativo.html">La importancia de impulsar un urbanismo participativo</a></h3>
+          <p class="detallados-descripcion">La Constitución Política de México en los artículos 25 y 26 hace referencia a las obligaciones y derechos que se otorgan al ciudadano, en su participación en temas de planes y programas de desarrollo.</p>
+          <p class="detallados-autor-fecha">Por Arq. Jair Miramontes Chávez, 29/11/2017 08:35</p>
+        </div>
+      </div>
+      <div class="media breve">
+        <a class="pull-left" href="los-barrios-tradicionales-en-el-centro-historico-de-torreon.html"><img class="media-object" src="los-barrios-tradicionales-en-el-centro-historico-de-torreon/imagen-previa.jpg"></a>
+        <div class="media-body">
+          <h3 class="media-heading detallados-encabezado"><a href="los-barrios-tradicionales-en-el-centro-historico-de-torreon.html">Los Barrios Tradicionales en el Centro Histórico de Torreón</a></h3>
+          <p class="detallados-descripcion">Actualmente existen diez barrios que aunque han sufrido una pérdida sostenida de identidad debido a la destrucción de sus edificaciones originales así como la migración de su población, son considerados como tradicionales.</p>
+          <p class="detallados-autor-fecha">Por Arq. Cecilio Pedro Secunza Schott, 24/03/2017 13:35</p>
+        </div>
+      </div>
+      <div class="media breve">
+        <a class="pull-left" href="problematica-de-la-vivienda-deshabitada-en-la-laguna.html"><img class="media-object" src="problematica-de-la-vivienda-deshabitada-en-la-laguna/imagen-previa.jpg"></a>
+        <div class="media-body">
+          <h3 class="media-heading detallados-encabezado"><a href="problematica-de-la-vivienda-deshabitada-en-la-laguna.html">Problemática de la vivienda deshabitada en La Laguna</a></h3>
+          <p class="detallados-descripcion">Tan sólo en la Ciudad de Torreón existen alrededor de 51,515 viviendas desocupadas. El sector Oriente es el que presenta el mayor índice con colonias donde el problema asciende a más del 50%.</p>
+          <p class="detallados-autor-fecha">Por Arq. Ángeles Melisa Rodríguez Salas, 16/03/2017 10:50</p>
+        </div>
+      </div>
+      <div class="media breve">
+        <a class="pull-left" href="nueva-ley-de-asentamientos-humanos-estrategia-para-ordenar-la-metropoli.html"><img class="media-object" src="nueva-ley-de-asentamientos-humanos-estrategia-para-ordenar-la-metropoli/imagen-previa.jpg"></a>
+        <div class="media-body">
+          <h3 class="media-heading detallados-encabezado"><a href="nueva-ley-de-asentamientos-humanos-estrategia-para-ordenar-la-metropoli.html">Nueva Ley de Asentamientos Humanos: estrategia para ordenar la metrópoli</a></h3>
+          <p class="detallados-descripcion">Actualmente el uso de suelo habitacional ocupa la mayor superficie urbana de la Zona Metropolitana de La Laguna. De continuar con una baja densidad poblacional, los escenarios de expansión a futuro resultan preocupantes por la inversión que se necesita y los costos ambientales que esto implica.</p>
+          <p class="detallados-autor-fecha">Por Arq. Teresita Benítez Saludado, Lic. Adriana Vargas Flores, 14/12/2016 15:05</p>
+        </div>
+      </div>
+      <div class="media breve">
+        <a class="pull-left" href="fraccionamientos-cerrados-antitesis-del-urbanismo-moderno.html"><img class="media-object" src="fraccionamientos-cerrados-antitesis-del-urbanismo-moderno/imagen-previa.jpg"></a>
+        <div class="media-body">
+          <h3 class="media-heading detallados-encabezado"><a href="fraccionamientos-cerrados-antitesis-del-urbanismo-moderno.html">Fraccionamientos cerrados: antítesis del urbanismo moderno</a></h3>
+          <p class="detallados-descripcion">Los fraccionamientos cerrados incentivan la segmentación, la fragmentación y el resentimiento social. De los conglomerados habitacionales desarrollados entre 2005 y 2013, casi 70% son de acceso cerrado o controlado.</p>
+          <p class="detallados-autor-fecha">Por Arq. Teresita Benítez Saludado, Ing. Luis Campos Hinojosa, 20/10/2016 09:40</p>
+        </div>
+      </div>
+      <div class="media breve">
+        <a class="pull-left" href="crecimiento-historico-de-la-vivienda-en-torreon.html"><img class="media-object" src="crecimiento-historico-de-la-vivienda-en-torreon/imagen-previa.jpg"></a>
+        <div class="media-body">
+          <h3 class="media-heading detallados-encabezado"><a href="crecimiento-historico-de-la-vivienda-en-torreon.html">Crecimiento histórico de la vivienda en Torreón</a></h3>
+          <p class="detallados-descripcion">El crecimiento disperso de la vivienda ha permitido que surjan conjuntos habitacionales alejados de los centros urbanos donde se encuentran los puntos de trabajo, educación y recreación.  Carecen de equipamientos de espacios públicos, servicios de abasto, de educación, de salud y recreación.</p>
+          <p class="detallados-autor-fecha">Por Arq. Ilse Ávila García, 28/04/2016 14:30</p>
+        </div>
+      </div>
+      <div class="media breve">
+        <a class="pull-left" href="la-necesidad-de-una-planeacion-urbana-sustentable.html"><img class="media-object" src="la-necesidad-de-una-planeacion-urbana-sustentable/imagen-previa.jpg"></a>
+        <div class="media-body">
+          <h3 class="media-heading detallados-encabezado"><a href="la-necesidad-de-una-planeacion-urbana-sustentable.html">La necesidad de una planeación urbana sustentable</a></h3>
+          <p class="detallados-descripcion">Las proyecciones de crecimiento de población y vivienda para 2020, demuestran que es necesario revisar los instrumentos de planeación existentes en la ciudad de Torreón y la Comarca Lagunera. Se calcula que habrá un aumento de 11,350 viviendas nuevas por año.</p>
+          <p class="detallados-autor-fecha">Por Arq. Teresita Benítez Saludado, 14/04/2016 14:15</p>
+        </div>
+      </div>
+      <div class="media breve">
+        <a class="pull-left" href="principales-retos-de-la-zona-metropolitana-de-la-laguna.html"><img class="media-object" src="principales-retos-de-la-zona-metropolitana-de-la-laguna/imagen-previa.jpg"></a>
+        <div class="media-body">
+          <h3 class="media-heading detallados-encabezado"><a href="principales-retos-de-la-zona-metropolitana-de-la-laguna.html">Principales retos de la Zona Metropolitana de La Laguna</a></h3>
+          <p class="detallados-descripcion">Es necesaria una concertación entre los cuatro municipios de la ZML (Torreón, Matamoros, Gómez Palacio y Lerdo) por medio de una agenda de temas metropolitananos, en los ejes de: Buen Gobierno, Desarrollo Económico, Desarrollo Social, Entorno Urbano, Movilidad, Medio Ambiente y Sustentabilidad.</p>
+          <p class="detallados-autor-fecha">Por Arq. Ilse Ávila García, 09/03/2016 11:30</p>
+        </div>
+      </div>
+      <div class="media breve">
+        <a class="pull-left" href="vivienda-social-y-violencia-intrafamiliar.html"><img class="media-object" src="vivienda-social-y-violencia-intrafamiliar/imagen-previa.jpg"></a>
+        <div class="media-body">
+          <h3 class="media-heading detallados-encabezado"><a href="vivienda-social-y-violencia-intrafamiliar.html">Vivienda Social y Violencia Intrafamiliar</a></h3>
+          <p class="detallados-descripcion">En la medida en que los espacios habitacionales no sean lo suficientemente amplios, se genera una alta probabilidad de que la violencia aparezca.</p>
+          <p class="detallados-autor-fecha">Por Lic. Alfredo Viesca Domínguez, 08/09/2015 11:50</p>
+        </div>
+      </div>
+      <div class="media breve">
+        <a class="pull-left" href="hacia-una-conurbacion-sustentable-de-la-laguna.html"><img class="media-object" src="hacia-una-conurbacion-sustentable-de-la-laguna/imagen-previa.jpg"></a>
+        <div class="media-body">
+          <h3 class="media-heading detallados-encabezado"><a href="hacia-una-conurbacion-sustentable-de-la-laguna.html">Hacia una Conurbación Sustentable de La Laguna</a></h3>
+          <p class="detallados-descripcion">La Laguna presenta las problemáticas comunes que tienen la mayoría de las Zonas Metropolitanas importantes del país.</p>
+          <p class="detallados-autor-fecha">Por Arq. Jair Miramontes Chávez, 14/07/2015 12:40</p>
+        </div>
+      </div>
+      <div class="media breve">
+        <a class="pull-left" href="la-ciudad-compacta-vive-mejor.html"><img class="media-object" src="la-ciudad-compacta-vive-mejor/imagen-previa.jpg"></a>
+        <div class="media-body">
+          <h3 class="media-heading detallados-encabezado"><a href="la-ciudad-compacta-vive-mejor.html">La Ciudad Compacta (como la familia pequeña) Vive Mejor</a></h3>
+          <p class="detallados-descripcion">La política pública a adoptar como estrategia debe ser la de crecimiento interno: densificar la ciudad implotando su crecimiento hacia adentro y hacia arriba.</p>
+          <p class="detallados-autor-fecha">Por Arq. Cecilio Pedro Secunza Schott, 01/07/2015 15:16</p>
+        </div>
+      </div>
+      <div class="media breve">
+        <a class="pull-left" href="importancia-suelo-ciudades.html"><img class="media-object" src="importancia-suelo-ciudades/imagen-previa.jpg"></a>
+        <div class="media-body">
+          <h3 class="media-heading detallados-encabezado"><a href="importancia-suelo-ciudades.html">La importancia del suelo en las ciudades</a></h3>
+          <p class="detallados-descripcion">En México el suelo en grandes proporciones ha pasado de ser rural a urbano; la disponibilidad y ordenamiento del mismo son básicos dentro del desarrollo actual.</p>
+          <p class="detallados-autor-fecha">Por Arq. Ilse Ávila García, 15/10/2014 08:05</p>
+        </div>
+      </div>
+      <div class="media breve">
+        <a class="pull-left" href="poligonos-actuacion-desarrollo-urbano-integral.html"><img class="media-object" src="poligonos-actuacion-desarrollo-urbano-integral/imagen-previa.jpg"></a>
+        <div class="media-body">
+          <h3 class="media-heading detallados-encabezado"><a href="poligonos-actuacion-desarrollo-urbano-integral.html">Polígonos de Actuación para un Desarrollo Urbano Integral</a></h3>
+          <p class="detallados-descripcion">El nuevo modelo de desarrollo urbano mexicano que se impulsa en el país es el de fomentar la consolidación de las ciudades y lograr que sean más competitivas, equilibradas, densas, prósperas, justas, seguras y sustentables.</p>
+          <p class="detallados-autor-fecha">Por Arq. Jair Miramontes Chávez, 14/10/2014 08:05</p>
+        </div>
+      </div>
+      <div class="media breve">
+        <a class="pull-left" href="sociedad-incluyente-preparada-sana.html"><img class="media-object" src="sociedad-incluyente-preparada-sana/imagen-previa.jpg"></a>
+        <div class="media-body">
+          <h3 class="media-heading detallados-encabezado"><a href="sociedad-incluyente-preparada-sana.html">Sociedad Incluyente, Preparada y Sana</a></h3>
+          <p class="detallados-descripcion">Este es uno de los subíndices que muestra mayores contrastes al interior de la zona metropolitana, ubicándose Torreón en la parte alta del ranking, la ZML en su conjunto en media alta, Gómez Palacio y Lerdo en media baja y Matamoros en la zona baja.</p>
+          <p class="detallados-autor-fecha">Por Lic. Rodrigo González Morales, 06/06/2014 08:05</p>
+        </div>
+      </div>
+    </div>
+    <div class="mapa-inferior">
+          <div class="pull-right redes-sociales">
+            <a class="fa fa-twitter-square" href="http://www.twitter.com/trcimplan" target="_blank"></a>
+            <a class="fa fa-facebook-square" href="https://facebook.com/trcimplan" target="_blank"></a>
+            <a class="fa fa-facebook-square" href="http://www.instagram.com/implantorreon" target="_blank"></a>
+            <a class="fa fa-rss-square" href="../rss.xml"></a>
+          </div>
+    </div>
+  </div>
+</div>
+<!-- Javascript global inicia -->
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
+<script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="../vendor/metisMenu/metisMenu.min.js"></script>
+<script type="text/javascript" src="../vendor/datatables/js/jquery.dataTables.min.js"></script>
+<script type="text/javascript" src="../vendor/datatables-plugins/dataTables.bootstrap.min.js"></script>
+<script type="text/javascript" src="../vendor/datatables-responsive/dataTables.responsive.js"></script>
+<script type="text/javascript" src="../vendor/raphael/raphael.min.js"></script>
+<script type="text/javascript" src="../vendor/morrisjs/morris.min.js"></script>
+<script type="text/javascript" src="../dist/js/sb-admin-2.min.js"></script>
+<script type="text/javascript" src="http://libs.cartocdn.com/cartodb.js/v3/3.15/cartodb.js"></script>
+<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+<!-- Javascript global termina -->
+<!-- Javascript inicia -->
+
+<!-- Javascript termina -->
+<!-- Javascript Google Analytics -->
+<script>
+  // Google Analytics
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)})(window,document,'script','//www.google-analytics.com/analytics.js','ga');ga('create', 'UA-58290501-1', 'auto');ga('send', 'pageview');
+</script>
+</body>
+</html>

@@ -1,0 +1,461 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+<!-- ===================================================================================================
+
+        Instituto Municipal de Planeación y Competitividad (IMPLAN) de Torreón.
+
+        3er. generación de la Plataforma del Conocimiento
+        Desarrollado por Ing. Guillermo Valdés Lozano <guivaloz en movimientolibre.com>
+
+        El software que lo construye está bajo la licencia GPL versión 3. © 2014, 2015, 2016, 2017.
+        Una copia está contenida en el archivo LICENCE al bajar desde GitHub.
+
+        Al usar, estudiar y copiar está aceptando los términos de uso de la información y del sitio web:
+          http://www.trcimplan.gob.mx/terminos/terminos-informacion.html
+          http://www.trcimplan.gob.mx/terminos/terminos-sitio.html
+
+        Descargue, estudie y colabore bajando todo este sitio web:
+          IMPLAN Torreón     https://github.com/TRCIMPLAN/trcimplan.github.io
+
+        Agradecemos y compartimos las tecnologías abiertas y gratuitas sobre las que se basa:
+          PHP                http://php.net
+          Twitter Bootstrap  http://getbootstrap.com
+          StartBootStrap     http://startbootstrap.com
+          Morris.js          https://morrisjs.github.io/morris.js/
+          Font Awesome       http://fontawesome.io
+          DataTables         https://www.datatables.net
+          Carto              https://carto.com
+          GitHub             https://github.com
+
+     =================================================================================================== -->
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="author" content="TrcIMPLAN Staff">
+  <meta name="keywords" content="IMPLAN, Torreon, Analisis, Publicaciones, Estudios, Investigacion, Gobierno">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Gobierno - IMPLAN Torreón">
+  <meta name="twitter:description" content="">
+  <meta name="twitter:url" content="http://www.trcimplan.gob.mx/blog/categoria-gobierno.html">
+  <meta name="og:title" content="Gobierno - IMPLAN Torreón">
+  <meta name="og:description" content="">
+  <meta name="og:url" content="http://www.trcimplan.gob.mx/blog/categoria-gobierno.html">
+  <title>Gobierno - IMPLAN Torreón</title>
+  <link rel="shortcut icon" type="image/x-icon" href="../imagenes/apple-touch-icon.png">
+  <link rel="apple-touch-icon" href="../imagenes/apple-touch-icon.png">
+  <link rel="apple-touch-icon" href="../imagenes/apple-touch-icon-76x76.png" sizes="76x76">
+  <link rel="apple-touch-icon" href="../imagenes/apple-touch-icon-120x120.png" sizes="120x120">
+  <link rel="apple-touch-icon" href="../imagenes/apple-touch-icon-152x152.png" sizes="152x152">
+  <link rel="apple-touch-icon" href="../imagenes/apple-touch-icon-180x180.png" sizes="180x180">
+  <link rel="icon" href="../imagenes/icon-hires.png" sizes="192x192">
+  <link rel="icon" href="../imagenes/icon-normal.png" sizes="128x128">
+  <link rel="alternate" type="application/rss+xml" href="../rss.xml" title="IMPLAN Torreón">
+  <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+  <link rel="stylesheet" type="text/css" href="../vendor/metisMenu/metisMenu.min.css">
+  <link rel="stylesheet" type="text/css" href="../vendor/datatables-plugins/dataTables.bootstrap.css">
+  <link rel="stylesheet" type="text/css" href="../vendor/morrisjs/morris.css">
+  <link rel="stylesheet" type="text/css" href="../vendor/font-awesome/css/font-awesome.min.css">
+  <link rel="stylesheet" type="text/css" href="../dist/css/sb-admin-2.min.css">
+  <link rel="stylesheet" type="text/css" href="../dist/css/plataforma-de-conocimiento.css">
+  <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Noto+Sans|Roboto+Condensed:400,700">
+  <link rel="stylesheet" type="text/css" href="http://libs.cartocdn.com/cartodb.js/v3/3.15/themes/css/cartodb.css">
+  <link rel="stylesheet" type="text/css" href="../dist/css/estilosvm.css">
+  <link rel="stylesheet" type="text/css" href="../dist/css/trcimplan.css">
+  <!-- SOPORTE PARA IE -->
+  <!--[if lt IE 9]>
+  <script type="text/javascript" src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+  <script type="text/javascript" src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+  <![endif]-->
+</head>
+<body>
+<div id="wrapper">
+  <nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="../index.html"><img class="navbar-brand-img" src="../imagenes/implan-barra-logo-chico-gris.png" alt="IMPLAN Torreón"></a>
+    </div>
+  <div class="navbar-default sidebar" role="navigation">
+    <div class="sidebar-nav navbar-collapse">
+      <ul class="nav" id="side-menu">
+        <li class="sidebar-search">
+          <form method="get" action="http://www.trcimplan.gob.mx/buscador-resultados.html">
+            <div class="input-group custom-search-form">
+              <input type="text" class="form-control" placeholder="Google buscar..." value="" name="q">
+              <span class="input-group-btn">
+                <button class="btn btn-default" type="submit"><i class="fa fa-search"></i></button>
+              </span>
+            </div>
+          </form>
+        </li>
+        <li class="active">
+          <a href="#"><span class="navegacion-icono"><i class="fa fa-lightbulb-o"></i></span> Análisis Publicados<span class="fa arrow"></span></a>
+          <ul class="nav nav-second-level">
+            <li><a href="../blog/index.html"><span class="navegacion-icono"><i class="fa fa-file-text-o"></i></span> Últimos Análisis</a></li>
+            <li><a href="../excolaboradores/index.html"><span class="navegacion-icono"><i class="fa fa-file-text-o"></i></span> Análisis por Autor</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="#"><span class="navegacion-icono"><i class="fa fa-area-chart"></i></span> Indicadores<span class="fa arrow"></span></a>
+          <ul class="nav nav-second-level">
+            <li><a href="../smi/introduccion.html"><span class="navegacion-icono"><i class="fa fa-file-text-o"></i></span> Introducción al SMI</a></li>
+            <li><a href="../indicadores-categorias/index.html"><span class="navegacion-icono"><i class="fa fa-th-list"></i></span> Indicadores por Categoría</a></li>
+            <li><a href="../smi/por-region.html"><span class="navegacion-icono"><i class="fa fa-table"></i></span> Indicadores por Región</a></li>
+            <li><a href="../smi/datos-abiertos.html"><span class="navegacion-icono"><i class="fa fa-download"></i></span> Datos Abiertos</a></li>
+            <li><a href="../smi/niveles-socioeconomicos.html"><span class="navegacion-icono"><i class="fa fa-bar-chart"></i></span> Niveles Socioeconómicos</a></li>
+            <li><a href="../monitores/index.html"><span class="navegacion-icono"><i class="fa fa-file-text-o"></i></span> Monitores</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="#"><span class="navegacion-icono"><i class="fa fa-puzzle-piece"></i></span> Indicadores Básicos de Colonias<span class="fa arrow"></span></a>
+          <ul class="nav nav-second-level">
+            <li><a href="../ibc/introduccion.html"><span class="navegacion-icono"><i class="fa fa-file-text-o"></i></span> Introducción al IBC</a></li>
+            <li><a href="../ibc-colonias-torreon/index.html"><span class="navegacion-icono"><i class="fa fa-font"></i></span> Colonias de Torreón</a></li>
+            <li><a href="https://implantorreon.carto.com/u/sigimplan/builder/907a6bc0-2c7e-451e-9668-b78d952e52ff/embed" target="_blank"><span class="navegacion-icono"><i class="fa fa-external-link"></i></span> Mapa Completo</a></li>
+            <li><a href="../ibc/torreon-urbano.html"><span class="navegacion-icono"><i class="fa fa-table"></i></span> Torreón Urbano</a></li>
+            <li><a href="../ibc/datos-abiertos.html"><span class="navegacion-icono"><i class="fa fa-download"></i></span> Datos Abiertos</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="#"><span class="navegacion-icono"><i class="fa fa-map-marker"></i></span> Información Geográfica<span class="fa arrow"></span></a>
+          <ul class="nav nav-second-level">
+            <li><a href="../sig/introduccion.html"><span class="navegacion-icono"><i class="fa fa-file-text-o"></i></span> Introducción al SIG</a></li>
+            <li><a href="../sig-mapas-torreon/temas-sig.html"><span class="navegacion-icono"><i class="fa fa-map-o"></i></span> Mapas por Tema</a></li>
+            <li><a href="../sig-mapas-torreon/plan-director-desarrollo-urbano.html"><span class="navegacion-icono"><i class="fa fa-map-marker"></i></span> Usos de Suelo</a></li>
+            <li><a href="../sig/datos-abiertos.html"><span class="navegacion-icono"><i class="fa fa-download"></i></span> Datos Abiertos</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="#"><span class="navegacion-icono"><i class="fa fa-book"></i></span> Plan Estratégico Torreón 2040<span class="fa arrow"></span></a>
+          <ul class="nav nav-second-level">
+            <li><a href="../pet/indice.html"><span class="navegacion-icono"><i class="fa fa-list-ul"></i></span> Índice General</a></li>
+            <li><a href="../plan-estrategico-torreon-enfoque-metropolitano-2040/index.html"><span class="navegacion-icono"><i class="fa fa-download"></i></span> Descargar</a></li>
+            <li><a href="../plan-estrategico-metropolitano/descripcion-del-proceso.html"><span class="navegacion-icono"><i class="fa fa-calendar"></i></span> Descripción del proceso</a></li>
+            <li><a href="../proyectos/index.html"><span class="navegacion-icono"><i class="fa fa-check-square"></i></span> Proyectos</a></li>
+            <li><a href="../vision-de-ciudad/vision-de-ciudad.html"><span class="navegacion-icono"><i class="fa fa-file-text-o"></i></span> Visión de Ciudad desde IMPLAN</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="#"><span class="navegacion-icono"><i class="fa fa-briefcase"></i></span> Documentos<span class="fa arrow"></span></a>
+          <ul class="nav nav-second-level">
+            <li><a href="../sig-planes/index.html"><span class="navegacion-icono"><i class="fa fa-book"></i></span> Planes y Programas</a></li>
+            <li><a href="../investigaciones/index.html"><span class="navegacion-icono"><i class="fa fa-file-text-o"></i></span> Investigaciones</a></li>
+            <li><a href="../estudios/index.html"><span class="navegacion-icono"><i class="fa fa-file-text-o"></i></span> Estudios</a></li>
+          </ul>
+        </li>
+        <li><a href="../consejo-directivo/integrantes.html"><span class="navegacion-icono"><i class="fa fa-users"></i></span> Consejo Directivo</a></li>
+        <li><a href="../sala-prensa/index.html"><span class="navegacion-icono"><i class="fa fa-newspaper-o"></i></span> Sala de Prensa</a></li>
+        <li><a href="../programas-radio/index.html"><span class="navegacion-icono"><i class="fa fa-microphone"></i></span> Programas de Radio</a></li>
+        <li>
+          <a href="#"><span class="navegacion-icono"><i class="fa fa-file-text-o"></i></span> Consejo Visión Metrópoli<span class="fa arrow"></span></a>
+          <ul class="nav nav-second-level">
+            <li><a href="../convocatorias/vision-metropoli.html"><span class="navegacion-icono"><i class="fa fa-file-text-o"></i></span> Consejo Juvenil</a></li>
+            <li><a href="../vision-metropoli/integrantes.html"><span class="navegacion-icono"><i class="fa fa-file-text-o"></i></span> Integrantes del Consejo</a></li>
+            <li><a href="../vision-metropoli/index.html"><span class="navegacion-icono"><i class="fa fa-newspaper-o"></i></span> Sala de Prensa</a></li>
+            <li><a href="../vision-metropoli/reglamento-vision-metropoli-2020.pdf"><span class="navegacion-icono"><i class="fa fa-file-text-o"></i></span> Reglamento</a></li>
+            <li><a href="https://issuu.com/consejovisionmetropoli/docs/informe_visi_n_metr_poli_2019_-_2021" target="_blank"><span class="navegacion-icono"><i class="fa fa-file-text-o"></i></span> Informe 2019 - 2021</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="#"><span class="navegacion-icono"><i class="fa fa-building-o"></i></span> Institucional<span class="fa arrow"></span></a>
+          <ul class="nav nav-second-level">
+            <li><a href="../institucional/vision-mision.html"><span class="navegacion-icono"><i class="fa fa-trophy"></i></span> Misión / Visión</a></li>
+            <li><a href="../institucional/NuestrosProyectos.html"><span class="navegacion-icono"><i class="fa fa-pencil-square-o"></i></span> Nuestros Proyectos</a></li>
+            <li><a href="../institucional/mensaje-director.html"><span class="navegacion-icono"><i class="fa fa-comment"></i></span> Mensaje del Director</a></li>
+            <li><a href="../autores/index.html"><span class="navegacion-icono"><i class="fa fa-user"></i></span> Quienes Somos</a></li>
+            <li><a href="../institucional/estructura-organica.html"><span class="navegacion-icono"><i class="fa fa-sitemap"></i></span> Estructura Orgánica</a></li>
+            <li><a href="../institucional/modelo-operativo-universal.html"><span class="navegacion-icono"><i class="fa fa-slideshare"></i></span> Modelo Operativo Univ.</a></li>
+            <li><a href="../institucional/reglamentos.html"><span class="navegacion-icono"><i class="fa fa-gavel"></i></span> Reglamentos</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="#"><span class="navegacion-icono"><i class="fa fa-external-link"></i></span> Transparencia<span class="fa arrow"></span></a>
+          <ul class="nav nav-second-level">
+            <li><a href="http://www2.icai.org.mx/ipo/dependencia.php?dep=178#pageload" target="_blank"><span class="navegacion-icono"><i class="fa fa-file-text-o"></i></span> Transparencia Estatal (ICAI)</a></li>
+            <li><a href="https://consultapublicamx.inai.org.mx/vut-web/faces/view/consultaPublica.xhtml#inicio" target="_blank"><span class="navegacion-icono"><i class="fa fa-file-text-o"></i></span> Plataforma Nacional de Transparencia</a></li>
+            <li><a href="../transparencia/index.html"><span class="navegacion-icono"><i class="fa fa-briefcase"></i></span> Documentos</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="#"><span class="navegacion-icono"><i class="fa fa-share-alt"></i></span> Términos de Uso<span class="fa arrow"></span></a>
+          <ul class="nav nav-second-level">
+            <li><a href="../terminos/terminos-informacion.html"><span class="navegacion-icono"><i class="fa fa-cubes"></i></span> De la información</a></li>
+            <li><a href="../terminos/terminos-sitio.html"><span class="navegacion-icono"><i class="fa fa-globe"></i></span> Del sitio web</a></li>
+            <li><a href="../terminos/privacidad.html"><span class="navegacion-icono"><i class="fa fa-lock"></i></span> Aviso de Privacidad</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="#"><span class="navegacion-icono"><i class="fa fa-phone"></i></span> Contacto<span class="fa arrow"></span></a>
+          <ul class="nav nav-second-level">
+            <li><a href="../contacto/contacto.html"><span class="navegacion-icono"><i class="fa fa-phone"></i></span> Medios de contacto</a></li>
+            <li><a href="../preguntas-frecuentes/preguntas-frecuentes.html"><span class="navegacion-icono"><i class="fa fa-question"></i></span> Preguntas Frecuentes</a></li>
+            <li><a href="http://goo.gl/forms/1rdX4X128PpMOif73" target="_blank"><span class="navegacion-icono"><i class="fa fa-external-link"></i></span> Comentarios y Sugerencias</a></li>
+          </ul>
+        </li>
+        <li><a href="../convocatorias/index.html"><span class="navegacion-icono"><i class="fa fa-file-text-o"></i></span> Convocatorias</a></li>
+        <li><a href="http://177.244.42.17/ovie-torreon/#!" target="_blank"><span class="navegacion-icono"><i class="fa fa-map-marker"></i></span> Oficina Virtual de Información Económica (OVIE)</a></li>
+        <li><a href="https://arcg.is/0vySSr" target="_blank"><span class="navegacion-icono"><i class="fa fa-globe"></i></span> Atlas Municipal de Riesgos de Torreón</a></li>
+      </ul>
+    </div>
+  </div>
+  </nav>
+  <div id="page-wrapper">
+    <div class="cuerpo">
+      <div class="encabezado">
+        <span><h1>Análisis Publicados en Gobierno</h1></span>
+      </div>
+      <div class="media breve">
+        <a class="pull-left" href="formulacion-de-programas-y-proyectos-jun-2021.html"><img class="media-object" src="formulacion-de-programas-y-proyectos-jun-2021/imagen-previa.jpg"></a>
+        <div class="media-body">
+          <h3 class="media-heading detallados-encabezado"><a href="formulacion-de-programas-y-proyectos-jun-2021.html">La formulación de programas y proyectos, como principio para la planeación y la rendición de cuentas.</a></h3>
+          <p class="detallados-descripcion">La cultura de la formulación de programas y proyectos es una práctica de gobierno municipal, estatal y federal, que el funcionariado tiene como obligación inherente a su cargo.</p>
+          <p class="detallados-autor-fecha">Por Lic. Frida García Gutiérrez, 22/06/2021</p>
+        </div>
+      </div>
+      <div class="media breve">
+        <a class="pull-left" href="profesionalizacion-del-servicio-publico-nov-2020.html"><img class="media-object" src="profesionalizacion-del-servicio-publico-nov-2020/imagen-previa.jpg"></a>
+        <div class="media-body">
+          <h3 class="media-heading detallados-encabezado"><a href="profesionalizacion-del-servicio-publico-nov-2020.html">La profesionalización del servicio público</a></h3>
+          <p class="detallados-descripcion">Tanto la administración pública, como cualquier entidad empresarial, necesitan procesos para la contratación, capacitación y baja de personal. Para el sector público los esquemas de contratación no son tan diferentes, sin embargo, la gran distinción se encuentra en el objetivo del servicio que se ofrece.</p>
+          <p class="detallados-autor-fecha">Por Lic. Miriam Janeth González Quintana, 30/11/2020</p>
+        </div>
+      </div>
+      <div class="media breve">
+        <a class="pull-left" href="elecciones-coahuila-2020-votos-y-contingencia-oct-2020.html"><img class="media-object" src="elecciones-coahuila-2020-votos-y-contingencia-oct-2020/imagen-previa.jpg"></a>
+        <div class="media-body">
+          <h3 class="media-heading detallados-encabezado"><a href="elecciones-coahuila-2020-votos-y-contingencia-oct-2020.html">Elecciones Coahuila 2020: Votos y Contingencia</a></h3>
+          <p class="detallados-descripcion">El 17 de marzo de 2020, la Junta General Ejecutiva (JGE) del Instituto Nacional Electoral aprobó mediante Acuerdo INE/JGE34/2020, las medidas preventivas y de actuación, con motivo de la pandemia derivada del COVID-19.</p>
+          <p class="detallados-autor-fecha">Por Lic. Maira Ivonne Flores Reyes, 05/10/2020</p>
+        </div>
+      </div>
+      <div class="media breve">
+        <a class="pull-left" href="nuevas-herramientas-de-gestion-catastral-sep-2020.html"><img class="media-object" src="nuevas-herramientas-de-gestion-catastral-sep-2020/imagen-previa.jpg"></a>
+        <div class="media-body">
+          <h3 class="media-heading detallados-encabezado"><a href="nuevas-herramientas-de-gestion-catastral-sep-2020.html">Nuevas herramientas de gestión catastral</a></h3>
+          <p class="detallados-descripcion">En pleno Siglo XXI no podemos visualizar a los catastros municipales como las oficinas que solo recaudan el impuesto predial.</p>
+          <p class="detallados-autor-fecha">Por Lic. Jesús Abraham Salazar Valadez, 02/09/2020</p>
+        </div>
+      </div>
+      <div class="media breve">
+        <a class="pull-left" href="las-nuevas-reglas-urbanas-de-torreon-feb2020.html"><img class="media-object" src="las-nuevas-reglas-urbanas-de-torreon-feb2020/imagen-previa.jpg"></a>
+        <div class="media-body">
+          <h3 class="media-heading detallados-encabezado"><a href="las-nuevas-reglas-urbanas-de-torreon-feb2020.html">Las Nuevas Reglas Urbanas de Torreón</a></h3>
+          <p class="detallados-descripcion">“Consejeros del IMPLAN, universidades, colegios de profesionistas, cámaras y organismos empresariales realizaron más de 460 observaciones al Reglamento de Desarrollo Urbano y Construcción de Torreón”.</p>
+          <p class="detallados-autor-fecha">Por Lic. Jesús Abraham Salazar Valadez, 20/02/2020</p>
+        </div>
+      </div>
+      <div class="media breve">
+        <a class="pull-left" href="torreon-y-sus-avances-hacia-la-mejora-regulatoria-ene2020.html"><img class="media-object" src="torreon-y-sus-avances-hacia-la-mejora-regulatoria-ene2020/imagen-previa.jpg"></a>
+        <div class="media-body">
+          <h3 class="media-heading detallados-encabezado"><a href="torreon-y-sus-avances-hacia-la-mejora-regulatoria-ene2020.html">Torreón y sus Avances hacia la Mejora Regulatoria.</a></h3>
+          <p class="detallados-descripcion">“El municipio de Torreón basándose en las observaciones de organismos internacionales como la OCDE o el Banco Mundial, ha registrado hasta hoy avances importantes en cuanto a mejora regulatoria, sin embargo, persisten retos que requieren de mayor coordinación entre dependencias gubernamentales en todos los niveles, así como de la sociedad civil”.</p>
+          <p class="detallados-autor-fecha">Por Lic. Ana Luisa Pacheco Meraz, 14/01/2020</p>
+        </div>
+      </div>
+      <div class="media breve">
+        <a class="pull-left" href="torreon-y-su-integracion-a-la-nueva-agenda-urbana-onu-habitatIII-feb2019.html"><img class="media-object" src="torreon-y-su-integracion-a-la-nueva-agenda-urbana-onu-habitatIII-feb2019/imagen-previa.jpg"></a>
+        <div class="media-body">
+          <h3 class="media-heading detallados-encabezado"><a href="torreon-y-su-integracion-a-la-nueva-agenda-urbana-onu-habitatIII-feb2019.html">Torreón y su integración a la Nueva Agenda Urbana ONU-HABITAT III</a></h3>
+          <p class="detallados-descripcion">Torreón ha crecido horizontalmente de forma desmedida, 7 veces en extensión mientras su población sólo 3 cuando ONU-HABITAT recomienda proporción uno a uno.</p>
+          <p class="detallados-autor-fecha">Por Arq. José Antonio Ramírez Reyes, 11/02/2019</p>
+        </div>
+      </div>
+      <div class="media breve">
+        <a class="pull-left" href="analisis-de-la-participacion-electoral-2018.html"><img class="media-object" src="analisis-de-la-participacion-electoral-2018/imagen-previa.jpg"></a>
+        <div class="media-body">
+          <h3 class="media-heading detallados-encabezado"><a href="analisis-de-la-participacion-electoral-2018.html">Análisis de la participación electoral 2018</a></h3>
+          <p class="detallados-descripcion">En los pasados comicios del 1 de julio, en Torreón hubo tres secciones en donde la participación superó el 80%, ubicadas en las colonias Ampliación Los Ángeles, Nuevo Torreón y Francisco I. Madero.</p>
+          <p class="detallados-autor-fecha">Por Lic. Ana Luisa Pacheco Meraz, 20/07/2018</p>
+        </div>
+      </div>
+      <div class="media breve">
+        <a class="pull-left" href="instrumentos-de-gestion.html"><img class="media-object" src="instrumentos-de-gestion/imagen-previa.jpg"></a>
+        <div class="media-body">
+          <h3 class="media-heading detallados-encabezado"><a href="instrumentos-de-gestion.html">Los instrumentos de gestión en el Gobierno Municipal</a></h3>
+          <p class="detallados-descripcion">A nivel local, los instrumentos de gestión revisten una importancia trascendental para el funcionamiento de la administración pública, por ser los gobiernos de las ciudades el primer momento de contacto de la administración pública con la ciudadanía.</p>
+          <p class="detallados-autor-fecha">Por Lic. José de Jesús Ruiz Fernández, 24/01/2018</p>
+        </div>
+      </div>
+      <div class="media breve">
+        <a class="pull-left" href="ordenamiento-ecologico-territorial-de-torreon.html"><img class="media-object" src="ordenamiento-ecologico-territorial-de-torreon/imagen-previa.jpg"></a>
+        <div class="media-body">
+          <h3 class="media-heading detallados-encabezado"><a href="ordenamiento-ecologico-territorial-de-torreon.html">Ordenamiento Ecológico Territorial de Torreón</a></h3>
+          <p class="detallados-descripcion">El Ordenamiento Ecológico Territorial es un instrumento de política ambiental que le permitirá al municipio de Torreón calificar para futuros proyectos financiados por el gobierno federal.</p>
+          <p class="detallados-autor-fecha">Por Q.F.B. Susana Estens de la Garza, 19/10/2017 16:40</p>
+        </div>
+      </div>
+      <div class="media breve">
+        <a class="pull-left" href="el-buen-futuro-se-planea.html"><img class="media-object" src="el-buen-futuro-se-planea/imagen-previa.jpg"></a>
+        <div class="media-body">
+          <h3 class="media-heading detallados-encabezado"><a href="el-buen-futuro-se-planea.html">El buen futuro se planea</a></h3>
+          <p class="detallados-descripcion">En el Índice Básico de Ciudades Prósperas presentado por ONU Hábitat, Torreón obtuvo una calificación de 55.51 en una escala del 1 al 100, situándose como moderadamente débil. Sin embargo, en sub dimensiones como Educación, Salud o Inclusión de género se colocó en una escala moderadamente sólida.</p>
+          <p class="detallados-autor-fecha">Por Lic. Eduardo Holguín Zehfuss, 07/08/2017 09:30</p>
+        </div>
+      </div>
+      <div class="media breve">
+        <a class="pull-left" href="plataformas-de-conocimiento-de-calidad.html"><img class="media-object" src="plataformas-de-conocimiento-de-calidad/imagen-previa.jpg"></a>
+        <div class="media-body">
+          <h3 class="media-heading detallados-encabezado"><a href="plataformas-de-conocimiento-de-calidad.html">Plataformas de Conocimiento de Calidad</a></h3>
+          <p class="detallados-descripcion">Para que los datos abiertos sean pilares de un gobierno abierto deben ser divulgados en sitios web que vayan más allá de lo convencional; que sean plataformas de conocimiento, detonantes de una nueva cultura ciudadana y que se vuelvan herramientas amigables y precisas para monitorear las políticas públicas.</p>
+          <p class="detallados-autor-fecha">Por Ing. Guillermo Valdés Lozano, 01/04/2017 18:32</p>
+        </div>
+      </div>
+      <div class="media breve">
+        <a class="pull-left" href="torreon-bajo-la-mirada-de-onu-habitat.html"><img class="media-object" src="torreon-bajo-la-mirada-de-onu-habitat/imagen-previa.jpg"></a>
+        <div class="media-body">
+          <h3 class="media-heading detallados-encabezado"><a href="torreon-bajo-la-mirada-de-onu-habitat.html">Torreón bajo la mirada de ONU Hábitat</a></h3>
+          <p class="detallados-descripcion">El Índice de las Ciudades Prósperas es un proyecto impulsado por ONU Hábitat y financiado en México por INFONAVIT. Torreón mostró una prosperidad moderada, similar a ciudades como Manila en Filipinas o Quito, Ecuador.</p>
+          <p class="detallados-autor-fecha">Por Lic. Rodrigo González Morales, 23/02/2017 09:03</p>
+        </div>
+      </div>
+      <div class="media breve">
+        <a class="pull-left" href="la-importancia-de-la-imagen-urbana-en-torreon.html"><img class="media-object" src="la-importancia-de-la-imagen-urbana-en-torreon/imagen-previa.jpg"></a>
+        <div class="media-body">
+          <h3 class="media-heading detallados-encabezado"><a href="la-importancia-de-la-imagen-urbana-en-torreon.html">La importancia de la imagen urbana en Torreón</a></h3>
+          <p class="detallados-descripcion">El deterioro de la imagen urbana, principalmente en el perímetro del Centro Histórico, se debe en buena medida a la irregularidad de los anuncios que los comerciantes ubican en la fachadas de sus negocios. Se deben aplicar mayores reglas para armonizar el diseño de la ciudad.</p>
+          <p class="detallados-autor-fecha">Por Arq. Teresita Benítez Saludado, 31/01/2017 10:35</p>
+        </div>
+      </div>
+      <div class="media breve">
+        <a class="pull-left" href="la-necesidad-de-una-planeacion-urbana-sustentable.html"><img class="media-object" src="la-necesidad-de-una-planeacion-urbana-sustentable/imagen-previa.jpg"></a>
+        <div class="media-body">
+          <h3 class="media-heading detallados-encabezado"><a href="la-necesidad-de-una-planeacion-urbana-sustentable.html">La necesidad de una planeación urbana sustentable</a></h3>
+          <p class="detallados-descripcion">Las proyecciones de crecimiento de población y vivienda para 2020, demuestran que es necesario revisar los instrumentos de planeación existentes en la ciudad de Torreón y la Comarca Lagunera. Se calcula que habrá un aumento de 11,350 viviendas nuevas por año.</p>
+          <p class="detallados-autor-fecha">Por Arq. Teresita Benítez Saludado, 14/04/2016 14:15</p>
+        </div>
+      </div>
+      <div class="media breve">
+        <a class="pull-left" href="principales-retos-de-la-zona-metropolitana-de-la-laguna.html"><img class="media-object" src="principales-retos-de-la-zona-metropolitana-de-la-laguna/imagen-previa.jpg"></a>
+        <div class="media-body">
+          <h3 class="media-heading detallados-encabezado"><a href="principales-retos-de-la-zona-metropolitana-de-la-laguna.html">Principales retos de la Zona Metropolitana de La Laguna</a></h3>
+          <p class="detallados-descripcion">Es necesaria una concertación entre los cuatro municipios de la ZML (Torreón, Matamoros, Gómez Palacio y Lerdo) por medio de una agenda de temas metropolitananos, en los ejes de: Buen Gobierno, Desarrollo Económico, Desarrollo Social, Entorno Urbano, Movilidad, Medio Ambiente y Sustentabilidad.</p>
+          <p class="detallados-autor-fecha">Por Arq. Ilse Ávila García, 09/03/2016 11:30</p>
+        </div>
+      </div>
+      <div class="media breve">
+        <a class="pull-left" href="la-fuerza-de-las-micro-pequenas-y-medianas-empresas-en-la-laguna.html"><img class="media-object" src="la-fuerza-de-las-micro-pequenas-y-medianas-empresas-en-la-laguna/imagen-previa.jpg"></a>
+        <div class="media-body">
+          <h3 class="media-heading detallados-encabezado"><a href="la-fuerza-de-las-micro-pequenas-y-medianas-empresas-en-la-laguna.html">La fuerza de las micro, pequeñas y medianas empresas en La Laguna</a></h3>
+          <p class="detallados-descripcion">En la Comarca Lagunera contamos con 29 MiPyMes por cada 1000 habitantes. La densidad es menor que la del promedio nacional e internacional, que es de 36 y 31 por cada 1000 habitantes respectivamente. Este sector merece un impulso cada vez mayor dada su importante participación en la economía.</p>
+          <p class="detallados-autor-fecha">Por Lic. Alicia Valdez Ibarra, 01/03/2016 11:20</p>
+        </div>
+      </div>
+      <div class="media breve">
+        <a class="pull-left" href="mejores-sitios-web-para-gobiernos-abiertos.html"><img class="media-object" src="mejores-sitios-web-para-gobiernos-abiertos/imagen-previa.jpg"></a>
+        <div class="media-body">
+          <h3 class="media-heading detallados-encabezado"><a href="mejores-sitios-web-para-gobiernos-abiertos.html">Mejores sitios web y datos abiertos para Gobiernos Abiertos</a></h3>
+          <p class="detallados-descripcion">Los ciudadanos demandan que se use la tecnología para que los datos del gobierno lleguen con claridad, rapidez y efectividad.</p>
+          <p class="detallados-autor-fecha">Por Ing. Guillermo Valdés Lozano, 13/11/2015 14:30</p>
+        </div>
+      </div>
+      <div class="media breve">
+        <a class="pull-left" href="zona-metropolitana-laguna.html"><img class="media-object" src="zona-metropolitana-laguna/imagen-previa.jpg"></a>
+        <div class="media-body">
+          <h3 class="media-heading detallados-encabezado"><a href="zona-metropolitana-laguna.html">Zona Metropolitana de La Laguna</a></h3>
+          <p class="detallados-descripcion">La Zona Metropolitana de La Laguna está conformada por los municipios de Torreón, Matamoros en el estado de Coahuila, Gómez Palacio y Lerdo en Durango.</p>
+          <p class="detallados-autor-fecha">Por Arq. Teresita Benítez Saludado, 26/05/2015 13:20</p>
+        </div>
+      </div>
+      <div class="media breve">
+        <a class="pull-left" href="la-comarca-lagunera-implan.html"><img class="media-object" src="la-comarca-lagunera-implan/imagen-previa.jpg"></a>
+        <div class="media-body">
+          <h3 class="media-heading detallados-encabezado"><a href="la-comarca-lagunera-implan.html">La Comarca Lagunera y el IMPLAN</a></h3>
+          <p class="detallados-descripcion">El jueves 5 de marzo en la Universidad LaSalle en Gómez Palacio, Durango se signa el convenio por José Miguel Campillo Carrete alcalde de Gómez Palacio, Dgo. y Miguel Ángel Riquelme Solís alcalde de Torreón, Coahuila para un plan metropolitano en donde en breve se sumaran Lerdo, Durango y Matamoros, Coahuila.</p>
+          <p class="detallados-autor-fecha">Por María Isabel Saldaña, 07/03/2015 08:05</p>
+        </div>
+      </div>
+      <div class="media breve">
+        <a class="pull-left" href="nueva-forma-impulsar-desarrollo-torreon-zm.html"><img class="media-object" src="nueva-forma-impulsar-desarrollo-torreon-zm/imagen-previa.jpg"></a>
+        <div class="media-body">
+          <h3 class="media-heading detallados-encabezado"><a href="nueva-forma-impulsar-desarrollo-torreon-zm.html">Una nueva forma de impulsar el desarrollo de Torreón y su Zona Metropolitana</a></h3>
+          <p class="detallados-descripcion">El IMPLAN Torreón promueve el impulso del desarrollo integral de la Laguna, mediante la integración de una Cartera de Proyectos Estratégicos.</p>
+          <p class="detallados-autor-fecha">Por Arq. Susana Montano, 11/11/2014 08:05</p>
+        </div>
+      </div>
+      <div class="media breve">
+        <a class="pull-left" href="implan-somos-todos.html"><img class="media-object" src="implan-somos-todos/imagen-previa.jpg"></a>
+        <div class="media-body">
+          <h3 class="media-heading detallados-encabezado"><a href="implan-somos-todos.html">El IMPLAN somos todos</a></h3>
+          <p class="detallados-descripcion">Al iniciar este año se puso en marcha las labores del IMPLAN Torreón, con la firme intención de brindar a la ciudad y su zona metropolitana la posibilidad de crecer de manera ordenada.</p>
+          <p class="detallados-autor-fecha">Por IMPLAN Staff, 08/10/2014 08:05</p>
+        </div>
+      </div>
+      <div class="media breve">
+        <a class="pull-left" href="competitividad-planeacion-metropolitana.html"><img class="media-object" src="competitividad-planeacion-metropolitana/imagen-previa.jpg"></a>
+        <div class="media-body">
+          <h3 class="media-heading detallados-encabezado"><a href="competitividad-planeacion-metropolitana.html">Competitividad y Planeación Metropolitana</a></h3>
+          <p class="detallados-descripcion">El Instituto Mexicano para la Competitividad dio a conocer el Índice de Competitividad Urbana 2014; en él muestra que la Zona Metropolitana de la Laguna (ZML) continúa en un nivel de competitividad media baja.</p>
+          <p class="detallados-autor-fecha">Por Lic. Rodrigo González Morales, 18/09/2014 08:05</p>
+        </div>
+      </div>
+      <div class="media breve">
+        <a class="pull-left" href="independencia-finanzas-publicas.html"><img class="media-object" src="independencia-finanzas-publicas/imagen-previa.jpg"></a>
+        <div class="media-body">
+          <h3 class="media-heading detallados-encabezado"><a href="independencia-finanzas-publicas.html">Independencia de las Finanzas Públicas</a></h3>
+          <p class="detallados-descripcion">Análisis de la relación de ingresos propios y totales y la capacidad financiera de los municipios de la Zona Metropolitana de la Laguna.</p>
+          <p class="detallados-autor-fecha">Por Lic. Alicia Valdez Ibarra, 19/06/2014 08:05</p>
+        </div>
+      </div>
+      <div class="media breve">
+        <a class="pull-left" href="gobiernos-eficaces-eficientes.html"><img class="media-object" src="gobiernos-eficaces-eficientes/imagen-previa.jpg"></a>
+        <div class="media-body">
+          <h3 class="media-heading detallados-encabezado"><a href="gobiernos-eficaces-eficientes.html">Gobiernos eficaces y eficientes</a></h3>
+          <p class="detallados-descripcion">La eficiencia de los gobiernos es el subíndice peor evaluado para la metrópoli ubicándonos en el lugar 63 de 77.</p>
+          <p class="detallados-autor-fecha">Por Lic. Rodrigo González Morales, 12/06/2014 08:05</p>
+        </div>
+      </div>
+      <div class="media breve">
+        <a class="pull-left" href="sistema-politico-estable-funcional.html"><img class="media-object" src="sistema-politico-estable-funcional/imagen-previa.jpg"></a>
+        <div class="media-body">
+          <h3 class="media-heading detallados-encabezado"><a href="sistema-politico-estable-funcional.html">Sistema Político Estable y Funcional</a></h3>
+          <p class="detallados-descripcion">El Sistema Político Estable y Funcional es el subíndice mejor calificado de la zona metropolitana, ya que IMCO nos sitúa en el lugar 11 del ranking.</p>
+          <p class="detallados-autor-fecha">Por Lic. Rodrigo González Morales, 10/06/2014 08:05</p>
+        </div>
+      </div>
+      <div class="media breve">
+        <a class="pull-left" href="suenos-posibles.html"><img class="media-object" src="suenos-posibles/imagen-previa.jpg"></a>
+        <div class="media-body">
+          <h3 class="media-heading detallados-encabezado"><a href="suenos-posibles.html">Sueños Posibles</a></h3>
+          <p class="detallados-descripcion">La ordenanza del alcalde Miguel Riquelme al IMPLAN Torreón es: integrar los sueños urbanos, las aspiraciones más sentidas de los torreonenses en un modelo de competitividad urbano.</p>
+          <p class="detallados-autor-fecha">Por Lic. Eduardo Holguín Zehfuss, 08/05/2014 08:05</p>
+        </div>
+      </div>
+    </div>
+    <div class="mapa-inferior">
+          <div class="pull-right redes-sociales">
+            <a class="fa fa-twitter-square" href="http://www.twitter.com/trcimplan" target="_blank"></a>
+            <a class="fa fa-facebook-square" href="https://facebook.com/trcimplan" target="_blank"></a>
+            <a class="fa fa-facebook-square" href="http://www.instagram.com/implantorreon" target="_blank"></a>
+            <a class="fa fa-rss-square" href="../rss.xml"></a>
+          </div>
+    </div>
+  </div>
+</div>
+<!-- Javascript global inicia -->
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
+<script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="../vendor/metisMenu/metisMenu.min.js"></script>
+<script type="text/javascript" src="../vendor/datatables/js/jquery.dataTables.min.js"></script>
+<script type="text/javascript" src="../vendor/datatables-plugins/dataTables.bootstrap.min.js"></script>
+<script type="text/javascript" src="../vendor/datatables-responsive/dataTables.responsive.js"></script>
+<script type="text/javascript" src="../vendor/raphael/raphael.min.js"></script>
+<script type="text/javascript" src="../vendor/morrisjs/morris.min.js"></script>
+<script type="text/javascript" src="../dist/js/sb-admin-2.min.js"></script>
+<script type="text/javascript" src="http://libs.cartocdn.com/cartodb.js/v3/3.15/cartodb.js"></script>
+<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+<!-- Javascript global termina -->
+<!-- Javascript inicia -->
+
+<!-- Javascript termina -->
+<!-- Javascript Google Analytics -->
+<script>
+  // Google Analytics
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)})(window,document,'script','//www.google-analytics.com/analytics.js','ga');ga('create', 'UA-58290501-1', 'auto');ga('send', 'pageview');
+</script>
+</body>
+</html>

@@ -1,0 +1,721 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+<!-- ===================================================================================================
+
+        Instituto Municipal de Planeación y Competitividad (IMPLAN) de Torreón.
+
+        3er. generación de la Plataforma del Conocimiento
+        Desarrollado por Ing. Guillermo Valdés Lozano <guivaloz en movimientolibre.com>
+
+        El software que lo construye está bajo la licencia GPL versión 3. © 2014, 2015, 2016, 2017.
+        Una copia está contenida en el archivo LICENCE al bajar desde GitHub.
+
+        Al usar, estudiar y copiar está aceptando los términos de uso de la información y del sitio web:
+          http://www.trcimplan.gob.mx/terminos/terminos-informacion.html
+          http://www.trcimplan.gob.mx/terminos/terminos-sitio.html
+
+        Descargue, estudie y colabore bajando todo este sitio web:
+          IMPLAN Torreón     https://github.com/TRCIMPLAN/trcimplan.github.io
+
+        Agradecemos y compartimos las tecnologías abiertas y gratuitas sobre las que se basa:
+          PHP                http://php.net
+          Twitter Bootstrap  http://getbootstrap.com
+          StartBootStrap     http://startbootstrap.com
+          Morris.js          https://morrisjs.github.io/morris.js/
+          Font Awesome       http://fontawesome.io
+          DataTables         https://www.datatables.net
+          Carto              https://carto.com
+          GitHub             https://github.com
+
+     =================================================================================================== -->
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Sistema Metropolitano de Indicadores, Región La Laguna.">
+  <meta name="author" content="TrcIMPLAN Staff">
+  <meta name="keywords" content="IMPLAN, SMI, Indicadores, Metropolitanos, La Laguna">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Indicadores de La Laguna - IMPLAN Torreón">
+  <meta name="twitter:description" content="Sistema Metropolitano de Indicadores, Región La Laguna.">
+  <meta name="twitter:url" content="http://www.trcimplan.gob.mx/indicadores-la-laguna/index.html">
+  <meta name="og:title" content="Indicadores de La Laguna - IMPLAN Torreón">
+  <meta name="og:description" content="Sistema Metropolitano de Indicadores, Región La Laguna.">
+  <meta name="og:url" content="http://www.trcimplan.gob.mx/indicadores-la-laguna/index.html">
+  <title>Indicadores de La Laguna - IMPLAN Torreón</title>
+  <link rel="shortcut icon" type="image/x-icon" href="../imagenes/apple-touch-icon.png">
+  <link rel="apple-touch-icon" href="../imagenes/apple-touch-icon.png">
+  <link rel="apple-touch-icon" href="../imagenes/apple-touch-icon-76x76.png" sizes="76x76">
+  <link rel="apple-touch-icon" href="../imagenes/apple-touch-icon-120x120.png" sizes="120x120">
+  <link rel="apple-touch-icon" href="../imagenes/apple-touch-icon-152x152.png" sizes="152x152">
+  <link rel="apple-touch-icon" href="../imagenes/apple-touch-icon-180x180.png" sizes="180x180">
+  <link rel="icon" href="../imagenes/icon-hires.png" sizes="192x192">
+  <link rel="icon" href="../imagenes/icon-normal.png" sizes="128x128">
+  <link rel="alternate" type="application/rss+xml" href="../rss.xml" title="IMPLAN Torreón">
+  <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+  <link rel="stylesheet" type="text/css" href="../vendor/metisMenu/metisMenu.min.css">
+  <link rel="stylesheet" type="text/css" href="../vendor/datatables-plugins/dataTables.bootstrap.css">
+  <link rel="stylesheet" type="text/css" href="../vendor/morrisjs/morris.css">
+  <link rel="stylesheet" type="text/css" href="../vendor/font-awesome/css/font-awesome.min.css">
+  <link rel="stylesheet" type="text/css" href="../dist/css/sb-admin-2.min.css">
+  <link rel="stylesheet" type="text/css" href="../dist/css/plataforma-de-conocimiento.css">
+  <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Noto+Sans|Roboto+Condensed:400,700">
+  <link rel="stylesheet" type="text/css" href="http://libs.cartocdn.com/cartodb.js/v3/3.15/themes/css/cartodb.css">
+  <link rel="stylesheet" type="text/css" href="../dist/css/estilosvm.css">
+  <link rel="stylesheet" type="text/css" href="../dist/css/trcimplan.css">
+  <!-- SOPORTE PARA IE -->
+  <!--[if lt IE 9]>
+  <script type="text/javascript" src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+  <script type="text/javascript" src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+  <![endif]-->
+</head>
+<body>
+<div id="wrapper">
+  <nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="../index.html"><img class="navbar-brand-img" src="../imagenes/implan-barra-logo-chico-gris.png" alt="IMPLAN Torreón"></a>
+    </div>
+  <div class="navbar-default sidebar" role="navigation">
+    <div class="sidebar-nav navbar-collapse">
+      <ul class="nav" id="side-menu">
+        <li class="sidebar-search">
+          <form method="get" action="http://www.trcimplan.gob.mx/buscador-resultados.html">
+            <div class="input-group custom-search-form">
+              <input type="text" class="form-control" placeholder="Google buscar..." value="" name="q">
+              <span class="input-group-btn">
+                <button class="btn btn-default" type="submit"><i class="fa fa-search"></i></button>
+              </span>
+            </div>
+          </form>
+        </li>
+        <li>
+          <a href="#"><span class="navegacion-icono"><i class="fa fa-lightbulb-o"></i></span> Análisis Publicados<span class="fa arrow"></span></a>
+          <ul class="nav nav-second-level">
+            <li><a href="../blog/index.html"><span class="navegacion-icono"><i class="fa fa-file-text-o"></i></span> Últimos Análisis</a></li>
+            <li><a href="../excolaboradores/index.html"><span class="navegacion-icono"><i class="fa fa-file-text-o"></i></span> Análisis por Autor</a></li>
+          </ul>
+        </li>
+        <li class="active">
+          <a href="#"><span class="navegacion-icono"><i class="fa fa-area-chart"></i></span> Indicadores<span class="fa arrow"></span></a>
+          <ul class="nav nav-second-level">
+            <li><a href="../smi/introduccion.html"><span class="navegacion-icono"><i class="fa fa-file-text-o"></i></span> Introducción al SMI</a></li>
+            <li><a href="../indicadores-categorias/index.html"><span class="navegacion-icono"><i class="fa fa-th-list"></i></span> Indicadores por Categoría</a></li>
+            <li class="active"><a href="../smi/por-region.html"><span class="navegacion-icono"><i class="fa fa-table"></i></span> Indicadores por Región</a></li>
+            <li><a href="../smi/datos-abiertos.html"><span class="navegacion-icono"><i class="fa fa-download"></i></span> Datos Abiertos</a></li>
+            <li><a href="../smi/niveles-socioeconomicos.html"><span class="navegacion-icono"><i class="fa fa-bar-chart"></i></span> Niveles Socioeconómicos</a></li>
+            <li><a href="../monitores/index.html"><span class="navegacion-icono"><i class="fa fa-file-text-o"></i></span> Monitores</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="#"><span class="navegacion-icono"><i class="fa fa-puzzle-piece"></i></span> Indicadores Básicos de Colonias<span class="fa arrow"></span></a>
+          <ul class="nav nav-second-level">
+            <li><a href="../ibc/introduccion.html"><span class="navegacion-icono"><i class="fa fa-file-text-o"></i></span> Introducción al IBC</a></li>
+            <li><a href="../ibc-colonias-torreon/index.html"><span class="navegacion-icono"><i class="fa fa-font"></i></span> Colonias de Torreón</a></li>
+            <li><a href="https://implantorreon.carto.com/u/sigimplan/builder/907a6bc0-2c7e-451e-9668-b78d952e52ff/embed" target="_blank"><span class="navegacion-icono"><i class="fa fa-external-link"></i></span> Mapa Completo</a></li>
+            <li><a href="../ibc/torreon-urbano.html"><span class="navegacion-icono"><i class="fa fa-table"></i></span> Torreón Urbano</a></li>
+            <li><a href="../ibc/datos-abiertos.html"><span class="navegacion-icono"><i class="fa fa-download"></i></span> Datos Abiertos</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="#"><span class="navegacion-icono"><i class="fa fa-map-marker"></i></span> Información Geográfica<span class="fa arrow"></span></a>
+          <ul class="nav nav-second-level">
+            <li><a href="../sig/introduccion.html"><span class="navegacion-icono"><i class="fa fa-file-text-o"></i></span> Introducción al SIG</a></li>
+            <li><a href="../sig-mapas-torreon/temas-sig.html"><span class="navegacion-icono"><i class="fa fa-map-o"></i></span> Mapas por Tema</a></li>
+            <li><a href="../sig-mapas-torreon/plan-director-desarrollo-urbano.html"><span class="navegacion-icono"><i class="fa fa-map-marker"></i></span> Usos de Suelo</a></li>
+            <li><a href="../sig/datos-abiertos.html"><span class="navegacion-icono"><i class="fa fa-download"></i></span> Datos Abiertos</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="#"><span class="navegacion-icono"><i class="fa fa-book"></i></span> Plan Estratégico Torreón 2040<span class="fa arrow"></span></a>
+          <ul class="nav nav-second-level">
+            <li><a href="../pet/indice.html"><span class="navegacion-icono"><i class="fa fa-list-ul"></i></span> Índice General</a></li>
+            <li><a href="../plan-estrategico-torreon-enfoque-metropolitano-2040/index.html"><span class="navegacion-icono"><i class="fa fa-download"></i></span> Descargar</a></li>
+            <li><a href="../plan-estrategico-metropolitano/descripcion-del-proceso.html"><span class="navegacion-icono"><i class="fa fa-calendar"></i></span> Descripción del proceso</a></li>
+            <li><a href="../proyectos/index.html"><span class="navegacion-icono"><i class="fa fa-check-square"></i></span> Proyectos</a></li>
+            <li><a href="../vision-de-ciudad/vision-de-ciudad.html"><span class="navegacion-icono"><i class="fa fa-file-text-o"></i></span> Visión de Ciudad desde IMPLAN</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="#"><span class="navegacion-icono"><i class="fa fa-briefcase"></i></span> Documentos<span class="fa arrow"></span></a>
+          <ul class="nav nav-second-level">
+            <li><a href="../sig-planes/index.html"><span class="navegacion-icono"><i class="fa fa-book"></i></span> Planes y Programas</a></li>
+            <li><a href="../investigaciones/index.html"><span class="navegacion-icono"><i class="fa fa-file-text-o"></i></span> Investigaciones</a></li>
+            <li><a href="../estudios/index.html"><span class="navegacion-icono"><i class="fa fa-file-text-o"></i></span> Estudios</a></li>
+          </ul>
+        </li>
+        <li><a href="../consejo-directivo/integrantes.html"><span class="navegacion-icono"><i class="fa fa-users"></i></span> Consejo Directivo</a></li>
+        <li><a href="../sala-prensa/index.html"><span class="navegacion-icono"><i class="fa fa-newspaper-o"></i></span> Sala de Prensa</a></li>
+        <li><a href="../programas-radio/index.html"><span class="navegacion-icono"><i class="fa fa-microphone"></i></span> Programas de Radio</a></li>
+        <li>
+          <a href="#"><span class="navegacion-icono"><i class="fa fa-file-text-o"></i></span> Consejo Visión Metrópoli<span class="fa arrow"></span></a>
+          <ul class="nav nav-second-level">
+            <li><a href="../convocatorias/vision-metropoli.html"><span class="navegacion-icono"><i class="fa fa-file-text-o"></i></span> Consejo Juvenil</a></li>
+            <li><a href="../vision-metropoli/integrantes.html"><span class="navegacion-icono"><i class="fa fa-file-text-o"></i></span> Integrantes del Consejo</a></li>
+            <li><a href="../vision-metropoli/index.html"><span class="navegacion-icono"><i class="fa fa-newspaper-o"></i></span> Sala de Prensa</a></li>
+            <li><a href="../vision-metropoli/reglamento-vision-metropoli-2020.pdf"><span class="navegacion-icono"><i class="fa fa-file-text-o"></i></span> Reglamento</a></li>
+            <li><a href="https://issuu.com/consejovisionmetropoli/docs/informe_visi_n_metr_poli_2019_-_2021" target="_blank"><span class="navegacion-icono"><i class="fa fa-file-text-o"></i></span> Informe 2019 - 2021</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="#"><span class="navegacion-icono"><i class="fa fa-building-o"></i></span> Institucional<span class="fa arrow"></span></a>
+          <ul class="nav nav-second-level">
+            <li><a href="../institucional/vision-mision.html"><span class="navegacion-icono"><i class="fa fa-trophy"></i></span> Misión / Visión</a></li>
+            <li><a href="../institucional/NuestrosProyectos.html"><span class="navegacion-icono"><i class="fa fa-pencil-square-o"></i></span> Nuestros Proyectos</a></li>
+            <li><a href="../institucional/mensaje-director.html"><span class="navegacion-icono"><i class="fa fa-comment"></i></span> Mensaje del Director</a></li>
+            <li><a href="../autores/index.html"><span class="navegacion-icono"><i class="fa fa-user"></i></span> Quienes Somos</a></li>
+            <li><a href="../institucional/estructura-organica.html"><span class="navegacion-icono"><i class="fa fa-sitemap"></i></span> Estructura Orgánica</a></li>
+            <li><a href="../institucional/modelo-operativo-universal.html"><span class="navegacion-icono"><i class="fa fa-slideshare"></i></span> Modelo Operativo Univ.</a></li>
+            <li><a href="../institucional/reglamentos.html"><span class="navegacion-icono"><i class="fa fa-gavel"></i></span> Reglamentos</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="#"><span class="navegacion-icono"><i class="fa fa-external-link"></i></span> Transparencia<span class="fa arrow"></span></a>
+          <ul class="nav nav-second-level">
+            <li><a href="http://www2.icai.org.mx/ipo/dependencia.php?dep=178#pageload" target="_blank"><span class="navegacion-icono"><i class="fa fa-file-text-o"></i></span> Transparencia Estatal (ICAI)</a></li>
+            <li><a href="https://consultapublicamx.inai.org.mx/vut-web/faces/view/consultaPublica.xhtml#inicio" target="_blank"><span class="navegacion-icono"><i class="fa fa-file-text-o"></i></span> Plataforma Nacional de Transparencia</a></li>
+            <li><a href="../transparencia/index.html"><span class="navegacion-icono"><i class="fa fa-briefcase"></i></span> Documentos</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="#"><span class="navegacion-icono"><i class="fa fa-share-alt"></i></span> Términos de Uso<span class="fa arrow"></span></a>
+          <ul class="nav nav-second-level">
+            <li><a href="../terminos/terminos-informacion.html"><span class="navegacion-icono"><i class="fa fa-cubes"></i></span> De la información</a></li>
+            <li><a href="../terminos/terminos-sitio.html"><span class="navegacion-icono"><i class="fa fa-globe"></i></span> Del sitio web</a></li>
+            <li><a href="../terminos/privacidad.html"><span class="navegacion-icono"><i class="fa fa-lock"></i></span> Aviso de Privacidad</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="#"><span class="navegacion-icono"><i class="fa fa-phone"></i></span> Contacto<span class="fa arrow"></span></a>
+          <ul class="nav nav-second-level">
+            <li><a href="../contacto/contacto.html"><span class="navegacion-icono"><i class="fa fa-phone"></i></span> Medios de contacto</a></li>
+            <li><a href="../preguntas-frecuentes/preguntas-frecuentes.html"><span class="navegacion-icono"><i class="fa fa-question"></i></span> Preguntas Frecuentes</a></li>
+            <li><a href="http://goo.gl/forms/1rdX4X128PpMOif73" target="_blank"><span class="navegacion-icono"><i class="fa fa-external-link"></i></span> Comentarios y Sugerencias</a></li>
+          </ul>
+        </li>
+        <li><a href="../convocatorias/index.html"><span class="navegacion-icono"><i class="fa fa-file-text-o"></i></span> Convocatorias</a></li>
+        <li><a href="http://177.244.42.17/ovie-torreon/#!" target="_blank"><span class="navegacion-icono"><i class="fa fa-map-marker"></i></span> Oficina Virtual de Información Económica (OVIE)</a></li>
+        <li><a href="https://arcg.is/0vySSr" target="_blank"><span class="navegacion-icono"><i class="fa fa-globe"></i></span> Atlas Municipal de Riesgos de Torreón</a></li>
+      </ul>
+    </div>
+  </div>
+  </nav>
+  <div id="page-wrapper">
+    <div class="cuerpo">
+      <div class="encabezado">
+        <span><h1>Indicadores de La Laguna</h1></span>
+        <div class="encabezado-descripcion">Sistema Metropolitano de Indicadores, Región La Laguna.</div>
+      </div>
+      <nav aria-label="Page navigation">
+        <ul id="indice" class="pagination">
+          <li><a href="#A">A</a></li>
+          <li><a href="#B">B</a></li>
+          <li><a href="#C">C</a></li>
+          <li><a href="#D">D</a></li>
+          <li><a href="#E">E</a></li>
+          <li><a href="#F">F</a></li>
+          <li><a href="#G">G</a></li>
+          <li><a href="#H">H</a></li>
+          <li><a href="#I">I</a></li>
+          <li><a href="#J">J</a></li>
+          <li><a href="#L">L</a></li>
+          <li><a href="#M">M</a></li>
+          <li><a href="#N">N</a></li>
+          <li><a href="#O">O</a></li>
+          <li><a href="#P">P</a></li>
+          <li><a href="#R">R</a></li>
+          <li><a href="#S">S</a></li>
+          <li><a href="#T">T</a></li>
+          <li><a href="#U">U</a></li>
+          <li><a href="#V">V</a></li>
+        </ul>
+      </nav>
+      <h3 id="A" class="listado-alfabetico-titulo">A</h3>
+      <ul class="listado-alfabetico">
+        <li><a href="sociedad-absorcion-de-la-demanda-estudiantil.html">Absorción de la demanda estudiantil en La Laguna</a></li>
+        <li><a href="seguridad-abuso-de-confianza.html">Abuso de Confianza en La Laguna</a></li>
+        <li><a href="seguridad-abuso-sexual.html">Abuso sexual en La Laguna</a></li>
+        <li><a href="sociedad-acceso-a-instituciones-de-salud.html">Acceso a Instituciones de Salud en La Laguna</a></li>
+        <li><a href="sociedad-acceso-a-servicios-financieros.html">Acceso a Servicios Financieros en La Laguna</a></li>
+        <li><a href="sustentabilidad-acceso-a-vialidades-pavimentadas.html">Acceso a Vialidades Pavimentadas en La Laguna</a></li>
+        <li><a href="seguridad-accidentes-de-transito-donde-la-persona-responsable-se-fugo.html">Accidentes de tránsito donde la persona responsable se fugó en La Laguna</a></li>
+        <li><a href="seguridad-accidentes-de-transito.html">Accidentes de Tránsito en La Laguna</a></li>
+        <li><a href="seguridad-accidentes-de-transito-fatales.html">Accidentes de Tránsito Fatales en La Laguna</a></li>
+        <li><a href="seguridad-acoso-sexual.html">Acoso sexual en La Laguna</a></li>
+        <li><a href="economia-actividad-economica.html">Actividad económica en La Laguna</a></li>
+        <li><a href="sociedad-adultos-mayores.html">Adultos Mayores en La Laguna</a></li>
+        <li><a href="sociedad-adultos-mayores-femenino.html">Adultos Mayores Femenino en La Laguna</a></li>
+        <li><a href="sociedad-adultos-mayores-masculino.html">Adultos Mayores Masculino en La Laguna</a></li>
+        <li><a href="sustentabilidad-aerolineas.html">Aerolíneas en La Laguna</a></li>
+        <li><a href="sociedad-agua-surtida-por-pipas.html">Agua surtida por pipas en La Laguna</a></li>
+        <li><a href="seguridad-allanamiento-de-morada.html">Allanamiento de morada en La Laguna</a></li>
+        <li><a href="sustentabilidad-alumbrado-publico.html">Alumbrado Público en La Laguna</a></li>
+        <li><a href="sociedad-alumnos-con-habilidades-cientificas-matematicas-avanzadas.html">Alumnos con Habilidades Científicas-Matemáticas Avanzadas en La Laguna</a></li>
+        <li><a href="sociedad-alumnos-con-habilidades-cientificas-matematicas-basicas.html">Alumnos con Habilidades Científicas-Matemáticas Básicas en La Laguna</a></li>
+        <li><a href="sociedad-alumnos-con-habilidades-cientificas-matematicas-iniciales.html">Alumnos con Habilidades Científicas-Matemáticas Iniciales en La Laguna</a></li>
+        <li><a href="sociedad-alumnos-con-habilidades-cientificas-matematicas-practicas.html">Alumnos con Habilidades Científicas-Matemáticas Prácticas en La Laguna</a></li>
+        <li><a href="sociedad-alumnos-con-habilidades-gramaticas-linguisticas-avanzadas.html">Alumnos con Habilidades Gramáticas-Lingüísticas Avanzadas en La Laguna</a></li>
+        <li><a href="sociedad-alumnos-con-habilidades-gramaticas-linguisticas-basicas.html">Alumnos con Habilidades Gramáticas-Lingüísticas Básicas en La Laguna</a></li>
+        <li><a href="sociedad-alumnos-con-habilidades-gramaticas-linguisticas-iniciales.html">Alumnos con Habilidades Gramáticas-Lingüísticas Iniciales en La Laguna</a></li>
+        <li><a href="sociedad-alumnos-con-habilidades-gramaticas-linguisticas-practicas.html">Alumnos con Habilidades Gramáticas-Lingüísticas Prácticas en La Laguna</a></li>
+        <li><a href="sociedad-alumnos-con-perfil-cientifico-matematico.html">Alumnos con Perfil Científico-Matemático en La Laguna</a></li>
+        <li><a href="sociedad-alumnos-con-perfil-gramatico-espanol.html">Alumnos con Perfil Gramático-Español en La Laguna</a></li>
+        <li><a href="sociedad-alumnos-de-preescolar-por-docente.html">Alumnos de Preescolar por Docente en La Laguna</a></li>
+        <li><a href="sociedad-alumnos-de-primaria-por-docente.html">Alumnos de Primaria por Docente en La Laguna</a></li>
+        <li><a href="sociedad-alumnos-de-secundaria-por-docente.html">Alumnos de Secundaria por Docente en La Laguna</a></li>
+        <li><a href="seguridad-amenazas.html">Amenazas en La Laguna</a></li>
+        <li><a href="economia-apertura-de-un-negocio-percentil-promedio.html">Apertura de un Negocio (percentil promedio) en La Laguna</a></li>
+        <li><a href="sustentabilidad-aprovechamiento-del-biogas-en-rellenos-sanitarios.html">Aprovechamiento del Biogás en Rellenos Sanitarios en La Laguna</a></li>
+        <li><a href="sustentabilidad-area-no-urbanizada.html">Área No Urbanizada en La Laguna</a></li>
+        <li><a href="sustentabilidad-areas-verdes-urbanas-per-capita.html">Áreas verdes urbanas per cápita en La Laguna</a></li>
+        <li><a href="seguridad-atropellamientos.html">Atropellamientos en La Laguna</a></li>
+        <li class="pull-right listado-alfabetico-arriba"><a href="#indice"><i class="fa fa-arrow-circle-up" aria-hidden="true"></i></a></li>
+      </ul>
+      <h3 id="B" class="listado-alfabetico-titulo">B</h3>
+      <ul class="listado-alfabetico">
+        <li><a href="gobierno-barreras-para-candidatos-independientes.html">Barreras para candidatos independientes en La Laguna</a></li>
+        <li class="pull-right listado-alfabetico-arriba"><a href="#indice"><i class="fa fa-arrow-circle-up" aria-hidden="true"></i></a></li>
+      </ul>
+      <h3 id="C" class="listado-alfabetico-titulo">C</h3>
+      <ul class="listado-alfabetico">
+        <li><a href="sustentabilidad-calidad-del-agua-superficial-intervalo-dbo.html">Calidad del agua superficial (Intervalo DBO) en La Laguna</a></li>
+        <li><a href="sociedad-camas-censables.html">Camas Censables en La Laguna</a></li>
+        <li><a href="sociedad-camas-de-hospital.html">Camas de Hospital en La Laguna</a></li>
+        <li><a href="economia-cantidad-de-creditos-hipotecarios-trimestral.html">Cantidad de Créditos Hipotecarios (trimestral) en La Laguna</a></li>
+        <li><a href="sustentabilidad-capacidad-de-tratamiento-de-agua-en-operacion.html">Capacidad de Tratamiento de Agua en Operación en La Laguna</a></li>
+        <li><a href="gobierno-capacidad-financiera.html">Capacidad Financiera en La Laguna</a></li>
+        <li><a href="sociedad-carencia-por-acceso-a-la-alimentacion.html">Carencia por acceso a la alimentación en La Laguna</a></li>
+        <li><a href="sociedad-carencia-por-acceso-a-la-seguridad-social.html">Carencia por acceso a la seguridad social en La Laguna</a></li>
+        <li><a href="sociedad-carencia-por-acceso-a-los-servicios-basicos-de-la-vivienda.html">Carencia por acceso a los servicios básicos de la vivienda en La Laguna</a></li>
+        <li><a href="sociedad-carencia-por-acceso-a-los-servicios-de-salud.html">Carencia por acceso a los servicios de salud en La Laguna</a></li>
+        <li><a href="economia-cartera-hipotecaria.html">Cartera Hipotecaria en La Laguna</a></li>
+        <li><a href="economia-cartera-hipotecaria-vencida.html">Cartera Hipotecaria Vencida en La Laguna</a></li>
+        <li><a href="gobierno-casillas-anuladas.html">Casillas anuladas en La Laguna</a></li>
+        <li><a href="sociedad-casos-acumulados-de-covid-19-negativos.html">Casos acumulados de COVID-19 negativos en La Laguna</a></li>
+        <li><a href="sociedad-casos-acumulados-de-covid-19-positivos.html">Casos acumulados de COVID-19 positivos en La Laguna</a></li>
+        <li><a href="sociedad-casos-de-covid-19-sospechosos.html">Casos de COVID-19 sospechosos en La Laguna</a></li>
+        <li><a href="economia-centros-de-investigacion.html">Centros de Investigación en La Laguna</a></li>
+        <li><a href="sociedad-centros-de-trabajo-para-la-educacion-basica.html">Centros de trabajo para la educación básica en La Laguna</a></li>
+        <li><a href="seguridad-choques-contra-ciclistas.html">Choques contra ciclistas en La Laguna</a></li>
+        <li><a href="seguridad-choques-contra-motocicletas.html">Choques contra motocicletas en La Laguna</a></li>
+        <li><a href="seguridad-choques-contra-vehiculos-automotores.html">Choques contra vehículos automotores en La Laguna</a></li>
+        <li><a href="economia-ciudad-fronteriza-o-portuaria.html">Ciudad Fronteriza o Portuaria en La Laguna</a></li>
+        <li><a href="gobierno-competencia-de-servicios-notariales.html">Competencia de Servicios Notariales en La Laguna</a></li>
+        <li><a href="gobierno-competencia-electoral-diferencia-de-votos.html">Competencia Electoral Diferencia de Votos en La Laguna</a></li>
+        <li><a href="gobierno-competencia-electoral.html">Competencia Electoral en La Laguna</a></li>
+        <li><a href="gobierno-competencia-electoral-votos-totales.html">Competencia Electoral Votos Totales en La Laguna</a></li>
+        <li><a href="sustentabilidad-consumo-de-agua.html">Consumo de Agua en La Laguna</a></li>
+        <li><a href="sustentabilidad-consumo-de-agua-total.html">Consumo de agua total en La Laguna</a></li>
+        <li><a href="sustentabilidad-consumo-de-diesel-en-transporte-de-bienes.html">Consumo de Diesel en Transporte de Bienes en La Laguna</a></li>
+        <li><a href="sustentabilidad-consumo-electrico-en-servicios-municipales.html">Consumo eléctrico en servicios municipales en La Laguna</a></li>
+        <li><a href="sustentabilidad-consumo-electrico-residencial.html">Consumo eléctrico residencial en La Laguna</a></li>
+        <li><a href="economia-contribucion-laboral.html">Contribución laboral en La Laguna</a></li>
+        <li><a href="economia-costo-de-electricidad.html">Costo de electricidad en La Laguna</a></li>
+        <li><a href="economia-crecimiento-de-la-mancha-urbana.html">Crecimiento de la Mancha Urbana en La Laguna</a></li>
+        <li><a href="economia-crecimiento-de-la-poblacion-ocupada-sin-ingresos.html">Crecimiento de la Población Ocupada sin Ingresos en La Laguna</a></li>
+        <li><a href="economia-crecimiento-del-pib-estatal.html">Crecimiento del PIB Estatal en La Laguna</a></li>
+        <li><a href="economia-crecimiento-del-salario-promedio.html">Crecimiento del Salario Promedio en La Laguna</a></li>
+        <li><a href="sociedad-crecimiento-en-acceso-a-servicios-de-salud.html">Crecimiento en Acceso a Servicios de Salud en La Laguna</a></li>
+        <li><a href="economia-crecimiento-en-jornadas-laborales-muy-largas.html">Crecimiento en Jornadas Laborales Muy Largas en La Laguna</a></li>
+        <li><a href="economia-crecimiento-en-los-empleados-en-el-sector-formal.html">Crecimiento en los Empleados en el Sector Formal en La Laguna</a></li>
+        <li><a href="sociedad-crecimiento-en-poblacion-altamente-calificada.html">Crecimiento en Población Altamente Calificada en La Laguna</a></li>
+        <li><a href="economia-credito-a-las-empresas.html">Crédito a las Empresas en La Laguna</a></li>
+        <li><a href="gobierno-cumplimiento-en-informacion-publica-minina.html">Cumplimiento en Información Pública Mínina en La Laguna</a></li>
+        <li class="pull-right listado-alfabetico-arriba"><a href="#indice"><i class="fa fa-arrow-circle-up" aria-hidden="true"></i></a></li>
+      </ul>
+      <h3 id="D" class="listado-alfabetico-titulo">D</h3>
+      <ul class="listado-alfabetico">
+        <li><a href="seguridad-dano-a-la-propiedad.html">Daño a la propiedad en La Laguna</a></li>
+        <li><a href="sociedad-defunciones.html">Defunciones en La Laguna</a></li>
+        <li><a href="seguridad-delitos.html">Delitos en La Laguna</a></li>
+        <li><a href="seguridad-delitos-patrimoniales.html">Delitos Patrimoniales en La Laguna</a></li>
+        <li><a href="economia-demandantes-de-conflicto-laboral.html">Demandantes de Conflicto Laboral en La Laguna</a></li>
+        <li><a href="economia-densidad-poblacional.html">Densidad Poblacional en La Laguna</a></li>
+        <li><a href="sustentabilidad-desastres-naturales.html">Desastres Naturales en La Laguna</a></li>
+        <li><a href="sociedad-desigualdad-en-las-ciudades.html">Desigualdad en las Ciudades en La Laguna</a></li>
+        <li><a href="economia-desigualdad-salarial.html">Desigualdad salarial en La Laguna</a></li>
+        <li><a href="economia-desocupados-con-educacion-superior-o-media-superior.html">Desocupados con educación superior o media superior en La Laguna</a></li>
+        <li><a href="economia-desocupados-con-experiencia.html">Desocupados con experiencia en La Laguna</a></li>
+        <li><a href="economia-desocupados-de-15-a-25-anos.html">Desocupados de 15 a 25 años en La Laguna</a></li>
+        <li><a href="seguridad-despojo.html">Despojo en La Laguna</a></li>
+        <li><a href="sustentabilidad-destinos-via-aerea.html">Destinos Vía Aérea en La Laguna</a></li>
+        <li><a href="sustentabilidad-destinos-via-terrestre.html">Destinos Vía Terrestre en La Laguna</a></li>
+        <li><a href="gobierno-deuda-municipal.html">Deuda municipal en La Laguna</a></li>
+        <li><a href="sociedad-diferencial-estructural-del-ingreso-entre-hombres-y-mujeres.html">Diferencial estructural del ingreso entre hombres y mujeres en La Laguna</a></li>
+        <li><a href="sociedad-discapacidad.html">Discapacidad en La Laguna</a></li>
+        <li><a href="sustentabilidad-disponibilidad-de-banqueta.html">Disponibilidad de Banqueta en La Laguna</a></li>
+        <li><a href="gobierno-disponibilidad-de-informacion.html">Disponibilidad de información en La Laguna</a></li>
+        <li><a href="sustentabilidad-disposicion-adecuada-de-residuos-solidos.html">Disposición Adecuada de Residuos Sólidos en La Laguna</a></li>
+        <li><a href="economia-diversificacion-economica.html">Diversificación Económica en La Laguna</a></li>
+        <li><a href="gobierno-duracion-de-periodo-para-ediles-y-delegados.html">Duración de Período para Ediles y Delegados en La Laguna</a></li>
+        <li><a href="gobierno-duracion-maxima-de-periodos-de-alcaldes.html">Duración máxima de periodos de alcaldes en La Laguna</a></li>
+        <li class="pull-right listado-alfabetico-arriba"><a href="#indice"><i class="fa fa-arrow-circle-up" aria-hidden="true"></i></a></li>
+      </ul>
+      <h3 id="E" class="listado-alfabetico-titulo">E</h3>
+      <ul class="listado-alfabetico">
+        <li><a href="sustentabilidad-economia-intensiva-en-energia.html">Economía Intensiva en Energía en La Laguna</a></li>
+        <li><a href="economia-ejecucion-de-contratos.html">Ejecución de Contratos en La Laguna</a></li>
+        <li><a href="sustentabilidad-emergencias-ambientales.html">Emergencias Ambientales en La Laguna</a></li>
+        <li><a href="economia-empleados-en-el-sector-formal.html">Empleados en el Sector Formal en La Laguna</a></li>
+        <li><a href="sustentabilidad-empresas-certificadas-como-limpias.html">Empresas Certificadas como Limpias en La Laguna</a></li>
+        <li><a href="economia-empresas-certificadas-con-iso-9000-y-14000.html">Empresas Certificadas con ISO-9000 y 14000 en La Laguna</a></li>
+        <li><a href="sociedad-empresas-con-mas-de-10-empleados.html">Empresas con más de 10 empleados en La Laguna</a></li>
+        <li><a href="economia-empresas.html">Empresas en La Laguna</a></li>
+        <li><a href="economia-empresas-exportadoras.html">Empresas Exportadoras en La Laguna</a></li>
+        <li><a href="sociedad-empresas-socialmente-responsables.html">Empresas Socialmente Responsables en La Laguna</a></li>
+        <li><a href="sociedad-equidad-laboral.html">Equidad laboral en La Laguna</a></li>
+        <li><a href="economia-equidad-salarial.html">Equidad salarial en La Laguna</a></li>
+        <li><a href="sociedad-escuelas-de-calidad.html">Escuelas de Calidad en La Laguna</a></li>
+        <li><a href="gobierno-esfuerzos-de-mejora-regulatoria.html">Esfuerzos de mejora regulatoria en La Laguna</a></li>
+        <li><a href="sociedad-espacios-culturales.html">Espacios Culturales en La Laguna</a></li>
+        <li><a href="sociedad-espacios-culturales-segun-imco.html">Espacios Culturales (según IMCO) en La Laguna</a></li>
+        <li><a href="sociedad-esperanza-de-vida-al-nacer.html">Esperanza de vida al nacer en La Laguna</a></li>
+        <li><a href="economia-estimacion-de-pib.html">Estimación de PIB en La Laguna</a></li>
+        <li><a href="sustentabilidad-estrategias-estatales-de-biodiversidad.html">Estrategias Estatales de Biodiversidad en La Laguna</a></li>
+        <li><a href="sustentabilidad-exposicion-a-altas-concentraciones-de-pm2-5-en-interiores.html">Exposición a altas concentraciones de PM2.5 en interiores en La Laguna</a></li>
+        <li><a href="seguridad-extorsion.html">Extorsión en La Laguna</a></li>
+        <li class="pull-right listado-alfabetico-arriba"><a href="#indice"><i class="fa fa-arrow-circle-up" aria-hidden="true"></i></a></li>
+      </ul>
+      <h3 id="F" class="listado-alfabetico-titulo">F</h3>
+      <ul class="listado-alfabetico">
+        <li><a href="seguridad-falsificacion.html">Falsificación en La Laguna</a></li>
+        <li><a href="seguridad-feminicidio.html">Feminicidio en La Laguna</a></li>
+        <li><a href="sustentabilidad-flujo-de-pasajeros-aereos.html">Flujo de Pasajeros Aéreos en La Laguna</a></li>
+        <li><a href="economia-flujo-de-pasajeros-del-o-hacia-el-extranjero.html">Flujo de Pasajeros del o Hacia el Extranjero en La Laguna</a></li>
+        <li><a href="gobierno-formulas-cabildo.html">Formulas cabildo en La Laguna</a></li>
+        <li><a href="seguridad-fraude.html">Fraude en La Laguna</a></li>
+        <li class="pull-right listado-alfabetico-arriba"><a href="#indice"><i class="fa fa-arrow-circle-up" aria-hidden="true"></i></a></li>
+      </ul>
+      <h3 id="G" class="listado-alfabetico-titulo">G</h3>
+      <ul class="listado-alfabetico">
+        <li><a href="sustentabilidad-generacion-de-basura.html">Generación de Basura en La Laguna</a></li>
+        <li><a href="sociedad-grado-promedio-de-escolaridad.html">Grado Promedio de Escolaridad en La Laguna</a></li>
+        <li><a href="economia-grandes-empresas.html">Grandes Empresas en La Laguna</a></li>
+        <li><a href="economia-grandes-empresas-segun-cnn-expansion.html">Grandes Empresas (según CNN Expansión) en La Laguna</a></li>
+        <li class="pull-right listado-alfabetico-arriba"><a href="#indice"><i class="fa fa-arrow-circle-up" aria-hidden="true"></i></a></li>
+      </ul>
+      <h3 id="H" class="listado-alfabetico-titulo">H</h3>
+      <ul class="listado-alfabetico">
+        <li><a href="seguridad-heridos-en-accidentes-relacionados-con-transporte.html">Heridos en accidentes relacionados con transporte en La Laguna</a></li>
+        <li><a href="seguridad-hogares-con-integrante-victima-de-extorsion.html">Hogares con integrante víctima de extorsión en La Laguna</a></li>
+        <li><a href="seguridad-hogares-con-integrante-victima-de-robo-parcial-de-vehiculo.html">Hogares con integrante víctima de robo parcial de vehículo en La Laguna</a></li>
+        <li><a href="sociedad-hogares-con-jefatura-femenina.html">Hogares con Jefatura Femenina en La Laguna</a></li>
+        <li><a href="seguridad-hogares-victima-de-al-menos-un-delito.html">Hogares víctima de al menos un delito en La Laguna</a></li>
+        <li><a href="seguridad-homicidios-en-accidentes-de-transito.html">Homicidios en accidentes de tránsito en La Laguna</a></li>
+        <li><a href="seguridad-homicidios.html">Homicidios en La Laguna</a></li>
+        <li><a href="economia-horas-laboradas.html">Horas laboradas en La Laguna</a></li>
+        <li><a href="sociedad-horas-trabajadas-por-semana-de-la-poblacion-femenina.html">Horas trabajadas por semana de la población femenina en La Laguna</a></li>
+        <li><a href="seguridad-hostigamiento-sexual.html">Hostigamiento sexual en La Laguna</a></li>
+        <li class="pull-right listado-alfabetico-arriba"><a href="#indice"><i class="fa fa-arrow-circle-up" aria-hidden="true"></i></a></li>
+      </ul>
+      <h3 id="I" class="listado-alfabetico-titulo">I</h3>
+      <ul class="listado-alfabetico">
+        <li><a href="seguridad-incumplimiento-de-obligaciones-de-asistencia-familiar.html">Incumplimiento de obligaciones de asistencia familiar en La Laguna</a></li>
+        <li><a href="economia-indice-de-competitividad-urbana.html">Índice de Competitividad Urbana en La Laguna</a></li>
+        <li><a href="economia-indice-de-complejidad-economica.html">Índice de complejidad económica en La Laguna</a></li>
+        <li><a href="sociedad-indice-de-desarrollo-humano-idh.html">Índice de Desarrollo Humano (IDH) en La Laguna</a></li>
+        <li><a href="sustentabilidad-indice-de-disponibilidad-de-acuiferos.html">Índice de Disponibilidad de Acuíferos en La Laguna</a></li>
+        <li><a href="economia-indice-de-especializacion-local-en-comercio.html">Índice de Especialización Local en Comercio en La Laguna</a></li>
+        <li><a href="economia-indice-de-especializacion-local-en-industria-manufacturera.html">Índice de Especialización Local en Industria Manufacturera en La Laguna</a></li>
+        <li><a href="economia-indice-de-especializacion-local-en-la-construccion.html">Índice de Especialización Local en la Construcción en La Laguna</a></li>
+        <li><a href="economia-indice-de-especializacion-local-en-la-mineria.html">Índice de Especialización Local en la Minería en La Laguna</a></li>
+        <li><a href="economia-indice-de-especializacion-local-en-servicios.html">Índice de Especialización Local en Servicios en La Laguna</a></li>
+        <li><a href="sustentabilidad-indice-de-gestion-de-calidad-del-aire.html">Índice de Gestión de Calidad del Aire en La Laguna</a></li>
+        <li><a href="economia-indice-de-gini.html">Índice de Gini en La Laguna</a></li>
+        <li><a href="gobierno-indice-de-gobierno-electronico-municipal.html">Índice de Gobierno Electrónico Municipal en La Laguna</a></li>
+        <li><a href="sociedad-indice-de-hacinamiento.html">Índice de Hacinamiento en La Laguna</a></li>
+        <li><a href="gobierno-indice-de-informacion-presupuestal.html">Índice de Información Presupuestal en La Laguna</a></li>
+        <li><a href="economia-inflacion-anual.html">Inflación Anual en La Laguna</a></li>
+        <li><a href="economia-inflacion-mensual.html">Inflación mensual en La Laguna</a></li>
+        <li><a href="sociedad-ingreso-promedio-de-la-mujer.html">Ingreso Promedio de la Mujer en La Laguna</a></li>
+        <li><a href="gobierno-ingresos-por-cobro-de-servicios.html">Ingresos por Cobro de Servicios en La Laguna</a></li>
+        <li><a href="economia-ingresos-promedio-por-hora-trabajada-en-mujeres.html">Ingresos promedio por hora trabajada en mujeres en La Laguna</a></li>
+        <li><a href="gobierno-ingresos-propios.html">Ingresos Propios en La Laguna</a></li>
+        <li><a href="gobierno-ingresos-totales.html">Ingresos Totales en La Laguna</a></li>
+        <li><a href="gobierno-ingresos-totales-per-capita.html">Ingresos Totales Per Cápita en La Laguna</a></li>
+        <li><a href="gobierno-institutos-de-planeacion-urbana.html">Institutos de Planeación Urbana en La Laguna</a></li>
+        <li><a href="economia-intensidad-electrica.html">Intensidad eléctrica en La Laguna</a></li>
+        <li><a href="economia-intensidad-energetica-en-la-economia.html">Intensidad energética en la economía en La Laguna</a></li>
+        <li><a href="gobierno-inversion-en-transporte-publico.html">Inversión en transporte público en La Laguna</a></li>
+        <li><a href="economia-inversion-extranjera-directa.html">Inversión Extranjera Directa en La Laguna</a></li>
+        <li><a href="economia-inversion-extranjera-directa-neta.html">Inversión Extranjera Directa (Neta) en La Laguna</a></li>
+        <li><a href="economia-inversion-per-capita.html">Inversión Per cápita en La Laguna</a></li>
+        <li><a href="economia-inversion-sin-actividad-petrolera-extraccion-y-refinacion.html">Inversión sin actividad petrolera (extracción y refinación) en La Laguna</a></li>
+        <li><a href="economia-investigadores.html">Investigadores en La Laguna</a></li>
+        <li class="pull-right listado-alfabetico-arriba"><a href="#indice"><i class="fa fa-arrow-circle-up" aria-hidden="true"></i></a></li>
+      </ul>
+      <h3 id="J" class="listado-alfabetico-titulo">J</h3>
+      <ul class="listado-alfabetico">
+        <li><a href="economia-jornadas-laborales-muy-largas.html">Jornadas Laborales Muy Largas en La Laguna</a></li>
+        <li class="pull-right listado-alfabetico-arriba"><a href="#indice"><i class="fa fa-arrow-circle-up" aria-hidden="true"></i></a></li>
+      </ul>
+      <h3 id="L" class="listado-alfabetico-titulo">L</h3>
+      <ul class="listado-alfabetico">
+        <li><a href="seguridad-lesiones.html">Lesiones en La Laguna</a></li>
+        <li><a href="seguridad-lesiones-por-accidente-de-transito.html">Lesiones por accidente de tránsito en La Laguna</a></li>
+        <li><a href="sustentabilidad-lineas-de-autobus.html">Líneas de Autobús en La Laguna</a></li>
+        <li><a href="gobierno-litros-de-combustible-gastados-por-habitante.html">Litros de Combustible Gastados por Habitante en La Laguna</a></li>
+        <li class="pull-right listado-alfabetico-arriba"><a href="#indice"><i class="fa fa-arrow-circle-up" aria-hidden="true"></i></a></li>
+      </ul>
+      <h3 id="M" class="listado-alfabetico-titulo">M</h3>
+      <ul class="listado-alfabetico">
+        <li><a href="sociedad-madres-adolescentes.html">Madres Adolescentes en La Laguna</a></li>
+        <li><a href="gobierno-marco-regulatorio-para-la-gestion-integral-de-residuos-solidos-urbanos.html">Marco regulatorio para la gestión integral de residuos sólidos urbanos en La Laguna</a></li>
+        <li><a href="gobierno-matrimonio-igualitario.html">Matrimonio igualitario en La Laguna</a></li>
+        <li><a href="sociedad-matrimonio-infantil-precoz-o-forzado.html">Matrimonio infantil, precoz o forzado en La Laguna</a></li>
+        <li><a href="economia-medianas-empresas.html">Medianas Empresas en La Laguna</a></li>
+        <li><a href="sociedad-medicos.html">Médicos en La Laguna</a></li>
+        <li><a href="sociedad-medicos-especializados.html">Médicos especializados en La Laguna</a></li>
+        <li><a href="sociedad-medicos-y-enfermeras.html">Médicos y enfermeras en La Laguna</a></li>
+        <li><a href="economia-microempresas.html">Microempresas en La Laguna</a></li>
+        <li><a href="sociedad-migrantes-nal-y-ext-con-educacion-superior.html">Migrantes (Nal y Ext) con educación superior en La Laguna</a></li>
+        <li><a href="seguridad-monto-reportado-en-robo-de-mercancias.html">Monto Reportado en Robo de Mercancías en La Laguna</a></li>
+        <li><a href="sociedad-mortalidad.html">Mortalidad en La Laguna</a></li>
+        <li><a href="sociedad-mortalidad-infantil.html">Mortalidad Infantil en La Laguna</a></li>
+        <li><a href="sociedad-mortalidad-infantil-por-enfermedades-respiratorias.html">Mortalidad infantil por enfermedades respiratorias en La Laguna</a></li>
+        <li><a href="sociedad-mortalidad-por-diabetes.html">Mortalidad por Diabetes en La Laguna</a></li>
+        <li><a href="sociedad-mortalidad-por-vih-sida.html">Mortalidad por VIH-SIDA en La Laguna</a></li>
+        <li><a href="sustentabilidad-motorizacion.html">Motorización en La Laguna</a></li>
+        <li><a href="sociedad-muertes-por-accidentes-relacionados-con-transporte.html">Muertes por Accidentes Relacionados con Transporte en La Laguna</a></li>
+        <li><a href="gobierno-muertes-por-infecciones-instestinales.html">Muertes por Infecciones Instestinales en La Laguna</a></li>
+        <li><a href="sociedad-mujeres-empleadoras.html">Mujeres empleadoras en La Laguna</a></li>
+        <li><a href="sociedad-mujeres-en-la-administracion-municipal.html">Mujeres en la administración municipal en La Laguna</a></li>
+        <li><a href="sociedad-mujeres-en-la-fuerza-laboral.html">Mujeres en la Fuerza Laboral en La Laguna</a></li>
+        <li><a href="economia-mujeres-que-estudian.html">Mujeres que estudian en La Laguna</a></li>
+        <li><a href="sociedad-mujeres-que-ganan-de-1-a-2-salarios-minimos.html">Mujeres que ganan de 1 a 2 salarios mínimos en La Laguna</a></li>
+        <li><a href="sociedad-mujeres-que-ganan-hasta-un-salario-minimo.html">Mujeres que ganan hasta un salario mínimo en La Laguna</a></li>
+        <li><a href="sociedad-mujeres-que-ganan-mas-de-3-salarios-minimos.html">Mujeres que ganan más de 3 salarios mínimos en La Laguna</a></li>
+        <li><a href="sociedad-mujeres-que-han-recibido-agresiones-sexuales-en-su-vida-estudiantil.html">Mujeres que han recibido agresiones sexuales en su vida estudiantil en La Laguna</a></li>
+        <li><a href="sociedad-mujeres-que-realizan-una-actividad-productiva-adicional-a-su-trabajo.html">Mujeres que realizan una actividad productiva adicional a su trabajo en La Laguna</a></li>
+        <li><a href="sociedad-mujeres-que-trabajan-en-el-sector-secundario.html">Mujeres que trabajan en el sector secundario en La Laguna</a></li>
+        <li><a href="sociedad-mujeres-que-trabajan-en-el-sector-terciario.html">Mujeres que trabajan en el sector terciario en La Laguna</a></li>
+        <li><a href="sociedad-mujeres-subordinadas-y-remuneradas.html">Mujeres subordinadas y remuneradas en La Laguna</a></li>
+        <li class="pull-right listado-alfabetico-arriba"><a href="#indice"><i class="fa fa-arrow-circle-up" aria-hidden="true"></i></a></li>
+      </ul>
+      <h3 id="N" class="listado-alfabetico-titulo">N</h3>
+      <ul class="listado-alfabetico">
+        <li><a href="sociedad-nacimientos.html">Nacimientos en La Laguna</a></li>
+        <li><a href="seguridad-narcomenudeo.html">Narcomenudeo en La Laguna</a></li>
+        <li><a href="sociedad-nuevas-viviendas-intraurbanas.html">Nuevas viviendas intraurbanas en La Laguna</a></li>
+        <li><a href="sociedad-nuevas-viviendas-verticales.html">Nuevas viviendas verticales en La Laguna</a></li>
+        <li class="pull-right listado-alfabetico-arriba"><a href="#indice"><i class="fa fa-arrow-circle-up" aria-hidden="true"></i></a></li>
+      </ul>
+      <h3 id="O" class="listado-alfabetico-titulo">O</h3>
+      <ul class="listado-alfabetico">
+        <li><a href="economia-ocupacion-hotelera.html">Ocupación Hotelera en La Laguna</a></li>
+        <li><a href="sociedad-ocupacion-por-vivienda.html">Ocupación por Vivienda en La Laguna</a></li>
+        <li><a href="economia-oferta-de-cuartos-de-hotel-de-cuatro-y-cinco-estrellas.html">Oferta de Cuartos de Hotel de Cuatro y Cinco Estrellas en La Laguna</a></li>
+        <li><a href="sociedad-organizaciones-de-la-sociedad-civil.html">Organizaciones de la Sociedad Civil en La Laguna</a></li>
+        <li><a href="seguridad-otros-delitos-contra-el-patrimonio.html">Otros delitos contra el patrimonio en La Laguna</a></li>
+        <li><a href="seguridad-otros-delitos-contra-la-familia.html">Otros delitos contra la familia en La Laguna</a></li>
+        <li><a href="seguridad-otros-delitos-del-fuero-comun.html">Otros delitos del Fuero Común en La Laguna</a></li>
+        <li><a href="seguridad-otros-delitos-que-atentan-contra-la-libertad-y-la-seguridad-sexual.html">Otros delitos que atentan contra la libertad y la seguridad sexual en La Laguna</a></li>
+        <li class="pull-right listado-alfabetico-arriba"><a href="#indice"><i class="fa fa-arrow-circle-up" aria-hidden="true"></i></a></li>
+      </ul>
+      <h3 id="P" class="listado-alfabetico-titulo">P</h3>
+      <ul class="listado-alfabetico">
+        <li><a href="gobierno-participacion-ciudadana.html">Participación Ciudadana en La Laguna</a></li>
+        <li><a href="economia-participacion-del-municipio-en-el-pib-de-la-zm.html">Participación del municipio en el PIB de la ZM en La Laguna</a></li>
+        <li><a href="sociedad-participacion-del-municipio-en-la-poblacion-del-estado.html">Participación del municipio en la población del estado en La Laguna</a></li>
+        <li><a href="economia-participacion-del-pib-en-el-estado.html">Participación del PIB en el estado en La Laguna</a></li>
+        <li><a href="gobierno-participacion-electoral.html">Participación Electoral en La Laguna</a></li>
+        <li><a href="sustentabilidad-pasajeros-aereos-internacionales-anuales.html">Pasajeros Aéreos Internacionales Anuales en La Laguna</a></li>
+        <li><a href="sustentabilidad-pasajeros-aereos-totales-anual.html">Pasajeros Aéreos Totales Anual en La Laguna</a></li>
+        <li><a href="economia-patentes.html">Patentes en La Laguna</a></li>
+        <li><a href="economia-pea-desocupada.html">PEA desocupada en La Laguna</a></li>
+        <li><a href="economia-pea-ocupada.html">PEA Ocupada en La Laguna</a></li>
+        <li><a href="sustentabilidad-peatones.html">Peatones en La Laguna</a></li>
+        <li><a href="economia-pequenas-empresas.html">Pequeñas Empresas en La Laguna</a></li>
+        <li><a href="gobierno-percepcion-de-corrupcion-estatal-en-las-zonas-urbanas.html">Percepción de corrupción estatal en las zonas urbanas en La Laguna</a></li>
+        <li><a href="seguridad-percepcion-de-inseguridad.html">Percepción de Inseguridad en La Laguna</a></li>
+        <li><a href="gobierno-periodistas-muertos-o-desaparecidos.html">Periodistas Muertos o Desaparecidos en La Laguna</a></li>
+        <li><a href="economia-personal-ocupado-en-el-comercio.html">Personal Ocupado en el Comercio en La Laguna</a></li>
+        <li><a href="economia-personal-ocupado-en-la-industria-manufacturera.html">Personal Ocupado en la Industria Manufacturera en La Laguna</a></li>
+        <li><a href="economia-personal-ocupado-en-los-servicios.html">Personal Ocupado en los Servicios en La Laguna</a></li>
+        <li><a href="economia-personas-con-ingresos-mayores-al-promedio-de-la-ciudad.html">Personas con ingresos mayores al promedio de la Ciudad en La Laguna</a></li>
+        <li><a href="sociedad-personas-de-18-a-25-anos-que-estudian.html">Personas de 18 a 25 años que estudian en La Laguna</a></li>
+        <li><a href="sociedad-personas-por-debajo-de-la-linea-de-bienestar-imco.html">Personas por Debajo de la Línea de Bienestar (IMCO) en La Laguna</a></li>
+        <li><a href="economia-personas-que-ganan-1-o-2-salarios-minimos.html">Personas que ganan 1 o 2 salarios mínimos en La Laguna</a></li>
+        <li><a href="economia-pib.html">PIB en La Laguna</a></li>
+        <li><a href="seguridad-poblacion-afectada-por-eventos-hidrometeorologicos-y-geologicos.html">Población afectada por eventos hidrometeorológicos y geológicos en La Laguna</a></li>
+        <li><a href="sociedad-poblacion-catolica.html">Población Católica en La Laguna</a></li>
+        <li><a href="sustentabilidad-poblacion-con-accesibilidad-peatonal-a-areas-verdes.html">Población con accesibilidad peatonal a áreas verdes en La Laguna</a></li>
+        <li><a href="sociedad-poblacion-con-educacion-superior.html">Población con educación superior en La Laguna</a></li>
+        <li><a href="sociedad-poblacion-de-18-a-25-anos.html">Población de 18 a 25 años en La Laguna</a></li>
+        <li><a href="sociedad-poblacion-derechohabiente.html">Población Derechohabiente en La Laguna</a></li>
+        <li><a href="economia-poblacion-economicamente-activa-pea.html">Población Económicamente Activa (PEA) en La Laguna</a></li>
+        <li><a href="sociedad-poblacion-estimada.html">Población Estimada en La Laguna</a></li>
+        <li><a href="economia-poblacion-ocupada.html">Población ocupada en La Laguna</a></li>
+        <li><a href="economia-poblacion-ocupada-sin-ingresos.html">Población Ocupada Sin Ingresos en La Laguna</a></li>
+        <li><a href="seguridad-poblacion-que-se-siente-insegura-en-el-transporte-publico.html">Población que se siente insegura en el transporte público en La Laguna</a></li>
+        <li><a href="seguridad-poblacion-que-se-siente-insegura-en-la-ciudad.html">Población que se siente insegura en la ciudad en La Laguna</a></li>
+        <li><a href="sustentabilidad-poblacion-que-trabaja-en-otro-municipio.html">Población que Trabaja en OTRO Municipio en La Laguna</a></li>
+        <li><a href="sustentabilidad-poblacion-que-trabaja-en-su-propio-municipio.html">Población que Trabaja en su PROPIO Municipio en La Laguna</a></li>
+        <li><a href="sociedad-pobreza.html">Pobreza en La Laguna</a></li>
+        <li><a href="sociedad-pobreza-extrema.html">Pobreza Extrema en La Laguna</a></li>
+        <li><a href="sociedad-pobreza-moderada.html">Pobreza Moderada en La Laguna</a></li>
+        <li><a href="seguridad-porcentaje-de-accidentes-viales-fatales.html">Porcentaje de Accidentes Viales Fatales en La Laguna</a></li>
+        <li><a href="economia-posgrados-de-calidad.html">Posgrados de Calidad en La Laguna</a></li>
+        <li><a href="economia-posgrados-de-calidad-por-cada-100mil-de-pea.html">Posgrados de Calidad (por cada 100mil de PEA) en La Laguna</a></li>
+        <li><a href="gobierno-presupuesto-destinado-a-transporte-publico-no-motorizado.html">Presupuesto destinado a transporte público (no motorizado) en La Laguna</a></li>
+        <li><a href="economia-produccion-bruta-total-per-capita.html">Producción Bruta Total Per Cápita en La Laguna</a></li>
+        <li><a href="economia-productividad-laboral.html">Productividad Laboral en La Laguna</a></li>
+        <li><a href="economia-productividad-media-laboral.html">Productividad Media Laboral en La Laguna</a></li>
+        <li><a href="economia-productividad-total-de-los-factores.html">Productividad total de los factores en La Laguna</a></li>
+        <li><a href="economia-producto-interno-bruto-per-capita.html">Producto Interno Bruto per cápita en La Laguna</a></li>
+        <li><a href="sustentabilidad-programa-de-gestion-de-calidad-del-aire-vigente.html">Programa de gestión de calidad del aire vigente en La Laguna</a></li>
+        <li><a href="gobierno-programas-de-accion-climatica.html">Programas de Acción Climática en La Laguna</a></li>
+        <li><a href="sociedad-proporcion-de-mujeres.html">Proporción de mujeres en La Laguna</a></li>
+        <li><a href="sustentabilidad-proteccion-de-ecosistemas-importantes-para-la-biodiversidad.html">Protección de ecosistemas importantes para la biodiversidad en La Laguna</a></li>
+        <li class="pull-right listado-alfabetico-arriba"><a href="#indice"><i class="fa fa-arrow-circle-up" aria-hidden="true"></i></a></li>
+      </ul>
+      <h3 id="R" class="listado-alfabetico-titulo">R</h3>
+      <ul class="listado-alfabetico">
+        <li><a href="sociedad-razon-de-mortalidad-materna.html">Razón de Mortalidad Materna en La Laguna</a></li>
+        <li><a href="sustentabilidad-recoleccion-de-residuos-solidos.html">Recolección de residuos sólidos en La Laguna</a></li>
+        <li><a href="sustentabilidad-red-carretera-avanzada.html">Red Carretera Avanzada en La Laguna</a></li>
+        <li><a href="sustentabilidad-regalo-o-venta-de-residuos-reciclables.html">Regalo o venta de residuos reciclables en La Laguna</a></li>
+        <li><a href="economia-registro-de-una-propiedad-percentil-promedio.html">Registro de una Propiedad (percentil promedio) en La Laguna</a></li>
+        <li><a href="gobierno-relacion-de-ingresos-propios-y-totales.html">Relación de Ingresos Propios y Totales en La Laguna</a></li>
+        <li><a href="sociedad-rendimiento-academico.html">Rendimiento Académico en La Laguna</a></li>
+        <li><a href="sustentabilidad-residuos-solidos-producidos.html">Residuos sólidos producidos en La Laguna</a></li>
+        <li><a href="sustentabilidad-resiliencia-a-desastres-naturales.html">Resiliencia a desastres naturales en La Laguna</a></li>
+        <li><a href="sociedad-rezago-educativo.html">Rezago Educativo en La Laguna</a></li>
+        <li><a href="seguridad-robo-a-negocios.html">Robo a Negocios en La Laguna</a></li>
+        <li><a href="seguridad-robo-a-transeuntes.html">Robo a Transeuntes en La Laguna</a></li>
+        <li><a href="seguridad-robo-de-automoviles.html">Robo de automóviles en La Laguna</a></li>
+        <li><a href="seguridad-robos-a-casa-habitacion.html">Robos a Casa Habitación en La Laguna</a></li>
+        <li><a href="seguridad-robos-totales.html">Robos Totales en La Laguna</a></li>
+        <li class="pull-right listado-alfabetico-arriba"><a href="#indice"><i class="fa fa-arrow-circle-up" aria-hidden="true"></i></a></li>
+      </ul>
+      <h3 id="S" class="listado-alfabetico-titulo">S</h3>
+      <ul class="listado-alfabetico">
+        <li><a href="economia-salario-promedio-mensual-para-trabajadores-de-tiempo-completo.html">Salario Promedio Mensual para Trabajadores de Tiempo Completo en La Laguna</a></li>
+        <li><a href="economia-sectores-que-han-frenado-el-crecimiento.html">Sectores que Han Frenado el Crecimiento en La Laguna</a></li>
+        <li><a href="economia-sectores-que-han-presentado-alto-crecimiento.html">Sectores que Han Presentado Alto Crecimiento en La Laguna</a></li>
+        <li><a href="seguridad-secuestros.html">Secuestros en La Laguna</a></li>
+        <li><a href="seguridad-secuestros-mensual.html">Secuestros (mensual) en La Laguna</a></li>
+        <li><a href="sustentabilidad-separacion-basica-de-residuos.html">Separación básica de residuos en La Laguna</a></li>
+        <li><a href="sustentabilidad-sistema-de-transporte-masivo.html">Sistema de Transporte Masivo en La Laguna</a></li>
+        <li><a href="economia-sitios-unesco.html">Sitios UNESCO en La Laguna</a></li>
+        <li><a href="sustentabilidad-sobreexplotacion-del-acuifero.html">Sobreexplotación del Acuífero en La Laguna</a></li>
+        <li><a href="sustentabilidad-suelo-de-valor-ambiental-urbanizado.html">Suelo de valor ambiental urbanizado en La Laguna</a></li>
+        <li><a href="sustentabilidad-superficie.html">Superficie en La Laguna</a></li>
+        <li><a href="sustentabilidad-superficie-urbana.html">Superficie Urbana en La Laguna</a></li>
+        <li class="pull-right listado-alfabetico-arriba"><a href="#indice"><i class="fa fa-arrow-circle-up" aria-hidden="true"></i></a></li>
+      </ul>
+      <h3 id="T" class="listado-alfabetico-titulo">T</h3>
+      <ul class="listado-alfabetico">
+        <li><a href="economia-tamano-del-mercado-hipotecario.html">Tamaño del Mercado Hipotecario en La Laguna</a></li>
+        <li><a href="sociedad-tasa-de-alfabetizacion.html">Tasa de alfabetización en La Laguna</a></li>
+        <li><a href="economia-tasa-de-condiciones-criticas-de-ocupacion.html">Tasa de Condiciones Críticas de Ocupación en La Laguna</a></li>
+        <li><a href="economia-tasa-de-desempleo-abierto.html">Tasa de Desempleo Abierto en La Laguna</a></li>
+        <li><a href="sociedad-tasa-de-desocupacion-femenina.html">Tasa de desocupación femenina en La Laguna</a></li>
+        <li><a href="seguridad-tasa-de-homicidios.html">Tasa de Homicidios en La Laguna</a></li>
+        <li><a href="economia-tasa-de-informalidad.html">Tasa de Informalidad en La Laguna</a></li>
+        <li><a href="sociedad-tasa-de-informalidad-laboral-femenina.html">Tasa de informalidad laboral femenina en La Laguna</a></li>
+        <li><a href="sociedad-tasa-de-mortalidad-materna.html">Tasa de Mortalidad Materna en La Laguna</a></li>
+        <li><a href="sociedad-tasa-de-ocupacion-femenina.html">Tasa de ocupación femenina en La Laguna</a></li>
+        <li><a href="seguridad-tasa-de-robo-de-vehiculos.html">Tasa de Robo de VehÍculos en La Laguna</a></li>
+        <li><a href="economia-tasa-de-subocupacion.html">Tasa de subocupación en La Laguna</a></li>
+        <li><a href="sociedad-tasa-de-suicidios.html">Tasa de suicidios en La Laguna</a></li>
+        <li><a href="economia-tasa-de-trabajo-asalariado.html">Tasa de trabajo asalariado en La Laguna</a></li>
+        <li><a href="sustentabilidad-tiempos-de-traslado.html">Tiempos de traslado en La Laguna</a></li>
+        <li><a href="economia-tierra-ejidal.html">Tierra Ejidal en La Laguna</a></li>
+        <li><a href="sustentabilidad-tomas-con-micromedicion.html">Tomas con micromedición en La Laguna</a></li>
+        <li><a href="economia-total-de-empresas-registradas-en-el-siem.html">Total de Empresas Registradas en el SIEM en La Laguna</a></li>
+        <li><a href="sociedad-total-de-hogares.html">Total de hogares en La Laguna</a></li>
+        <li><a href="economia-trabajadores-asegurados.html">Trabajadores Asegurados en La Laguna</a></li>
+        <li><a href="economia-trabajadores-asegurados-region.html">Trabajadores Asegurados (Región) en La Laguna</a></li>
+        <li><a href="sociedad-trabajo-no-remunerado-de-hombres-y-mujeres.html">Trabajo no remunerado de hombres y mujeres en La Laguna</a></li>
+        <li><a href="seguridad-trafico-de-menores.html">Tráfico de menores en La Laguna</a></li>
+        <li><a href="sustentabilidad-traslados-a-pie.html">Traslados a Pie en La Laguna</a></li>
+        <li><a href="seguridad-trata-de-personas.html">Trata de personas en La Laguna</a></li>
+        <li><a href="sustentabilidad-tratamiento-de-aguas-residuales.html">Tratamiento de Aguas Residuales en La Laguna</a></li>
+        <li class="pull-right listado-alfabetico-arriba"><a href="#indice"><i class="fa fa-arrow-circle-up" aria-hidden="true"></i></a></li>
+      </ul>
+      <h3 id="U" class="listado-alfabetico-titulo">U</h3>
+      <ul class="listado-alfabetico">
+        <li><a href="economia-unidades-economicas-dedicadas-a-la-industria-manufacturera.html">Unidades Económicas Dedicadas a la Industria Manufacturera en La Laguna</a></li>
+        <li><a href="economia-unidades-economicas-dedicadas-a-los-servicios.html">Unidades Económicas Dedicadas a los Servicios en La Laguna</a></li>
+        <li><a href="economia-unidades-economicas-dedicadas-al-comercio.html">Unidades Económicas Dedicadas al Comercio en La Laguna</a></li>
+        <li><a href="sociedad-universidades-de-calidad.html">Universidades de Calidad en La Laguna</a></li>
+        <li><a href="sociedad-universidades.html">Universidades en La Laguna</a></li>
+        <li><a href="sustentabilidad-uso-de-automovil-particular.html">Uso de Automóvil Particular en La Laguna</a></li>
+        <li><a href="sustentabilidad-uso-de-bicicleta.html">Uso de Bicicleta en La Laguna</a></li>
+        <li><a href="sociedad-uso-de-servicios-financieros.html">Uso de Servicios Financieros en La Laguna</a></li>
+        <li><a href="sustentabilidad-uso-de-transporte-publico.html">Uso de Transporte Público en La Laguna</a></li>
+        <li><a href="sociedad-uso-de-twitter-como-proxy-de-uso-de-tecnologias-de-informacion.html">Uso de Twitter como Proxy de Uso de Tecnologías de Información en La Laguna</a></li>
+        <li><a href="sustentabilidad-usuarios-de-automoviles.html">Usuarios de Automóviles en La Laguna</a></li>
+        <li><a href="sustentabilidad-usuarios-de-bicicleta.html">Usuarios de Bicicleta en La Laguna</a></li>
+        <li><a href="sustentabilidad-usuarios-de-modos-no-motorizados.html">Usuarios de Modos No Motorizados en La Laguna</a></li>
+        <li><a href="sustentabilidad-usuarios-de-transporte-colectivo-privado.html">Usuarios de Transporte Colectivo Privado en La Laguna</a></li>
+        <li><a href="sustentabilidad-usuarios-de-transporte-publico.html">Usuarios de Transporte Público en La Laguna</a></li>
+        <li class="pull-right listado-alfabetico-arriba"><a href="#indice"><i class="fa fa-arrow-circle-up" aria-hidden="true"></i></a></li>
+      </ul>
+      <h3 id="V" class="listado-alfabetico-titulo">V</h3>
+      <ul class="listado-alfabetico">
+        <li><a href="sustentabilidad-viajes-en-transporte-publico-por-persona.html">Viajes en transporte público por persona en La Laguna</a></li>
+        <li><a href="seguridad-violacion-equiparada.html">Violación equiparada en La Laguna</a></li>
+        <li><a href="seguridad-violacion-simple.html">Violación simple en La Laguna</a></li>
+        <li><a href="seguridad-violencia-de-genero-en-todas-sus-modalidades-distinta-a-la-violencia-familiar.html">Violencia de género en todas sus modalidades distinta a la violencia familiar en La Laguna</a></li>
+        <li><a href="seguridad-violencia-familiar.html">Violencia familiar en La Laguna</a></li>
+        <li><a href="sociedad-visitas-a-museos-inah.html">Visitas a Museos INAH en La Laguna</a></li>
+        <li><a href="sociedad-viviendas-con-agua-de-la-red-publica.html">Viviendas con Agua de la Red Pública en La Laguna</a></li>
+        <li><a href="sociedad-viviendas-con-agua-entubada.html">Viviendas con Agua Entubada en La Laguna</a></li>
+        <li><a href="sociedad-viviendas-con-computadora.html">Viviendas con Computadora en La Laguna</a></li>
+        <li><a href="sociedad-viviendas-con-drenaje.html">Viviendas con Drenaje en La Laguna</a></li>
+        <li><a href="sociedad-viviendas-con-drenaje-solo-conexion-a-red-publica.html">Viviendas con Drenaje (sólo conexión a red pública) en La Laguna</a></li>
+        <li><a href="sociedad-viviendas-con-energia-electrica.html">Viviendas con Energía Eléctrica en La Laguna</a></li>
+        <li><a href="sociedad-viviendas-con-internet.html">Viviendas con Internet en La Laguna</a></li>
+        <li><a href="sociedad-viviendas-con-lineas-telefonicas-moviles.html">Viviendas con Líneas Telefónicas Móviles en La Laguna</a></li>
+        <li><a href="sociedad-viviendas-con-piso-de-tierra.html">Viviendas con Piso de Tierra en La Laguna</a></li>
+        <li><a href="sustentabilidad-viviendas-deshabitadas.html">Viviendas Deshabitadas en La Laguna</a></li>
+        <li><a href="sociedad-viviendas-donde-separan-en-organico-e-inorganico-los-residuos.html">Viviendas donde separan en Orgánico e Inorgánico los Residuos en La Laguna</a></li>
+        <li><a href="sociedad-viviendas-habitadas.html">Viviendas Habitadas en La Laguna</a></li>
+        <li><a href="sustentabilidad-viviendas-ocupadas-temporalmente.html">Viviendas Ocupadas Temporalmente en La Laguna</a></li>
+        <li><a href="sociedad-viviendas-particulares-habitadas-que-disponen-de-telefono-celular.html">Viviendas Particulares Habitadas que disponen de Teléfono Celular en La Laguna</a></li>
+        <li><a href="sustentabilidad-viviendas-que-aprovechan-energia-solar.html">Viviendas que aprovechan energía solar en La Laguna</a></li>
+        <li><a href="sociedad-viviendas-que-disponen-de-retrete.html">Viviendas que Disponen de Retrete en La Laguna</a></li>
+        <li><a href="sociedad-viviendas-totales.html">Viviendas Totales en La Laguna</a></li>
+        <li class="pull-right listado-alfabetico-arriba"><a href="#indice"><i class="fa fa-arrow-circle-up" aria-hidden="true"></i></a></li>
+      </ul>
+    </div>
+    <div class="mapa-inferior">
+          <div class="pull-right redes-sociales">
+            <a class="fa fa-twitter-square" href="http://www.twitter.com/trcimplan" target="_blank"></a>
+            <a class="fa fa-facebook-square" href="https://facebook.com/trcimplan" target="_blank"></a>
+            <a class="fa fa-facebook-square" href="http://www.instagram.com/implantorreon" target="_blank"></a>
+            <a class="fa fa-rss-square" href="../rss.xml"></a>
+          </div>
+    </div>
+  </div>
+</div>
+<!-- Javascript global inicia -->
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
+<script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="../vendor/metisMenu/metisMenu.min.js"></script>
+<script type="text/javascript" src="../vendor/datatables/js/jquery.dataTables.min.js"></script>
+<script type="text/javascript" src="../vendor/datatables-plugins/dataTables.bootstrap.min.js"></script>
+<script type="text/javascript" src="../vendor/datatables-responsive/dataTables.responsive.js"></script>
+<script type="text/javascript" src="../vendor/raphael/raphael.min.js"></script>
+<script type="text/javascript" src="../vendor/morrisjs/morris.min.js"></script>
+<script type="text/javascript" src="../dist/js/sb-admin-2.min.js"></script>
+<script type="text/javascript" src="http://libs.cartocdn.com/cartodb.js/v3/3.15/cartodb.js"></script>
+<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+<!-- Javascript global termina -->
+<!-- Javascript inicia -->
+
+<!-- Javascript termina -->
+<!-- Javascript Google Analytics -->
+<script>
+  // Google Analytics
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)})(window,document,'script','//www.google-analytics.com/analytics.js','ga');ga('create', 'UA-58290501-1', 'auto');ga('send', 'pageview');
+</script>
+</body>
+</html>

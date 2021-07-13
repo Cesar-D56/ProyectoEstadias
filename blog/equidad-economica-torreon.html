@@ -1,0 +1,509 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+<!-- ===================================================================================================
+
+        Instituto Municipal de Planeación y Competitividad (IMPLAN) de Torreón.
+
+        3er. generación de la Plataforma del Conocimiento
+        Desarrollado por Ing. Guillermo Valdés Lozano <guivaloz en movimientolibre.com>
+
+        El software que lo construye está bajo la licencia GPL versión 3. © 2014, 2015, 2016, 2017.
+        Una copia está contenida en el archivo LICENCE al bajar desde GitHub.
+
+        Al usar, estudiar y copiar está aceptando los términos de uso de la información y del sitio web:
+          http://www.trcimplan.gob.mx/terminos/terminos-informacion.html
+          http://www.trcimplan.gob.mx/terminos/terminos-sitio.html
+
+        Descargue, estudie y colabore bajando todo este sitio web:
+          IMPLAN Torreón     https://github.com/TRCIMPLAN/trcimplan.github.io
+
+        Agradecemos y compartimos las tecnologías abiertas y gratuitas sobre las que se basa:
+          PHP                http://php.net
+          Twitter Bootstrap  http://getbootstrap.com
+          StartBootStrap     http://startbootstrap.com
+          Morris.js          https://morrisjs.github.io/morris.js/
+          Font Awesome       http://fontawesome.io
+          DataTables         https://www.datatables.net
+          Carto              https://carto.com
+          GitHub             https://github.com
+
+     =================================================================================================== -->
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Torreón, como la zona metropolitana de La Laguna, se encuentra en una situación favorable en temas de igualdad y cohesión social.">
+  <meta name="author" content="Lic. Alicia Valdez Ibarra">
+  <meta name="keywords" content="IMPLAN, Torreon, Igualdad, Género, Gini, Distribución, Riqueza">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Equidad Económica en Torreón - IMPLAN Torreón">
+  <meta name="twitter:description" content="Torreón, como la zona metropolitana de La Laguna, se encuentra en una situación favorable en temas de igualdad y cohesión social.">
+  <meta name="twitter:image" content="http://www.trcimplan.gob.mx/blog/equidad-economica-torreon/imagen-previa.jpg">
+  <meta name="twitter:url" content="http://www.trcimplan.gob.mx/blog/equidad-economica-torreon.html">
+  <meta name="og:title" content="Equidad Económica en Torreón - IMPLAN Torreón">
+  <meta name="og:description" content="Torreón, como la zona metropolitana de La Laguna, se encuentra en una situación favorable en temas de igualdad y cohesión social.">
+  <meta name="og:image" content="http://www.trcimplan.gob.mx/blog/equidad-economica-torreon/imagen-previa.jpg">
+  <meta name="og:url" content="http://www.trcimplan.gob.mx/blog/equidad-economica-torreon.html">
+  <title>Equidad Económica en Torreón - IMPLAN Torreón</title>
+  <link rel="shortcut icon" type="image/x-icon" href="../imagenes/apple-touch-icon.png">
+  <link rel="apple-touch-icon" href="../imagenes/apple-touch-icon.png">
+  <link rel="apple-touch-icon" href="../imagenes/apple-touch-icon-76x76.png" sizes="76x76">
+  <link rel="apple-touch-icon" href="../imagenes/apple-touch-icon-120x120.png" sizes="120x120">
+  <link rel="apple-touch-icon" href="../imagenes/apple-touch-icon-152x152.png" sizes="152x152">
+  <link rel="apple-touch-icon" href="../imagenes/apple-touch-icon-180x180.png" sizes="180x180">
+  <link rel="icon" href="../imagenes/icon-hires.png" sizes="192x192">
+  <link rel="icon" href="../imagenes/icon-normal.png" sizes="128x128">
+  <link rel="alternate" type="application/rss+xml" href="../rss.xml" title="IMPLAN Torreón">
+  <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+  <link rel="stylesheet" type="text/css" href="../vendor/metisMenu/metisMenu.min.css">
+  <link rel="stylesheet" type="text/css" href="../vendor/datatables-plugins/dataTables.bootstrap.css">
+  <link rel="stylesheet" type="text/css" href="../vendor/morrisjs/morris.css">
+  <link rel="stylesheet" type="text/css" href="../vendor/font-awesome/css/font-awesome.min.css">
+  <link rel="stylesheet" type="text/css" href="../dist/css/sb-admin-2.min.css">
+  <link rel="stylesheet" type="text/css" href="../dist/css/plataforma-de-conocimiento.css">
+  <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Noto+Sans|Roboto+Condensed:400,700">
+  <link rel="stylesheet" type="text/css" href="http://libs.cartocdn.com/cartodb.js/v3/3.15/themes/css/cartodb.css">
+  <link rel="stylesheet" type="text/css" href="../dist/css/estilosvm.css">
+  <link rel="stylesheet" type="text/css" href="../dist/css/trcimplan.css">
+  <!-- SOPORTE PARA IE -->
+  <!--[if lt IE 9]>
+  <script type="text/javascript" src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+  <script type="text/javascript" src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+  <![endif]-->
+</head>
+<body>
+<div id="wrapper">
+  <nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="../index.html"><img class="navbar-brand-img" src="../imagenes/implan-barra-logo-chico-gris.png" alt="IMPLAN Torreón"></a>
+    </div>
+  <div class="navbar-default sidebar" role="navigation">
+    <div class="sidebar-nav navbar-collapse">
+      <ul class="nav" id="side-menu">
+        <li class="sidebar-search">
+          <form method="get" action="http://www.trcimplan.gob.mx/buscador-resultados.html">
+            <div class="input-group custom-search-form">
+              <input type="text" class="form-control" placeholder="Google buscar..." value="" name="q">
+              <span class="input-group-btn">
+                <button class="btn btn-default" type="submit"><i class="fa fa-search"></i></button>
+              </span>
+            </div>
+          </form>
+        </li>
+        <li class="active">
+          <a href="#"><span class="navegacion-icono"><i class="fa fa-lightbulb-o"></i></span> Análisis Publicados<span class="fa arrow"></span></a>
+          <ul class="nav nav-second-level">
+            <li><a href="../blog/index.html"><span class="navegacion-icono"><i class="fa fa-file-text-o"></i></span> Últimos Análisis</a></li>
+            <li><a href="../excolaboradores/index.html"><span class="navegacion-icono"><i class="fa fa-file-text-o"></i></span> Análisis por Autor</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="#"><span class="navegacion-icono"><i class="fa fa-area-chart"></i></span> Indicadores<span class="fa arrow"></span></a>
+          <ul class="nav nav-second-level">
+            <li><a href="../smi/introduccion.html"><span class="navegacion-icono"><i class="fa fa-file-text-o"></i></span> Introducción al SMI</a></li>
+            <li><a href="../indicadores-categorias/index.html"><span class="navegacion-icono"><i class="fa fa-th-list"></i></span> Indicadores por Categoría</a></li>
+            <li><a href="../smi/por-region.html"><span class="navegacion-icono"><i class="fa fa-table"></i></span> Indicadores por Región</a></li>
+            <li><a href="../smi/datos-abiertos.html"><span class="navegacion-icono"><i class="fa fa-download"></i></span> Datos Abiertos</a></li>
+            <li><a href="../smi/niveles-socioeconomicos.html"><span class="navegacion-icono"><i class="fa fa-bar-chart"></i></span> Niveles Socioeconómicos</a></li>
+            <li><a href="../monitores/index.html"><span class="navegacion-icono"><i class="fa fa-file-text-o"></i></span> Monitores</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="#"><span class="navegacion-icono"><i class="fa fa-puzzle-piece"></i></span> Indicadores Básicos de Colonias<span class="fa arrow"></span></a>
+          <ul class="nav nav-second-level">
+            <li><a href="../ibc/introduccion.html"><span class="navegacion-icono"><i class="fa fa-file-text-o"></i></span> Introducción al IBC</a></li>
+            <li><a href="../ibc-colonias-torreon/index.html"><span class="navegacion-icono"><i class="fa fa-font"></i></span> Colonias de Torreón</a></li>
+            <li><a href="https://implantorreon.carto.com/u/sigimplan/builder/907a6bc0-2c7e-451e-9668-b78d952e52ff/embed" target="_blank"><span class="navegacion-icono"><i class="fa fa-external-link"></i></span> Mapa Completo</a></li>
+            <li><a href="../ibc/torreon-urbano.html"><span class="navegacion-icono"><i class="fa fa-table"></i></span> Torreón Urbano</a></li>
+            <li><a href="../ibc/datos-abiertos.html"><span class="navegacion-icono"><i class="fa fa-download"></i></span> Datos Abiertos</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="#"><span class="navegacion-icono"><i class="fa fa-map-marker"></i></span> Información Geográfica<span class="fa arrow"></span></a>
+          <ul class="nav nav-second-level">
+            <li><a href="../sig/introduccion.html"><span class="navegacion-icono"><i class="fa fa-file-text-o"></i></span> Introducción al SIG</a></li>
+            <li><a href="../sig-mapas-torreon/temas-sig.html"><span class="navegacion-icono"><i class="fa fa-map-o"></i></span> Mapas por Tema</a></li>
+            <li><a href="../sig-mapas-torreon/plan-director-desarrollo-urbano.html"><span class="navegacion-icono"><i class="fa fa-map-marker"></i></span> Usos de Suelo</a></li>
+            <li><a href="../sig/datos-abiertos.html"><span class="navegacion-icono"><i class="fa fa-download"></i></span> Datos Abiertos</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="#"><span class="navegacion-icono"><i class="fa fa-book"></i></span> Plan Estratégico Torreón 2040<span class="fa arrow"></span></a>
+          <ul class="nav nav-second-level">
+            <li><a href="../pet/indice.html"><span class="navegacion-icono"><i class="fa fa-list-ul"></i></span> Índice General</a></li>
+            <li><a href="../plan-estrategico-torreon-enfoque-metropolitano-2040/index.html"><span class="navegacion-icono"><i class="fa fa-download"></i></span> Descargar</a></li>
+            <li><a href="../plan-estrategico-metropolitano/descripcion-del-proceso.html"><span class="navegacion-icono"><i class="fa fa-calendar"></i></span> Descripción del proceso</a></li>
+            <li><a href="../proyectos/index.html"><span class="navegacion-icono"><i class="fa fa-check-square"></i></span> Proyectos</a></li>
+            <li><a href="../vision-de-ciudad/vision-de-ciudad.html"><span class="navegacion-icono"><i class="fa fa-file-text-o"></i></span> Visión de Ciudad desde IMPLAN</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="#"><span class="navegacion-icono"><i class="fa fa-briefcase"></i></span> Documentos<span class="fa arrow"></span></a>
+          <ul class="nav nav-second-level">
+            <li><a href="../sig-planes/index.html"><span class="navegacion-icono"><i class="fa fa-book"></i></span> Planes y Programas</a></li>
+            <li><a href="../investigaciones/index.html"><span class="navegacion-icono"><i class="fa fa-file-text-o"></i></span> Investigaciones</a></li>
+            <li><a href="../estudios/index.html"><span class="navegacion-icono"><i class="fa fa-file-text-o"></i></span> Estudios</a></li>
+          </ul>
+        </li>
+        <li><a href="../consejo-directivo/integrantes.html"><span class="navegacion-icono"><i class="fa fa-users"></i></span> Consejo Directivo</a></li>
+        <li><a href="../sala-prensa/index.html"><span class="navegacion-icono"><i class="fa fa-newspaper-o"></i></span> Sala de Prensa</a></li>
+        <li><a href="../programas-radio/index.html"><span class="navegacion-icono"><i class="fa fa-microphone"></i></span> Programas de Radio</a></li>
+        <li>
+          <a href="#"><span class="navegacion-icono"><i class="fa fa-file-text-o"></i></span> Consejo Visión Metrópoli<span class="fa arrow"></span></a>
+          <ul class="nav nav-second-level">
+            <li><a href="../convocatorias/vision-metropoli.html"><span class="navegacion-icono"><i class="fa fa-file-text-o"></i></span> Consejo Juvenil</a></li>
+            <li><a href="../vision-metropoli/integrantes.html"><span class="navegacion-icono"><i class="fa fa-file-text-o"></i></span> Integrantes del Consejo</a></li>
+            <li><a href="../vision-metropoli/index.html"><span class="navegacion-icono"><i class="fa fa-newspaper-o"></i></span> Sala de Prensa</a></li>
+            <li><a href="../vision-metropoli/reglamento-vision-metropoli-2020.pdf"><span class="navegacion-icono"><i class="fa fa-file-text-o"></i></span> Reglamento</a></li>
+            <li><a href="https://issuu.com/consejovisionmetropoli/docs/informe_visi_n_metr_poli_2019_-_2021" target="_blank"><span class="navegacion-icono"><i class="fa fa-file-text-o"></i></span> Informe 2019 - 2021</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="#"><span class="navegacion-icono"><i class="fa fa-building-o"></i></span> Institucional<span class="fa arrow"></span></a>
+          <ul class="nav nav-second-level">
+            <li><a href="../institucional/vision-mision.html"><span class="navegacion-icono"><i class="fa fa-trophy"></i></span> Misión / Visión</a></li>
+            <li><a href="../institucional/NuestrosProyectos.html"><span class="navegacion-icono"><i class="fa fa-pencil-square-o"></i></span> Nuestros Proyectos</a></li>
+            <li><a href="../institucional/mensaje-director.html"><span class="navegacion-icono"><i class="fa fa-comment"></i></span> Mensaje del Director</a></li>
+            <li><a href="../autores/index.html"><span class="navegacion-icono"><i class="fa fa-user"></i></span> Quienes Somos</a></li>
+            <li><a href="../institucional/estructura-organica.html"><span class="navegacion-icono"><i class="fa fa-sitemap"></i></span> Estructura Orgánica</a></li>
+            <li><a href="../institucional/modelo-operativo-universal.html"><span class="navegacion-icono"><i class="fa fa-slideshare"></i></span> Modelo Operativo Univ.</a></li>
+            <li><a href="../institucional/reglamentos.html"><span class="navegacion-icono"><i class="fa fa-gavel"></i></span> Reglamentos</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="#"><span class="navegacion-icono"><i class="fa fa-external-link"></i></span> Transparencia<span class="fa arrow"></span></a>
+          <ul class="nav nav-second-level">
+            <li><a href="http://www2.icai.org.mx/ipo/dependencia.php?dep=178#pageload" target="_blank"><span class="navegacion-icono"><i class="fa fa-file-text-o"></i></span> Transparencia Estatal (ICAI)</a></li>
+            <li><a href="https://consultapublicamx.inai.org.mx/vut-web/faces/view/consultaPublica.xhtml#inicio" target="_blank"><span class="navegacion-icono"><i class="fa fa-file-text-o"></i></span> Plataforma Nacional de Transparencia</a></li>
+            <li><a href="../transparencia/index.html"><span class="navegacion-icono"><i class="fa fa-briefcase"></i></span> Documentos</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="#"><span class="navegacion-icono"><i class="fa fa-share-alt"></i></span> Términos de Uso<span class="fa arrow"></span></a>
+          <ul class="nav nav-second-level">
+            <li><a href="../terminos/terminos-informacion.html"><span class="navegacion-icono"><i class="fa fa-cubes"></i></span> De la información</a></li>
+            <li><a href="../terminos/terminos-sitio.html"><span class="navegacion-icono"><i class="fa fa-globe"></i></span> Del sitio web</a></li>
+            <li><a href="../terminos/privacidad.html"><span class="navegacion-icono"><i class="fa fa-lock"></i></span> Aviso de Privacidad</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="#"><span class="navegacion-icono"><i class="fa fa-phone"></i></span> Contacto<span class="fa arrow"></span></a>
+          <ul class="nav nav-second-level">
+            <li><a href="../contacto/contacto.html"><span class="navegacion-icono"><i class="fa fa-phone"></i></span> Medios de contacto</a></li>
+            <li><a href="../preguntas-frecuentes/preguntas-frecuentes.html"><span class="navegacion-icono"><i class="fa fa-question"></i></span> Preguntas Frecuentes</a></li>
+            <li><a href="http://goo.gl/forms/1rdX4X128PpMOif73" target="_blank"><span class="navegacion-icono"><i class="fa fa-external-link"></i></span> Comentarios y Sugerencias</a></li>
+          </ul>
+        </li>
+        <li><a href="../convocatorias/index.html"><span class="navegacion-icono"><i class="fa fa-file-text-o"></i></span> Convocatorias</a></li>
+        <li><a href="http://177.244.42.17/ovie-torreon/#!" target="_blank"><span class="navegacion-icono"><i class="fa fa-map-marker"></i></span> Oficina Virtual de Información Económica (OVIE)</a></li>
+        <li><a href="https://arcg.is/0vySSr" target="_blank"><span class="navegacion-icono"><i class="fa fa-globe"></i></span> Atlas Municipal de Riesgos de Torreón</a></li>
+      </ul>
+    </div>
+  </div>
+  </nav>
+  <div id="page-wrapper">
+    <div class="cuerpo">
+      <article><div itemscope itemtype="http://schema.org/BlogPosting">
+        <div class="encabezado">
+          <h1 itemprop="headline">Equidad Económica en Torreón</h1>
+          <div class="encabezado-descripcion" itemprop="description">Torreón, como la zona metropolitana de La Laguna, se encuentra en una situación favorable en temas de igualdad y cohesión social.</div>
+          <div class="encabezado-autor-fecha">
+            Por <span itemprop="author">Lic. Alicia Valdez Ibarra</span> -
+            <meta itemprop="datePublished" content="2014-04-03T08:05">03/04/2014 08:05
+          </div>
+        </div>
+        <span class="contenido-imagen-previa"><img class="img-responsive" itemprop="image" alt="Equidad Económica en Torreón" src="equidad-economica-torreon/imagen.jpg"></span>
+        <div itemprop="articleBody">
+<!-- Contenido: Inicia  -->
+
+<p>Torreón, como la zona metropolitana de La Laguna, se encuentra en una situación favorable en temas de igualdad y cohesión social. De acuerdo al Índice de Gini, el principal indicador de igualdad usado internacionalmente donde 0 representa la igualdad perfecta y 1 la total inequidad, estamos en mejores condiciones que el promedio del país. Incluso para estándares globales, nuestro coeficiente de Gini de 0.45 es relativamente bueno, tomando en cuenta a otros países de América Latina como Chile y Brasil los cuales se encuentran por arriba del 0.50, mientras algunos otros como Argentina y Estados Unidos tienen índices de 0.445 en 2010 y 0.45 en 2007 respectivamente (CIA Factbook 2014, The World Bank 2014).</p>
+
+<p>Según los datos más recientes de CONEVAL (Consejo Nacional de Evaluación de la Política de Desarrollo Social), Torreón cuenta con un coeficiente de Gini de 0.452, mientras que el Banco Mundial muestra nuestro índice nacional con un valor de 0.472. Por lo tanto Torreón presenta un índice menor al nacional, lo cual es en realidad una buena noticia, pues nos dice que contamos una mejor igualdad de ingreso que otras ciudades de México.</p>
+
+<p>No obstante, para formar un mejor juicio de cómo se encuentra Torreón, es necesario usar otros indicadores que complementen el diagnóstico. Los índices más comunes y utilizados por CONEVAL, son el grado de polarización y la razón del ingreso promedio del 10% más pobre y el ingreso promedio del 10% más rico. A continuación se explica cada uno:</p>
+
+<p>Razón del ingreso: este indicador sirve para determinar la proporción en la que el ingreso de la población más rica sobrepasa al de la población más pobre (en pobreza extrema), es decir, mide la brecha entre los dos grupos. Comúnmente, es calculado usando el sueldo promedio del 10% o 5% de la población ubicada en la clase más alta y en la más baja. Esta razón también va de cero a uno y entre más cercano a uno se encuentre, es mejor, pues el valor de uno significa que los ingresos de ambos extremos (pobreza extrema y privilegiados) son exactamente iguales.</p>
+
+<p>Grado de Polarización Social: es una clasificación generada a partir del índice de marginación del Consejo Nacional de Población (CONAPO), y no solo mide la diferencia en el ingreso, sino las diferencias en condiciones de vida de la población en cuestiones de vivienda y nivel educativo. La clasificación se muestra enseguida:</p>
+
+<p>a. Polarizados: un tercio, o más, de la población vive en condiciones desfavorables y otro tercio, o más, en condiciones favorables.</p>
+
+<ul>
+    <li>Polo de alta marginación: La mayoría vive en condiciones desfavorables.</li>
+    <li>Polo de baja marginación: La mayoría vive en condiciones favorables.</li>
+</ul>
+
+<p>b. Sin polo: no cuenta con ninguno de los polos de marginación.</p>
+
+<p>Para ilustrar la importancia de combinar todos los indicadores, tomemos el ejemplo del municipio de México con el índice de Gini más bajo: Santiago Tepetlapa, Oaxaca. El índice del municipio es tan solo de 0.286. A simple vista, parece algo bueno que una localidad tenga un índice tan cercano a la igualdad perfecta pero, una vez enterados de la población de la localidad, la cual es de apenas 131 personas (INEGI, 2010), un simple número de pronto no es tan relevante.</p>
+
+<p>Al analizar el resto de los indicadores se tiene un juicio mucho más certero sobre la situación de desigualdad. En este caso, Santiago Tepetlapa tiene una razón del ingreso de 0.22 y su grado de polarización es de alta marginación, es decir, la mayoría de sus habitantes viven en pobreza extrema y situación vulnerable. Surge la pregunta: ¿Es útil la igualdad cuando eso significa que todos somos vulnerables? Por supuesto que no, por eso precisamente es necesario el cálculo de distintos indicadores si se pretende llegar a una conclusión confiable.</p>
+
+<p>Para ubicar mejor cómo nos encontramos en distribución del ingreso, comparemos a Torreón con el resto de la Región Lagunera así como con otros municipios de la República.</p>
+
+<h3>Tabla 1</h3>
+
+<table class="table table-hover table-bordered">
+<tbody>
+<tr>
+<th></th>
+<th>Coeficiente de Gini</th>
+<th>Razón de Ingreso</th>
+<th>Grado de polarización</th>
+</tr>
+<tr>
+<td>Torreón</td>
+<td>0.4524759</td>
+<td>0.12</td>
+<td>Polo de baja marginación</td>
+</tr>
+<tr>
+<td>Saltillo</td>
+<td>0.4418525</td>
+<td>0.12</td>
+<td>Polo de baja marginación</td>
+</tr>
+<tr>
+<td>San Luis Potosí</td>
+<td>0.4554662</td>
+<td>0.11</td>
+<td>Polo de baja marginación</td>
+</tr>
+<tr>
+<td>Chihuahua</td>
+<td>0.422213</td>
+<td>0.13</td>
+<td>Polo de baja marginación</td>
+</tr>
+<tr>
+<td>Puebla</td>
+<td>0.4556629</td>
+<td>0.11</td>
+<td>Polo de baja marginación</td>
+</tr>
+<tr>
+<td>Monterrey</td>
+<td>0.455091</td>
+<td>0.11</td>
+<td>Polo de baja marginación</td>
+</tr>
+<tr>
+<td>San Pedro Garza García</td>
+<td>0.469568</td>
+<td>0.11</td>
+<td>Polo de baja marginación</td>
+</tr>
+<tr>
+<td>León</td>
+<td>0.4433506</td>
+<td>0.12</td>
+<td>Polo de baja marginación</td>
+</tr>
+<tr>
+<td>Lerdo</td>
+<td>0.4387887</td>
+<td>0.12</td>
+<td>Polo de baja marginación</td>
+</tr>
+<tr>
+<td>Matamoros</td>
+<td>0.3831383</td>
+<td>0.17</td>
+<td>Polo de baja marginación</td>
+</tr>
+<tr>
+<td>Gómez Palacio</td>
+<td>0.4208263</td>
+<td>0.14</td>
+<td>Polo de baja marginación</td>
+</tr>
+<tr>
+<td>Aguascalientes</td>
+<td>0.4371458</td>
+<td>0.13</td>
+<td>Polo de baja marginación</td>
+</tr>
+<tr>
+<td>Juárez</td>
+<td>0.4193947</td>
+<td>0.14</td>
+<td>Polo de baja marginación</td>
+</tr>
+<tr>
+<td>Durango</td>
+<td>0.4362495</td>
+<td>0.13</td>
+<td>Polo de baja marginación</td>
+</tr>
+<tr>
+<td>Santiago Tepetlapa</td>
+<td>0.2856981</td>
+<td>0.22</td>
+<td>Polo de alta marginación</td>
+</tr>
+<tr>
+<td>Hermosillo</td>
+<td>0.4383958</td>
+<td>0.12</td>
+<td>Polo de baja marginación</td>
+</tr>
+<tr>
+<td>Armería</td>
+<td>0.590808</td>
+<td>0.1</td>
+<td>Sin polo</td>
+</tr>
+</tbody>
+</table>
+
+<p>Fuente: CONEVAL</p>
+
+<h3>Coeficiente de Gini</h3>
+
+<p><img class="img-responsive contenido-imagen" src="equidad-economica-torreon/01-coeficiente-gini.png" alt="Coeficiente Gini"><br>
+Fuente: CONEVAL Nota: Para este coeficiente, menos es mejor, pues representa mayor equidad económica.</p>
+
+<h3>Razón de Ingreso</h3>
+
+<p><img class="img-responsive contenido-imagen" src="equidad-economica-torreon/02-razon-de-ingreso.png" alt="Razón de Ingreso"><br>
+Fuente: CONEVAL Nota: Para esta razón, más es mejor, pues representa mayor equidad económica.</p>
+
+<p>Lo anterior nos demuestra que Torreón se encuentra por debajo del promedio nacional; sin embargo, aun cuando en el índice de Gini esto es bueno, no es así en la razón de ingreso. Mientras el promedio nacional es de 0.13, Torreón tiene una razón de 0.12 lo cual indica una brecha de ingresos más amplia. Por otro lado, como se observa en la tabla, el grado de polarización de Torreón es de baja marginación, en otras palabras, la mayoría de la población se encuentra en situación NO vulnerable.</p>
+
+<p>¿Cómo se encuentra en igualdad la zona metropolitana de La Laguna? En promedio, la zona metropolitana se encuentra en aún mejores niveles de igualdad, pues tiene un índice de Gini de 0.4238073 y su razón de ingreso promedio es de 0.1375. A continuación se muestra una gráfica de los municipios que integran a la zona con sus respectivos índices:</p>
+
+<h3>Coeficiente de Gini en la Laguna</h3>
+
+<p><img class="img-responsive contenido-imagen" src="equidad-economica-torreon/03-coeficiente-gini-laguna.png" alt="Coeficiente Gini Laguna"><br>
+Fuente: CONEVAL</p>
+
+<h3>Razón de Ingreso en la Laguna</h3>
+
+<p><img class="img-responsive contenido-imagen" src="equidad-economica-torreon/04-razon-de-ingreso-laguna.png" alt="Razón de Ingreso Laguna"><br>
+Fuente: CONEVAL</p>
+
+<p>Aun cuando nos encontramos en niveles “aceptables” de igualdad de ingresos, lo cierto es que no nos encontramos en una situación ideal. Si tomáramos en cuenta únicamente los municipios con bajo nivel de marginación y después los ordenáramos basándonos en sus índices de Gini, Torreón se ubicaría en el lugar 1,072 de los 1,192 municipios que cumplen con el filtro. Esto nos muestra cuánto nos falta por mejorar en cuestiones de igualdad.</p>
+
+<!-- Contenido: Termina -->
+        </div>
+              <div class="publicador" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+          <span class="contenido-imagen-previa"><img class="img-responsive" itemprop="image" alt="Instituto Municipal de Planeación y Competitividad de Torreón" src="../imagenes/implan-logo.png"></span>
+          <h3 class="titulo" itemprop="name">Instituto Municipal de Planeación y Competitividad de Torreón</h3>
+          <div class="descripcion" itemprop="description">Órgano técnico responsable de la planeación del desarrollo del municipio de Torreón, Coahuila, México.</div>
+          <div class="contenido-imagen-previa-final"></div>
+        </div>
+      </div></article>
+      <aside>
+  <!-- Extra: Inicia  -->
+  <h3>Publicaciones relacionadas</h3>
+<p><b>Análisis Publicados</b></p>
+<ul>
+  <li><a href="http://www.trcimplan.gob.mx/blog/la-accesibilidad-universal-en-espacios-publicos.html">La accesibilidad universal en espacios p&uacute;blicos</a></li>
+  <li><a href="http://www.trcimplan.gob.mx/blog/sistemas-urbanos-rurales-un-nuevo-enfoque-para-el-desarrollo-regional.html">Sistemas Urbanos Rurales: un nuevo enfoque para el desarrollo regional</a></li>
+  <li><a href="http://www.trcimplan.gob.mx/blog/hacinamiento-en-torreon-marzo2020.html">La Situaci&oacute;n de Hacinamiento en Torre&oacute;n</a></li>
+  <li><a href="http://www.trcimplan.gob.mx/blog/hacia-la-gobernanza-metropolitana-en-la-laguna-ene2020.html">Hacia la Gobernanza Metropolitana en La Laguna</a></li>
+  <li><a href="http://www.trcimplan.gob.mx/blog/disminucion-de-la-pobreza-en-torreon-hacia-agenda2030-oct2019.html">Disminuci&oacute;n de la Pobreza en Torre&oacute;n, Hacia la Agenda 2030.</a></li>
+  <li><a href="http://www.trcimplan.gob.mx/blog/torreon-de-ciudadano-a-consumidor-sep2019.html">Torre&oacute;n, de ciudadano a consumidor</a></li>
+  <li><a href="http://www.trcimplan.gob.mx/blog/discapacidad-en-la-laguna-sep2019.html">La discapacidad como una realidad inevitable en La Laguna</a></li>
+  <li><a href="http://www.trcimplan.gob.mx/blog/urgente-reducir-brecha-salarial-en-la-zona-metropolitana-de-la-laguna-dic2018.html">Urgente reducir brecha salarial en la Zona Metropolitana de La Laguna.</a></li>
+  <li><a href="http://www.trcimplan.gob.mx/blog/indice-de-maternidad-en-la-laguna.html">&Iacute;ndice de Maternidad en La Laguna</a></li>
+  <li><a href="http://www.trcimplan.gob.mx/blog/formas-de-discriminacion-contra-las-personas-indigenas-en-la-region-lagunera-ene2019.html">Formas de discriminaci&oacute;n contra las personas ind&iacute;genas en la regi&oacute;n lagunera</a></li>
+</ul>
+<p><b>Sistema Metropolitano de Indicadores</b></p>
+<ul>
+  <li><a href="http://www.trcimplan.gob.mx/indicadores-gomez-palacio/sociedad-poblacion-con-ingresos-inferiores-a-la-linea-de-bienestar-minimo.html">Poblaci&oacute;n con ingresos inferiores a la l&iacute;nea de bienestar m&iacute;nimo en G&oacute;mez Palacio</a></li>
+  <li><a href="http://www.trcimplan.gob.mx/indicadores-lerdo/sociedad-poblacion-con-ingresos-inferiores-a-la-linea-de-bienestar-minimo.html">Poblaci&oacute;n con ingresos inferiores a la l&iacute;nea de bienestar m&iacute;nimo en Lerdo</a></li>
+  <li><a href="http://www.trcimplan.gob.mx/indicadores-torreon/sociedad-poblacion-con-ingresos-inferiores-a-la-linea-de-bienestar-minimo.html">Poblaci&oacute;n con ingresos inferiores a la l&iacute;nea de bienestar m&iacute;nimo en Torre&oacute;n</a></li>
+  <li><a href="http://www.trcimplan.gob.mx/indicadores-matamoros/sociedad-poblacion-con-ingresos-inferiores-a-la-linea-de-bienestar-minimo.html">Poblaci&oacute;n con ingresos inferiores a la l&iacute;nea de bienestar m&iacute;nimo en Matamoros</a></li>
+  <li><a href="http://www.trcimplan.gob.mx/indicadores-matamoros/sociedad-poblacion-con-ingresos-inferiores-a-la-linea-de-bienestar.html">Poblaci&oacute;n con ingresos inferiores a la l&iacute;nea de bienestar en Matamoros</a></li>
+  <li><a href="http://www.trcimplan.gob.mx/indicadores-gomez-palacio/sociedad-poblacion-con-ingresos-inferiores-a-la-linea-de-bienestar.html">Poblaci&oacute;n con ingresos inferiores a la l&iacute;nea de bienestar en G&oacute;mez Palacio</a></li>
+  <li><a href="http://www.trcimplan.gob.mx/indicadores-torreon/sociedad-poblacion-con-ingresos-inferiores-a-la-linea-de-bienestar.html">Poblaci&oacute;n con ingresos inferiores a la l&iacute;nea de bienestar en Torre&oacute;n</a></li>
+  <li><a href="http://www.trcimplan.gob.mx/indicadores-lerdo/sociedad-poblacion-con-ingresos-inferiores-a-la-linea-de-bienestar.html">Poblaci&oacute;n con ingresos inferiores a la l&iacute;nea de bienestar en Lerdo</a></li>
+  <li><a href="http://www.trcimplan.gob.mx/indicadores-torreon/sociedad-nacimientos-registrados-en-mujeres-de-15-19-anos.html">Nacimientos registrados en mujeres de 15-19 a&ntilde;os en Torre&oacute;n</a></li>
+  <li><a href="http://www.trcimplan.gob.mx/indicadores-lerdo/sociedad-carencia-por-acceso-a-la-seguridad-social.html">Carencia por acceso a la seguridad social en Lerdo</a></li>
+</ul>
+<p><b>Sistema de Información Geográfica</b></p>
+<ul>
+  <li><a href="http://www.trcimplan.gob.mx/sig-mapas-torreon/valores-catastrales-por-vialidades.html">Valores Catastrales por Vialidades</a></li>
+  <li><a href="http://www.trcimplan.gob.mx/sig-mapas-torreon/indicadores-socioeconomicos.html">Indicadores Socioecon&oacute;micos</a></li>
+  <li><a href="http://www.trcimplan.gob.mx/sig-mapas-torreon/centros-atencion-adultos-mayores.html">Centros de Atenci&oacute;n a Adultos Mayores</a></li>
+  <li><a href="http://www.trcimplan.gob.mx/sig-mapas-torreon/poligonos-pobreza.html">Pol&iacute;gonos de Pobreza</a></li>
+  <li><a href="http://www.trcimplan.gob.mx/sig-mapas-torreon/crecimiento-decrecimiento-poblacion.html">Crecimiento y Decrecimiento de Poblaci&oacute;n</a></li>
+</ul>
+<p><b>Plan Estratégico Torreón</b></p>
+<ul>
+  <li><a href="http://www.trcimplan.gob.mx/pet/diagnostico-estrategico-movilidad-transporte.html">Diagn&oacute;stico Estrat&eacute;gico: Movilidad y Transporte</a></li>
+  <li><a href="http://www.trcimplan.gob.mx/pet/cartera-proyectos-desarrollo-social.html">Cartera de Proyectos: Desarrollo Social</a></li>
+  <li><a href="http://www.trcimplan.gob.mx/pet/diagnostico-estrategico-desarrollo-social.html">Diagn&oacute;stico Estrat&eacute;gico: Desarrollo Social</a></li>
+  <li><a href="http://www.trcimplan.gob.mx/pet/vision-movilidad-transporte.html">Visi&oacute;n de Movilidad y Transporte 2040</a></li>
+  <li><a href="http://www.trcimplan.gob.mx/pet/vision-desarrollo-social.html">Visi&oacute;n de Desarrollo Social 2040</a></li>
+  <li><a href="http://www.trcimplan.gob.mx/pet/cartera-proyectos-movilidad-transporte.html">Cartera de Proyectos: Movilidad y Transporte</a></li>
+  <li><a href="http://www.trcimplan.gob.mx/proyectos/salud-laguna.html">Salud Laguna</a></li>
+  <li><a href="http://www.trcimplan.gob.mx/pet/diagnostico-estrategico-medio-ambiente-sustentabilidad.html">Diagn&oacute;stico Estrat&eacute;gico: Medio Ambiente y Sustentabilidad</a></li>
+  <li><a href="http://www.trcimplan.gob.mx/pet/diagnostico-estrategico-buen-gobierno.html">Diagn&oacute;stico Estrat&eacute;gico: Buen Gobierno</a></li>
+  <li><a href="http://www.trcimplan.gob.mx/pet/diagnostico-estrategico-desarrollo-economico-innovacion.html">Diagn&oacute;stico Estrat&eacute;gico: Desarrollo Econ&oacute;mico e Innovaci&oacute;n</a></li>
+</ul>
+<p><b>Sala de Prensa</b></p>
+<ul>
+  <li><a href="http://www.trcimplan.gob.mx/sala-prensa/2018-enoe.html">Principales Resultados de la Encuesta Nacional de Ocupaci&oacute;n y Empleo (ENOE) para el &Aacute;rea Metropolitana de la Laguna.</a></li>
+  <li><a href="http://www.trcimplan.gob.mx/sala-prensa/2018-11-14-enoe-3er-trim-2018.html">Principales resultados de la Encuesta Nacional de Ocupaci&oacute;n y Empleo (ENOE) para el &Aacute;rea Metropolitana de La Laguna.</a></li>
+  <li><a href="http://www.trcimplan.gob.mx/sala-prensa/2020-04-15-comunicado-conferencias-virtuales.html">El IMPLAN Torre&oacute;n y su Consejo Juvenil: Visi&oacute;n Metr&oacute;poli, presentar&aacute;n Conferencias Virtuales</a></li>
+  <li><a href="http://www.trcimplan.gob.mx/sala-prensa/2020-02-27-segunda-sesion-consejo-2020.html">Presentan en Segunda Sesi&oacute;n de Consejo el &ldquo;Programa Parcial de Desarrollo Urbano para la Zona Norte de Torre&oacute;n&rdquo;</a></li>
+  <li><a href="http://www.trcimplan.gob.mx/sala-prensa/2020-02-17-comunicado-enoe.html">Disminuye la tasa de desempleo en la Zona Metropolitana de La Laguna (ZML), al cuarto trimestre de 2019</a></li>
+  <li><a href="http://www.trcimplan.gob.mx/sala-prensa/2020-02-06-comunicado-conferencia-imeplan.html">Postura sobre la creaci&oacute;n de un Instituto Metropolitano de Planeaci&oacute;n.</a></li>
+  <li><a href="http://www.trcimplan.gob.mx/sala-prensa/2020-01-30-primer-sesion-consejo-2020.html">Primer Sesi&oacute;n de Consejo 2020. Se renueva el Consejo Directivo del IMPLAN.</a></li>
+  <li><a href="http://www.trcimplan.gob.mx/sala-prensa/2018-08-10-comunicado-prensa.html">Presentan colaboraci&oacute;n entre IMPLAN y el Instituto Municipal de la Mujer en Torre&oacute;n.</a></li>
+  <li><a href="http://www.trcimplan.gob.mx/sala-prensa/2019-09-26-seminario-identidad-lagunera.html">Consejo Visi&oacute;n Metr&oacute;poli presenta Seminario de Identidad Lagunera</a></li>
+  <li><a href="http://www.trcimplan.gob.mx/sala-prensa/2019-09-26-novena-sesion-consejo.html">Novena Sesi&oacute;n de Consejo Implan. Presentan Resultados del Conversatorio y del Concurso &ldquo;Manos a la Cebra&rdquo;.</a></li>
+</ul>
+  <!-- Extra: Termina -->
+  </aside>
+<div class="contenido-social">
+  <h5>Compartir en Redes Sociales</h5>
+  <a href="https://twitter.com/share" class="twitter-share-button" data-via="trcimplan" data-lang="es">Twittear</a>
+  <iframe src="//www.facebook.com/plugins/like.php?href=http%3A%2F%2Fwww.trcimplan.gob.mx%2Fblog%2Fequidad-economica-torreon.html&amp;width=300&amp;layout=button_count&amp;action=like&amp;show_faces=true&amp;share=false&amp;height=21" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:300px; height:21px;" allowTransparency="true"></iframe>
+</div>
+    </div>
+    <div class="mapa-inferior">
+          <div class="pull-right redes-sociales">
+            <a class="fa fa-twitter-square" href="http://www.twitter.com/trcimplan" target="_blank"></a>
+            <a class="fa fa-facebook-square" href="https://facebook.com/trcimplan" target="_blank"></a>
+            <a class="fa fa-facebook-square" href="http://www.instagram.com/implantorreon" target="_blank"></a>
+            <a class="fa fa-rss-square" href="../rss.xml"></a>
+          </div>
+    </div>
+  </div>
+</div>
+<!-- Javascript global inicia -->
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
+<script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="../vendor/metisMenu/metisMenu.min.js"></script>
+<script type="text/javascript" src="../vendor/datatables/js/jquery.dataTables.min.js"></script>
+<script type="text/javascript" src="../vendor/datatables-plugins/dataTables.bootstrap.min.js"></script>
+<script type="text/javascript" src="../vendor/datatables-responsive/dataTables.responsive.js"></script>
+<script type="text/javascript" src="../vendor/raphael/raphael.min.js"></script>
+<script type="text/javascript" src="../vendor/morrisjs/morris.min.js"></script>
+<script type="text/javascript" src="../dist/js/sb-admin-2.min.js"></script>
+<script type="text/javascript" src="http://libs.cartocdn.com/cartodb.js/v3/3.15/cartodb.js"></script>
+<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+<!-- Javascript global termina -->
+<!-- Javascript inicia -->
+<script>
+  // Twitter
+  !function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="https://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");
+</script>
+
+<!-- Javascript termina -->
+<!-- Javascript Google Analytics -->
+<script>
+  // Google Analytics
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)})(window,document,'script','//www.google-analytics.com/analytics.js','ga');ga('create', 'UA-58290501-1', 'auto');ga('send', 'pageview');
+</script>
+</body>
+</html>

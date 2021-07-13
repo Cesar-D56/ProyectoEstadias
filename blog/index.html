@@ -1,0 +1,711 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+<!-- ===================================================================================================
+
+        Instituto Municipal de Planeación y Competitividad (IMPLAN) de Torreón.
+
+        3er. generación de la Plataforma del Conocimiento
+        Desarrollado por Ing. Guillermo Valdés Lozano <guivaloz en movimientolibre.com>
+
+        El software que lo construye está bajo la licencia GPL versión 3. © 2014, 2015, 2016, 2017.
+        Una copia está contenida en el archivo LICENCE al bajar desde GitHub.
+
+        Al usar, estudiar y copiar está aceptando los términos de uso de la información y del sitio web:
+          http://www.trcimplan.gob.mx/terminos/terminos-informacion.html
+          http://www.trcimplan.gob.mx/terminos/terminos-sitio.html
+
+        Descargue, estudie y colabore bajando todo este sitio web:
+          IMPLAN Torreón     https://github.com/TRCIMPLAN/trcimplan.github.io
+
+        Agradecemos y compartimos las tecnologías abiertas y gratuitas sobre las que se basa:
+          PHP                http://php.net
+          Twitter Bootstrap  http://getbootstrap.com
+          StartBootStrap     http://startbootstrap.com
+          Morris.js          https://morrisjs.github.io/morris.js/
+          Font Awesome       http://fontawesome.io
+          DataTables         https://www.datatables.net
+          Carto              https://carto.com
+          GitHub             https://github.com
+
+     =================================================================================================== -->
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="A través de los análisis se logra ampliar el conocimiento y ofrecer recomendaciones documentadas de las temáticas del IMPLAN.">
+  <meta name="author" content="TrcIMPLAN Staff">
+  <meta name="keywords" content="IMPLAN, Torreon, Analisis, Publicaciones, Estudios, Investigacion">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Análisis Publicados - IMPLAN Torreón">
+  <meta name="twitter:description" content="A través de los análisis se logra ampliar el conocimiento y ofrecer recomendaciones documentadas de las temáticas del IMPLAN.">
+  <meta name="twitter:url" content="http://www.trcimplan.gob.mx/blog/index.html">
+  <meta name="og:title" content="Análisis Publicados - IMPLAN Torreón">
+  <meta name="og:description" content="A través de los análisis se logra ampliar el conocimiento y ofrecer recomendaciones documentadas de las temáticas del IMPLAN.">
+  <meta name="og:url" content="http://www.trcimplan.gob.mx/blog/index.html">
+  <title>Análisis Publicados - IMPLAN Torreón</title>
+  <link rel="shortcut icon" type="image/x-icon" href="../imagenes/apple-touch-icon.png">
+  <link rel="apple-touch-icon" href="../imagenes/apple-touch-icon.png">
+  <link rel="apple-touch-icon" href="../imagenes/apple-touch-icon-76x76.png" sizes="76x76">
+  <link rel="apple-touch-icon" href="../imagenes/apple-touch-icon-120x120.png" sizes="120x120">
+  <link rel="apple-touch-icon" href="../imagenes/apple-touch-icon-152x152.png" sizes="152x152">
+  <link rel="apple-touch-icon" href="../imagenes/apple-touch-icon-180x180.png" sizes="180x180">
+  <link rel="icon" href="../imagenes/icon-hires.png" sizes="192x192">
+  <link rel="icon" href="../imagenes/icon-normal.png" sizes="128x128">
+  <link rel="alternate" type="application/rss+xml" href="../rss.xml" title="IMPLAN Torreón">
+  <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+  <link rel="stylesheet" type="text/css" href="../vendor/metisMenu/metisMenu.min.css">
+  <link rel="stylesheet" type="text/css" href="../vendor/datatables-plugins/dataTables.bootstrap.css">
+  <link rel="stylesheet" type="text/css" href="../vendor/morrisjs/morris.css">
+  <link rel="stylesheet" type="text/css" href="../vendor/font-awesome/css/font-awesome.min.css">
+  <link rel="stylesheet" type="text/css" href="../dist/css/sb-admin-2.min.css">
+  <link rel="stylesheet" type="text/css" href="../dist/css/plataforma-de-conocimiento.css">
+  <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Noto+Sans|Roboto+Condensed:400,700">
+  <link rel="stylesheet" type="text/css" href="http://libs.cartocdn.com/cartodb.js/v3/3.15/themes/css/cartodb.css">
+  <link rel="stylesheet" type="text/css" href="../dist/css/estilosvm.css">
+  <link rel="stylesheet" type="text/css" href="../dist/css/trcimplan.css">
+  <!-- SOPORTE PARA IE -->
+  <!--[if lt IE 9]>
+  <script type="text/javascript" src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+  <script type="text/javascript" src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+  <![endif]-->
+</head>
+<body>
+<div id="wrapper">
+  <nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="../index.html"><img class="navbar-brand-img" src="../imagenes/implan-barra-logo-chico-gris.png" alt="IMPLAN Torreón"></a>
+    </div>
+  <div class="navbar-default sidebar" role="navigation">
+    <div class="sidebar-nav navbar-collapse">
+      <ul class="nav" id="side-menu">
+        <li class="sidebar-search">
+          <form method="get" action="http://www.trcimplan.gob.mx/buscador-resultados.html">
+            <div class="input-group custom-search-form">
+              <input type="text" class="form-control" placeholder="Google buscar..." value="" name="q">
+              <span class="input-group-btn">
+                <button class="btn btn-default" type="submit"><i class="fa fa-search"></i></button>
+              </span>
+            </div>
+          </form>
+        </li>
+        <li class="active">
+          <a href="#"><span class="navegacion-icono"><i class="fa fa-lightbulb-o"></i></span> Análisis Publicados<span class="fa arrow"></span></a>
+          <ul class="nav nav-second-level">
+            <li><a href="../blog/index.html"><span class="navegacion-icono"><i class="fa fa-file-text-o"></i></span> Últimos Análisis</a></li>
+            <li><a href="../excolaboradores/index.html"><span class="navegacion-icono"><i class="fa fa-file-text-o"></i></span> Análisis por Autor</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="#"><span class="navegacion-icono"><i class="fa fa-area-chart"></i></span> Indicadores<span class="fa arrow"></span></a>
+          <ul class="nav nav-second-level">
+            <li><a href="../smi/introduccion.html"><span class="navegacion-icono"><i class="fa fa-file-text-o"></i></span> Introducción al SMI</a></li>
+            <li><a href="../indicadores-categorias/index.html"><span class="navegacion-icono"><i class="fa fa-th-list"></i></span> Indicadores por Categoría</a></li>
+            <li><a href="../smi/por-region.html"><span class="navegacion-icono"><i class="fa fa-table"></i></span> Indicadores por Región</a></li>
+            <li><a href="../smi/datos-abiertos.html"><span class="navegacion-icono"><i class="fa fa-download"></i></span> Datos Abiertos</a></li>
+            <li><a href="../smi/niveles-socioeconomicos.html"><span class="navegacion-icono"><i class="fa fa-bar-chart"></i></span> Niveles Socioeconómicos</a></li>
+            <li><a href="../monitores/index.html"><span class="navegacion-icono"><i class="fa fa-file-text-o"></i></span> Monitores</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="#"><span class="navegacion-icono"><i class="fa fa-puzzle-piece"></i></span> Indicadores Básicos de Colonias<span class="fa arrow"></span></a>
+          <ul class="nav nav-second-level">
+            <li><a href="../ibc/introduccion.html"><span class="navegacion-icono"><i class="fa fa-file-text-o"></i></span> Introducción al IBC</a></li>
+            <li><a href="../ibc-colonias-torreon/index.html"><span class="navegacion-icono"><i class="fa fa-font"></i></span> Colonias de Torreón</a></li>
+            <li><a href="https://implantorreon.carto.com/u/sigimplan/builder/907a6bc0-2c7e-451e-9668-b78d952e52ff/embed" target="_blank"><span class="navegacion-icono"><i class="fa fa-external-link"></i></span> Mapa Completo</a></li>
+            <li><a href="../ibc/torreon-urbano.html"><span class="navegacion-icono"><i class="fa fa-table"></i></span> Torreón Urbano</a></li>
+            <li><a href="../ibc/datos-abiertos.html"><span class="navegacion-icono"><i class="fa fa-download"></i></span> Datos Abiertos</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="#"><span class="navegacion-icono"><i class="fa fa-map-marker"></i></span> Información Geográfica<span class="fa arrow"></span></a>
+          <ul class="nav nav-second-level">
+            <li><a href="../sig/introduccion.html"><span class="navegacion-icono"><i class="fa fa-file-text-o"></i></span> Introducción al SIG</a></li>
+            <li><a href="../sig-mapas-torreon/temas-sig.html"><span class="navegacion-icono"><i class="fa fa-map-o"></i></span> Mapas por Tema</a></li>
+            <li><a href="../sig-mapas-torreon/plan-director-desarrollo-urbano.html"><span class="navegacion-icono"><i class="fa fa-map-marker"></i></span> Usos de Suelo</a></li>
+            <li><a href="../sig/datos-abiertos.html"><span class="navegacion-icono"><i class="fa fa-download"></i></span> Datos Abiertos</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="#"><span class="navegacion-icono"><i class="fa fa-book"></i></span> Plan Estratégico Torreón 2040<span class="fa arrow"></span></a>
+          <ul class="nav nav-second-level">
+            <li><a href="../pet/indice.html"><span class="navegacion-icono"><i class="fa fa-list-ul"></i></span> Índice General</a></li>
+            <li><a href="../plan-estrategico-torreon-enfoque-metropolitano-2040/index.html"><span class="navegacion-icono"><i class="fa fa-download"></i></span> Descargar</a></li>
+            <li><a href="../plan-estrategico-metropolitano/descripcion-del-proceso.html"><span class="navegacion-icono"><i class="fa fa-calendar"></i></span> Descripción del proceso</a></li>
+            <li><a href="../proyectos/index.html"><span class="navegacion-icono"><i class="fa fa-check-square"></i></span> Proyectos</a></li>
+            <li><a href="../vision-de-ciudad/vision-de-ciudad.html"><span class="navegacion-icono"><i class="fa fa-file-text-o"></i></span> Visión de Ciudad desde IMPLAN</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="#"><span class="navegacion-icono"><i class="fa fa-briefcase"></i></span> Documentos<span class="fa arrow"></span></a>
+          <ul class="nav nav-second-level">
+            <li><a href="../sig-planes/index.html"><span class="navegacion-icono"><i class="fa fa-book"></i></span> Planes y Programas</a></li>
+            <li><a href="../investigaciones/index.html"><span class="navegacion-icono"><i class="fa fa-file-text-o"></i></span> Investigaciones</a></li>
+            <li><a href="../estudios/index.html"><span class="navegacion-icono"><i class="fa fa-file-text-o"></i></span> Estudios</a></li>
+          </ul>
+        </li>
+        <li><a href="../consejo-directivo/integrantes.html"><span class="navegacion-icono"><i class="fa fa-users"></i></span> Consejo Directivo</a></li>
+        <li><a href="../sala-prensa/index.html"><span class="navegacion-icono"><i class="fa fa-newspaper-o"></i></span> Sala de Prensa</a></li>
+        <li><a href="../programas-radio/index.html"><span class="navegacion-icono"><i class="fa fa-microphone"></i></span> Programas de Radio</a></li>
+        <li>
+          <a href="#"><span class="navegacion-icono"><i class="fa fa-file-text-o"></i></span> Consejo Visión Metrópoli<span class="fa arrow"></span></a>
+          <ul class="nav nav-second-level">
+            <li><a href="../convocatorias/vision-metropoli.html"><span class="navegacion-icono"><i class="fa fa-file-text-o"></i></span> Consejo Juvenil</a></li>
+            <li><a href="../vision-metropoli/integrantes.html"><span class="navegacion-icono"><i class="fa fa-file-text-o"></i></span> Integrantes del Consejo</a></li>
+            <li><a href="../vision-metropoli/index.html"><span class="navegacion-icono"><i class="fa fa-newspaper-o"></i></span> Sala de Prensa</a></li>
+            <li><a href="../vision-metropoli/reglamento-vision-metropoli-2020.pdf"><span class="navegacion-icono"><i class="fa fa-file-text-o"></i></span> Reglamento</a></li>
+            <li><a href="https://issuu.com/consejovisionmetropoli/docs/informe_visi_n_metr_poli_2019_-_2021" target="_blank"><span class="navegacion-icono"><i class="fa fa-file-text-o"></i></span> Informe 2019 - 2021</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="#"><span class="navegacion-icono"><i class="fa fa-building-o"></i></span> Institucional<span class="fa arrow"></span></a>
+          <ul class="nav nav-second-level">
+            <li><a href="../institucional/vision-mision.html"><span class="navegacion-icono"><i class="fa fa-trophy"></i></span> Misión / Visión</a></li>
+            <li><a href="../institucional/NuestrosProyectos.html"><span class="navegacion-icono"><i class="fa fa-pencil-square-o"></i></span> Nuestros Proyectos</a></li>
+            <li><a href="../institucional/mensaje-director.html"><span class="navegacion-icono"><i class="fa fa-comment"></i></span> Mensaje del Director</a></li>
+            <li><a href="../autores/index.html"><span class="navegacion-icono"><i class="fa fa-user"></i></span> Quienes Somos</a></li>
+            <li><a href="../institucional/estructura-organica.html"><span class="navegacion-icono"><i class="fa fa-sitemap"></i></span> Estructura Orgánica</a></li>
+            <li><a href="../institucional/modelo-operativo-universal.html"><span class="navegacion-icono"><i class="fa fa-slideshare"></i></span> Modelo Operativo Univ.</a></li>
+            <li><a href="../institucional/reglamentos.html"><span class="navegacion-icono"><i class="fa fa-gavel"></i></span> Reglamentos</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="#"><span class="navegacion-icono"><i class="fa fa-external-link"></i></span> Transparencia<span class="fa arrow"></span></a>
+          <ul class="nav nav-second-level">
+            <li><a href="http://www2.icai.org.mx/ipo/dependencia.php?dep=178#pageload" target="_blank"><span class="navegacion-icono"><i class="fa fa-file-text-o"></i></span> Transparencia Estatal (ICAI)</a></li>
+            <li><a href="https://consultapublicamx.inai.org.mx/vut-web/faces/view/consultaPublica.xhtml#inicio" target="_blank"><span class="navegacion-icono"><i class="fa fa-file-text-o"></i></span> Plataforma Nacional de Transparencia</a></li>
+            <li><a href="../transparencia/index.html"><span class="navegacion-icono"><i class="fa fa-briefcase"></i></span> Documentos</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="#"><span class="navegacion-icono"><i class="fa fa-share-alt"></i></span> Términos de Uso<span class="fa arrow"></span></a>
+          <ul class="nav nav-second-level">
+            <li><a href="../terminos/terminos-informacion.html"><span class="navegacion-icono"><i class="fa fa-cubes"></i></span> De la información</a></li>
+            <li><a href="../terminos/terminos-sitio.html"><span class="navegacion-icono"><i class="fa fa-globe"></i></span> Del sitio web</a></li>
+            <li><a href="../terminos/privacidad.html"><span class="navegacion-icono"><i class="fa fa-lock"></i></span> Aviso de Privacidad</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="#"><span class="navegacion-icono"><i class="fa fa-phone"></i></span> Contacto<span class="fa arrow"></span></a>
+          <ul class="nav nav-second-level">
+            <li><a href="../contacto/contacto.html"><span class="navegacion-icono"><i class="fa fa-phone"></i></span> Medios de contacto</a></li>
+            <li><a href="../preguntas-frecuentes/preguntas-frecuentes.html"><span class="navegacion-icono"><i class="fa fa-question"></i></span> Preguntas Frecuentes</a></li>
+            <li><a href="http://goo.gl/forms/1rdX4X128PpMOif73" target="_blank"><span class="navegacion-icono"><i class="fa fa-external-link"></i></span> Comentarios y Sugerencias</a></li>
+          </ul>
+        </li>
+        <li><a href="../convocatorias/index.html"><span class="navegacion-icono"><i class="fa fa-file-text-o"></i></span> Convocatorias</a></li>
+        <li><a href="http://177.244.42.17/ovie-torreon/#!" target="_blank"><span class="navegacion-icono"><i class="fa fa-map-marker"></i></span> Oficina Virtual de Información Económica (OVIE)</a></li>
+        <li><a href="https://arcg.is/0vySSr" target="_blank"><span class="navegacion-icono"><i class="fa fa-globe"></i></span> Atlas Municipal de Riesgos de Torreón</a></li>
+      </ul>
+    </div>
+  </div>
+  </nav>
+  <div id="page-wrapper">
+    <div class="cuerpo">
+      <div class="encabezado">
+        <span><h1>Análisis Publicados</h1></span>
+        <div class="encabezado-descripcion">A través de los análisis se logra ampliar el conocimiento y ofrecer recomendaciones documentadas de las temáticas del IMPLAN.</div>
+      </div>
+<h2>Últimos análisis publicados</h2>
+      <div class="media breve">
+        <a class="pull-left" href="salvavidas-para-las-organizaciones-jul-2021.html"><img class="media-object" src="salvavidas-para-las-organizaciones-jul-2021/imagen-previa.jpg"></a>
+        <div class="media-body">
+          <h3 class="media-heading detallados-encabezado"><a href="salvavidas-para-las-organizaciones-jul-2021.html">Salvavidas para las organizaciones</a></h3>
+          <p class="detallados-descripcion">La procuración de fondos se puede entender como el conjunto de herramientas que permiten financiar las actividades de una organización, generalmente, organizaciones no gubernamentales. Para construir una bolsa financiera diversificada es necesaria la participación de actores como personas físicas, personas morales, gobierno, agencias de cooperación internacional, fundaciones y empresas que compartan una causa en común.</p>
+          <p class="detallados-autor-fecha">Por Lic. Miriam Janeth González Quintana, 12/07/2021 00:15</p>
+        </div>
+      </div>
+      <div class="media breve">
+        <a class="pull-left" href="viviendas-deshabitadas-en-la-comarca-lagunera-jul-2021.html"><img class="media-object" src="viviendas-deshabitadas-en-la-comarca-lagunera-jul-2021/imagen-previa.jpg"></a>
+        <div class="media-body">
+          <h3 class="media-heading detallados-encabezado"><a href="viviendas-deshabitadas-en-la-comarca-lagunera-jul-2021.html">Viviendas Deshabitadas en la Comarca Lagunera</a></h3>
+          <p class="detallados-descripcion">Actualmente, el tema de las viviendas deshabitadas en la Comarca Lagunera es muy evidente. De acuerdo con las últimas estadísticas del Inventario Nacional de Viviendas 2016 del Instituto Nacional de Estadística y Geografía (INEGI), un promedio de 90,300 viviendas en La Laguna está deshabitada, de un total de aproximadamente 410,000 viviendas; contando los nuevos desarrollos inmobiliarios, dando como resultado aproximadamente un 20% del total. La situación se da tanto en las periferias de las ciudades, como en los centros consolidados.</p>
+          <p class="detallados-autor-fecha">Por Gilberto Eduardo Ríos Buendía, 12/07/2021</p>
+        </div>
+      </div>
+      <div class="media breve">
+        <a class="pull-left" href="el-manejo-del-agua-en-la-comarca-lagunera-jul-2021.html"><img class="media-object" src="el-manejo-del-agua-en-la-comarca-lagunera-jul-2021/imagen-previa.jpg"></a>
+        <div class="media-body">
+          <h3 class="media-heading detallados-encabezado"><a href="el-manejo-del-agua-en-la-comarca-lagunera-jul-2021.html">El manejo del agua en la Comarca Lagunera</a></h3>
+          <p class="detallados-descripcion">Nuestro planeta está conformado en un 70% de agua. Este recurso natural juega un papel esencial en el desarrollo de las ciudades. Históricamente los asentamientos humanos se han generado cerca de fuentes de este liquido vital, ya que de él depende no solo la vida, si no el desarrollo socio-económico.</p>
+          <p class="detallados-autor-fecha">Por Arq. Carla Estefanía Tovar Triana, 05/07/2021 13:00</p>
+        </div>
+      </div>
+      <div class="media breve">
+        <a class="pull-left" href="el-periodismo-a-pesar-de-la-covid19-jul-2021.html"><img class="media-object" src="el-periodismo-a-pesar-de-la-covid19-jul-2021/imagen-previa.jpg"></a>
+        <div class="media-body">
+          <h3 class="media-heading detallados-encabezado"><a href="el-periodismo-a-pesar-de-la-covid19-jul-2021.html">El Periodismo a pesar de la COVID-19</a></h3>
+          <p class="detallados-descripcion">Con la llegada de la enfermedad por el coronavirus del 2019 (COVID-19), se modificaron totalmente la forma de vida, laboral, familiar y profesional de todas las personas, incluyendo a los medios de comunicación, que, como todas las dependencias, instituciones, comercios y ciudadanía en general, tuvieron que adaptarse a la nueva normalidad.</p>
+          <p class="detallados-autor-fecha">Por Lic. Maira Ivonne Flores Reyes, 05/07/2021</p>
+        </div>
+      </div>
+      <div class="media breve">
+        <a class="pull-left" href="importancia-agricola-y-ganadera-de-la-laguna-jun-2021.html"><img class="media-object" src="importancia-agricola-y-ganadera-de-la-laguna-jun-2021/imagen-previa.jpg"></a>
+        <div class="media-body">
+          <h3 class="media-heading detallados-encabezado"><a href="importancia-agricola-y-ganadera-de-la-laguna-jun-2021.html">Importancia Agrícola y Ganadera de La Laguna</a></h3>
+          <p class="detallados-descripcion">El Distrito Laguna tuvo un promedio anual de 2011 al 2020 de 58,126.46 toneladas de ganado en pie; 115,274.42 toneladas de ave en pie; 124,440.25 toneladas de carne en canal y 1,361,472.53 (en miles de litros) de leche de ganado bovino y caprino. Ningún distrito en el resto de Coahuila alcanza a disputar la primacía del Distrito Laguna Coahuila en este ámbito (Servicio de Información Agroalimentaria y Pesquera, s.f.).</p>
+          <p class="detallados-autor-fecha">Por Lic. Edgardo de la Cruz Torres, 28/06/2021 12:30</p>
+        </div>
+      </div>
+      <div class="media breve">
+        <a class="pull-left" href="la-logistica-de-la-zml-en-el-cen-jun-2021.html"><img class="media-object" src="la-logistica-de-la-zml-en-el-cen-jun-2021/imagen-previa.jpg"></a>
+        <div class="media-body">
+          <h3 class="media-heading detallados-encabezado"><a href="la-logistica-de-la-zml-en-el-cen-jun-2021.html">La Logística de la ZML en el Corredor Económico del Norte</a></h3>
+          <p class="detallados-descripcion">Para atraer inversión empresarial a la Zona Metropolitana de La Laguna (ZML) y así potencializar el papel que juega económicamente en el Corredor Económico del Norte, la Zona cuenta con alrededor de 15 áreas industriales y 151 unidades económicas con más de 100 empleados ya ubicadas dentro de las mismas, pero con espacio disponible para que lleguen más a la zona.</p>
+          <p class="detallados-autor-fecha">Por Lic. Jorge Fernando del Moral Fraire, 28/06/2021</p>
+        </div>
+      </div>
+      <div class="media breve">
+        <a class="pull-left" href="formulacion-de-programas-y-proyectos-jun-2021.html"><img class="media-object" src="formulacion-de-programas-y-proyectos-jun-2021/imagen-previa.jpg"></a>
+        <div class="media-body">
+          <h3 class="media-heading detallados-encabezado"><a href="formulacion-de-programas-y-proyectos-jun-2021.html">La formulación de programas y proyectos, como principio para la planeación y la rendición de cuentas.</a></h3>
+          <p class="detallados-descripcion">La cultura de la formulación de programas y proyectos es una práctica de gobierno municipal, estatal y federal, que el funcionariado tiene como obligación inherente a su cargo.</p>
+          <p class="detallados-autor-fecha">Por Lic. Frida García Gutiérrez, 22/06/2021</p>
+        </div>
+      </div>
+      <div class="media breve">
+        <a class="pull-left" href="salud-mental-en-los-medios-de-comunicacion-jun-2021.html"><img class="media-object" src="salud-mental-en-los-medios-de-comunicacion-jun-2021/imagen-previa.jpg"></a>
+        <div class="media-body">
+          <h3 class="media-heading detallados-encabezado"><a href="salud-mental-en-los-medios-de-comunicacion-jun-2021.html">La Salud Mental en los Medios de Comunicación</a></h3>
+          <p class="detallados-descripcion">Según el Monitor de Salud Mental del IMPLAN Torreón, de 432 unidades médicas de salud pública en el Estado de Coahuila, sólo 2 están enfocadas en la salud mental, el 0.4%.</p>
+          <p class="detallados-autor-fecha">Por Mtro. Omar Ortega Herrera, 21/06/2021</p>
+        </div>
+      </div>
+      <div class="media breve">
+        <a class="pull-left" href="beneficio-sistema-prepago-transporte-publico-jun-2021.html"><img class="media-object" src="beneficio-sistema-prepago-transporte-publico-jun-2021/imagen-previa.jpg"></a>
+        <div class="media-body">
+          <h3 class="media-heading detallados-encabezado"><a href="beneficio-sistema-prepago-transporte-publico-jun-2021.html">Beneficios del Sistema de Prepago en el Transporte Público</a></h3>
+          <p class="detallados-descripcion">Según datos del Censo de Población y Vivienda 2020, el transporte público es el segundo medio más utilizado para trasladarse al trabajo, con un porcentaje de uso del 25.20% en la ZML y un 27.66% para Torreón.</p>
+          <p class="detallados-autor-fecha">Por Arq. Ihanelly Hernández Villa, 14/06/2021 00:30</p>
+        </div>
+      </div>
+      <div class="media breve">
+        <a class="pull-left" href="educacion-financiera-como-pilar-desarrollo-social-jun-2021.html"><img class="media-object" src="educacion-financiera-como-pilar-desarrollo-social-jun-2021/imagen-previa.jpg"></a>
+        <div class="media-body">
+          <h3 class="media-heading detallados-encabezado"><a href="educacion-financiera-como-pilar-desarrollo-social-jun-2021.html">La educación financiera como pilar para el desarrollo social</a></h3>
+          <p class="detallados-descripcion">Hablar de educación financiera en nuestro país es algo que ha tomado bastante relevancia en los últimos años, e instrumentos como la Encuesta Nacional de Inclusión Financiera (ENIF) nos ha permitido evaluar y sobre todo medir los avances en el tema de inclusión en los servicios financieros de los y las mexicanas, lo cual nos permite saber “¿Dónde estamos parados? Y ¿Hacía donde debemos ir?” en el tema, en nuestro país. </p>
+          <p class="detallados-autor-fecha">Por Jorge Ángel Olvera Morales, 14/06/2021</p>
+        </div>
+      </div>
+      <div class="media breve">
+        <a class="pull-left" href="dia-mundial-del-medio-ambiente-jun-2021.html"><img class="media-object" src="dia-mundial-del-medio-ambiente-jun-2021/imagen-previa.jpg"></a>
+        <div class="media-body">
+          <h3 class="media-heading detallados-encabezado"><a href="dia-mundial-del-medio-ambiente-jun-2021.html">Día mundial del medio ambiente: de internacional a local</a></h3>
+          <p class="detallados-descripcion">En Torreón, para el 2019 la concentración de partículas menores a 10 micras se ubicó en 62.09 ug/m3 en promedio, por debajo del valor recomendado de 75 ug/m3 (Dirección general de Medio Ambiente de Torreón); y el Instituto Mexicano para la Competitividad (IMCO) posicionó a Coahuila como el 7º. lugar en tema de medio ambiente.</p>
+          <p class="detallados-autor-fecha">Por Lic. Pedro Eleazar González Valdez, 07/06/2021 10:00</p>
+        </div>
+      </div>
+      <div class="media breve">
+        <a class="pull-left" href="cartografia-geoestadistica-mayo-2021.html"><img class="media-object" src="cartografia-geoestadistica-mayo-2021/imagen-previa.jpg"></a>
+        <div class="media-body">
+          <h3 class="media-heading detallados-encabezado"><a href="cartografia-geoestadistica-mayo-2021.html">Cartografía Geoestadística, una herramienta para la planeación.</a></h3>
+          <p class="detallados-descripcion">En el Censo de Población y Vivienda del 2020 del INEGI, en Torreón se contabilizaron un total de 12,866 manzanas, aumentando un 17.14% respecto al censo 2010.</p>
+          <p class="detallados-autor-fecha">Por Arq. Jair Miramontes Chávez, 31/05/2021</p>
+        </div>
+      </div>
+      <div class="media breve">
+        <a class="pull-left" href="paradas-de-transporte-publico-may-2021.html"><img class="media-object" src="paradas-de-transporte-publico-may-2021/imagen-previa.jpg"></a>
+        <div class="media-body">
+          <h3 class="media-heading detallados-encabezado"><a href="paradas-de-transporte-publico-may-2021.html">Paradas de transporte público, de zonas de transición a espacios públicos.</a></h3>
+          <p class="detallados-descripcion">De acuerdo al Censo de Población y Vivienda 2020, en Torreón el 27.6% de los traslados para llegar al trabajo se hacen en camión, autobús, combi, colectivo, y del mismo modo los traslados a la escuela representan el 21.96% por lo que las paradas para tomar algún transporte público son un espacio de uso cotidiano entre la ciudadanía.</p>
+          <p class="detallados-autor-fecha">Por Arq. Julio Alexis Magaña Cisneros, 24/05/2021</p>
+        </div>
+      </div>
+      <div class="media breve">
+        <a class="pull-left" href="sequia-may-2021.html"><img class="media-object" src="sequia-may-2021/imagen-previa.jpg"></a>
+        <div class="media-body">
+          <h3 class="media-heading detallados-encabezado"><a href="sequia-may-2021.html">Sequía, Una Ineficiente Gestión del Agua</a></h3>
+          <p class="detallados-descripcion">México se encuentra nuevamente ante la dificultad de la ausencia de lluvias y el agotamiento en sus reservas de agua.</p>
+          <p class="detallados-autor-fecha">Por Lic. Edgardo de la Cruz Torres, 17/05/2021 11:50</p>
+        </div>
+      </div>
+      <div class="media breve">
+        <a class="pull-left" href="las-limitaciones-de-la-nom035-may-2021.html"><img class="media-object" src="las-limitaciones-de-la-nom035-may-2021/imagen-previa.jpg"></a>
+        <div class="media-body">
+          <h3 class="media-heading detallados-encabezado"><a href="las-limitaciones-de-la-nom035-may-2021.html">Las limitaciones de la NOM-035</a></h3>
+          <p class="detallados-descripcion">En octubre del 2018, se publicó en el Diario Oficial de la Federación (DOF) la Norma Oficial Mexicana NOM-035-STPS-2018 (NOM-035); un instrumento que permite evaluar el entorno organizacional, así como los factores de riesgo psicosocial en los centros de trabajo.</p>
+          <p class="detallados-autor-fecha">Por Arq. Alejandra Martínez Avilés, 10/05/2021</p>
+        </div>
+      </div>
+      <div class="media breve">
+        <a class="pull-left" href="infraestructura-verde-como-politica-publica-abr-2021.html"><img class="media-object" src="infraestructura-verde-como-politica-publica-abr-2021/imagen-previa.jpg"></a>
+        <div class="media-body">
+          <h3 class="media-heading detallados-encabezado"><a href="infraestructura-verde-como-politica-publica-abr-2021.html">Infraestructura verde como política pública municipal</a></h3>
+          <p class="detallados-descripcion">La zona oriente de la ciudad en fraccionamientos como Ciudad Nazas, Sol de Oriente y Villas Universidad es la que menor temperatura superficial registra con un promedio de 25°C.</p>
+          <p class="detallados-autor-fecha">Por Lic. Jesús Abraham Salazar Valadez, 03/05/2021</p>
+        </div>
+      </div>
+      <div class="media breve">
+        <a class="pull-left" href="abuso-y-maltrato-contra-ninos-y-ninas-abr-2021.html"><img class="media-object" src="abuso-y-maltrato-contra-ninos-y-ninas-abr-2021/imagen-previa.jpg"></a>
+        <div class="media-body">
+          <h3 class="media-heading detallados-encabezado"><a href="abuso-y-maltrato-contra-ninos-y-ninas-abr-2021.html">Abuso sexual contra niños, niñas y adolescentes en Coahuila.</a></h3>
+          <p class="detallados-descripcion">La Unidad Especializada en Delitos Sexuales contra Niñas, Niños y Adolescentes registró de enero a julio del 2020 un total de 142 delitos, de ellos más del 50 por ciento (81), corresponden al delito de abuso sexual a menores de 15 años.</p>
+          <p class="detallados-autor-fecha">Por Lic. Maira Ivonne Flores Reyes, 26/04/2021</p>
+        </div>
+      </div>
+      <div class="media breve">
+        <a class="pull-left" href="acceso-a-la-seguridad-social-en-la-laguna-abril-2021.html"><img class="media-object" src="acceso-a-la-seguridad-social-en-la-laguna-abril-2021/imagen-previa.jpg"></a>
+        <div class="media-body">
+          <h3 class="media-heading detallados-encabezado"><a href="acceso-a-la-seguridad-social-en-la-laguna-abril-2021.html">Acceso a la seguridad social en La Laguna.</a></h3>
+          <p class="detallados-descripcion">En Torreón son 202,567 los trabajadores asegurados por el IMSS, dicha cifra tuvo un incremento de 1.94% respecto al 31 de enero de 2019. En cuanto a los asegurados no trabajadores, el incremento fue de 10.27%, cifra que asciende a 30,696 personas.</p>
+          <p class="detallados-autor-fecha">Por Lic. Olga Alejandra Noriega Aranda, 19/04/2021</p>
+        </div>
+      </div>
+      <div class="media breve">
+        <a class="pull-left" href="la-seguridad-vial-como-un-tema-de-salud-abril-2021.html"><img class="media-object" src="la-seguridad-vial-como-un-tema-de-salud-abril-2021/imagen-previa.jpg"></a>
+        <div class="media-body">
+          <h3 class="media-heading detallados-encabezado"><a href="la-seguridad-vial-como-un-tema-de-salud-abril-2021.html">Seguridad Vial: Un Tema de Salud que nos compete a Todos y Todas.</a></h3>
+          <p class="detallados-descripcion">Los primeros casos de traumatismos ocasionados por un incidente vial se registraron en 1896, pero fue hasta 2004 cuando la Organización Mundial de la Salud (OMS), declaró que se trataba de una pandemia que estaba cobrando a nivel mundial alrededor de 1,35 millones de vidas y si lo comparamos con los 1,8 millones de personas que fallecieron por COVID 19 en el año 2020, podríamos incluso suponer que los incidentes viales son otro tipo de pandemia.</p>
+          <p class="detallados-autor-fecha">Por Arq. Olga Daniela Sánchez Valles, 12/04/2021</p>
+        </div>
+      </div>
+      <div class="media breve">
+        <a class="pull-left" href="la-lucha-contra-la-discriminacion-racial-en-la-laguna-abril-2021.html"><img class="media-object" src="la-lucha-contra-la-discriminacion-racial-en-la-laguna-abril-2021/imagen-previa.jpg"></a>
+        <div class="media-body">
+          <h3 class="media-heading detallados-encabezado"><a href="la-lucha-contra-la-discriminacion-racial-en-la-laguna-abril-2021.html">La Lucha contra la Discriminación Racial en La Laguna</a></h3>
+          <p class="detallados-descripcion">El 21 de marzo se conmemora el Día Internacional de la Eliminación de la Discriminación Racial. Así lo estableció las Naciones Unidas con el fin de concientizar y fomentar una cultura de tolerancia, igualdad y antidiscriminación racial. La discriminación no solo es una forma de violencia que afecta la vida cotidiana de diversos grupos minoritarios, sino que también limita la capacidad de participar en la vida pública y obstaculiza la individualidad y el desarrollo social.</p>
+          <p class="detallados-autor-fecha">Por Lic. Nina Graciela Hernández Jayme, 06/04/2021</p>
+        </div>
+      </div>
+<h2>Todos los análisis clasificados por categorías</h2>
+    <div class="row">
+      <div class="col-xs-6 col-md-4 col-lg-3">
+      <div class="media compactos">
+        <div class="media-left">
+        <a href="categoria-bienestar.html"><img class="media-object" src="../imagenes/64/bienestar.png"></a>
+        </div>
+        <div class="media-body compactos-cuerpo">
+          <h4 class="media-heading"><a href="categoria-bienestar.html">Bienestar</a></h4>
+        </div>
+      </div>
+      </div>
+      <div class="col-xs-6 col-md-4 col-lg-3">
+      <div class="media compactos">
+        <div class="media-left">
+        <a href="categoria-competitividad.html"><img class="media-object" src="../imagenes/64/competitividad.png"></a>
+        </div>
+        <div class="media-body compactos-cuerpo">
+          <h4 class="media-heading"><a href="categoria-competitividad.html">Competitividad</a></h4>
+        </div>
+      </div>
+      </div>
+      <div class="col-xs-6 col-md-4 col-lg-3">
+      <div class="media compactos">
+        <div class="media-left">
+        <a href="categoria-cultura.html"><img class="media-object" src="../imagenes/64/cultura.png"></a>
+        </div>
+        <div class="media-body compactos-cuerpo">
+          <h4 class="media-heading"><a href="categoria-cultura.html">Cultura</a></h4>
+        </div>
+      </div>
+      </div>
+      <div class="col-xs-6 col-md-4 col-lg-3">
+      <div class="media compactos">
+        <div class="media-left">
+        <a href="categoria-delincuencia.html"><img class="media-object" src="../imagenes/64/delincuencia.png"></a>
+        </div>
+        <div class="media-body compactos-cuerpo">
+          <h4 class="media-heading"><a href="categoria-delincuencia.html">Delincuencia</a></h4>
+        </div>
+      </div>
+      </div>
+      <div class="col-xs-6 col-md-4 col-lg-3">
+      <div class="media compactos">
+        <div class="media-left">
+        <a href="categoria-doing-business.html"><img class="media-object" src="../imagenes/64/doing-business.png"></a>
+        </div>
+        <div class="media-body compactos-cuerpo">
+          <h4 class="media-heading"><a href="categoria-doing-business.html">Doing Business</a></h4>
+        </div>
+      </div>
+      </div>
+      <div class="col-xs-6 col-md-4 col-lg-3">
+      <div class="media compactos">
+        <div class="media-left">
+        <a href="categoria-educacion.html"><img class="media-object" src="../imagenes/64/educacion.png"></a>
+        </div>
+        <div class="media-body compactos-cuerpo">
+          <h4 class="media-heading"><a href="categoria-educacion.html">Educación</a></h4>
+        </div>
+      </div>
+      </div>
+      <div class="col-xs-6 col-md-4 col-lg-3">
+      <div class="media compactos">
+        <div class="media-left">
+        <a href="categoria-empleo.html"><img class="media-object" src="../imagenes/64/empleo.png"></a>
+        </div>
+        <div class="media-body compactos-cuerpo">
+          <h4 class="media-heading"><a href="categoria-empleo.html">Empleo</a></h4>
+        </div>
+      </div>
+      </div>
+      <div class="col-xs-6 col-md-4 col-lg-3">
+      <div class="media compactos">
+        <div class="media-left">
+        <a href="categoria-empresas.html"><img class="media-object" src="../imagenes/64/empresas.png"></a>
+        </div>
+        <div class="media-body compactos-cuerpo">
+          <h4 class="media-heading"><a href="categoria-empresas.html">Empresas</a></h4>
+        </div>
+      </div>
+      </div>
+      <div class="col-xs-6 col-md-4 col-lg-3">
+      <div class="media compactos">
+        <div class="media-left">
+        <a href="categoria-finanzas-publicas.html"><img class="media-object" src="../imagenes/64/finanzas-publicas.png"></a>
+        </div>
+        <div class="media-body compactos-cuerpo">
+          <h4 class="media-heading"><a href="categoria-finanzas-publicas.html">Finanzas Públicas</a></h4>
+        </div>
+      </div>
+      </div>
+      <div class="col-xs-6 col-md-4 col-lg-3">
+      <div class="media compactos">
+        <div class="media-left">
+        <a href="categoria-gobierno.html"><img class="media-object" src="../imagenes/64/gobierno.png"></a>
+        </div>
+        <div class="media-body compactos-cuerpo">
+          <h4 class="media-heading"><a href="categoria-gobierno.html">Gobierno</a></h4>
+        </div>
+      </div>
+      </div>
+      <div class="col-xs-6 col-md-4 col-lg-3">
+      <div class="media compactos">
+        <div class="media-left">
+        <a href="categoria-gobierno-digital.html"><img class="media-object" src="../imagenes/64/gobierno-digital.png"></a>
+        </div>
+        <div class="media-body compactos-cuerpo">
+          <h4 class="media-heading"><a href="categoria-gobierno-digital.html">Gobierno Digital</a></h4>
+        </div>
+      </div>
+      </div>
+      <div class="col-xs-6 col-md-4 col-lg-3">
+      <div class="media compactos">
+        <div class="media-left">
+        <a href="categoria-grupos-vulnerables.html"><img class="media-object" src="../imagenes/64/grupos-vulnerables.png"></a>
+        </div>
+        <div class="media-body compactos-cuerpo">
+          <h4 class="media-heading"><a href="categoria-grupos-vulnerables.html">Grupos Vulnerables</a></h4>
+        </div>
+      </div>
+      </div>
+      <div class="col-xs-6 col-md-4 col-lg-3">
+      <div class="media compactos">
+        <div class="media-left">
+        <a href="categoria-genero.html"><img class="media-object" src="../imagenes/64/genero.png"></a>
+        </div>
+        <div class="media-body compactos-cuerpo">
+          <h4 class="media-heading"><a href="categoria-genero.html">Género</a></h4>
+        </div>
+      </div>
+      </div>
+      <div class="col-xs-6 col-md-4 col-lg-3">
+      <div class="media compactos">
+        <div class="media-left">
+        <a href="categoria-infraestructura.html"><img class="media-object" src="../imagenes/64/infraestructura.png"></a>
+        </div>
+        <div class="media-body compactos-cuerpo">
+          <h4 class="media-heading"><a href="categoria-infraestructura.html">Infraestructura</a></h4>
+        </div>
+      </div>
+      </div>
+      <div class="col-xs-6 col-md-4 col-lg-3">
+      <div class="media compactos">
+        <div class="media-left">
+        <a href="categoria-innovacion.html"><img class="media-object" src="../imagenes/64/innovacion.png"></a>
+        </div>
+        <div class="media-body compactos-cuerpo">
+          <h4 class="media-heading"><a href="categoria-innovacion.html">Innovación</a></h4>
+        </div>
+      </div>
+      </div>
+      <div class="col-xs-6 col-md-4 col-lg-3">
+      <div class="media compactos">
+        <div class="media-left">
+        <a href="categoria-macroeconomia.html"><img class="media-object" src="../imagenes/64/macroeconomia.png"></a>
+        </div>
+        <div class="media-body compactos-cuerpo">
+          <h4 class="media-heading"><a href="categoria-macroeconomia.html">Macroeconomía</a></h4>
+        </div>
+      </div>
+      </div>
+      <div class="col-xs-6 col-md-4 col-lg-3">
+      <div class="media compactos">
+        <div class="media-left">
+        <a href="categoria-medio-ambiente.html"><img class="media-object" src="../imagenes/64/medio-ambiente.png"></a>
+        </div>
+        <div class="media-body compactos-cuerpo">
+          <h4 class="media-heading"><a href="categoria-medio-ambiente.html">Medio Ambiente</a></h4>
+        </div>
+      </div>
+      </div>
+      <div class="col-xs-6 col-md-4 col-lg-3">
+      <div class="media compactos">
+        <div class="media-left">
+        <a href="categoria-mercados.html"><img class="media-object" src="../imagenes/64/mercados.png"></a>
+        </div>
+        <div class="media-body compactos-cuerpo">
+          <h4 class="media-heading"><a href="categoria-mercados.html">Mercados</a></h4>
+        </div>
+      </div>
+      </div>
+      <div class="col-xs-6 col-md-4 col-lg-3">
+      <div class="media compactos">
+        <div class="media-left">
+        <a href="categoria-movilidad.html"><img class="media-object" src="../imagenes/64/movilidad.png"></a>
+        </div>
+        <div class="media-body compactos-cuerpo">
+          <h4 class="media-heading"><a href="categoria-movilidad.html">Movilidad</a></h4>
+        </div>
+      </div>
+      </div>
+      <div class="col-xs-6 col-md-4 col-lg-3">
+      <div class="media compactos">
+        <div class="media-left">
+        <a href="categoria-participacion-ciudadana.html"><img class="media-object" src="../imagenes/64/participacion-ciudadana.png"></a>
+        </div>
+        <div class="media-body compactos-cuerpo">
+          <h4 class="media-heading"><a href="categoria-participacion-ciudadana.html">Participación Ciudadana</a></h4>
+        </div>
+      </div>
+      </div>
+      <div class="col-xs-6 col-md-4 col-lg-3">
+      <div class="media compactos">
+        <div class="media-left">
+        <a href="categoria-poblacion.html"><img class="media-object" src="../imagenes/64/poblacion.png"></a>
+        </div>
+        <div class="media-body compactos-cuerpo">
+          <h4 class="media-heading"><a href="categoria-poblacion.html">Población</a></h4>
+        </div>
+      </div>
+      </div>
+      <div class="col-xs-6 col-md-4 col-lg-3">
+      <div class="media compactos">
+        <div class="media-left">
+        <a href="categoria-recursos-naturales.html"><img class="media-object" src="../imagenes/64/recursos-naturales.png"></a>
+        </div>
+        <div class="media-body compactos-cuerpo">
+          <h4 class="media-heading"><a href="categoria-recursos-naturales.html">Recursos Naturales</a></h4>
+        </div>
+      </div>
+      </div>
+      <div class="col-xs-6 col-md-4 col-lg-3">
+      <div class="media compactos">
+        <div class="media-left">
+        <a href="categoria-salud.html"><img class="media-object" src="../imagenes/64/salud.png"></a>
+        </div>
+        <div class="media-body compactos-cuerpo">
+          <h4 class="media-heading"><a href="categoria-salud.html">Salud</a></h4>
+        </div>
+      </div>
+      </div>
+      <div class="col-xs-6 col-md-4 col-lg-3">
+      <div class="media compactos">
+        <div class="media-left">
+        <a href="categoria-sector-automotriz.html"><img class="media-object" src="../imagenes/64/sector-automotriz.png"></a>
+        </div>
+        <div class="media-body compactos-cuerpo">
+          <h4 class="media-heading"><a href="categoria-sector-automotriz.html">Sector Automotriz</a></h4>
+        </div>
+      </div>
+      </div>
+      <div class="col-xs-6 col-md-4 col-lg-3">
+      <div class="media compactos">
+        <div class="media-left">
+        <a href="categoria-seguridad.html"><img class="media-object" src="../imagenes/64/seguridad.png"></a>
+        </div>
+        <div class="media-body compactos-cuerpo">
+          <h4 class="media-heading"><a href="categoria-seguridad.html">Seguridad</a></h4>
+        </div>
+      </div>
+      </div>
+      <div class="col-xs-6 col-md-4 col-lg-3">
+      <div class="media compactos">
+        <div class="media-left">
+        <a href="categoria-servicios-publicos.html"><img class="media-object" src="../imagenes/64/servicios-publicos.png"></a>
+        </div>
+        <div class="media-body compactos-cuerpo">
+          <h4 class="media-heading"><a href="categoria-servicios-publicos.html">Servicios Públicos</a></h4>
+        </div>
+      </div>
+      </div>
+      <div class="col-xs-6 col-md-4 col-lg-3">
+      <div class="media compactos">
+        <div class="media-left">
+        <a href="categoria-transparencia.html"><img class="media-object" src="../imagenes/64/transparencia.png"></a>
+        </div>
+        <div class="media-body compactos-cuerpo">
+          <h4 class="media-heading"><a href="categoria-transparencia.html">Transparencia</a></h4>
+        </div>
+      </div>
+      </div>
+      <div class="col-xs-6 col-md-4 col-lg-3">
+      <div class="media compactos">
+        <div class="media-left">
+        <a href="categoria-vialidad.html"><img class="media-object" src="../imagenes/64/vialidad.png"></a>
+        </div>
+        <div class="media-body compactos-cuerpo">
+          <h4 class="media-heading"><a href="categoria-vialidad.html">Vialidad</a></h4>
+        </div>
+      </div>
+      </div>
+      <div class="col-xs-6 col-md-4 col-lg-3">
+      <div class="media compactos">
+        <div class="media-left">
+        <a href="categoria-vivienda.html"><img class="media-object" src="../imagenes/64/vivienda.png"></a>
+        </div>
+        <div class="media-body compactos-cuerpo">
+          <h4 class="media-heading"><a href="categoria-vivienda.html">Vivienda</a></h4>
+        </div>
+      </div>
+      </div>
+      <div class="col-xs-6 col-md-4 col-lg-3">
+      <div class="media compactos">
+        <div class="media-left">
+        <a href="categoria-indice-de-competitividad-urbana.html"><img class="media-object" src="../imagenes/64/indice-de-competitividad-urbana.png"></a>
+        </div>
+        <div class="media-body compactos-cuerpo">
+          <h4 class="media-heading"><a href="categoria-indice-de-competitividad-urbana.html">Índice de Competitividad Urbana</a></h4>
+        </div>
+      </div>
+      </div>
+    </div>
+    </div>
+    <div class="mapa-inferior">
+          <div class="pull-right redes-sociales">
+            <a class="fa fa-twitter-square" href="http://www.twitter.com/trcimplan" target="_blank"></a>
+            <a class="fa fa-facebook-square" href="https://facebook.com/trcimplan" target="_blank"></a>
+            <a class="fa fa-facebook-square" href="http://www.instagram.com/implantorreon" target="_blank"></a>
+            <a class="fa fa-rss-square" href="../rss.xml"></a>
+          </div>
+    </div>
+  </div>
+</div>
+<!-- Javascript global inicia -->
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
+<script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="../vendor/metisMenu/metisMenu.min.js"></script>
+<script type="text/javascript" src="../vendor/datatables/js/jquery.dataTables.min.js"></script>
+<script type="text/javascript" src="../vendor/datatables-plugins/dataTables.bootstrap.min.js"></script>
+<script type="text/javascript" src="../vendor/datatables-responsive/dataTables.responsive.js"></script>
+<script type="text/javascript" src="../vendor/raphael/raphael.min.js"></script>
+<script type="text/javascript" src="../vendor/morrisjs/morris.min.js"></script>
+<script type="text/javascript" src="../dist/js/sb-admin-2.min.js"></script>
+<script type="text/javascript" src="http://libs.cartocdn.com/cartodb.js/v3/3.15/cartodb.js"></script>
+<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+<!-- Javascript global termina -->
+<!-- Javascript inicia -->
+
+<!-- Javascript termina -->
+<!-- Javascript Google Analytics -->
+<script>
+  // Google Analytics
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)})(window,document,'script','//www.google-analytics.com/analytics.js','ga');ga('create', 'UA-58290501-1', 'auto');ga('send', 'pageview');
+</script>
+</body>
+</html>

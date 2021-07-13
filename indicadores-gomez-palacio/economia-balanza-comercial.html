@@ -1,0 +1,1096 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+<!-- ===================================================================================================
+
+        Instituto Municipal de Planeación y Competitividad (IMPLAN) de Torreón.
+
+        3er. generación de la Plataforma del Conocimiento
+        Desarrollado por Ing. Guillermo Valdés Lozano <guivaloz en movimientolibre.com>
+
+        El software que lo construye está bajo la licencia GPL versión 3. © 2014, 2015, 2016, 2017.
+        Una copia está contenida en el archivo LICENCE al bajar desde GitHub.
+
+        Al usar, estudiar y copiar está aceptando los términos de uso de la información y del sitio web:
+          http://www.trcimplan.gob.mx/terminos/terminos-informacion.html
+          http://www.trcimplan.gob.mx/terminos/terminos-sitio.html
+
+        Descargue, estudie y colabore bajando todo este sitio web:
+          IMPLAN Torreón     https://github.com/TRCIMPLAN/trcimplan.github.io
+
+        Agradecemos y compartimos las tecnologías abiertas y gratuitas sobre las que se basa:
+          PHP                http://php.net
+          Twitter Bootstrap  http://getbootstrap.com
+          StartBootStrap     http://startbootstrap.com
+          Morris.js          https://morrisjs.github.io/morris.js/
+          Font Awesome       http://fontawesome.io
+          DataTables         https://www.datatables.net
+          Carto              https://carto.com
+          GitHub             https://github.com
+
+     =================================================================================================== -->
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Diferencia de exportaciones e imprtaciones, en millones de dólares.">
+  <meta name="author" content="Dirección de Investigación Estratégica">
+  <meta name="keywords" content="IMPLAN, Gómez Palacio, Comercio.">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Balanza comercial. en Gómez Palacio - IMPLAN Torreón">
+  <meta name="twitter:description" content="Diferencia de exportaciones e imprtaciones, en millones de dólares.">
+  <meta name="twitter:image" content="http://www.trcimplan.gob.mx/indicadores-gomez-palacio/../imagenes/imagen-previa.jpg">
+  <meta name="twitter:url" content="http://www.trcimplan.gob.mx/indicadores-gomez-palacio/economia-balanza-comercial.html">
+  <meta name="og:title" content="Balanza comercial. en Gómez Palacio - IMPLAN Torreón">
+  <meta name="og:description" content="Diferencia de exportaciones e imprtaciones, en millones de dólares.">
+  <meta name="og:image" content="http://www.trcimplan.gob.mx/indicadores-gomez-palacio/../imagenes/imagen-previa.jpg">
+  <meta name="og:url" content="http://www.trcimplan.gob.mx/indicadores-gomez-palacio/economia-balanza-comercial.html">
+  <title>Balanza comercial. en Gómez Palacio - IMPLAN Torreón</title>
+  <link rel="shortcut icon" type="image/x-icon" href="../imagenes/apple-touch-icon.png">
+  <link rel="apple-touch-icon" href="../imagenes/apple-touch-icon.png">
+  <link rel="apple-touch-icon" href="../imagenes/apple-touch-icon-76x76.png" sizes="76x76">
+  <link rel="apple-touch-icon" href="../imagenes/apple-touch-icon-120x120.png" sizes="120x120">
+  <link rel="apple-touch-icon" href="../imagenes/apple-touch-icon-152x152.png" sizes="152x152">
+  <link rel="apple-touch-icon" href="../imagenes/apple-touch-icon-180x180.png" sizes="180x180">
+  <link rel="icon" href="../imagenes/icon-hires.png" sizes="192x192">
+  <link rel="icon" href="../imagenes/icon-normal.png" sizes="128x128">
+  <link rel="alternate" type="application/rss+xml" href="../rss.xml" title="IMPLAN Torreón">
+  <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+  <link rel="stylesheet" type="text/css" href="../vendor/metisMenu/metisMenu.min.css">
+  <link rel="stylesheet" type="text/css" href="../vendor/datatables-plugins/dataTables.bootstrap.css">
+  <link rel="stylesheet" type="text/css" href="../vendor/morrisjs/morris.css">
+  <link rel="stylesheet" type="text/css" href="../vendor/font-awesome/css/font-awesome.min.css">
+  <link rel="stylesheet" type="text/css" href="../dist/css/sb-admin-2.min.css">
+  <link rel="stylesheet" type="text/css" href="../dist/css/plataforma-de-conocimiento.css">
+  <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Noto+Sans|Roboto+Condensed:400,700">
+  <link rel="stylesheet" type="text/css" href="http://libs.cartocdn.com/cartodb.js/v3/3.15/themes/css/cartodb.css">
+  <link rel="stylesheet" type="text/css" href="../dist/css/estilosvm.css">
+  <link rel="stylesheet" type="text/css" href="../dist/css/trcimplan.css">
+  <!-- SOPORTE PARA IE -->
+  <!--[if lt IE 9]>
+  <script type="text/javascript" src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+  <script type="text/javascript" src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+  <![endif]-->
+</head>
+<body>
+<div id="wrapper">
+  <nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="../index.html"><img class="navbar-brand-img" src="../imagenes/implan-barra-logo-chico-gris.png" alt="IMPLAN Torreón"></a>
+    </div>
+  <div class="navbar-default sidebar" role="navigation">
+    <div class="sidebar-nav navbar-collapse">
+      <ul class="nav" id="side-menu">
+        <li class="sidebar-search">
+          <form method="get" action="http://www.trcimplan.gob.mx/buscador-resultados.html">
+            <div class="input-group custom-search-form">
+              <input type="text" class="form-control" placeholder="Google buscar..." value="" name="q">
+              <span class="input-group-btn">
+                <button class="btn btn-default" type="submit"><i class="fa fa-search"></i></button>
+              </span>
+            </div>
+          </form>
+        </li>
+        <li>
+          <a href="#"><span class="navegacion-icono"><i class="fa fa-lightbulb-o"></i></span> Análisis Publicados<span class="fa arrow"></span></a>
+          <ul class="nav nav-second-level">
+            <li><a href="../blog/index.html"><span class="navegacion-icono"><i class="fa fa-file-text-o"></i></span> Últimos Análisis</a></li>
+            <li><a href="../excolaboradores/index.html"><span class="navegacion-icono"><i class="fa fa-file-text-o"></i></span> Análisis por Autor</a></li>
+          </ul>
+        </li>
+        <li class="active">
+          <a href="#"><span class="navegacion-icono"><i class="fa fa-area-chart"></i></span> Indicadores<span class="fa arrow"></span></a>
+          <ul class="nav nav-second-level">
+            <li><a href="../smi/introduccion.html"><span class="navegacion-icono"><i class="fa fa-file-text-o"></i></span> Introducción al SMI</a></li>
+            <li><a href="../indicadores-categorias/index.html"><span class="navegacion-icono"><i class="fa fa-th-list"></i></span> Indicadores por Categoría</a></li>
+            <li class="active"><a href="../smi/por-region.html"><span class="navegacion-icono"><i class="fa fa-table"></i></span> Indicadores por Región</a></li>
+            <li><a href="../smi/datos-abiertos.html"><span class="navegacion-icono"><i class="fa fa-download"></i></span> Datos Abiertos</a></li>
+            <li><a href="../smi/niveles-socioeconomicos.html"><span class="navegacion-icono"><i class="fa fa-bar-chart"></i></span> Niveles Socioeconómicos</a></li>
+            <li><a href="../monitores/index.html"><span class="navegacion-icono"><i class="fa fa-file-text-o"></i></span> Monitores</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="#"><span class="navegacion-icono"><i class="fa fa-puzzle-piece"></i></span> Indicadores Básicos de Colonias<span class="fa arrow"></span></a>
+          <ul class="nav nav-second-level">
+            <li><a href="../ibc/introduccion.html"><span class="navegacion-icono"><i class="fa fa-file-text-o"></i></span> Introducción al IBC</a></li>
+            <li><a href="../ibc-colonias-torreon/index.html"><span class="navegacion-icono"><i class="fa fa-font"></i></span> Colonias de Torreón</a></li>
+            <li><a href="https://implantorreon.carto.com/u/sigimplan/builder/907a6bc0-2c7e-451e-9668-b78d952e52ff/embed" target="_blank"><span class="navegacion-icono"><i class="fa fa-external-link"></i></span> Mapa Completo</a></li>
+            <li><a href="../ibc/torreon-urbano.html"><span class="navegacion-icono"><i class="fa fa-table"></i></span> Torreón Urbano</a></li>
+            <li><a href="../ibc/datos-abiertos.html"><span class="navegacion-icono"><i class="fa fa-download"></i></span> Datos Abiertos</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="#"><span class="navegacion-icono"><i class="fa fa-map-marker"></i></span> Información Geográfica<span class="fa arrow"></span></a>
+          <ul class="nav nav-second-level">
+            <li><a href="../sig/introduccion.html"><span class="navegacion-icono"><i class="fa fa-file-text-o"></i></span> Introducción al SIG</a></li>
+            <li><a href="../sig-mapas-torreon/temas-sig.html"><span class="navegacion-icono"><i class="fa fa-map-o"></i></span> Mapas por Tema</a></li>
+            <li><a href="../sig-mapas-torreon/plan-director-desarrollo-urbano.html"><span class="navegacion-icono"><i class="fa fa-map-marker"></i></span> Usos de Suelo</a></li>
+            <li><a href="../sig/datos-abiertos.html"><span class="navegacion-icono"><i class="fa fa-download"></i></span> Datos Abiertos</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="#"><span class="navegacion-icono"><i class="fa fa-book"></i></span> Plan Estratégico Torreón 2040<span class="fa arrow"></span></a>
+          <ul class="nav nav-second-level">
+            <li><a href="../pet/indice.html"><span class="navegacion-icono"><i class="fa fa-list-ul"></i></span> Índice General</a></li>
+            <li><a href="../plan-estrategico-torreon-enfoque-metropolitano-2040/index.html"><span class="navegacion-icono"><i class="fa fa-download"></i></span> Descargar</a></li>
+            <li><a href="../plan-estrategico-metropolitano/descripcion-del-proceso.html"><span class="navegacion-icono"><i class="fa fa-calendar"></i></span> Descripción del proceso</a></li>
+            <li><a href="../proyectos/index.html"><span class="navegacion-icono"><i class="fa fa-check-square"></i></span> Proyectos</a></li>
+            <li><a href="../vision-de-ciudad/vision-de-ciudad.html"><span class="navegacion-icono"><i class="fa fa-file-text-o"></i></span> Visión de Ciudad desde IMPLAN</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="#"><span class="navegacion-icono"><i class="fa fa-briefcase"></i></span> Documentos<span class="fa arrow"></span></a>
+          <ul class="nav nav-second-level">
+            <li><a href="../sig-planes/index.html"><span class="navegacion-icono"><i class="fa fa-book"></i></span> Planes y Programas</a></li>
+            <li><a href="../investigaciones/index.html"><span class="navegacion-icono"><i class="fa fa-file-text-o"></i></span> Investigaciones</a></li>
+            <li><a href="../estudios/index.html"><span class="navegacion-icono"><i class="fa fa-file-text-o"></i></span> Estudios</a></li>
+          </ul>
+        </li>
+        <li><a href="../consejo-directivo/integrantes.html"><span class="navegacion-icono"><i class="fa fa-users"></i></span> Consejo Directivo</a></li>
+        <li><a href="../sala-prensa/index.html"><span class="navegacion-icono"><i class="fa fa-newspaper-o"></i></span> Sala de Prensa</a></li>
+        <li><a href="../programas-radio/index.html"><span class="navegacion-icono"><i class="fa fa-microphone"></i></span> Programas de Radio</a></li>
+        <li>
+          <a href="#"><span class="navegacion-icono"><i class="fa fa-file-text-o"></i></span> Consejo Visión Metrópoli<span class="fa arrow"></span></a>
+          <ul class="nav nav-second-level">
+            <li><a href="../convocatorias/vision-metropoli.html"><span class="navegacion-icono"><i class="fa fa-file-text-o"></i></span> Consejo Juvenil</a></li>
+            <li><a href="../vision-metropoli/integrantes.html"><span class="navegacion-icono"><i class="fa fa-file-text-o"></i></span> Integrantes del Consejo</a></li>
+            <li><a href="../vision-metropoli/index.html"><span class="navegacion-icono"><i class="fa fa-newspaper-o"></i></span> Sala de Prensa</a></li>
+            <li><a href="../vision-metropoli/reglamento-vision-metropoli-2020.pdf"><span class="navegacion-icono"><i class="fa fa-file-text-o"></i></span> Reglamento</a></li>
+            <li><a href="https://issuu.com/consejovisionmetropoli/docs/informe_visi_n_metr_poli_2019_-_2021" target="_blank"><span class="navegacion-icono"><i class="fa fa-file-text-o"></i></span> Informe 2019 - 2021</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="#"><span class="navegacion-icono"><i class="fa fa-building-o"></i></span> Institucional<span class="fa arrow"></span></a>
+          <ul class="nav nav-second-level">
+            <li><a href="../institucional/vision-mision.html"><span class="navegacion-icono"><i class="fa fa-trophy"></i></span> Misión / Visión</a></li>
+            <li><a href="../institucional/NuestrosProyectos.html"><span class="navegacion-icono"><i class="fa fa-pencil-square-o"></i></span> Nuestros Proyectos</a></li>
+            <li><a href="../institucional/mensaje-director.html"><span class="navegacion-icono"><i class="fa fa-comment"></i></span> Mensaje del Director</a></li>
+            <li><a href="../autores/index.html"><span class="navegacion-icono"><i class="fa fa-user"></i></span> Quienes Somos</a></li>
+            <li><a href="../institucional/estructura-organica.html"><span class="navegacion-icono"><i class="fa fa-sitemap"></i></span> Estructura Orgánica</a></li>
+            <li><a href="../institucional/modelo-operativo-universal.html"><span class="navegacion-icono"><i class="fa fa-slideshare"></i></span> Modelo Operativo Univ.</a></li>
+            <li><a href="../institucional/reglamentos.html"><span class="navegacion-icono"><i class="fa fa-gavel"></i></span> Reglamentos</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="#"><span class="navegacion-icono"><i class="fa fa-external-link"></i></span> Transparencia<span class="fa arrow"></span></a>
+          <ul class="nav nav-second-level">
+            <li><a href="http://www2.icai.org.mx/ipo/dependencia.php?dep=178#pageload" target="_blank"><span class="navegacion-icono"><i class="fa fa-file-text-o"></i></span> Transparencia Estatal (ICAI)</a></li>
+            <li><a href="https://consultapublicamx.inai.org.mx/vut-web/faces/view/consultaPublica.xhtml#inicio" target="_blank"><span class="navegacion-icono"><i class="fa fa-file-text-o"></i></span> Plataforma Nacional de Transparencia</a></li>
+            <li><a href="../transparencia/index.html"><span class="navegacion-icono"><i class="fa fa-briefcase"></i></span> Documentos</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="#"><span class="navegacion-icono"><i class="fa fa-share-alt"></i></span> Términos de Uso<span class="fa arrow"></span></a>
+          <ul class="nav nav-second-level">
+            <li><a href="../terminos/terminos-informacion.html"><span class="navegacion-icono"><i class="fa fa-cubes"></i></span> De la información</a></li>
+            <li><a href="../terminos/terminos-sitio.html"><span class="navegacion-icono"><i class="fa fa-globe"></i></span> Del sitio web</a></li>
+            <li><a href="../terminos/privacidad.html"><span class="navegacion-icono"><i class="fa fa-lock"></i></span> Aviso de Privacidad</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="#"><span class="navegacion-icono"><i class="fa fa-phone"></i></span> Contacto<span class="fa arrow"></span></a>
+          <ul class="nav nav-second-level">
+            <li><a href="../contacto/contacto.html"><span class="navegacion-icono"><i class="fa fa-phone"></i></span> Medios de contacto</a></li>
+            <li><a href="../preguntas-frecuentes/preguntas-frecuentes.html"><span class="navegacion-icono"><i class="fa fa-question"></i></span> Preguntas Frecuentes</a></li>
+            <li><a href="http://goo.gl/forms/1rdX4X128PpMOif73" target="_blank"><span class="navegacion-icono"><i class="fa fa-external-link"></i></span> Comentarios y Sugerencias</a></li>
+          </ul>
+        </li>
+        <li><a href="../convocatorias/index.html"><span class="navegacion-icono"><i class="fa fa-file-text-o"></i></span> Convocatorias</a></li>
+        <li><a href="http://177.244.42.17/ovie-torreon/#!" target="_blank"><span class="navegacion-icono"><i class="fa fa-map-marker"></i></span> Oficina Virtual de Información Económica (OVIE)</a></li>
+        <li><a href="https://arcg.is/0vySSr" target="_blank"><span class="navegacion-icono"><i class="fa fa-globe"></i></span> Atlas Municipal de Riesgos de Torreón</a></li>
+      </ul>
+    </div>
+  </div>
+  </nav>
+  <div id="page-wrapper">
+    <div class="cuerpo">
+      <article><div itemscope itemtype="http://schema.org/Article">
+        <div class="encabezado">
+          <h1 itemprop="headline">Balanza comercial. en Gómez Palacio</h1>
+          <div class="encabezado-descripcion" itemprop="description">Diferencia de exportaciones e imprtaciones, en millones de dólares.</div>
+          <div class="encabezado-autor-fecha">
+            Por <span itemprop="author">Dirección de Investigación Estratégica</span> -
+            <meta itemprop="datePublished" content="2018-07-10T13:17:54">10/07/2018 13:17
+          </div>
+        </div>
+        <div itemprop="articleBody">
+<!-- Contenido: Inicia  -->
+<div>
+  <ul class="nav nav-tabs lenguetas" role="tablist" id="LenguetasIndicador">
+    <li role="presentation" class="active"><a href="#LenguetasIndicadorDatos" aria-controls="LenguetasIndicadorDatos" role="tab" data-toggle="tab">Datos</a></li>
+    <li role="presentation"><a href="#LenguetasIndicadorGrafica" aria-controls="LenguetasIndicadorGrafica" role="tab" data-toggle="tab">Gráfica</a></li>
+    <li role="presentation"><a href="#LenguetasIndicadorOtrasRegiones" aria-controls="LenguetasIndicadorOtrasRegiones" role="tab" data-toggle="tab">Otras regiones</a></li>
+  </ul>
+  <div class="tab-content lengueta-contenido">
+  <div role="tabpanel" class="tab-pane active" id="LenguetasIndicadorDatos">
+  <table id="SmiDatosBalanzaComercialEnGomezPalacio" class="table table-hover table-bordered">
+    <thead>
+      <tr>
+        <th>Fecha</th>
+        <th>Dato</th>
+        <th>Fuente</th>
+        <th>Notas</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td class="centrado">2012-01-31</td>
+        <td class="derecha">$ 95,014,523.00</td>
+        <td>Servicio de Administración Tributaria.</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2012-02-29</td>
+        <td class="derecha">$ 129,000,669.00</td>
+        <td>Servicio de Administración Tributaria.</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2012-03-31</td>
+        <td class="derecha">$ 92,767,497.00</td>
+        <td>Servicio de Administración Tributaria.</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2012-04-30</td>
+        <td class="derecha">$ 125,019,192.00</td>
+        <td>Servicio de Administración Tributaria.</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2012-05-31</td>
+        <td class="derecha">$ 90,416,374.00</td>
+        <td>Servicio de Administración Tributaria.</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2012-06-30</td>
+        <td class="derecha">$ 159,852,708.00</td>
+        <td>Servicio de Administración Tributaria.</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2012-07-31</td>
+        <td class="derecha">$ 186,487,426.00</td>
+        <td>Servicio de Administración Tributaria.</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2012-08-31</td>
+        <td class="derecha">$ 140,474,733.00</td>
+        <td>Servicio de Administración Tributaria.</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2012-09-30</td>
+        <td class="derecha">$ 116,485,991.00</td>
+        <td>Servicio de Administración Tributaria.</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2012-10-31</td>
+        <td class="derecha">$ 100,908,829.00</td>
+        <td>Servicio de Administración Tributaria.</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2012-11-30</td>
+        <td class="derecha">$ 114,455,972.00</td>
+        <td>Servicio de Administración Tributaria.</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2012-12-31</td>
+        <td class="derecha">$ 57,053,824.00</td>
+        <td>Servicio de Administración Tributaria.</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2013-01-31</td>
+        <td class="derecha">$ 78,993,347.00</td>
+        <td>Servicio de Administración Tributaria.</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2013-02-28</td>
+        <td class="derecha">$ 169,261,453.00</td>
+        <td>Servicio de Administración Tributaria.</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2013-03-31</td>
+        <td class="derecha">$ 120,385,804.00</td>
+        <td>Servicio de Administración Tributaria.</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2013-04-30</td>
+        <td class="derecha">$ 97,514,505.00</td>
+        <td>Servicio de Administración Tributaria.</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2013-05-31</td>
+        <td class="derecha">$ 108,348,407.00</td>
+        <td>Servicio de Administración Tributaria.</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2013-06-30</td>
+        <td class="derecha">$ 258,956,595.00</td>
+        <td>Servicio de Administración Tributaria.</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2013-07-31</td>
+        <td class="derecha">$ 177,198,461.00</td>
+        <td>Servicio de Administración Tributaria.</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2013-08-31</td>
+        <td class="derecha">$ 160,670,563.00</td>
+        <td>Servicio de Administración Tributaria.</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2013-09-30</td>
+        <td class="derecha">$ 118,622,754.00</td>
+        <td>Servicio de Administración Tributaria.</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2013-10-31</td>
+        <td class="derecha">$ 197,466,476.00</td>
+        <td>Servicio de Administración Tributaria.</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2013-11-30</td>
+        <td class="derecha">$ 183,264,800.00</td>
+        <td>Servicio de Administración Tributaria.</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2013-12-31</td>
+        <td class="derecha">$ 117,588,348.00</td>
+        <td>Servicio de Administración Tributaria.</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2014-01-31</td>
+        <td class="derecha">$ 93,566,871.00</td>
+        <td>Servicio de Administración Tributaria.</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2014-02-28</td>
+        <td class="derecha">$ 119,008,233.00</td>
+        <td>Servicio de Administración Tributaria.</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2014-03-31</td>
+        <td class="derecha">$ 92,888,325.00</td>
+        <td>Servicio de Administración Tributaria.</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2014-04-30</td>
+        <td class="derecha">$ 73,879,825.00</td>
+        <td>Servicio de Administración Tributaria.</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2014-05-31</td>
+        <td class="derecha">$ 54,303,391.00</td>
+        <td>Servicio de Administración Tributaria.</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2014-06-30</td>
+        <td class="derecha">$ 150,017,078.00</td>
+        <td>Servicio de Administración Tributaria.</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2014-07-31</td>
+        <td class="derecha">$ 106,420,778.00</td>
+        <td>Servicio de Administración Tributaria.</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2014-08-31</td>
+        <td class="derecha">$ 65,920,629.00</td>
+        <td>Servicio de Administración Tributaria.</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2014-09-30</td>
+        <td class="derecha">$ 60,649,420.00</td>
+        <td>Servicio de Administración Tributaria.</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2014-10-31</td>
+        <td class="derecha">$ 86,258,354.00</td>
+        <td>Servicio de Administración Tributaria.</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2014-11-30</td>
+        <td class="derecha">$ 60,748,763.00</td>
+        <td>Servicio de Administración Tributaria.</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2014-12-31</td>
+        <td class="derecha">$ 54,867,733.00</td>
+        <td>Servicio de Administración Tributaria.</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2015-01-31</td>
+        <td class="derecha">$ 46,620,025.00</td>
+        <td>Servicio de Administración Tributaria.</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2015-02-28</td>
+        <td class="derecha">$ 22,594,617.00</td>
+        <td>Servicio de Administración Tributaria.</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2015-03-31</td>
+        <td class="derecha">$ 36,780,533.00</td>
+        <td>Servicio de Administración Tributaria.</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2015-04-30</td>
+        <td class="derecha">$ 38,727,229.00</td>
+        <td>Servicio de Administración Tributaria.</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2015-05-31</td>
+        <td class="derecha">$ 30,751,979.00</td>
+        <td>Servicio de Administración Tributaria.</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2015-06-30</td>
+        <td class="derecha">$ 67,627,933.00</td>
+        <td>Servicio de Administración Tributaria.</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2015-07-31</td>
+        <td class="derecha">$ 57,320,220.00</td>
+        <td>Servicio de Administración Tributaria.</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2015-08-31</td>
+        <td class="derecha">$ 37,406,692.00</td>
+        <td>Servicio de Administración Tributaria.</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2015-09-30</td>
+        <td class="derecha">$ 20,361,099.00</td>
+        <td>Servicio de Administración Tributaria.</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2015-10-31</td>
+        <td class="derecha">$ 31,534,209.00</td>
+        <td>Servicio de Administración Tributaria.</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2015-11-30</td>
+        <td class="derecha">$ 40,730,010.00</td>
+        <td>Servicio de Administración Tributaria.</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2015-12-31</td>
+        <td class="derecha">$ 30,475,347.00</td>
+        <td>Servicio de Administración Tributaria.</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2016-01-31</td>
+        <td class="derecha">$ 33,941,574.00</td>
+        <td>Servicio de Administración Tributaria.</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2016-02-29</td>
+        <td class="derecha">$ 29,958,370.00</td>
+        <td>Servicio de Administración Tributaria.</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2016-03-31</td>
+        <td class="derecha">$ 38,819,823.00</td>
+        <td>Servicio de Administración Tributaria.</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2016-04-30</td>
+        <td class="derecha">$ 46,556,800.00</td>
+        <td>Servicio de Administración Tributaria.</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2016-05-31</td>
+        <td class="derecha">$ 37,526,067.00</td>
+        <td>Servicio de Administración Tributaria.</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2016-06-30</td>
+        <td class="derecha">$ 59,424,513.00</td>
+        <td>Servicio de Administración Tributaria.</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2016-07-31</td>
+        <td class="derecha">$ 57,591,132.00</td>
+        <td>Servicio de Administración Tributaria.</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2016-08-31</td>
+        <td class="derecha">$ 89,170,475.00</td>
+        <td>Servicio de Administración Tributaria.</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2016-09-30</td>
+        <td class="derecha">$ 107,802,411.00</td>
+        <td>Servicio de Administración Tributaria.</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2016-10-31</td>
+        <td class="derecha">$ 93,002,362.00</td>
+        <td>Servicio de Administración Tributaria.</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2016-11-30</td>
+        <td class="derecha">$ 38,740,419.00</td>
+        <td>Servicio de Administración Tributaria.</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2016-12-31</td>
+        <td class="derecha">$ 33,572,101.00</td>
+        <td>Servicio de Administración Tributaria.</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2017-01-31</td>
+        <td class="derecha">$ 28,206,163.00</td>
+        <td>Servicio de Administración Tributaria.</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2017-02-28</td>
+        <td class="derecha">$ 35,531,007.00</td>
+        <td>Servicio de Administración Tributaria.</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2017-03-31</td>
+        <td class="derecha">$ 47,890,758.00</td>
+        <td>Servicio de Administración Tributaria.</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2017-04-30</td>
+        <td class="derecha">$ 4,441,161.00</td>
+        <td>Servicio de Administración Tributaria.</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2017-05-31</td>
+        <td class="derecha">$ 38,727,874.00</td>
+        <td>Servicio de Administración Tributaria.</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2017-06-30</td>
+        <td class="derecha">$ 12,491,853.00</td>
+        <td>Servicio de Administración Tributaria.</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2017-07-31</td>
+        <td class="derecha">$ 189,888.00</td>
+        <td>Servicio de Administración Tributaria.</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2017-08-31</td>
+        <td class="derecha">$ 5,497,547.00</td>
+        <td>Servicio de Administración Tributaria.</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2017-09-30</td>
+        <td class="derecha">$ 8,804,843.00</td>
+        <td>Servicio de Administración Tributaria.</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2017-10-31</td>
+        <td class="derecha">$ -1,156,373.00</td>
+        <td>Servicio de Administración Tributaria.</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2017-11-30</td>
+        <td class="derecha">$ 2,140,648.00</td>
+        <td>Servicio de Administración Tributaria.</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2017-12-31</td>
+        <td class="derecha">$ 6,028,962.00</td>
+        <td>Servicio de Administración Tributaria.</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2018-01-31</td>
+        <td class="derecha">$ 2,347,212.00</td>
+        <td>Servicio de Administración Tributaria.</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2018-02-28</td>
+        <td class="derecha">$ 4,822,438.00</td>
+        <td>Servicio de Administración Tributaria.</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2018-03-31</td>
+        <td class="derecha">$ 6,849,918.00</td>
+        <td>Servicio de Administración Tributaria.</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2018-04-30</td>
+        <td class="derecha">$ 7,188,928.00</td>
+        <td>Servicio de Administración Tributaria.</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2018-05-31</td>
+        <td class="derecha">$ 7,353,002.00</td>
+        <td>Servicio de Administración Tributaria.</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2018-06-30</td>
+        <td class="derecha">$ 20,406,969.00</td>
+        <td>Servicio de Administración Tributaria.</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2018-07-31</td>
+        <td class="derecha">$ -2,997,465.00</td>
+        <td>Servicio de Administración Tributaria.</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2018-08-31</td>
+        <td class="derecha">$ -790,252.00</td>
+        <td>Servicio de Administración Tributaria.</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2018-09-30</td>
+        <td class="derecha">$ -770,558.00</td>
+        <td>Servicio de Administración Tributaria.</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2018-10-31</td>
+        <td class="derecha">$ 3,327,284.00</td>
+        <td>Servicio de Administración Tributaria.</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2018-11-30</td>
+        <td class="derecha">$ -2,861,783.00</td>
+        <td>Servicio de Administración Tributaria.</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2018-12-31</td>
+        <td class="derecha">$ 1,572,685.00</td>
+        <td>Servicio de Administración Tributaria.</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2019-01-31</td>
+        <td class="derecha">$ -3,740,078.00</td>
+        <td>Servicio de Administración Tributaria.</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2019-02-28</td>
+        <td class="derecha">$ -464,679.00</td>
+        <td>Servicio de Administración Tributaria.</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2019-03-31</td>
+        <td class="derecha">$ 107,046.00</td>
+        <td>Servicio de Administración Tributaria.</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2019-04-30</td>
+        <td class="derecha">$ 77,197.00</td>
+        <td>Servicio de Administración Tributaria.</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2019-05-31</td>
+        <td class="derecha">$ 373,045.00</td>
+        <td>Servicio de Administración Tributaria.</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2019-06-30</td>
+        <td class="derecha">$ 1,565,431.00</td>
+        <td>Servicio de Administración Tributaria.</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2019-07-31</td>
+        <td class="derecha">$ 369,420.00</td>
+        <td>Servicio de Administración Tributaria.</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2019-08-31</td>
+        <td class="derecha">$ 123,734.00</td>
+        <td>Servicio de Administración Tributaria.</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2019-09-30</td>
+        <td class="derecha">$ 4,486,431.00</td>
+        <td>Servicio de Administración Tributaria.</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2019-10-31</td>
+        <td class="derecha">$ -61,023.00</td>
+        <td>Servicio de Administración Tributaria.</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2019-11-30</td>
+        <td class="derecha">$ -64,262.00</td>
+        <td>Servicio de Administración Tributaria.</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2019-12-31</td>
+        <td class="derecha">$ -22,054.00</td>
+        <td>Servicio de Administración Tributaria.</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2020-01-31</td>
+        <td class="derecha">$ 71,586.00</td>
+        <td>Servicio de Administración Tributaria.</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2020-02-29</td>
+        <td class="derecha">$ 500,446.00</td>
+        <td>Servicio de Administración Tributaria.</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2020-03-31</td>
+        <td class="derecha">$ 95,866,939.00</td>
+        <td>Servicio de Administración Tributaria.</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2020-04-30</td>
+        <td class="derecha">$ 93,994,752.00</td>
+        <td>Servicio de Administración Tributaria.</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2020-05-31</td>
+        <td class="derecha">$ 146,115,477.00</td>
+        <td>Servicio de Administración Tributaria.</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="centrado">2020-06-30</td>
+        <td class="derecha">$ 320,779,851.00</td>
+        <td>Servicio de Administración Tributaria.</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  </div>
+  <div role="tabpanel" class="tab-pane" id="LenguetasIndicadorGrafica">
+    <h3>Balanza comercial. en Gómez Palacio </h3>
+
+    <div id="SmiGraficasBalanzaComercialEnGomezPalacio" class="grafica"></div>
+  </div>
+  <div role="tabpanel" class="tab-pane" id="LenguetasIndicadorOtrasRegiones">
+    <h3>Últimos datos de Balanza comercial. en Gómez Palacio</h3>
+    <div id="SmiOtrasRegionesBalanzaComercialEnGomezPalacioGrafica" class="grafica"></div>
+  <table id="SmiOtrasRegionesBalanzaComercialEnGomezPalacioTabla" class="table table-hover table-bordered">
+    <thead>
+      <tr>
+        <th>Región</th>
+        <th>Fecha</th>
+        <th>Dato</th>
+        <th>Fuente</th>
+        <th>Notas</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Torreón</td>
+        <td class="centrado">2014-12-31</td>
+        <td class="derecha">$ 4,472.00</td>
+        <td>Servicio de Administración Tributaria.</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>Gómez Palacio</td>
+        <td class="centrado">2020-06-30</td>
+        <td class="derecha">$ 320,779,851.00</td>
+        <td>Servicio de Administración Tributaria.</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  </div>
+  </div>
+</div>
+<h3>Observaciones</h3>
+<p>Fuente: SAT.</p>
+
+<!-- Contenido: Termina -->
+        </div>
+      </div></article>
+<div class="contenido-social">
+  <h5>Compartir en Redes Sociales</h5>
+  <a href="https://twitter.com/share" class="twitter-share-button" data-via="trcimplan" data-lang="es">Twittear</a>
+  <iframe src="//www.facebook.com/plugins/like.php?href=http%3A%2F%2Fwww.trcimplan.gob.mx%2Findicadores-gomez-palacio%2Feconomia-balanza-comercial.html&amp;width=300&amp;layout=button_count&amp;action=like&amp;show_faces=true&amp;share=false&amp;height=21" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:300px; height:21px;" allowTransparency="true"></iframe>
+</div>
+    </div>
+    <div class="mapa-inferior">
+          <div class="pull-right redes-sociales">
+            <a class="fa fa-twitter-square" href="http://www.twitter.com/trcimplan" target="_blank"></a>
+            <a class="fa fa-facebook-square" href="https://facebook.com/trcimplan" target="_blank"></a>
+            <a class="fa fa-facebook-square" href="http://www.instagram.com/implantorreon" target="_blank"></a>
+            <a class="fa fa-rss-square" href="../rss.xml"></a>
+          </div>
+    </div>
+  </div>
+</div>
+<!-- Javascript global inicia -->
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
+<script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="../vendor/metisMenu/metisMenu.min.js"></script>
+<script type="text/javascript" src="../vendor/datatables/js/jquery.dataTables.min.js"></script>
+<script type="text/javascript" src="../vendor/datatables-plugins/dataTables.bootstrap.min.js"></script>
+<script type="text/javascript" src="../vendor/datatables-responsive/dataTables.responsive.js"></script>
+<script type="text/javascript" src="../vendor/raphael/raphael.min.js"></script>
+<script type="text/javascript" src="../vendor/morrisjs/morris.min.js"></script>
+<script type="text/javascript" src="../dist/js/sb-admin-2.min.js"></script>
+<script type="text/javascript" src="http://libs.cartocdn.com/cartodb.js/v3/3.15/cartodb.js"></script>
+<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+<!-- Javascript global termina -->
+<!-- Javascript inicia -->
+<script>
+  // LenguetaWeb LenguetasIndicadorDatos
+  if (typeof varSmiDatosBalanzaComercialEnGomezPalacio === 'undefined') {
+     $('#SmiDatosBalanzaComercialEnGomezPalacio').DataTable({
+      "language": {
+        "lengthMenu":   "Mostrando _MENU_ filas por página",
+        "zeroRecords":  "No se encontró nada",
+        "info":         "Mostrando página _PAGE_ de _PAGES_",
+        "infoEmpty":    "No se encontraron registros",
+        "infoFiltered": "(fitrados a partir de un máximo de _MAX_ registros)",
+        "search":       "Filtrar:",
+        "paginate": {
+          "previous":   "Anterior",
+          "next":       "Siguiente"
+        }
+      }
+    });
+    varSmiDatosBalanzaComercialEnGomezPalacio = 1;
+  }
+  // LenguetaWeb LenguetasIndicadorGrafica ejecuta lo siguiente al mostrar
+  $('#LenguetasIndicador a[href="#LenguetasIndicadorGrafica"]').on('shown.bs.tab', function(e){
+  if (typeof varSmiGraficasBalanzaComercialEnGomezPalacio === 'undefined') {
+    varSmiGraficasBalanzaComercialEnGomezPalacio = Morris.Line({
+      element: 'SmiGraficasBalanzaComercialEnGomezPalacio',
+      data: [
+        { fecha: '2012-01-31', dato: 95014523.00 },
+        { fecha: '2012-02-29', dato: 129000669.00 },
+        { fecha: '2012-03-31', dato: 92767497.00 },
+        { fecha: '2012-04-30', dato: 125019192.00 },
+        { fecha: '2012-05-31', dato: 90416374.00 },
+        { fecha: '2012-06-30', dato: 159852708.00 },
+        { fecha: '2012-07-31', dato: 186487426.00 },
+        { fecha: '2012-08-31', dato: 140474733.00 },
+        { fecha: '2012-09-30', dato: 116485991.00 },
+        { fecha: '2012-10-31', dato: 100908829.00 },
+        { fecha: '2012-11-30', dato: 114455972.00 },
+        { fecha: '2012-12-31', dato: 57053824.00 },
+        { fecha: '2013-01-31', dato: 78993347.00 },
+        { fecha: '2013-02-28', dato: 169261453.00 },
+        { fecha: '2013-03-31', dato: 120385804.00 },
+        { fecha: '2013-04-30', dato: 97514505.00 },
+        { fecha: '2013-05-31', dato: 108348407.00 },
+        { fecha: '2013-06-30', dato: 258956595.00 },
+        { fecha: '2013-07-31', dato: 177198461.00 },
+        { fecha: '2013-08-31', dato: 160670563.00 },
+        { fecha: '2013-09-30', dato: 118622754.00 },
+        { fecha: '2013-10-31', dato: 197466476.00 },
+        { fecha: '2013-11-30', dato: 183264800.00 },
+        { fecha: '2013-12-31', dato: 117588348.00 },
+        { fecha: '2014-01-31', dato: 93566871.00 },
+        { fecha: '2014-02-28', dato: 119008233.00 },
+        { fecha: '2014-03-31', dato: 92888325.00 },
+        { fecha: '2014-04-30', dato: 73879825.00 },
+        { fecha: '2014-05-31', dato: 54303391.00 },
+        { fecha: '2014-06-30', dato: 150017078.00 },
+        { fecha: '2014-07-31', dato: 106420778.00 },
+        { fecha: '2014-08-31', dato: 65920629.00 },
+        { fecha: '2014-09-30', dato: 60649420.00 },
+        { fecha: '2014-10-31', dato: 86258354.00 },
+        { fecha: '2014-11-30', dato: 60748763.00 },
+        { fecha: '2014-12-31', dato: 54867733.00 },
+        { fecha: '2015-01-31', dato: 46620025.00 },
+        { fecha: '2015-02-28', dato: 22594617.00 },
+        { fecha: '2015-03-31', dato: 36780533.00 },
+        { fecha: '2015-04-30', dato: 38727229.00 },
+        { fecha: '2015-05-31', dato: 30751979.00 },
+        { fecha: '2015-06-30', dato: 67627933.00 },
+        { fecha: '2015-07-31', dato: 57320220.00 },
+        { fecha: '2015-08-31', dato: 37406692.00 },
+        { fecha: '2015-09-30', dato: 20361099.00 },
+        { fecha: '2015-10-31', dato: 31534209.00 },
+        { fecha: '2015-11-30', dato: 40730010.00 },
+        { fecha: '2015-12-31', dato: 30475347.00 },
+        { fecha: '2016-01-31', dato: 33941574.00 },
+        { fecha: '2016-02-29', dato: 29958370.00 },
+        { fecha: '2016-03-31', dato: 38819823.00 },
+        { fecha: '2016-04-30', dato: 46556800.00 },
+        { fecha: '2016-05-31', dato: 37526067.00 },
+        { fecha: '2016-06-30', dato: 59424513.00 },
+        { fecha: '2016-07-31', dato: 57591132.00 },
+        { fecha: '2016-08-31', dato: 89170475.00 },
+        { fecha: '2016-09-30', dato: 107802411.00 },
+        { fecha: '2016-10-31', dato: 93002362.00 },
+        { fecha: '2016-11-30', dato: 38740419.00 },
+        { fecha: '2016-12-31', dato: 33572101.00 },
+        { fecha: '2017-01-31', dato: 28206163.00 },
+        { fecha: '2017-02-28', dato: 35531007.00 },
+        { fecha: '2017-03-31', dato: 47890758.00 },
+        { fecha: '2017-04-30', dato: 4441161.00 },
+        { fecha: '2017-05-31', dato: 38727874.00 },
+        { fecha: '2017-06-30', dato: 12491853.00 },
+        { fecha: '2017-07-31', dato: 189888.00 },
+        { fecha: '2017-08-31', dato: 5497547.00 },
+        { fecha: '2017-09-30', dato: 8804843.00 },
+        { fecha: '2017-10-31', dato: -1156373.00 },
+        { fecha: '2017-11-30', dato: 2140648.00 },
+        { fecha: '2017-12-31', dato: 6028962.00 },
+        { fecha: '2018-01-31', dato: 2347212.00 },
+        { fecha: '2018-02-28', dato: 4822438.00 },
+        { fecha: '2018-03-31', dato: 6849918.00 },
+        { fecha: '2018-04-30', dato: 7188928.00 },
+        { fecha: '2018-05-31', dato: 7353002.00 },
+        { fecha: '2018-06-30', dato: 20406969.00 },
+        { fecha: '2018-07-31', dato: -2997465.00 },
+        { fecha: '2018-08-31', dato: -790252.00 },
+        { fecha: '2018-09-30', dato: -770558.00 },
+        { fecha: '2018-10-31', dato: 3327284.00 },
+        { fecha: '2018-11-30', dato: -2861783.00 },
+        { fecha: '2018-12-31', dato: 1572685.00 },
+        { fecha: '2019-01-31', dato: -3740078.00 },
+        { fecha: '2019-02-28', dato: -464679.00 },
+        { fecha: '2019-03-31', dato: 107046.00 },
+        { fecha: '2019-04-30', dato: 77197.00 },
+        { fecha: '2019-05-31', dato: 373045.00 },
+        { fecha: '2019-06-30', dato: 1565431.00 },
+        { fecha: '2019-07-31', dato: 369420.00 },
+        { fecha: '2019-08-31', dato: 123734.00 },
+        { fecha: '2019-09-30', dato: 4486431.00 },
+        { fecha: '2019-10-31', dato: -61023.00 },
+        { fecha: '2019-11-30', dato: -64262.00 },
+        { fecha: '2019-12-31', dato: -22054.00 },
+        { fecha: '2020-01-31', dato: 71586.00 },
+        { fecha: '2020-02-29', dato: 500446.00 },
+        { fecha: '2020-03-31', dato: 95866939.00 },
+        { fecha: '2020-04-30', dato: 93994752.00 },
+        { fecha: '2020-05-31', dato: 146115477.00 },
+        { fecha: '2020-06-30', dato: 320779851.00 }],
+      xkey: 'fecha',
+      ykeys: ['dato'],
+      labels: ['Dato'],
+      lineColors: ['#FF5B02'],
+      xLabelFormat: function(d) { return d.getDate()+'/'+(d.getMonth()+1)+'/'+d.getFullYear(); },
+      dateFormat: function(ts) { var d = new Date(ts); return d.getDate() + '/' + (d.getMonth() + 1) + '/' + d.getFullYear(); }
+    });
+  }
+  })
+  // LenguetaWeb LenguetasIndicadorOtrasRegiones ejecuta lo siguiente al mostrar
+  $('#LenguetasIndicador a[href="#LenguetasIndicadorOtrasRegiones"]').on('shown.bs.tab', function(e){
+  if (typeof varSmiOtrasRegionesBalanzaComercialEnGomezPalacioGrafica === 'undefined') {
+    varSmiOtrasRegionesBalanzaComercialEnGomezPalacioGrafica = Morris.Bar({
+      element: 'SmiOtrasRegionesBalanzaComercialEnGomezPalacioGrafica',
+      data: [{ region: 'Torreón', dato: 4472.00 },{ region: 'Gómez Palacio', dato: 320779851.00 }],
+      xkey: 'region',
+      ykeys: ['dato'],
+      labels: ['Dato'],
+      barColors: ['#FF5B02']
+    });
+  }
+  })
+  // LenguetasWeb LenguetasIndicador ordenar que Datos es la que se mostrará
+  $(document).ready(function(){
+    $('#LenguetasIndicador a[href="#LenguetasIndicadorDatos"]').tab('show')
+  });
+</script>
+<script>
+  // Twitter
+  !function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="https://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");
+</script>
+
+<!-- Javascript termina -->
+<!-- Javascript Google Analytics -->
+<script>
+  // Google Analytics
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)})(window,document,'script','//www.google-analytics.com/analytics.js','ga');ga('create', 'UA-58290501-1', 'auto');ga('send', 'pageview');
+</script>
+</body>
+</html>

@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+<!-- ===================================================================================================
+
+        Instituto Municipal de Planeación y Competitividad (IMPLAN) de Torreón.
+
+        3er. generación de la Plataforma del Conocimiento
+        Desarrollado por Ing. Guillermo Valdés Lozano <guivaloz en movimientolibre.com>
+
+        El software que lo construye está bajo la licencia GPL versión 3. © 2014, 2015, 2016, 2017.
+        Una copia está contenida en el archivo LICENCE al bajar desde GitHub.
+
+        Al usar, estudiar y copiar está aceptando los términos de uso de la información y del sitio web:
+          http://www.trcimplan.gob.mx/terminos/terminos-informacion.html
+          http://www.trcimplan.gob.mx/terminos/terminos-sitio.html
+
+        Descargue, estudie y colabore bajando todo este sitio web:
+          IMPLAN Torreón     https://github.com/TRCIMPLAN/trcimplan.github.io
+
+        Agradecemos y compartimos las tecnologías abiertas y gratuitas sobre las que se basa:
+          PHP                http://php.net
+          Twitter Bootstrap  http://getbootstrap.com
+          StartBootStrap     http://startbootstrap.com
+          Morris.js          https://morrisjs.github.io/morris.js/
+          Font Awesome       http://fontawesome.io
+          DataTables         https://www.datatables.net
+          Carto              https://carto.com
+          GitHub             https://github.com
+
+     =================================================================================================== -->
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Programas de Radio IMPLAN Torreón.">
+  <meta name="author" content="TrcIMPLAN Staff">
+  <meta name="keywords" content="IMPLAN, Torreon, radio">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Radio - IMPLAN Torreón">
+  <meta name="twitter:description" content="Programas de Radio IMPLAN Torreón.">
+  <meta name="twitter:url" content="http://www.trcimplan.gob.mx/programas-radio/index.html">
+  <meta name="og:title" content="Radio Implan Torreón - IMPLAN Torreón">
+  <meta name="og:description" content="Programas de Radio IMPLAN Torreón.">
+  <meta name="og:url" content="http://www.trcimplan.gob.mx/programas-radio/index.html">
+  <title>RADIO IMPLAN TORREÓN. </title>
+  <link rel="shortcut icon" type="image/x-icon" href="../imagenes/apple-touch-icon.png">
+  <link rel="apple-touch-icon" href="../imagenes/apple-touch-icon.png">
+  <link rel="apple-touch-icon" href="../imagenes/apple-touch-icon-76x76.png" sizes="76x76">
+  <link rel="apple-touch-icon" href="../imagenes/apple-touch-icon-120x120.png" sizes="120x120">
+  <link rel="apple-touch-icon" href="../imagenes/apple-touch-icon-152x152.png" sizes="152x152">
+  <link rel="apple-touch-icon" href="../imagenes/apple-touch-icon-180x180.png" sizes="180x180">
+  <link rel="icon" href="../imagenes/icon-hires.png" sizes="192x192">
+  <link rel="icon" href="../imagenes/icon-normal.png" sizes="128x128">
+  <link rel="alternate" type="application/rss+xml" href="../rss.xml" title="IMPLAN Torreón">
+  <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+  <link rel="stylesheet" type="text/css" href="../vendor/metisMenu/metisMenu.min.css">
+  <link rel="stylesheet" type="text/css" href="../vendor/datatables-plugins/dataTables.bootstrap.css">
+  <link rel="stylesheet" type="text/css" href="../vendor/morrisjs/morris.css">
+  <link rel="stylesheet" type="text/css" href="../vendor/font-awesome/css/font-awesome.min.css">
+  <link rel="stylesheet" type="text/css" href="../dist/css/sb-admin-2.min.css">
+  <link rel="stylesheet" type="text/css" href="../dist/css/plataforma-de-conocimiento.css">
+  <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Noto+Sans|Roboto+Condensed:400,700">
+  <link rel="stylesheet" type="text/css" href="http://libs.cartocdn.com/cartodb.js/v3/3.15/themes/css/cartodb.css">
+  <link rel="stylesheet" type="text/css" href="../dist/css/estilosvm.css">
+  <link rel="stylesheet" type="text/css" href="../dist/css/trcimplan.css">
+  <!-- SOPORTE PARA IE -->
+  <!--[if lt IE 9]>
+  <script type="text/javascript" src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+  <script type="text/javascript" src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+  <![endif]-->
+</head>
+<body>
+<div id="wrapper">
+  <nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="../index.html"><img class="navbar-brand-img" src="../imagenes/implan-barra-logo-chico-gris.png" alt="IMPLAN Torreón"></a>
+    </div>
+  <div class="navbar-default sidebar" role="navigation">
+    <div class="sidebar-nav navbar-collapse">
+      <ul class="nav" id="side-menu">
+        <li class="sidebar-search">
+          <form method="get" action="http://www.trcimplan.gob.mx/buscador-resultados.html">
+            <div class="input-group custom-search-form">
+              <input type="text" class="form-control" placeholder="Google buscar..." value="" name="q">
+              <span class="input-group-btn">
+                <button class="btn btn-default" type="submit"><i class="fa fa-search"></i></button>
+              </span>
+            </div>
+          </form>
+        </li>
+        <li><a href="../blog/index.html"><span class="navegacion-icono"><i class="fa fa-lightbulb-o"></i></span> Análisis Publicados</a></li>
+        <li>
+          <a href="#"><span class="navegacion-icono"><i class="fa fa-area-chart"></i></span> Indicadores<span class="fa arrow"></span></a>
+          <ul class="nav nav-second-level">
+            <li><a href="../smi/introduccion.html"><span class="navegacion-icono"><i class="fa fa-file-text-o"></i></span> Introducción al SMI</a></li>
+            <li><a href="../indicadores-categorias/index.html"><span class="navegacion-icono"><i class="fa fa-th-list"></i></span> Indicadores por Categoría</a></li>
+            <li><a href="../smi/por-region.html"><span class="navegacion-icono"><i class="fa fa-table"></i></span> Indicadores por Región</a></li>
+            <li><a href="../smi-georreferenciados/index.html"><span class="navegacion-icono"><i class="fa fa-map-marker"></i></span> Georreferenciados</a></li>
+            <li><a href="../smi/datos-abiertos.html"         ><span class="navegacion-icono"><i class="fa fa-download"></i></span> Datos Abiertos</a></li>
+            <li><a href="../smi/niveles-socioeconomicos.html"><span class="navegacion-icono"><i class="fa fa-bar-chart"></i></span> Niveles Socioeconómicos</a></li>
+            <li><a href="../monitores/index.html"><span class="navegacion-icono"><i class="fa fa-file-text-o"></i></span> Monitores</a></li>
+            <!-- <li><a href="../convocatorias/index.html"><span class="navegacion-icono"><i class="fa fa-file-text-o"></i></span> Convocatorias</a></li> -->
+          </ul>
+        </li>
+        <li>
+          <a href="#"><span class="navegacion-icono"><i class="fa fa-puzzle-piece"></i></span> Indicadores Básicos de Colonias<span class="fa arrow"></span></a>
+          <ul class="nav nav-second-level">
+            <li><a href="../ibc/introduccion.html"><span class="navegacion-icono"><i class="fa fa-file-text-o"></i></span> Introducción al IBC</a></li>
+            <li><a href="../ibc-colonias-torreon/index.html"><span class="navegacion-icono"><i class="fa fa-font"></i></span> Colonias de Torreón</a></li>
+            <li><a href="https://guivaloz.carto.com/viz/f0e6db7c-ac40-11e6-9146-0e3a376473ab/embed_map" target="_blank"><span class="navegacion-icono"><i class="fa fa-external-link"></i></span> Mapa Completo</a></li>
+            <li><a href="../ibc/torreon-urbano.html"><span class="navegacion-icono"><i class="fa fa-table"></i></span> Torreón Urbano</a></li>
+            <li><a href="../ibc/catalogo-conceptos.html"><span class="navegacion-icono"><i class="fa fa-list-ul"></i></span> Catálogo de Conceptos</a></li>
+            <li><a href="../ibc/datos-abiertos.html"><span class="navegacion-icono"><i class="fa fa-download"></i></span> Datos Abiertos</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="#"><span class="navegacion-icono"><i class="fa fa-map-marker"></i></span> Información Geográfica<span class="fa arrow"></span></a>
+          <ul class="nav nav-second-level">
+            <li><a href="../sig/introduccion.html"><span class="navegacion-icono"><i class="fa fa-file-text-o"></i></span> Introducción al SIG</a></li>
+            <li><a href="../sig-planes/index.html"><span class="navegacion-icono"><i class="fa fa-file-pdf-o"></i></span> Planes</a></li>
+            <li><a href="../sig-mapas-torreon/temas-sig.html"><span class="navegacion-icono"><i class="fa fa-map-marker"></i></span> Mapas por Tema</a></li>
+            <li><a href="../sig-mapas-torreon/plan-director-desarrollo-urbano.html"><span class="navegacion-icono"><i class="fa fa-map-marker"></i></span> Usos de Suelo</a></li>
+            <li><a href="../sig/datos-abiertos.html"><span class="navegacion-icono"><i class="fa fa-map-marker"></i></span> Datos Abiertos</a></li>
+          </ul>
+        </li>
+
+
+        <li>
+          <a href="#"><span class="navegacion-icono"><i class="fa fa-book"></i></span> Plan Estratégico Torreón 2040<span class="fa arrow"></span></a>
+          <ul class="nav nav-second-level">
+            <li><a href="../pet/indice.html"><span class="navegacion-icono"><i class="fa fa-list-ul"></i></span> Índice General</a></li>
+            <li><a href="../pet/index.html"><span class="navegacion-icono"><i class="fa fa-font"></i></span> Índice Alfabético</a></li>
+            <li><a href="../plan-estrategico-torreon-enfoque-metropolitano-2040/index.html"><span class="navegacion-icono"><i class="fa fa-download"></i></span> Descargar</a></li>
+            <li><a href="../plan-estrategico-metropolitano/descripcion-del-proceso.html"><span class="navegacion-icono"><i class="fa fa-calendar"></i></span> Descripción del proceso</a></li>
+            <li><a href="../proyectos/index.html"><span class="navegacion-icono"><i class="fa fa-check-square"></i></span> Proyectos</a></li>
+
+          </ul>
+        </li>
+
+        <li><a href="../investigaciones/index.html"><span class="navegacion-icono"><i class="fa fa-briefcase"></i></span> Investigaciones</a></li>
+        <li><a href="../consejo-directivo/integrantes.html"><span class="navegacion-icono"><i class="fa fa-users"></i></span> Consejo Directivo</a></li>
+        <li><a href="../sala-prensa/index.html"><span class="navegacion-icono"><i class="fa fa-newspaper-o"></i></span> Sala de Prensa</a></li>
+        <li><a href="../programas-radio/index.html"><span class="navegacion-icono"><i class="fa fa-microphone"></i></span> Programas de Radio</a></li>
+        <li>
+          <a href="#"><span class="navegacion-icono"><i class="fa fa-university"></i></span> Visión Metrópoli<span class="fa arrow"></span></a>
+          <ul class="nav nav-second-level">
+            <li><a href="../vision-metropoli/index.html"><span class="navegacion-icono"><i class="fa fa-university"></i></span> Visión Metrópoli</a></li>
+            <li><a href="../vision-metropoli/reglamento-vision-metropoli-2018.pdf"><span class="navegacion-icono"><i class="fa fa-file-text-o"></i></span> Reglamento </a></li>
+          </ul>
+        </li>
+
+
+
+        <!--  <li><a href="../vision-metropoli/index.html"><span class="navegacion-icono"><i class="fa fa-university"></i></span> Visión Metrópoli</a></li>   -->
+        <li>
+          <a href="#"><span class="navegacion-icono"><i class="fa fa-building-o"></i></span> Institucional<span class="fa arrow"></span></a>
+          <ul class="nav nav-second-level">
+            <li><a href="../institucional/vision-mision.html"><span class="navegacion-icono"><i class="fa fa-trophy"></i></span> Visión / Misión</a></li>
+            <li><a href="../institucional/mensaje-director.html"><span class="navegacion-icono"><i class="fa fa-comment"></i></span> Mensaje del Director</a></li>
+            <li><a href="../autores/index.html"><span class="navegacion-icono"><i class="fa fa-user"></i></span> Quienes Somos</a></li>
+            <li><a href="../institucional/estructura-organica.html"><span class="navegacion-icono"><i class="fa fa-sitemap"></i></span> Estructura Orgánica</a></li>
+            <li><a href="../institucional/modelo-operativo-universal.html"><span class="navegacion-icono"><i class="fa fa-slideshare"></i></span> Modelo Operativo Univ.</a></li>
+            <li><a href="../institucional/reglamentos.html"><span class="navegacion-icono"><i class="fa fa-gavel"></i></span> Reglamentos</a></li>
+          </ul>
+        </li>
+
+        <li><a href="http://www.icai.org.mx:8282/ipo/dependencia.php?dep=178" target="_blank"><span class="navegacion-icono"><i class="fa fa-external-link"></i></span> Transparencia</a></li>
+
+        <li>
+          <a href="#"><span class="navegacion-icono"><i class="fa fa-share-alt"></i></span> Términos de Uso<span class="fa arrow"></span></a>
+          <ul class="nav nav-second-level">
+            <li><a href="../terminos/terminos-informacion.html"><span class="navegacion-icono"><i class="fa fa-cubes"></i></span> De la información</a></li>
+            <li><a href="../terminos/terminos-sitio.html"><span class="navegacion-icono"><i class="fa fa-globe"></i></span> Del sitio web</a></li>
+            <li><a href="../terminos/privacidad.html"><span class="navegacion-icono"><i class="fa fa-lock"></i></span> Aviso de Privacidad</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="#"><span class="navegacion-icono"><i class="fa fa-phone"></i></span> Contacto<span class="fa arrow"></span></a>
+          <ul class="nav nav-second-level">
+            <li><a href="../contacto/contacto.html"><span class="navegacion-icono"><i class="fa fa-phone"></i></span> Medios de contacto</a></li>
+            <li><a href="../preguntas-frecuentes/preguntas-frecuentes.html"><span class="navegacion-icono"><i class="fa fa-question"></i></span> Preguntas Frecuentes</a></li>
+            <li><a href="http://goo.gl/forms/1rdX4X128PpMOif73" target="_blank"><span class="navegacion-icono"><i class="fa fa-external-link"></i></span> Comentarios y Sugerencias</a></li>
+          </ul>
+        </li>
+
+    <!--    <li><a href="../convocatorias/index.html"><span class="navegacion-icono"><i class="fa fa-file-text-o"></i></span> Convocatorias</a></li>       -->
+    <!--    <li><a href="../vision-metropoli/index.html"><span class="navegacion-icono"><i class="fa fa-university"></i></span> Visión Metrópoli</a></li>  -->
+        <li>
+
+
+      </ul>
+    </div>
+  </div>
+  </nav>
+
+  <div id="page-wrapper">
+    <div class="cuerpo">
+
+      <div class="encabezado">
+        <span><h1>PROGRAMAS DE RADIO IMPLAN</h1></span>
+        <div class="encabezado-descripcion">Programa de Radio 2021, 11 Programas transmitidos; martes 9:00 a.m.</div>
+      </div>
+      
+                                             
+      <!-- Inicio Programa  -->
+      <div class="media breve">
+        <a class="pull-left" href="https://www.facebook.com/trcimplan/videos/360159248867177"><img class="media-object" src="../programas-radio/p22062021.jpg"></a>
+        <div class="media-body">
+          <h2 class="media-heading detallados-encabezado"><b> "La Salud Mental en los Medios de Comunicación"</b> </br></h2>
+          <h3 class="media-heading detallados-encabezado"><a href="https://www.facebook.com/trcimplan/videos/360159248867177"> 1ra. Parte 🔊  (19 min.)</a></h3>
+          <h3 class="media-heading detallados-encabezado"><a href="https://www.facebook.com/trcimplan/videos/1729514954104914"> 2da. Parte 🔊  (28 min.)</a></h3>
+          <p class="detallados-descripcion">"Según el Monitor de Salud Mental del IMPLAN Torreón, de 432 unidades médicas de salud pública en el Estado de Coahuila, sólo 2 están enfocadas en la salud mental, el 0.4%."</p>
+          <p class="detallados-autor-fecha"><b>Conducción:</b> Maira Flores <b>Transmisión:</b> Macarena García <b>Invitadas e Invitados:</b> Omar Ortega, Héctor Esparza, Alejandra Martínez.<b> Por Implan Torreón, 22/06/2021 10:00</b></p>
+        </div>
+      </div>
+      <!-- Fin Programa  -->.
+🔸️ .
+🔸️ 
+    
+                                      
+      <!-- Inicio Programa  -->
+      <div class="media breve">
+        <a class="pull-left" href="https://www.facebook.com/watch/?v=1146533935843988"><img class="media-object" src="../programas-radio/p08062021.jpg"></a>
+        <div class="media-body">
+          <h2 class="media-heading detallados-encabezado"><b> "Día mundial del medio ambiente: de internacional a local"</b> </br></h2>
+          <h3 class="media-heading detallados-encabezado"><a href="https://www.facebook.com/watch/?v=1146533935843988"> 🔊  (46 min.)</a></h3>
+          <p class="detallados-descripcion">"En Torreón, para el 2019 la concentración de partículas menores a 10 micras se ubicó en 62.09 ug/m3 en promedio, por debajo del valor recomendado de 75 ug/m3 (Dirección general de Medio Ambiente de Torreón); y el Instituto Mexicano para la Competitividad (IMCO) posicionó a Coahuila como el 7º. lugar en tema de medio ambiente."</p>
+          <p class="detallados-autor-fecha"><b>Conducción:</b> Maira Flores <b>Transmisión:</b> Macarena García <b>Invitadas e Invitados:</b> Mtra. Diana Gabriela Camacho Estala, Mtra. Daniela Sánchez Valles, Lic. Pedro Eleazar González Valdez.<b> Por Implan Torreón, 08/06/2021 10:00</b></p>
+        </div>
+      </div>
+      <!-- Fin Programa  -->
+    
+    
+      <!-- Inicio Programa  -->
+      <div class="media breve">
+        <a class="pull-left" href="https://fb.watch/4rdE5tcvCd/"><img class="media-object" src="../programas-radio/p23032021.jpg"></a>
+        <div class="media-body">
+          <h2 class="media-heading detallados-encabezado"><b> "La Infancia en Confinamiento"</b> </br></h2>
+          <h3 class="media-heading detallados-encabezado"><a href="https://fb.watch/4rdE5tcvCd/"> 🔊  (51 min.)</a></h3>
+          <p class="detallados-descripcion">"El Censo de Población y vivienda 2020 registra en Torreón 143,935 niños y niñas de 3 a 14 años en algún grado de estudio (preescolar, primaria y secundaria)."</p>
+          <p class="detallados-autor-fecha"><b>Conducción:</b> Maira Flores <b>Transmisión:</b> Macarena García <b>Invitadas e Invitados:</b> Alejandra Algarate, Miriam González, Guillermo Galván, Juan Carmen Rentería.<b> Por Implan Torreón, 23/03/2021 10:00</b></p>
+        </div>
+      </div>
+      <!-- Fin Programa  -->
+    
+      <!-- Inicio Programa  -->
+      <div class="media breve">
+        <a class="pull-left" href="https://www.facebook.com/watch/?v=161423929158378"><img class="media-object" src="../programas-radio/p16032021.jpg"></a>
+        <div class="media-body">
+          <h2 class="media-heading detallados-encabezado"><b> "El Factor Cuarentena en la Seguridad"</b> </br></h2>
+          <h3 class="media-heading detallados-encabezado"><a href="https://www.facebook.com/watch/?v=161423929158378"> 🔊  (49 min.)</a></h3>
+          <p class="detallados-descripcion">"La tendencia a la baja se mantiene para este comienzo de 2021, siendo enero el mes del que se tiene información, se observa una diferencia de -12.59% y -9.70% para Torreón y la ZML respectivamente usando enero 2020 como referencia."</p>
+          <p class="detallados-autor-fecha"><b>Conducción:</b> Maira Flores <b>Transmisión:</b> Macarena García <b>Invitadas e Invitados:</b> 11o. Regidor Eduardo González Madero, Jorge Del Moral Fraire. <b> Por Implan Torreón, 16/03/2021 10:00</b></p>
+        </div>
+      </div>
+      <!-- Fin Programa  -->
+    
+                    
+      <!-- Inicio Programa  -->
+      <div class="media breve">
+        <a class="pull-left" href="https://www.facebook.com/watch/?v=451355406071625"><img class="media-object" src="../programas-radio/p09032021.jpg"></a>
+        <div class="media-body">
+          <h2 class="media-heading detallados-encabezado"><b> "El Empoderamiento Económico de ONU Mujeres: Datos y Estrategias para La Laguna"</b> </br></h2>
+          <h3 class="media-heading detallados-encabezado"><a href="https://www.facebook.com/watch/?v=451355406071625"> 🔊  (51 min.)</a></h3>
+          <p class="detallados-descripcion">"ONU Mujeres, es la organización de las Naciones Unidas encargada de promover la igualdad de género y el empoderamiento de las mujeres. Esta organización establece normas internacionales y colabora con países miembros en la creación de leyes y programas, para la igualdad de género."</p>
+          <p class="detallados-autor-fecha"><b>Conducción:</b> Maira Flores <b>Transmisión:</b> Macarena García <b>Invitadas e Invitados:</b> Lic. Frida García, Lic. Miriam González, Lic. Eleazar González <b> Por Implan Torreón, 09/03/2021 10:00</b></p>
+        </div>
+      </div>
+      <!-- Fin Programa  -->
+                                  
+      <!-- Inicio Programa  -->
+      <div class="media breve">
+        <a class="pull-left" href="https://www.facebook.com/watch/?v=1044987873023252"><img class="media-object" src="../programas-radio/p02032021.jpg"></a>
+        <div class="media-body">
+          <h2 class="media-heading detallados-encabezado"><b> "Seguridad vial, la calle completa como estrategia"</b> </br></h2>
+          <h3 class="media-heading detallados-encabezado"><a href="https://www.facebook.com/watch/?v=1044987873023252"> 🔊  (1 hr.)</a></h3>
+          <p class="detallados-descripcion">"En el municipio de Torreón en el año de 2019 ocurrieron 6,517 incidentes viales, que en promedio fueron 543 accidentes mensuales. Del total anual de accidentes, 162 fueron atropellos a ciclistas y 184 a peatones, siendo los choques entre automóviles el número más alto con 5,420."</p>
+          <p class="detallados-autor-fecha"><b>Conducción:</b> Maira Flores <b>Transmisión:</b> Macarena García <b>Invitadas e Invitados:</b> Refugio Loya Loya, Alejandro Gutiérrez Zamudio, Alexis Magaña Cisneros <b> Por Implan Torreón, 02/03/2021 10:00</b></p>
+        </div>
+      </div>
+      <!-- Fin Programa  -->
+                         
+      <!-- Inicio Programa  -->
+      <div class="media breve">
+        <a class="pull-left" href="https://www.facebook.com/trcimplan/videos/427224261872475/"><img class="media-object" src="../programas-radio/p23022021.jpg"></a>
+        <div class="media-body">
+          <h2 class="media-heading detallados-encabezado"><b> "El Senso de Población y Vivienda como insumo en la Planeación Urbana"</b> </br></h2>
+          <h3 class="media-heading detallados-encabezado"><a href="https://www.facebook.com/trcimplan/videos/427224261872475/"> 🔊  (57 min.)</a></h3>
+          <p class="detallados-descripcion">"El Senso de Población y Vivienda como insumo en la Planeación Urbana"</p>
+          <p class="detallados-autor-fecha"><b>Conducción:</b> Maira Flores <b>Transmisión:</b> Macarena García <b>Invitadas e Invitados:</b> Lic. Sarahí Arroyo Alonso, Dr. Iván de Luna Aldape, Arq. Jair Miramontes Chávez<b> Por Implan Torreón, 23/02/2021 10:00</b></p>
+        </div>
+      </div>
+      <!-- Fin Programa  -->
+      
+      <!-- Inicio Programa  -->
+      <div class="media breve">
+        <a class="pull-left" href="https://t.co/oG8yrlqiSj"><img class="media-object" src="../programas-radio/p16022021.jpg"></a>
+        <div class="media-body">
+          <h2 class="media-heading detallados-encabezado"><b> "De la realidad de las casas hogares y las adopciones en Torreón"</b> </br></h2>
+          <h3 class="media-heading detallados-encabezado"><a href="https://t.co/oG8yrlqiSj"> 🔊  (59 min.)</a></h3>
+          <p class="detallados-descripcion">"Datos del 2015 del CAAS, registran una media de 22 menores viviendo en casas hogares, en Coahuila, señalando 37 alojamientos, albergando a 824 menores. Para Torreón, se identificaron 13 casas hogares, con 367 menores, acercándose más a la media nacional, con 28 personas por alojamiento."</p>
+          <p class="detallados-autor-fecha"><b>Conducción:</b> Maira Flores <b>Transmisión:</b> Macarena García <b>Invitadas e Invitados:</b> Lic. Montserrat Martínez Aguado, Lic. Kathya de la Fuente López, Arq. Alejandra Martínez Avilés, Mtro. Salvador Castillo Rangel, Mtro. Omar Ortega Herrera.<b> Por Implan Torreón, 16/02/2021 10:00</b></p>
+        </div>
+      </div>
+      <!-- Fin Programa  -->
+                    
+      <!-- Inicio Programa  -->
+      <div class="media breve">
+        <a class="pull-left" href="https://www.facebook.com/watch/?v=440158720461459"><img class="media-object" src="../programas-radio/p02022021.jpg"></a>
+        <div class="media-body">
+          <h2 class="media-heading detallados-encabezado"><b> "Ejercicios de participación social en los instrumentos de la Planeación Urbana"</b> </br></h2>
+          <h3 class="media-heading detallados-encabezado"><a href="https://www.facebook.com/watch/?v=440158720461459"> 🔊  (1:02 hr.)</a></h3>
+          <p class="detallados-descripcion">"Ejercicios de participación social en los instrumentos de la Planeación Urbana"</p>
+          <p class="detallados-autor-fecha"><b>Conducción:</b> Maira Flores <b>Transmisión:</b> Macarena García <b>Invitadas e Invitados:</b> Daniela Trejo Simental, Jennifer Ayline Quiroz Pérez, Rachid Sayd Sánchez Ovalle, Abraham Salazar Valadez<b> Por Implan Torreón, 02/02/2021 10:00</b></p>
+        </div>
+      </div>
+      <!-- Fin Programa  -->
+       
+      <!-- Inicio Programa  -->
+      <div class="media breve">
+        <a class="pull-left" href="https://m.facebook.com/story.php?story_fbid=217382610101846&id=675603205814441"><img class="media-object" src="../programas-radio/p26012021.jpg"></a>
+        <div class="media-body">
+          <h2 class="media-heading detallados-encabezado"><b> "Plan DN-III-E en tiempos de Covid-19"</b> </br></h2>
+          <h3 class="media-heading detallados-encabezado"><a href="https://m.facebook.com/story.php?story_fbid=217382610101846&id=675603205814441"> 🔊  (24:12 min.)</a></h3>
+          <p class="detallados-descripcion">"Plan DN-III-E en tiempos de Covid-19"</p>
+          <p class="detallados-autor-fecha"><b>Conducción:</b> Maira Flores <b>Transmisión:</b> Macarena García <b>Invitadas e Invitados:</b> Tte. Enfermera Gabriela Martínez González (XI Región Militar), Mayor Cirujano Dentista Bernabé García Nicolás (XI Región Militar)<b> Por Implan Torreón, 26/01/2021 13:00</b></p>
+        </div>
+      </div>
+      <!-- Fin Programa  -->
+
+                  
+      <!-- Inicio Programa  -->
+      <div class="media breve">
+        <a class="pull-left" href="https://t.co/p4UQy6w3i1"><img class="media-object" src="../programas-radio/p19012021.jpg"></a>
+        <div class="media-body">
+          <h2 class="media-heading detallados-encabezado"><b> "Trayectoria de nuestro Director Eduardo Holguín ✝️"</b> </br></h2>
+          <h3 class="media-heading detallados-encabezado"><a href="https://t.co/p4UQy6w3i1"> 🔊  (1:03 hr.)</a></h3>
+          <p class="detallados-descripcion">"Trayectoria de nuestro Director Eduardo Holguín ✝️"</p>
+          <p class="detallados-autor-fecha"><b>Conducción:</b> Maira Flores <b>Transmisión:</b> Macarena García <b>Invitadas e Invitados:</b> Lic. Claudia Murillo, Regidora Elizabeth Pérez, Lic. Frida García, Lic. Fernando Royo, Lic. Edgar Salinas, Arq. José Antonio Ramírez, Dr. Iván de Luna, Lic. Abraham Salazar<b> Por Implan Torreón, 19/01/2021 13:00</b></p>
+        </div>
+      </div>
+      <!-- Fin Programa  -->
+      
+      <!-- Inicio Programa  -->
+      <div class="media breve">
+        <a class="pull-left" href="https://t.co/jNNBzUqKTn?amp=1"><img class="media-object" src="../programas-radio/p12012021.jpg"></a>
+        <div class="media-body">
+          <h2 class="media-heading detallados-encabezado"><b> "Proyectos IMPLAN 2021"</b> </br></h2>
+          <h3 class="media-heading detallados-encabezado"><a href="https://t.co/jNNBzUqKTn?amp=1"> 🔊  (56:00 min.)</a></h3>
+          <p class="detallados-descripcion">"Proyectos IMPLAN 2021"</p>
+          <p class="detallados-autor-fecha"><b>Conducción:</b> Maira Flores <b>Transmisión:</b> Macarena García <b>Invitadas e Invitados:</b> Lic. Frida García, Arq. José Antonio Ramírez, Dr. Iván de Luna, Lic. Abraham Salazar<b> Por Implan Torreón, 12/01/2021 13:00</b></p>
+        </div>
+      </div>
+      <!-- Fin Programa  -->
+                          
+      <!-- Inicio Programa  -->
+      <div class="media breve">
+        <a class="pull-left" href="https://t.co/dxWRTCfEAZ?amp=1"><img class="media-object" src="../programas-radio/p05012021.jpg"></a>
+        <div class="media-body">
+          <h2 class="media-heading detallados-encabezado"><b> "Análisis de la oferta educativa superior en la Zona Metropolitana de La Laguna"</b> </br></h2>
+          <h3 class="media-heading detallados-encabezado"><a href="https://t.co/dxWRTCfEAZ?amp=1"> 🔊  (58:00 min.)</a></h3>
+          <p class="detallados-descripcion">"Análisis de la oferta educativa superior en la Zona Metropolitana de La Laguna"</p>
+          <p class="detallados-autor-fecha"><b>Conducción:</b> Maira Flores <b>Transmisión:</b> Macarena García <b>Invitadas e Invitados:</b> Lic. Martha Silvia Argüelles, Lic. Frida García, Lic. Alejandra Noriega, Ing. Israel Castro<b> Por Implan Torreón, 05/01/2021 12:00</b></p>
+        </div>
+      </div>
+      <!-- Fin Programa  -->
+
+
+    </div>
+
+
+  </div>
+    <div class="mapa-inferior">
+          <div class="pull-right redes-sociales">
+            <a class="fa fa-twitter-square" href="http://www.twitter.com/trcimplan" target="_blank"></a>
+            <a class="fa fa-facebook-square" href="https://facebook.com/trcimplan" target="_blank"></a>
+            <a class="fa fa-google-plus-square" href="https://plus.google.com/106220426241750550649" target="_blank"></a>
+            <a class="fa fa-github-square" href="https://github.com/TRCIMPLAN" target="_blank"></a>
+            <a class="fa fa-rss-square" href="../rss.xml"></a>
+          </div>
+    </div>
+  </div>
+</div>
+<!-- Javascript global inicia -->
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
+<script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="../vendor/metisMenu/metisMenu.min.js"></script>
+<script type="text/javascript" src="../vendor/datatables/js/jquery.dataTables.min.js"></script>
+<script type="text/javascript" src="../vendor/datatables-plugins/dataTables.bootstrap.min.js"></script>
+<script type="text/javascript" src="../vendor/datatables-responsive/dataTables.responsive.js"></script>
+<script type="text/javascript" src="../vendor/raphael/raphael.min.js"></script>
+<script type="text/javascript" src="../vendor/morrisjs/morris.min.js"></script>
+<script type="text/javascript" src="../dist/js/sb-admin-2.min.js"></script>
+<script type="text/javascript" src="http://libs.cartocdn.com/cartodb.js/v3/3.15/cartodb.js"></script>
+<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+<!-- Javascript global termina -->
+<!-- Javascript inicia -->
+
+<!-- Javascript termina -->
+<!-- Javascript Google Analytics -->
+<script>
+  // Google Analytics
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)})(window,document,'script','//www.google-analytics.com/analytics.js','ga');ga('create', 'UA-58290501-1', 'auto');ga('send', 'pageview');
+</script>
+</body>
+</html>
