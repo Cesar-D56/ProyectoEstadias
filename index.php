@@ -1,3 +1,11 @@
+<?php
+  include('./login/session.php');
+  $style = "";
+    if(empty($login_session)){
+      $style = "style='display:none;'";
+      $login_session = "";
+    }
+?>
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -99,6 +107,12 @@
               </span>
             </div>
           </form>
+        </li>
+        <li>
+          <p class="nav-user" <?php echo $style;?>>
+            Bienvenido: <?php echo $login_session;?>
+          </p>
+          <a href = "./login/logout.php">Cerrar Sesion</a></h2>
         </li>
         <li>
           <a href="#"><span class="navegacion-icono"><i class="fa fa-lightbulb-o"></i></span> Análisis Publicados<span class="fa arrow"></span></a>

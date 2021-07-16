@@ -1,93 +1,34 @@
-<!--<?php
-// Initialize the session
-session_start();
- 
-// Check if the user is already logged in, if yes then redirect him to welcome page
-if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true){
-    header("location: welcome.php");
-    exit;
-}
- 
-// Include config file
-require_once "config.php";
- 
-// Define variables and initialize with empty values
-$username = $password = "";
-$username_err = $password_err = $login_err = "";
- 
-// Processing form data when form is submitted
-if($_SERVER["REQUEST_METHOD"] == "POST"){
- 
-    // Check if username is empty
-    if(empty(trim($_POST["username"]))){
-        $username_err = "Please enter username.";
-    } else{
-        $username = trim($_POST["username"]);
-    }
-    
-    // Check if password is empty
-    if(empty(trim($_POST["password"]))){
-        $password_err = "Please enter your password.";
-    } else{
-        $password = trim($_POST["password"]);
-    }
-    
-    // Validate credentials
-    if(empty($username_err) && empty($password_err)){
-        // Prepare a select statement
-        $sql = "SELECT id, correo, password FROM datosusuarios WHERE correo = ?";
-        
-        if($stmt = mysqli_prepare($link, $sql)){
-            // Bind variables to the prepared statement as parameters
-            mysqli_stmt_bind_param($stmt, "s", $param_username);
-            
-            // Set parameters
-            $param_username = $username;
-            
-            // Attempt to execute the prepared statement
-            if(mysqli_stmt_execute($stmt)){
-                // Store result
-                mysqli_stmt_store_result($stmt);
-                
-                // Check if username exists, if yes then verify password
-                if(mysqli_stmt_num_rows($stmt) == 1){                    
-                    // Bind result variables
-                    mysqli_stmt_bind_result($stmt, $id, $username, $hashed_password);
-                    if(mysqli_stmt_fetch($stmt)){
-                        if(password_verify($password, $hashed_password)){
-                            // Password is correct, so start a new session
-                            session_start();
-                            
-                            // Store data in session variables
-                            $_SESSION["loggedin"] = true;
-                            $_SESSION["id"] = $id;
-                            $_SESSION["username"] = $username;                            
-                            
-                            // Redirect user to welcome page
-                            header("location: welcome.php");
-                        } else{
-                            // Password is not valid, display a generic error message
-                            $login_err = "Invalid username or password.";
-                        }
-                    }
-                } else{
-                    // Username doesn't exist, display a generic error message
-                    $login_err = "Invalid username or password.";
-                }
-            } else{
-                echo "Oops! Something went wrong. Please try again later.";
-            }
+<?php
+   include("db-connection.php");
+   session_start();
 
-            // Close statement
-            mysqli_stmt_close($stmt);
-        }
-    }
-    
-    // Close connection
-    mysqli_close($link);
-}
+   $error = "";
+   
+   if($_SERVER["REQUEST_METHOD"] == "POST") {
+      // email and password sent from form 
+      
+      $myemail = mysqli_real_escape_string($link,$_POST['usr-email']);
+      $mypassword = mysqli_real_escape_string($link,$_POST['usr-password']); 
+
+      $sql = "SELECT id FROM datosusuarios WHERE correo = '$myemail' and password = '$mypassword'";
+      $result = mysqli_query($link,$sql);
+      $row = mysqli_fetch_array($result,MYSQLI_ASSOC);
+      /*$active = $row['active'];*/
+      
+      $count = mysqli_num_rows($result);
+      
+      // If result matched $myemail and $mypassword, table row must be 1 row
+		
+      if($count == 1) {
+         $_SESSION['login_email'] = $myemail;
+         
+         header("location: ../../index.php");
+      }else {
+         $error = "Correo o Contraseña Incorrectos";
+      }
+   }
 ?>
--->
+
 <!DOCTYPE html>
 <html class="login" lang="es">
 <head>
@@ -156,13 +97,14 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
       <div class="dialog-bx img-rounded">
         <img class="img-logo" src="../imagenes/implan-logo.png" alt="IMPLAN - Torreon">
         <p class="nav-p" style="font-size:30px; margin-bottom: 5%;">Iniciar Sesion</p>
-        <form>
+        <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="POST">
           <p class="login-tags">Correo Electronico</p>
-          <input type="email" class="form-control input-bx" id="exampleFormControlInput1" placeholder="nombre@ejemplo.com">
-          <p class="login-tags">Contrasena</p>
-          <input type="password" class="form-control input-bx" id="exampleFormControlInput1" placeholder="Contraseña">
-          <button onclick="location.href='login/login-index.html'" type="button" class="btn btn-login">Inicia Sesion</button>
+            <input type="email" name="usr-email" class="form-control input-bx" id="exampleFormControlInput1" placeholder="nombre@ejemplo.com">
+          <p class="login-tags">Contraseña</p>
+            <input type="password" name="usr-password" class="form-control input-bx" id="exampleFormControlInput1" placeholder="Contraseña">
+          <input type="submit" name="submit" value="Iniciar Sesion" class="btn-login">
         </form>
+        <p class="login-tags"><?php echo $error; ?></p>
       </div>
     </div>
 </body>
