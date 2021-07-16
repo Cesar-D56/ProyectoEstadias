@@ -112,7 +112,7 @@
           <p class="nav-user" <?php echo $style;?>>
             Bienvenido: <?php echo $login_session;?>
           </p>
-          <a href = "/login/logout.php">Cerrar Sesion</a></h2>
+          <a href = "./login/logout.php">Cerrar Sesion</a></h2>
         </li>
         <li>
           <a href="#"><span class="navegacion-icono"><i class="fa fa-lightbulb-o"></i></span> Análisis Publicados<span class="fa arrow"></span></a>
