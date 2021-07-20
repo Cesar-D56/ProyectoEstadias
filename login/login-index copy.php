@@ -1,18 +1,10 @@
 <?php
    include("db-connection.php");
    session_start();
-   if (isset($_SESSION['login_email']))
-   {
-     header("Location: ../../index.php");
-   }
-   else
-   {
-    
-   }
+
    $error = "";
    
    if($_SERVER["REQUEST_METHOD"] == "POST") {
-
       // email and password sent from form 
       
       $myemail = mysqli_real_escape_string($link,$_POST['usr-email']);
@@ -103,7 +95,7 @@
   <div class="bg"></div>
     <div class="content-login">
       <div class="dialog-bx img-rounded">
-        <a href="../../index.php" ><img class="img-logo" src="../imagenes/implan-logo.png" alt="IMPLAN - Torreon"></a>
+        <img class="img-logo" src="../imagenes/implan-logo.png" alt="IMPLAN - Torreon">
         <p class="nav-p" style="font-size:30px; margin-bottom: 5%;">Iniciar Sesion</p>
         <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="POST">
           <p class="login-tags">Correo Electronico</p>

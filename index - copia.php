@@ -1,17 +1,14 @@
 <?php
-include './login/session.php';
-  if (isset($_SESSION['login_email']))
-  {
-    $style = "style='display:initial;'";
-    $name_user = "$login_session";
-    $style2 = "style='display:none;'";
-  }
-  else
-  {
-    $style = "style='display:none;'";
-    $name_user = "";
-    $style2 = "style='display:initial;'";    
-  } 
+  include('./login/session.php');
+  $style = "";
+    if(isset($login_session)){
+      $style = "";
+      $name_user="$login_session";
+    }
+    else{
+      $style = "style='display:none;'";
+      $name_user = "";
+    }
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -229,8 +226,8 @@ include './login/session.php';
         <li><a href="http://177.244.42.17/ovie-torreon/#!" target="_blank"><span class="navegacion-icono"><i class="fa fa-map-marker"></i></span> Oficina Virtual de Información Económica (OVIE)</a></li>
         <li><a href="https://arcg.is/0vySSr" target="_blank"><span class="navegacion-icono"><i class="fa fa-globe"></i></span> Atlas Municipal de Riesgos de Torreón</a></li>
       </ul>
-      <div class="nav-login-div" <?php echo $style2;?>>
-        <p class="nav-p">¿Tienes una cuenta con nosotros?</p><button onclick="location.href='./login/login-index.php'" type="button" class="btn btn-default">Inicia Sesion</button>
+      <div class="nav-login-div">
+        <p class="nav-p">¿Tienes una cuenta con nosotros?</p><button onclick="location.href='login/login-index.html'" type="button" class="btn btn-default">Inicia Sesion</button>
       </div>
     </div>
   </div>
