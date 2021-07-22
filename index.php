@@ -1,16 +1,16 @@
 <?php
 include './login/session.php';
-  if (isset($_SESSION['login_email']))
-  {
-    $style = "style='display:initial;'";
-    $name_user = "$login_session";
-    $style2 = "style='display:none;'";
-  }
-  else
+  if (empty($_SESSION['login_email']))
   {
     $style = "style='display:none;'";
     $name_user = "";
-    $style2 = "style='display:initial;'";    
+    $style2 = "style='display:initial;'";
+  }
+  else
+  {
+    $style = "style='display:initial;'";
+    $name_user = "$login_session";
+    $style2 = "style='display:none;'";    
   } 
 ?>
 <!DOCTYPE html>

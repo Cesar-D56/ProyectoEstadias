@@ -115,5 +115,9 @@
         <p class="login-tags"><?php echo $error; ?></p>
       </div>
     </div>
+  <!-- Javascript global inicia -->
+  <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
+  <script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+  <script type="text/javascript" src="dist/js/sb-admin-2.min.js"></script>
 </body>
 </html>
