@@ -22,13 +22,40 @@
                 echo $error->getMessage();
             }
         }
-        
+
         function DBdisconnect()
         {
             try{$this->PDOLocal = null;}
             catch(PDOException $error){
                 echo $error->getMessage();
             }
+        }
+
+        function checkLogin($email, $pass)
+        {
+            /*$this->DBconnect();*/
+            $myemail = mysqli_real_escape_string($this->PDOLocal, $email);
+            $mypassword = mysqli_real_escape_string($this->PDOLocal, $pass); 
+            
+            $sql = "SELECT * 
+            FROM datosusuarios 
+            WHERE correo = '$myemail' 
+            and password = '$mypassword'";
+
+            $query = $this->PDOLocal->query($sql);
+
+            $row = mysqli_fetch_array($query,MYSQLI_ASSOC);
+
+            $count = mysqli_num_rows($query);
+      
+            // If result matched $myemail and $mypassword, table row must be 1 row
+		
+            if($count == 1) {
+                
+            }else {
+                return $error = "Correo o Contraseña Incorrectos";
+            }
+            
         }
     }
 ?>
