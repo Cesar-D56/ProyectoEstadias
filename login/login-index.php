@@ -1,39 +1,22 @@
 <?php
-   include("db-connection.php");
-   session_start();
-   if (isset($_SESSION['login_email']))
-   {
-     header("Location: ../../index.php");
-   }
-   else
-   {
-    
-   }
-   $error = "";
+  include 'db-connection.php';
+  $db = new Database();
+  $db->DBconnect();
+
+  $error="";
+
+ session_start();
+  
+  if((isset($_SESSION['email']) && !empty($_SESSION['email']))){
+    header("Location: ../index.php");
+  }
    
    if($_SERVER["REQUEST_METHOD"] == "POST") {
-
-      // email and password sent from form 
-      
-      $myemail = mysqli_real_escape_string($link,$_POST['usr-email']);
-      $mypassword = mysqli_real_escape_string($link,$_POST['usr-password']); 
-
-      $sql = "SELECT id FROM datosusuarios WHERE correo = '$myemail' and password = '$mypassword'";
-      $result = mysqli_query($link,$sql);
-      $row = mysqli_fetch_array($result,MYSQLI_ASSOC);
-      /*$active = $row['active'];*/
-      
-      $count = mysqli_num_rows($result);
-      
-      // If result matched $myemail and $mypassword, table row must be 1 row
-		
-      if($count == 1) {
-         $_SESSION['login_email'] = $myemail;
-         
-         header("location: ../../index.php");
-      }else {
-         $error = "Correo o Contraseña Incorrectos";
-      }
+    
+      $myemail = $_POST["usr_email"];
+      $mypassword = $_POST["usr_password"];
+      $error = $db->checkLogin("$myemail", "$mypassword");
+      $db->DBdisconnect();
    }
 ?>
 
@@ -103,13 +86,13 @@
   <div class="bg"></div>
     <div class="content-login">
       <div class="dialog-bx img-rounded">
-        <a href="../../index.php" ><img class="img-logo" src="../imagenes/implan-logo.png" alt="IMPLAN - Torreon"></a>
+        <a href="../index.php" ><img class="img-logo" src="../imagenes/implan-logo.png" alt="IMPLAN - Torreon"></a>
         <p class="nav-p" style="font-size:30px; margin-bottom: 5%;">Iniciar Sesion</p>
         <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="POST">
           <p class="login-tags">Correo Electronico</p>
-            <input type="email" name="usr-email" class="form-control input-bx" id="exampleFormControlInput1" placeholder="nombre@ejemplo.com">
+            <input type="email" name="usr_email" class="form-control input-bx" id="exampleFormControlInput1" placeholder="nombre@ejemplo.com">
           <p class="login-tags">Contraseña</p>
-            <input type="password" name="usr-password" class="form-control input-bx" id="exampleFormControlInput1" placeholder="Contraseña">
+            <input type="password" name="usr_password" class="form-control input-bx" id="exampleFormControlInput1" placeholder="Contraseña">
           <input type="submit" name="submit" value="Iniciar Sesion" class="btn-login">
         </form>
         <p class="login-tags"><?php echo $error; ?></p>

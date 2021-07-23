@@ -33,29 +33,45 @@
 
         function checkLogin($email, $pass)
         {
-            /*$this->DBconnect();*/
-            $myemail = mysqli_real_escape_string($this->PDOLocal, $email);
-            $mypassword = mysqli_real_escape_string($this->PDOLocal, $pass); 
-            
+            try{
+
+            $count= 0;
+
             $sql = "SELECT * 
             FROM datosusuarios 
-            WHERE correo = '$myemail' 
-            and password = '$mypassword'";
+            WHERE correo = '$email'";
+            
+            //HASHEAME ESTA MEN
+            /*$hash = password_hash($pass, PASSWORD_DEFAULT);
+            $cadena="UPDATE datosusuarios SET password='$hash' WHERE correo='$email'";
+            $query2 = $this->PDOLocal->query($cadena);*/
 
             $query = $this->PDOLocal->query($sql);
 
-            $row = mysqli_fetch_array($query,MYSQLI_ASSOC);
+            while($result = $query->fetch(PDO::FETCH_ASSOC)) {                
+				if (password_verify($pass, $result['password']))
+				{
+					$count = 1;
 
-            $count = mysqli_num_rows($query);
-      
-            // If result matched $myemail and $mypassword, table row must be 1 row
-		
+                    $tipouser = $result['TipoUser'];
+                    $usrid = $result['userID'];
+                    $nombre = $result['Nombre'];
+				}
+            }
             if($count == 1) {
-                
+                session_start();
+                $_SESSION["email"] = $email;
+                $_SESSION["tipo"] = $tipouser;
+                $_SESSION["id"] = $usrid;
+                $_SESSION["nombre"] = $nombre;
+                header("Location: ../index.php");
+                return $error = "";
             }else {
                 return $error = "Correo o Contraseña Incorrectos";
             }
-            
+            }catch(PDOException $error){
+                
+            }
         }
     }
 ?>
