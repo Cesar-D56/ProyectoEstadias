@@ -83,5 +83,10 @@
                 
             }
         }
+
+        function userHierarchy($tipoU)
+        {
+            
+        }
     }
 ?>
