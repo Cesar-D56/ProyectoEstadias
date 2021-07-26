@@ -1,8 +1,18 @@
 <?php
+include 'users/db-connection.php';
 session_start();
+
+/*echo '<pre>';
+var_dump($_SESSION);
+echo '</pre>';
+*/
+
 if(isset($_SESSION['id']) && !empty($_SESSION['id'])) {
   $style = "style='display:initial;'";
+  $tipouser = $_SESSION['tipo'];
   $name_user = $_SESSION['nombre'];
+  $titulo = $_SESSION['titulo'];
+  $class = new Database();
   $style2 = "style='display:none;'";  
 }else{
   $style = "style='display:none;'";
@@ -114,9 +124,9 @@ if(isset($_SESSION['id']) && !empty($_SESSION['id'])) {
         </li>
         <li <?php echo $style;?>>
           <p class="nav-user">
-            Bienvenido: <?php echo $name_user;?>
+            Bienvenido: <b><?php echo $titulo;?> <?php echo $name_user;?></b>
           </p>
-          <a href = "users/logout.php">Cerrar Sesion</a></h2>
+          <?php $class->MenuUserHierarchy($tipouser); ?>
         </li>
         <li>
           <a href="#"><span class="navegacion-icono"><i class="fa fa-lightbulb-o"></i></span> Análisis Publicados<span class="fa arrow"></span></a>

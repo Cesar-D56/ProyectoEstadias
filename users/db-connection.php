@@ -66,6 +66,7 @@
                     $tipouser = $result['TipoUser'];
                     $usrid = $result['userID'];
                     $nombre = $result['Nombre'];
+                    $titulo = $result['titulo'];
 				}
             }
             if($count == 1) {
@@ -74,6 +75,7 @@
                 $_SESSION["tipo"] = $tipouser;
                 $_SESSION["id"] = $usrid;
                 $_SESSION["nombre"] = $nombre;
+                $_SESSION["titulo"] = $titulo;
                 header("Location: ../index.php");
                 return $error = "";
             }else {
@@ -84,9 +86,55 @@
             }
         }
 
-        function userHierarchy($tipoU)
+        function MenuUserHierarchy($tipoU)
         {
-            
+            switch($tipoU)
+            {
+                case 0:{
+                    echo '';
+                    break;
+                }
+                case 1:{
+                    echo 
+                    '<a href="#"><span class="navegacion-icono"><i class="fa fa-navicon"></i></span> Mi Cuenta<span class="fa arrow"></span></a>
+                        <ul class="nav nav-second-level">
+                            <li><a href="users/logout.php"><span class="navegacion-icono"><i class="fa fa-user"></i></span> Mi Perfil</a></li>
+                            <li><a href="users/logout.php"><span class="navegacion-icono"><i class="fa fa-files-o"></i></span> Mis Analisis/Blogs</a></li>
+                            <li><a href="users/logout.php"><span class="navegacion-icono"><i class="fa fa-users"></i></span> Ver Usuarios</a></li>
+                            <li><a href="users/logout.php"><span class="navegacion-icono"><i class="fa fa-sign-out"></i></span> Cerrar Sesion</a></li> 
+                        </ul>';
+                    break;
+                }
+                case 2:{
+                    echo 
+                    '<a href="#"><span class="navegacion-icono"><i class="fa fa-navicon"></i></span> Mi Cuenta<span class="fa arrow"></span></a>
+                    <ul class="nav nav-second-level">
+                        <li><a href="users/logout.php"><span class="navegacion-icono"><i class="fa fa-user"></i></span> Mi Perfil</a></li>
+                        <li><a href="users/logout.php"><span class="navegacion-icono"><i class="fa fa-files-o"></i></span> Mis Analisis/Blogs</a></li>
+                        <li><a href="users/logout.php"><span class="navegacion-icono"><i class="fa fa-sign-out"></i></span> Cerrar Sesion</a></li> 
+                    </ul>';
+                    break;
+                }
+                case 3:{
+                    echo 
+                    '<a href="#"><span class="navegacion-icono"><i class="fa fa-navicon"></i></span> Mi Cuenta<span class="fa arrow"></span></a>
+                    <ul class="nav nav-second-level">
+                        <li><a href="users/logout.php"><span class="navegacion-icono"><i class="fa fa-user"></i></span> Mi Perfil</a></li>
+                        <li><a href="users/logout.php"><span class="navegacion-icono"><i class="fa fa-sign-out"></i></span> Cerrar Sesion</a></li> 
+                    </ul>';
+                    break;
+                }
+                case 4:{
+                    echo                     
+                    '<a href="#"><span class="navegacion-icono"><i class="fa fa-navicon"></i></span> Mi Cuenta<span class="fa arrow"></span></a>
+                    <ul class="nav nav-second-level">
+                        <li><a href="users/logout.php"><span class="navegacion-icono"><i class="fa fa-user"></i></span> Mi Perfil</a></li>
+                        <li><a href="users/logout.php"><span class="navegacion-icono"><i class="fa fa-files-o"></i></span> Mis Analisis/Blogs</a></li>
+                        <li><a href="users/logout.php"><span class="navegacion-icono"><i class="fa fa-sign-out"></i></span> Cerrar Sesion</a></li> 
+                    </ul>';
+                    break;
+                }
+            }
         }
     }
 ?>
