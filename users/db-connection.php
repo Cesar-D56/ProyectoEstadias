@@ -31,6 +31,16 @@
             }
         }
 
+        function Query1($sql)
+        {
+            try{
+                $this->PDOLocal->query($sql);
+                echo $status = mysqli_affected_rows($this->PDOLocal);
+            }catch(PDOException $e){
+                echo $e->getMessage();
+            }
+        }
+
         function checkLogin($email, $pass)
         {
             try{

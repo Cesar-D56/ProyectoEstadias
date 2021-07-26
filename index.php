@@ -116,7 +116,7 @@ if(isset($_SESSION['id']) && !empty($_SESSION['id'])) {
           <p class="nav-user">
             Bienvenido: <?php echo $name_user;?>
           </p>
-          <a href = "login/logout.php">Cerrar Sesion</a></h2>
+          <a href = "user/logout.php">Cerrar Sesion</a></h2>
         </li>
         <li>
           <a href="#"><span class="navegacion-icono"><i class="fa fa-lightbulb-o"></i></span> Análisis Publicados<span class="fa arrow"></span></a>
@@ -227,7 +227,7 @@ if(isset($_SESSION['id']) && !empty($_SESSION['id'])) {
         <li><a href="https://arcg.is/0vySSr" target="_blank"><span class="navegacion-icono"><i class="fa fa-globe"></i></span> Atlas Municipal de Riesgos de Torreón</a></li>
       </ul>
       <div class="nav-login-div" <?php echo $style2;?>>
-        <p class="nav-p">¿Tienes una cuenta con nosotros?</p><button onclick="location.href='./login/login-index.php'" type="button" class="btn btn-default">Inicia Sesion</button>
+        <p class="nav-p">¿Tienes una cuenta con nosotros?</p><button onclick="location.href='./user/login-index.php'" type="button" class="btn btn-default">Inicia Sesion</button>
       </div>
     </div>
   </div>
