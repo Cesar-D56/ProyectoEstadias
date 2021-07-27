@@ -41,15 +41,25 @@
             }
         }
 
+        function Query2($sql)
+        {
+            try{
+                echo $this->PDOLocal->query($sql);
+            }catch(PDOException $e){
+                echo $e->getMessage();
+            }
+        }
+
         function checkLogin($email, $pass)
         {
             try{
 
             $count= 0;
+            //Busca si existe cuenta con el correo
 
-            $sql = "SELECT * 
-            FROM datosusuarios 
-            WHERE correo = '$email'";
+            $sql = "SELECT datosusuarios.userID, datosusuarios.password, datosusuarios.Nombre, datosusuarios.TipoUser, infouser.titulo 
+            FROM datosusuarios INNER JOIN infouser ON datosusuarios.userID = infouser.userID 
+            WHERE datosusuarios.Correo = '$email'";
             
             //HASHEAME ESTA MEN
             /*$hash = password_hash($pass, PASSWORD_DEFAULT);
@@ -57,7 +67,7 @@
             $query2 = $this->PDOLocal->query($cadena);*/
 
             $query = $this->PDOLocal->query($sql);
-
+            //Comprueba la contraseña
             while($result = $query->fetch(PDO::FETCH_ASSOC)) {                
 				if (password_verify($pass, $result['password']))
 				{
@@ -69,6 +79,7 @@
                     $titulo = $result['titulo'];
 				}
             }
+            //Reguresa los datos de la cuenta
             if($count == 1) {
                 session_start();
                 $_SESSION["email"] = $email;
@@ -86,55 +97,5 @@
             }
         }
 
-        function MenuUserHierarchy($tipoU)
-        {
-            switch($tipoU)
-            {
-                case 0:{
-                    echo '';
-                    break;
-                }
-                case 1:{
-                    echo 
-                    '<a href="#"><span class="navegacion-icono"><i class="fa fa-navicon"></i></span> Mi Cuenta<span class="fa arrow"></span></a>
-                        <ul class="nav nav-second-level">
-                            <li><a href="users/logout.php"><span class="navegacion-icono"><i class="fa fa-user"></i></span> Mi Perfil</a></li>
-                            <li><a href="users/logout.php"><span class="navegacion-icono"><i class="fa fa-files-o"></i></span> Mis Analisis/Blogs</a></li>
-                            <li><a href="users/logout.php"><span class="navegacion-icono"><i class="fa fa-users"></i></span> Ver Usuarios</a></li>
-                            <li><a href="users/logout.php"><span class="navegacion-icono"><i class="fa fa-sign-out"></i></span> Cerrar Sesion</a></li> 
-                        </ul>';
-                    break;
-                }
-                case 2:{
-                    echo 
-                    '<a href="#"><span class="navegacion-icono"><i class="fa fa-navicon"></i></span> Mi Cuenta<span class="fa arrow"></span></a>
-                    <ul class="nav nav-second-level">
-                        <li><a href="users/logout.php"><span class="navegacion-icono"><i class="fa fa-user"></i></span> Mi Perfil</a></li>
-                        <li><a href="users/logout.php"><span class="navegacion-icono"><i class="fa fa-files-o"></i></span> Mis Analisis/Blogs</a></li>
-                        <li><a href="users/logout.php"><span class="navegacion-icono"><i class="fa fa-sign-out"></i></span> Cerrar Sesion</a></li> 
-                    </ul>';
-                    break;
-                }
-                case 3:{
-                    echo 
-                    '<a href="#"><span class="navegacion-icono"><i class="fa fa-navicon"></i></span> Mi Cuenta<span class="fa arrow"></span></a>
-                    <ul class="nav nav-second-level">
-                        <li><a href="users/logout.php"><span class="navegacion-icono"><i class="fa fa-user"></i></span> Mi Perfil</a></li>
-                        <li><a href="users/logout.php"><span class="navegacion-icono"><i class="fa fa-sign-out"></i></span> Cerrar Sesion</a></li> 
-                    </ul>';
-                    break;
-                }
-                case 4:{
-                    echo                     
-                    '<a href="#"><span class="navegacion-icono"><i class="fa fa-navicon"></i></span> Mi Cuenta<span class="fa arrow"></span></a>
-                    <ul class="nav nav-second-level">
-                        <li><a href="users/logout.php"><span class="navegacion-icono"><i class="fa fa-user"></i></span> Mi Perfil</a></li>
-                        <li><a href="users/logout.php"><span class="navegacion-icono"><i class="fa fa-files-o"></i></span> Mis Analisis/Blogs</a></li>
-                        <li><a href="users/logout.php"><span class="navegacion-icono"><i class="fa fa-sign-out"></i></span> Cerrar Sesion</a></li> 
-                    </ul>';
-                    break;
-                }
-            }
-        }
     }
 ?>

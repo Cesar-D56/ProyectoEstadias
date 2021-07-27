@@ -2,11 +2,6 @@
 include 'users/db-connection.php';
 session_start();
 
-/*echo '<pre>';
-var_dump($_SESSION);
-echo '</pre>';
-*/
-
 if(isset($_SESSION['id']) && !empty($_SESSION['id'])) {
   $style = "style='display:initial;'";
   $tipouser = $_SESSION['tipo'];
@@ -16,7 +11,10 @@ if(isset($_SESSION['id']) && !empty($_SESSION['id'])) {
   $style2 = "style='display:none;'";  
 }else{
   $style = "style='display:none;'";
+  $tipouser = 0;
   $name_user = "";
+  $titulo = "";
+  $class = new Database();
   $style2 = "style='display:initial;'";  
 }
 ?>
@@ -106,7 +104,7 @@ if(isset($_SESSION['id']) && !empty($_SESSION['id'])) {
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="index.html"><img class="navbar-brand-img" src="imagenes/implan-barra-logo-chico-gris.png" alt="IMPLAN Torreón"></a>
+      <a class="navbar-brand" href="index.php"><img class="navbar-brand-img" src="imagenes/implan-barra-logo-chico-gris.png" alt="IMPLAN Torreón"></a>
     </div>
 <!--EMPIEZA MENU LATERAL-->
   <div class="navbar-default sidebar" role="navigation">
@@ -126,7 +124,7 @@ if(isset($_SESSION['id']) && !empty($_SESSION['id'])) {
           <p class="nav-user">
             Bienvenido: <b><?php echo $titulo;?> <?php echo $name_user;?></b>
           </p>
-          <?php $class->MenuUserHierarchy($tipouser); ?>
+          <li><a href="users/profile.php"><span class="navegacion-icono"><i class="fa fa-user"></i></span> Mi Cuenta</a></li>
         </li>
         <li>
           <a href="#"><span class="navegacion-icono"><i class="fa fa-lightbulb-o"></i></span> Análisis Publicados<span class="fa arrow"></span></a>
