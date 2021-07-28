@@ -6,12 +6,12 @@
   $error="";
 
  session_start();
-
+/*
  echo '<pre>';
  var_dump($_SESSION);
  echo '</pre>';
-  
-  if((isset($_SESSION['email']) && !empty($_SESSION['email']))){
+*/
+  if((isset($_SESSION['id']) && !empty($_SESSION['id']))){
     header("Location: ../index.php");
   }
    

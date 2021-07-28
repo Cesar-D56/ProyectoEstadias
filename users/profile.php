@@ -1,7 +1,7 @@
 <?php
 include 'db-connection.php';
 session_start();
-if((isset($_SESSION['email']) && !empty($_SESSION['email']))){
+if((isset($_SESSION['id']) && !empty($_SESSION['id']))){
   
 }else{header("Location: ../index.php");}
 
@@ -149,7 +149,7 @@ if(isset($_SESSION['id']) && !empty($_SESSION['id'])) {
             <!--<li><a href="../blog/index.html"><span class="navegacion-icono"><i class="fa fa-file-text-o"></i></span> Configurar Cuenta</a></li>-->
           </ul>
         </li>
-        <li><a href="../excolaboradores/index.html"><span class="navegacion-icono"><i class="fa fa-users"></i></span> Ver Usuarios</a></li>   
+        <li class="UsrAdmin usrAccess"><a href="../excolaboradores/index.html"><span class="navegacion-icono"><i class="fa fa-users"></i></span> Ver Usuarios</a></li>   
         <li><a href="../users/logout.php"><span class="navegacion-icono"><i class="fa fa-sign-out"></i></span> Cerrar Sesion</a></li>
       </ul>
     </div>
@@ -170,6 +170,7 @@ if(isset($_SESSION['id']) && !empty($_SESSION['id'])) {
 <script type="text/javascript" src="../vendor/raphael/raphael.min.js"></script>
 <script type="text/javascript" src="../vendor/morrisjs/morris.min.js"></script>
 <script type="text/javascript" src="../dist/js/sb-admin-2.min.js"></script>
+<script type="text/javascript" src="CheckUsr.js"></script>
 <script type="text/javascript" src="http://libs.cartocdn.com/cartodb.js/v3/3.15/cartodb.js"></script>
 <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 <!-- Javascript global termina -->

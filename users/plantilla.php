@@ -136,7 +136,6 @@ if(isset($_SESSION['id']) && !empty($_SESSION['id'])) {
         <li>
           <a href="#"><span class="navegacion-icono"><i class="fa fa-user"></i></span> Mi Perfil<span class="fa arrow"></span></a>
           <ul class="nav nav-second-level">
-            <li><a href="../blog/index.html"><span class="navegacion-icono"><i class="fa fa-eye"></i></span> Ver Perfil</a></li>
             <li><a href="../excolaboradores/index.html"><span class="navegacion-icono"><i class="fa fa-pencil"></i></span> Editar Perfil</a></li>
             <li><a href="../blog/index.html"><span class="navegacion-icono"><i class="fa fa-cog"></i></span> Configurar Cuenta</a></li>
           </ul>
