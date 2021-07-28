@@ -1,7 +1,16 @@
 <?php
 include 'db-connection.php';
 session_start();
+if((isset($_SESSION['email']) && !empty($_SESSION['email']))){
+  
+}else{header("Location: ../index.php");}
 
+/*echo '<pre>';
+var_dump($_SESSION);
+echo '</pre>';
+*/
+
+/*
 if(isset($_SESSION['id']) && !empty($_SESSION['id'])) {
     $style = "style='display:initial;'";
     $tipouser = $_SESSION['tipo'];
@@ -17,6 +26,7 @@ if(isset($_SESSION['id']) && !empty($_SESSION['id'])) {
     $class = new Database();
     $style2 = "style='display:initial;'";    
 }
+*/
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -120,7 +130,7 @@ if(isset($_SESSION['id']) && !empty($_SESSION['id'])) {
             </div>
           </form>
         </li>
-        <li <?php echo $style;?>>
+        <li>
           <li><a href="../index.php"><span class="navegacion-icono"><i class="fa fa-home"></i></span> Menu Principal</a></li>   
         </li>
         <li>
@@ -132,13 +142,15 @@ if(isset($_SESSION['id']) && !empty($_SESSION['id'])) {
           </ul>
         </li>
         <li>
-          <a href="#"><span class="navegacion-icono"><i class="fa fa-user"></i></span> Publicaciones<span class="fa arrow"></span></a>
+          <a href="#"><span class="navegacion-icono"><i class="fa fa-file-text-o"></i></span> Publicaciones<span class="fa arrow"></span></a>
           <ul class="nav nav-second-level">
             <li><a href="../blog/index.html"><span class="navegacion-icono"><i class="fa fa-eye"></i></span> Mis Publicaciones</a></li>
-            <li><a href="../excolaboradores/index.html"><span class="navegacion-icono"><i class="fa fa-file-text-o"></i></span> Nueva Publicacion</a></li>
+            <li><a href="../excolaboradores/index.html"><span class="navegacion-icono"><i class="fa fa-pencil-square-o"></i></span> Nueva Publicacion</a></li>
             <!--<li><a href="../blog/index.html"><span class="navegacion-icono"><i class="fa fa-file-text-o"></i></span> Configurar Cuenta</a></li>-->
           </ul>
         </li>
+        <li><a href="../excolaboradores/index.html"><span class="navegacion-icono"><i class="fa fa-users"></i></span> Ver Usuarios</a></li>   
+        <li><a href="../users/logout.php"><span class="navegacion-icono"><i class="fa fa-sign-out"></i></span> Cerrar Sesion</a></li>
       </ul>
     </div>
   </div>

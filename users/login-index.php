@@ -2,10 +2,14 @@
   include 'db-connection.php';
   $db = new Database();
   $db->DBconnect();
-
+ 
   $error="";
 
  session_start();
+
+ echo '<pre>';
+ var_dump($_SESSION);
+ echo '</pre>';
   
   if((isset($_SESSION['email']) && !empty($_SESSION['email']))){
     header("Location: ../index.php");

@@ -2,6 +2,10 @@
 include 'users/db-connection.php';
 session_start();
 
+/*echo '<pre>';
+var_dump($_SESSION);
+echo '</pre>';
+*/
 if(isset($_SESSION['id']) && !empty($_SESSION['id'])) {
   $style = "style='display:initial;'";
   $tipouser = $_SESSION['tipo'];
@@ -124,7 +128,7 @@ if(isset($_SESSION['id']) && !empty($_SESSION['id'])) {
           <p class="nav-user">
             Bienvenido: <b><?php echo $titulo;?> <?php echo $name_user;?></b>
           </p>
-          <li><a href="users/profile.php"><span class="navegacion-icono"><i class="fa fa-user"></i></span> Mi Cuenta</a></li>
+          <li <?php echo $style;?>><a href="users/profile.php"><span class="navegacion-icono"><i class="fa fa-user"></i></span> Mi Cuenta</a></li>
         </li>
         <li>
           <a href="#"><span class="navegacion-icono"><i class="fa fa-lightbulb-o"></i></span> Análisis Publicados<span class="fa arrow"></span></a>
