@@ -1,9 +1,11 @@
 <?php
 include 'db-connection.php';
 session_start();
-if((isset($_SESSION['email']) && !empty($_SESSION['email']))){
-  
-}else{header("Location: ../index.php");}
+if((isset($_SESSION['id']) && !empty($_SESSION['id']))){
+  $var = $_SESSION['tipo'];
+}else{
+  header("Location: ../index.php");
+}
 
 /*echo '<pre>';
 var_dump($_SESSION);
@@ -136,6 +138,7 @@ if(isset($_SESSION['id']) && !empty($_SESSION['id'])) {
         <li>
           <a href="#"><span class="navegacion-icono"><i class="fa fa-user"></i></span> Mi Perfil<span class="fa arrow"></span></a>
           <ul class="nav nav-second-level">
+            <li><a href="../blog/index.html"><span class="navegacion-icono"><i class="fa fa-eye"></i></span> Ver Perfil</a></li>
             <li><a href="../excolaboradores/index.html"><span class="navegacion-icono"><i class="fa fa-pencil"></i></span> Editar Perfil</a></li>
             <li><a href="../blog/index.html"><span class="navegacion-icono"><i class="fa fa-cog"></i></span> Configurar Cuenta</a></li>
           </ul>
@@ -148,7 +151,7 @@ if(isset($_SESSION['id']) && !empty($_SESSION['id'])) {
             <!--<li><a href="../blog/index.html"><span class="navegacion-icono"><i class="fa fa-file-text-o"></i></span> Configurar Cuenta</a></li>-->
           </ul>
         </li>
-        <li><a href="../excolaboradores/index.html"><span class="navegacion-icono"><i class="fa fa-users"></i></span> Ver Usuarios</a></li>   
+        <li class="UsrAdmin usrAccess"><a href="../excolaboradores/index.html"><span class="navegacion-icono"><i class="fa fa-users"></i></span> Ver Usuarios</a></li>   
         <li><a href="../users/logout.php"><span class="navegacion-icono"><i class="fa fa-sign-out"></i></span> Cerrar Sesion</a></li>
       </ul>
     </div>
@@ -169,6 +172,7 @@ if(isset($_SESSION['id']) && !empty($_SESSION['id'])) {
 <script type="text/javascript" src="../vendor/raphael/raphael.min.js"></script>
 <script type="text/javascript" src="../vendor/morrisjs/morris.min.js"></script>
 <script type="text/javascript" src="../dist/js/sb-admin-2.min.js"></script>
+<script type="text/javascript" src="CheckUsr.js">var access = "<?= $var ?>"</script>
 <script type="text/javascript" src="http://libs.cartocdn.com/cartodb.js/v3/3.15/cartodb.js"></script>
 <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 <!-- Javascript global termina -->

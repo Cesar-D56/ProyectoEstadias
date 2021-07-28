@@ -1,10 +1,16 @@
 $( document ).ready(function() {
 
     // Obtiene el tipo de usuario
-    var x = "";
-    var access = "<?php $_SESSION['tipo']; ?>";
+    var x;
+    var access = text;
+    console.log(access);
 
-    switch(access) {
+    setAccess(access);
+
+    // Checa las clases de los elemtos
+    function setAccess(accessVal) {
+      console.log(accessVal);
+      switch(accessVal) {
         case 1:
             x = ".UsrAdmin"
             break;
@@ -17,19 +23,16 @@ $( document ).ready(function() {
         case 4:
             x = ".UsrEmp"
             break;
+          default:{
+            x = "xd"
+          }
       }
-
-    setAccess(x);
-
-    // Checa las clases de los elemtos
-    function setAccess(accessVal) {
   
       // Busca las clases de los elementos
       $(".usrAccess").each( function() {
         var ele = $(this); // readability
-  
-        showHide(ele, accessVal);
-  
+        showHide(ele, x);
+        console.log(x);
       })
     }
     
