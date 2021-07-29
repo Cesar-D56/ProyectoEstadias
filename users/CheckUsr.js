@@ -1,15 +1,16 @@
 $( document ).ready(function() {
 
     // Obtiene el tipo de usuario
+
+    var test2 = '<?php echo $var; ?>;'; 
     var x;
-    var access = text;
-    console.log(access);
+    var access=test;
+    //console.log(access);
 
     setAccess(access);
 
     // Checa las clases de los elemtos
     function setAccess(accessVal) {
-      console.log(accessVal);
       switch(accessVal) {
         case 1:
             x = ".UsrAdmin"
@@ -23,7 +24,7 @@ $( document ).ready(function() {
         case 4:
             x = ".UsrEmp"
             break;
-          default:{
+        default:{
             x = "xd"
           }
       }
@@ -32,7 +33,7 @@ $( document ).ready(function() {
       $(".usrAccess").each( function() {
         var ele = $(this); // readability
         showHide(ele, x);
-        console.log(x);
+        //console.log(x);
       })
     }
     

@@ -1,12 +1,13 @@
 <?php
 include 'db-connection.php';
-/*session_start();
+
+session_start();
 if((isset($_SESSION['id']) && !empty($_SESSION['id']))){
   $var = $_SESSION['tipo'];
 }else{
   header("Location: ../index.php");
 }
-*/
+
 /*echo '<pre>';
 var_dump($_SESSION);
 echo '</pre>';
@@ -29,7 +30,8 @@ if(isset($_SESSION['id']) && !empty($_SESSION['id'])) {
     $style2 = "style='display:initial;'";    
 }
 */
-$var = 1;
+//$usrtype = "class= 'usr".$var."'";
+
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -100,6 +102,7 @@ $var = 1;
   <link rel="stylesheet" type="text/css" href="../dist/css/estilosvm.css">
   <link rel="stylesheet" type="text/css" href="../dist/css/trcimplan.css">
   <link rel="stylesheet" type="text/css" href="../dist/css/accounts.css">
+  
   <!-- SOPORTE PARA IE -->
   <!--[if lt IE 9]>
   <script type="text/javascript" src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
@@ -144,7 +147,7 @@ $var = 1;
             <li><a href="../blog/index.html"><span class="navegacion-icono"><i class="fa fa-cog"></i></span> Configurar Cuenta</a></li>
           </ul>
         </li>
-        <li>
+        <li class="UsrAdmin UsrDir UsrEmp usrAccess">
           <a href="#"><span class="navegacion-icono"><i class="fa fa-file-text-o"></i></span> Publicaciones<span class="fa arrow"></span></a>
           <ul class="nav nav-second-level">
             <li><a href="../blog/index.html"><span class="navegacion-icono"><i class="fa fa-eye"></i></span> Mis Publicaciones</a></li>
@@ -161,7 +164,9 @@ $var = 1;
   </nav>
   <div id="page-wrapper">
     <!-- El contenido va aqui -->
-    <p>Hello Motherfucker</p>
+      <div background-color="red">
+            
+      </div>
   </div>
 </div>
 <!-- Javascript global inicia -->
@@ -174,9 +179,12 @@ $var = 1;
 <script type="text/javascript" src="../vendor/raphael/raphael.min.js"></script>
 <script type="text/javascript" src="../vendor/morrisjs/morris.min.js"></script>
 <script type="text/javascript" src="../dist/js/sb-admin-2.min.js"></script>
-<script type="text/javascript" src="CheckUsr.js">function Main(<?php echo $var;?>;)</script>
 <script type="text/javascript" src="http://libs.cartocdn.com/cartodb.js/v3/3.15/cartodb.js"></script>
 <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+<script>var test =<?php echo $var; ?> ;</script>
+<script type="text/javascript" src="checkUsr.js"></script>
+
+
 <!-- Javascript global termina -->
 <!-- Javascript inicia -->
 <script>
