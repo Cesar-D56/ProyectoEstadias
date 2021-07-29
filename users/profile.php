@@ -1,12 +1,12 @@
 <?php
 include 'db-connection.php';
 
-session_start();
+/*session_start();
 if((isset($_SESSION['id']) && !empty($_SESSION['id']))){
   $var = $_SESSION['tipo'];
 }else{
   header("Location: ../index.php");
-}
+}*/
 
 /*echo '<pre>';
 var_dump($_SESSION);
@@ -165,9 +165,12 @@ if(isset($_SESSION['id']) && !empty($_SESSION['id'])) {
   <div id="page-wrapper" style="min-height:1244px;">
     <!-- El contenido va aqui -->
       <div class="main-container">
-        <div class="profile-info">
-            <section>
-              
+        <div id="profile-info">
+            <section class="info">
+              <p>xd</p>
+            </section>
+            <section class="photo">
+              <p>xd</p>
             </section>
         </div>
       </div>
@@ -185,7 +188,7 @@ if(isset($_SESSION['id']) && !empty($_SESSION['id'])) {
 <script type="text/javascript" src="../dist/js/sb-admin-2.min.js"></script>
 <script type="text/javascript" src="http://libs.cartocdn.com/cartodb.js/v3/3.15/cartodb.js"></script>
 <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
-<script>var test =<?php echo $var; ?> ;</script>
+<script>var test =<?php echo json_encode($var); ?> ;</script>
 <script type="text/javascript" src="checkUsr.js"></script>
 
 

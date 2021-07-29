@@ -153,18 +153,18 @@
   
   .main-container
   {
-      /*background-color: rgb(126, 19, 226);*/
+      background-color: rgb(126, 19, 226);
       height: max-content;
       width: 100%;
       position: relative;
       box-sizing: border-box;
-      padding: 30px 50px;
+      padding: 25px 50px;
       display: flex;
       justify-content: center;
 
   }
 
-  .profile-info
+  /*.profile-info
   {
      background-color: aqua;
      position: absolute;
@@ -172,4 +172,31 @@
      width: 90%;
      display: inline-flex;
      float: left;
+  }
+*/
+
+  div#profile-info
+  {
+   background-color: aqua;
+   position: absolute;
+   height: fit-content;
+   width: 90%;
+   display: flexbox;
+   padding: 5px;
+  }
+
+  div#profile-info section{
+
+     font-family:'Roboto Condensed',Helvetica,Arial,sans-serif,sans-serif; font-weight:400;
+     padding:5px;
+     width: 50%;
+  }
+  div#profile-info .info
+  {
+      background-color: blueviolet;
+  }
+  
+  div#profile-info .photo
+  {
+      background-color: rgb(43, 153, 226);
   }
