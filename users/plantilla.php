@@ -164,7 +164,9 @@ if(isset($_SESSION['id']) && !empty($_SESSION['id'])) {
   </nav>
   <div id="page-wrapper">
     <!-- El contenido va aqui -->
-    <p>Hello Motherfucker</p>
+      <div class="main-container">
+            
+      </div>
   </div>
 </div>
 <!-- Javascript global inicia -->

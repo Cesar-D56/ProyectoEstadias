@@ -162,10 +162,14 @@ if(isset($_SESSION['id']) && !empty($_SESSION['id'])) {
   </div>
   <!--TERMINA MENU LATERAL-->
   </nav>
-  <div id="page-wrapper">
+  <div id="page-wrapper" style="min-height:1244px;">
     <!-- El contenido va aqui -->
-      <div background-color="red">
-            
+      <div class="main-container">
+        <div class="profile-info">
+            <section>
+              
+            </section>
+        </div>
       </div>
   </div>
 </div>

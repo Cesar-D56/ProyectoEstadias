@@ -151,3 +151,25 @@
      margin-bottom: 35px;
   }
   
+  .main-container
+  {
+      /*background-color: rgb(126, 19, 226);*/
+      height: max-content;
+      width: 100%;
+      position: relative;
+      box-sizing: border-box;
+      padding: 30px 50px;
+      display: flex;
+      justify-content: center;
+
+  }
+
+  .profile-info
+  {
+     background-color: aqua;
+     position: absolute;
+     height: 100%;
+     width: 90%;
+     display: inline-flex;
+     float: left;
+  }
