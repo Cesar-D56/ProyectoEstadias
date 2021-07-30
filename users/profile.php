@@ -11,7 +11,8 @@ if((isset($_SESSION['id']) && !empty($_SESSION['id']))){
 
 $users = new USERS();
 
-$info = $users -> UserInfo($_SESSION['id'])
+$info = $users -> UserInfo($_SESSION['id']);
+
 /*echo '<pre>';
 var_dump($_SESSION);
 echo '</pre>';
@@ -155,7 +156,7 @@ echo '</pre>';
               <p>xd</p>
             </section>
             <section class="photo">
-              <p>xd</p>
+              <img class="usrPhoto" src="<?php echo $info['photo']; ?>">
             </section>
         </div>
       </div>

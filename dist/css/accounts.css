@@ -188,8 +188,8 @@
   div#profile-info section{
      font-family:'Roboto Condensed',Helvetica,Arial,sans-serif,sans-serif; font-weight:400;
      padding:10px;
-     width: 40%;
      margin: 5px;
+     height: 100%;
   }
   div#profile-info .info
   {
@@ -198,5 +198,12 @@
   
   div#profile-info .photo
   {
+     display: block;
       background-color: rgb(43, 153, 226);
+  }
+
+  div#profile-info .usrPhoto
+  {
+     width: 250px;
+     height: 250px;
   }
