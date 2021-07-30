@@ -9,6 +9,7 @@
             $this->db = new Database();
             $this->database = $this->db->PDOLocal;
             //$this->userID = $userID;
+            $this->db -> DBconnect();
         }
         
         function AddUser($titulo, $nombre, $apellido, $puesto, $correo, $password, $telefono, $tipou)

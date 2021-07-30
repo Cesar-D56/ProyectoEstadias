@@ -177,23 +177,23 @@
 
   div#profile-info
   {
-   background-color: aqua;
+   background-color: rgb(38, 199, 199);
    position: absolute;
    height: fit-content;
    width: 90%;
-   display: flexbox;
+   display:flex;
    padding: 5px;
   }
 
   div#profile-info section{
-
      font-family:'Roboto Condensed',Helvetica,Arial,sans-serif,sans-serif; font-weight:400;
-     padding:5px;
-     width: 50%;
+     padding:10px;
+     width: 40%;
+     margin: 5px;
   }
   div#profile-info .info
   {
-      background-color: blueviolet;
+      background-color: rgb(109, 25, 187);
   }
   
   div#profile-info .photo

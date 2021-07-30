@@ -7,7 +7,7 @@
 */
     class Database
     {
-        private $PDOLocal;
+        public $PDOLocal;
         private $user = "root";
         private $password = "";
         private $server = "mysql:host=localhost; dbname=proyectoestadias-implan";
