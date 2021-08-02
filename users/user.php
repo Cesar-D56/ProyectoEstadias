@@ -31,7 +31,7 @@
         function ShowPosts($userid)
         {
             try{
-                
+                $sql = ""
             }catch(Exception $e){
                 echo $e = 'No se pudo ejecutar la accion';
             }

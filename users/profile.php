@@ -172,7 +172,7 @@ echo '</pre>';
               <h2 class="info-h2"><?php echo $info['puesto']; ?></h2>
               <p style="font-size:16px; margin-bottom:5px;"><?php echo $info['descripcion'];?></p>
               <div>
-                <p style="margin-bottom:0px"><b>Contacto</b></p>
+                <p style="margin-bottom:0px; margin-top:15px; font-size:16px;"><b>Contacto</b></p>
                 <div class="col-md-2"><li class="fa fa-phone"></li><b> Telefono </b><?php echo $info['telefono'];?></div>
                 <div class="col-md-4"><li class="fa fa-envelope"></li><b> Correo </b><?php echo $info['Correo'];?></div>
                 <div class="col-md-3" <?php echo $style; ?>><li class="fa fa-plus"></li><b>Redes Sociales </b><li class="fa fa-twitter"><a href="https://twitter.com/<?php echo $info['S_twitter'];?>" target="_blank">@<?php echo $twitter;?></a></li></div>
@@ -184,12 +184,13 @@ echo '</pre>';
         <div id="profile-post">
           <table class="table table-hover table-sm table-bordered table-responsive-sm">
             <thead class="table-primary">
-              <th scope="col">ID</th>
-              <th scope="col">Titulo</th>
-              <th scope="col">Descripcion</th>
-              <th scope="col">Fecha</th>
-              <th scope="col">Categorias</th>
-              <th scope="col">Cal. Positivas</th>
+              <th scope="col"><b>#</b> ID</th>
+              <th scope="col"><li class="fa fa-file-text"></li> Titulo</th>
+              <th scope="col"><li class="fa fa-align-justify"></li> Descripcion</th>
+              <th scope="col"><li class="fa fa-calendar"></li> Fecha</th>
+              <th scope="col"><li class="fa fa-folder-open-o"></li> Categorias</th>
+              <th scope="col"><li class="fa fa-thumbs-o-up"></li> Cal. Positivas</th>
+              <th scope="col"><li class="fa fa-chain"></li> Link</th>
             </thead>
             <tbody>
               <?php foreach($tabla as $fila): ?>
