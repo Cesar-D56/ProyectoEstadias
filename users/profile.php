@@ -192,6 +192,13 @@ echo '</pre>';
               <th scope="col"><li class="fa fa-thumbs-o-up"></li> Cal. Positivas</th>
               <th scope="col"><li class="fa fa-chain"></li> Link</th>
             </thead>
+            SELECT p.ID, p.UsrId, p.nombre AS 'Titulo', p.descripcion, p.fecha, p.archivo, cb.blogId/*, COUNT(bc.blogID) AS 'Calificacion'*/
+FROM published p
+JOIN categorias_blog cb ON p.ID=cb.blogId
+/*INNER JOIN categorias c ON cb.blogId=c.ID*/
+/*INNER JOIN blog_calificado bc ON p.ID=bc.blogID*/
+WHERE p.UsrId=12345;
+
             <tbody>
               <?php foreach($tabla as $fila): ?>
                 <tr>
