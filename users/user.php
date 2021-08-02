@@ -27,6 +27,16 @@
                 echo $e = 'No se puedo ejecutar la accion';
             }
         }
+
+        function ShowPosts($userid)
+        {
+            try{
+                
+            }catch(Exception $e){
+                echo $e = 'No se pudo ejecutar la accion';
+            }
+        }
+
         function __destruct()
         {
             $db = new Database();

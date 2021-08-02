@@ -10,7 +10,7 @@
         public $PDOLocal;
         private $user = "root";
         private $password = "";
-        private $server = "mysql:host=localhost; dbname=proyectoestadias-implan";
+        private $server = "mysql:host=localhost; dbname=proyectoestadias_implan";
     
         function DBconnect()
         {

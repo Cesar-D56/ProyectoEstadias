@@ -2,7 +2,7 @@ $( document ).ready(function() {
 
     // Obtiene el tipo de usuario
     var x;
-    var access = text;
+    var access = test;
     console.log(access);
 
     setAccess(access);

@@ -8,10 +8,19 @@ if((isset($_SESSION['id']) && !empty($_SESSION['id']))){
 }else{
   header("Location: ../index.php");
 }
+$style="";
+$twitter="";
 
 $users = new USERS();
 
 $info = $users -> UserInfo($_SESSION['id']);
+$tabla = $users -> ShowPosts($_SESSION['id']);
+
+if($info['S_twitter']==null){
+  $style="style='display:none;'";
+}else{
+  $twitter=$info['S_twitter'];
+}
 
 /*echo '<pre>';
 var_dump($_SESSION);
@@ -151,13 +160,51 @@ echo '</pre>';
   <div id="page-wrapper" style="min-height:1244px;">
     <!-- El contenido va aqui -->
       <div class="main-container">
-        <div id="profile-info">
-            <section class="info">
-              <p>xd</p>
-            </section>
-            <section class="photo">
-              <img class="usrPhoto" src="<?php echo $info['photo']; ?>">
-            </section>
+        <h2 class=title>Mi Perfil</h2>
+        <div id="profile-info" class="row">
+            <div class="photo col-md-4">
+              <img class="usrPhoto" src="<?php echo $info['photo']; ?>">  
+            </div>
+            <div class="info col-md-8">
+              <h1 class="info-h1"><b><?php echo $info['titulo'];?> <?php echo $info['Nombre'];?> <?php echo $info['Apellidos']; ?></b></h1>
+              <br>
+              <p style="margin-bottom:0px;"><b>IMPLAN Torreon</b></p>
+              <h2 class="info-h2"><?php echo $info['puesto']; ?></h2>
+              <p style="font-size:16px; margin-bottom:5px;"><?php echo $info['descripcion'];?></p>
+              <div>
+                <p style="margin-bottom:0px"><b>Contacto</b></p>
+                <div class="col-md-2"><li class="fa fa-phone"></li><b> Telefono </b><?php echo $info['telefono'];?></div>
+                <div class="col-md-4"><li class="fa fa-envelope"></li><b> Correo </b><?php echo $info['Correo'];?></div>
+                <div class="col-md-3" <?php echo $style; ?>><li class="fa fa-plus"></li><b>Redes Sociales </b><li class="fa fa-twitter"><a href="https://twitter.com/<?php echo $info['S_twitter'];?>" target="_blank">@<?php echo $twitter;?></a></li></div>
+              </div>
+            </div>
+        </div>
+        <br>
+        <h2 class="title">Mis Publicaciones</h2>
+        <div id="profile-post">
+          <table class="table table-hover table-sm table-bordered table-responsive-sm">
+            <thead class="table-primary">
+              <th scope="col">ID</th>
+              <th scope="col">Titulo</th>
+              <th scope="col">Descripcion</th>
+              <th scope="col">Fecha</th>
+              <th scope="col">Categorias</th>
+              <th scope="col">Cal. Positivas</th>
+            </thead>
+            <tbody>
+              <?php foreach($tabla as $fila): ?>
+                <tr>
+                  <td> <?php echo $fila->id; ?> </td>
+                  <td> <?php echo $fila->nombre ." ". $fila->apellidos; ?> </td>
+                  <th> <?php echo $fila->correo; ?> </th>
+                  <td> <?php echo $fila->telefono; ?> </td>
+                  <td> <?php echo $fila->fecha_nac; ?> </td>
+                  <td> <?php echo $fila->domicilio; ?> </td>
+                  <td> <?php echo $fila->tipo_usuario; ?> </td>
+                </tr>
+              <?php endforeach; ?>
+            </tbody>
+         </table>
         </div>
       </div>
   </div>
