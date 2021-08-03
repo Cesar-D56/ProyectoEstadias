@@ -150,7 +150,52 @@
      margin: 0 10%;
      margin-bottom: 35px;
   }
+  div#profile-table
+  {
+   background-color: rgba(189, 192, 196, 0.534);
+   position: relative;
+   height: 100%;
+   width: 100%;
+   padding: 10px;
+   padding-top: 15px;
+   border-radius: 5px;
+   font-family:'Roboto Condensed',Helvetica,Arial,sans-serif,sans-serif; font-weight:400;
+   display: block;
+   margin-left: 0px;
+  }
 
+  table#tabla_acc
+  {
+      border-color: #5c5a58;
+      border-radius: 20px;
+      margin-bottom: 10px;
+  }
+  table#tabla_acc th
+  {
+      background-color:#d67b4a;
+      border-color: #5c5a58;  
+      text-align: center;
+      vertical-align: middle;
+  }
+  table#tabla_acc td
+  {
+     vertical-align: middle;
+      border-color: #999793;  
+  }
+
+  .btn-table
+  {
+    background-color: rgb(207, 108, 26);
+    font-family:'Roboto Condensed',Helvetica,Arial,sans-serif,sans-serif; font-weight:400;
+    width: 50px;
+    height: 34px;
+    font-size: 14px;
+    color: #F0F0F0;
+  }
+  .btn-table:hover
+  {
+   background-color: rgb(231, 175, 128);
+  }
   /*.profile-info
   {
      background-color: aqua;

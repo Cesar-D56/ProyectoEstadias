@@ -181,34 +181,25 @@ echo '</pre>';
         </div>
         <br>
         <h2 class="title">Mis Publicaciones</h2>
-        <div id="profile-post">
-          <table class="table table-hover table-sm table-bordered table-responsive-sm">
+        <div id="profile-table">
+          <table id="tabla_acc" class="table table-sm table-bordered table-responsive-sm">
             <thead class="table-primary">
-              <th scope="col"><b>#</b> ID</th>
+              <th scope="col"><li class="fa fa-calendar"></li> Fecha</th>
               <th scope="col"><li class="fa fa-file-text"></li> Titulo</th>
               <th scope="col"><li class="fa fa-align-justify"></li> Descripcion</th>
-              <th scope="col"><li class="fa fa-calendar"></li> Fecha</th>
               <th scope="col"><li class="fa fa-folder-open-o"></li> Categorias</th>
               <th scope="col"><li class="fa fa-thumbs-o-up"></li> Cal. Positivas</th>
               <th scope="col"><li class="fa fa-chain"></li> Link</th>
             </thead>
-            SELECT p.ID, p.UsrId, p.nombre AS 'Titulo', p.descripcion, p.fecha, p.archivo, cb.blogId/*, COUNT(bc.blogID) AS 'Calificacion'*/
-FROM published p
-JOIN categorias_blog cb ON p.ID=cb.blogId
-/*INNER JOIN categorias c ON cb.blogId=c.ID*/
-/*INNER JOIN blog_calificado bc ON p.ID=bc.blogID*/
-WHERE p.UsrId=12345;
-
             <tbody>
               <?php foreach($tabla as $fila): ?>
                 <tr>
-                  <td> <?php echo $fila->id; ?> </td>
-                  <td> <?php echo $fila->nombre ." ". $fila->apellidos; ?> </td>
-                  <th> <?php echo $fila->correo; ?> </th>
-                  <td> <?php echo $fila->telefono; ?> </td>
-                  <td> <?php echo $fila->fecha_nac; ?> </td>
-                  <td> <?php echo $fila->domicilio; ?> </td>
-                  <td> <?php echo $fila->tipo_usuario; ?> </td>
+                  <td class="col-md-1"> <?php echo $fila->fecha; ?></td>
+                  <td class="col-md-3"> <b><?php echo $fila->Titulo; ?></b></td>
+                  <td class="col-md-4"> <?php echo substr($fila->descripcion,0,120)."..."; ?></td>
+                  <td> <?php echo $fila->Categorias; ?></td>
+                  <td style="text-align:center; font-size:16px;"> <b><?php echo $fila->Calif; ?></b></td>
+                  <td class="col-md-1" style="text-align:center;"><button onclick="location.href='../blog/<?php echo $fila->archivo;?>.html'" type="button" class="btn btn-table">Ver</button></td>
                 </tr>
               <?php endforeach; ?>
             </tbody>
