@@ -1,11 +1,11 @@
-$( document ).ready(function() {
+$( document ).ready(function(test, cal) {
 
     // Obtiene el tipo de usuario
-    var x;
-    var access = test;
-    console.log(access);
-    var calif = cal; 
+    var obj = JSON.parse(java);
+    var access = parseInt(obj.tipo);
+    var calif = obj.valor; 
     console.log(calif);
+    var x;
 
     setAccess(access);
     // Checa las clases de los elemtos
@@ -24,7 +24,7 @@ $( document ).ready(function() {
             x = ".UsrEmp"
             break;
           default:{
-            x = "xd"
+            x = ".Public"
           }
       }
   

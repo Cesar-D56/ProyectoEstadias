@@ -37,7 +37,7 @@
                 JOIN categorias_blog cb ON p.ID=cb.blogId
                 LEFT JOIN blog_calificado ON p.ID=blog_calificado.blogID
                 INNER JOIN categorias c ON cb.catId=c.ID
-                WHERE p.UsrId = '$userid' AND blog_calificado.valor=1
+                WHERE p.UsrId = '$userid'
                 GROUP BY p.ID
                 ORDER BY p.fecha DESC;";
 

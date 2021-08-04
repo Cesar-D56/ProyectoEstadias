@@ -1,4 +1,5 @@
 <?php
+include '../users/db-connection.php';
 include "../users/blog-actions.php";
 
 session_start();
@@ -14,11 +15,18 @@ if((isset($_SESSION['id']) && !empty($_SESSION['id']))){
 
   $rating = $ba->CheckUsrRating($_SESSION['id'], $path);
 
-  $java = array($var , $path);
+  $java = array('tipo' => $var, 'valor' => $rating);
+
+  $tipouser = $_SESSION['tipo'];
+  $name_user = $_SESSION['nombre'];
+  $titulo = $_SESSION['titulo'];
   
 }else{
   $var = 0;
   $path = 0;
+  $rating = "Not set";
+  $java = array(0 => $var, 1 => $rating);
+
 }
 ?>
 
@@ -120,6 +128,13 @@ if((isset($_SESSION['id']) && !empty($_SESSION['id']))){
               </span>
             </div>
           </form>
+        </li>
+        <li class="UsrAdmin UsrDir UsrEmp UsrPriv usrAccess">
+          <p class="nav-user">
+            Bienvenido: <b><?php echo $titulo;?> <?php echo $name_user;?></b>
+          </p>
+          <li><a href="../users/profile.php"><span class="navegacion-icono"><i class="fa fa-user"></i></span> Mi Cuenta</a></li>
+          <li><a href="../users/logout.php"><span class="navegacion-icono"><i class="fa fa-sign-out"></i></span> Cerrar Sesion</a></li>
         </li>
         <li class="active">
           <a href="#"><span class="navegacion-icono"><i class="fa fa-lightbulb-o"></i></span> Análisis Publicados<span class="fa arrow"></span></a>
@@ -229,6 +244,9 @@ if((isset($_SESSION['id']) && !empty($_SESSION['id']))){
         <li><a href="http://177.244.42.17/ovie-torreon/#!" target="_blank"><span class="navegacion-icono"><i class="fa fa-map-marker"></i></span> Oficina Virtual de Información Económica (OVIE)</a></li>
         <li><a href="https://arcg.is/0vySSr" target="_blank"><span class="navegacion-icono"><i class="fa fa-globe"></i></span> Atlas Municipal de Riesgos de Torreón</a></li>
       </ul>
+      <div class="nav-login-div Public usrAccess">
+        <p class="nav-p">¿Tienes una cuenta con nosotros?</p><button onclick="location.href='../users/login-index.php'" type="button" class="btn btn-default">Inicia Sesion</button>
+      </div>
     </div>
   </div>
   </nav>
@@ -362,7 +380,7 @@ if((isset($_SESSION['id']) && !empty($_SESSION['id']))){
 <script type="text/javascript" src="../dist/js/sb-admin-2.min.js"></script>
 <script type="text/javascript" src="http://libs.cartocdn.com/cartodb.js/v3/3.15/cartodb.js"></script>
 <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
-<script>var test =<?php echo $var; ?>; var cal =<?php echo $rating['valor']; ?>;</script>
+<script>var java = '<?php echo json_encode($java);?>';</script>
 <script type="text/javascript" src="../users/CheckUsr.js"></script>
 <!-- Javascript global termina -->
 <!-- Javascript inicia -->
