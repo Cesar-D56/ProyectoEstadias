@@ -103,17 +103,14 @@
    margin-top: 5%;
    text-align: center;
  }
-  .btn-default
+  .btn-default, .btn-login
   {
- 
      background-color: rgb(203, 208, 212);
      font-family:'Roboto Condensed',Helvetica,Arial,sans-serif,sans-serif; font-weight:400;
   }
  
   .btn-login
   {
-    background-color: rgb(203, 208, 212);
-    font-family:'Roboto Condensed',Helvetica,Arial,sans-serif,sans-serif; font-weight:400;
     width: 80%;
     height: 40px;
     font-size: 20px;
@@ -150,20 +147,24 @@
      margin: 0 10%;
      margin-bottom: 35px;
   }
-  div#profile-table
+  div#profile-table, #profile-info, #profile-post, #profile-edit
   {
-   background-color: rgba(189, 192, 196, 0.534);
    position: relative;
    height: 100%;
    width: 100%;
    padding: 10px;
-   padding-top: 15px;
-   border-radius: 5px;
-   font-family:'Roboto Condensed',Helvetica,Arial,sans-serif,sans-serif; font-weight:400;
    display: block;
    margin-left: 0px;
+   font-family:'Roboto Condensed',Helvetica,Arial,sans-serif,sans-serif; font-weight:400;
   }
 
+  div#profile-table
+  {
+   background-color: rgba(189, 192, 196, 0.534);
+   padding-top: 15px;
+   border-radius: 5px;
+  }
+  
   table#tabla_acc
   {
       border-color: #5c5a58;
@@ -224,20 +225,13 @@
    font-size: 28px;
    padding: 0px;
 }
-  div#profile-info
+div#profile-info
   {
    background-color: rgb(189, 192, 196);
    border-style: solid;
    border-color: #d67b4a;
-   position: relative;
-   height: 100%;
-   width: 100%;
-   padding: 10px;
    padding-top: 25px;
-   border-radius: 15px;
-   font-family:'Roboto Condensed',Helvetica,Arial,sans-serif,sans-serif; font-weight:400;
-   display: block;
-   margin-left: 0px;
+   border-radius: 15px;   
   }
 
   div#profile-info .info
@@ -257,7 +251,7 @@
       text-align: center;
   }
 
-  div#profile-info .usrPhoto
+  .usrPhoto
   {
      width: 25%;
      height: 25%;
@@ -291,13 +285,14 @@
    background-color: rgb(208, 212, 216);
    border-style: solid;
    border-color: #a3a3a3;
-   position: relative;
-   height: 100%;
-   width: 100%;
    padding: 40px;
    padding-top: 25px;
    border-radius: 15px;
-   font-family:'Roboto Condensed',Helvetica,Arial,sans-serif,sans-serif; font-weight:400;
-   display: block;
-   margin-left: 0px;
   }
+
+div#profile-edit
+{
+   padding: 15px;
+   border-radius: 10px;
+   background-color: rgb(208, 212, 216);
+}

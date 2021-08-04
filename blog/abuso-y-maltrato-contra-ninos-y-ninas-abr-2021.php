@@ -1,3 +1,27 @@
+<?php
+include "../users/blog-actions.php";
+
+session_start();
+
+if((isset($_SESSION['id']) && !empty($_SESSION['id']))){
+  $var = $_SESSION['tipo'];
+
+  $path_parts = pathinfo('blog/abuso-y-maltrato-contra-ninos-y-ninas-abr-2021.php');
+
+  $path = $path_parts['filename'];
+
+  $ba = new blog_action();
+
+  $rating = $ba->CheckUsrRating($_SESSION['id'], $path);
+
+  $java = array($var , $path);
+  
+}else{
+  $var = 0;
+  $path = 0;
+}
+?>
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -65,6 +89,7 @@
   <link rel="stylesheet" type="text/css" href="http://libs.cartocdn.com/cartodb.js/v3/3.15/themes/css/cartodb.css">
   <link rel="stylesheet" type="text/css" href="../dist/css/estilosvm.css">
   <link rel="stylesheet" type="text/css" href="../dist/css/trcimplan.css">
+  <link rel="stylesheet" type="text/css" href="../dist/css/accounts.css">
   <!-- SOPORTE PARA IE -->
   <!--[if lt IE 9]>
   <script type="text/javascript" src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
@@ -301,10 +326,18 @@
           <div class="contenido-imagen-previa-final"></div>
         </div>
       </div></article>
+<!-- Compartir y Calificar articulo -->
 <div class="contenido-social">
-  <h5>Compartir en Redes Sociales</h5>
-  <a href="https://twitter.com/share" class="twitter-share-button" data-via="trcimplan" data-lang="es">Twittear</a>
-  <iframe src="//www.facebook.com/plugins/like.php?href=http%3A%2F%2Fwww.trcimplan.gob.mx%2Fblog%2Fabuso-y-maltrato-contra-ninos-y-ninas-abr-2021.html&amp;width=300&amp;layout=button_count&amp;action=like&amp;show_faces=true&amp;share=false&amp;height=21" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:300px; height:21px;" allowTransparency="true"></iframe>
+  <div style="width: 40%;">
+    <h5 style="font-size: 15px;">Compartir en Redes Sociales</h5>
+    <a href="https://twitter.com/share" class="twitter-share-button" data-via="trcimplan" data-lang="es">Twittear</a>
+    <iframe src="//www.facebook.com/plugins/like.php?href=http%3A%2F%2Fwww.trcimplan.gob.mx%2Fblog%2Fabuso-y-maltrato-contra-ninos-y-ninas-abr-2021.html&amp;width=300&amp;layout=button_count&amp;action=like&amp;show_faces=true&amp;share=false&amp;height=21" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:300px; height:21px;" allowTransparency="true"></iframe>
+  </div>
+  <div class="UsrAdmin UsrDir UsrEmp UsrPriv usrAccess" style="text-align:center;">
+    <h5 style="font-size: 15px; margin-bottom:2px;">¿Te parecio util el articulo?</h5>
+    <button onclick="location.href='../blog/xd.php'" type="button" class="btn btn-rate"><li class="fa fa-check"></li></button>
+    <button onclick="location.href='../blog/xd.php'" type="button" class="btn btn-rate"><li class="fa fa-times"></li></button>
+  </div>
 </div>
     </div>
     <div class="mapa-inferior">
@@ -329,6 +362,8 @@
 <script type="text/javascript" src="../dist/js/sb-admin-2.min.js"></script>
 <script type="text/javascript" src="http://libs.cartocdn.com/cartodb.js/v3/3.15/cartodb.js"></script>
 <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+<script>var test =<?php echo $var; ?>; var cal =<?php echo $rating['valor']; ?>;</script>
+<script type="text/javascript" src="../users/CheckUsr.js"></script>
 <!-- Javascript global termina -->
 <!-- Javascript inicia -->
 <script>

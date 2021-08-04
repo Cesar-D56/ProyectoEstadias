@@ -205,8 +205,23 @@ a:active  { color:#FF3300; text-decoration:none; }
     padding:4px;
 }
 .contenido-social {
+    display: inline-flex;
+    width: 100%;
     background-color:#BFBFBF;
-    padding:2px;
+    padding:8px;
+}
+.btn-rate {
+    width: 35px;
+    height: 25px;
+    padding: 0 10px;
+    margin: 0 2px;
+    text-align: center;
+    background-color:#FF6C00;
+    color: #DCDCDC;
+}
+.btn-rate:hover{
+    background-color:#DCDCDC;
+    color: #FF6C00;
 }
 
 /*

@@ -8,8 +8,11 @@ if((isset($_SESSION['id']) && !empty($_SESSION['id']))){
 }else{
   header("Location: ../index.php");
 }
+
 $style="";
 $twitter="";
+
+$users = new USERS();
 
 $info = $users -> UserInfo($_SESSION['id']);
 $tabla = $users -> ShowPosts($_SESSION['id']);
@@ -176,7 +179,13 @@ if(isset($_SESSION['id']) && !empty($_SESSION['id'])) {
   <div id="page-wrapper">
     <!-- El contenido va aqui -->
       <div class="main-container">
-            
+        <h2 class=title>Editar Perfil</h2>
+        <div id="profile-edit" class="row">
+            <div class="photo col-md-4">
+                <p>Foto de Perfil</p>
+                <img class="usrPhoto" src="<?php echo $info['photo']; ?>">  
+            </div>
+        </div>
       </div>
   </div>
 </div>

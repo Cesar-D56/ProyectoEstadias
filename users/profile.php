@@ -137,8 +137,8 @@ echo '</pre>';
         <li>
           <a href="#"><span class="navegacion-icono"><i class="fa fa-user"></i></span> Mi Perfil<span class="fa arrow"></span></a>
           <ul class="nav nav-second-level">
-            <li><a href="../blog/index.html"><span class="navegacion-icono"><i class="fa fa-eye"></i></span> Ver Perfil</a></li>
-            <li><a href="../excolaboradores/index.html"><span class="navegacion-icono"><i class="fa fa-pencil"></i></span> Editar Perfil</a></li>
+            <li><a href="profile.php"><span class="navegacion-icono"><i class="fa fa-eye"></i></span> Ver Perfil</a></li>
+            <li><a href="edit-profile.php"><span class="navegacion-icono"><i class="fa fa-pencil"></i></span> Editar Perfil</a></li>
             <li><a href="../blog/index.html"><span class="navegacion-icono"><i class="fa fa-cog"></i></span> Configurar Cuenta</a></li>
           </ul>
         </li>
@@ -199,7 +199,7 @@ echo '</pre>';
                   <td class="col-md-4"> <?php echo substr($fila->descripcion,0,120)."..."; ?></td>
                   <td> <?php echo $fila->Categorias; ?></td>
                   <td style="text-align:center; font-size:16px;"> <b><?php echo $fila->Calif; ?></b></td>
-                  <td class="col-md-1" style="text-align:center;"><button onclick="location.href='../blog/<?php echo $fila->archivo;?>.html'" type="button" class="btn btn-table">Ver</button></td>
+                  <td class="col-md-1" style="text-align:center;"><button onclick="location.href='../blog/<?php echo $fila->archivo;?>.php'" type="button" class="btn btn-table">Ver</button></td>
                 </tr>
               <?php endforeach; ?>
             </tbody>

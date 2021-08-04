@@ -4,12 +4,12 @@ $( document ).ready(function() {
     var x;
     var access = test;
     console.log(access);
+    var calif = cal; 
+    console.log(calif);
 
     setAccess(access);
-
     // Checa las clases de los elemtos
     function setAccess(accessVal) {
-      console.log(accessVal);
       switch(accessVal) {
         case 1:
             x = ".UsrAdmin"
