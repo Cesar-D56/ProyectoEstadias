@@ -3,11 +3,13 @@ $( document ).ready(function(test, cal) {
     // Obtiene el tipo de usuario
     var obj = JSON.parse(java);
     var access = parseInt(obj.tipo);
-    var calif = obj.valor; 
+    var calif = parseInt(obj.valor); 
     console.log(calif);
     var x;
-
+    setValue(calif);
     setAccess(access);
+    
+    
     // Checa las clases de los elemtos
     function setAccess(accessVal) {
       switch(accessVal) {
@@ -46,6 +48,22 @@ $( document ).ready(function(test, cal) {
        ele.hide();
       }
        
+    }
+
+    function setValue(valor){
+      switch(valor) {
+        case 0:
+            document.getElementById("btn-yes").disabled = true;
+            document.getElementById("btn-no").disabled = false;
+            break;
+        case 1:
+            document.getElementById("btn-yes").disabled = false;
+            document.getElementById("btn-no").disabled = true;
+            break;
+        default:{
+            x = ".Public"
+          }
+      }
     }
   
   

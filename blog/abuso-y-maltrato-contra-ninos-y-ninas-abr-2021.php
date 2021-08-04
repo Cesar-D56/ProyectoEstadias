@@ -14,6 +14,7 @@ if((isset($_SESSION['id']) && !empty($_SESSION['id']))){
   $ba = new blog_action();
 
   $rating = $ba->CheckUsrRating($_SESSION['id'], $path);
+  print($rating);
 
   $java = array('tipo' => $var, 'valor' => $rating);
 
@@ -133,8 +134,7 @@ if((isset($_SESSION['id']) && !empty($_SESSION['id']))){
           <p class="nav-user">
             Bienvenido: <b><?php echo $titulo;?> <?php echo $name_user;?></b>
           </p>
-          <li><a href="../users/profile.php"><span class="navegacion-icono"><i class="fa fa-user"></i></span> Mi Cuenta</a></li>
-          <li><a href="../users/logout.php"><span class="navegacion-icono"><i class="fa fa-sign-out"></i></span> Cerrar Sesion</a></li>
+          <li class="UsrAdmin UsrDir UsrEmp UsrPriv usrAccess"><a href="../users/profile.php"><span class="navegacion-icono"><i class="fa fa-user"></i></span> Mi Cuenta</a></li>
         </li>
         <li class="active">
           <a href="#"><span class="navegacion-icono"><i class="fa fa-lightbulb-o"></i></span> Análisis Publicados<span class="fa arrow"></span></a>
@@ -243,6 +243,9 @@ if((isset($_SESSION['id']) && !empty($_SESSION['id']))){
         <li><a href="../convocatorias/index.html"><span class="navegacion-icono"><i class="fa fa-file-text-o"></i></span> Convocatorias</a></li>
         <li><a href="http://177.244.42.17/ovie-torreon/#!" target="_blank"><span class="navegacion-icono"><i class="fa fa-map-marker"></i></span> Oficina Virtual de Información Económica (OVIE)</a></li>
         <li><a href="https://arcg.is/0vySSr" target="_blank"><span class="navegacion-icono"><i class="fa fa-globe"></i></span> Atlas Municipal de Riesgos de Torreón</a></li>
+        <li class="UsrAdmin UsrDir UsrEmp UsrPriv usrAccess">
+          <li><a href="../users/logout.php"><span class="navegacion-icono"><i class="fa fa-sign-out"></i></span> Cerrar Sesion</a></li>  
+      </li>
       </ul>
       <div class="nav-login-div Public usrAccess">
         <p class="nav-p">¿Tienes una cuenta con nosotros?</p><button onclick="location.href='../users/login-index.php'" type="button" class="btn btn-default">Inicia Sesion</button>
@@ -353,8 +356,8 @@ if((isset($_SESSION['id']) && !empty($_SESSION['id']))){
   </div>
   <div class="UsrAdmin UsrDir UsrEmp UsrPriv usrAccess" style="text-align:center;">
     <h5 style="font-size: 15px; margin-bottom:2px;">¿Te parecio util el articulo?</h5>
-    <button onclick="location.href='../blog/xd.php'" type="button" class="btn btn-rate"><li class="fa fa-check"></li></button>
-    <button onclick="location.href='../blog/xd.php'" type="button" class="btn btn-rate"><li class="fa fa-times"></li></button>
+    <button onclick="location.href='../blog/xd.php'" type="button" class="btn btn-rate" id="btn-yes"><li class="fa fa-check"></li></button>
+    <button onclick="location.href='../blog/xd.php'" type="button" class="btn btn-rate" id="btn-no"><li class="fa fa-times"></li></button>
   </div>
 </div>
     </div>
