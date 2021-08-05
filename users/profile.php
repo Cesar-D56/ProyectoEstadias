@@ -1,6 +1,6 @@
 <?php
-include 'db-connection.php';
-include 'user.php';
+include '../scripts/db-connection.php';
+include '../scripts/user.php';
 
 session_start();
 if((isset($_SESSION['id']) && !empty($_SESSION['id']))){
@@ -151,7 +151,7 @@ echo '</pre>';
           </ul>
         </li>
         <li class="UsrAdmin usrAccess"><a href="../excolaboradores/index.html"><span class="navegacion-icono"><i class="fa fa-users"></i></span> Ver Usuarios</a></li>   
-        <li><a href="../users/logout.php"><span class="navegacion-icono"><i class="fa fa-sign-out"></i></span> Cerrar Sesion</a></li>
+        <li><a href="../scripts/logout.php"><span class="navegacion-icono"><i class="fa fa-sign-out"></i></span> Cerrar Sesion</a></li>
       </ul>
     </div>
   </div>

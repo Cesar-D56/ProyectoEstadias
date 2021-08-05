@@ -1,5 +1,5 @@
 <?php
-  include 'db-connection.php';
+  include '../scripts/db-connection.php';
   $db = new Database();
   $db->DBconnect();
  

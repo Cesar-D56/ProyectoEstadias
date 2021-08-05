@@ -1,6 +1,6 @@
 <?php
-include '../users/db-connection.php';
-include "../users/blog-actions.php";
+include '../scripts/db-connection.php';
+include "../scripts/blog-actions.php";
 
 session_start();
 
@@ -14,20 +14,26 @@ if((isset($_SESSION['id']) && !empty($_SESSION['id']))){
   $ba = new blog_action();
 
   $rating = $ba->CheckUsrRating($_SESSION['id'], $path);
-  print($rating);
 
-  $java = array('tipo' => $var, 'valor' => $rating);
+  $value = array('valor' => $rating);
+
+  $java = array('tipo' => $var);
 
   $tipouser = $_SESSION['tipo'];
   $name_user = $_SESSION['nombre'];
   $titulo = $_SESSION['titulo'];
+
+  if(isset($_POST['submit'])) {
+    $ba->SubmitRating($_SESSION['id'],$_POST["rate"],$path);
+  }
+  else{}
   
 }else{
   $var = 0;
   $path = 0;
   $rating = "Not set";
-  $java = array(0 => $var, 1 => $rating);
-
+  $java = array('tipo' => $var);
+  $value = array('valor' => $rating);
 }
 ?>
 
@@ -244,7 +250,7 @@ if((isset($_SESSION['id']) && !empty($_SESSION['id']))){
         <li><a href="http://177.244.42.17/ovie-torreon/#!" target="_blank"><span class="navegacion-icono"><i class="fa fa-map-marker"></i></span> Oficina Virtual de Información Económica (OVIE)</a></li>
         <li><a href="https://arcg.is/0vySSr" target="_blank"><span class="navegacion-icono"><i class="fa fa-globe"></i></span> Atlas Municipal de Riesgos de Torreón</a></li>
         <li class="UsrAdmin UsrDir UsrEmp UsrPriv usrAccess">
-          <li><a href="../users/logout.php"><span class="navegacion-icono"><i class="fa fa-sign-out"></i></span> Cerrar Sesion</a></li>  
+          <li><a href="../scripts/logout.php"><span class="navegacion-icono"><i class="fa fa-sign-out"></i></span> Cerrar Sesion</a></li>  
       </li>
       </ul>
       <div class="nav-login-div Public usrAccess">
@@ -356,8 +362,15 @@ if((isset($_SESSION['id']) && !empty($_SESSION['id']))){
   </div>
   <div class="UsrAdmin UsrDir UsrEmp UsrPriv usrAccess" style="text-align:center;">
     <h5 style="font-size: 15px; margin-bottom:2px;">¿Te parecio util el articulo?</h5>
-    <button onclick="location.href='../blog/xd.php'" type="button" class="btn btn-rate" id="btn-yes"><li class="fa fa-check"></li></button>
-    <button onclick="location.href='../blog/xd.php'" type="button" class="btn btn-rate" id="btn-no"><li class="fa fa-times"></li></button>
+    <form style="width: fit-content; margin:0px; float:left; padding:0 10" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="POST" class="col-md-1">
+      <input style="display:none;" type="text" name="rate" value="1">
+      <input type="submit" style="font-family:FontAwesome" name="submit" value="&#xf00c" class="btn btn-rate" id="btn-yes">
+    </form>
+    <form style="width: fit-content; margin:0px; float:right;" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="POST" class="col-md-1">
+      <input style="display:none;" type="text" name="rate" value="2">
+      <input type="submit" style="font-family:FontAwesome" name="submit" value="&#xf00d" class="btn btn-rate" id="btn-no">
+    </form>
+    <script></script>
   </div>
 </div>
     </div>
@@ -384,7 +397,9 @@ if((isset($_SESSION['id']) && !empty($_SESSION['id']))){
 <script type="text/javascript" src="http://libs.cartocdn.com/cartodb.js/v3/3.15/cartodb.js"></script>
 <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 <script>var java = '<?php echo json_encode($java);?>';</script>
-<script type="text/javascript" src="../users/CheckUsr.js"></script>
+<script type="text/javascript" src="../scripts/CheckUsr.js"></script>
+<script>var rating = '<?php echo json_encode($value);?>';</script>
+<script type="text/javascript" src="../scripts/BlogRating.js"></script>
 <!-- Javascript global termina -->
 <!-- Javascript inicia -->
 <script>

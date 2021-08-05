@@ -1,5 +1,5 @@
 <?php
-include 'users/db-connection.php';
+include 'scripts/db-connection.php';
 session_start();
 
 /*echo '<pre>';
