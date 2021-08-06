@@ -362,7 +362,7 @@ if((isset($_SESSION['id']) && !empty($_SESSION['id']))){
   </div>
   <div class="UsrAdmin UsrDir UsrEmp UsrPriv usrAccess" style="text-align:center;">
     <h5 style="font-size: 15px; margin-bottom:2px;">¿Te parecio util el articulo?</h5>
-    <form style="width: fit-content; margin:0px; float:left; padding:0 10" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="POST" class="col-md-1">
+    <form id="" style="width: fit-content; margin:0px; float:left; padding:0 10" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="POST" class="col-md-1">
       <input style="display:none;" type="text" name="rate" value="1">
       <input type="submit" style="font-family:FontAwesome" name="submit" value="&#xf00c" class="btn btn-rate" id="btn-yes">
     </form>
