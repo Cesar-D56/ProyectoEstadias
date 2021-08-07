@@ -1,21 +1,43 @@
 <?php
-     session_start();
-     /*
-      echo '<pre>';
-      var_dump($_SESSION);
-      echo '</pre>';
-     */
-       if((isset($_SESSION['id']) && !empty($_SESSION['id']))){
-         header("Location: ../".$_SESSION[]);
-       }
-        
-        if($_SERVER["REQUEST_METHOD"] == "POST") {
-         
-           $myemail = $_POST["usr_email"];
-           $mypassword = $_POST["usr_password"];
-           $error = $db->checkLogin("$myemail", "$mypassword");
-           $db->DBdisconnect();
-        }
-     ?>
+  include 'db-connection.php';
 
+  $db = new Database();
+
+  if(isset($_POST['valor'])){
+    try{
+      $valor = $_POST['valor'];
+      $usrID = $_POST['usrId'];
+      $pId = $_POST['blogId'];
+      $usrValor = $_POST['usrValue'];
+      if($valor == $usrValor){
+
+          $db->DBconnect();
+
+          $sql="DELETE FROM blog_calificado WHERE blog_calificado.userID='$usrID' AND blog_calificado.blogID='$pId'";
+          $query = $db->PDOLocal->query($sql);
+
+          $db->DBdisconnect();
+
+          echo $valor="Not set";
+
+      }elseif(isset($usrValor)){
+
+           $db->DBconnect();
+
+          $sql="INSERT INTO blog_calificado (userID, blogID, valor) VALUES ('$usrID','$pId','$valor')";
+
+          $query = $db->PDOLocal->query($sql);
+
+          $db->DBdisconnect();
+
+
+          echo $valor;
+      }else{
+          echo $valor."-zorra-".$usrID."-zorra-".$pId."-zorra-".$usrValor."-zorra-";
+      }
+
+    }catch(PDOException $e){
+        echo $e = 'No se pudo ejecutar la accion'.$e->getMessage();
+    }
+  }
 ?>

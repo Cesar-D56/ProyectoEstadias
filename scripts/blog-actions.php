@@ -27,11 +27,19 @@
                 $result = $query->fetch(PDO::FETCH_ASSOC);
 
                 if (isset($result['valor'])){
-                    $valor=$result['valor'];
-                    return $valor;
+                    return $result;
                 }else{
-                    $valor="not set";
-                    return $valor;
+                    $sql="SELECT p.ID
+                    FROM published p
+                    WHERE p.archivo='$path'";
+
+                    $query = $this->db->PDOLocal->query($sql);
+                    $result = $query->fetch(PDO::FETCH_ASSOC);
+
+                    $rating['valor'] = "not set";
+                    $rating['userID'] = $usrID;
+                    $rating['ID'] = $result['ID'];
+                    return $rating;
                 }
                 
             }catch(Exception $e){

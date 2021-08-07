@@ -15,25 +15,30 @@ if((isset($_SESSION['id']) && !empty($_SESSION['id']))){
 
   $rating = $ba->CheckUsrRating($_SESSION['id'], $path);
 
-  $value = array('valor' => $rating);
+  $value = array('valor' => $rating['valor'],
+   'userId' => $rating['userID'], 
+   'blogID' => $rating['ID']
+  );
 
   $java = array('tipo' => $var);
 
   $tipouser = $_SESSION['tipo'];
   $name_user = $_SESSION['nombre'];
   $titulo = $_SESSION['titulo'];
-
+/*
   if(isset($_POST['submit'])) {
     $ba->SubmitRating($_SESSION['id'],$_POST["rate"],$path);
   }
   else{}
-  
+  */
 }else{
   $var = 0;
   $path = 0;
   $rating = "Not set";
   $java = array('tipo' => $var);
-  $value = array('valor' => $rating);
+  $value = array('valor' => $rating,
+  'userId' => 0, 
+  'blogID' => 0);
 }
 ?>
 
@@ -362,13 +367,13 @@ if((isset($_SESSION['id']) && !empty($_SESSION['id']))){
   </div>
   <div class="UsrAdmin UsrDir UsrEmp UsrPriv usrAccess" style="text-align:center;">
     <h5 style="font-size: 15px; margin-bottom:2px;">¿Te parecio util el articulo?</h5>
-    <form id="" style="width: fit-content; margin:0px; float:left; padding:0 10" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="POST" class="col-md-1">
-      <input style="display:none;" type="text" name="rate" value="1">
-      <input type="submit" style="font-family:FontAwesome" name="submit" value="&#xf00c" class="btn btn-rate" id="btn-yes">
+    <form id="upcali1" style="width: fit-content; margin:0px; float:left; padding:0 10" class="col-md-1">
+      <input id="valor" style="display:none;" type="text" name="rate" value="1">
+      <button type="submit" style="font-family:FontAwesome" class="btn btn-rate" id="btn-yes"></button>
     </form>
-    <form style="width: fit-content; margin:0px; float:right;" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="POST" class="col-md-1">
-      <input style="display:none;" type="text" name="rate" value="2">
-      <input type="submit" style="font-family:FontAwesome" name="submit" value="&#xf00d" class="btn btn-rate" id="btn-no">
+    <form id="upcali2" style="width: fit-content; margin:0px; float:right;" class="col-md-1">
+      <input id="valor2" style="display:none;" type="text" name="rate" value="0">
+      <button type="submit" style="font-family:FontAwesome" class="btn btn-rate" id="btn-no"></button>
     </form>
     <script></script>
   </div>

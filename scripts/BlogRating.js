@@ -1,11 +1,16 @@
+var obj;
 $( document ).ready(function() {
-    var obj = JSON.parse(rating);
-    var calif = parseInt(obj.valor); 
-    console.log(calif);
+    obj = JSON.parse(rating);
+    //var calif = parseInt(obj.valor); 
+    console.log(obj.valor);
+    console.log(obj.userId);
+    console.log(obj.blogID);
+    //console.log(myvar);
 
-    setValue(calif);
+    setValue(parseInt(obj.valor));
     
     function setValue(valor){
+      console.log("setValue "+valor);
       switch(valor) {
         case 0:
             document.getElementById("btn-yes").disabled = true;
@@ -19,8 +24,38 @@ $( document ).ready(function() {
           }
       }
     }
-/*
-    function(){
-      
-    }*/
+
+    $("#upcali1").submit(function(e){
+      const postUp ={
+        valor:$("#valor").val(),
+        usrValue:parseInt(obj.valor),
+        usrId:parseInt(obj.userId),
+        blogId:parseInt(obj.blogID)
+      };
+      $.post("../scripts/blog-rate.php", postUp, function(response){
+        //setValue(response);
+        obj.valor = (parseInt(response));
+        setValue(obj.valor);
+        console.log("SI "+response);
+      });
+      e.preventDefault();
+    })
+
+    $("#upcali2").submit(function(e){
+
+      const postDown ={
+        valor:$("#valor2").val(),
+        usrValue:parseInt(obj.valor),
+        usrId:parseInt(obj.userId),
+        blogId:parseInt(obj.blogID)
+      };
+      $.post("../scripts/blog-rate.php", postDown, function(response){
+
+        obj.valor = (parseInt(response));
+        setValue(obj.valor);
+        //setValue(response);
+        console.log("NO "+response);
+      });
+      e.preventDefault();
+    });
   });
