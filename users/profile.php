@@ -195,7 +195,11 @@ echo '</pre>';
                 <th scope="col"><li class="fa fa-chain"></li> Link</th>
               </thead>
               <tbody>
-                <?php foreach($tabla as $fila): ?>
+                <?php 
+                $i=0;
+                foreach($tabla as $fila): 
+                $i++;
+                if($i == 5){break;}?>
                   <tr>
                     <td class="col-md-1"> <?php echo $fila->fecha; ?></td>
                     <td class="col-md-3"> <b><?php echo $fila->Titulo; ?></b></td>

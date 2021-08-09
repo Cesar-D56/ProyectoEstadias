@@ -5,6 +5,7 @@ include '../scripts/user.php';
 session_start();
 if((isset($_SESSION['id']) && !empty($_SESSION['id']))){
   $var = $_SESSION['tipo'];
+  $java = array('tipo' => $var);
 }else{
   header("Location: ../index.php");
 }
@@ -15,7 +16,6 @@ $twitter="";
 $users = new USERS();
 
 $info = $users -> UserInfo($_SESSION['id']);
-$tabla = $users -> ShowPosts($_SESSION['id']);
 
 if($info['S_twitter']==null){
   $style="style='display:none;'";
@@ -180,12 +180,23 @@ if(isset($_SESSION['id']) && !empty($_SESSION['id'])) {
     <!-- El contenido va aqui -->
       <div class="main-container">
         <h2 class=title>Editar Perfil</h2>
-        <div id="profile-edit" class="row">
-            <div class="photo col-md-4">
-                <p>Foto de Perfil</p>
-                <img class="usrPhoto" src="<?php echo $info['photo']; ?>">  
-            </div>
-        </div>
+        <form>
+          <div id="profile-edit" class="row">
+              <div class="photo col-md-4">
+                  <p class="small-title"><b>Foto de Perfil</b></p>
+                  <img class="usrPhoto" src="<?php echo $info['photo']; ?>">  
+              </div>
+              <div class="info col-md-8" style="height:280px;">
+                <p class="small-title" style="text-align:left;">Puedes personalizar tu perfil para mostrar lo mas importante para nuestros clientes.</p>
+                <br>
+                <p class="small-title" style="text-align:left; vertical-align:middle">Puedes iniciar cambiando tu foto de perfil...</p>
+                <button style="text-align:left; vertical-align:bottom;">Agregar Foto</button>
+              </div>
+          </div>
+          <div id="profile-edit" class="row">
+            <input type="text"  >
+          </div>
+        </form>
       </div>
   </div>
 </div>
@@ -201,8 +212,8 @@ if(isset($_SESSION['id']) && !empty($_SESSION['id'])) {
 <script type="text/javascript" src="../dist/js/sb-admin-2.min.js"></script>
 <script type="text/javascript" src="http://libs.cartocdn.com/cartodb.js/v3/3.15/cartodb.js"></script>
 <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
-<script>var test =<?php echo $var; ?> ;</script>
-<script type="text/javascript" src="checkUsr.js"></script>
+<script>var java = '<?php echo json_encode($java);?>';</script>
+<script type="text/javascript" src="../scripts/CheckUsr.js"></script>
 
 
 <!-- Javascript global termina -->

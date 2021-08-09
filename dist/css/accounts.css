@@ -234,7 +234,7 @@ div#profile-info
    border-radius: 15px;   
   }
 
-  div#profile-info .info
+  div#profile-info .info, div#profile-edit .info
   {
       /*background-color: rgb(109, 25, 187);*/
       padding: 15px;
@@ -242,7 +242,7 @@ div#profile-info
       min-width: 280px;
   }
   
-  div#profile-info .photo
+  div#profile-info .photo, div#profile-edit .photo
   {
       height: fit-content;
       min-width: 280px;
@@ -261,9 +261,10 @@ div#profile-info
      border-radius: 80%;
      border-width: 5px;
      border-style: solid;
+     text-align: center;
   }
 
-  div#profile-info .info-h1
+  div#profile-info .info-h1, div#profile-edit .info-h1
   {
       font-family: 'Roboto Condensed',Helvetica,Arial,sans-serif,sans-serif;
       color:rgb(111, 112, 114);
@@ -272,7 +273,7 @@ div#profile-info
       margin-bottom: 5px;
       margin-top: -10px;
   }
-  div#profile-info .info-h2
+  div#profile-info .info-h2, div#profile-edit .info-h2
   {
      font-family: 'Noto Sans',sans-serif;
      font-size: 20px;
@@ -295,4 +296,14 @@ div#profile-edit
    padding: 15px;
    border-radius: 10px;
    background-color: rgb(208, 212, 216);
+   margin-bottom: 10px;
+}
+
+.small-title
+{
+   font-family: 'Roboto Condensed',Helvetica,Arial,sans-serif,sans-serif;
+   width: 100%;
+   margin-bottom: 0px;
+   font-size: 15px;
+   text-align: center;
 }
