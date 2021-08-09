@@ -33,7 +33,7 @@
 
           echo $valor;
       }else{
-          echo $valor."-zorra-".$usrID."-zorra-".$pId."-zorra-".$usrValor."-zorra-";
+          echo "Error";
       }
 
     }catch(PDOException $e){

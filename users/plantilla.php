@@ -14,6 +14,8 @@ $twitter="";
 $info = $users -> UserInfo($_SESSION['id']);
 $tabla = $users -> ShowPosts($_SESSION['id']);
 
+$java = array('tipo' => $var);
+
 if($info['S_twitter']==null){
   $style="style='display:none;'";
 }else{
@@ -192,8 +194,8 @@ if(isset($_SESSION['id']) && !empty($_SESSION['id'])) {
 <script type="text/javascript" src="../dist/js/sb-admin-2.min.js"></script>
 <script type="text/javascript" src="http://libs.cartocdn.com/cartodb.js/v3/3.15/cartodb.js"></script>
 <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
-<script>var test =<?php echo $var; ?> ;</script>
-<script type="text/javascript" src="checkUsr.js"></script>
+<script>var java ='<?php echo json_encode($java); ?>' ;</script>
+<script type="text/javascript" src="../scripts/CheckUsr.js"></script>
 
 
 <!-- Javascript global termina -->

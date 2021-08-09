@@ -32,6 +32,29 @@
         {
             try{
                 $sql = "SELECT p.ID, p.UsrId, p.nombre AS 'Titulo', p.descripcion, DATE(p.fecha) AS 'fecha', p.archivo,
+                GROUP_CONCAT(DISTINCT c.nombre) AS 'Categorias', SUM(DISTINCT blog_calificado.valor) AS 'Calif'
+                FROM published p
+                JOIN categorias_blog cb ON p.ID=cb.blogId
+                LEFT JOIN blog_calificado ON p.ID=blog_calificado.blogID
+                INNER JOIN categorias c ON cb.catId=c.ID
+                WHERE p.UsrId = '$userid'
+                GROUP BY p.ID
+                ORDER BY p.fecha DESC;";
+
+                $query = $this->db->PDOLocal->query($sql);
+                $result = $query->fetchAll(PDO::FETCH_OBJ);          
+
+                return $result;
+
+            }catch(Exception $e){
+                echo $e = 'No se pudo ejecutar la accion';
+            }
+        }
+
+        function ShowFavPosts($userid)
+        {
+            try{
+                $sql = "SELECT p.ID, p.UsrId, p.nombre AS 'Titulo', p.descripcion, DATE(p.fecha) AS 'fecha', p.archivo,
                 GROUP_CONCAT(DISTINCT c.nombre) AS 'Categorias', COUNT(DISTINCT blog_calificado.ID) AS 'Calif'
                 FROM published p
                 JOIN categorias_blog cb ON p.ID=cb.blogId

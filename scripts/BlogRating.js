@@ -10,17 +10,21 @@ $( document ).ready(function() {
     setValue(parseInt(obj.valor));
     
     function setValue(valor){
-      console.log("setValue "+valor);
+
       switch(valor) {
         case 0:
             document.getElementById("btn-yes").disabled = true;
             document.getElementById("btn-no").disabled = false;
+            console.log("setValue 0 "+valor);
             break;
         case 1:
             document.getElementById("btn-yes").disabled = false;
             document.getElementById("btn-no").disabled = true;
+            console.log("setValue 1 "+valor);
             break;
         default:{
+            document.getElementById("btn-yes").disabled = false;
+            document.getElementById("btn-no").disabled = false;
           }
       }
     }
@@ -35,7 +39,7 @@ $( document ).ready(function() {
       $.post("../scripts/blog-rate.php", postUp, function(response){
         //setValue(response);
         obj.valor = (parseInt(response));
-        setValue(obj.valor);
+        setValue(parseInt(obj.valor));
         console.log("SI "+response);
       });
       e.preventDefault();
@@ -52,7 +56,7 @@ $( document ).ready(function() {
       $.post("../scripts/blog-rate.php", postDown, function(response){
 
         obj.valor = (parseInt(response));
-        setValue(obj.valor);
+        setValue(parseInt(obj.valor));
         //setValue(response);
         console.log("NO "+response);
       });

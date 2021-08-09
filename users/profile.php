@@ -5,6 +5,8 @@ include '../scripts/user.php';
 session_start();
 if((isset($_SESSION['id']) && !empty($_SESSION['id']))){
   $var = $_SESSION['tipo'];
+
+  $java = array('tipo' => $var);
 }else{
   header("Location: ../index.php");
 }
@@ -180,6 +182,35 @@ echo '</pre>';
             </div>
         </div>
         <br>
+        <div>
+          <h2 class="title">Publicaciones Recientes</h2>
+          <div id="profile-table">
+            <table id="tabla_acc" class="table table-sm table-bordered table-responsive-sm">
+              <thead class="table-primary">
+                <th scope="col"><li class="fa fa-calendar"></li> Fecha</th>
+                <th scope="col"><li class="fa fa-file-text"></li> Titulo</th>
+                <th scope="col"><li class="fa fa-align-justify"></li> Descripcion</th>
+                <th scope="col"><li class="fa fa-folder-open-o"></li> Categorias</th>
+                <th scope="col"><li class="fa fa-thumbs-o-up"></li> Cal. Positivas</th>
+                <th scope="col"><li class="fa fa-chain"></li> Link</th>
+              </thead>
+              <tbody>
+                <?php foreach($tabla as $fila): ?>
+                  <tr>
+                    <td class="col-md-1"> <?php echo $fila->fecha; ?></td>
+                    <td class="col-md-3"> <b><?php echo $fila->Titulo; ?></b></td>
+                    <td class="col-md-4"> <?php echo substr($fila->descripcion,0,120)."..."; ?></td>
+                    <td> <?php echo $fila->Categorias; ?></td>
+                    <td style="text-align:center; font-size:16px;"> <b><?php echo $fila->Calif; ?></b></td>
+                    <td class="col-md-1" style="text-align:center;"><button onclick="location.href='../blog/<?php echo $fila->archivo;?>.php'" type="button" class="btn btn-table">Ver</button></td>
+                  </tr>
+                <?php endforeach; ?>
+              </tbody>
+          </table>
+          </div>
+        </div>
+        <!--Poner esto en pagina de publicaciones-->
+        <div class="UsrAdmin UsrDir UsrEmp usrAccess">
         <h2 class="title">Mis Publicaciones</h2>
         <div id="profile-table">
           <table id="tabla_acc" class="table table-sm table-bordered table-responsive-sm">
@@ -205,6 +236,7 @@ echo '</pre>';
             </tbody>
          </table>
         </div>
+        </div>
       </div>
   </div>
 </div>
@@ -220,8 +252,8 @@ echo '</pre>';
 <script type="text/javascript" src="../dist/js/sb-admin-2.min.js"></script>
 <script type="text/javascript" src="http://libs.cartocdn.com/cartodb.js/v3/3.15/cartodb.js"></script>
 <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
-<script>var test =<?php echo $var; ?>;</script>
-<script type="text/javascript" src="checkUsr.js"></script>
+<script>var java = '<?php echo json_encode($java);?>';</script>
+<script type="text/javascript" src="../scripts/CheckUsr.js"></script>
 
 
 <!-- Javascript global termina -->

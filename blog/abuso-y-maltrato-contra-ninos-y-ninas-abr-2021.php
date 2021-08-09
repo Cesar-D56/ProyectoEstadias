@@ -369,11 +369,11 @@ if((isset($_SESSION['id']) && !empty($_SESSION['id']))){
     <h5 style="font-size: 15px; margin-bottom:2px;">¿Te parecio util el articulo?</h5>
     <form id="upcali1" style="width: fit-content; margin:0px; float:left; padding:0 10" class="col-md-1">
       <input id="valor" style="display:none;" type="text" name="rate" value="1">
-      <button type="submit" style="font-family:FontAwesome" class="btn btn-rate" id="btn-yes"></button>
+      <button type="submit" style="font-family:FontAwesome" class="btn btn-rate" id="btn-yes"><li class="fa fa-check"></li></button>
     </form>
     <form id="upcali2" style="width: fit-content; margin:0px; float:right;" class="col-md-1">
       <input id="valor2" style="display:none;" type="text" name="rate" value="0">
-      <button type="submit" style="font-family:FontAwesome" class="btn btn-rate" id="btn-no"></button>
+      <button type="submit" style="font-family:FontAwesome" class="btn btn-rate" id="btn-no"><li class="fa fa-times"></li></button>
     </form>
     <script></script>
   </div>
