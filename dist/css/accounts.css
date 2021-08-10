@@ -296,7 +296,7 @@ div#profile-edit
    padding: 15px;
    border-radius: 10px;
    background-color: rgb(208, 212, 216);
-   margin-bottom: 10px;
+   margin-bottom: 15px;
 }
 
 .small-title
@@ -304,6 +304,38 @@ div#profile-edit
    font-family: 'Roboto Condensed',Helvetica,Arial,sans-serif,sans-serif;
    width: 100%;
    margin-bottom: 0px;
-   font-size: 15px;
+   font-size: 16px;
    text-align: center;
 }
+.medium-title
+{
+   font-family: 'Roboto Condensed',Helvetica,Arial,sans-serif,sans-serif;
+   width: 100%;
+   margin-bottom: 0px;
+   font-size: 18px;
+   text-align: center;
+}
+
+.btn-form
+  {
+    width: 20%;
+    height: 40px;
+    font-size: 20px;
+    border-style: none;
+  }
+  .btn-form:hover
+  {
+   background-color: rgb(150, 150, 150);
+  }
+
+  .input-edit
+  {
+      width: 68%;
+      height: 35px;
+      margin-bottom: 15px;
+      border-radius: 5px;
+      font-size: 16px;
+      border-style:solid;
+      border-color: #d67b4a;
+      border-width: 2px;
+  }

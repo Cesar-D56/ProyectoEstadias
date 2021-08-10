@@ -180,23 +180,50 @@ if(isset($_SESSION['id']) && !empty($_SESSION['id'])) {
     <!-- El contenido va aqui -->
       <div class="main-container">
         <h2 class=title>Editar Perfil</h2>
-        <form>
           <div id="profile-edit" class="row">
+            <form>
               <div class="photo col-md-4">
-                  <p class="small-title"><b>Foto de Perfil</b></p>
-                  <img class="usrPhoto" src="<?php echo $info['photo']; ?>">  
+                <p class="small-title" style="font-size:16px;"><b>Foto de Perfil</b></p>
+                <img class="usrPhoto" src="<?php echo $info['photo']; ?>"> 
               </div>
               <div class="info col-md-8" style="height:280px;">
-                <p class="small-title" style="text-align:left;">Puedes personalizar tu perfil para mostrar lo mas importante para nuestros clientes.</p>
+                <p class="medium-title" style="text-align:left;">Puedes personalizar tu perfil para mostrar lo mas importante de nosotros a nuestros visitantes.</p>
+                <br><br><br><br>
+                <p class="medium-title" style="margin-bottom:15px; text-align:left; vertical-align:middle">Puedes iniciar cambiando tu foto de perfil...</p>
+                <button style="text-align:left; vertical-align:bottom;" class="btn btn-form" >Cambiar Foto</button>
                 <br>
-                <p class="small-title" style="text-align:left; vertical-align:middle">Puedes iniciar cambiando tu foto de perfil...</p>
-                <button style="text-align:left; vertical-align:bottom;">Agregar Foto</button>
+                <p class="small-title" style="text-align:left;"><b>Acepta formato .png y .jpg</b></p> 
               </div>
+            </form> 
           </div>
           <div id="profile-edit" class="row">
-            <input type="text"  >
+            <p class="small-title" style="margin-bottom:15px"><b>Informacion del Perfil</b></p>
+            <form style="text-align:center;">
+                <div class="col-md-6">
+                  <p class="medium-title" style="text-align:left; padding-left:15%">Nombre(s)</p>  
+                  <input type="text" class="input-edit" maxlength="25">
+                </div>
+                <div class="col-md-6">
+                  <p class="medium-title" style="text-align:left; padding-left:15%">Apellidos(s)</p>  
+                  <input type="text" class="input-edit" maxlength="25">
+                </div>
+                <br>
+                <div style="width:100%;">
+                  <div class="col-md-3">
+                    <p class="medium-title" style="text-align: left;">Titulo</p>
+                    <input type="text" class="input-edit" maxlength="50">
+                  </div>
+                  <div class="col-md-3">
+                    <p class="medium-title" style="text-align: left;">Area</p>
+                    <input type="text" class="input-edit" maxlength="50">
+                  </div>
+                  <div class="col-md-3">
+                    <p class="medium-title" style="text-align: left;">Telefono de Contacto</p>
+                    <input type="tel" class="input-edit" maxlength="10">
+                  </div>
+                </div>
+            </form>
           </div>
-        </form>
       </div>
   </div>
 </div>
