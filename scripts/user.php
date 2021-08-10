@@ -14,8 +14,10 @@
         {
             try{
                 //Busca si el usuario esta registrado
-                $sql = "SELECT datosusuarios.Nombre, datosusuarios.Apellidos, datosusuarios.Correo, infouser.titulo, infouser.puesto, infouser.telefono, infouser.descripcion, infouser.photo, infouser.S_twitter 
-                FROM datosusuarios INNER JOIN infouser ON datosusuarios.userID = infouser.userID 
+                $sql = "SELECT datosusuarios.Nombre, datosusuarios.Apellidos, datosusuarios.Correo, infouser.titulo, infouser.puesto, infouser.telefono, infouser.descripcion, infouser.photo, infouser.S_twitter, tipos_usuario.Nombre AS 'usrType'
+                FROM datosusuarios 
+                INNER JOIN infouser ON datosusuarios.userID = infouser.userID 
+                INNER JOIN tipos_usuario ON tipos_usuario.ID=datosusuarios.TipoUser
                 WHERE datosusuarios.userID = '$userid';";
 
                 $query = $this->db->PDOLocal->query($sql);
