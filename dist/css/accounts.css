@@ -326,16 +326,39 @@ div#profile-edit
   .btn-form:hover
   {
    background-color: rgb(150, 150, 150);
+   color: rgb(253, 250, 235);
   }
 
+  .input-edit, .txt-area
+  {
+   border-radius: 5px;
+   font-size: 16px;
+   border-style:solid;
+   border-color: #d67b4a;
+   border-width: 2px;
+  }
   .input-edit
   {
       width: 68%;
       height: 35px;
       margin-bottom: 15px;
-      border-radius: 5px;
-      font-size: 16px;
-      border-style:solid;
-      border-color: #d67b4a;
-      border-width: 2px;
+      padding-left: 5px;
+      
   }
+  .txt-area
+  {
+     width: 80%;
+     height: 120px;
+     resize: none;
+  }
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type=number] {
+  -moz-appearance: textfield;
+}

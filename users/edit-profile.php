@@ -181,6 +181,7 @@ if(isset($_SESSION['id']) && !empty($_SESSION['id'])) {
       <div class="main-container">
         <h2 class=title>Editar Perfil</h2>
           <div id="profile-edit" class="row">
+            <!--Ver como subir imagen-->
             <form>
               <div class="photo col-md-4">
                 <p class="small-title" style="font-size:16px;"><b>Foto de Perfil</b></p>
@@ -190,7 +191,7 @@ if(isset($_SESSION['id']) && !empty($_SESSION['id'])) {
                 <p class="medium-title" style="text-align:left;">Puedes personalizar tu perfil para mostrar lo mas importante de nosotros a nuestros visitantes.</p>
                 <br><br><br><br>
                 <p class="medium-title" style="margin-bottom:15px; text-align:left; vertical-align:middle">Puedes iniciar cambiando tu foto de perfil...</p>
-                <button style="text-align:left; vertical-align:bottom;" class="btn btn-form" >Cambiar Foto</button>
+                <button style="text-align:left; vertical-align:bottom; width:150px;" class="btn btn-form">Cambiar Foto</button>
                 <br>
                 <p class="small-title" style="text-align:left;"><b>Acepta formato .png y .jpg</b></p> 
               </div>
@@ -199,29 +200,64 @@ if(isset($_SESSION['id']) && !empty($_SESSION['id'])) {
           <div id="profile-edit" class="row">
             <p class="small-title" style="margin-bottom:15px"><b>Informacion del Perfil</b></p>
             <form style="text-align:center;">
-                <div class="col-md-6">
+                <div class="col-md-6" style="margin-bottom: 20px;">
                   <p class="medium-title" style="text-align:left; padding-left:15%">Nombre(s)</p>  
-                  <input type="text" class="input-edit" maxlength="25">
+                  <input type="text" name="nombres" class="input-edit" maxlength="25">
                 </div>
-                <div class="col-md-6">
+                <div class="col-md-6" style="margin-bottom: 20px;">
                   <p class="medium-title" style="text-align:left; padding-left:15%">Apellidos(s)</p>  
-                  <input type="text" class="input-edit" maxlength="25">
+                  <input type="text" name="apellidos" class="input-edit" maxlength="25">
                 </div>
                 <br>
                 <div style="width:100%;">
                   <div class="col-md-3">
                     <p class="medium-title" style="text-align: left;">Titulo</p>
-                    <input type="text" class="input-edit" maxlength="50">
+                    <input style="width:100%;" type="text" name="titulo" class="input-edit" maxlength="50" placeholder="ej. Arquitecto, Arq.">
                   </div>
-                  <div class="col-md-3">
-                    <p class="medium-title" style="text-align: left;">Area</p>
-                    <input type="text" class="input-edit" maxlength="50">
+                  <div class="col-md-4">
+                    <p class="medium-title" style="text-align: left; padding-left:15%;">Area</p>
+                    <input type="text" name="area" class="input-edit" maxlength="50" placeholder="ej. Analisis, Coordinacion">
                   </div>
-                  <div class="col-md-3">
-                    <p class="medium-title" style="text-align: left;">Telefono de Contacto</p>
-                    <input type="tel" class="input-edit" maxlength="10">
+                  <div class="col-md-2">
+                    <p class="medium-title" style="text-align: left;">Tel.</p>
+                    <input style="width:100%;" name="telefono" type="tel" class="input-edit" maxlength="15" placeholder="ej. 123-456-6789" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}">
+                  </div>
+                  <div class="col-md-3" style="margin-bottom: 20px;">
+                    <p class="medium-title" style="text-align: left;">(Twitter)</p>
+                    <input style="width:100%;" name="twitter" type="text" class="input-edit" maxlength="12" placeholder="@nombre_de_usuario">
                   </div>
                 </div>
+                <div style="width:100%; margin-bottom: 20px;" >
+                  <p class="small-title" style="margin-bottom:15px"><b>Cuentanos un poco de lo que haces en la empresa o a lo que te dedicas.</b></p> 
+                  <textarea class="txt-area" name="descripcion" rows="4" cols="50" maxlength="255"></textarea>
+                </div>
+                <input type="submit" class="btn btn-form" value="Guardar">
+            </form>
+          </div>
+          <div id="profile-edit" class="row UsrAdmin usrAccess">
+            <p class="small-title" style="margin-bottom:15px"><b>Configuracion Avanzada</b></p>
+            <form style="text-align:center;">
+              <div class="col-md-6" style="margin-bottom: 20px;">
+                <p class="medium-title" style="text-align:left; padding-left:15%">Cambiar Correo de Usuario</p>  
+                <input type="email" name="correo" class="input-edit" maxlength="45">
+              </div>
+              <div class="col-md-6" style="margin-bottom: 20px;">
+                <p class="medium-title" style="text-align:left; padding-left:15%">Cambiar Contraseña</p>  
+                <input type="text" name="password" class="input-edit" maxlength="20" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}">
+              </div>
+              <div class="col-md-6" style="margin-bottom: 20px;">
+                <p class="medium-title" style="text-align:left; padding-left:15%">Cambiar Privilegios</p>  
+                <select class="input-edit" name="usrtype" value="3">
+                  <option value="" selected disabled hidden>Valor Inicial</option>
+                  <option value="1">Administrador</option>
+                  <option value="2">Director</option>
+                  <option value="3">Visitante</option>
+                  <option value="4">Empleado</option>
+                </select>
+              </div>
+              <div class="col-md-6" style="height:60px; margin-top:20px;">
+                <input style="width:60%" type="submit" class="btn btn-form" value="Guardar">
+              </div>
             </form>
           </div>
       </div>
