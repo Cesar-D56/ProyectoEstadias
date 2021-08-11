@@ -295,9 +295,9 @@ div#profile-edit
 {
    padding: 15px;
    border-radius: 10px;
-   background-color: rgb(208, 212, 216);
+   background-color: rgb(211, 208, 205);
    margin-bottom: 15px;
-   border-color: rgb(163, 162, 162);
+   border-color: rgb(182, 181, 181);
    border-width: 3px;
    border-style: solid;
 }
@@ -339,7 +339,7 @@ div#profile-edit
    border-style:solid;
    border-color: #d67b4a;
    border-width: 2px;
-   background-color: rgb(238, 236, 236);
+   background-color: rgb(235, 235, 235);
   }
   .input-edit
   {
@@ -351,8 +351,8 @@ div#profile-edit
   }
   .txt-area
   {
-     width: 80%;
-     height: 120px;
+     /*width: 80%;
+     height: 120px;*/
      resize: none;
   }
 

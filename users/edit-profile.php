@@ -1,4 +1,5 @@
 <?php
+
 include '../scripts/db-connection.php';
 include '../scripts/user.php';
 
@@ -10,41 +11,35 @@ if((isset($_SESSION['id']) && !empty($_SESSION['id']))){
   header("Location: ../index.php");
 }
 
+if (empty($_GET['usrID'])){
+	$idSelectedUsr = ($_SESSION['id']);
+
+  $users = new USERS();
+
+  $info = $users -> UserInfo($_SESSION['id']);
+}else
+{
+  $idSelectedUsr = $_GET['usrID'];
+
+  $users = new USERS();
+
+  $info = $users -> UserInfo($idSelectedUsr);
+}
+
+if(isset($_SESSION['status']))
+{
+  echo $_SESSION['status'];
+  $_SESSION['status'] = null;
+}
+
 $style="";
 $twitter="";
 
-$users = new USERS();
-
-$info = $users -> UserInfo($_SESSION['id']);
-
-if($info['S_twitter']==null){
-  $style="style='display:none;'";
-}else{
-  $twitter=$info['S_twitter'];
-}
 /*echo '<pre>';
 var_dump($_SESSION);
 echo '</pre>';
 */
 
-/*
-if(isset($_SESSION['id']) && !empty($_SESSION['id'])) {
-    $style = "style='display:initial;'";
-    $tipouser = $_SESSION['tipo'];
-    $name_user = $_SESSION['nombre'];
-    $titulo = $_SESSION['titulo'];
-    $class = new Database();
-    $style2 = "style='display:none;'";  
-}else{
-    $style = "style='display:none;'";
-    $tipouser = 0;
-    $name_user = "";
-    $titulo = "";
-    $class = new Database();
-    $style2 = "style='display:initial;'";    
-}
-*/
-//$usrtype = "class= 'usr".$var."'";
 
 ?>
 <!DOCTYPE html>
@@ -116,7 +111,7 @@ if(isset($_SESSION['id']) && !empty($_SESSION['id'])) {
   <link rel="stylesheet" type="text/css" href="../dist/css/estilosvm.css">
   <link rel="stylesheet" type="text/css" href="../dist/css/trcimplan.css">
   <link rel="stylesheet" type="text/css" href="../dist/css/accounts.css">
-  
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@8"></script>
   <!-- SOPORTE PARA IE -->
   <!--[if lt IE 9]>
   <script type="text/javascript" src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
@@ -199,55 +194,59 @@ if(isset($_SESSION['id']) && !empty($_SESSION['id'])) {
           </div>
           <div id="profile-edit" class="row">
             <p class="small-title" style="margin-bottom:15px"><b>Informacion del Perfil</b></p>
-            <form style="text-align:center;">
+            <form id="info" method="POST" style="text-align:center;">
+              <input id="id" style="display:none;" type="text" name="id" value="<?php echo $idSelectedUsr; ?>">
+              <input id="valor" style="display:none;" type="text" name="value" value="1">
                 <div class="col-md-6" style="margin-bottom: 20px;">
                   <p class="medium-title" style="text-align:left; padding-left:15%">Nombre(s)</p>  
-                  <input type="text" name="nombres" class="input-edit" maxlength="25" value="<?php echo $info['Nombre'];?>">
+                  <input id="nombres" type="text" name="nombres" class="input-edit" maxlength="25" value="<?php echo $info['Nombre'];?>" required>
                 </div>
                 <div class="col-md-6" style="margin-bottom: 20px;">
                   <p class="medium-title" style="text-align:left; padding-left:15%">Apellidos(s)</p>  
-                  <input type="text" name="apellidos" class="input-edit" maxlength="25" value="<?php echo $info['Apellidos'];?>">
+                  <input id="apellidos" type="text" name="apellidos" class="input-edit" maxlength="25" value="<?php echo $info['Apellidos'];?>">
                 </div>
                 <br>
                 <div style="width:100%;">
                   <div class="col-md-3">
                     <p class="medium-title" style="text-align: left;">Titulo</p>
-                    <input style="width:100%;" type="text" name="titulo" class="input-edit" maxlength="50" placeholder="ej. Arquitecto, Arq." value="<?php echo $info['titulo'];?>">
+                    <input id="titulo" style="width:100%;" type="text" name="titulo" class="input-edit" maxlength="50" placeholder="ej. Arquitecto, Arq." value="<?php echo $info['titulo'];?>">
                   </div>
                   <div class="col-md-4">
                     <p class="medium-title" style="text-align: left; padding-left:15%;">Area</p>
-                    <input type="text" name="area" class="input-edit" maxlength="50" placeholder="ej. Analisis, Coordinacion" value="<?php echo $info['puesto'];?>">
+                    <input id="area" type="text" name="area" class="input-edit" maxlength="50" placeholder="ej. Analisis, Coordinacion" value="<?php echo $info['puesto'];?>">
                   </div>
                   <div class="col-md-2">
                     <p class="medium-title" style="text-align: left;">Tel.</p>
-                    <input style="width:100%;" name="telefono" type="tel" class="input-edit" maxlength="15" placeholder="ej. 123-456-6789" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" value="<?php echo $info['telefono'];?>">
+                    <input id="telefono" style="width:100%;" name="telefono" type="tel" class="input-edit" maxlength="15" placeholder="ej. 123-456-6789" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" value="<?php echo $info['telefono'];?>">
                   </div>
                   <div class="col-md-3" style="margin-bottom: 20px;">
                     <p class="medium-title" style="text-align: left;">(Twitter)</p>
-                    <input style="width:100%;" name="twitter" type="text" class="input-edit" maxlength="12" placeholder="nombre_de_usuario" value="<?php echo $info['S_twitter'];?>">
+                    <input id="twitter" style="width:100%;" name="twitter" type="text" class="input-edit" maxlength="12" placeholder="nombre_de_usuario" value="<?php echo $info['S_twitter'];?>">
                   </div>
                 </div>
                 <div style="width:100%; margin-bottom: 20px;" >
                   <p class="small-title" style="margin-bottom:15px"><b>Cuentanos un poco de lo que haces en la empresa o a lo que te dedicas.</b></p> 
-                  <textarea class="txt-area" name="descripcion" rows="4" cols="50" maxlength="255"><?php echo $info['descripcion'];?></textarea>
+                  <textarea id="desc" class="txt-area" name="descripcion" rows="5" cols="80" maxlength="255"><?php echo $info['descripcion'];?></textarea>
                 </div>
                 <input type="submit" class="btn btn-form" value="Guardar" name="saveInfo">
             </form>
           </div>
-          <div id="profile-edit" class="row UsrAdmin usrAccess">
+          <div id="profile-edit" class="row">
             <p class="small-title" style="margin-bottom:15px"><b>Configuracion Avanzada</b></p>
-            <form style="text-align:center;">
+            <form id="advanced" action="../scripts/editUsr.php" method="POST" style="text-align:center;">
+              <input id="id" style="display:none;" type="text" name="id" value="<?php echo $idSelectedUsr;  ?>">
+              <input id="valor" style="display:none;" type="text" name="value" value="2">
               <div class="col-md-6" style="margin-bottom: 20px;">
                 <p class="medium-title" style="text-align:left; padding-left:15%">Cambiar Correo de Usuario</p>  
-                <input type="email" name="correo" class="input-edit" maxlength="45" value="<?php echo $info['Correo'];?>">
+                <input id="email" type="email" name="correo" class="input-edit" maxlength="45" value="<?php echo $info['Correo'];?>">
               </div>
               <div class="col-md-6" style="margin-bottom: 20px;">
                 <p class="medium-title" style="text-align:left; padding-left:15%">Cambiar Contraseña</p>  
-                <input type="text" name="password" class="input-edit" maxlength="20" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}">
+                <input id="password" value="" type="text" name="password" class="input-edit" maxlength="20" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}">
               </div>
-              <div class="col-md-6" style="margin-bottom: 20px;">
+              <div class="col-md-6 UsrAdmin usrAccess" style="margin-bottom: 20px;">
                 <p class="medium-title" style="text-align:left; padding-left:15%">Cambiar Privilegios</p>  
-                <select class="input-edit" name="usrtype" value="3">
+                <select id="tipo" class="input-edit" name="usrtype" value="<?php echo $var;?>" form="advanced">
                   <option value="" selected disabled hidden>Valor Inicial: <?php echo $info['usrType'];?></option>
                   <option value="1">Administrador</option>
                   <option value="2">Director</option>
@@ -277,6 +276,7 @@ if(isset($_SESSION['id']) && !empty($_SESSION['id'])) {
 <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 <script>var java = '<?php echo json_encode($java);?>';</script>
 <script type="text/javascript" src="../scripts/CheckUsr.js"></script>
+<script type="text/javascript" src="../dist/js/edit-user.js"></script>
 
 
 <!-- Javascript global termina -->
