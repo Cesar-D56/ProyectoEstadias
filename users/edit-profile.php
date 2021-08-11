@@ -177,16 +177,19 @@ echo '</pre>';
         <h2 class=title>Editar Perfil</h2>
           <div id="profile-edit" class="row">
             <!--Ver como subir imagen-->
-            <form>
+            <form id="upload" method="POST" enctype="multipart/form-data">
               <div class="photo col-md-4">
                 <p class="small-title" style="font-size:16px;"><b>Foto de Perfil</b></p>
-                <img class="usrPhoto" src="<?php echo $info['photo']; ?>"> 
+                <img class="usrPhoto" src="../imagenes/128/<?php echo $info['photo']; ?>"> 
               </div>
               <div class="info col-md-8" style="height:280px;">
                 <p class="medium-title" style="text-align:left;">Puedes personalizar tu perfil para mostrar lo mas importante de nosotros a nuestros visitantes.</p>
                 <br><br><br><br>
+                <input id="id3" style="display:none;" type="text" name="id" value="<?php echo $idSelectedUsr;  ?>">
                 <p class="medium-title" style="margin-bottom:15px; text-align:left; vertical-align:middle">Puedes iniciar cambiando tu foto de perfil...</p>
-                <button style="text-align:left; vertical-align:bottom; width:150px;" class="btn btn-form">Cambiar Foto</button>
+                <input type="file" name="fileToUpload" id="fileToUpload">
+                <br>
+                <button type="submit" id="upload" name="upload" style="text-align:left; vertical-align:bottom; width:150px;" class="btn btn-form">Cambiar Foto</button>
                 <br>
                 <p class="small-title" style="text-align:left;"><b>Acepta formato .png y .jpg</b></p> 
               </div>
@@ -233,9 +236,9 @@ echo '</pre>';
           </div>
           <div id="profile-edit" class="row">
             <p class="small-title" style="margin-bottom:15px"><b>Configuracion Avanzada</b></p>
-            <form id="advanced" action="../scripts/editUsr.php" method="POST" style="text-align:center;">
-              <input id="id" style="display:none;" type="text" name="id" value="<?php echo $idSelectedUsr;  ?>">
-              <input id="valor" style="display:none;" type="text" name="value" value="2">
+            <form id="advanced" method="POST" style="text-align:center;">
+              <input id="id2" style="display:none;" type="text" name="id" value="<?php echo $idSelectedUsr;  ?>">
+              <input id="valor2" style="display:none;" type="text" name="value" value="2">
               <div class="col-md-6" style="margin-bottom: 20px;">
                 <p class="medium-title" style="text-align:left; padding-left:15%">Cambiar Correo de Usuario</p>  
                 <input id="email" type="email" name="correo" class="input-edit" maxlength="45" value="<?php echo $info['Correo'];?>">

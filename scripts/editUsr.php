@@ -4,7 +4,7 @@
 
   //$_SESSION['status'] = "";
 
-  if($_POST['valor'] == '1'){
+  if($_POST['valor'] == 1){
   
     if(isset($_POST['usrID'])){
         try{
@@ -38,11 +38,11 @@
             echo $e = 'No se pudo ejecutar la accion'.$e->getMessage();
         }
     }
-  }elseif($_POST['valor'] == '2'){
+  }elseif($_POST['valor'] == 2){
     if(isset($_POST['usrID'])){
         try{
             $db = new Database();
-            $id = $_POST['id'];
+            $id = $_POST['usrID'];
             $correo = $_POST['email'];
             $password = $_POST['password'];
             $tipo= $_POST['tipo'];
@@ -52,13 +52,12 @@
                 $sql="UPDATE datosusuarios 
                 SET Correo ='$correo', password='$password' 
                 WHERE datosusuarios.userID='$id'";
-                $query = $db->PDOLocal->query($sql);
             }else{
                 $sql="UPDATE datosusuarios 
                 SET Correo ='$correo' 
                 WHERE datosusuarios.userID='$id'";
-                $query = $db->PDOLocal->query($sql);
             }
+            $query = $db->PDOLocal->query($sql);
             
             $db->DBdisconnect();
             
@@ -71,5 +70,5 @@
             echo $e = 'No se pudo ejecutar la accion'.$e->getMessage();
         }
     }
-  }else{echo "xd3";}
+    }
 ?>

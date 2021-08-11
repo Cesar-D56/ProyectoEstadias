@@ -165,7 +165,7 @@ echo '</pre>';
         <h2 class=title>Mi Perfil</h2>
         <div id="profile-info" class="row">
             <div class="photo col-md-4">
-              <img class="usrPhoto" src="<?php echo $info['photo']; ?>">  
+              <img class="usrPhoto" src="../imagenes/128/<?php echo $info['photo']; ?>">  
             </div>
             <div class="info col-md-8">
               <h1 class="info-h1"><b><?php echo $info['titulo'];?> <?php echo $info['Nombre'];?> <?php echo $info['Apellidos']; ?></b></h1>
