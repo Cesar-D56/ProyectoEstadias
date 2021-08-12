@@ -47,22 +47,39 @@
             $password = $_POST['password'];
             $tipo= $_POST['tipo'];
             $db->DBconnect();
+
+            $sql = "SELECT COUNT(d.Correo) AS 'Count' FROM datosusuarios d WHERE d.Correo = '$correo';";
+            $query1 = $db ->PDOLocal->query($sql);
+            $result = $query1->fetch(PDO::FETCH_ASSOC);
+
+            if($result['Count'] >= 1){
+                $email = "";
+                $e = 2;
+            }else{
+                $email = "Correo = '".$correo."' ";
+                $e = 1;
+            }
+
             if($password != ""){
                 $password = password_hash($password, PASSWORD_DEFAULT);
                 $sql="UPDATE datosusuarios 
-                SET Correo ='$correo', password='$password' 
+                SET $email, password='$password', TipoUser='$tipo'
                 WHERE datosusuarios.userID='$id'";
+
+                $query = $db->PDOLocal->query($sql);
             }else{
-                $sql="UPDATE datosusuarios 
-                SET Correo ='$correo' 
-                WHERE datosusuarios.userID='$id'";
+                if($email != ""){
+                    $sql="UPDATE datosusuarios 
+                    SET $email, TipoUser='$tipo' 
+                    WHERE datosusuarios.userID='$id'";
+                    $query = $db->PDOLocal->query($sql);
+                }
             }
-            $query = $db->PDOLocal->query($sql);
             
             $db->DBdisconnect();
             
             //echo $e=$_POST['valor'];
-            echo $e = 1;
+            echo $e;
             /*header('Location: ' . $_SERVER['HTTP_REFERER']);
             exit;
             */

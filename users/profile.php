@@ -17,6 +17,7 @@ $users = new USERS();
 
 $info = $users -> UserInfo($_SESSION['id']);
 $tabla = $users -> ShowPosts($_SESSION['id']);
+$tablafav = $users -> ShowFavPosts($_SESSION['id']);
 
 if($info['S_twitter']==null){
   $style="style='display:none;'";
@@ -141,7 +142,6 @@ echo '</pre>';
           <ul class="nav nav-second-level">
             <li><a href="profile.php"><span class="navegacion-icono"><i class="fa fa-eye"></i></span> Ver Perfil</a></li>
             <li><a href="edit-profile.php"><span class="navegacion-icono"><i class="fa fa-pencil"></i></span> Editar Perfil</a></li>
-            <li><a href="../blog/index.html"><span class="navegacion-icono"><i class="fa fa-cog"></i></span> Configurar Cuenta</a></li>
           </ul>
         </li>
         <li class="UsrAdmin UsrDir UsrEmp usrAccess">
@@ -152,7 +152,7 @@ echo '</pre>';
             <!--<li><a href="../blog/index.html"><span class="navegacion-icono"><i class="fa fa-file-text-o"></i></span> Configurar Cuenta</a></li>-->
           </ul>
         </li>
-        <li class="UsrAdmin usrAccess"><a href="../excolaboradores/index.html"><span class="navegacion-icono"><i class="fa fa-users"></i></span> Ver Usuarios</a></li>   
+        <li class="UsrAdmin usrAccess"><a href="view-users.php"><span class="navegacion-icono"><i class="fa fa-users"></i></span> Ver Usuarios</a></li>   
         <li><a href="../scripts/logout.php"><span class="navegacion-icono"><i class="fa fa-sign-out"></i></span> Cerrar Sesion</a></li>
       </ul>
     </div>
@@ -161,6 +161,7 @@ echo '</pre>';
   </nav>
   <div id="page-wrapper" style="min-height:1244px;">
     <!-- El contenido va aqui -->
+    <div>
       <div class="main-container">
         <h2 class=title>Mi Perfil</h2>
         <div id="profile-info" class="row">
@@ -182,7 +183,7 @@ echo '</pre>';
             </div>
         </div>
         <br>
-        <div>
+        <div class="UsrAdmin UsrDir UsrEmp usrAccess">
           <h2 class="title">Publicaciones Recientes</h2>
           <div id="profile-table">
             <table id="tabla_acc" class="table table-sm table-bordered table-responsive-sm">
@@ -213,33 +214,32 @@ echo '</pre>';
           </table>
           </div>
         </div>
-        <!--Poner esto en pagina de publicaciones-->
-        <div class="UsrAdmin UsrDir UsrEmp usrAccess">
-        <h2 class="title">Mis Publicaciones</h2>
-        <div id="profile-table">
-          <table id="tabla_acc" class="table table-sm table-bordered table-responsive-sm">
-            <thead class="table-primary">
-              <th scope="col"><li class="fa fa-calendar"></li> Fecha</th>
-              <th scope="col"><li class="fa fa-file-text"></li> Titulo</th>
-              <th scope="col"><li class="fa fa-align-justify"></li> Descripcion</th>
-              <th scope="col"><li class="fa fa-folder-open-o"></li> Categorias</th>
-              <th scope="col"><li class="fa fa-thumbs-o-up"></li> Cal. Positivas</th>
-              <th scope="col"><li class="fa fa-chain"></li> Link</th>
-            </thead>
-            <tbody>
-              <?php foreach($tabla as $fila): ?>
-                <tr>
-                  <td class="col-md-1"> <?php echo $fila->fecha; ?></td>
-                  <td class="col-md-3"> <b><?php echo $fila->Titulo; ?></b></td>
-                  <td class="col-md-4"> <?php echo substr($fila->descripcion,0,120)."..."; ?></td>
-                  <td> <?php echo $fila->Categorias; ?></td>
-                  <td style="text-align:center; font-size:16px;"> <b><?php echo $fila->Calif; ?></b></td>
-                  <td class="col-md-1" style="text-align:center;"><button onclick="location.href='../blog/<?php echo $fila->archivo;?>.php'" type="button" class="btn btn-table">Ver</button></td>
-                </tr>
-              <?php endforeach; ?>
-            </tbody>
-         </table>
-        </div>
+        <!--Visitante-->
+        <div class="UsrPriv usrAccess">
+          <h2 class="title">Publicaciones Calificadas</h2>
+          <div id="profile-table">
+            <table id="tabla_acc" class="table table-sm table-bordered table-responsive-sm">
+              <thead class="table-primary">
+                <th scope="col"><li class="fa fa-file-text"></li> Titulo</th>
+                <th scope="col"><li class="fa fa-align-justify"></li> Descripcion</th>
+                <th scope="col"><li class="fa fa-folder-open-o"></li> Categorias</th>
+                <th scope="col"><li class="fa fa-thumbs-o-up"></li> Calificacion</th>
+                <th scope="col"><li class="fa fa-chain"></li> Link</th>
+              </thead>
+              <tbody>
+                <?php
+                foreach($tablafav as $fila): ?>
+                  <tr>
+                    <td class="col-md-3"> <b><?php echo $fila->Titulo; ?></b></td>
+                    <td class="col-md-4"> <?php echo substr($fila->descripcion,0,120)."..."; ?></td>
+                    <td> <?php echo $fila->Categorias; ?></td>
+                    <td style="text-align:center; font-size:16px;"> <b><?php echo $fila->Calificacion; ?></b></td>
+                    <td class="col-md-1" style="text-align:center;"><button onclick="location.href='../blog/<?php echo $fila->archivo;?>.php'" type="button" class="btn btn-table">Ver</button></td>
+                  </tr>
+                <?php endforeach; ?>
+              </tbody>
+          </table>
+          </div>
         </div>
       </div>
   </div>

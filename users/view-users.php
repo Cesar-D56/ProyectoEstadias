@@ -2,35 +2,24 @@
 
 include '../scripts/db-connection.php';
 include '../scripts/user.php';
+include '../scripts/admin.php';
 
 session_start();
 if((isset($_SESSION['id']) && !empty($_SESSION['id']))){
   $var = $_SESSION['tipo'];
+  if($var!=1){
+    header("location:javascript://history.go(-1)");
+    exit;
+  }
   $java = array('tipo' => $var);
 }else{
   header("Location: ../index.php");
 }
+$users = new ADMIN();
+//$users = new USERS();
 
-if (empty($_GET['usrID'])){
-	$idSelectedUsr = ($_SESSION['id']);
-
-  $users = new USERS();
-
-  $info = $users -> UserInfo($_SESSION['id']);
-}else
-{
-  $idSelectedUsr = $_GET['usrID'];
-
-  $users = new USERS();
-
-  $info = $users -> UserInfo($idSelectedUsr);
-}
-
-if(isset($_SESSION['status']))
-{
-  echo $_SESSION['status'];
-  $_SESSION['status'] = null;
-}
+//$info = $users -> UserInfo($_SESSION['id']);
+$tabla = $users -> ShowUsers();
 
 $style="";
 $twitter="";
@@ -170,101 +159,42 @@ echo '</pre>';
   </div>
   <!--TERMINA MENU LATERAL-->
   </nav>
+  <!-- El contenido va aqui -->
   <div id="page-wrapper">
-    <!-- El contenido va aqui -->
-      <div class="main-container">
-        <h2 class=title>Editar Perfil</h2>
-          <div id="profile-edit" class="row">
-            <!--Ver como subir imagen-->
-            <form id="upload" method="POST" enctype="multipart/form-data">
-              <div class="photo col-md-4">
-                <p class="small-title" style="font-size:16px;"><b>Foto de Perfil</b></p>
-                <img class="usrPhoto" src="../imagenes/128/<?php echo $info['photo']; ?>"> 
-              </div>
-              <div class="info col-md-8" style="height:280px;">
-                <p class="medium-title" style="text-align:left;">Puedes personalizar tu perfil para mostrar lo mas importante de nosotros a nuestros visitantes.</p>
-                <br><br><br><br>
-                <input id="id3" style="display:none;" type="text" name="id" value="<?php echo $idSelectedUsr;  ?>">
-                <p class="medium-title" style="margin-bottom:15px; text-align:left; vertical-align:middle">Puedes iniciar cambiando tu foto de perfil...</p>
-                <input type="file" name="fileToUpload" id="fileToUpload" accept=".png,.jpg,.jpeg">
-                <br>
-                <button type="submit" id="up" name="up" style="text-align:left; vertical-align:bottom; width:150px;" class="btn btn-form">Cambiar Foto</button>
-                <br>
-                <p class="small-title" style="text-align:left;"><b>Acepta formato .png y .jpg</b></p> 
-              </div>
-            </form> 
-            
+    <div class="main-container">
+        <div>
+        <h2 class=title>Ver Usuarios</h2>
+          <div id="profile-table">
+            <table id="tabla_acc" class="table table-sm table-bordered table-responsive-sm">
+              <thead class="table-primary">
+                <th scope="col"><li class="fa fa-info"></li> ID</th>
+                <th scope="col"><li class="fa fa-align-justify"></li> Nombre</th>
+                <th scope="col"><li class="fa fa-envelope-o"></li> Correo</th>
+                <th scope="col"><li class="fa fa-calendar"></li> Creado el:</th>
+                <th scope="col"><li class="fa fa-heart"></li> Privilegio</th>
+                <th scope="col"><li class="fa fa-cogs"></li> Link</th>
+              </thead>
+              <tbody>
+                <?php foreach($tabla as $fila): ?>
+                  <tr>
+                    <td style="text-align:center; font-size:16px;" class="col-md-1"> <?php echo $fila->userID; ?></td>
+                    <td class="col-md-3"> <b><?php echo $fila->Nombre; ?> <?php echo $fila->Apellidos; ?></b></td>
+                    <td class="col-md-4"> <?php echo $fila->Correo; ?></td>
+                    <td> <?php echo $fila->Date; ?></td>
+                    <td style="text-align:center; font-size:16px;"> <b><?php echo $fila->Tipo; ?></b></td>
+                    <td style="text-align:center; display: inline-flex;">
+						<a href="edit-profile.php?usrID=<?php echo $fila->userID; ?>" class="btn btn-info" role="button" aria-pressed="true" style="margin-right: 3px;" ><i class="fa fa-pencil"></i></a>
+						<a id="delete" value="<?php echo $fila->userID; ?>" class="btn btn-warning" role="button" aria-pressed="true"><i class="fa fa-trash-o"></i></a>
+					</td>
+                  </tr>
+                <?php endforeach; ?>
+              </tbody>
+          </table>
           </div>
-          <div id="profile-edit" class="row">
-            <p class="small-title" style="margin-bottom:15px"><b>Informacion del Perfil</b></p>
-            <form id="info" method="POST" style="text-align:center;">
-              <input id="id" style="display:none;" type="text" name="id" value="<?php echo $idSelectedUsr; ?>">
-              <input id="valor" style="display:none;" type="text" name="value" value="1">
-                <div class="col-md-6" style="margin-bottom: 20px;">
-                  <p class="medium-title" style="text-align:left; padding-left:15%">Nombre(s)</p>  
-                  <input id="nombres" type="text" name="nombres" class="input-edit" maxlength="25" value="<?php echo $info['Nombre'];?>" required>
-                </div>
-                <div class="col-md-6" style="margin-bottom: 20px;">
-                  <p class="medium-title" style="text-align:left; padding-left:15%">Apellidos(s)</p>  
-                  <input id="apellidos" type="text" name="apellidos" class="input-edit" maxlength="25" value="<?php echo $info['Apellidos'];?>">
-                </div>
-                <br>
-                <div style="width:100%;">
-                  <div class="col-md-3">
-                    <p class="medium-title" style="text-align: left;">Titulo</p>
-                    <input id="titulo" style="width:100%;" type="text" name="titulo" class="input-edit" maxlength="50" placeholder="ej. Arquitecto, Arq." value="<?php echo $info['titulo'];?>">
-                  </div>
-                  <div class="col-md-4">
-                    <p class="medium-title" style="text-align: left; padding-left:15%;">Area</p>
-                    <input id="area" type="text" name="area" class="input-edit" maxlength="50" placeholder="ej. Analisis, Coordinacion" value="<?php echo $info['puesto'];?>">
-                  </div>
-                  <div class="col-md-2">
-                    <p class="medium-title" style="text-align: left;">Tel.</p>
-                    <input id="telefono" style="width:100%;" name="telefono" type="tel" class="input-edit" maxlength="15" placeholder="ej. 123-456-6789" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" value="<?php echo $info['telefono'];?>">
-                  </div>
-                  <div class="col-md-3" style="margin-bottom: 20px;">
-                    <p class="medium-title" style="text-align: left;">(Twitter)</p>
-                    <input id="twitter" style="width:100%;" name="twitter" type="text" class="input-edit" maxlength="12" placeholder="nombre_de_usuario" value="<?php echo $info['S_twitter'];?>">
-                  </div>
-                </div>
-                <div style="width:100%; margin-bottom: 20px;" >
-                  <p class="small-title" style="margin-bottom:15px"><b>Cuentanos un poco de lo que haces en la empresa o a lo que te dedicas.</b></p> 
-                  <textarea id="desc" class="txt-area" name="descripcion" rows="5" cols="80" maxlength="255"><?php echo $info['descripcion'];?></textarea>
-                </div>
-                <input type="submit" class="btn btn-form" value="Guardar" name="saveInfo">
-            </form>
-          </div>
-          <div id="profile-edit" class="row">
-            <p class="small-title" style="margin-bottom:15px"><b>Configuracion Avanzada</b></p>
-            <form id="advanced" method="POST" style="text-align:center;">
-              <input id="id2" style="display:none;" type="text" name="id" value="<?php echo $idSelectedUsr;  ?>">
-              <input id="valor2" style="display:none;" type="text" name="value" value="2">
-              <div class="col-md-6" style="margin-bottom: 20px;">
-                <p class="medium-title" style="text-align:left; padding-left:15%">Cambiar Correo de Usuario</p>  
-                <input id="email" type="email" name="correo" class="input-edit" maxlength="45" value="<?php echo $info['Correo'];?>">
-              </div>
-              <div class="col-md-6" style="margin-bottom: 20px;">
-                <p class="medium-title" style="text-align:left; padding-left:15%">Cambiar Contraseña</p>  
-                <input id="password" value="" type="text" name="password" class="input-edit" maxlength="20" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}">
-              </div>
-              <div class="col-md-6 UsrAdmin usrAccess" style="margin-bottom: 20px;">
-                <p class="medium-title" style="text-align:left; padding-left:15%">Cambiar Privilegios</p>  
-                <select id="tipo" class="input-edit" name="usrtype" value="<?php echo $var;?>" form="advanced">
-                  <option value="1">Administrador</option>
-                  <option value="2">Director</option>
-                  <option value="3">Visitante</option>
-                  <option value="4">Empleado</option>
-                </select>
-              </div>
-              <div class="col-md-6" style="height:60px; margin-top:20px;">
-                <input style="width:60%" type="submit" class="btn btn-form" value="Guardar" name="saveAdv">
-              </div>
-            </form>
-          </div>
-      </div>
+        </div>
+    </div>
   </div>
-</div>
-<!-- Javascript global inicia -->
+  <!-- Javascript global inicia -->
 <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
 <script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
 <script type="text/javascript" src="../vendor/metisMenu/metisMenu.min.js"></script>
@@ -284,28 +214,10 @@ echo '</pre>';
 <!-- Javascript global termina -->
 <!-- Javascript inicia -->
 <script>
-              $('#up').on('click', function() {
-              var file_data = $('#fileToUpload').prop('files')[0];   
-              var form_data = new FormData();                  
-              form_data.append('file', file_data);
-              form_data.append('id', $('#id3').val())
-                        
-              $.ajax({
-                  url: '../scripts/fileUpload.php', // <-- point to server-side PHP script 
-                  dataType: 'text',  // <-- what to expect back from the PHP script, if anything
-                  cache: false,
-                  contentType: false,
-                  processData: false,
-                  data: form_data,                         
-                  type: 'post',
-                  success: function(php_script_response){
-                      alert(php_script_response); // <-- display response from the PHP script, if any
-                  }
-              });
-          });
-            </script>
-<script>
-  // Twitter timeline
+    
+</script>
+
+<script>  // Twitter timeline
   !function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");
 </script>
 

@@ -12,6 +12,24 @@
             $this->db -> DBconnect();
         }
         
+        function ShowUsers()
+        {
+            try{
+                $sql = "SELECT d.userID, d.Nombre, d.Apellidos, d.Correo, info.fecha_cuenta AS 'Date', tu.Nombre AS 'Tipo'
+                FROM datosusuarios d
+                INNER JOIN infouser info ON info.userID = d.userID
+                LEFT JOIN tipos_usuario tu ON tu.ID = d.TipoUser;";
+
+                $query = $this->db->PDOLocal->query($sql);
+                $result = $query->fetchAll(PDO::FETCH_OBJ);          
+
+                return $result;
+
+            }catch(Exception $e){
+                echo $e = 'No se pudo ejecutar la accion';
+            }
+        }
+
         function AddUser($titulo, $nombre, $apellido, $puesto, $correo, $password, $telefono, $tipou)
         {
             try{

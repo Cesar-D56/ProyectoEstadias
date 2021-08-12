@@ -49,6 +49,12 @@ $(function(){
                     text: "Se a actualizado la informacion con exito",
                   });
                 $('#password').val("");  
+            }else if(parseInt(response)==2){
+              swal.fire({
+                title: "Error",
+                text: "Advertencia: El correo ingresado ya esta registrado",
+              }); 
+              $('#email').val("");
             }else{
                 swal.fire({
                     title: "Error",
@@ -60,51 +66,32 @@ $(function(){
         e.preventDefault();
       });
 
-      $("#upload").submit(function(e){
-
-        /*
-        var file_data = $("#fileToUpload").prop("files")[0];
-        var form_data = new FormData();
-        form_data.append("file", file_data);
-        console.log(form_data["file"]);
-        const postData3 = {
-        usrID:$("#id3").val(),
-        image:$(form_data),
-        };
-        $.post("../scripts/editUsr.php", postData3, function(response){
-          //setValue(response);
-            console.log(response);
-            if(parseInt(response)==1){
-                console.log($("#valor").val());
-                swal.fire({
-                    title: "Completado",
-                    text: "Se a actualizado la informacion con exito",
-                  });
-                $('#password').val("");  
-            }else{
-                swal.fire({
-                    title: "Error",
-                    text: "Algo a salido muy mal durante la operacion",
-                  });  
-            }
-              
-        });
+      $('#delete').on('click', function(e){
         e.preventDefault();
-        */
-        
-        var formData = new FormData();
-        var files = $("#fileToUpload"[0].files[0]);
-        formData.append('file', files);
-        $.ajax({
-            url : "fileUpload.php",
-            type: "post",
-            data : formData,
-            cache: false,
-            contentType: false,
-            processData: false,
-            success: function(response){
-                $('.result').html(response.html);
+        var form_data = new FormData();      
+        const href = $('#delete').attr('value')
+        form_data.append('id', href)
+
+        swal.fire({
+            title: '¿Estas Seguro?',
+            text: 'El usuario sera eliminado',
+            showCancelButton:true,
+            confirmButtonText:"Aceptar",
+        }).then((result)=>{
+            if(result.value){
+                $.ajax({
+                  url: '../scripts/deleteUsr.php', // <-- point to server-side PHP script 
+                  dataType: 'text',  // <-- what to expect back from the PHP script, if anything
+                  cache: false,
+                  contentType: false,
+                  processData: false,
+                  data: form_data,                         
+                  type: 'post',
+                  success: function(php_script_response){
+                      alert(php_script_response); // <-- display response from the PHP script, if any
+                  }
+                })
             }
-        }
-      });
+        })
+    })
 });

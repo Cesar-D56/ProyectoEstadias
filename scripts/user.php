@@ -56,15 +56,14 @@
         function ShowFavPosts($userid)
         {
             try{
-                $sql = "SELECT p.ID, p.UsrId, p.nombre AS 'Titulo', p.descripcion, DATE(p.fecha) AS 'fecha', p.archivo,
-                GROUP_CONCAT(DISTINCT c.nombre) AS 'Categorias', COUNT(DISTINCT blog_calificado.ID) AS 'Calif'
+                $sql = "SELECT p.ID, p.nombre AS 'Titulo', p.descripcion, p.archivo,
+                GROUP_CONCAT(DISTINCT c.nombre) AS 'Categorias', bc.valor AS 'Calificacion'
                 FROM published p
                 JOIN categorias_blog cb ON p.ID=cb.blogId
-                LEFT JOIN blog_calificado ON p.ID=blog_calificado.blogID
+                LEFT JOIN blog_calificado bc ON p.ID=bc.blogID
                 INNER JOIN categorias c ON cb.catId=c.ID
-                WHERE p.UsrId = '$userid'
-                GROUP BY p.ID
-                ORDER BY p.fecha DESC;";
+                WHERE bc.userID='$userid'
+                GROUP BY p.ID;";
 
                 $query = $this->db->PDOLocal->query($sql);
                 $result = $query->fetchAll(PDO::FETCH_OBJ);
