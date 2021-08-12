@@ -51,7 +51,7 @@ $(function(){
                 $('#password').val("");  
             }else if(parseInt(response)==2){
               swal.fire({
-                title: "Error",
+                title: "Status",
                 text: "Advertencia: El correo ingresado ya esta registrado",
               }); 
               $('#email').val("");

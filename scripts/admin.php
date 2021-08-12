@@ -18,7 +18,26 @@
                 $sql = "SELECT d.userID, d.Nombre, d.Apellidos, d.Correo, info.fecha_cuenta AS 'Date', tu.Nombre AS 'Tipo'
                 FROM datosusuarios d
                 INNER JOIN infouser info ON info.userID = d.userID
-                LEFT JOIN tipos_usuario tu ON tu.ID = d.TipoUser;";
+                LEFT JOIN tipos_usuario tu ON tu.ID = d.TipoUser
+                ORDER BY d.ID;";
+
+                $query = $this->db->PDOLocal->query($sql);
+                $result = $query->fetchAll(PDO::FETCH_OBJ);          
+
+                return $result;
+
+            }catch(Exception $e){
+                echo $e = 'No se pudo ejecutar la accion';
+            }
+        }
+        function ShowLastUser()
+        {
+            try{
+                $sql = "SELECT d.userID, d.Nombre, d.Apellidos, info.fecha_cuenta AS 'Date'
+                FROM datosusuarios d
+                INNER JOIN infouser info ON info.userID = d.userID
+                WHERE info.fecha_cuenta = (SELECT MAX(fecha_cuenta) 
+                FROM infouser);";
 
                 $query = $this->db->PDOLocal->query($sql);
                 $result = $query->fetchAll(PDO::FETCH_OBJ);          
@@ -30,42 +49,52 @@
             }
         }
 
-        function AddUser($titulo, $nombre, $apellido, $puesto, $correo, $password, $telefono, $tipou)
+        function AddUser($id, $nombre, $apellido, $titulo, $area, $telefono, $twitter, $desc, $email, $password, $tipo, $photo)
         {
             try{
                 //Busca si el usuario esta registrado
-                $sql = "SELECT Correo FROM datosusuarios WHERE Correo = '$correo'";
-
-                $result = mysqli_query($this->database,$sql);
-           
-                $count = mysqli_num_rows($result);
+                $sql = "SELECT COUNT(d.userID) AS 'Count' FROM datosusuarios d WHERE d.userID = '$id';";
+                $query1 = $this->db->PDOLocal->query($sql);
+                $result = $query1->fetch(PDO::FETCH_ASSOC);
 		
-                if($count == 1) 
+                if($result['Count'] != 1 && $result['Count'] >= 1) 
                 {
-                    //El Usuario aun no esta registrado
-                    $password = password_hash($password, PASSWORD_DEFAULT);
+                    $sql = "SELECT COUNT(d.Correo) AS 'Count' FROM datosusuarios d WHERE d.Correo = '$email';";
+                    $query1 = $this->db->PDOLocal->query($sql);
+                    $result = $query1->fetch(PDO::FETCH_ASSOC);
+                    if($result = ['Count'] != 1 && $result['Count'] >= 1){
+                        $password = password_hash($password, PASSWORD_DEFAULT);
 
-                    $sql = "INSERT INTO datosususuarios 
-                    (titulo, Nombre, Apellidos, puesto, Correo, password, Telefono, TipoUser)
-                    VALUES('$titulo', '$nombre', '$apellido', '$puesto', '$correo', '$password', '$telefono','$tipou')";
-                    //Ejecuta el comando
-                    $result = $this->db->Query1($sql);
+                        $sql = "INSERT INTO datosususuarios 
+                        (userID, Nombre, Apellidos, Correo, password, TipoUser)
+                        VALUES('$id', '$nombre', '$apellido', '$email', '$password', '$tipo')";
+                        //Ejecuta el comando
+                        $result = $this->db->Query1($sql);
+
+                        $sql = "INSERT INTO infouser 
+                        (userID, titulo, puesto, telefono, descripcion, fecha_cuenta, photo, S_twitter)
+                        VALUES('$id', '$titulo', '$area', '$telefono', '$desc', date(t_stamp), '$photo')";
+                        //Ejecuta el comando
+                        $result = $this->db->Query1($sql);
+                    }else{
+                        $status="El ID de usuario no esta disponible";
+                    }
                     //Checa si se realizo la consulta
                     if($result > 0)
                     {
-                        header("Refresh: 1");
-                        echo $status = "Usuario Registrado Exitosamente";
+                        $status = "Usuario Registrado Exitosamente";
                     }else{
-                        echo $status = "No se pudo efectuar la accion";
+                        $status = "No se pudo efectuar la accion";
                     }
 
                 }else {
                     //El Usuario ya se encuentra registrado
-                    echo $status = "Este Correo ya se Encuentra Registrado";
+                    $status = "Este Correo ya se Encuentra Registrado";
                 } 
-            }catch(Exception $e){
-                echo $e = 'No se puedo ejecutar la accion';
+            }catch(Exception $status){
+                $status = 'No se puedo ejecutar la accion';
             }
+            return $status;
         }
         function __destruct()
         {

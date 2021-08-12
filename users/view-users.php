@@ -19,6 +19,7 @@ $users = new ADMIN();
 //$users = new USERS();
 
 //$info = $users -> UserInfo($_SESSION['id']);
+$tabla2 = $users -> ShowLastUser();
 $tabla = $users -> ShowUsers();
 
 $style="";
@@ -164,7 +165,32 @@ echo '</pre>';
     <div class="main-container">
         <div>
         <h2 class=title>Ver Usuarios</h2>
+        <div style="width: 100%; display:inline-flex; justify-content:center">
+          <div style="width: 50%; padding:10px; text-align:center; margin-top:25px;">
+            <a href="create-usr.php" style="text-align:center; vertical-align:bottom; width:50%; background-color:#efae58;" class="btn btn-form" role="button" aria-pressed="true" ><i class="fa fa-pencil"> Crear Nuevo Usuario</i></a>
+          </div>
+          <div style="width: 50%; padding:10px;">
+            <p class="medium-title" style="text-align:left;">Ultimo Usuario Registrado.</p>
+            <table id="tabla_acc" class="table table-sm table-bordered table-responsive-sm">
+                    <thead class="table-primary">
+                      <th scope="col"><li class="fa fa-info"></li> ID</th>
+                      <th scope="col"><li class="fa fa-align-justify"></li> Nombre</th>
+                      <th scope="col"><li class="fa fa-calendar"></li> Creado el:</th>
+                    </thead>
+                    <tbody>
+                      <?php foreach($tabla2 as $fila): ?>
+                        <tr>
+                          <td style="text-align:center; font-size:16px;" class="col-md-1"> <?php echo $fila->userID; ?></td>
+                          <td class="col-md-2"> <b><?php echo $fila->Nombre; ?> <?php echo $fila->Apellidos; ?></b></td>
+                          <td class="col-md-1"> <?php echo $fila->Date; ?></td>
+                        </tr>
+                      <?php endforeach; ?>
+                    </tbody>
+              </table>
+          </div>
+        </div>
           <div id="profile-table">
+            <p class="medium-title" style="text-align:left;">Lista de Usuarios Registrados.</p>
             <table id="tabla_acc" class="table table-sm table-bordered table-responsive-sm">
               <thead class="table-primary">
                 <th scope="col"><li class="fa fa-info"></li> ID</th>
@@ -213,9 +239,6 @@ echo '</pre>';
 
 <!-- Javascript global termina -->
 <!-- Javascript inicia -->
-<script>
-    
-</script>
 
 <script>  // Twitter timeline
   !function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");

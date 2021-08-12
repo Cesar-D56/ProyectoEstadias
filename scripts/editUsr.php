@@ -53,27 +53,26 @@
             $result = $query1->fetch(PDO::FETCH_ASSOC);
 
             if($result['Count'] >= 1){
-                $email = "";
+                $email = null;
                 $e = 2;
             }else{
-                $email = "Correo = '".$correo."' ";
+                $email = "Correo = '".$correo."', ";
                 $e = 1;
             }
 
             if($password != ""){
+                $e = 1;
                 $password = password_hash($password, PASSWORD_DEFAULT);
                 $sql="UPDATE datosusuarios 
-                SET $email, password='$password', TipoUser='$tipo'
+                SET $email password='$password', TipoUser='$tipo'
                 WHERE datosusuarios.userID='$id'";
 
                 $query = $db->PDOLocal->query($sql);
             }else{
-                if($email != ""){
-                    $sql="UPDATE datosusuarios 
-                    SET $email, TipoUser='$tipo' 
+                $sql="UPDATE datosusuarios 
+                    SET $email TipoUser='$tipo' 
                     WHERE datosusuarios.userID='$id'";
                     $query = $db->PDOLocal->query($sql);
-                }
             }
             
             $db->DBdisconnect();
